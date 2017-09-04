@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B01ED73A-FE47-4386-AAB5-BAF1ABB9FA26}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SWYRA</RootNamespace>
+    <AssemblyName>SWYRA</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Firebird, Version=5.9.1.0, Culture=neutral, PublicKeyToken=42d22d092898e5f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Firebird.5.9.1\lib\net452\EntityFramework.Firebird.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=5.9.1.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.5.9.1\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="linq2db, Version=1.8.3.0, Culture=neutral, PublicKeyToken=f19f8aed7feff67e, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.1.8.3\lib\net45\linq2db.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DB.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmActivacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActivacion.Designer.cs">
+      <DependentUpon>FrmActivacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpleados.Designer.cs">
+      <DependentUpon>FrmEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmActivacion.resx">
+      <DependentUpon>FrmActivacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpleados.resx">
+      <DependentUpon>FrmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="LinqToDB.Templates\DataAnnotations.ttinclude" />
+    <None Include="LinqToDB.Templates\DataModel.ttinclude" />
+    <None Include="LinqToDB.Templates\EditableObject.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Access.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.DB2.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Firebird.Tools.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Firebird.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Informix.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.MySql.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Oracle.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.PostgreSQL.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SapHana.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlCe.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SQLite.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlServer.SqlTypes.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.SqlServer.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Sybase.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Tools.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.ttinclude" />
+    <None Include="LinqToDB.Templates\NotifyDataErrorInfo.ttinclude" />
+    <None Include="LinqToDB.Templates\NotifyPropertyChanged.ttinclude" />
+    <None Include="LinqToDB.Templates\ObsoleteAttributes.ttinclude" />
+    <None Include="LinqToDB.Templates\PluralizationService.ttinclude" />
+    <None Include="LinqToDB.Templates\README.md" />
+    <None Include="LinqToDB.Templates\T4Model.ttinclude" />
+    <None Include="LinqToDB.Templates\Validation.ttinclude" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LinqToDB.Templates\CopyMe.Firebird.tt.txt" />
+    <Content Include="Resources\1366681376_print.png" />
+    <Content Include="Resources\1366681746_print.png" />
+    <Content Include="Resources\1366681757_print.png" />
+    <Content Include="Resources\1366681786_print.png" />
+    <Content Include="Resources\1366681800_print.png" />
+    <Content Include="Resources\1366681822_edit-clear.png" />
+    <Content Include="Resources\1366839417_Arzo Icons Icon 96 2.png" />
+    <Content Include="Resources\1366839610_file-excel.png" />
+    <Content Include="Resources\1366840827_balance_unbalance.png" />
+    <Content Include="Resources\1366841026_to-do-list_checked3.png" />
+    <Content Include="Resources\1366841217_stock_id.png" />
+    <Content Include="Resources\1366841248_stock_view-details-16.png" />
+    <Content Include="Resources\1366841261_stock_data-delete-sql-query.png" />
+    <Content Include="Resources\1366841280_stock_data-edit-sql-query-16.png" />
+    <Content Include="Resources\1366841298_stock_form-date-field-16.png" />
+    <Content Include="Resources\1366841345_stock_symbol-selection-16.png" />
+    <Content Include="Resources\256.png" />
+    <Content Include="Resources\2561.png" />
+    <Content Include="Resources\accept.png" />
+    <Content Include="Resources\accept_database.png" />
+    <Content Include="Resources\accept_page.png" />
+    <Content Include="Resources\add.ico" />
+    <Content Include="Resources\add.png" />
+    <Content Include="Resources\add_home.png" />
+    <Content Include="Resources\add_page.png" />
+    <Content Include="Resources\add_to_database.png" />
+    <Content Include="Resources\add_to_favorites.png" />
+    <Content Include="Resources\add_to_folder.png" />
+    <Content Include="Resources\add_to_shopping_cart.png" />
+    <Content Include="Resources\add_user.png" />
+    <Content Include="Resources\attachment.png" />
+    <Content Include="Resources\back.ico" />
+    <Content Include="Resources\back.png" />
+    <Content Include="Resources\block.png" />
+    <Content Include="Resources\calculator.ico" />
+    <Content Include="Resources\calculator.png" />
+    <Content Include="Resources\calendar.png" />
+    <Content Include="Resources\calendar_empty.png" />
+    <Content Include="Resources\cd.png" />
+    <Content Include="Resources\chart.ico" />
+    <Content Include="Resources\chart.png" />
+    <Content Include="Resources\chart_down.png" />
+    <Content Include="Resources\chart_pie.png" />
+    <Content Include="Resources\chart_up.png" />
+    <Content Include="Resources\chef.jpg" />
+    <Content Include="Resources\clock.ico" />
+    <Content Include="Resources\clock.png" />
+    <Content Include="Resources\comment.ico" />
+    <Content Include="Resources\comment.png" />
+    <Content Include="Resources\comments.ico" />
+    <Content Include="Resources\comments.png" />
+    <Content Include="Resources\cut.ico" />
+    <Content Include="Resources\cut.png" />
+    <Content Include="Resources\cut_from_page.png" />
+    <Content Include="Resources\database.png" />
+    <Content Include="Resources\delete.ico" />
+    <Content Include="Resources\delete.png" />
+    <Content Include="Resources\delete_folder.ico" />
+    <Content Include="Resources\delete_folder.png" />
+    <Content Include="Resources\delete_home.png" />
+    <Content Include="Resources\delete_page.png" />
+    <Content Include="Resources\delete_user.png" />
+    <Content Include="Resources\dollar_currency_sign.ico" />
+    <Content Include="Resources\dollar_currency_sign.png" />
+    <Content Include="Resources\download.png" />
+    <Content Include="Resources\download_database.png" />
+    <Content Include="Resources\dvd.png" />
+    <Content Include="Resources\edit.ico" />
+    <Content Include="Resources\edit.png" />
+    <Content Include="Resources\edit_page.png" />
+    <Content Include="Resources\edit_profile.png" />
+    <Content Include="Resources\euro_currency_sign.png" />
+    <Content Include="Resources\Famo-1-01.jpg" />
+    <Content Include="Resources\Famo-1-011.jpg" />
+    <Content Include="Resources\favorite.ico" />
+    <Content Include="Resources\favorite.png" />
+    <Content Include="Resources\FiestaVending.jpg" />
+    <Content Include="Resources\FiestaVending.png" />
+    <Content Include="Resources\folder.png" />
+    <Content Include="Resources\folder_accept.ico" />
+    <Content Include="Resources\folder_accept.png" />
+    <Content Include="Resources\folder_conflicted.png" />
+    <Content Include="Resources\folder_full.png" />
+    <Content Include="Resources\folder_modified.png" />
+    <Content Include="Resources\full_page.png" />
+    <Content Include="Resources\heart %282%29.png" />
+    <Content Include="Resources\help.ico" />
+    <Content Include="Resources\help.png" />
+    <Content Include="Resources\home.png" />
+    <Content Include="Resources\home_accept.png" />
+    <Content Include="Resources\info.png" />
+    <Content Include="Resources\insert_to_shopping_cart.png" />
+    <Content Include="Resources\link.png" />
+    <Content Include="Resources\lock %282%29.png" />
+    <Content Include="Resources\logo.jpg" />
+    <Content Include="Resources\logoprueba-ConvertImage.ico" />
+    <Content Include="Resources\Logout-32x32.png" />
+    <None Include="Resources\Logout-32x321.png" />
+    <Content Include="Resources\Logout.png" />
+    <Content Include="Resources\mail %282%29.png" />
+    <Content Include="Resources\mail_lock.png" />
+    <Content Include="Resources\mail_receive.png" />
+    <Content Include="Resources\mail_search.png" />
+    <Content Include="Resources\mail_send.png" />
+    <Content Include="Resources\mobile_phone.png" />
+    <Content Include="Resources\new.png" />
+    <Content Include="Resources\new_page.png" />
+    <Content Include="Resources\next.ico" />
+    <Content Include="Resources\next.png" />
+    <Content Include="Resources\NUVAGROPC.jpg" />
+    <Content Include="Resources\page_process.png" />
+    <Content Include="Resources\phone_book.png" />
+    <Content Include="Resources\phone_book_edit.png" />
+    <Content Include="Resources\process.ico" />
+    <Content Include="Resources\process.png" />
+    <Content Include="Resources\promotion.png" />
+    <Content Include="Resources\protection.png" />
+    <Content Include="Resources\QSR.jpg" />
+    <Content Include="Resources\quesos-sn-roque_logo2.jpg" />
+    <Content Include="Resources\quesos-sn-roque_logo21.jpg" />
+    <Content Include="Resources\refresh %282%29.png" />
+    <Content Include="Resources\remove_from_database.png" />
+    <Content Include="Resources\remove_from_shopping_cart.png" />
+    <Content Include="Resources\rss %282%29.png" />
+    <Content Include="Resources\sale.png" />
+    <Content Include="Resources\save.ico" />
+    <Content Include="Resources\save.png" />
+    <Content Include="Resources\search %282%29.png" />
+    <Content Include="Resources\search_database.png" />
+    <Content Include="Resources\search_home.png" />
+    <Content Include="Resources\search_page.png" />
+    <Content Include="Resources\search_user.png" />
+    <Content Include="Resources\shopping_cart.png" />
+    <Content Include="Resources\shopping_cart_accept.png" />
+    <Content Include="Resources\sound %282%29.png" />
+    <Content Include="Resources\sound_muted.png" />
+    <Content Include="Resources\sterling_pound_currency_sign.png" />
+    <Content Include="Resources\support.png" />
+    <Content Include="Resources\SWRYA.ico" />
+    <Content Include="Resources\tag_blue.png" />
+    <Content Include="Resources\tag_green.png" />
+    <Content Include="Resources\text_page.png" />
+    <Content Include="Resources\unlock.png" />
+    <Content Include="Resources\user %282%29.png" />
+    <Content Include="Resources\users.png" />
+    <Content Include="Resources\user_accept.ico" />
+    <Content Include="Resources\user_accept.png" />
+    <Content Include="Resources\visiontec.png" />
+    <Content Include="Resources\visiontec1.jpg" />
+    <Content Include="Resources\visiontec2.jpg" />
+    <Content Include="Resources\visiontecN.png" />
+    <Content Include="Resources\visiontecOd4.jpg" />
+    <Content Include="Resources\visiontecOld.png" />
+    <Content Include="Resources\VTss%28sinfondo%29.png" />
+    <Content Include="Resources\VT_100.png" />
+    <Content Include="Resources\warning.png" />
+    <Content Include="Resources\yen_currency_sign.png" />
+    <Content Include="Resources\zoom_in.png" />
+    <Content Include="Resources\zoom_out.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
