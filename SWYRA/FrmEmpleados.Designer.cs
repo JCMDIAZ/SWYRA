@@ -62,11 +62,12 @@
             this.DelBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
             this.LinkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.perfilBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             this.GpoEmpleados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
@@ -74,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGalmusu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGAlmacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.perfilBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -138,6 +140,7 @@
             this.BtnBuscar.TabIndex = 2;
             this.BtnBuscar.Text = "BUSCAR";
             this.BtnBuscar.UseVisualStyleBackColor = false;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // GpoEmpleados
             // 
@@ -191,6 +194,7 @@
             this.TxtCodigo.Location = new System.Drawing.Point(131, 34);
             this.TxtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCodigo.Name = "TxtCodigo";
+            this.TxtCodigo.ReadOnly = true;
             this.TxtCodigo.Size = new System.Drawing.Size(176, 23);
             this.TxtCodigo.TabIndex = 23;
             // 
@@ -262,15 +266,17 @@
             // 
             this.Label7.AutoSize = true;
             this.Label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label7.Location = new System.Drawing.Point(57, 175);
+            this.Label7.Location = new System.Drawing.Point(83, 174);
             this.Label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(69, 17);
+            this.Label7.Size = new System.Drawing.Size(40, 17);
             this.Label7.TabIndex = 28;
-            this.Label7.Text = "Categoria";
+            this.Label7.Text = "Perfil";
             // 
             // cbCategoria
             // 
+            this.cbCategoria.DataSource = this.perfilBindingSource;
+            this.cbCategoria.DisplayMember = "descripcion";
             this.cbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(131, 171);
@@ -278,6 +284,7 @@
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(176, 25);
             this.cbCategoria.TabIndex = 27;
+            this.cbCategoria.ValueMember = "descripcion";
             // 
             // DGUsuarios
             // 
@@ -460,10 +467,6 @@
             this.LinkLabel1.Text = ".";
             this.LinkLabel1.Visible = false;
             // 
-            // usuariosBindingSource
-            // 
-            this.usuariosBindingSource.DataSource = typeof(SWYRA.Usuarios);
-            // 
             // usuarioDataGridViewTextBoxColumn
             // 
             this.usuarioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -505,6 +508,14 @@
             this.activoDataGridViewCheckBoxColumn.ReadOnly = true;
             this.activoDataGridViewCheckBoxColumn.Width = 52;
             // 
+            // usuariosBindingSource
+            // 
+            this.usuariosBindingSource.DataSource = typeof(SWYRA.Usuarios);
+            // 
+            // perfilBindingSource
+            // 
+            this.perfilBindingSource.DataSource = typeof(SWYRA.Perfil);
+            // 
             // FrmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -531,6 +542,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGalmusu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGAlmacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.perfilBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -572,5 +584,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource usuariosBindingSource;
+        private System.Windows.Forms.BindingSource perfilBindingSource;
     }
 }

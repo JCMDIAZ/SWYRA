@@ -185,4 +185,12 @@ namespace SWYRA
         public int prioridad { get; set; }
         public string status { get; set; }
     }
+
+    public class Perfil
+    {
+        public int id { get; set; }
+        public string descripcion { get; set; }
+        public string modulo { get; set; }
+
+    }
 }

@@ -25,8 +25,8 @@ namespace SWYRA
 
         private void FrmEmpleados_Load(object sender, EventArgs e)
         {
-            List<Usuarios> listEmpleados = CargaEmpleados();
-            DGUsuarios.DataSource = listEmpleados;
+            DGUsuarios.DataSource = CargaEmpleados();
+            cbCategoria.DataSource = CargaPerfil();
         }
 
         private List<Usuarios> CargaEmpleados()
@@ -42,6 +42,27 @@ namespace SWYRA
                 MessageBox.Show(ex.Message);
             }
             return listEmpleados;
-        } 
+        }
+
+        private List<Perfil> CargaPerfil()
+        {
+            List<Perfil> listPerfil = new List<Perfil>();
+            try
+            {
+                var query = "SELECT ID, DESCRIPCION, MODULO FROM PERFIL ORDER BY DESCRIPCION";
+                listPerfil = GetDataTable("DB", query, 15).ToList<Perfil>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return listPerfil;
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            List<Usuarios> listEmpleados = CargaEmpleados().Where(o => o.Nombre.Contains(TBoxBuscaUsua.Text) || o.Usuario.Contains(TBoxBuscaUsua.Text)).ToList();
+            DGUsuarios.DataSource = listEmpleados;
+        }
     }
 }
