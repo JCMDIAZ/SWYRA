@@ -193,4 +193,11 @@ namespace SWYRA
         public string modulo { get; set; }
 
     }
+
+    public class UsuarioAlmacen
+    {
+        public string usuario { get; set; }
+        public string almacen { get; set; }
+        public string nombre { get; set; }
+    }
 }
