@@ -59,12 +59,13 @@
             this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.lstAlamcenAsignado = new System.Windows.Forms.ListBox();
+            this.usuarioAlmacenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lstAlmacen = new System.Windows.Forms.ListBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
             this.lbalmacen2 = new System.Windows.Forms.LinkLabel();
             this.lbalmacen = new System.Windows.Forms.LinkLabel();
-            this.DGalmusu = new System.Windows.Forms.DataGridView();
-            this.DGAlmacen = new System.Windows.Forms.DataGridView();
             this.DelBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
             this.LinkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -74,8 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
             this.GroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGalmusu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGAlmacen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usuarioAlmacenBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -99,6 +99,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(90, 24);
             this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnLimpiar
             // 
@@ -172,7 +173,7 @@
             this.Chkact.Margin = new System.Windows.Forms.Padding(4);
             this.Chkact.Name = "Chkact";
             this.Chkact.Size = new System.Drawing.Size(68, 21);
-            this.Chkact.TabIndex = 24;
+            this.Chkact.TabIndex = 9;
             this.Chkact.Text = "Activo";
             this.Chkact.UseVisualStyleBackColor = true;
             // 
@@ -197,7 +198,7 @@
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.ReadOnly = true;
             this.TxtCodigo.Size = new System.Drawing.Size(176, 23);
-            this.TxtCodigo.TabIndex = 23;
+            this.TxtCodigo.TabIndex = 4;
             // 
             // Txtcpass
             // 
@@ -207,7 +208,7 @@
             this.Txtcpass.Name = "Txtcpass";
             this.Txtcpass.PasswordChar = '*';
             this.Txtcpass.Size = new System.Drawing.Size(176, 23);
-            this.Txtcpass.TabIndex = 31;
+            this.Txtcpass.TabIndex = 7;
             // 
             // Label1
             // 
@@ -250,7 +251,7 @@
             this.Txtpass.Name = "Txtpass";
             this.Txtpass.PasswordChar = '*';
             this.Txtpass.Size = new System.Drawing.Size(176, 23);
-            this.Txtpass.TabIndex = 29;
+            this.Txtpass.TabIndex = 6;
             // 
             // TxtNombre
             // 
@@ -261,7 +262,7 @@
             this.TxtNombre.MaxLength = 10;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(176, 23);
-            this.TxtNombre.TabIndex = 25;
+            this.TxtNombre.TabIndex = 5;
             // 
             // Label7
             // 
@@ -284,7 +285,7 @@
             this.cbCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(176, 25);
-            this.cbCategoria.TabIndex = 27;
+            this.cbCategoria.TabIndex = 8;
             this.cbCategoria.ValueMember = "descripcion";
             // 
             // perfilBindingSource
@@ -335,7 +336,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DGUsuarios.Size = new System.Drawing.Size(287, 236);
-            this.DGUsuarios.TabIndex = 14;
+            this.DGUsuarios.TabIndex = 3;
             this.DGUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGUsuarios_CellClick);
             // 
             // usuarioDataGridViewTextBoxColumn
@@ -385,12 +386,12 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.lstAlamcenAsignado);
+            this.GroupBox1.Controls.Add(this.lstAlmacen);
             this.GroupBox1.Controls.Add(this.Label3);
             this.GroupBox1.Controls.Add(this.Label6);
             this.GroupBox1.Controls.Add(this.lbalmacen2);
             this.GroupBox1.Controls.Add(this.lbalmacen);
-            this.GroupBox1.Controls.Add(this.DGalmusu);
-            this.GroupBox1.Controls.Add(this.DGAlmacen);
             this.GroupBox1.Controls.Add(this.DelBtn);
             this.GroupBox1.Controls.Add(this.AddBtn);
             this.GroupBox1.Controls.Add(this.LinkLabel1);
@@ -403,6 +404,38 @@
             this.GroupBox1.TabIndex = 27;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Datos de Almacen";
+            // 
+            // lstAlamcenAsignado
+            // 
+            this.lstAlamcenAsignado.DataSource = this.usuarioAlmacenBindingSource;
+            this.lstAlamcenAsignado.DisplayMember = "nombre";
+            this.lstAlamcenAsignado.FormattingEnabled = true;
+            this.lstAlamcenAsignado.ItemHeight = 17;
+            this.lstAlamcenAsignado.Location = new System.Drawing.Point(379, 78);
+            this.lstAlamcenAsignado.Margin = new System.Windows.Forms.Padding(4);
+            this.lstAlamcenAsignado.Name = "lstAlamcenAsignado";
+            this.lstAlamcenAsignado.ScrollAlwaysVisible = true;
+            this.lstAlamcenAsignado.Size = new System.Drawing.Size(195, 174);
+            this.lstAlamcenAsignado.TabIndex = 13;
+            this.lstAlamcenAsignado.ValueMember = "nombre";
+            // 
+            // usuarioAlmacenBindingSource
+            // 
+            this.usuarioAlmacenBindingSource.DataSource = typeof(SWYRA.UsuarioAlmacen);
+            // 
+            // lstAlmacen
+            // 
+            this.lstAlmacen.DataSource = this.usuarioAlmacenBindingSource;
+            this.lstAlmacen.DisplayMember = "nombre";
+            this.lstAlmacen.FormattingEnabled = true;
+            this.lstAlmacen.ItemHeight = 17;
+            this.lstAlmacen.Location = new System.Drawing.Point(68, 78);
+            this.lstAlmacen.Margin = new System.Windows.Forms.Padding(4);
+            this.lstAlmacen.Name = "lstAlmacen";
+            this.lstAlmacen.ScrollAlwaysVisible = true;
+            this.lstAlmacen.Size = new System.Drawing.Size(195, 174);
+            this.lstAlmacen.TabIndex = 10;
+            this.lstAlmacen.ValueMember = "nombre";
             // 
             // Label3
             // 
@@ -448,44 +481,6 @@
             this.lbalmacen.TabStop = true;
             this.lbalmacen.Text = ".";
             // 
-            // DGalmusu
-            // 
-            this.DGalmusu.AllowUserToAddRows = false;
-            this.DGalmusu.AllowUserToDeleteRows = false;
-            this.DGalmusu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
-            this.DGalmusu.BackgroundColor = System.Drawing.Color.White;
-            this.DGalmusu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.DGalmusu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGalmusu.ColumnHeadersVisible = false;
-            this.DGalmusu.Location = new System.Drawing.Point(379, 78);
-            this.DGalmusu.Margin = new System.Windows.Forms.Padding(4);
-            this.DGalmusu.MultiSelect = false;
-            this.DGalmusu.Name = "DGalmusu";
-            this.DGalmusu.ReadOnly = true;
-            this.DGalmusu.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.DGalmusu.RowHeadersVisible = false;
-            this.DGalmusu.Size = new System.Drawing.Size(195, 178);
-            this.DGalmusu.TabIndex = 30;
-            // 
-            // DGAlmacen
-            // 
-            this.DGAlmacen.AllowUserToAddRows = false;
-            this.DGAlmacen.AllowUserToDeleteRows = false;
-            this.DGAlmacen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
-            this.DGAlmacen.BackgroundColor = System.Drawing.Color.White;
-            this.DGAlmacen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.DGAlmacen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGAlmacen.ColumnHeadersVisible = false;
-            this.DGAlmacen.Location = new System.Drawing.Point(68, 78);
-            this.DGAlmacen.Margin = new System.Windows.Forms.Padding(4);
-            this.DGAlmacen.MultiSelect = false;
-            this.DGAlmacen.Name = "DGAlmacen";
-            this.DGAlmacen.ReadOnly = true;
-            this.DGAlmacen.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.DGAlmacen.RowHeadersVisible = false;
-            this.DGAlmacen.Size = new System.Drawing.Size(195, 178);
-            this.DGAlmacen.TabIndex = 29;
-            // 
             // DelBtn
             // 
             this.DelBtn.Image = global::SWYRA.Properties.Resources.back;
@@ -493,8 +488,9 @@
             this.DelBtn.Margin = new System.Windows.Forms.Padding(4);
             this.DelBtn.Name = "DelBtn";
             this.DelBtn.Size = new System.Drawing.Size(59, 52);
-            this.DelBtn.TabIndex = 28;
+            this.DelBtn.TabIndex = 12;
             this.DelBtn.UseVisualStyleBackColor = true;
+            this.DelBtn.Click += new System.EventHandler(this.DelBtn_Click);
             // 
             // AddBtn
             // 
@@ -503,8 +499,9 @@
             this.AddBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(59, 52);
-            this.AddBtn.TabIndex = 27;
+            this.AddBtn.TabIndex = 11;
             this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // LinkLabel1
             // 
@@ -543,8 +540,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGalmusu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGAlmacen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usuarioAlmacenBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,8 +572,6 @@
         internal System.Windows.Forms.Label Label6;
         internal System.Windows.Forms.LinkLabel lbalmacen2;
         internal System.Windows.Forms.LinkLabel lbalmacen;
-        internal System.Windows.Forms.DataGridView DGalmusu;
-        internal System.Windows.Forms.DataGridView DGAlmacen;
         internal System.Windows.Forms.Button DelBtn;
         internal System.Windows.Forms.Button AddBtn;
         internal System.Windows.Forms.LinkLabel LinkLabel1;
@@ -587,5 +581,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource usuariosBindingSource;
         private System.Windows.Forms.BindingSource perfilBindingSource;
+        private System.Windows.Forms.BindingSource usuarioAlmacenBindingSource;
+        internal System.Windows.Forms.ListBox lstAlamcenAsignado;
+        internal System.Windows.Forms.ListBox lstAlmacen;
     }
 }

@@ -158,6 +158,7 @@
     <None Include="LinqToDB.Templates\Validation.ttinclude" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Perfil.datasource" />
+    <None Include="Properties\DataSources\UsuarioAlmacen.datasource" />
     <None Include="Properties\DataSources\Usuarios.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
