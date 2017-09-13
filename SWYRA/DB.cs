@@ -15,6 +15,8 @@ namespace SWYRA
         public string Password { get; set; }
         public bool Activo { get; set; }
         public int IdStatusPermisosUser { get; set; }
+        public string LetraERP { get; set; }
+        public string AreaAsignada { get; set; }
     }
 
     public class CatRegMach
@@ -199,5 +201,17 @@ namespace SWYRA
         public string usuario { get; set; }
         public string almacen { get; set; }
         public string nombre { get; set; }
+    }
+
+    public class Almacen
+    {
+        public string Clave { get; set; }
+        public string Nombre { get; set; }
+        public string Abreviatura { get; set; }
+        public string Zona { get; set; }
+        public decimal Area { get; set; }
+        public decimal Altura { get; set; }
+        public decimal offset { get; set; }public bool Activo { get; set; }
+
     }
 }

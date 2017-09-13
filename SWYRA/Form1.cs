@@ -113,9 +113,21 @@ namespace SWYRA
 
         private void usuariosDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             var fEmpl = new FrmEmpleados();
             fEmpl.ShowDialog();
             fEmpl.Close();
+        }
+
+        private void almacenesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fDeptos = new FrmDeptos();
+            fDeptos.ShowDialog();
+            fDeptos.Close();
         }
     }
 }

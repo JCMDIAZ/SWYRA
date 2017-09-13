@@ -15,6 +15,7 @@ namespace SWYRA
     {
         List<UsuarioAlmacen> listAlmacen = new List<UsuarioAlmacen>();
         List<UsuarioAlmacen> listUsuarioAlmacen = new List<UsuarioAlmacen>();
+        List<Perfil> listPerfil = new List<Perfil>();
 
         public FrmEmpleados()
         {
@@ -53,7 +54,7 @@ namespace SWYRA
             List<Usuarios> listEmpleados = new List<Usuarios>();
             try
             {
-                var query = "SELECT Usuario, Nombre, Categoria, Activo, cast(DECRYPTBYPASSPHRASE('swyra',[Contraseña]) as varchar(15)) Password FROM Usuarios ORDER BY Usuario";
+                var query = "SELECT Usuario, Nombre, Categoria, Activo, cast(DECRYPTBYPASSPHRASE('swyra',[Contraseña]) as varchar(15)) Password, LetraERP, AreaAsignada FROM Usuarios ORDER BY Usuario";
                 listEmpleados = GetDataTable("DB", query, 14).ToList<Usuarios>();
             }
             catch (Exception ex)
@@ -65,7 +66,6 @@ namespace SWYRA
 
         private List<Perfil> CargaPerfil()
         {
-            List<Perfil> listPerfil = new List<Perfil>();
             try
             {
                 var query = "SELECT ID, DESCRIPCION, MODULO FROM PERFIL ORDER BY DESCRIPCION";
@@ -131,11 +131,18 @@ namespace SWYRA
             TxtNombre.Text = empleado.Nombre;
             Txtpass.Text = empleado.Password;
             Txtcpass.Text = empleado.Password;
-            cbCategoria.Text = empleado.Categoria;
+            cbCategoria.Text = empleado.Categoria.TrimEnd();
             Chkact.Checked = empleado.Activo;
+
+            txtLetra.Text = empleado.LetraERP;
+            txtLetra.Enabled = (cbCategoria.Text == @"COBRADOR");
+
+            cbArea.Text = empleado.AreaAsignada;
+            cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
 
             listUsuarioAlmacen = CargaUsuarioAlmacenes(empleado.Usuario);
             ActualizaAlmacen();
+            ViewModulo();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -167,6 +174,7 @@ namespace SWYRA
             lstAlamcenAsignado.DataSource = listUsrAsg;
             listUsuarioAlmacen = listUsrAsg;
 
+            habilitaCampos();
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -211,15 +219,18 @@ namespace SWYRA
                                 17).ToData<Variables>();
                         TxtCodigo.Text = var1.Id;
                         query =
-                            @"INSERT USUARIOS (Usuario, Nombre, Categoria, Contraseña, Activo) " +
-                            "VALUES ('" + var1.Id + "', '" + TxtNombre.Text + "', '" + cbCategoria.Text + "', ENCRYPTBYPASSPHRASE('swyra', '" + Txtpass.Text +
-                            "'), " + ((Chkact.Checked) ? "1" : "0") + ")";
+                            @"INSERT USUARIOS (Usuario, Nombre, Categoria, Contraseña, Activo, LetraERP, AreaAsignada) " +
+                            "VALUES (RIGHT('0000" + var1.Id + "',4), '" + TxtNombre.Text + "', '" + cbCategoria.Text + "', ENCRYPTBYPASSPHRASE('swyra', '" + Txtpass.Text +
+                            "'), " + ((Chkact.Checked) ? "1" : "0") + ", " + ((txtLetra.Enabled) ? "'" + txtLetra.Text + "'": "Null") + 
+                            ", " + ((cbArea.Enabled) ? "'" + cbArea.Text + "'" : "Null") + ")";
                     }
                     else
                     {
                         query =
                             @"UPDATE USUARIOS SET Nombre = '" + TxtNombre.Text + "', Categoria = '" + cbCategoria.Text + "', " +
                             "Contraseña = ENCRYPTBYPASSPHRASE('swyra', '" + Txtpass.Text + "') , Activo = " + ((Chkact.Checked) ? "1" : "0") +
+                            ", LetraERP = " + ((txtLetra.Enabled) ? "'" + txtLetra.Text + "'" : "Null") +
+                            ", AreaAsignada = " + ((cbArea.Enabled) ? "'" + cbArea.Text + "'" : "Null") +
                             " WHERE Usuario = " + TxtCodigo.Text;
                     }
                     var res = GetExecute("DB", query, 17);
@@ -282,7 +293,52 @@ namespace SWYRA
                 lstAlmacen.Focus();
                 b = false;
             }
+            if (txtLetra.Enabled && txtLetra.Text == "")
+            {
+                MessageBox.Show(@"Favor de asignarle una letra clave al Cobrador.");
+                txtLetra.Focus();
+                b = false;
+            }
+            if (cbArea.Enabled && cbArea.Text == "")
+            {
+                MessageBox.Show(@"Favor de seleccionar un Área al Surtidor o Empaquetador.");
+                cbArea.Focus();
+                b = false;
+            }
             return b;
+        }
+
+        private void cbCategoria_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ViewModulo();
+            habilitaCampos();
+        }
+
+        private void habilitaCampos()
+        {
+            txtLetra.Text = "";
+            txtLetra.Enabled = (cbCategoria.Text == @"COBRADOR");
+
+            cbArea.Text = "";
+            cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
+        }
+
+        private void ViewModulo()
+        {
+            if (cbCategoria.Text != "")
+            {
+                var perfil = listPerfil.FirstOrDefault(o => o.descripcion == cbCategoria.Text.TrimEnd());
+                label9.Text = perfil.modulo;
+            }
+            else
+            {
+                label9.Text = "";
+            }
+        }
+
+        private void txtLetra_TextChanged(object sender, EventArgs e)
+        {
+            txtLetra.Text = txtLetra.Text.ToUpper();
         }
     }
 }
