@@ -56,7 +56,6 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.dgAlmacen = new System.Windows.Forms.DataGridView();
-            this.txtBuscar = new DevExpress.XtraEditors.TextEdit();
             this.claveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.abreviaturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +65,7 @@
             this.offsetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.alamcenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtBuscar = new DevExpress.XtraEditors.TextEdit();
             this.toolStrip1.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo.Properties)).BeginInit();
@@ -77,8 +77,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAlmacen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.alamcenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -96,26 +96,27 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::SWYRA.Properties.Resources.save;
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(90, 24);
+            this.btnGuardar.Size = new System.Drawing.Size(95, 24);
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLimpiar.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Image = global::SWYRA.Properties.Resources._1366681822_edit_clear;
             this.btnLimpiar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(86, 24);
+            this.btnLimpiar.Size = new System.Drawing.Size(89, 24);
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnSalir
             // 
+            this.btnSalir.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = global::SWYRA.Properties.Resources.Logout_32x32;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
@@ -143,6 +144,7 @@
             this.GroupBox1.Controls.Add(this.Label6);
             this.GroupBox1.Controls.Add(this.Label2);
             this.GroupBox1.Controls.Add(this.Label1);
+            this.GroupBox1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupBox1.Location = new System.Drawing.Point(13, 31);
             this.GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.GroupBox1.Name = "GroupBox1";
@@ -156,7 +158,7 @@
             // 
             this.chkActivo.Location = new System.Drawing.Point(376, 109);
             this.chkActivo.Name = "chkActivo";
-            this.chkActivo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkActivo.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkActivo.Properties.Appearance.Options.UseFont = true;
             this.chkActivo.Properties.Caption = "Activo";
             this.chkActivo.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
@@ -167,7 +169,7 @@
             // 
             this.txtOffset.Location = new System.Drawing.Point(376, 80);
             this.txtOffset.Name = "txtOffset";
-            this.txtOffset.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOffset.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOffset.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtOffset.Properties.Appearance.Options.UseFont = true;
             this.txtOffset.Properties.Appearance.Options.UseForeColor = true;
@@ -177,14 +179,14 @@
             this.txtOffset.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtOffset.Properties.Mask.EditMask = "##0.00";
             this.txtOffset.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtOffset.Size = new System.Drawing.Size(86, 22);
+            this.txtOffset.Size = new System.Drawing.Size(86, 24);
             this.txtOffset.TabIndex = 40;
             // 
             // txtAltura
             // 
             this.txtAltura.Location = new System.Drawing.Point(376, 50);
             this.txtAltura.Name = "txtAltura";
-            this.txtAltura.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAltura.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAltura.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtAltura.Properties.Appearance.Options.UseFont = true;
             this.txtAltura.Properties.Appearance.Options.UseForeColor = true;
@@ -194,32 +196,32 @@
             this.txtAltura.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtAltura.Properties.Mask.EditMask = "##0.00";
             this.txtAltura.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtAltura.Size = new System.Drawing.Size(86, 22);
+            this.txtAltura.Size = new System.Drawing.Size(86, 24);
             this.txtAltura.TabIndex = 39;
             // 
             // txtArea
             // 
             this.txtArea.Location = new System.Drawing.Point(376, 21);
             this.txtArea.Name = "txtArea";
-            this.txtArea.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtArea.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtArea.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtArea.Properties.Appearance.Options.UseFont = true;
             this.txtArea.Properties.Appearance.Options.UseForeColor = true;
             this.txtArea.Properties.Mask.EditMask = "#,##0.00";
             this.txtArea.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtArea.Size = new System.Drawing.Size(86, 22);
+            this.txtArea.Size = new System.Drawing.Size(86, 24);
             this.txtArea.TabIndex = 38;
             // 
             // txtZona
             // 
             this.txtZona.Location = new System.Drawing.Point(125, 109);
             this.txtZona.Name = "txtZona";
-            this.txtZona.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtZona.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtZona.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtZona.Properties.Appearance.Options.UseFont = true;
             this.txtZona.Properties.Appearance.Options.UseForeColor = true;
             this.txtZona.Properties.MaxLength = 50;
-            this.txtZona.Size = new System.Drawing.Size(171, 22);
+            this.txtZona.Size = new System.Drawing.Size(171, 24);
             this.txtZona.TabIndex = 37;
             this.txtZona.TextChanged += new System.EventHandler(this.txtZona_TextChanged);
             // 
@@ -227,11 +229,11 @@
             // 
             this.txtAbreviaura.Location = new System.Drawing.Point(125, 80);
             this.txtAbreviaura.Name = "txtAbreviaura";
-            this.txtAbreviaura.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAbreviaura.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAbreviaura.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtAbreviaura.Properties.Appearance.Options.UseFont = true;
             this.txtAbreviaura.Properties.Appearance.Options.UseForeColor = true;
-            this.txtAbreviaura.Size = new System.Drawing.Size(171, 22);
+            this.txtAbreviaura.Size = new System.Drawing.Size(171, 24);
             this.txtAbreviaura.TabIndex = 36;
             this.txtAbreviaura.TextChanged += new System.EventHandler(this.txtAbreviaura_TextChanged);
             // 
@@ -239,12 +241,12 @@
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(125, 50);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtDescripcion.Properties.Appearance.Options.UseFont = true;
             this.txtDescripcion.Properties.Appearance.Options.UseForeColor = true;
             this.txtDescripcion.Properties.MaxLength = 50;
-            this.txtDescripcion.Size = new System.Drawing.Size(171, 22);
+            this.txtDescripcion.Size = new System.Drawing.Size(171, 24);
             this.txtDescripcion.TabIndex = 35;
             this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
@@ -253,121 +255,121 @@
             this.txtCodigo.Location = new System.Drawing.Point(125, 21);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Properties.AllowFocused = false;
-            this.txtCodigo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigo.Properties.Appearance.Options.UseFont = true;
             this.txtCodigo.Properties.Appearance.Options.UseForeColor = true;
             this.txtCodigo.Properties.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(171, 22);
+            this.txtCodigo.Size = new System.Drawing.Size(171, 24);
             this.txtCodigo.TabIndex = 34;
             // 
             // Label12
             // 
             this.Label12.AutoSize = true;
-            this.Label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label12.Location = new System.Drawing.Point(469, 83);
+            this.Label12.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label12.Location = new System.Drawing.Point(468, 83);
             this.Label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label12.Name = "Label12";
-            this.Label12.Size = new System.Drawing.Size(30, 15);
+            this.Label12.Size = new System.Drawing.Size(36, 17);
             this.Label12.TabIndex = 33;
             this.Label12.Text = "mts";
             // 
             // Label13
             // 
             this.Label13.AutoSize = true;
-            this.Label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label13.Location = new System.Drawing.Point(324, 83);
+            this.Label13.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label13.Location = new System.Drawing.Point(319, 83);
             this.Label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(44, 15);
+            this.Label13.Size = new System.Drawing.Size(55, 17);
             this.Label13.TabIndex = 32;
             this.Label13.Text = "Offset";
             // 
             // Label14
             // 
             this.Label14.AutoSize = true;
-            this.Label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label14.Location = new System.Drawing.Point(469, 55);
+            this.Label14.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label14.Location = new System.Drawing.Point(468, 55);
             this.Label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(30, 15);
+            this.Label14.Size = new System.Drawing.Size(36, 17);
             this.Label14.TabIndex = 30;
             this.Label14.Text = "mts";
             // 
             // Label15
             // 
             this.Label15.AutoSize = true;
-            this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label15.Location = new System.Drawing.Point(469, 26);
+            this.Label15.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label15.Location = new System.Drawing.Point(468, 26);
             this.Label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label15.Name = "Label15";
-            this.Label15.Size = new System.Drawing.Size(38, 15);
+            this.Label15.Size = new System.Drawing.Size(46, 17);
             this.Label15.TabIndex = 29;
             this.Label15.Text = "mts2";
             // 
             // Label16
             // 
             this.Label16.AutoSize = true;
-            this.Label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label16.Location = new System.Drawing.Point(324, 55);
+            this.Label16.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label16.Location = new System.Drawing.Point(319, 55);
             this.Label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label16.Name = "Label16";
-            this.Label16.Size = new System.Drawing.Size(44, 15);
+            this.Label16.Size = new System.Drawing.Size(55, 17);
             this.Label16.TabIndex = 28;
             this.Label16.Text = "Altura";
             // 
             // Label17
             // 
             this.Label17.AutoSize = true;
-            this.Label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label17.Location = new System.Drawing.Point(332, 26);
+            this.Label17.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label17.Location = new System.Drawing.Point(330, 26);
             this.Label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label17.Name = "Label17";
-            this.Label17.Size = new System.Drawing.Size(36, 15);
+            this.Label17.Size = new System.Drawing.Size(44, 17);
             this.Label17.TabIndex = 26;
             this.Label17.Text = "Area";
             // 
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(39, 83);
+            this.Label4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Location = new System.Drawing.Point(24, 83);
             this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(79, 15);
+            this.Label4.Size = new System.Drawing.Size(99, 17);
             this.Label4.TabIndex = 8;
             this.Label4.Text = "Abreviatura";
             // 
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label6.Location = new System.Drawing.Point(79, 112);
+            this.Label6.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label6.Location = new System.Drawing.Point(76, 112);
             this.Label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(39, 15);
+            this.Label6.Size = new System.Drawing.Size(47, 17);
             this.Label6.TabIndex = 7;
             this.Label6.Text = "Zona";
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(60, 55);
+            this.Label2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Location = new System.Drawing.Point(54, 55);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(58, 15);
+            this.Label2.Size = new System.Drawing.Size(69, 17);
             this.Label2.TabIndex = 3;
             this.Label2.Text = "Nombre";
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(17, 26);
+            this.Label1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Location = new System.Drawing.Point(3, 26);
             this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(101, 15);
+            this.Label1.Size = new System.Drawing.Size(120, 17);
             this.Label1.TabIndex = 1;
             this.Label1.Text = "Clave Almacen";
             // 
@@ -375,7 +377,7 @@
             // 
             this.BtnBuscar.BackColor = System.Drawing.Color.Firebrick;
             this.BtnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnBuscar.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBuscar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscar.ForeColor = System.Drawing.Color.White;
             this.BtnBuscar.Location = new System.Drawing.Point(453, 188);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
@@ -416,18 +418,6 @@
             this.dgAlmacen.Size = new System.Drawing.Size(525, 215);
             this.dgAlmacen.TabIndex = 30;
             this.dgAlmacen.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAlmacen_CellClick);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(255, 189);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBuscar.Properties.Appearance.Options.UseFont = true;
-            this.txtBuscar.Properties.Appearance.Options.UseForeColor = true;
-            this.txtBuscar.Properties.MaxLength = 50;
-            this.txtBuscar.Size = new System.Drawing.Size(191, 26);
-            this.txtBuscar.TabIndex = 38;
             // 
             // claveDataGridViewTextBoxColumn
             // 
@@ -506,6 +496,18 @@
             // 
             this.alamcenBindingSource.DataSource = typeof(SWYRA.Almacen);
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(255, 191);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtBuscar.Properties.Appearance.Options.UseFont = true;
+            this.txtBuscar.Properties.Appearance.Options.UseForeColor = true;
+            this.txtBuscar.Properties.MaxLength = 50;
+            this.txtBuscar.Size = new System.Drawing.Size(191, 24);
+            this.txtBuscar.TabIndex = 38;
+            // 
             // FrmDeptos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -519,7 +521,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDeptos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmDeptos";
+            this.Text = "ALMACEN";
             this.Load += new System.EventHandler(this.FrmDeptos_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -534,8 +536,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAlmacen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.alamcenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

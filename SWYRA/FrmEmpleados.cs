@@ -263,43 +263,43 @@ namespace SWYRA
                 TxtNombre.Focus();
                 b = false;
             }
-            if (Txtpass.Text == "")
+            else if (Txtpass.Text == "")
             {
                 MessageBox.Show(@"Favor de asignar password del usuario");
                 Txtpass.Focus();
                 b = false;
             }
-            if (Txtcpass.Text == "")
+            else if (Txtcpass.Text == "")
             {
                 MessageBox.Show(@"Favor de asignar la confirmación del password.");
                 Txtcpass.Focus();
                 b = false;
             }
-            if (cbCategoria.Text == "")
+            else if (cbCategoria.Text == "")
             {
                 MessageBox.Show(@"Favor de seleccionar la categoría del usuario.");
                 cbCategoria.Focus();
                 b = false;
             }
-            if (Txtpass.Text != Txtcpass.Text)
+            else if (Txtpass.Text != Txtcpass.Text)
             {
                 MessageBox.Show(@"El password no coincide con la confirmación del password. Favor de validar.");
                 Txtpass.Focus();
                 b = false;
             }
-            if (lstAlamcenAsignado.Items.Count == 0)
+            else if (lstAlamcenAsignado.Items.Count == 0)
             {
                 MessageBox.Show(@"Favor de asignarle al menos un almacen.");
                 lstAlmacen.Focus();
                 b = false;
             }
-            if (txtLetra.Enabled && txtLetra.Text == "")
+            else if (txtLetra.Enabled && txtLetra.Text == "")
             {
                 MessageBox.Show(@"Favor de asignarle una letra clave al Cobrador.");
                 txtLetra.Focus();
                 b = false;
             }
-            if (cbArea.Enabled && cbArea.Text == "")
+            else if (cbArea.Enabled && cbArea.Text == "")
             {
                 MessageBox.Show(@"Favor de seleccionar un Área al Surtidor o Empaquetador.");
                 cbArea.Focus();

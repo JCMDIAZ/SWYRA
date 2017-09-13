@@ -39,6 +39,7 @@
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stb = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.áreasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.stb.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             this.catalogosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.almacenesToolStripMenuItem,
+            this.áreasToolStripMenuItem,
             this.usuariosToolStripMenuItem});
             this.catalogosToolStripMenuItem.Name = "catalogosToolStripMenuItem";
             this.catalogosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
@@ -126,6 +128,13 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(66, 20);
             this.toolStripStatusLabel1.Text = "Usuario: ";
             // 
+            // áreasToolStripMenuItem
+            // 
+            this.áreasToolStripMenuItem.Name = "áreasToolStripMenuItem";
+            this.áreasToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.áreasToolStripMenuItem.Text = "Á&reas";
+            this.áreasToolStripMenuItem.Click += new System.EventHandler(this.áreasToolStripMenuItem_Click);
+            // 
             // MDIPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -167,6 +176,7 @@
         private System.Windows.Forms.ToolStripMenuItem catalogosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem almacenesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem áreasToolStripMenuItem;
     }
 }
 

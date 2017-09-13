@@ -129,5 +129,12 @@ namespace SWYRA
             fDeptos.ShowDialog();
             fDeptos.Close();
         }
+
+        private void áreasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fAreas = new FrmAreas();
+            fAreas.ShowDialog();
+            fAreas.Close();
+        }
     }
 }

@@ -26,7 +26,8 @@ namespace SWYRA
         private void FrmDeptos_Load(object sender, EventArgs e)
         {
             dgAlmacen.DataSource = CargaAlmacen();
-            GetGridAlmacen();}
+            GetGridAlmacen();
+        }
 
         private List<Almacen> CargaAlmacen()
         {
@@ -137,7 +138,7 @@ namespace SWYRA
                             ", Activo = " + ((chkActivo.Checked) ? "1" : "0") +
                             " WHERE Clave = " + txtCodigo.Text;
                     }
-                    var res = GetExecute("DB", query, 22);
+                    var res = GetExecute("DB", query, 23);
                     MessageBox.Show(@"Guardado satisfactoriamente.");
                     dgAlmacen.DataSource = CargaAlmacen();
                     GetGridAlmacen();
@@ -157,7 +158,7 @@ namespace SWYRA
                 txtDescripcion.Focus();
                 b = false;
             }
-            if (txtAbreviaura.Text == "")
+            else if (txtAbreviaura.Text == "")
             {
                 MessageBox.Show(@"Favor de asignar la abreviatura del almacén.");
                 txtAbreviaura.Focus();

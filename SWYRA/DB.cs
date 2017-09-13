@@ -214,4 +214,17 @@ namespace SWYRA
         public decimal offset { get; set; }public bool Activo { get; set; }
 
     }
+
+    public class Areas
+    {
+        public string areaid { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public string almacen { get; set; }
+        public string ubicacion { get; set; }
+        public decimal aream2 { get; set; }
+        public decimal altura { get; set; }
+        public bool activo { get; set; }
+
+    }
 }
