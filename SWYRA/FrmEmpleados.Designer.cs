@@ -40,8 +40,8 @@
             this.TBoxBuscaUsua = new System.Windows.Forms.TextBox();
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.GpoEmpleados = new System.Windows.Forms.GroupBox();
-            this.cbArea = new System.Windows.Forms.ComboBox();
-            this.perfilBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbArea = new DevExpress.XtraEditors.LookUpEdit();
+            this.areasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtLetra = new System.Windows.Forms.TextBox();
@@ -58,6 +58,7 @@
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.Label7 = new System.Windows.Forms.Label();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.perfilBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DGUsuarios = new System.Windows.Forms.DataGridView();
             this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +78,8 @@
             this.LinkLabel1 = new System.Windows.Forms.LinkLabel();
             this.toolStrip1.SuspendLayout();
             this.GpoEmpleados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbArea.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.perfilBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
@@ -99,51 +102,51 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::SWYRA.Properties.Resources.save;
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(95, 24);
+            this.btnGuardar.Size = new System.Drawing.Size(93, 24);
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Image = global::SWYRA.Properties.Resources._1366681822_edit_clear;
             this.btnLimpiar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(89, 24);
+            this.btnLimpiar.Size = new System.Drawing.Size(87, 24);
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = global::SWYRA.Properties.Resources.Logout_32x32;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(62, 24);
+            this.btnSalir.Size = new System.Drawing.Size(61, 24);
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // TBoxBuscaUsua
             // 
             this.TBoxBuscaUsua.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TBoxBuscaUsua.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBoxBuscaUsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBoxBuscaUsua.Location = new System.Drawing.Point(345, 33);
             this.TBoxBuscaUsua.Margin = new System.Windows.Forms.Padding(4);
             this.TBoxBuscaUsua.Name = "TBoxBuscaUsua";
-            this.TBoxBuscaUsua.Size = new System.Drawing.Size(221, 26);
+            this.TBoxBuscaUsua.Size = new System.Drawing.Size(221, 24);
             this.TBoxBuscaUsua.TabIndex = 1;
             // 
             // BtnBuscar
             // 
             this.BtnBuscar.BackColor = System.Drawing.Color.Firebrick;
             this.BtnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnBuscar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscar.ForeColor = System.Drawing.Color.White;
-            this.BtnBuscar.Location = new System.Drawing.Point(577, 29);
+            this.BtnBuscar.Location = new System.Drawing.Point(577, 30);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(85, 30);
@@ -175,91 +178,95 @@
             this.GpoEmpleados.Margin = new System.Windows.Forms.Padding(4);
             this.GpoEmpleados.Name = "GpoEmpleados";
             this.GpoEmpleados.Padding = new System.Windows.Forms.Padding(4);
-            this.GpoEmpleados.Size = new System.Drawing.Size(333, 242);
+            this.GpoEmpleados.Size = new System.Drawing.Size(333, 248);
             this.GpoEmpleados.TabIndex = 13;
             this.GpoEmpleados.TabStop = false;
             // 
             // cbArea
             // 
-            this.cbArea.DataSource = this.perfilBindingSource;
-            this.cbArea.DisplayMember = "descripcion";
-            this.cbArea.Enabled = false;
-            this.cbArea.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbArea.FormattingEnabled = true;
-            this.cbArea.Location = new System.Drawing.Point(167, 213);
-            this.cbArea.Margin = new System.Windows.Forms.Padding(4);
+            this.cbArea.Location = new System.Drawing.Point(165, 213);
             this.cbArea.Name = "cbArea";
-            this.cbArea.Size = new System.Drawing.Size(140, 26);
-            this.cbArea.TabIndex = 38;
-            this.cbArea.ValueMember = "descripcion";
+            this.cbArea.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbArea.Properties.Appearance.Options.UseFont = true;
+            this.cbArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbArea.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("almacen", "almacen", 66, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("nombre", "nombre", 61, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.cbArea.Properties.DataSource = this.areasBindingSource;
+            this.cbArea.Properties.DisplayMember = "nombre";
+            this.cbArea.Properties.NullText = "";
+            this.cbArea.Properties.ValueMember = "nombre";
+            this.cbArea.Size = new System.Drawing.Size(142, 24);
+            this.cbArea.TabIndex = 28;
             // 
-            // perfilBindingSource
+            // areasBindingSource
             // 
-            this.perfilBindingSource.DataSource = typeof(SWYRA.Perfil);
+            this.areasBindingSource.DataSource = typeof(SWYRA.Areas);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(122, 218);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(122, 216);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 17);
+            this.label11.Size = new System.Drawing.Size(38, 18);
             this.label11.TabIndex = 37;
             this.label11.Text = "Área";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(0, 218);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(2, 216);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 17);
+            this.label10.Size = new System.Drawing.Size(76, 18);
             this.label10.TabIndex = 36;
             this.label10.Text = "Letra ERP";
             // 
             // txtLetra
             // 
             this.txtLetra.Enabled = false;
-            this.txtLetra.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLetra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLetra.Location = new System.Drawing.Point(86, 213);
             this.txtLetra.MaxLength = 1;
             this.txtLetra.Name = "txtLetra";
-            this.txtLetra.Size = new System.Drawing.Size(23, 26);
+            this.txtLetra.Size = new System.Drawing.Size(23, 24);
             this.txtLetra.TabIndex = 35;
             this.txtLetra.TextChanged += new System.EventHandler(this.txtLetra_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(83, 181);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 17);
+            this.label9.Size = new System.Drawing.Size(17, 18);
             this.label9.TabIndex = 34;
             this.label9.Text = "?";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(21, 181);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 17);
+            this.label8.Size = new System.Drawing.Size(58, 18);
             this.label8.TabIndex = 33;
             this.label8.Text = "Módulo";
             // 
             // Chkact
             // 
             this.Chkact.AutoSize = true;
-            this.Chkact.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Chkact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Chkact.Location = new System.Drawing.Point(239, 180);
             this.Chkact.Margin = new System.Windows.Forms.Padding(4);
             this.Chkact.Name = "Chkact";
-            this.Chkact.Size = new System.Drawing.Size(76, 22);
+            this.Chkact.Size = new System.Drawing.Size(70, 22);
             this.Chkact.TabIndex = 9;
             this.Chkact.Text = "Activo";
             this.Chkact.UseVisualStyleBackColor = true;
@@ -267,11 +274,11 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(-1, 119);
+            this.Label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Location = new System.Drawing.Point(8, 119);
             this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(131, 17);
+            this.Label4.Size = new System.Drawing.Size(115, 18);
             this.Label4.TabIndex = 32;
             this.Label4.Text = "Conf. Password";
             // 
@@ -279,86 +286,86 @@
             // 
             this.TxtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtCodigo.Enabled = false;
-            this.TxtCodigo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtCodigo.Location = new System.Drawing.Point(131, 23);
             this.TxtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.ReadOnly = true;
-            this.TxtCodigo.Size = new System.Drawing.Size(176, 26);
+            this.TxtCodigo.Size = new System.Drawing.Size(176, 24);
             this.TxtCodigo.TabIndex = 4;
             // 
             // Txtcpass
             // 
-            this.Txtcpass.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtcpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtcpass.Location = new System.Drawing.Point(131, 116);
             this.Txtcpass.Margin = new System.Windows.Forms.Padding(4);
             this.Txtcpass.Name = "Txtcpass";
             this.Txtcpass.PasswordChar = '*';
-            this.Txtcpass.Size = new System.Drawing.Size(176, 26);
+            this.Txtcpass.Size = new System.Drawing.Size(176, 24);
             this.Txtcpass.TabIndex = 7;
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(67, 26);
+            this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Location = new System.Drawing.Point(69, 26);
             this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(63, 17);
+            this.Label1.Size = new System.Drawing.Size(56, 18);
             this.Label1.TabIndex = 24;
             this.Label1.Text = "Codigo";
             // 
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label5.Location = new System.Drawing.Point(46, 88);
+            this.Label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label5.Location = new System.Drawing.Point(49, 88);
             this.Label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(84, 17);
+            this.Label5.Size = new System.Drawing.Size(75, 18);
             this.Label5.TabIndex = 30;
             this.Label5.Text = "Password";
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(61, 57);
+            this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Location = new System.Drawing.Point(62, 57);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(69, 17);
+            this.Label2.Size = new System.Drawing.Size(62, 18);
             this.Label2.TabIndex = 26;
             this.Label2.Text = "Nombre";
             // 
             // Txtpass
             // 
-            this.Txtpass.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtpass.Location = new System.Drawing.Point(131, 85);
             this.Txtpass.Margin = new System.Windows.Forms.Padding(4);
             this.Txtpass.Name = "Txtpass";
             this.Txtpass.PasswordChar = '*';
-            this.Txtpass.Size = new System.Drawing.Size(176, 26);
+            this.Txtpass.Size = new System.Drawing.Size(176, 24);
             this.Txtpass.TabIndex = 6;
             // 
             // TxtNombre
             // 
             this.TxtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtNombre.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNombre.Location = new System.Drawing.Point(131, 54);
             this.TxtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNombre.MaxLength = 50;
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(176, 26);
+            this.TxtNombre.Size = new System.Drawing.Size(176, 24);
             this.TxtNombre.TabIndex = 5;
             // 
             // Label7
             // 
             this.Label7.AutoSize = true;
-            this.Label7.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label7.Location = new System.Drawing.Point(82, 150);
+            this.Label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label7.Location = new System.Drawing.Point(84, 150);
             this.Label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(48, 17);
+            this.Label7.Size = new System.Drawing.Size(41, 18);
             this.Label7.TabIndex = 28;
             this.Label7.Text = "Perfil";
             // 
@@ -366,7 +373,7 @@
             // 
             this.cbCategoria.DataSource = this.perfilBindingSource;
             this.cbCategoria.DisplayMember = "descripcion";
-            this.cbCategoria.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(131, 147);
             this.cbCategoria.Margin = new System.Windows.Forms.Padding(4);
@@ -375,6 +382,10 @@
             this.cbCategoria.TabIndex = 8;
             this.cbCategoria.ValueMember = "descripcion";
             this.cbCategoria.SelectedValueChanged += new System.EventHandler(this.cbCategoria_SelectedValueChanged);
+            // 
+            // perfilBindingSource
+            // 
+            this.perfilBindingSource.DataSource = typeof(SWYRA.Perfil);
             // 
             // DGUsuarios
             // 
@@ -419,7 +430,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DGUsuarios.Size = new System.Drawing.Size(287, 236);
+            this.DGUsuarios.Size = new System.Drawing.Size(287, 242);
             this.DGUsuarios.TabIndex = 3;
             this.DGUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGUsuarios_CellClick);
             // 
@@ -493,14 +504,14 @@
             // 
             this.lstAlamcenAsignado.DataSource = this.usuarioAlmacenBindingSource;
             this.lstAlamcenAsignado.DisplayMember = "nombre";
-            this.lstAlamcenAsignado.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstAlamcenAsignado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstAlamcenAsignado.FormattingEnabled = true;
-            this.lstAlamcenAsignado.ItemHeight = 16;
-            this.lstAlamcenAsignado.Location = new System.Drawing.Point(379, 78);
+            this.lstAlamcenAsignado.ItemHeight = 18;
+            this.lstAlamcenAsignado.Location = new System.Drawing.Point(377, 78);
             this.lstAlamcenAsignado.Margin = new System.Windows.Forms.Padding(4);
             this.lstAlamcenAsignado.Name = "lstAlamcenAsignado";
             this.lstAlamcenAsignado.ScrollAlwaysVisible = true;
-            this.lstAlamcenAsignado.Size = new System.Drawing.Size(195, 164);
+            this.lstAlamcenAsignado.Size = new System.Drawing.Size(195, 184);
             this.lstAlamcenAsignado.TabIndex = 13;
             this.lstAlamcenAsignado.ValueMember = "nombre";
             // 
@@ -512,36 +523,36 @@
             // 
             this.lstAlmacen.DataSource = this.usuarioAlmacenBindingSource;
             this.lstAlmacen.DisplayMember = "nombre";
-            this.lstAlmacen.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstAlmacen.FormattingEnabled = true;
-            this.lstAlmacen.ItemHeight = 16;
-            this.lstAlmacen.Location = new System.Drawing.Point(68, 78);
+            this.lstAlmacen.ItemHeight = 18;
+            this.lstAlmacen.Location = new System.Drawing.Point(65, 78);
             this.lstAlmacen.Margin = new System.Windows.Forms.Padding(4);
             this.lstAlmacen.Name = "lstAlmacen";
             this.lstAlmacen.ScrollAlwaysVisible = true;
-            this.lstAlmacen.Size = new System.Drawing.Size(195, 164);
+            this.lstAlmacen.Size = new System.Drawing.Size(195, 184);
             this.lstAlmacen.TabIndex = 10;
             this.lstAlmacen.ValueMember = "nombre";
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(375, 44);
+            this.Label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Location = new System.Drawing.Point(377, 44);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(204, 17);
+            this.Label3.Size = new System.Drawing.Size(195, 17);
             this.Label3.TabIndex = 34;
             this.Label3.Text = "ALMACENES ASIGNADOS";
             // 
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label6.Location = new System.Drawing.Point(119, 44);
             this.Label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(104, 17);
+            this.Label6.Size = new System.Drawing.Size(100, 17);
             this.Label6.TabIndex = 33;
             this.Label6.Text = "ALMACENES";
             // 
@@ -621,6 +632,8 @@
             this.toolStrip1.PerformLayout();
             this.GpoEmpleados.ResumeLayout(false);
             this.GpoEmpleados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbArea.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.perfilBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
@@ -675,6 +688,7 @@
         internal System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtLetra;
         internal System.Windows.Forms.Label label11;
-        internal System.Windows.Forms.ComboBox cbArea;
+        private DevExpress.XtraEditors.LookUpEdit cbArea;
+        private System.Windows.Forms.BindingSource areasBindingSource;
     }
 }

@@ -16,6 +16,7 @@ namespace SWYRA
         List<UsuarioAlmacen> listAlmacen = new List<UsuarioAlmacen>();
         List<UsuarioAlmacen> listUsuarioAlmacen = new List<UsuarioAlmacen>();
         List<Perfil> listPerfil = new List<Perfil>();
+        List<Areas> listAreas = new List<Areas>(); 
 
         public FrmEmpleados()
         {
@@ -33,6 +34,7 @@ namespace SWYRA
             cbCategoria.DataSource = CargaPerfil();
             listAlmacen = CargaAlmacenes();
             lstAlmacen.DataSource = listAlmacen;
+            listAreas = CargaAreas();
             GetGridEmpleados();
         }
 
@@ -109,6 +111,21 @@ namespace SWYRA
             return listAlmacenes;
         }
 
+        private List<Areas> CargaAreas()
+        {
+            List<Areas> listAreas = new List<Areas>();
+            try
+            {
+                var query = "SELECT AREAID, NOMBRE, DESCRIPCION, ALMACEN, UBICACION, AREAM2, ALTURA, ACTIVO FROM AREAS";
+                listAreas = GetDataTable("DB", query, 16).ToList<Areas>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return listAreas;
+        }
+
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             limpiar();
@@ -156,9 +173,11 @@ namespace SWYRA
             var listUsrDif = listAlmacen.Except(listUsrIdenticos).ToList();
             var listUsrAsg = listUsuarioAlmacen.ToList();
 
-            lstAlmacen.DataSource = listUsrDif;
-            lstAlamcenAsignado.DataSource = listUsrAsg;
-        }
+            lstAlmacen.DataSource = listUsrDif;lstAlamcenAsignado.DataSource = listUsrAsg;
+
+            var listAreasAsig = listAreas.Where(o => listUsrAsg.Any(p => p.almacen == o.areaid)).ToList();
+            cbArea.Properties.DataSource = listAreasAsig;
+            habilitaCampos();}
 
         private void limpiar()
         {
@@ -239,7 +258,7 @@ namespace SWYRA
                         var query2 = "delete USUARIOS_ALMACEN where usuario = '" + TxtCodigo.Text + "' ";
                         foreach (var usrAlm in listUsuarioAlmacen)
                         {
-                            query2 += "insert USUARIOS_ALMACEN (usuario, almacen) values ('" + TxtCodigo.Text + "', '" + usrAlm.almacen + "') ";
+                            query2 += "insert USUARIOS_ALMACEN (usuario, almacen) values (RIGHT('0000" + TxtCodigo.Text + "',4), RIGHT('0000" + usrAlm.almacen + "',4)) ";
                         }
                         GetExecute("DB", query2, 18);
                     }
@@ -319,7 +338,7 @@ namespace SWYRA
             txtLetra.Text = "";
             txtLetra.Enabled = (cbCategoria.Text == @"COBRADOR");
 
-            cbArea.Text = "";
+            cbArea.EditValue = null;
             cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
         }
 

@@ -67,10 +67,11 @@ namespace SWYRA
 
         private void limpiar(){
             txtCodigo.Text = "";
-            cbAlmacen.EditValue = null;txtNombre.Text = "";
+            cbAlmacen.EditValue = null;
+            txtNombre.Text = "";
             txtUbicacion.Text = "";
-            txtArea.Text = "";
-            txtAltura.Text = "";
+            txtArea.Text = "0.00";
+            txtAltura.Text = "0.00";
             txtDescripcion.Text = "";
             chkActivo.Checked = false;
         }
@@ -155,15 +156,15 @@ namespace SWYRA
                     {
                         query =
                             @"UPDATE AREAS SET NOMBRE = '" + txtNombre.Text + "', DESCRIPCION = '" + txtDescripcion.Text + "', " +
-                            "ALMACEN = '" + cbAlmacen.Text + "', UBICACION = '" + txtUbicacion + "', Area = " +
+                            "ALMACEN = '" + cbAlmacen.Text + "', UBICACION = '" + txtUbicacion.Text + "', AREAM2 = " +
                             ((txtArea.Text == "0.00") ? "Null" : txtArea.Text) +
                             ", Altura = " + ((txtAltura.Text == "0.00") ? "Null" : txtAltura.Text) +
                             ", Activo = " + ((chkActivo.Checked) ? "1" : "0") +
-                            " WHERE AREAID = " + txtCodigo.Text;
+                            " WHERE AREAID = '" + txtCodigo.Text + "'";
                     }
                     var res = GetExecute("DB", query, 33);
                     MessageBox.Show(@"Guardado satisfactoriamente.");
-                    dgAreas.DataSource = CargaAlmacen();
+                    dgAreas.DataSource = CargaAreas();
                     GetGridAreas();
                 }
                 catch (Exception ms)
