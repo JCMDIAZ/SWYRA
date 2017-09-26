@@ -49,27 +49,19 @@ namespace swyraServices
         protected override void OnStart(string[] args)
         {
             eventLog1.WriteEntry("In OnStart");
-            mytimer.Interval = 1 * 60 * 1000;
-            mytimer.Enabled = true;
-            mytimer.Start();
+            timer1.Interval = 2 * 60 * 1000;
+            timer1.Enabled = true;
         }
 
         protected override void OnStop()
         {
             eventLog1.WriteEntry("In onStop.");
-            mytimer.Stop();
-        }
-
-        private void mytimer_Tick(object sender, EventArgs e)
-        {
-            mytimer.Stop();
-            mytimer.Start();
         }
 
         private void consultar()
         {
-            List<Pedidos> listFbPedidos = CargaFbPedidos(new DateTime(2012, 11, 1), new DateTime(2012, 11, 30));
-            List<Pedidos> listDbPedidos = CargaDbPedidos(new DateTime(2012, 11, 1), new DateTime(2012, 11, 30));
+            List<Pedidos> listFbPedidos = CargaFbPedidos(DateTime.Today.AddDays(-3), DateTime.Today);
+            List<Pedidos> listDbPedidos = CargaDbPedidos(DateTime.Today.AddDays(-3), DateTime.Today);
             var pedidosAct = listFbPedidos.Where(o => listDbPedidos.Any(p => o.cve_doc == p.cve_doc && p.status != "C") && o.status != "C").ToList();
             var pedidosNuevos = listFbPedidos.Where(o => o.status != "C").Except(pedidosAct).ToList();
             var pedidosCan = listFbPedidos.Where(o => listDbPedidos.Any(p => o.cve_doc == p.cve_doc && p.status != "C") && o.status == "C").ToList();
@@ -88,22 +80,122 @@ namespace swyraServices
                 var pedDb = listDbPedidos.FirstOrDefault(o => o.cve_doc == pedFb.cve_doc);
                 ModificaDbPedidos(pedFb, pedDb);
             }
+            List<Cliente> listFbClientes = cargaFbClientes();
+            List<Cliente> listDbClientes = cargaDbClientes();
+            var clientesAct = listFbClientes.Where(o => listDbClientes.Any(p => p.clave == o.clave)).ToList();
+            var clientesNvo = listFbClientes.Except(clientesAct).ToList();
+            var clientesDif = clientesAct.Except(clientesAct.Where(o => listDbClientes.Any(p => p.fch_ultcom == o.fch_ultcom)).ToList()).ToList();
+            foreach (var clt in clientesNvo)
+            {
+                GuardaCliente(clt);
+            }
+            foreach (var clt in clientesDif)
+            {
+                ModificaCliente(clt);
+            }
+            List<Inventario> listFbInventarios = CargaFbInventarios();
+            List<Inventario> listDbInventarios = CargaDbInventarios();
+            var inventarioAct = listFbInventarios.Where(o => listDbInventarios.Any(p => p.cve_art == o.cve_art)).ToList();
+            var inventarioNvo = listFbInventarios.Except(inventarioAct).ToList();
+            var inventarioDif = inventarioAct.Except(inventarioAct.Where(o => listFbInventarios.Any(p => p.fch_ultvta == o.fch_ultvta || p.uni_emp == o.uni_emp)).ToList()).ToList();
+            foreach (var inv in inventarioNvo)
+            {
+                GuardaInventario(inv);
+            }
+            foreach (var inv in inventarioDif)
+            {
+                ModificaInventario(inv);
+            }
         }
 
-        private void CargaFbInventarios()
+        private List<Cliente> cargaFbClientes()
         {
+            List<Cliente> listFbClientes = new List<Cliente>();
             try
             {
-                var query = "select cve_art, descr, lin_prod, con_serie, uni_med, uni_emp, ctrl_alm, tiem_surt, " +
-                            "stock_min, stock_max, tip_costeo, num_mon, fch_ultcom, comp_x_rec, fch_ultvta, pend_surt, " +
-                            "exist, costo_prom, ult_costo, cve_obs, tipo_ele, uni_alt, fac_conv, apart, con_lote, " +
-                            "con_pedimento, peso, volumen, cve_esqimpu, cve_bita, vtas_anl_c, vtas_anl_m, comp_anl_c, " +
-                            "comp_anl_m, prefijo, talla, color, cuent_cont, cve_imagen, blk_cst_ext, status from inve01";
-                listFbInventarios = GetFbDataTable("FB", query, 5).ToList<Inventario>();
+                var query =
+                    "select CLAVE, STATUS, NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
+                    "CODIGO, MUNICIPIO, ESTADO, PAIS, TELEFONO, CVE_VEND, CVE_OBS, TIPO_EMPRESA, CALLE_ENVIO, " +
+                    "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, " +
+                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM " +
+                    "from CLIE01";
+                listFbClientes = GetFbDataTable("FB", query, 15).ToList<Cliente>();
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 1: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listFbClientes;
+        }
+
+        private List<Cliente> cargaDbClientes()
+        {
+            List<Cliente> listFbClientes = new List<Cliente>();
+            try
+            {
+                var query =
+                    "select CLAVE, STATUS, NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
+                    "CODIGO, MUNICIPIO, ESTADO, PAIS, TELEFONO, CVE_VEND, CVE_OBS, TIPO_EMPRESA, CALLE_ENVIO, " +
+                    "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, " +
+                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM " +
+                    "from CLIENTE";
+                listFbClientes = GetDataTable("DB", query, 16).ToList<Cliente>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("Error 2: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listFbClientes;
+        }
+
+        private void GuardaCliente(Cliente clt)
+        {
+            try
+            {
+                var query =
+                    "insert CLIENTE (CLAVE, STATUS, NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
+                    "CODIGO, MUNICIPIO, ESTADO, PAIS, TELEFONO, CVE_VEND, CVE_OBS, TIPO_EMPRESA, CALLE_ENVIO, " +
+                    "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, " +
+                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM) " +
+                    "values ('" + clt.clave + "', '" + clt.status + "', '" + clt.nombre + "', '" + clt.calle + "', '" +
+                    clt.numint + "', '" + clt.numext + "', '" + clt.cruzamientos + "', '" + clt.cruzamientos2 + "', '" +
+                    clt.colonia + "', '" + clt.codigo + "', '" + clt.municipio + "', '" + clt.estado + "', '" + clt.pais + "', '" +
+                    clt.telefono + "', '" + clt.cve_vend + "', " + clt.cve_obs + ", '" + clt.tipo_empresa + "', '" +
+                    clt.calle_envio + "', '" + clt.numint_envio + "', '" + clt.numext_envio + "', '" + clt.cruzamientos_envio + "', '" +
+                    clt.cruzamientos_envio2 + "', '" + clt.colonia_envio + "', '" + clt.localidad_envio + "', '" +
+                    clt.municipio_envio + "', '" + clt.estado_envio + "', '" + clt.pais_envio + "', '" + clt.codigo_envio + "', " +
+                    clt.ult_compm + ", " + ((clt.ult_compm == 0.00) ? "NULL" : "'" + clt.fch_ultcom.ToString("yyyy-MM-dd") + "'") + " )";
+                var res = GetExecute("DB", query, 17);
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("Error 3: " + ex.Message, EventLogEntryType.Error);
+            }
+        }
+
+        private void ModificaCliente(Cliente clt)
+        {
+            try
+            {
+                var query =
+                    "update CLIENTE set STATUS = '" + clt.status + "', NOMBRE = '" + clt.nombre + "', CALLE = '" +
+                    clt.calle + "', NUMINT = '" + clt.numint + "', NUMEXT = '" + clt.numext + "', CRUZAMIENTOS = '" +
+                    clt.cruzamientos + "', CRUZAMIENTOS2 = '" + clt.cruzamientos2 + "', COLONIA  = '" +
+                    clt.colonia + "', CODIGO = '" + clt.codigo + "', MUNICIPIO = '" + clt.municipio + "', ESTADO ='" +
+                    clt.estado + "', PAIS = '" + clt.pais + "', TELEFONO = '" + clt.telefono + "', CVE_VEND ='" +
+                    clt.cve_vend + "', CVE_OBS = " + clt.cve_obs + ", TIPO_EMPRESA = '" + clt.tipo_empresa + "', CALLE_ENVIO = '" +
+                    clt.calle_envio + "', NUMINT_ENVIO = '" + clt.numint_envio + "', NUMEXT_ENVIO = '" +
+                    clt.numext_envio + "', CRUZAMIENTOS_ENVIO = '" + clt.cruzamientos_envio + "', CRUZAMIENTOS_ENVIO2 = '" +
+                    clt.cruzamientos_envio2 + "', COLONIA_ENVIO = '" + clt.colonia_envio + "', LOCALIDAD_ENVIO = '" +
+                    clt.localidad_envio + "', MUNICIPIO_ENVIO = '" + clt.municipio_envio + "', ESTADO_ENVIO = '" +
+                    clt.estado_envio + "', PAIS_ENVIO = '" + clt.pais_envio + "', CODIGO_ENVIO = '" +
+                    clt.codigo_envio + "', ULT_COMPM = " + clt.ult_compm + ", FCH_ULTCOM = " + ((clt.ult_compm == 0.00) ? "NULL" : "'" + clt.fch_ultcom.ToString("yyyy-MM-dd") + "'") +
+                    " where CLAVE = '" + clt.clave + "'";
+                var res = GetExecute("DB", query, 17);
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("Error 4: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -124,7 +216,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 6: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbPedidos;
         }
@@ -147,7 +239,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 7: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbPedidos;
         }
@@ -195,7 +287,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 8: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -213,7 +305,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 9: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbDetalle;
         }
@@ -232,7 +324,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 10: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbDetalle;
         }
@@ -257,7 +349,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 11: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -288,7 +380,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 12: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -331,7 +423,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 13: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -373,7 +465,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 14: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -394,8 +486,87 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message);
+                eventLog1.WriteEntry("Error 15: " + ex.Message, EventLogEntryType.Error);
             }
+        }
+
+        private List<Inventario> CargaFbInventarios()
+        {
+            List<Inventario> listFbInventarios = new List<Inventario>();
+            try
+            {
+                var query = "select CVE_ART, DESCR, LIN_PROD, CON_SERIE, UNI_MED, UNI_EMP, CTRL_ALM, STOCK_MIN, " +
+                            "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, CAMPLIB5 MASTERS, CAMPLIB6 MASTERS_UBI " +
+                            "from INVE01 i join inve_clib01 c on i.cve_art = c.cve_prod";
+                listFbInventarios = GetFbDataTable("FB", query, 5).ToList<Inventario>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("Error 16: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listFbInventarios;
+        }
+
+        private List<Inventario> CargaDbInventarios()
+        {
+            List<Inventario> listDbInventarios = new List<Inventario>();
+            try
+            {
+                var query = "select CVE_ART, DESCR, LIN_PROD, CON_SERIE, UNI_MED, UNI_EMP, CTRL_ALM, STOCK_MIN, " +
+                            "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, MASTERS, MASTERS_UBI " +
+                            "from INVENTARIO"; listDbInventarios = GetDataTable("DB", query, 5).ToList<Inventario>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("Error 17: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listDbInventarios;
+        }
+
+        private void GuardaInventario(Inventario inv)
+        {
+            try
+            {
+                var query =
+                    "insert INVENTARIO (CVE_ART, DESCR, LIN_PROD, CON_SERIE, UNI_MED, UNI_EMP, CTRL_ALM, STOCK_MIN, " +
+                    "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, MASTERS, MASTERS_UBI) " +
+                    "values ('" + inv.cve_art + "', '" + inv.descr + "', '" + inv.lin_prod + "', '" + inv.con_serie + "', '" +
+                    inv.uni_med + "', " + inv.uni_emp + ", '" + inv.ctrl_alm + "', " + inv.stock_min + ", " +
+                    inv.stock_max + ", " + ((inv.fch_ultvta.Year == 1) ? "Null" : "'" + inv.fch_ultvta.ToString("yyyy-MM-dd") + "'") + ", " +
+                    inv.exist + ", '" + inv.status + "', " + inv.masters + ", '" + inv.masters_ubi + "' )";
+                var res = GetExecute("DB", query, 19);
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("Error 18: " + ex.Message, EventLogEntryType.Error);
+            }
+        }
+        private void ModificaInventario(Inventario inv)
+        {
+            try
+            {
+                var query =
+                    "update INVENTARIO set DESCR = '" + inv.descr + "', LIN_PROD = '" + inv.lin_prod + "', CON_SERIE = '" +
+                    inv.con_serie + "', UNI_MED = '" + inv.con_serie + "', UNI_EMP = " + inv.uni_emp + ", CTRL_ALM = '" +
+                    inv.ctrl_alm + "', STOCK_MIN = " + inv.stock_min + ", STOCK_MAX = " + inv.stock_max + ", FCH_ULTVTA = " +
+                    ((inv.fch_ultvta.Year == 1) ? "Null" : "'" + inv.fch_ultvta.ToString("yyyy-MM-dd") + "'") + ", EXIST = " +
+                    inv.exist + ", STATUS = '" + inv.status + "', MASTERS = " + inv.masters + ", MASTERS_UBI = '" + inv.masters_ubi + "' " +
+                    "where CVE_ART = '" + inv.cve_art + "'";
+                var res = GetExecute("DB", query, 17);
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("Error 19: " + ex.Message, EventLogEntryType.Error);
+            }
+        }
+
+        private void timer1_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            timer1.Stop();
+            eventLog1.WriteEntry("Inicio Consulta");
+            consultar();
+            eventLog1.WriteEntry("Finalizo Consulta");
+            timer1.Start();
         }
     }
 }

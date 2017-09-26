@@ -15,6 +15,8 @@ namespace swyraServices
         public string Password { get; set; }
         public bool Activo { get; set; }
         public int IdStatusPermisosUser { get; set; }
+        public string LetraERP { get; set; }
+        public string AreaAsignada { get; set; }
     }
 
     public class CatRegMach
@@ -39,40 +41,13 @@ namespace swyraServices
         public string uni_med { get; set; }
         public double uni_emp { get; set; }
         public string ctrl_alm { get; set; }
-        public int tiem_surt { get; set; }
         public double stock_min { get; set; }
         public double stock_max { get; set; }
-        public string tip_costeo { get; set; }
-        public int num_mon { get; set; }
-        public DateTime fch_ultcom { get; set; }
-        public double comp_x_rec { get; set; }
         public DateTime fch_ultvta { get; set; }
-        public double pend_surt { get; set; }
         public double exist { get; set; }
-        public double costo_prom { get; set; }
-        public double ult_costo { get; set; }
-        public int cve_obs { get; set; }
-        public string tipo_ele { get; set; }
-        public string uni_alt { get; set; }
-        public double fac_conv { get; set; }
-        public double apart { get; set; }
-        public string con_lote { get; set; }
-        public string con_pedimento { get; set; }
-        public double peso { get; set; }
-        public double volumen { get; set; }
-        public int cve_esqimpu { get; set; }
-        public int cve_bita { get; set; }
-        public double vtas_anl_c { get; set; }
-        public double vtas_anl_m { get; set; }
-        public double comp_anl_c { get; set; }
-        public double comp_anl_m { get; set; }
-        public string prefijo { get; set; }
-        public string talla { get; set; }
-        public string color { get; set; }
-        public string cuent_cont { get; set; }
-        public string cve_imagen { get; set; }
-        public string blk_cst_ext { get; set; }
         public string status { get; set; }
+        public double masters { get; set; }
+        public string masters_ubi { get; set; }
     }
 
     public class Pedidos
@@ -184,5 +159,80 @@ namespace swyraServices
         public string descr { get; set; }
         public int prioridad { get; set; }
         public string status { get; set; }
+    }
+
+    public class Perfil
+    {
+        public int id { get; set; }
+        public string descripcion { get; set; }
+        public string modulo { get; set; }
+
+    }
+
+    public class UsuarioAlmacen
+    {
+        public string usuario { get; set; }
+        public string almacen { get; set; }
+        public string nombre { get; set; }
+    }
+
+    public class Almacen
+    {
+        public string Clave { get; set; }
+        public string Nombre { get; set; }
+        public string Abreviatura { get; set; }
+        public string Zona { get; set; }
+        public decimal Area { get; set; }
+        public decimal Altura { get; set; }
+        public decimal offset { get; set; }
+        public bool Activo { get; set; }
+
+    }
+
+    public class Areas
+    {
+        public string areaid { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public string almacen { get; set; }
+        public string ubicacion { get; set; }
+        public decimal aream2 { get; set; }
+        public decimal altura { get; set; }
+        public bool activo { get; set; }
+
+    }
+
+    public class Cliente
+    {
+        public string clave { get; set; }
+        public string status { get; set; }
+        public string nombre { get; set; }
+        public string calle { get; set; }
+        public string numint { get; set; }
+        public string numext { get; set; }
+        public string cruzamientos { get; set; }
+        public string cruzamientos2 { get; set; }
+        public string colonia { get; set; }
+        public string codigo { get; set; }
+        public string municipio { get; set; }
+        public string estado { get; set; }
+        public string pais { get; set; }
+        public string telefono { get; set; }
+        public string cve_vend { get; set; }
+        public int cve_obs { get; set; }
+        public string tipo_empresa { get; set; }
+        public string calle_envio { get; set; }
+        public string numint_envio { get; set; }
+        public string numext_envio { get; set; }
+        public string cruzamientos_envio { get; set; }
+        public string cruzamientos_envio2 { get; set; }
+        public string colonia_envio { get; set; }
+        public string localidad_envio { get; set; }
+        public string municipio_envio { get; set; }
+        public string estado_envio { get; set; }
+        public string pais_envio { get; set; }
+        public string codigo_envio { get; set; }
+        public double ult_compm { get; set; }
+        public DateTime fch_ultcom { get; set; }
     }
 }

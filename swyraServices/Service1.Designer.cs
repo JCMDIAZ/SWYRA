@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.mytimer = new System.Windows.Forms.Timer(this.components);
             this.eventLog1 = new System.Diagnostics.EventLog();
+            this.timer1 = new System.Timers.Timer();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timer1)).BeginInit();
             // 
-            // mytimer
+            // timer1
             // 
-            this.mytimer.Tick += new System.EventHandler(this.mytimer_Tick);
+            this.timer1.Elapsed += new System.Timers.ElapsedEventHandler(this.timer1_Elapsed);
             // 
             // Service1
             // 
+            this.AutoLog = false;
             this.ServiceName = "Service1";
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timer1)).EndInit();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer mytimer;
         private System.Diagnostics.EventLog eventLog1;
+        private System.Timers.Timer timer1;
     }
 }
