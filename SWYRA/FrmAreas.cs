@@ -190,5 +190,13 @@ namespace SWYRA
             }
             return b;
         }
+
+        private void dgAreas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {var areaID = dgAreas.Rows[e.RowIndex].Cells[0].Value;
+                cargaDatos(areaID.ToString());
+            }
+        }
     }
 }

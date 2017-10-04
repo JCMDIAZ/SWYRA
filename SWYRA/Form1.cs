@@ -136,5 +136,12 @@ namespace SWYRA
             fAreas.ShowDialog();
             fAreas.Close();
         }
+
+        private void estatusPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fEstPed = new FrmEstatusPedido();
+            fEstPed.ShowDialog();
+            fEstPed.Close();
+        }
     }
 }

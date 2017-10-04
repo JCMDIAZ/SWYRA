@@ -97,8 +97,11 @@ namespace SWYRA
 
         private void dgAlmacen_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var almacenID = dgAlmacen.Rows[e.RowIndex].Cells[0].Value;
-            cargaDatos(almacenID.ToString());
+            if (e.RowIndex >= 0)
+            {
+                var almacenID = dgAlmacen.Rows[e.RowIndex].Cells[0].Value;
+                cargaDatos(almacenID.ToString());
+            }
         }
 
         class Variables

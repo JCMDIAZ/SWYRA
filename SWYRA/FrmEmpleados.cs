@@ -136,8 +136,11 @@ namespace SWYRA
 
         private void DGUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var usuarioID = DGUsuarios.Rows[e.RowIndex].Cells[0].Value;
-            cargaDatos(usuarioID.ToString());
+            if (e.RowIndex >= 0)
+            {
+                var usuarioID = DGUsuarios.Rows[e.RowIndex].Cells[0].Value;
+                cargaDatos(usuarioID.ToString());
+            }
         }
 
         private void cargaDatos(string usuarioID)

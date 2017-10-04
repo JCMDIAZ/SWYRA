@@ -108,6 +108,23 @@ namespace SWYRA
         public string tiposervicio { get; set; }
         public string estatuspedido { get; set; }
         public string ocurredomicilio { get; set; }
+        public int cobrador_asignado { get; set; }
+        public int cobrador_autorizo { get; set; }
+        public int surtidor_asignado { get; set; }
+        public int empaquetador_asignado { get; set; }
+        public int etiquetador_asignado { get; set; }
+        public int surtidor_area { get; set; }
+        public float porc_surtido { get; set; }
+        public float porc_empaque { get; set; }
+        public string indicaciones { get; set; }
+        public string lote { get; set; }
+        public string cliente { get; set; }
+        public int cobrador_asignado_n { get; set; }
+        public int cobrador_autorizo_n { get; set; }
+        public int surtidor_asignado_n { get; set; }
+        public int empaquetador_asignado_n { get; set; }
+        public int etiquetador_asignado_n { get; set; }
+        public int surtidor_area_n { get; set; }
     }
 
     public class DetallePedidos
@@ -233,5 +250,6 @@ namespace SWYRA
         public string codigo_envio { get; set; }
         public double ult_compm { get; set; }
         public DateTime fch_ultcom { get; set; }
+        public string clasific { get; set; }
     }
 }

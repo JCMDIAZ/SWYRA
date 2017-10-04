@@ -234,5 +234,6 @@ namespace swyraServices
         public string codigo_envio { get; set; }
         public double ult_compm { get; set; }
         public DateTime fch_ultcom { get; set; }
+        public string clasific { get; set; }
     }
 }
