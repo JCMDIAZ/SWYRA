@@ -117,10 +117,10 @@ namespace swyraServices
             try
             {
                 var query =
-                    "select CLAVE, STATUS, NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
+                    "select CLAVE, STATUS, replace(NOMBRE,'''','') NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
                     "CODIGO, MUNICIPIO, ESTADO, PAIS, TELEFONO, CVE_VEND, CVE_OBS, TIPO_EMPRESA, CALLE_ENVIO, " +
                     "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, " +
-                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM " +
+                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM, CLASIFIC " +
                     "from CLIE01";
                 listFbClientes = GetFbDataTable("FB", query, 21).ToList<Cliente>();
             }
@@ -140,7 +140,7 @@ namespace swyraServices
                     "select CLAVE, STATUS, NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
                     "CODIGO, MUNICIPIO, ESTADO, PAIS, TELEFONO, CVE_VEND, CVE_OBS, TIPO_EMPRESA, CALLE_ENVIO, " +
                     "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, " +
-                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM " +
+                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM, CLASIFIC " +
                     "from CLIENTE";
                 listFbClientes = GetDataTable("DB", query, 22).ToList<Cliente>();
             }
@@ -261,7 +261,7 @@ namespace swyraServices
             {
                 var query = "select u.Usuario from CLIENTE c join  USUARIOS u on u.LetraERP = SUBSTRING(c.CLASIFIC, 0, 1) " +
                             "where c.CLAVE = '" + cve_clpv + "'";
-                result = GetDataTable("DB", query, 21).ToList<Results>().FirstOrDefault();
+                result = GetDataTable("DB", query, 26).ToList<Results>().FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -290,7 +290,7 @@ namespace swyraServices
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
                     "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
-                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO) values ('" +
+                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, PRIORIDAD) values ('" +
                     p.tip_doc + "', '" + p.cve_doc + "', '" + p.cve_clpv + "', '" + p.status + "', " + p.dat_mostr.ToString() + ", '" + p.cve_vend + "', '" +
                     p.cve_pedi + "', " + p.fecha_doc.ToStrSql() + ", " + p.fecha_ent.ToStrSql() + ", " +
                     p.fecha_ven.ToStrSql() + ", " + p.fecha_cancela.ToStrSql() + ", " + p.can_tot.ToString(cultureInfo) + ", " +
@@ -303,7 +303,7 @@ namespace swyraServices
                     p.cve_bita + ", '" + p.bloq + "', '" + p.formaenvio + "', " + p.des_fin_porc.ToString(cultureInfo) + ", " + p.des_tot_porc.ToString(cultureInfo) + ", " +
                     p.importe.ToString(cultureInfo) + ", " + p.com_tot_porc.ToString(cultureInfo) + ", '" + p.metododepago + "', '" + p.numctapago + "', '" + p.tip_doc_ant + "', '" +
                     p.doc_ant + "', '" + p.tip_doc_sig + "', '" + p.doc_sig + "', '" + p.tiposervicio + "', '" + p.estatuspedido + "', '" +
-                    p.ocurredomicilio + "', '" + cobrador + "')";
+                    p.ocurredomicilio + "', '" + cobrador + "', 'NORMAL')";
                 var res = GetExecute("DB", query, 8);
                 if (res)
                 {
@@ -477,7 +477,7 @@ namespace swyraServices
                             "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
                             "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_ART = '" + detDB.cve_art + "' " +
                             "CVE_DOC = '" + detDB.cve_doc + "'";
-                        GetExecute("DB", query2, 14);
+                        GetExecute("DB", query2, 25);
                         detDB.cantsurtido = detFB.cant;
                     }
                     else
@@ -527,8 +527,8 @@ namespace swyraServices
             List<Inventario> listFbInventarios = new List<Inventario>();
             try
             {
-                var query = "select CVE_ART, DESCR, LIN_PROD, CON_SERIE, UNI_MED, UNI_EMP, CTRL_ALM, STOCK_MIN, " +
-                            "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, CAMPLIB5 MASTERS, CAMPLIB9 MASTERS_UBI " +
+                var query = "select CVE_ART, replace(DESCR,'''','') DESCR, LIN_PROD, CON_SERIE, UNI_MED, UNI_EMP, CTRL_ALM, STOCK_MIN, " +
+                            "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, CAMPLIB6 MASTERS, CAMPLIB10 MASTERS_UBI " +
                             "from INVE01 i join inve_clib01 c on i.cve_art = c.cve_prod";
                 listFbInventarios = GetFbDataTable("FB", query, 17).ToList<Inventario>();
             }
@@ -558,9 +558,10 @@ namespace swyraServices
 
         private void GuardaInventario(Inventario inv)
         {
+            var query = "";
             try
             {
-                var query =
+                query =
                     "insert INVENTARIO (CVE_ART, DESCR, LIN_PROD, CON_SERIE, UNI_MED, UNI_EMP, CTRL_ALM, STOCK_MIN, " +
                     "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, MASTERS, MASTERS_UBI) " +
                     "values ('" + inv.cve_art + "', '" + inv.descr + "', '" + inv.lin_prod + "', '" + inv.con_serie + "', '" +
@@ -571,7 +572,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry(ex.Message + "|" + query , EventLogEntryType.Error);
             }
         }
         private void ModificaInventario(Inventario inv)

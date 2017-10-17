@@ -37,6 +37,7 @@
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -98,6 +99,12 @@
     <Compile Include="FrmAreas.Designer.cs">
       <DependentUpon>FrmAreas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAutorizaCobro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutorizaCobro.Designer.cs">
+      <DependentUpon>FrmAutorizaCobro.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDeptos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAreas.resx">
       <DependentUpon>FrmAreas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAutorizaCobro.resx">
+      <DependentUpon>FrmAutorizaCobro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDeptos.resx">
       <DependentUpon>FrmDeptos.cs</DependentUpon>

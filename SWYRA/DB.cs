@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
@@ -62,7 +63,7 @@ namespace SWYRA
         public DateTime fecha_doc { get; set; }
         public DateTime fecha_ent { get; set; }
         public DateTime fecha_ven { get; set; }
-        public DateTime fecha_cancela { get; set; }
+        public DateTime? fecha_cancela { get; set; }
         public double can_tot { get; set; }
         public double imp_tot1 { get; set; }
         public double imp_tot2 { get; set; }
@@ -108,23 +109,24 @@ namespace SWYRA
         public string tiposervicio { get; set; }
         public string estatuspedido { get; set; }
         public string ocurredomicilio { get; set; }
-        public int cobrador_asignado { get; set; }
-        public int cobrador_autorizo { get; set; }
-        public int surtidor_asignado { get; set; }
-        public int empaquetador_asignado { get; set; }
-        public int etiquetador_asignado { get; set; }
-        public int surtidor_area { get; set; }
+        public string cobrador_asignado { get; set; }
+        public string cobrador_autorizo { get; set; }
+        public string surtidor_asignado { get; set; }
+        public string empaquetador_asignado { get; set; }public string etiquetador_asignado { get; set; }
+        public string surtidor_area { get; set; }
         public float porc_surtido { get; set; }
         public float porc_empaque { get; set; }
         public string indicaciones { get; set; }
         public string lote { get; set; }
         public string cliente { get; set; }
-        public int cobrador_asignado_n { get; set; }
-        public int cobrador_autorizo_n { get; set; }
-        public int surtidor_asignado_n { get; set; }
-        public int empaquetador_asignado_n { get; set; }
-        public int etiquetador_asignado_n { get; set; }
-        public int surtidor_area_n { get; set; }
+        public string cobrador_asignado_n { get; set; }
+        public string cobrador_autorizo_n { get; set; }
+        public string surtidor_asignado_n { get; set; }
+        public string empaquetador_asignado_n { get; set; }
+        public string etiquetador_asignado_n { get; set; }
+        public string surtidor_area_n { get; set; }
+        public string prioridad { get; set; }
+        public DateTime? fechaaut { get; set; }
     }
 
     public class DetallePedidos

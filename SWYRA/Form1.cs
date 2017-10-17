@@ -140,8 +140,17 @@ namespace SWYRA
         private void estatusPedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var fEstPed = new FrmEstatusPedido();
+            fEstPed.userActivo = userActivo;
             fEstPed.ShowDialog();
             fEstPed.Close();
+        }
+
+        private void autorizaciónPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fAutPed = new FrmAutorizaCobro();
+            fAutPed.userActivo = userActivo;
+            fAutPed.ShowDialog();
+            fAutPed.Close();
         }
     }
 }
