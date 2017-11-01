@@ -52,7 +52,7 @@ namespace SWYRA
             try
             {
                 Usuarios usr = GetDataTable("DB", "select top 1 * from USUARIOS", 0).ToData<Usuarios>();
-                Actividad act = GetFbDataTable("FB", "select * from ACTIVI01", 0).ToData<Actividad>();
+                //Actividad act = GetFbDataTable("FB", "select * from ACTIVI01", -1).ToData<Actividad>();
                 time1 = 1;
 
                 if (!validaActivacion())
@@ -109,11 +109,6 @@ namespace SWYRA
             var fTest = new Test();
             fTest.ShowDialog();
             fTest.Close();
-        }
-
-        private void usuariosDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
