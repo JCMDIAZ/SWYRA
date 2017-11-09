@@ -259,7 +259,7 @@ namespace swyraServices
             Results result = new Results();
             try
             {
-                var query = "select u.Usuario from CLIENTE c join  USUARIOS u on u.LetraERP = SUBSTRING(c.CLASIFIC, 0, 1) " +
+                var query = "select u.Usuario from CLIENTE c join  USUARIOS u on u.LetraERP = SUBSTRING(c.CLASIFIC, 1, 1) " +
                             "where c.CLAVE = '" + cve_clpv + "'";
                 result = GetDataTable("DB", query, 26).ToList<Results>().FirstOrDefault();
             }
