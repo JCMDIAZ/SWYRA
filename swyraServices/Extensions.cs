@@ -8,8 +8,7 @@ using System.Text.RegularExpressions;
 using System.Globalization;
 
 namespace swyraServices
-{
-    public static class Extensions
+{public static class Extensions
     {
         /// <summary>
         /// Convierte un data table a List de una clase
