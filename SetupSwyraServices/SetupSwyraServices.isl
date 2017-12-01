@@ -263,7 +263,7 @@
 		<row><td>NewBinary16</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\InstallFirstUse.ico</td></row>
 		<row><td>NewBinary17</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\InstallPartial.ico</td></row>
 		<row><td>NewBinary18</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\InstallStateMenu.ico</td></row>
-		<row><td>NewBinary19</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\Resources\2561.png</td></row>
+		<row><td>NewBinary19</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\Resources\2561.png</td></row>
 		<row><td>NewBinary2</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\New.ibd</td></row>
 		<row><td>NewBinary3</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\Up.ibd</td></row>
 		<row><td>NewBinary4</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\WarningIcon.ibd</td></row>
@@ -341,14 +341,13 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>EntityFramework.Firebird.dll</td><td>{49CD407B-1A27-4211-B788-7A9ABF369C26}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.firebird.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.SqlServer.dll</td><td>{605E8B2F-7D77-4C26-876A-143682AA8118}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.sqlserver.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.dll</td><td>{2A0B8612-1086-4904-B6EC-272010617D1D}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>FirebirdSql.Data.FirebirdClient.dll</td><td>{77B40B18-2B79-4150-A5BF-CEF3F903A612}</td><td>INSTALLDIR</td><td>2</td><td/><td>firebirdsql.data.firebirdcli</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.Firebird.dll</td><td>{AFB31D24-71A5-4696-8114-C76895EB3F10}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.firebird.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.SqlServer.dll</td><td>{E763EBC8-89C9-49BF-8E4F-CA9D3181DE4F}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.sqlserver.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.dll</td><td>{9C71B0D4-C23D-4A8A-82ED-17867D1DC761}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>FirebirdSql.Data.FirebirdClient.dll</td><td>{9FDA873D-3B14-403B-8EEF-E3CC4FE97F6C}</td><td>INSTALLDIR</td><td>2</td><td/><td>firebirdsql.data.firebirdcli</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{02A91E44-1091-431A-BFD1-C5A8D7213919}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>linq2db.dll</td><td>{0EA51B79-18F2-42BC-8F5D-CF85ACE334D5}</td><td>INSTALLDIR</td><td>2</td><td/><td>linq2db.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>swyraServices.exe</td><td>{FF1E9BA9-9D53-412F-AF11-6C16007219B5}</td><td>INSTALLDIR</td><td>2</td><td/><td>swyraservices.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>swyraServices.vshost.exe</td><td>{76C1CF02-F0AD-407C-AA40-D9EC44FE5366}</td><td>INSTALLDIR</td><td>2</td><td/><td>swyraservices.vshost.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>linq2db.dll</td><td>{5DA14B91-7C98-4334-9F21-41285AC7ADE1}</td><td>INSTALLDIR</td><td>2</td><td/><td>linq2db.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>swyraServices.exe</td><td>{98318D36-116C-4B5B-925B-B3E5BBBB27E6}</td><td>INSTALLDIR</td><td>2</td><td/><td>swyraservices.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1064,7 +1063,6 @@
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>INSTALLDIR</td><td>linq2db.dll</td></row>
 		<row><td>INSTALLDIR</td><td>swyraServices.exe</td></row>
-		<row><td>INSTALLDIR</td><td>swyraServices.vshost.exe</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1881,7 +1879,6 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>linq2db.dll</td></row>
 		<row><td>AlwaysInstall</td><td>swyraServices.exe</td></row>
-		<row><td>AlwaysInstall</td><td>swyraServices.vshost.exe</td></row>
 	</table>
 
 	<table name="File">
@@ -1896,22 +1893,19 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>entityframework.dll</td><td>EntityFramework.dll</td><td>ENTITY~1.DLL|EntityFramework.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\EntityFramework.dll</td><td>1</td><td/></row>
-		<row><td>entityframework.firebird.dll</td><td>EntityFramework.Firebird.dll</td><td>ENTITY~1.DLL|EntityFramework.Firebird.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\EntityFramework.Firebird.dll</td><td>1</td><td/></row>
-		<row><td>entityframework.firebird.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.PDB|EntityFramework.Firebird.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\EntityFramework.Firebird.pdb</td><td>1</td><td/></row>
-		<row><td>entityframework.sqlserver.dl</td><td>EntityFramework.SqlServer.dll</td><td>ENTITY~1.DLL|EntityFramework.SqlServer.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\EntityFramework.SqlServer.dll</td><td>1</td><td/></row>
-		<row><td>entityframework.sqlserver.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.SqlServer.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\EntityFramework.SqlServer.xml</td><td>1</td><td/></row>
-		<row><td>entityframework.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\EntityFramework.xml</td><td>1</td><td/></row>
-		<row><td>firebirdsql.data.firebirdcli</td><td>FirebirdSql.Data.FirebirdClient.dll</td><td>FIREBI~1.DLL|FirebirdSql.Data.FirebirdClient.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\FirebirdSql.Data.FirebirdClient.dll</td><td>1</td><td/></row>
-		<row><td>firebirdsql.data.firebirdcli1</td><td>ISX_DEFAULTCOMPONENT</td><td>FIREBI~1.PDB|FirebirdSql.Data.FirebirdClient.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\FirebirdSql.Data.FirebirdClient.pdb</td><td>1</td><td/></row>
-		<row><td>linq2db.dll</td><td>linq2db.dll</td><td>linq2db.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\linq2db.dll</td><td>1</td><td/></row>
-		<row><td>linq2db.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>linq2db.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\linq2db.pdb</td><td>1</td><td/></row>
-		<row><td>swyraservices.exe</td><td>swyraServices.exe</td><td>SWYRAS~1.EXE|swyraServices.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\swyraServices.exe</td><td>1</td><td/></row>
-		<row><td>swyraservices.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAS~1.CON|swyraServices.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\swyraServices.exe.config</td><td>1</td><td/></row>
-		<row><td>swyraservices.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAS~1.PDB|swyraServices.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\swyraServices.pdb</td><td>1</td><td/></row>
-		<row><td>swyraservices.vshost.exe</td><td>swyraServices.vshost.exe</td><td>SWYRAS~1.EXE|swyraServices.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\swyraServices.vshost.exe</td><td>1</td><td/></row>
-		<row><td>swyraservices.vshost.exe.con</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAS~1.CON|swyraServices.vshost.exe.Config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\swyraServices.vshost.exe.Config</td><td>1</td><td/></row>
-		<row><td>swyraservices.vshost.exe.man</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAS~1.MAN|swyraServices.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\swyraServices\bin\Debug\swyraServices.vshost.exe.manifest</td><td>1</td><td/></row>
+		<row><td>entityframework.dll</td><td>EntityFramework.dll</td><td>ENTITY~1.DLL|EntityFramework.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\EntityFramework.dll</td><td>1</td><td/></row>
+		<row><td>entityframework.firebird.dll</td><td>EntityFramework.Firebird.dll</td><td>ENTITY~1.DLL|EntityFramework.Firebird.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\EntityFramework.Firebird.dll</td><td>1</td><td/></row>
+		<row><td>entityframework.firebird.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.PDB|EntityFramework.Firebird.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\EntityFramework.Firebird.pdb</td><td>1</td><td/></row>
+		<row><td>entityframework.sqlserver.dl</td><td>EntityFramework.SqlServer.dll</td><td>ENTITY~1.DLL|EntityFramework.SqlServer.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\EntityFramework.SqlServer.dll</td><td>1</td><td/></row>
+		<row><td>entityframework.sqlserver.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.SqlServer.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\EntityFramework.SqlServer.xml</td><td>1</td><td/></row>
+		<row><td>entityframework.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\EntityFramework.xml</td><td>1</td><td/></row>
+		<row><td>firebirdsql.data.firebirdcli</td><td>FirebirdSql.Data.FirebirdClient.dll</td><td>FIREBI~1.DLL|FirebirdSql.Data.FirebirdClient.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\FirebirdSql.Data.FirebirdClient.dll</td><td>1</td><td/></row>
+		<row><td>firebirdsql.data.firebirdcli1</td><td>ISX_DEFAULTCOMPONENT</td><td>FIREBI~1.PDB|FirebirdSql.Data.FirebirdClient.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\FirebirdSql.Data.FirebirdClient.pdb</td><td>1</td><td/></row>
+		<row><td>linq2db.dll</td><td>linq2db.dll</td><td>linq2db.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\linq2db.dll</td><td>1</td><td/></row>
+		<row><td>linq2db.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>linq2db.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\linq2db.pdb</td><td>1</td><td/></row>
+		<row><td>swyraservices.exe</td><td>swyraServices.exe</td><td>SWYRAS~1.EXE|swyraServices.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\swyraServices.exe</td><td>1</td><td/></row>
+		<row><td>swyraservices.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAS~1.CON|swyraServices.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\swyraServices.exe.config</td><td>1</td><td/></row>
+		<row><td>swyraservices.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAS~1.PDB|swyraServices.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\swyraServices\bin\Debug\swyraServices.pdb</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2054,14 +2048,13 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>EntityFramework.Firebird.dll</td><td/><td/><td>_59E1DA67_7DF7_4E29_B76D_67CCFDB4B7C9_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.SqlServer.dll</td><td/><td/><td>_57AAA672_A57B_4DA4_AA27_E6C7F41C6982_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.dll</td><td/><td/><td>_A276DFD6_8A33_4E0F_9F0A_AC51ADD9FA33_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>FirebirdSql.Data.FirebirdClient.dll</td><td/><td/><td>_318EAD6A_27F6_4AF7_8DCC_67659CCD32B5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.Firebird.dll</td><td/><td/><td>_E7684271_0EFE_4D58_87DB_5041558566BD_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.SqlServer.dll</td><td/><td/><td>_7E9D16DE_8CC3_4081_B39A_6B63D7C9E63D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.dll</td><td/><td/><td>_9EE62F28_9C8E_4B95_95D0_B2329C8850A1_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>FirebirdSql.Data.FirebirdClient.dll</td><td/><td/><td>_CAF0A81D_93BD_4DD9_956A_6DCFCC0A7902_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_AB59C388_12C1_4AAA_98CC_4BC8517D516B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>linq2db.dll</td><td/><td/><td>_82F6DD1D_59F4_4D10_A575_378124BD29DC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>swyraServices.exe</td><td/><td/><td>_ECE3D12B_6559_4E2E_9CDA_5D1B4A1D6866_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>swyraServices.vshost.exe</td><td/><td/><td>_70FD7C8A_595A_4BD9_9923_F553320BA23E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>linq2db.dll</td><td/><td/><td>_30EFEA3A_F82D_4967_A47F_465146A0DFDA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>swyraServices.exe</td><td/><td/><td>_E7313D91_77A1_4520_8946_31D3C7A38C93_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -3754,6 +3747,10 @@
 		<row><td>ID_STRING2</td><td>1033</td><td>Visiontec</td><td>0</td><td/><td>-1398448079</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>SWYRA Services</td><td>0</td><td/><td>-1264218036</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>SWYRA Services</td><td>0</td><td/><td>-1264215184</td></row>
+		<row><td>ID_STRING5</td><td>1033</td><td>SWYRA</td><td>0</td><td/><td>-307952147</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>Servicio de SWYRA</td><td>0</td><td/><td>-307907155</td></row>
+		<row><td>ID_STRING7</td><td>1033</td><td>SWYRA Services</td><td>0</td><td/><td>-173723126</td></row>
+		<row><td>ID_STRING8</td><td>1033</td><td>Servicio de Interface de SEYRA</td><td>0</td><td/><td>-173694454</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1398451152</td></row>
 	</table>
 
@@ -3983,8 +3980,8 @@
 		<col def="S0">Value</col>
 		<row><td>ActiveLanguage</td><td>1033</td></row>
 		<row><td>Comments</td><td/></row>
-		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="a4f66fafb30885f14d732b73e196bba0">
-RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
+		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="de9f554a3bc05c12be9c31b998217995">
+UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 			</td></row>
 		<row><td>DefaultProductConfiguration</td><td>Express</td></row>
 		<row><td>EnableSwidtag</td><td>1</td></row>
@@ -4517,7 +4514,7 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">Arguments</col>
 		<col def="s72">Component_</col>
 		<col def="L255">Description</col>
-		<row><td>NewServiceInstall1</td><td>MyService1</td><td>##ID_STRING4##</td><td>16</td><td>2</td><td>1</td><td/><td/><td/><td/><td/><td>swyraServices.exe</td><td/></row>
+		<row><td>NewServiceInstall1</td><td>MyService1</td><td>##ID_STRING7##</td><td>16</td><td>2</td><td>1</td><td/><td/><td/><td/><td/><td>swyraServices.exe</td><td>##ID_STRING8##</td></row>
 	</table>
 
 	<table name="Shortcut">

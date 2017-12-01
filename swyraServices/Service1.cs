@@ -126,7 +126,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("1: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbClientes;
         }
@@ -146,7 +146,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("2: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbClientes;
         }
@@ -173,7 +173,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("3: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -200,7 +200,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("4: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -221,7 +221,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("5: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbPedidos;
         }
@@ -244,7 +244,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("6: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbPedidos;
         }
@@ -265,7 +265,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("7: " + ex.Message, EventLogEntryType.Error);
             }
             return ((result == null) ? "" : result.usuario);
         }
@@ -316,7 +316,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("8: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -334,7 +334,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("9: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbDetalle;
         }
@@ -353,7 +353,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("10: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbDetalle;
         }
@@ -381,7 +381,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("11: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -412,7 +412,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("12: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -455,7 +455,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("13: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -497,7 +497,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("14: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -518,7 +518,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("15: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -534,7 +534,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("16: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbInventarios;
         }
@@ -551,7 +551,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("17: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbInventarios;
         }
@@ -572,7 +572,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message + "|" + query , EventLogEntryType.Error);
+                eventLog1.WriteEntry("18: " + ex.Message + "|" + query , EventLogEntryType.Error);
             }
         }
         private void ModificaInventario(Inventario inv)
@@ -590,7 +590,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry(ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("19: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
