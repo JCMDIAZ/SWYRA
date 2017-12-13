@@ -154,8 +154,8 @@ namespace SWYRA
             cbCategoria.Text = empleado.Categoria.TrimEnd();
             Chkact.Checked = empleado.Activo;
 
-            txtLetra.Text = empleado.LetraERP;
             txtLetra.Enabled = (cbCategoria.Text == @"COBRADOR");
+            txtLetra.Text = empleado.LetraERP;
 
             cbArea.Text = empleado.AreaAsignada;
             cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
@@ -338,11 +338,10 @@ namespace SWYRA
 
         private void habilitaCampos()
         {
-            txtLetra.Text = "";
+            txtLetra.Text = (cbCategoria.Text != @"COBRADOR") ? "" : txtLetra.Text;
             txtLetra.Enabled = (cbCategoria.Text == @"COBRADOR");
 
-            cbArea.EditValue = null;
-            cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
+            cbArea.EditValue = null;cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
         }
 
         private void ViewModulo()

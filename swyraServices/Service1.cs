@@ -273,8 +273,10 @@ namespace swyraServices
         private void GuardarDbPedidos(Pedidos p)
         {
             var query = "";
+            var seguimiento = "";
             try
             {
+                p.condicion = p.condicion ?? "";
                 string[] dats = p.condicion.Split(';');
                 if (dats.Length > 0)
                 {
@@ -316,7 +318,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("8: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("9" + seguimiento + ": " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -334,7 +336,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("9: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("10: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbDetalle;
         }
@@ -353,7 +355,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("10: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("11: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbDetalle;
         }
@@ -381,7 +383,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("11: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("12: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -412,7 +414,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("12: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("13: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -455,7 +457,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("13: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("14: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -497,7 +499,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("14: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("15: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -518,7 +520,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("15: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("16: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -534,7 +536,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("16: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("17: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbInventarios;
         }
@@ -551,7 +553,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("17: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("18: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbInventarios;
         }
@@ -561,6 +563,7 @@ namespace swyraServices
             var query = "";
             try
             {
+                if(inv.cve_art.In("he2025", "tn3014")) { return; }
                 query =
                     "insert INVENTARIO (CVE_ART, DESCR, LIN_PROD, CON_SERIE, UNI_MED, UNI_EMP, CTRL_ALM, STOCK_MIN, " +
                     "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, MASTERS, MASTERS_UBI) " +
@@ -572,7 +575,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("18: " + ex.Message + "|" + query , EventLogEntryType.Error);
+                eventLog1.WriteEntry("19: " + ex.Message + "|" + query , EventLogEntryType.Error);
             }
         }
         private void ModificaInventario(Inventario inv)
@@ -590,7 +593,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("19: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("20: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
