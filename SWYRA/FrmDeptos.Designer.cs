@@ -56,7 +56,6 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.dgAlmacen = new System.Windows.Forms.DataGridView();
-            this.txtBuscar = new DevExpress.XtraEditors.TextEdit();
             this.claveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.abreviaturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +65,7 @@
             this.offsetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.alamcenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtBuscar = new DevExpress.XtraEditors.TextEdit();
             this.toolStrip1.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo.Properties)).BeginInit();
@@ -77,8 +77,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAlmacen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.alamcenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -419,18 +419,6 @@
             this.dgAlmacen.TabIndex = 30;
             this.dgAlmacen.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAlmacen_CellClick);
             // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(255, 191);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBuscar.Properties.Appearance.Options.UseFont = true;
-            this.txtBuscar.Properties.Appearance.Options.UseForeColor = true;
-            this.txtBuscar.Properties.MaxLength = 50;
-            this.txtBuscar.Size = new System.Drawing.Size(191, 24);
-            this.txtBuscar.TabIndex = 38;
-            // 
             // claveDataGridViewTextBoxColumn
             // 
             this.claveDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -508,16 +496,31 @@
             // 
             this.alamcenBindingSource.DataSource = typeof(SWYRA.Almacen);
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(255, 191);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtBuscar.Properties.Appearance.Options.UseFont = true;
+            this.txtBuscar.Properties.Appearance.Options.UseForeColor = true;
+            this.txtBuscar.Properties.MaxLength = 50;
+            this.txtBuscar.Size = new System.Drawing.Size(191, 24);
+            this.txtBuscar.TabIndex = 38;
+            // 
             // FrmDeptos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(551, 454);
+            this.ControlBox = false;
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dgAlmacen);
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.toolStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDeptos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -536,8 +539,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAlmacen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.alamcenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

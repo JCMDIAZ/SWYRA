@@ -71,7 +71,7 @@ namespace SWYRA
             listPedidos = null;
             if (chkActual.Checked)
             {
-                DateTime hoy = new DateTime(2017, 10, 3);
+                DateTime hoy = DateTime.Now;
                 listPedidos = CargaPedidos(hoy.AddDays(-3), hoy.AddDays(1));
             }
             else
@@ -106,7 +106,7 @@ namespace SWYRA
                             "left join USUARIOS uEtiAsig on uEtiAsig.Usuario = p.ETIQUETADOR_ASIGNADO " +
                             "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
                             "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
-                            "WHERE p.FECHA_ENT between '" + fini.ToString("yyyy-MM-dd") + "' and '" + ffin.ToString("yyyy-MM-dd") + "'";
+                            "WHERE p.FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "'";
                 list = GetDataTable("DB", query, 51).ToList<Pedidos>();
             }
             catch (Exception ex)
@@ -115,11 +115,11 @@ namespace SWYRA
             }
             return list;
         }
-
         private void ActualizaPedido()
         {
             try
             {
+                pedido.indicaciones = pedido.indicaciones ?? "";
                 var query = "UPDATE PEDIDO SET TIPOSERVICIO = '" + pedido.tiposervicio + "', " +
                             "PRIORIDAD = '" + pedido.prioridad + "', " +
                             "OCURREDOMICILIO = '" + pedido.ocurredomicilio + "', " +
@@ -132,7 +132,6 @@ namespace SWYRA
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void limpiarFiltro()
         {
             cbEstatusPed.SelectedIndex = -1;

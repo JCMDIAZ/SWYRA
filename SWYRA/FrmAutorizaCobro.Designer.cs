@@ -50,13 +50,13 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.ppIndicaciones = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.BtnAceptarIN = new System.Windows.Forms.Button();
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
@@ -187,7 +187,7 @@
             this.colcve_doc.OptionsColumn.FixedWidth = true;
             this.colcve_doc.Visible = true;
             this.colcve_doc.VisibleIndex = 1;
-            this.colcve_doc.Width = 90;
+            this.colcve_doc.Width = 150;
             // 
             // colcliente
             // 
@@ -284,6 +284,13 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "CANCELADO";
+            this.barButtonItem3.Id = 3;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // barManager1
             // 
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -335,13 +342,6 @@
             this.barLargeButtonItem1.Id = 0;
             this.barLargeButtonItem1.Name = "barLargeButtonItem1";
             // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "CANCELADO";
-            this.barButtonItem3.Id = 3;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
-            // 
             // ppIndicaciones
             // 
             this.ppIndicaciones.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -350,7 +350,7 @@
             this.ppIndicaciones.Controls.Add(this.BtnAceptarIN);
             this.ppIndicaciones.Controls.Add(this.txtIndicaciones);
             this.ppIndicaciones.Controls.Add(this.label7);
-            this.ppIndicaciones.Location = new System.Drawing.Point(200, 149);
+            this.ppIndicaciones.Location = new System.Drawing.Point(378, 159);
             this.ppIndicaciones.Manager = this.barManager1;
             this.ppIndicaciones.Name = "ppIndicaciones";
             this.ppIndicaciones.Size = new System.Drawing.Size(357, 163);
@@ -395,7 +395,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1064, 471);
+            this.ControlBox = false;
             this.Controls.Add(this.ppIndicaciones);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.gpoFiltro);
@@ -404,6 +406,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAutorizaCobro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

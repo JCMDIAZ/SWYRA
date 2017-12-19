@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFechIni = new DevExpress.XtraEditors.DateEdit();
+            this.Label1 = new System.Windows.Forms.Label();
             this.cbEstatusPed = new DevExpress.XtraEditors.ComboBoxEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -88,7 +89,6 @@
             this.BtnAceptarIN = new System.Windows.Forms.Button();
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
-            this.Label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
@@ -217,6 +217,17 @@
             this.txtFechIni.Size = new System.Drawing.Size(147, 24);
             this.txtFechIni.TabIndex = 3;
             this.txtFechIni.TextChanged += new System.EventHandler(this.txtFechIni_TextChanged);
+            // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Location = new System.Drawing.Point(17, 29);
+            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(108, 18);
+            this.Label1.TabIndex = 2;
+            this.Label1.Text = "Estatus Pedido";
             // 
             // cbEstatusPed
             // 
@@ -574,7 +585,7 @@
             this.ppTipoServicio.Controls.Add(this.BtnAceptarTS);
             this.ppTipoServicio.Controls.Add(this.cbTipoServicio);
             this.ppTipoServicio.Controls.Add(this.label4);
-            this.ppTipoServicio.Location = new System.Drawing.Point(393, 143);
+            this.ppTipoServicio.Location = new System.Drawing.Point(393, 163);
             this.ppTipoServicio.Manager = this.barManager1;
             this.ppTipoServicio.Name = "ppTipoServicio";
             this.ppTipoServicio.Size = new System.Drawing.Size(357, 111);
@@ -631,7 +642,7 @@
             this.ppPrioridad.Controls.Add(this.BtnAceptarPR);
             this.ppPrioridad.Controls.Add(this.cbPrioridad);
             this.ppPrioridad.Controls.Add(this.label5);
-            this.ppPrioridad.Location = new System.Drawing.Point(393, 113);
+            this.ppPrioridad.Location = new System.Drawing.Point(675, 122);
             this.ppPrioridad.Manager = this.barManager1;
             this.ppPrioridad.Name = "ppPrioridad";
             this.ppPrioridad.Size = new System.Drawing.Size(357, 111);
@@ -686,7 +697,7 @@
             this.ppEntrega.Controls.Add(this.BtnAceptarEN);
             this.ppEntrega.Controls.Add(this.cbEntrega);
             this.ppEntrega.Controls.Add(this.label6);
-            this.ppEntrega.Location = new System.Drawing.Point(393, 96);
+            this.ppEntrega.Location = new System.Drawing.Point(393, 307);
             this.ppEntrega.Manager = this.barManager1;
             this.ppEntrega.Name = "ppEntrega";
             this.ppEntrega.Size = new System.Drawing.Size(357, 111);
@@ -782,22 +793,13 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Indicaciones";
             // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(17, 29);
-            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(108, 18);
-            this.Label1.TabIndex = 2;
-            this.Label1.Text = "Estatus Pedido";
-            // 
             // FrmEstatusPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1064, 471);
+            this.ControlBox = false;
             this.Controls.Add(this.ppIndicaciones);
             this.Controls.Add(this.ppEntrega);
             this.Controls.Add(this.ppPrioridad);
@@ -809,6 +811,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEstatusPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

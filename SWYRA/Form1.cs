@@ -146,5 +146,14 @@ namespace SWYRA
             fAutPed.ShowDialog();
             fAutPed.Close();
         }
+
+        private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fCamCon = new FrmCambiaContraseña();
+            fCamCon.userActivo = userActivo;
+            fCamCon.ShowDialog();
+            userActivo.Password = fCamCon.Txtcpass.Text;
+            fCamCon.Close();
+        }
     }
 }
