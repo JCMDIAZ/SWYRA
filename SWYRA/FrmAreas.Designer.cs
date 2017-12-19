@@ -66,6 +66,7 @@
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnLimpiar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAltura.Properties)).BeginInit();
@@ -501,10 +502,18 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(551, 456);
+            this.panel1.TabIndex = 44;
+            // 
             // FrmAreas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(551, 458);
             this.ControlBox = false;
@@ -513,6 +522,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAreas";
@@ -576,5 +586,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn aream2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn alturaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Panel panel1;
     }
 }

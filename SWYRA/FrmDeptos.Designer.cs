@@ -66,6 +66,7 @@
             this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.alamcenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtBuscar = new DevExpress.XtraEditors.TextEdit();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo.Properties)).BeginInit();
@@ -508,10 +509,18 @@
             this.txtBuscar.Size = new System.Drawing.Size(191, 24);
             this.txtBuscar.TabIndex = 38;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(551, 456);
+            this.panel1.TabIndex = 39;
+            // 
             // FrmDeptos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(551, 454);
             this.ControlBox = false;
@@ -520,6 +529,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDeptos";
@@ -583,5 +593,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn alturaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn offsetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Panel panel1;
     }
 }

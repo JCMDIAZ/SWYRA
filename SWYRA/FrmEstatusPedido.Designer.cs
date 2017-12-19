@@ -89,6 +89,7 @@
             this.BtnAceptarIN = new System.Windows.Forms.Button();
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
@@ -793,10 +794,18 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Indicaciones";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1064, 471);
+            this.panel1.TabIndex = 67;
+            // 
             // FrmEstatusPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1064, 471);
             this.ControlBox = false;
@@ -807,6 +816,7 @@
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.gpoFiltro);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -914,5 +924,6 @@
         private DevExpress.XtraEditors.MemoEdit txtIndicaciones;
         internal System.Windows.Forms.Label label7;
         internal System.Windows.Forms.Label Label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

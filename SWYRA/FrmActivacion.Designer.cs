@@ -37,6 +37,7 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,10 +134,18 @@
             this.label3.Text = "Envíe la Clave de Activción a su Administrador, para que le sea enviada un Llave " +
     "de Activación.";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(-4, -1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(617, 289);
+            this.panel1.TabIndex = 22;
+            // 
             // FrmActivacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(615, 292);
             this.ControlBox = false;
@@ -148,6 +157,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtClave);
             this.Controls.Add(this.PictureBox1);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmActivacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -169,5 +179,6 @@
         internal System.Windows.Forms.Button BtnCancelar;
         internal System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

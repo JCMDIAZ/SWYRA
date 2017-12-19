@@ -76,6 +76,7 @@
             this.DelBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
             this.LinkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.GpoEmpleados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbArea.Properties)).BeginInit();
@@ -612,10 +613,18 @@
             this.LinkLabel1.Text = ".";
             this.LinkLabel1.Visible = false;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(675, 610);
+            this.panel1.TabIndex = 35;
+            // 
             // FrmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(675, 610);
             this.ControlBox = false;
@@ -625,6 +634,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.TBoxBuscaUsua);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEmpleados";
@@ -693,5 +703,6 @@
         internal System.Windows.Forms.Label label11;
         private DevExpress.XtraEditors.LookUpEdit cbArea;
         private System.Windows.Forms.BindingSource areasBindingSource;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -38,6 +38,7 @@
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,10 +146,18 @@
             this.Label1.TabIndex = 8;
             this.Label1.Text = "USUARIO";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(-3, -1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(621, 200);
+            this.panel1.TabIndex = 16;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(615, 196);
             this.ControlBox = false;
@@ -161,6 +170,7 @@
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
@@ -183,5 +193,6 @@
         internal System.Windows.Forms.Button BtnAceptar;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
