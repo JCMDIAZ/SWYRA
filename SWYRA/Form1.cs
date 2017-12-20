@@ -5,6 +5,8 @@ using FirebirdSql.Data.FirebirdClient;
 using System.Configuration;
 using static SWYRA.General;
 using System.Collections.Generic;
+using System.Linq;
+using System.Globalization;
 
 namespace SWYRA
 {
@@ -90,11 +92,24 @@ namespace SWYRA
                 var pass = getUniqueID("C");
                 var query = "SELECT [ID_RegMach] IdRegMach, cast(DECRYPTBYPASSPHRASE('swyra',[Macmach_RegMach]) as varchar(8000)) MacmachRegMach, " +
                             "[Fecha_RegMach] FechaRegMach, [Activo_RegMach] ActivoRegMach FROM[dbo].[Cat_RegMach] " +
-                            "where cast(DECRYPTBYPASSPHRASE('swyra',[Macmach_RegMach]) as varchar(8000)) = '" + pass + "' " +
+                            "where cast(DECRYPTBYPASSPHRASE('swyra',[Macmach_RegMach]) as varchar(8000)) like '%" + pass + "%' " +
                             "and Activo_RegMach = 1";
                 List<CatRegMach> catRegMaches = GetDataTable("DB", query, 2).ToList<CatRegMach>();
                 b = (catRegMaches.Count > 0);
-            }
+                if (b)
+                {
+                    var reg = catRegMaches.FirstOrDefault();
+                    var str = reg.MacmachRegMach.Split('|');
+                    if (str.Length > 1)
+                    {
+                        var fch = DateTime.ParseExact(str[1], "yyyyMMdd", CultureInfo.InvariantCulture);
+                        b = (DateTime.Now < fch);
+                        if (!b)
+                        {
+                            MessageBox.Show(@"Se agoto el tiempo de prueba. Consulta a tu Ejecutivo de Ventas VISIONTEC");
+                        }
+                    }
+                }}
             catch (Exception ms)
             {
                 MessageBox.Show(ms.Message.ToString());

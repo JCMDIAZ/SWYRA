@@ -9,6 +9,7 @@ namespace SWYRA
     {
         public string clave;
         public string llave;
+        private Register reg = new Register();
 
         public FrmActivacion()
         {
@@ -37,7 +38,7 @@ namespace SWYRA
                     string register = "0x01000000" + txtLlave.Text;
                     var query = "select isnull(cast(decryptbypassphrase('swyra'," + register +
                                 ") as varchar(8000)),'') register";
-                    Register reg = GetDataTable("DB", query, 3).ToData<Register>();
+                    reg = GetDataTable("DB", query, 3).ToData<Register>();
                     if (reg.register == "")
                     {
                         MessageBox.Show(@"Llave de activación incorrecta");
@@ -60,8 +61,10 @@ namespace SWYRA
         {
             try
             {
-                var query = "INSERT Cat_RegMach (Macmach_RegMach, Fecha_RegMach, Activo_RegMach) " +
-                            "VALUES(ENCRYPTBYPASSPHRASE('swyra', '" + txtClave.Text + "'), GETDATE(), 1)";
+                var query = "UPDATE Cat_RegMach set Activo_RegMach = 0" +
+                            "where cast(DECRYPTBYPASSPHRASE('swyra',[Macmach_RegMach]) as varchar(8000)) like '%" + reg.register + "%' " +
+                            "INSERT Cat_RegMach (Macmach_RegMach, Fecha_RegMach, Activo_RegMach) " +
+                            "VALUES(ENCRYPTBYPASSPHRASE('swyra', '" + reg.register + "'), GETDATE(), 1)";
                 if (GetExecute("DB", query, 4))
                 {
                     MessageBox.Show(@"Activación Exitosa");
