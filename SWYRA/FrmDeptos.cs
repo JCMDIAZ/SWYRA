@@ -120,7 +120,7 @@ namespace SWYRA
                     {
                         Variables var1 =
                             GetDataTable("DB",
-                                @"select cast((isnull(max(cast(Usuario as int)),0) + 1) as varchar(5)) Id from ALMACENES",
+                                @"select cast((isnull(max(cast(Clave as int)),0) + 1) as varchar(5)) Id from ALMACENES",
                                 17).ToData<Variables>();
                         txtCodigo.Text = var1.Id;
                         query =
