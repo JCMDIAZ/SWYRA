@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAreas));
-            this.txtBuscar = new DevExpress.XtraEditors.TextEdit();
             this.chkActivo = new DevExpress.XtraEditors.CheckEdit();
             this.txtAltura = new DevExpress.XtraEditors.TextEdit();
             this.txtArea = new DevExpress.XtraEditors.TextEdit();
@@ -39,22 +37,12 @@
             this.Label15 = new System.Windows.Forms.Label();
             this.Label16 = new System.Windows.Forms.Label();
             this.Label17 = new System.Windows.Forms.Label();
-            this.dgAreas = new System.Windows.Forms.DataGridView();
-            this.areaidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.almacenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aream2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.areasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
             this.txtCodigo = new DevExpress.XtraEditors.TextEdit();
             this.Label4 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.BtnBuscar = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.cbAlmacen = new DevExpress.XtraEditors.LookUpEdit();
             this.almacenBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -67,12 +55,20 @@
             this.btnLimpiar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).BeginInit();
+            this.gcAreas = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colareaid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colnombre = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colalmacen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colubicacion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colaream2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colaltura = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colactivo = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAltura.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtArea.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUbicacion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAreas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).BeginInit();
@@ -81,19 +77,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.almacenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcAreas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(255, 214);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBuscar.Properties.Appearance.Options.UseFont = true;
-            this.txtBuscar.Properties.Appearance.Options.UseForeColor = true;
-            this.txtBuscar.Properties.MaxLength = 50;
-            this.txtBuscar.Size = new System.Drawing.Size(191, 24);
-            this.txtBuscar.TabIndex = 43;
             // 
             // chkActivo
             // 
@@ -181,109 +168,6 @@
             this.Label17.TabIndex = 26;
             this.Label17.Text = "Área";
             // 
-            // dgAreas
-            // 
-            this.dgAreas.AllowUserToAddRows = false;
-            this.dgAreas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.NullValue = "NA";
-            this.dgAreas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgAreas.AutoGenerateColumns = false;
-            this.dgAreas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgAreas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgAreas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAreas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.areaidDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn,
-            this.almacenDataGridViewTextBoxColumn,
-            this.ubicacion,
-            this.aream2DataGridViewTextBoxColumn,
-            this.alturaDataGridViewTextBoxColumn,
-            this.activoDataGridViewCheckBoxColumn});
-            this.dgAreas.DataSource = this.areasBindingSource;
-            this.dgAreas.Location = new System.Drawing.Point(13, 251);
-            this.dgAreas.Margin = new System.Windows.Forms.Padding(4);
-            this.dgAreas.MultiSelect = false;
-            this.dgAreas.Name = "dgAreas";
-            this.dgAreas.ReadOnly = true;
-            this.dgAreas.RowHeadersWidth = 20;
-            this.dgAreas.RowTemplate.Height = 24;
-            this.dgAreas.Size = new System.Drawing.Size(525, 197);
-            this.dgAreas.TabIndex = 42;
-            this.dgAreas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAreas_CellClick);
-            // 
-            // areaidDataGridViewTextBoxColumn
-            // 
-            this.areaidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.areaidDataGridViewTextBoxColumn.DataPropertyName = "areaid";
-            this.areaidDataGridViewTextBoxColumn.HeaderText = "Clave";
-            this.areaidDataGridViewTextBoxColumn.Name = "areaidDataGridViewTextBoxColumn";
-            this.areaidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.areaidDataGridViewTextBoxColumn.Width = 72;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 87;
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripción";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripcionDataGridViewTextBoxColumn.Width = 111;
-            // 
-            // almacenDataGridViewTextBoxColumn
-            // 
-            this.almacenDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.almacenDataGridViewTextBoxColumn.DataPropertyName = "almacen";
-            this.almacenDataGridViewTextBoxColumn.HeaderText = "Almacen";
-            this.almacenDataGridViewTextBoxColumn.Name = "almacenDataGridViewTextBoxColumn";
-            this.almacenDataGridViewTextBoxColumn.ReadOnly = true;
-            this.almacenDataGridViewTextBoxColumn.Width = 91;
-            // 
-            // ubicacion
-            // 
-            this.ubicacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ubicacion.DataPropertyName = "ubicacion";
-            this.ubicacion.HeaderText = "Ubicación";
-            this.ubicacion.Name = "ubicacion";
-            this.ubicacion.ReadOnly = true;
-            this.ubicacion.Width = 99;
-            // 
-            // aream2DataGridViewTextBoxColumn
-            // 
-            this.aream2DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.aream2DataGridViewTextBoxColumn.DataPropertyName = "aream2";
-            this.aream2DataGridViewTextBoxColumn.HeaderText = "Área m2";
-            this.aream2DataGridViewTextBoxColumn.Name = "aream2DataGridViewTextBoxColumn";
-            this.aream2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.aream2DataGridViewTextBoxColumn.Width = 90;
-            // 
-            // alturaDataGridViewTextBoxColumn
-            // 
-            this.alturaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.alturaDataGridViewTextBoxColumn.DataPropertyName = "altura";
-            this.alturaDataGridViewTextBoxColumn.HeaderText = "Altura";
-            this.alturaDataGridViewTextBoxColumn.Name = "alturaDataGridViewTextBoxColumn";
-            this.alturaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.alturaDataGridViewTextBoxColumn.Width = 74;
-            // 
-            // activoDataGridViewCheckBoxColumn
-            // 
-            this.activoDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "activo";
-            this.activoDataGridViewCheckBoxColumn.HeaderText = "Activo";
-            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
-            this.activoDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.activoDataGridViewCheckBoxColumn.Width = 52;
-            // 
             // areasBindingSource
             // 
             this.areasBindingSource.DataSource = typeof(SWYRA.Areas);
@@ -345,21 +229,6 @@
             this.Label1.Size = new System.Drawing.Size(79, 18);
             this.Label1.TabIndex = 1;
             this.Label1.Text = "Clave Área";
-            // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.BackColor = System.Drawing.Color.Firebrick;
-            this.BtnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscar.ForeColor = System.Drawing.Color.White;
-            this.BtnBuscar.Location = new System.Drawing.Point(453, 211);
-            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(85, 30);
-            this.BtnBuscar.TabIndex = 41;
-            this.BtnBuscar.Text = "BUSCAR";
-            this.BtnBuscar.UseVisualStyleBackColor = false;
-            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // GroupBox1
             // 
@@ -504,10 +373,111 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.gcAreas);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(551, 456);
             this.panel1.TabIndex = 44;
+            // 
+            // gcAreas
+            // 
+            this.gcAreas.DataSource = this.areasBindingSource;
+            this.gcAreas.Location = new System.Drawing.Point(13, 214);
+            this.gcAreas.MainView = this.gridView1;
+            this.gcAreas.Name = "gcAreas";
+            this.gcAreas.Size = new System.Drawing.Size(525, 232);
+            this.gcAreas.TabIndex = 45;
+            this.gcAreas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colareaid,
+            this.colnombre,
+            this.coldescripcion,
+            this.colalmacen,
+            this.colubicacion,
+            this.colaream2,
+            this.colaltura,
+            this.colactivo});
+            this.gridView1.GridControl = this.gcAreas;
+            this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsMenu.EnableFooterMenu = false;
+            this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            // 
+            // colareaid
+            // 
+            this.colareaid.Caption = "ID";
+            this.colareaid.FieldName = "areaid";
+            this.colareaid.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colareaid.Name = "colareaid";
+            this.colareaid.Visible = true;
+            this.colareaid.VisibleIndex = 0;
+            this.colareaid.Width = 40;
+            // 
+            // colnombre
+            // 
+            this.colnombre.Caption = "Área";
+            this.colnombre.FieldName = "nombre";
+            this.colnombre.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colnombre.Name = "colnombre";
+            this.colnombre.Visible = true;
+            this.colnombre.VisibleIndex = 1;
+            this.colnombre.Width = 120;
+            // 
+            // coldescripcion
+            // 
+            this.coldescripcion.Caption = "Descripción";
+            this.coldescripcion.FieldName = "descripcion";
+            this.coldescripcion.Name = "coldescripcion";
+            this.coldescripcion.Visible = true;
+            this.coldescripcion.VisibleIndex = 2;
+            // 
+            // colalmacen
+            // 
+            this.colalmacen.Caption = "Almacen";
+            this.colalmacen.FieldName = "stralmacen";
+            this.colalmacen.Name = "colalmacen";
+            this.colalmacen.Visible = true;
+            this.colalmacen.VisibleIndex = 3;
+            // 
+            // colubicacion
+            // 
+            this.colubicacion.Caption = "Ubicación";
+            this.colubicacion.FieldName = "ubicacion";
+            this.colubicacion.Name = "colubicacion";
+            this.colubicacion.Visible = true;
+            this.colubicacion.VisibleIndex = 4;
+            // 
+            // colaream2
+            // 
+            this.colaream2.Caption = "Área (mts 2)";
+            this.colaream2.FieldName = "aream2";
+            this.colaream2.Name = "colaream2";
+            this.colaream2.Visible = true;
+            this.colaream2.VisibleIndex = 5;
+            // 
+            // colaltura
+            // 
+            this.colaltura.Caption = "Altura (mts)";
+            this.colaltura.FieldName = "altura";
+            this.colaltura.Name = "colaltura";
+            this.colaltura.Visible = true;
+            this.colaltura.VisibleIndex = 6;
+            // 
+            // colactivo
+            // 
+            this.colactivo.FieldName = "activo";
+            this.colactivo.Name = "colactivo";
+            this.colactivo.Visible = true;
+            this.colactivo.VisibleIndex = 7;
             // 
             // FrmAreas
             // 
@@ -517,9 +487,6 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(551, 458);
             this.ControlBox = false;
-            this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.dgAreas);
-            this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
@@ -529,12 +496,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AREAS";
             this.Load += new System.EventHandler(this.FrmAreas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAltura.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtArea.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUbicacion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAreas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).EndInit();
@@ -545,13 +510,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcAreas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private DevExpress.XtraEditors.TextEdit txtBuscar;
         private DevExpress.XtraEditors.CheckEdit chkActivo;
         private DevExpress.XtraEditors.TextEdit txtAltura;
         private DevExpress.XtraEditors.TextEdit txtArea;
@@ -559,13 +526,11 @@
         internal System.Windows.Forms.Label Label15;
         internal System.Windows.Forms.Label Label16;
         internal System.Windows.Forms.Label Label17;
-        internal System.Windows.Forms.DataGridView dgAreas;
         private DevExpress.XtraEditors.TextEdit txtNombre;
         internal DevExpress.XtraEditors.TextEdit txtCodigo;
         internal System.Windows.Forms.Label Label4;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.Button BtnBuscar;
         internal System.Windows.Forms.GroupBox GroupBox1;
         internal System.Windows.Forms.Label Label14;
         internal System.Windows.Forms.Label Label6;
@@ -578,14 +543,16 @@
         private System.Windows.Forms.BindingSource almacenBindingSource;
         private DevExpress.XtraEditors.LookUpEdit cbAlmacen;
         private System.Windows.Forms.BindingSource areasBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn areaidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn almacenDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ubicacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aream2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alturaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraGrid.GridControl gcAreas;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colareaid;
+        private DevExpress.XtraGrid.Columns.GridColumn colnombre;
+        private DevExpress.XtraGrid.Columns.GridColumn coldescripcion;
+        private DevExpress.XtraGrid.Columns.GridColumn colalmacen;
+        private DevExpress.XtraGrid.Columns.GridColumn colubicacion;
+        private DevExpress.XtraGrid.Columns.GridColumn colaream2;
+        private DevExpress.XtraGrid.Columns.GridColumn colaltura;
+        private DevExpress.XtraGrid.Columns.GridColumn colactivo;
     }
 }

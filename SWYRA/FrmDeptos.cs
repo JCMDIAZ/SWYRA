@@ -25,7 +25,7 @@ namespace SWYRA
 
         private void FrmDeptos_Load(object sender, EventArgs e)
         {
-            dgAlmacen.DataSource = CargaAlmacen();
+            gcAlmacen.DataSource = CargaAlmacen();
             GetGridAlmacen();
         }
 
@@ -44,13 +44,6 @@ namespace SWYRA
             return listAlmacenes;
         }
 
-        private void BtnBuscar_Click(object sender, EventArgs e)
-        {
-            limpiar();
-            List<Almacen> listAlmacenes = CargaAlmacen().Where(o => o.Nombre.Contains(txtBuscar.Text) || o.Clave.Contains(txtBuscar.Text)).ToList();
-            dgAlmacen.DataSource = listAlmacenes;
-            GetGridAlmacen();
-        }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             limpiar();
@@ -58,9 +51,9 @@ namespace SWYRA
 
         private void GetGridAlmacen()
         {
-            if (dgAlmacen.Rows.Count > 0)
+            if (gridView1.RowCount > 0)
             {
-                var almacenID = dgAlmacen.CurrentRow.Cells[0].Value;
+                var almacenID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Clave");
                 cargaDatos(almacenID.ToString());
             }
             else
@@ -93,15 +86,6 @@ namespace SWYRA
             txtAltura.Text = "";
             txtOffset.Text = "";
             chkActivo.Checked = false;
-        }
-
-        private void dgAlmacen_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var almacenID = dgAlmacen.Rows[e.RowIndex].Cells[0].Value;
-                cargaDatos(almacenID.ToString());
-            }
         }
 
         class Variables
@@ -143,7 +127,7 @@ namespace SWYRA
                     }
                     var res = GetExecute("DB", query, 23);
                     MessageBox.Show(@"Guardado satisfactoriamente.");
-                    dgAlmacen.DataSource = CargaAlmacen();
+                    gcAlmacen.DataSource = CargaAlmacen();
                     GetGridAlmacen();
                 }
                 catch (Exception ms)
@@ -183,5 +167,10 @@ namespace SWYRA
         private void txtZona_TextChanged(object sender, EventArgs e)
         {
             txtZona.Text = txtZona.Text.ToUpper();}
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            GetGridAlmacen();
+        }
     }
 }

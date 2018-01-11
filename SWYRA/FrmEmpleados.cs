@@ -30,19 +30,19 @@ namespace SWYRA
 
         private void FrmEmpleados_Load(object sender, EventArgs e)
         {
-            DGUsuarios.DataSource = CargaEmpleados();
             cbCategoria.DataSource = CargaPerfil();
             listAlmacen = CargaAlmacenes();
             lstAlmacen.DataSource = listAlmacen;
             listAreas = CargaAreas();
+            gcUsuarios.DataSource = CargaEmpleados();
             GetGridEmpleados();
         }
 
         private void GetGridEmpleados()
         {
-            if (DGUsuarios.Rows.Count > 0)
+            if (gridView1.RowCount > 0)
             {
-                var usuarioID = DGUsuarios.CurrentRow.Cells[0].Value;
+                var usuarioID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Usuario");
                 cargaDatos(usuarioID.ToString());
             }
             else
@@ -124,23 +124,6 @@ namespace SWYRA
                 MessageBox.Show(ex.Message);
             }
             return listAreas;
-        }
-
-        private void BtnBuscar_Click(object sender, EventArgs e)
-        {
-            limpiar();
-            List<Usuarios> listEmpleados = CargaEmpleados().Where(o => o.Nombre.Contains(TBoxBuscaUsua.Text) || o.Usuario.Contains(TBoxBuscaUsua.Text)).ToList();
-            DGUsuarios.DataSource = listEmpleados;
-            GetGridEmpleados();
-        }
-
-        private void DGUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var usuarioID = DGUsuarios.Rows[e.RowIndex].Cells[0].Value;
-                cargaDatos(usuarioID.ToString());
-            }
         }
 
         private void cargaDatos(string usuarioID)
@@ -266,7 +249,7 @@ namespace SWYRA
                         GetExecute("DB", query2, 18);
                     }
                     MessageBox.Show(@"Guardado satisfactoriamente.");
-                    DGUsuarios.DataSource = CargaEmpleados();
+                    gcUsuarios.DataSource = CargaEmpleados();
                     GetGridEmpleados();
                 }
                 catch (Exception ms)
@@ -360,6 +343,11 @@ namespace SWYRA
         private void txtLetra_TextChanged(object sender, EventArgs e)
         {
             txtLetra.Text = txtLetra.Text.ToUpper();
+        }
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            GetGridEmpleados();
         }
     }
 }

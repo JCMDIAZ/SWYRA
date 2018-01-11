@@ -29,16 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEmpleados));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnLimpiar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
-            this.TBoxBuscaUsua = new System.Windows.Forms.TextBox();
-            this.BtnBuscar = new System.Windows.Forms.Button();
             this.GpoEmpleados = new System.Windows.Forms.GroupBox();
             this.cbArea = new DevExpress.XtraEditors.LookUpEdit();
             this.areasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -59,11 +54,6 @@
             this.Label7 = new System.Windows.Forms.Label();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.perfilBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DGUsuarios = new System.Windows.Forms.DataGridView();
-            this.usuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoriaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.lstAlamcenAsignado = new System.Windows.Forms.ListBox();
@@ -77,15 +67,23 @@
             this.AddBtn = new System.Windows.Forms.Button();
             this.LinkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gcUsuarios = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colUsuario = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCategoria = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colActivo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             this.GpoEmpleados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbArea.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.perfilBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioAlmacenBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -131,31 +129,6 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // TBoxBuscaUsua
-            // 
-            this.TBoxBuscaUsua.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TBoxBuscaUsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBoxBuscaUsua.Location = new System.Drawing.Point(345, 33);
-            this.TBoxBuscaUsua.Margin = new System.Windows.Forms.Padding(4);
-            this.TBoxBuscaUsua.Name = "TBoxBuscaUsua";
-            this.TBoxBuscaUsua.Size = new System.Drawing.Size(221, 24);
-            this.TBoxBuscaUsua.TabIndex = 1;
-            // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.BackColor = System.Drawing.Color.Firebrick;
-            this.BtnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscar.ForeColor = System.Drawing.Color.White;
-            this.BtnBuscar.Location = new System.Drawing.Point(577, 30);
-            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(85, 30);
-            this.BtnBuscar.TabIndex = 2;
-            this.BtnBuscar.Text = "BUSCAR";
-            this.BtnBuscar.UseVisualStyleBackColor = false;
-            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
-            // 
             // GpoEmpleados
             // 
             this.GpoEmpleados.Controls.Add(this.cbArea);
@@ -175,11 +148,11 @@
             this.GpoEmpleados.Controls.Add(this.TxtNombre);
             this.GpoEmpleados.Controls.Add(this.Label7);
             this.GpoEmpleados.Controls.Add(this.cbCategoria);
-            this.GpoEmpleados.Location = new System.Drawing.Point(16, 65);
+            this.GpoEmpleados.Location = new System.Drawing.Point(19, 31);
             this.GpoEmpleados.Margin = new System.Windows.Forms.Padding(4);
             this.GpoEmpleados.Name = "GpoEmpleados";
             this.GpoEmpleados.Padding = new System.Windows.Forms.Padding(4);
-            this.GpoEmpleados.Size = new System.Drawing.Size(333, 248);
+            this.GpoEmpleados.Size = new System.Drawing.Size(333, 246);
             this.GpoEmpleados.TabIndex = 13;
             this.GpoEmpleados.TabStop = false;
             // 
@@ -388,94 +361,6 @@
             // 
             this.perfilBindingSource.DataSource = typeof(SWYRA.Perfil);
             // 
-            // DGUsuarios
-            // 
-            this.DGUsuarios.AllowUserToAddRows = false;
-            this.DGUsuarios.AllowUserToDeleteRows = false;
-            this.DGUsuarios.AutoGenerateColumns = false;
-            this.DGUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
-            this.DGUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.usuarioDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn,
-            this.categoriaDataGridViewTextBoxColumn,
-            this.activoDataGridViewCheckBoxColumn});
-            this.DGUsuarios.DataSource = this.usuariosBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DGUsuarios.Location = new System.Drawing.Point(372, 71);
-            this.DGUsuarios.Margin = new System.Windows.Forms.Padding(4);
-            this.DGUsuarios.MultiSelect = false;
-            this.DGUsuarios.Name = "DGUsuarios";
-            this.DGUsuarios.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DGUsuarios.Size = new System.Drawing.Size(287, 242);
-            this.DGUsuarios.TabIndex = 3;
-            this.DGUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGUsuarios_CellClick);
-            // 
-            // usuarioDataGridViewTextBoxColumn
-            // 
-            this.usuarioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.usuarioDataGridViewTextBoxColumn.DataPropertyName = "Usuario";
-            this.usuarioDataGridViewTextBoxColumn.FillWeight = 99.46524F;
-            this.usuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
-            this.usuarioDataGridViewTextBoxColumn.MinimumWidth = 20;
-            this.usuarioDataGridViewTextBoxColumn.Name = "usuarioDataGridViewTextBoxColumn";
-            this.usuarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usuarioDataGridViewTextBoxColumn.Width = 86;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.FillWeight = 100.5348F;
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 20;
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 87;
-            // 
-            // categoriaDataGridViewTextBoxColumn
-            // 
-            this.categoriaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.categoriaDataGridViewTextBoxColumn.DataPropertyName = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn.HeaderText = "Categoria";
-            this.categoriaDataGridViewTextBoxColumn.MinimumWidth = 20;
-            this.categoriaDataGridViewTextBoxColumn.Name = "categoriaDataGridViewTextBoxColumn";
-            this.categoriaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categoriaDataGridViewTextBoxColumn.Width = 98;
-            // 
-            // activoDataGridViewCheckBoxColumn
-            // 
-            this.activoDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "Activo";
-            this.activoDataGridViewCheckBoxColumn.HeaderText = "Activo";
-            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
-            this.activoDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.activoDataGridViewCheckBoxColumn.Width = 52;
-            // 
             // usuariosBindingSource
             // 
             this.usuariosBindingSource.DataSource = typeof(SWYRA.Usuarios);
@@ -492,7 +377,7 @@
             this.GroupBox1.Controls.Add(this.AddBtn);
             this.GroupBox1.Controls.Add(this.LinkLabel1);
             this.GroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupBox1.Location = new System.Drawing.Point(19, 321);
+            this.GroupBox1.Location = new System.Drawing.Point(19, 285);
             this.GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.GroupBox1.Name = "GroupBox1";
             this.GroupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -615,10 +500,76 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.GroupBox1);
+            this.panel1.Controls.Add(this.gcUsuarios);
+            this.panel1.Controls.Add(this.GpoEmpleados);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(675, 610);
+            this.panel1.Size = new System.Drawing.Size(675, 575);
             this.panel1.TabIndex = 35;
+            // 
+            // gcUsuarios
+            // 
+            this.gcUsuarios.DataSource = this.usuariosBindingSource;
+            this.gcUsuarios.Location = new System.Drawing.Point(356, 31);
+            this.gcUsuarios.MainView = this.gridView1;
+            this.gcUsuarios.Name = "gcUsuarios";
+            this.gcUsuarios.Size = new System.Drawing.Size(306, 246);
+            this.gcUsuarios.TabIndex = 46;
+            this.gcUsuarios.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colUsuario,
+            this.colNombre,
+            this.colCategoria,
+            this.colActivo});
+            this.gridView1.GridControl = this.gcUsuarios;
+            this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsMenu.EnableFooterMenu = false;
+            this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            // 
+            // colUsuario
+            // 
+            this.colUsuario.Caption = "Id";
+            this.colUsuario.FieldName = "Usuario";
+            this.colUsuario.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colUsuario.Name = "colUsuario";
+            this.colUsuario.Visible = true;
+            this.colUsuario.VisibleIndex = 0;
+            this.colUsuario.Width = 40;
+            // 
+            // colNombre
+            // 
+            this.colNombre.FieldName = "Nombre";
+            this.colNombre.Name = "colNombre";
+            this.colNombre.Visible = true;
+            this.colNombre.VisibleIndex = 1;
+            this.colNombre.Width = 150;
+            // 
+            // colCategoria
+            // 
+            this.colCategoria.FieldName = "Categoria";
+            this.colCategoria.Name = "colCategoria";
+            this.colCategoria.Visible = true;
+            this.colCategoria.VisibleIndex = 2;
+            this.colCategoria.Width = 90;
+            // 
+            // colActivo
+            // 
+            this.colActivo.FieldName = "Activo";
+            this.colActivo.Name = "colActivo";
+            this.colActivo.Visible = true;
+            this.colActivo.VisibleIndex = 3;
+            this.colActivo.Width = 40;
             // 
             // FrmEmpleados
             // 
@@ -626,13 +577,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(675, 610);
+            this.ClientSize = new System.Drawing.Size(675, 575);
             this.ControlBox = false;
-            this.Controls.Add(this.GroupBox1);
-            this.Controls.Add(this.DGUsuarios);
-            this.Controls.Add(this.GpoEmpleados);
-            this.Controls.Add(this.BtnBuscar);
-            this.Controls.Add(this.TBoxBuscaUsua);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -648,11 +594,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbArea.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.perfilBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioAlmacenBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,8 +612,6 @@
         private System.Windows.Forms.ToolStripButton btnGuardar;
         private System.Windows.Forms.ToolStripButton btnLimpiar;
         private System.Windows.Forms.ToolStripButton btnSalir;
-        private System.Windows.Forms.TextBox TBoxBuscaUsua;
-        internal System.Windows.Forms.Button BtnBuscar;
         private System.Windows.Forms.GroupBox GpoEmpleados;
         internal System.Windows.Forms.CheckBox Chkact;
         internal System.Windows.Forms.Label Label4;
@@ -678,7 +624,6 @@
         internal System.Windows.Forms.TextBox TxtNombre;
         internal System.Windows.Forms.Label Label7;
         internal System.Windows.Forms.ComboBox cbCategoria;
-        internal System.Windows.Forms.DataGridView DGUsuarios;
         internal System.Windows.Forms.GroupBox GroupBox1;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label6;
@@ -687,10 +632,6 @@
         internal System.Windows.Forms.Button DelBtn;
         internal System.Windows.Forms.Button AddBtn;
         internal System.Windows.Forms.LinkLabel LinkLabel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource usuariosBindingSource;
         private System.Windows.Forms.BindingSource perfilBindingSource;
         private System.Windows.Forms.BindingSource usuarioAlmacenBindingSource;
@@ -704,5 +645,11 @@
         private DevExpress.XtraEditors.LookUpEdit cbArea;
         private System.Windows.Forms.BindingSource areasBindingSource;
         private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraGrid.GridControl gcUsuarios;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colUsuario;
+        private DevExpress.XtraGrid.Columns.GridColumn colNombre;
+        private DevExpress.XtraGrid.Columns.GridColumn colCategoria;
+        private DevExpress.XtraGrid.Columns.GridColumn colActivo;
     }
 }

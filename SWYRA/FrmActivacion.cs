@@ -62,7 +62,7 @@ namespace SWYRA
             try
             {
                 var query = "UPDATE Cat_RegMach set Activo_RegMach = 0" +
-                            "where cast(DECRYPTBYPASSPHRASE('swyra',[Macmach_RegMach]) as varchar(8000)) like '%" + reg.register + "%' " +
+                            "where cast(DECRYPTBYPASSPHRASE('swyra',[Macmach_RegMach]) as varchar(8000)) like '%" + txtClave.Text + "%' " +
                             "INSERT Cat_RegMach (Macmach_RegMach, Fecha_RegMach, Activo_RegMach) " +
                             "VALUES(ENCRYPTBYPASSPHRASE('swyra', '" + reg.register + "'), GETDATE(), 1)";
                 if (GetExecute("DB", query, 4))

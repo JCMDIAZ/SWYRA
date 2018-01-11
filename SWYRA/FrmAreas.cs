@@ -25,7 +25,7 @@ namespace SWYRA
 
         private void FrmAreas_Load(object sender, EventArgs e)
         {
-            dgAreas.DataSource = CargaAreas();
+            gcAreas.DataSource = CargaAreas();
             cbAlmacen.Properties.DataSource = CargaAlmacen();
             GetGridAreas();
         }
@@ -78,9 +78,9 @@ namespace SWYRA
 
         private void GetGridAreas()
         {
-            if (dgAreas.Rows.Count > 0)
+            if (gridView1.RowCount > 0)
             {
-                var areaID = dgAreas.CurrentRow.Cells[0].Value;
+                var areaID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "areaid");
                 cargaDatos(areaID.ToString());
             }
             else
@@ -101,14 +101,6 @@ namespace SWYRA
             txtAltura.Text = area.altura.ToString();
             txtDescripcion.Text = area.descripcion;
             chkActivo.Checked = area.activo;
-        }
-
-        private void BtnBuscar_Click(object sender, EventArgs e)
-        {
-            limpiar();
-            List<Areas> listAreas = CargaAreas().Where(o => o.nombre.Contains(txtBuscar.Text) || o.areaid.Contains(txtBuscar.Text)).ToList();
-            dgAreas.DataSource = listAreas;
-            GetGridAreas();
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
@@ -164,7 +156,7 @@ namespace SWYRA
                     }
                     var res = GetExecute("DB", query, 33);
                     MessageBox.Show(@"Guardado satisfactoriamente.");
-                    dgAreas.DataSource = CargaAreas();
+                    gcAreas.DataSource = CargaAreas();
                     GetGridAreas();
                 }
                 catch (Exception ms)
@@ -191,12 +183,9 @@ namespace SWYRA
             return b;
         }
 
-        private void dgAreas_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {var areaID = dgAreas.Rows[e.RowIndex].Cells[0].Value;
-                cargaDatos(areaID.ToString());
-            }
+            GetGridAreas();
         }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDeptos));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
@@ -54,19 +53,18 @@
             this.Label6 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.BtnBuscar = new System.Windows.Forms.Button();
-            this.dgAlmacen = new System.Windows.Forms.DataGridView();
-            this.claveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.abreviaturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zonaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.areaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.offsetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.alamcenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtBuscar = new DevExpress.XtraEditors.TextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gcAlmacen = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colClave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAbreviatura = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colZona = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colArea = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAltura = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coloffset = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colActivo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo.Properties)).BeginInit();
@@ -77,9 +75,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAbreviaura.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAlmacen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.alamcenBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcAlmacen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -374,147 +373,118 @@
             this.Label1.TabIndex = 1;
             this.Label1.Text = "Clave Almacen";
             // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.BackColor = System.Drawing.Color.Firebrick;
-            this.BtnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscar.ForeColor = System.Drawing.Color.White;
-            this.BtnBuscar.Location = new System.Drawing.Point(453, 188);
-            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(85, 30);
-            this.BtnBuscar.TabIndex = 13;
-            this.BtnBuscar.Text = "BUSCAR";
-            this.BtnBuscar.UseVisualStyleBackColor = false;
-            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
-            // 
-            // dgAlmacen
-            // 
-            this.dgAlmacen.AllowUserToAddRows = false;
-            this.dgAlmacen.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.NullValue = "NA";
-            this.dgAlmacen.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgAlmacen.AutoGenerateColumns = false;
-            this.dgAlmacen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgAlmacen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgAlmacen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAlmacen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.claveDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn,
-            this.abreviaturaDataGridViewTextBoxColumn,
-            this.zonaDataGridViewTextBoxColumn,
-            this.areaDataGridViewTextBoxColumn,
-            this.alturaDataGridViewTextBoxColumn,
-            this.offsetDataGridViewTextBoxColumn,
-            this.activoDataGridViewCheckBoxColumn});
-            this.dgAlmacen.DataSource = this.alamcenBindingSource;
-            this.dgAlmacen.Location = new System.Drawing.Point(13, 226);
-            this.dgAlmacen.Margin = new System.Windows.Forms.Padding(4);
-            this.dgAlmacen.MultiSelect = false;
-            this.dgAlmacen.Name = "dgAlmacen";
-            this.dgAlmacen.ReadOnly = true;
-            this.dgAlmacen.RowHeadersWidth = 20;
-            this.dgAlmacen.RowTemplate.Height = 24;
-            this.dgAlmacen.Size = new System.Drawing.Size(525, 215);
-            this.dgAlmacen.TabIndex = 30;
-            this.dgAlmacen.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAlmacen_CellClick);
-            // 
-            // claveDataGridViewTextBoxColumn
-            // 
-            this.claveDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.claveDataGridViewTextBoxColumn.DataPropertyName = "Clave";
-            this.claveDataGridViewTextBoxColumn.HeaderText = "Clave";
-            this.claveDataGridViewTextBoxColumn.Name = "claveDataGridViewTextBoxColumn";
-            this.claveDataGridViewTextBoxColumn.ReadOnly = true;
-            this.claveDataGridViewTextBoxColumn.Width = 72;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 50;
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 87;
-            // 
-            // abreviaturaDataGridViewTextBoxColumn
-            // 
-            this.abreviaturaDataGridViewTextBoxColumn.DataPropertyName = "Abreviatura";
-            this.abreviaturaDataGridViewTextBoxColumn.HeaderText = "Abreviatura";
-            this.abreviaturaDataGridViewTextBoxColumn.MinimumWidth = 25;
-            this.abreviaturaDataGridViewTextBoxColumn.Name = "abreviaturaDataGridViewTextBoxColumn";
-            this.abreviaturaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.abreviaturaDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // zonaDataGridViewTextBoxColumn
-            // 
-            this.zonaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.zonaDataGridViewTextBoxColumn.DataPropertyName = "Zona";
-            this.zonaDataGridViewTextBoxColumn.HeaderText = "Zona";
-            this.zonaDataGridViewTextBoxColumn.MinimumWidth = 25;
-            this.zonaDataGridViewTextBoxColumn.Name = "zonaDataGridViewTextBoxColumn";
-            this.zonaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.zonaDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // areaDataGridViewTextBoxColumn
-            // 
-            this.areaDataGridViewTextBoxColumn.DataPropertyName = "Area";
-            this.areaDataGridViewTextBoxColumn.HeaderText = "Area";
-            this.areaDataGridViewTextBoxColumn.MinimumWidth = 20;
-            this.areaDataGridViewTextBoxColumn.Name = "areaDataGridViewTextBoxColumn";
-            this.areaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.areaDataGridViewTextBoxColumn.Width = 67;
-            // 
-            // alturaDataGridViewTextBoxColumn
-            // 
-            this.alturaDataGridViewTextBoxColumn.DataPropertyName = "Altura";
-            this.alturaDataGridViewTextBoxColumn.HeaderText = "Altura";
-            this.alturaDataGridViewTextBoxColumn.MinimumWidth = 20;
-            this.alturaDataGridViewTextBoxColumn.Name = "alturaDataGridViewTextBoxColumn";
-            this.alturaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.alturaDataGridViewTextBoxColumn.Width = 74;
-            // 
-            // offsetDataGridViewTextBoxColumn
-            // 
-            this.offsetDataGridViewTextBoxColumn.DataPropertyName = "offset";
-            this.offsetDataGridViewTextBoxColumn.HeaderText = "offset";
-            this.offsetDataGridViewTextBoxColumn.MinimumWidth = 50;
-            this.offsetDataGridViewTextBoxColumn.Name = "offsetDataGridViewTextBoxColumn";
-            this.offsetDataGridViewTextBoxColumn.ReadOnly = true;
-            this.offsetDataGridViewTextBoxColumn.Width = 72;
-            // 
-            // activoDataGridViewCheckBoxColumn
-            // 
-            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "Activo";
-            this.activoDataGridViewCheckBoxColumn.HeaderText = "Activo";
-            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
-            this.activoDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.activoDataGridViewCheckBoxColumn.Width = 52;
-            // 
             // alamcenBindingSource
             // 
             this.alamcenBindingSource.DataSource = typeof(SWYRA.Almacen);
             // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(255, 191);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBuscar.Properties.Appearance.Options.UseFont = true;
-            this.txtBuscar.Properties.Appearance.Options.UseForeColor = true;
-            this.txtBuscar.Properties.MaxLength = 50;
-            this.txtBuscar.Size = new System.Drawing.Size(191, 24);
-            this.txtBuscar.TabIndex = 38;
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.gcAlmacen);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(551, 456);
             this.panel1.TabIndex = 39;
+            // 
+            // gcAlmacen
+            // 
+            this.gcAlmacen.DataSource = this.alamcenBindingSource;
+            this.gcAlmacen.Location = new System.Drawing.Point(13, 187);
+            this.gcAlmacen.MainView = this.gridView1;
+            this.gcAlmacen.Name = "gcAlmacen";
+            this.gcAlmacen.Size = new System.Drawing.Size(525, 254);
+            this.gcAlmacen.TabIndex = 45;
+            this.gcAlmacen.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colClave,
+            this.colNombre,
+            this.colAbreviatura,
+            this.colZona,
+            this.colArea,
+            this.colAltura,
+            this.coloffset,
+            this.colActivo});
+            this.gridView1.GridControl = this.gcAlmacen;
+            this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsMenu.EnableFooterMenu = false;
+            this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            // 
+            // colClave
+            // 
+            this.colClave.Caption = "Clave";
+            this.colClave.FieldName = "Clave";
+            this.colClave.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colClave.Name = "colClave";
+            this.colClave.Visible = true;
+            this.colClave.VisibleIndex = 0;
+            this.colClave.Width = 40;
+            // 
+            // colNombre
+            // 
+            this.colNombre.Caption = "Almacen";
+            this.colNombre.FieldName = "Nombre";
+            this.colNombre.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colNombre.Name = "colNombre";
+            this.colNombre.Visible = true;
+            this.colNombre.VisibleIndex = 1;
+            this.colNombre.Width = 120;
+            // 
+            // colAbreviatura
+            // 
+            this.colAbreviatura.Caption = "Abreviatura";
+            this.colAbreviatura.FieldName = "Abreviatura";
+            this.colAbreviatura.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colAbreviatura.Name = "colAbreviatura";
+            this.colAbreviatura.Visible = true;
+            this.colAbreviatura.VisibleIndex = 2;
+            this.colAbreviatura.Width = 80;
+            // 
+            // colZona
+            // 
+            this.colZona.FieldName = "Zona";
+            this.colZona.Name = "colZona";
+            this.colZona.Visible = true;
+            this.colZona.VisibleIndex = 3;
+            // 
+            // colArea
+            // 
+            this.colArea.Caption = "Área (mts2)";
+            this.colArea.FieldName = "Area";
+            this.colArea.Name = "colArea";
+            this.colArea.Visible = true;
+            this.colArea.VisibleIndex = 4;
+            // 
+            // colAltura
+            // 
+            this.colAltura.Caption = "Altura (mts)";
+            this.colAltura.FieldName = "Altura";
+            this.colAltura.Name = "colAltura";
+            this.colAltura.Visible = true;
+            this.colAltura.VisibleIndex = 5;
+            // 
+            // coloffset
+            // 
+            this.coloffset.Caption = "Offset (mts)";
+            this.coloffset.FieldName = "offset";
+            this.coloffset.Name = "coloffset";
+            this.coloffset.Visible = true;
+            this.coloffset.VisibleIndex = 6;
+            // 
+            // colActivo
+            // 
+            this.colActivo.FieldName = "Activo";
+            this.colActivo.Name = "colActivo";
+            this.colActivo.Visible = true;
+            this.colActivo.VisibleIndex = 7;
             // 
             // FrmDeptos
             // 
@@ -524,9 +494,6 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(551, 454);
             this.ControlBox = false;
-            this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.dgAlmacen);
-            this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
@@ -548,9 +515,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAbreviaura.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAlmacen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.alamcenBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcAlmacen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,8 +541,6 @@
         internal System.Windows.Forms.Label Label6;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.Button BtnBuscar;
-        internal System.Windows.Forms.DataGridView dgAlmacen;
         internal DevExpress.XtraEditors.TextEdit txtCodigo;
         private DevExpress.XtraEditors.CheckEdit chkActivo;
         private DevExpress.XtraEditors.TextEdit txtOffset;
@@ -583,16 +549,17 @@
         private DevExpress.XtraEditors.TextEdit txtZona;
         private DevExpress.XtraEditors.TextEdit txtAbreviaura;
         private DevExpress.XtraEditors.TextEdit txtDescripcion;
-        private DevExpress.XtraEditors.TextEdit txtBuscar;
         private System.Windows.Forms.BindingSource alamcenBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn claveDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn abreviaturaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zonaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn areaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alturaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn offsetDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraGrid.GridControl gcAlmacen;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colClave;
+        private DevExpress.XtraGrid.Columns.GridColumn colNombre;
+        private DevExpress.XtraGrid.Columns.GridColumn colAbreviatura;
+        private DevExpress.XtraGrid.Columns.GridColumn colZona;
+        private DevExpress.XtraGrid.Columns.GridColumn colArea;
+        private DevExpress.XtraGrid.Columns.GridColumn colAltura;
+        private DevExpress.XtraGrid.Columns.GridColumn coloffset;
+        private DevExpress.XtraGrid.Columns.GridColumn colActivo;
     }
 }
