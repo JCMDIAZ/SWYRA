@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catalogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +43,9 @@
             this.autorizaciónPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stb = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mínimosYMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.condicionesDeProdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.remisiónDePedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.stb.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +72,13 @@
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
             this.configuraciónToolStripMenuItem.Text = "&Configuración";
             // 
+            // cambiarContraseñaToolStripMenuItem
+            // 
+            this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
+            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
+            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
@@ -81,6 +91,8 @@
             this.catalogosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.almacenesToolStripMenuItem,
             this.áreasToolStripMenuItem,
+            this.mínimosYMasterToolStripMenuItem,
+            this.condicionesDeProdToolStripMenuItem,
             this.usuariosToolStripMenuItem});
             this.catalogosToolStripMenuItem.Name = "catalogosToolStripMenuItem";
             this.catalogosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
@@ -89,21 +101,21 @@
             // almacenesToolStripMenuItem
             // 
             this.almacenesToolStripMenuItem.Name = "almacenesToolStripMenuItem";
-            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.almacenesToolStripMenuItem.Text = "&Almacenes";
             this.almacenesToolStripMenuItem.Click += new System.EventHandler(this.almacenesToolStripMenuItem_Click);
             // 
             // áreasToolStripMenuItem
             // 
             this.áreasToolStripMenuItem.Name = "áreasToolStripMenuItem";
-            this.áreasToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.áreasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.áreasToolStripMenuItem.Text = "Á&reas";
             this.áreasToolStripMenuItem.Click += new System.EventHandler(this.áreasToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.usuariosToolStripMenuItem.Text = "&Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
@@ -112,7 +124,8 @@
             this.operaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testToolStripMenuItem,
             this.estatusPedidoToolStripMenuItem,
-            this.autorizaciónPedidoToolStripMenuItem});
+            this.autorizaciónPedidoToolStripMenuItem,
+            this.remisiónDePedidoToolStripMenuItem});
             this.operaciónToolStripMenuItem.Name = "operaciónToolStripMenuItem";
             this.operaciónToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
             this.operaciónToolStripMenuItem.Text = "Operación";
@@ -156,12 +169,23 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(66, 20);
             this.toolStripStatusLabel1.Text = "Usuario: ";
             // 
-            // cambiarContraseñaToolStripMenuItem
+            // mínimosYMasterToolStripMenuItem
             // 
-            this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
-            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
-            this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
-            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
+            this.mínimosYMasterToolStripMenuItem.Name = "mínimosYMasterToolStripMenuItem";
+            this.mínimosYMasterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mínimosYMasterToolStripMenuItem.Text = "Mínimos y Master";
+            // 
+            // condicionesDeProdToolStripMenuItem
+            // 
+            this.condicionesDeProdToolStripMenuItem.Name = "condicionesDeProdToolStripMenuItem";
+            this.condicionesDeProdToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.condicionesDeProdToolStripMenuItem.Text = "Condiciones de Prod.";
+            // 
+            // remisiónDePedidoToolStripMenuItem
+            // 
+            this.remisiónDePedidoToolStripMenuItem.Name = "remisiónDePedidoToolStripMenuItem";
+            this.remisiónDePedidoToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.remisiónDePedidoToolStripMenuItem.Text = "Remisión de Pedido";
             // 
             // MDIPrincipal
             // 
@@ -208,6 +232,9 @@
         private System.Windows.Forms.ToolStripMenuItem estatusPedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autorizaciónPedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mínimosYMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem condicionesDeProdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem remisiónDePedidoToolStripMenuItem;
     }
 }
 

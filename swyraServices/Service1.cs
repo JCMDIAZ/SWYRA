@@ -280,10 +280,16 @@ namespace swyraServices
                 string[] dats = p.condicion.Split(';');
                 if (dats.Length > 0)
                 {
+                    string[] clvTipoServ = { "L", "F", "LU", "FU" };
                     string[] catTipoServ = { "LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE" };
-                    p.tiposervicio = (catTipoServ.Contains(dats[0])) ? dats[0] : "LOCAL";
+                    int index = Array.IndexOf(clvTipoServ, dats[0]);
+                    p.tiposervicio = (index > 0) ? catTipoServ[index] : "LOCAL";
+
+                    string[] clvTipoDom = { "OCU", "PAS", "DOM" };
+                    string[] catTipoDom = { "OCURRE", "PASAN", "DOMICILIO" };
+                    index = Array.IndexOf(clvTipoDom, dats[1]);
+                    p.ocurredomicilio = (index > 0) ? catTipoDom[index] : "OCURRE";
                 }
-                p.ocurredomicilio = (p.condicion.ToUpper().Contains("OCURRRE")) ? "OCURRE" : "DOMICILIO";
                 p.estatuspedido = "AUTORIZACION";
                 var cobrador = GetUsuarioIdByERP(p.cve_clpv);
                 query =
@@ -578,6 +584,7 @@ namespace swyraServices
                 eventLog1.WriteEntry("19: " + ex.Message + "|" + query , EventLogEntryType.Error);
             }
         }
+
         private void ModificaInventario(Inventario inv)
         {
             try
