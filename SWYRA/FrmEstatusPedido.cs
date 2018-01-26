@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.Utils.MVVM.Services;
 using DevExpress.XtraBars;
 using static SWYRA.General;
 
@@ -66,6 +67,7 @@ namespace SWYRA
             FiltrarCarga();
             gridControl1.DataSource = listPedidos;
         }
+
         private void FiltrarCarga()
         {
             listPedidos = null;
@@ -78,9 +80,13 @@ namespace SWYRA
             {
                 if (cbEstatusPed.Text != "" && txtFechIni.Text != "" && txtFechFin.Text != "")
                 {
-                    listPedidos =
-                        CargaPedidos(txtFechIni.DateTime, txtFechFin.DateTime).Where(o => o.estatuspedido == cbEstatusPed.Text)
+                    listPedidos = CargaPedidos(txtFechIni.DateTime, txtFechFin.DateTime);
+                    if (cbEstatusPed.Text != @"TODOS")
+                    {
+                        listPedidos = listPedidos
+                            .Where(o => o.estatuspedido == cbEstatusPed.Text)
                             .ToList();
+                    }
                 }
             }
         }
@@ -90,23 +96,26 @@ namespace SWYRA
             List<Pedidos> list = new List<Pedidos>();
             try
             {
-                var query = "SELECT  TIP_DOC, CVE_DOC, CVE_CLPV, p.STATUS, DAT_MOSTR, p.CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, " +
-                            "FECHA_VEN, FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, " + 
-                            "CONDICION, p.CVE_OBS, NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, " +
-                            "FECHAELAB, PRIMERPAGO, RFC, CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, " +
-                            "BLOQ, FORMAENVIO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, " +
-                            "DOC_ANT, TIP_DOC_SIG, DOC_SIG, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, " +
-                            "COBRADOR_AUTORIZO, SURTIDOR_ASIGNADO, EMPAQUETADOR_ASIGNADO, ETIQUETADOR_ASIGNADO, SURTIDOR_AREA, " +
-                            "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, " +
-                            "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
-                            "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD " +
-                            "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
-                            "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +"left join USUARIOS uSurAsig on uSurAsig.Usuario = p.SURTIDOR_ASIGNADO " +
-                            "left join USUARIOS uEmpAsig on uEmpAsig.Usuario = p.EMPAQUETADOR_ASIGNADO " +
-                            "left join USUARIOS uEtiAsig on uEtiAsig.Usuario = p.ETIQUETADOR_ASIGNADO " +
-                            "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
-                            "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
-                            "WHERE p.FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "'";
+                var query =
+                    "SELECT  TIP_DOC, CVE_DOC, CVE_CLPV, p.STATUS, DAT_MOSTR, p.CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, " +
+                    "FECHA_VEN, FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, " +
+                    "CONDICION, p.CVE_OBS, NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, " +
+                    "FECHAELAB, PRIMERPAGO, RFC, CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, " +
+                    "BLOQ, FORMAENVIO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, " +
+                    "DOC_ANT, TIP_DOC_SIG, DOC_SIG, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, " +
+                    "COBRADOR_AUTORIZO, SURTIDOR_ASIGNADO, EMPAQUETADOR_ASIGNADO, ETIQUETADOR_ASIGNADO, SURTIDOR_AREA, " +
+                    "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, " +
+                    "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
+                    "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD " +
+                    "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
+                    "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
+                    "left join USUARIOS uSurAsig on uSurAsig.Usuario = p.SURTIDOR_ASIGNADO " +
+                    "left join USUARIOS uEmpAsig on uEmpAsig.Usuario = p.EMPAQUETADOR_ASIGNADO " +
+                    "left join USUARIOS uEtiAsig on uEtiAsig.Usuario = p.ETIQUETADOR_ASIGNADO " +
+                    "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
+                    "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
+                    "WHERE p.FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") +
+                    "'";
                 list = GetDataTable("DB", query, 51).ToList<Pedidos>();
             }
             catch (Exception ex)
@@ -115,6 +124,7 @@ namespace SWYRA
             }
             return list;
         }
+
         private void ActualizaPedido()
         {
             try
@@ -123,15 +133,17 @@ namespace SWYRA
                 var query = "UPDATE PEDIDO SET TIPOSERVICIO = '" + pedido.tiposervicio + "', " +
                             "PRIORIDAD = '" + pedido.prioridad + "', " +
                             "OCURREDOMICILIO = '" + pedido.ocurredomicilio + "', " +
-                            "INDICACIONES = '" + pedido.indicaciones.Replace("'","") + "' " +
+                            "INDICACIONES = '" + pedido.indicaciones.Replace("'", "") + "' " +
                             "WHERE CVE_DOC = '" + pedido.cve_doc + "'";
                 var res = GetExecute("DB", query, 52);
-                MessageBox.Show(@"Guardado satisfactoriamente.");}
+                MessageBox.Show(@"Guardado satisfactoriamente.");
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void limpiarFiltro()
         {
             cbEstatusPed.SelectedIndex = -1;
@@ -186,7 +198,8 @@ namespace SWYRA
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.Where(o => o.cve_doc == cve_doc).FirstOrDefault();
             Rectangle rect = Screen.GetWorkingArea(this);
-            Point point = new Point(rect.Width / 2 - ppTipoServicio.Width / 2, rect.Height / 2 - ppTipoServicio.Height / 2);
+            Point point = new Point(rect.Width / 2 - ppTipoServicio.Width / 2,
+                rect.Height / 2 - ppTipoServicio.Height / 2);
             cbTipoServicio.EditValue = pedido.tiposervicio;
             ppTipoServicio.ShowPopup(point);
             popupMenu1.HidePopup();
@@ -205,7 +218,8 @@ namespace SWYRA
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.Where(o => o.cve_doc == cve_doc).FirstOrDefault();
             Rectangle rect = Screen.GetWorkingArea(this);
-            Point point = new Point(rect.Width / 2 - ppTipoServicio.Width / 2, rect.Height / 2 - ppTipoServicio.Height / 2);
+            Point point = new Point(rect.Width / 2 - ppTipoServicio.Width / 2,
+                rect.Height / 2 - ppTipoServicio.Height / 2);
             cbPrioridad.EditValue = pedido.prioridad;
             ppPrioridad.ShowPopup(point);
             popupMenu1.HidePopup();
@@ -224,7 +238,8 @@ namespace SWYRA
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.Where(o => o.cve_doc == cve_doc).FirstOrDefault();
             Rectangle rect = Screen.GetWorkingArea(this);
-            Point point = new Point(rect.Width / 2 - ppTipoServicio.Width / 2, rect.Height / 2 - ppTipoServicio.Height / 2);
+            Point point = new Point(rect.Width / 2 - ppTipoServicio.Width / 2,
+                rect.Height / 2 - ppTipoServicio.Height / 2);
             cbEntrega.EditValue = pedido.ocurredomicilio;
             ppEntrega.ShowPopup(point);
             popupMenu1.HidePopup();
@@ -243,7 +258,8 @@ namespace SWYRA
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.Where(o => o.cve_doc == cve_doc).FirstOrDefault();
             Rectangle rect = Screen.GetWorkingArea(this);
-            Point point = new Point(rect.Width / 2 - ppIndicaciones.Width / 2, rect.Height / 2 - ppIndicaciones.Height / 2);
+            Point point = new Point(rect.Width / 2 - ppIndicaciones.Width / 2,
+                rect.Height / 2 - ppIndicaciones.Height / 2);
             txtIndicaciones.Text = pedido.indicaciones;
             ppIndicaciones.ShowPopup(point);
             popupMenu1.HidePopup();
@@ -255,6 +271,19 @@ namespace SWYRA
             gridControl1.RefreshDataSource();
             ppIndicaciones.HidePopup();
             ActualizaPedido();
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = @"xlsx Excel (*.xlsx)|*.xlsx";
+            sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                gridControl1.ExportToXlsx(sfd.FileName);
+            }
         }
     }
 }

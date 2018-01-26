@@ -135,6 +135,12 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPresentProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPresentProd.Designer.cs">
+      <DependentUpon>FrmPresentProd.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRemision.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     <EmbeddedResource Include="FrmActivacion.resx">
       <DependentUpon>FrmActivacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAreas.aa-ER.resx">
+      <DependentUpon>FrmAreas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAreas.resx">
       <DependentUpon>FrmAreas.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPresentProd.resx">
+      <DependentUpon>FrmPresentProd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRemision.resx">
       <DependentUpon>FrmRemision.cs</DependentUpon>
@@ -225,6 +237,8 @@
     <None Include="Properties\DataSources\Alamcen.datasource" />
     <None Include="Properties\DataSources\Almacen.datasource" />
     <None Include="Properties\DataSources\Areas.datasource" />
+    <None Include="Properties\DataSources\Inventario.datasource" />
+    <None Include="Properties\DataSources\InventarioPresentacion.datasource" />
     <None Include="Properties\DataSources\Pedidos.datasource" />
     <None Include="Properties\DataSources\Perfil.datasource" />
     <None Include="Properties\DataSources\UsuarioAlmacen.datasource" />
@@ -403,6 +417,26 @@
     <Content Include="Resources\yen_currency_sign.png" />
     <Content Include="Resources\zoom_in.png" />
     <Content Include="Resources\zoom_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Access.Dao">
+      <Guid>{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}</Guid>
+      <VersionMajor>12</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

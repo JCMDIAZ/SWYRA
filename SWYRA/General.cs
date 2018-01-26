@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.OleDb;
 using LinqToDB.SqlQuery;
 using System.Management;
 using System.IO;
@@ -84,6 +85,41 @@ namespace SWYRA
             }
         }
 
+        public static OleDbConnection GetExcelConnection(string database)
+        {
+            try
+            {
+                var connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + database + ";Extended Properties=" + '"' + "Excel 12.0 Xml;HDR=YES" + '"';
+                //TODO: connString = Helper.Crypto.Decrypt(connString);
+                var cn = new OleDbConnection(connString);
+                for (var retry = 0; retry < 3; retry++)
+                {
+                    try
+                    {
+                        cn.Open();
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        //TODO: Log error
+                    }
+                }
+                return cn;
+            }
+            catch (NullReferenceException)
+            {
+                throw new ApplicationException(string.Format("Base de Datos '{0}' indefinido.", database));
+            }
+            catch (FormatException)
+            {
+                throw new ApplicationException(string.Format("Error en la definición de la base de datos '{0}'.", database));
+            }
+            catch
+            {
+                throw new ApplicationException(string.Format("No se pudo conectar a la base de datos '{0}'.", database));
+            }
+        }
+
         public static void CloseConnection(SqlConnection sql)
         {
             try
@@ -94,6 +130,15 @@ namespace SWYRA
         }
 
         public static void CloseFbConnection(FbConnection sql)
+        {
+            try
+            {
+                sql.Close();
+            }
+            catch { }
+        }
+
+        public static void CloseExcelConnection(OleDbConnection sql)
         {
             try
             {
@@ -128,6 +173,24 @@ namespace SWYRA
                 var sqlAdt = new FbDataAdapter(query, sqlCon);
                 sqlAdt.Fill(dt);
                 CloseFbConnection(sqlCon);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException(string.Format("Error {0}: {1}", idError.ToString(), e.Message.ToString()));
+            }
+            return dt;
+        }
+
+        public static DataTable GetExcelDataTable(string db, string table, int idError)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                var sqlCon = GetExcelConnection(db);
+                var query = "Select * From [" + table + "$]";
+                var sqlAdt = new OleDbDataAdapter(query, sqlCon);
+                sqlAdt.Fill(dt);
+                CloseExcelConnection(sqlCon);
             }
             catch (Exception e)
             {

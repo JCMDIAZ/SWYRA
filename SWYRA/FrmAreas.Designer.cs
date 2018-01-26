@@ -55,7 +55,7 @@
             this.btnLimpiar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gcAreas = new DevExpress.XtraGrid.GridControl();
+            this.gcPresentProd = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colareaid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colnombre = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -78,7 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcAreas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcPresentProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +86,7 @@
             // 
             this.chkActivo.Location = new System.Drawing.Point(376, 109);
             this.chkActivo.Name = "chkActivo";
-            this.chkActivo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkActivo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.chkActivo.Properties.Appearance.Options.UseFont = true;
             this.chkActivo.Properties.Caption = "Activo";
             this.chkActivo.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
@@ -97,7 +97,7 @@
             // 
             this.txtAltura.Location = new System.Drawing.Point(376, 50);
             this.txtAltura.Name = "txtAltura";
-            this.txtAltura.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAltura.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtAltura.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtAltura.Properties.Appearance.Options.UseFont = true;
             this.txtAltura.Properties.Appearance.Options.UseForeColor = true;
@@ -112,7 +112,7 @@
             // 
             this.txtArea.Location = new System.Drawing.Point(376, 21);
             this.txtArea.Name = "txtArea";
-            this.txtArea.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtArea.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtArea.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtArea.Properties.Appearance.Options.UseFont = true;
             this.txtArea.Properties.Appearance.Options.UseForeColor = true;
@@ -126,7 +126,7 @@
             // 
             this.txtUbicacion.Location = new System.Drawing.Point(125, 109);
             this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUbicacion.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtUbicacion.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtUbicacion.Properties.Appearance.Options.UseFont = true;
             this.txtUbicacion.Properties.Appearance.Options.UseForeColor = true;
@@ -138,7 +138,7 @@
             // Label15
             // 
             this.Label15.AutoSize = true;
-            this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Label15.Location = new System.Drawing.Point(467, 26);
             this.Label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label15.Name = "Label15";
@@ -149,7 +149,7 @@
             // Label16
             // 
             this.Label16.AutoSize = true;
-            this.Label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Label16.Location = new System.Drawing.Point(323, 55);
             this.Label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label16.Name = "Label16";
@@ -160,7 +160,7 @@
             // Label17
             // 
             this.Label17.AutoSize = true;
-            this.Label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Label17.Location = new System.Drawing.Point(330, 26);
             this.Label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label17.Name = "Label17";
@@ -176,7 +176,7 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(125, 80);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtNombre.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtNombre.Properties.Appearance.Options.UseFont = true;
             this.txtNombre.Properties.Appearance.Options.UseForeColor = true;
@@ -189,7 +189,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(125, 21);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Properties.AllowFocused = false;
-            this.txtCodigo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigo.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigo.Properties.Appearance.Options.UseFont = true;
             this.txtCodigo.Properties.Appearance.Options.UseForeColor = true;
@@ -200,7 +200,7 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Label4.Location = new System.Drawing.Point(51, 83);
             this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label4.Name = "Label4";
@@ -211,7 +211,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Label2.Location = new System.Drawing.Point(48, 55);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
@@ -222,7 +222,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Label1.Location = new System.Drawing.Point(34, 26);
             this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label1.Name = "Label1";
@@ -249,7 +249,7 @@
             this.GroupBox1.Controls.Add(this.Label6);
             this.GroupBox1.Controls.Add(this.Label2);
             this.GroupBox1.Controls.Add(this.Label1);
-            this.GroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.GroupBox1.Location = new System.Drawing.Point(13, 38);
             this.GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.GroupBox1.Name = "GroupBox1";
@@ -263,7 +263,7 @@
             // 
             this.cbAlmacen.Location = new System.Drawing.Point(125, 50);
             this.cbAlmacen.Name = "cbAlmacen";
-            this.cbAlmacen.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAlmacen.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cbAlmacen.Properties.Appearance.Options.UseFont = true;
             this.cbAlmacen.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -286,7 +286,7 @@
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(125, 139);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtDescripcion.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtDescripcion.Properties.Appearance.Options.UseFont = true;
             this.txtDescripcion.Properties.Appearance.Options.UseForeColor = true;
@@ -298,7 +298,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label3.Location = new System.Drawing.Point(26, 142);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -309,7 +309,7 @@
             // Label14
             // 
             this.Label14.AutoSize = true;
-            this.Label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Label14.Location = new System.Drawing.Point(467, 55);
             this.Label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label14.Name = "Label14";
@@ -320,7 +320,7 @@
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Label6.Location = new System.Drawing.Point(39, 112);
             this.Label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label6.Name = "Label6";
@@ -343,7 +343,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.Image = global::SWYRA.Properties.Resources.save;
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
@@ -353,7 +353,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnLimpiar.Image = global::SWYRA.Properties.Resources._1366681822_edit_clear;
             this.btnLimpiar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLimpiar.Name = "btnLimpiar";
@@ -363,7 +363,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.btnSalir.Image = global::SWYRA.Properties.Resources.Logout_32x32;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
@@ -373,21 +373,21 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.gcAreas);
+            this.panel1.Controls.Add(this.gcPresentProd);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(551, 456);
             this.panel1.TabIndex = 44;
             // 
-            // gcAreas
+            // gcPresentProd
             // 
-            this.gcAreas.DataSource = this.areasBindingSource;
-            this.gcAreas.Location = new System.Drawing.Point(13, 214);
-            this.gcAreas.MainView = this.gridView1;
-            this.gcAreas.Name = "gcAreas";
-            this.gcAreas.Size = new System.Drawing.Size(525, 232);
-            this.gcAreas.TabIndex = 45;
-            this.gcAreas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gcPresentProd.DataSource = this.areasBindingSource;
+            this.gcPresentProd.Location = new System.Drawing.Point(13, 214);
+            this.gcPresentProd.MainView = this.gridView1;
+            this.gcPresentProd.Name = "gcPresentProd";
+            this.gcPresentProd.Size = new System.Drawing.Size(525, 232);
+            this.gcPresentProd.TabIndex = 45;
+            this.gcPresentProd.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
@@ -401,7 +401,7 @@
             this.colaream2,
             this.colaltura,
             this.colactivo});
-            this.gridView1.GridControl = this.gcAreas;
+            this.gridView1.GridControl = this.gcPresentProd;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -511,7 +511,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcAreas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcPresentProd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -544,7 +544,7 @@
         private DevExpress.XtraEditors.LookUpEdit cbAlmacen;
         private System.Windows.Forms.BindingSource areasBindingSource;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraGrid.GridControl gcAreas;
+        private DevExpress.XtraGrid.GridControl gcPresentProd;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colareaid;
         private DevExpress.XtraGrid.Columns.GridColumn colnombre;

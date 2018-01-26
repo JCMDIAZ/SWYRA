@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstatusPedido));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.gpoFiltro = new System.Windows.Forms.GroupBox();
             this.chkActual = new DevExpress.XtraEditors.CheckEdit();
@@ -121,12 +122,22 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnExportar,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1064, 27);
             this.toolStrip1.TabIndex = 40;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Image = global::SWYRA.Properties.Resources._1366839417_Arzo_Icons_Icon_96_2;
+            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(89, 24);
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnSalir
             // 
@@ -247,7 +258,8 @@
             "LEVANTAMIENTO DE GUIAS",
             "MODIFICACION",
             "CANCELACION",
-            "TERMINADO"});
+            "TERMINADO",
+            "TODOS"});
             this.cbEstatusPed.Size = new System.Drawing.Size(171, 24);
             this.cbEstatusPed.TabIndex = 0;
             this.cbEstatusPed.SelectedValueChanged += new System.EventHandler(this.cbEstatusPed_SelectedValueChanged);
@@ -925,5 +937,6 @@
         internal System.Windows.Forms.Label label7;
         internal System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripButton btnExportar;
     }
 }

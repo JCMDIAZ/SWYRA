@@ -51,6 +51,38 @@ namespace SWYRA
         public string masters_ubi { get; set; }
     }
 
+    public class InventarioPresentacion
+    {
+        public string cve_art { get; set; }
+        public string descr { get; set; }
+        public double cant_piezas_1 { get; set; }
+        public string codigo_barra_1 { get; set; }
+        public double cant_piezas_2 { get; set; }
+        public string codigo_barra_2 { get; set; }
+        public double cant_piezas_3 { get; set; }
+        public string codigo_barra_3 { get; set; }
+        public double cant_piezas_4 { get; set; }
+        public string codigo_barra_4 { get; set; }
+        public double cant_piezas_5 { get; set; }
+        public string codigo_barra_5 { get; set; }
+        public double cant_piezas_6 { get; set; }
+        public string codigo_barra_6 { get; set; }
+        public double cant_piezas_7 { get; set; }
+        public string codigo_barra_7 { get; set; }
+        public double cant_piezas_8 { get; set; }
+        public string codigo_barra_8 { get; set; }
+        public double cant_piezas_9 { get; set; }
+        public string codigo_barra_9 { get; set; }
+        public bool activo { get; set; }
+    }
+
+    public class CodigosBarra
+    {
+        public string cve_art { get; set; }
+        public int cant_piezas { get; set; }
+        public string codigo_barra { get; set; }
+    }
+
     public class Pedidos
     {
         public string tip_doc { get; set; }
@@ -127,6 +159,15 @@ namespace SWYRA
         public string surtidor_area_n { get; set; }
         public string prioridad { get; set; }
         public DateTime? fechaaut { get; set; }
+        public double totcajacarton { get; set; }
+        public double totcajamadera { get; set; }
+        public double totbultos { get; set; }
+        public double totrollos { get; set; }
+        public double totcubetas { get; set; }
+        public double totatados { get; set; }
+        public double tottarimas { get; set; }
+        public double totcostoguias { get; set; }
+
     }
 
     public class DetallePedidos

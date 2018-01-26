@@ -36,16 +36,16 @@
             this.catalogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.áreasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mínimosYMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.condicionesDeProdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estatusPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autorizaciónPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.remisiónDePedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stb = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mínimosYMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.condicionesDeProdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.remisiónDePedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.stb.SuspendLayout();
             this.SuspendLayout();
@@ -101,21 +101,34 @@
             // almacenesToolStripMenuItem
             // 
             this.almacenesToolStripMenuItem.Name = "almacenesToolStripMenuItem";
-            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
             this.almacenesToolStripMenuItem.Text = "&Almacenes";
             this.almacenesToolStripMenuItem.Click += new System.EventHandler(this.almacenesToolStripMenuItem_Click);
             // 
             // áreasToolStripMenuItem
             // 
             this.áreasToolStripMenuItem.Name = "áreasToolStripMenuItem";
-            this.áreasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.áreasToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
             this.áreasToolStripMenuItem.Text = "Á&reas";
             this.áreasToolStripMenuItem.Click += new System.EventHandler(this.áreasToolStripMenuItem_Click);
+            // 
+            // mínimosYMasterToolStripMenuItem
+            // 
+            this.mínimosYMasterToolStripMenuItem.Name = "mínimosYMasterToolStripMenuItem";
+            this.mínimosYMasterToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.mínimosYMasterToolStripMenuItem.Text = "Presentaciones de Prod.";
+            this.mínimosYMasterToolStripMenuItem.Click += new System.EventHandler(this.mínimosYMasterToolStripMenuItem_Click);
+            // 
+            // condicionesDeProdToolStripMenuItem
+            // 
+            this.condicionesDeProdToolStripMenuItem.Name = "condicionesDeProdToolStripMenuItem";
+            this.condicionesDeProdToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.condicionesDeProdToolStripMenuItem.Text = "Condiciones de Prod.";
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
             this.usuariosToolStripMenuItem.Text = "&Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
@@ -152,6 +165,13 @@
             this.autorizaciónPedidoToolStripMenuItem.Text = "Autorización Pedido";
             this.autorizaciónPedidoToolStripMenuItem.Click += new System.EventHandler(this.autorizaciónPedidoToolStripMenuItem_Click);
             // 
+            // remisiónDePedidoToolStripMenuItem
+            // 
+            this.remisiónDePedidoToolStripMenuItem.Name = "remisiónDePedidoToolStripMenuItem";
+            this.remisiónDePedidoToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.remisiónDePedidoToolStripMenuItem.Text = "Remisión de Pedido";
+            this.remisiónDePedidoToolStripMenuItem.Click += new System.EventHandler(this.remisiónDePedidoToolStripMenuItem_Click);
+            // 
             // stb
             // 
             this.stb.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -168,24 +188,6 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(66, 20);
             this.toolStripStatusLabel1.Text = "Usuario: ";
-            // 
-            // mínimosYMasterToolStripMenuItem
-            // 
-            this.mínimosYMasterToolStripMenuItem.Name = "mínimosYMasterToolStripMenuItem";
-            this.mínimosYMasterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.mínimosYMasterToolStripMenuItem.Text = "Mínimos y Master";
-            // 
-            // condicionesDeProdToolStripMenuItem
-            // 
-            this.condicionesDeProdToolStripMenuItem.Name = "condicionesDeProdToolStripMenuItem";
-            this.condicionesDeProdToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.condicionesDeProdToolStripMenuItem.Text = "Condiciones de Prod.";
-            // 
-            // remisiónDePedidoToolStripMenuItem
-            // 
-            this.remisiónDePedidoToolStripMenuItem.Name = "remisiónDePedidoToolStripMenuItem";
-            this.remisiónDePedidoToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
-            this.remisiónDePedidoToolStripMenuItem.Text = "Remisión de Pedido";
             // 
             // MDIPrincipal
             // 

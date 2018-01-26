@@ -29,24 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.Columns.GridColumn coltotcajacarton;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRemision));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcve_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltiposervicio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colocurredomicilio = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colfecha_cancela = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltotcajamadera = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltotbultos = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltotrollos = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltotcubetas = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltotatados = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltottarimas = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coltotcostoguias = new DevExpress.XtraGrid.Columns.GridColumn();
+            coltotcajacarton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // coltotcajacarton
+            // 
+            coltotcajacarton.Caption = "Caja Carton";
+            coltotcajacarton.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            coltotcajacarton.FieldName = "totcajacarton";
+            coltotcajacarton.Name = "coltotcajacarton";
+            coltotcajacarton.Visible = true;
+            coltotcajacarton.VisibleIndex = 5;
             // 
             // toolStrip1
             // 
@@ -87,13 +103,19 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colfecha_doc,
             this.colcve_doc,
             this.colcliente,
             this.coltiposervicio,
             this.colocurredomicilio,
-            this.colfecha_doc,
-            this.colfecha_cancela,
-            this.gridColumn1});
+            coltotcajacarton,
+            this.coltotcajamadera,
+            this.coltotbultos,
+            this.coltotrollos,
+            this.coltotcubetas,
+            this.coltotatados,
+            this.coltottarimas,
+            this.coltotcostoguias});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView1.Name = "gridView1";
@@ -103,6 +125,17 @@
             this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            // 
+            // colfecha_doc
+            // 
+            this.colfecha_doc.Caption = "Fecha";
+            this.colfecha_doc.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.colfecha_doc.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.colfecha_doc.FieldName = "fecha_doc";
+            this.colfecha_doc.Name = "colfecha_doc";
+            this.colfecha_doc.Visible = true;
+            this.colfecha_doc.VisibleIndex = 4;
+            this.colfecha_doc.Width = 90;
             // 
             // colcve_doc
             // 
@@ -146,34 +179,67 @@
             this.colocurredomicilio.VisibleIndex = 3;
             this.colocurredomicilio.Width = 90;
             // 
-            // colfecha_doc
+            // coltotcajamadera
             // 
-            this.colfecha_doc.Caption = "Fecha";
-            this.colfecha_doc.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.colfecha_doc.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.colfecha_doc.FieldName = "fecha_doc";
-            this.colfecha_doc.Name = "colfecha_doc";
-            this.colfecha_doc.Visible = true;
-            this.colfecha_doc.VisibleIndex = 4;
-            this.colfecha_doc.Width = 90;
+            this.coltotcajamadera.Caption = "Caja Madera";
+            this.coltotcajamadera.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.coltotcajamadera.FieldName = "totcajamadera";
+            this.coltotcajamadera.Name = "coltotcajamadera";
+            this.coltotcajamadera.Visible = true;
+            this.coltotcajamadera.VisibleIndex = 6;
             // 
-            // colfecha_cancela
+            // coltotbultos
             // 
-            this.colfecha_cancela.Caption = "Fecha Cancelado";
-            this.colfecha_cancela.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.colfecha_cancela.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.colfecha_cancela.FieldName = "fecha_cancela";
-            this.colfecha_cancela.Name = "colfecha_cancela";
-            this.colfecha_cancela.Visible = true;
-            this.colfecha_cancela.VisibleIndex = 5;
-            this.colfecha_cancela.Width = 110;
+            this.coltotbultos.Caption = "Bultos";
+            this.coltotbultos.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.coltotbultos.FieldName = "totbultos";
+            this.coltotbultos.Name = "coltotbultos";
+            this.coltotbultos.Visible = true;
+            this.coltotbultos.VisibleIndex = 7;
             // 
-            // gridColumn1
+            // coltotrollos
             // 
-            this.gridColumn1.Caption = "gridColumn1";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 6;
+            this.coltotrollos.Caption = "Rollos";
+            this.coltotrollos.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.coltotrollos.FieldName = "totrollos";
+            this.coltotrollos.Name = "coltotrollos";
+            this.coltotrollos.Visible = true;
+            this.coltotrollos.VisibleIndex = 8;
+            // 
+            // coltotcubetas
+            // 
+            this.coltotcubetas.Caption = "Cubetas";
+            this.coltotcubetas.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.coltotcubetas.FieldName = "totcubetas";
+            this.coltotcubetas.Name = "coltotcubetas";
+            this.coltotcubetas.Visible = true;
+            this.coltotcubetas.VisibleIndex = 9;
+            // 
+            // coltotatados
+            // 
+            this.coltotatados.Caption = "Atados";
+            this.coltotatados.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.coltotatados.FieldName = "totatados";
+            this.coltotatados.Name = "coltotatados";
+            this.coltotatados.Visible = true;
+            this.coltotatados.VisibleIndex = 10;
+            // 
+            // coltottarimas
+            // 
+            this.coltottarimas.Caption = "Tarimas";
+            this.coltottarimas.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.coltottarimas.FieldName = "tottarimas";
+            this.coltottarimas.Name = "coltottarimas";
+            this.coltottarimas.Visible = true;
+            this.coltottarimas.VisibleIndex = 11;
+            // 
+            // coltotcostoguias
+            // 
+            this.coltotcostoguias.Caption = "Costo x guias";
+            this.coltotcostoguias.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.coltotcostoguias.Name = "coltotcostoguias";
+            this.coltotcostoguias.Visible = true;
+            this.coltotcostoguias.VisibleIndex = 12;
             // 
             // FrmRemision
             // 
@@ -212,7 +278,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn coltiposervicio;
         private DevExpress.XtraGrid.Columns.GridColumn colocurredomicilio;
         private DevExpress.XtraGrid.Columns.GridColumn colfecha_doc;
-        private DevExpress.XtraGrid.Columns.GridColumn colfecha_cancela;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn coltotcajamadera;
+        private DevExpress.XtraGrid.Columns.GridColumn coltotbultos;
+        private DevExpress.XtraGrid.Columns.GridColumn coltotrollos;
+        private DevExpress.XtraGrid.Columns.GridColumn coltotcubetas;
+        private DevExpress.XtraGrid.Columns.GridColumn coltotatados;
+        private DevExpress.XtraGrid.Columns.GridColumn coltottarimas;
+        private DevExpress.XtraGrid.Columns.GridColumn coltotcostoguias;
     }
 }

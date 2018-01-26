@@ -170,5 +170,18 @@ namespace SWYRA
             userActivo.Password = fCamCon.Txtcpass.Text;
             fCamCon.Close();
         }
+
+        private void remisiónDePedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fRemision = new FrmRemision();
+            fRemision.ShowDialog();
+            fRemision.Close();
+        }
+
+        private void mínimosYMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fPresentProd = new FrmPresentProd();
+            fPresentProd.ShowDialog();fPresentProd.Close();
+        }
     }
 }

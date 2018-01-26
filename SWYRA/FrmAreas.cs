@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SWYRA.General;
 
@@ -25,7 +20,7 @@ namespace SWYRA
 
         private void FrmAreas_Load(object sender, EventArgs e)
         {
-            gcAreas.DataSource = CargaAreas();
+            gcPresentProd.DataSource = CargaAreas();
             cbAlmacen.Properties.DataSource = CargaAlmacen();
             GetGridAreas();
         }
@@ -156,7 +151,7 @@ namespace SWYRA
                     }
                     var res = GetExecute("DB", query, 33);
                     MessageBox.Show(@"Guardado satisfactoriamente.");
-                    gcAreas.DataSource = CargaAreas();
+                    gcPresentProd.DataSource = CargaAreas();
                     GetGridAreas();
                 }
                 catch (Exception ms)
