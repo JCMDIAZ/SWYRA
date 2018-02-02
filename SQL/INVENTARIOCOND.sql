@@ -1,0 +1,21 @@
+USE [SWYRA]
+GO
+
+/****** Object:  Table [dbo].[INVENTARIOCOND]    Script Date: 01/02/2018 02:21:49 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[INVENTARIOCOND](
+	[CVE_ART] [varchar](16) NOT NULL,
+	[DESCR] [varchar](40) NOT NULL,
+	[COMENTARIO] [varchar](250) NOT NULL,
+	[APLICAEXIST] [bit] NULL,
+	[EXISTENCIA] [float] NULL,
+	[ACTIVO] [bit] NULL
+) ON [PRIMARY]
+GO
+
+

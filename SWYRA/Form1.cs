@@ -181,7 +181,15 @@ namespace SWYRA
         private void mínimosYMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var fPresentProd = new FrmPresentProd();
-            fPresentProd.ShowDialog();fPresentProd.Close();
+            fPresentProd.ShowDialog();
+            fPresentProd.Close();
+        }
+
+        private void condicionesDeProdToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fCondicion= new FrmCondiciones();
+            fCondicion.ShowDialog();
+            fCondicion.Close();
         }
     }
 }

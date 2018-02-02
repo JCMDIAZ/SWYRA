@@ -295,4 +295,14 @@ namespace SWYRA
         public DateTime fch_ultcom { get; set; }
         public string clasific { get; set; }
     }
+
+    public class InventarioCondicion
+    {
+        public string cve_art { get; set; }
+        public string descr { get; set; }
+        public string comentario { get; set; }
+        public bool aplicaexist { get; set; }
+        public double existencia { get; set; }
+        public bool activo { get; set; }
+    }
 }

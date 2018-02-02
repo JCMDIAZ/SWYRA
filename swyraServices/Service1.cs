@@ -126,7 +126,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("1: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("21: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbClientes;
         }
@@ -146,7 +146,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("2: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("22: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbClientes;
         }
@@ -173,7 +173,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("3: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("23: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -200,7 +200,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("4: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("24: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -221,7 +221,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("5: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("25: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbPedidos;
         }
@@ -244,7 +244,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("6: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("7: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbPedidos;
         }
@@ -265,7 +265,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("7: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("26: " + ex.Message, EventLogEntryType.Error);
             }
             return ((result == null) ? "" : result.usuario);
         }
@@ -278,7 +278,14 @@ namespace swyraServices
             {
                 p.condicion = p.condicion ?? "";
                 string[] dats = p.condicion.Split(';');
-                if (dats.Length > 0)
+                if (dats.Length == 1)
+                {
+                    string[] clvTipoServ = {"L", "F", "LU", "FU"};
+                    string[] catTipoServ = {"LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE"};
+                    int index = Array.IndexOf(clvTipoServ, dats[0]);
+                    p.tiposervicio = (index > 0) ? catTipoServ[index] : "LOCAL";
+                }
+                else if (dats.Length > 1)
                 {
                     string[] clvTipoServ = { "L", "F", "LU", "FU" };
                     string[] catTipoServ = { "LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE" };
@@ -324,7 +331,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("9" + seguimiento + ": " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("8" + seguimiento + ": " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -342,7 +349,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("10: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("9: " + ex.Message, EventLogEntryType.Error);
             }
             return listFbDetalle;
         }
@@ -361,7 +368,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("11: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("10: " + ex.Message, EventLogEntryType.Error);
             }
             return listDbDetalle;
         }
@@ -389,7 +396,7 @@ namespace swyraServices
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("12: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("11: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
@@ -483,7 +490,7 @@ namespace swyraServices
                             "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR) select CVE_DOC, NUM_PAR, CVE_ART, " + dif + ", PXS, PREC, COST, " +
                             "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3 , TOTIMP4, " +
                             "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
-                            "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_ART = '" + detDB.cve_art + "' " +
+                            "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_ART = '" + detDB.cve_art + "' AND " +
                             "CVE_DOC = '" + detDB.cve_doc + "'";
                         GetExecute("DB", query2, 25);
                         detDB.cantsurtido = detFB.cant;
@@ -499,7 +506,7 @@ namespace swyraServices
                              "TOTIMP1 = " + detFB.totimp1.ToString(cultureInfo) + ", TOTIMP2 = " + detFB.totimp2.ToString(cultureInfo) + ", TOTIMP3 = " + detFB.totimp3 + ", TOTIMP4 = " + detFB.totimp4.ToString(cultureInfo) + ", " +
                              "DESC1 = " + detFB.desc1.ToString(cultureInfo) + ", DESC2 = " + detFB.desc2.ToString(cultureInfo) + ", DESC3 = " + detFB.desc3.ToString(cultureInfo) + ", COMI = " + detFB.comi.ToString(cultureInfo) + ", APAR = " + detFB.apar.ToString(cultureInfo) + ", " +
                              "NUM_ALM = " + detFB.num_alm + ", TIP_CAM = " + detFB.tip_cam + ", TOT_PARTIDA = " + detFB.tot_partida + ", " +
-                             "CANTSURTIDO = " + detDB.cantsurtido + ", SURTIDO = 0 where CVE_ART = '" + detFB.cve_art + "' " +
+                             "CANTSURTIDO = " + detDB.cantsurtido + ", SURTIDO = 0 where CVE_ART = '" + detFB.cve_art + "' AND " +
                              "CVE_DOC = '" + detFB.cve_doc + "'";
                 GetExecute("DB", query3, 15);
             }

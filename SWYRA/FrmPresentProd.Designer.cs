@@ -870,6 +870,7 @@
             // 
             // txtNumPiezas1
             // 
+            this.txtNumPiezas1.EditValue = 0D;
             this.txtNumPiezas1.Location = new System.Drawing.Point(210, 81);
             this.txtNumPiezas1.Name = "txtNumPiezas1";
             this.txtNumPiezas1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);

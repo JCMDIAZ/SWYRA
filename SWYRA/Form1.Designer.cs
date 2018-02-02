@@ -124,6 +124,7 @@
             this.condicionesDeProdToolStripMenuItem.Name = "condicionesDeProdToolStripMenuItem";
             this.condicionesDeProdToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
             this.condicionesDeProdToolStripMenuItem.Text = "Condiciones de Prod.";
+            this.condicionesDeProdToolStripMenuItem.Click += new System.EventHandler(this.condicionesDeProdToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 

@@ -91,7 +91,6 @@ namespace SWYRA
             if (gridView1.RowCount > 0)
             {
                 var cveArt = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_art");
-                var numPresent = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "num_present");
                 CargaDatos(cveArt.ToString());
             }
             else
@@ -513,7 +512,7 @@ namespace SWYRA
         private void val2(DevExpress.XtraEditors.TextEdit pz)
         {
             bool b = true;
-            if ((double)pz.EditValue == 0) { return; }
+            if (double.Parse(pz.EditValue.ToString()) == 0) { return; }
             b = !(txtNumPiezas1.Name != pz.Name && (int) txtNumPiezas1.EditValue == (int) pz.EditValue) &&
                 !(txtNumPiezas2.Name != pz.Name && (int) txtNumPiezas2.EditValue == (int) pz.EditValue) &&
                 !(txtNumPiezas3.Name != pz.Name && (int) txtNumPiezas3.EditValue == (int) pz.EditValue) &&
