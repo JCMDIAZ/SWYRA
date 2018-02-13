@@ -85,7 +85,7 @@ namespace SWYRA
             List<UsuarioAlmacen> listAlmacenes = new List<UsuarioAlmacen>();
             try
             {
-                var query = "select '0' usuario, Clave almacen, nombre from ALMACENES";
+                var query = "select '0' usuario, Clave almacen, nombre from ALMACENES WHERE Activo = 1";
                 listAlmacenes = GetDataTable("DB", query, 16).ToList<UsuarioAlmacen>();
             }
             catch (Exception ex)
@@ -140,11 +140,12 @@ namespace SWYRA
             txtLetra.Enabled = (cbCategoria.Text == @"COBRADOR");
             txtLetra.Text = empleado.LetraERP;
 
-            cbArea.Text = empleado.AreaAsignada;
-            cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
-
             listUsuarioAlmacen = CargaUsuarioAlmacenes(empleado.Usuario);
             ActualizaAlmacen();
+
+            cbArea.EditValue = empleado.AreaAsignada;
+            cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
+
             ViewModulo();
         }
 
@@ -159,11 +160,13 @@ namespace SWYRA
             var listUsrDif = listAlmacen.Except(listUsrIdenticos).ToList();
             var listUsrAsg = listUsuarioAlmacen.ToList();
 
-            lstAlmacen.DataSource = listUsrDif;lstAlamcenAsignado.DataSource = listUsrAsg;
+            lstAlmacen.DataSource = listUsrDif;
+            lstAlamcenAsignado.DataSource = listUsrAsg;
 
             var listAreasAsig = listAreas.Where(o => listUsrAsg.Any(p => p.almacen == o.areaid)).ToList();
             cbArea.Properties.DataSource = listAreasAsig;
-            habilitaCampos();}
+            habilitaCampos();
+        }
 
         private void limpiar()
         {
@@ -227,7 +230,7 @@ namespace SWYRA
                             @"INSERT USUARIOS (Usuario, Nombre, Categoria, Contraseña, Activo, LetraERP, AreaAsignada) " +
                             "VALUES (RIGHT('0000" + var1.Id + "',4), '" + TxtNombre.Text + "', '" + cbCategoria.Text + "', ENCRYPTBYPASSPHRASE('swyra', '" + Txtpass.Text +
                             "'), " + ((Chkact.Checked) ? "1" : "0") + ", " + ((txtLetra.Enabled) ? "'" + txtLetra.Text + "'": "Null") + 
-                            ", " + ((cbArea.Enabled) ? "'" + cbArea.Text + "'" : "Null") + ")";
+                            ", " + ((cbArea.Enabled && cbArea.Text != "") ? "'" + cbArea.EditValue + "'" : "Null") + ")";
                     }
                     else
                     {
@@ -235,7 +238,7 @@ namespace SWYRA
                             @"UPDATE USUARIOS SET Nombre = '" + TxtNombre.Text + "', Categoria = '" + cbCategoria.Text + "', " +
                             "Contraseña = ENCRYPTBYPASSPHRASE('swyra', '" + Txtpass.Text + "') , Activo = " + ((Chkact.Checked) ? "1" : "0") +
                             ", LetraERP = " + ((txtLetra.Enabled) ? "'" + txtLetra.Text + "'" : "Null") +
-                            ", AreaAsignada = " + ((cbArea.Enabled) ? "'" + cbArea.Text + "'" : "Null") +
+                            ", AreaAsignada = " + ((cbArea.Enabled && cbArea.Text != "") ? "'" + cbArea.EditValue + "'" : "Null") +
                             " WHERE Usuario = " + TxtCodigo.Text;
                     }
                     var res = GetExecute("DB", query, 17);
@@ -304,12 +307,6 @@ namespace SWYRA
                 txtLetra.Focus();
                 b = false;
             }
-            else if (cbArea.Enabled && cbArea.Text == "")
-            {
-                MessageBox.Show(@"Favor de seleccionar un Área al Surtidor o Empaquetador.");
-                cbArea.Focus();
-                b = false;
-            }
             return b;
         }
 
@@ -348,6 +345,14 @@ namespace SWYRA
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             GetGridEmpleados();
+        }
+
+        private void cbArea_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                cbArea.EditValue = null;
+            }
         }
     }
 }

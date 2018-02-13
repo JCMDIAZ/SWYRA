@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.activarSwyraMovilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catalogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +68,7 @@
             // 
             this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cambiarContraseñaToolStripMenuItem,
+            this.activarSwyraMovilToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
@@ -78,6 +80,13 @@
             this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
             this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
+            // 
+            // activarSwyraMovilToolStripMenuItem
+            // 
+            this.activarSwyraMovilToolStripMenuItem.Name = "activarSwyraMovilToolStripMenuItem";
+            this.activarSwyraMovilToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.activarSwyraMovilToolStripMenuItem.Text = "Activar Swyra Movil";
+            this.activarSwyraMovilToolStripMenuItem.Click += new System.EventHandler(this.activarSwyraMovilToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -238,6 +247,7 @@
         private System.Windows.Forms.ToolStripMenuItem mínimosYMasterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem condicionesDeProdToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem remisiónDePedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem activarSwyraMovilToolStripMenuItem;
     }
 }
 

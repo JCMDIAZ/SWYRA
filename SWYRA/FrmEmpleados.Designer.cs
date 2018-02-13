@@ -158,7 +158,7 @@
             // 
             // cbArea
             // 
-            this.cbArea.Location = new System.Drawing.Point(165, 213);
+            this.cbArea.Location = new System.Drawing.Point(172, 213);
             this.cbArea.Name = "cbArea";
             this.cbArea.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbArea.Properties.Appearance.Options.UseFont = true;
@@ -170,9 +170,10 @@
             this.cbArea.Properties.DataSource = this.areasBindingSource;
             this.cbArea.Properties.DisplayMember = "nombre";
             this.cbArea.Properties.NullText = "";
-            this.cbArea.Properties.ValueMember = "nombre";
+            this.cbArea.Properties.ValueMember = "areaid";
             this.cbArea.Size = new System.Drawing.Size(142, 24);
             this.cbArea.TabIndex = 28;
+            this.cbArea.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbArea_KeyUp);
             // 
             // areasBindingSource
             // 
@@ -237,7 +238,7 @@
             // 
             this.Chkact.AutoSize = true;
             this.Chkact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Chkact.Location = new System.Drawing.Point(239, 180);
+            this.Chkact.Location = new System.Drawing.Point(246, 180);
             this.Chkact.Margin = new System.Windows.Forms.Padding(4);
             this.Chkact.Name = "Chkact";
             this.Chkact.Size = new System.Drawing.Size(70, 22);
@@ -261,7 +262,7 @@
             this.TxtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtCodigo.Enabled = false;
             this.TxtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCodigo.Location = new System.Drawing.Point(131, 23);
+            this.TxtCodigo.Location = new System.Drawing.Point(138, 23);
             this.TxtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.ReadOnly = true;
@@ -271,7 +272,7 @@
             // Txtcpass
             // 
             this.Txtcpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtcpass.Location = new System.Drawing.Point(131, 116);
+            this.Txtcpass.Location = new System.Drawing.Point(138, 116);
             this.Txtcpass.Margin = new System.Windows.Forms.Padding(4);
             this.Txtcpass.Name = "Txtcpass";
             this.Txtcpass.PasswordChar = '*';
@@ -314,7 +315,7 @@
             // Txtpass
             // 
             this.Txtpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtpass.Location = new System.Drawing.Point(131, 85);
+            this.Txtpass.Location = new System.Drawing.Point(138, 85);
             this.Txtpass.Margin = new System.Windows.Forms.Padding(4);
             this.Txtpass.Name = "Txtpass";
             this.Txtpass.PasswordChar = '*';
@@ -325,7 +326,7 @@
             // 
             this.TxtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNombre.Location = new System.Drawing.Point(131, 54);
+            this.TxtNombre.Location = new System.Drawing.Point(138, 54);
             this.TxtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNombre.MaxLength = 50;
             this.TxtNombre.Name = "TxtNombre";
@@ -349,7 +350,7 @@
             this.cbCategoria.DisplayMember = "descripcion";
             this.cbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(131, 147);
+            this.cbCategoria.Location = new System.Drawing.Point(138, 147);
             this.cbCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(176, 26);

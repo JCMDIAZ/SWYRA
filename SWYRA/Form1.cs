@@ -191,5 +191,12 @@ namespace SWYRA
             fCondicion.ShowDialog();
             fCondicion.Close();
         }
+
+        private void activarSwyraMovilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fActivMovil = new FrmActivacionMovil();
+            fActivMovil.ShowDialog();
+            fActivMovil.Close();
+        }
     }
 }

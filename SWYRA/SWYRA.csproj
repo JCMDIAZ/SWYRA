@@ -93,6 +93,12 @@
     <Compile Include="FrmActivacion.Designer.cs">
       <DependentUpon>FrmActivacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmActivacionMovil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActivacionMovil.Designer.cs">
+      <DependentUpon>FrmActivacionMovil.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAreas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmActivacion.resx">
       <DependentUpon>FrmActivacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmActivacionMovil.resx">
+      <DependentUpon>FrmActivacionMovil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAreas.aa-ER.resx">
       <DependentUpon>FrmAreas.cs</DependentUpon>

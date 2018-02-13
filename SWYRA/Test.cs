@@ -523,5 +523,10 @@ namespace SWYRA
                 ModificaInventario(inv);
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            barCodeControl1.Text = memoEdit1.Text;
+        }
     }
 }

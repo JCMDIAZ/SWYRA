@@ -10,6 +10,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Globalization;
+using System.ComponentModel;
 
 namespace SWYRA_Movil
 {
@@ -55,6 +56,8 @@ namespace SWYRA_Movil
                 MessageBox.Show(ms.Message, "ERROR DE SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button1);
             }
         }
+
+        public static Usuarios usActivo = new Usuarios();
 
         private static bool validaActivacion(bool act)
         {
@@ -313,6 +316,24 @@ namespace SWYRA_Movil
             var res = ((small) ? @"FeR001V" + dat[last] + "T" : idString);
 
             return res;
+        }
+
+        public static DataTable ToDataTable<T>(IList<T> data, string tableName)
+        {
+            PropertyDescriptorCollection properties =
+               TypeDescriptor.GetProperties(typeof(T));
+            DataTable table = new DataTable();
+            table.TableName = tableName;
+            foreach (PropertyDescriptor prop in properties)
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            foreach (T item in data)
+            {
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                table.Rows.Add(row);
+            }
+            return table;
         }
     }
 }

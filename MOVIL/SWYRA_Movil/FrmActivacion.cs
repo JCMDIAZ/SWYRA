@@ -53,7 +53,7 @@ namespace SWYRA_Movil
             }
             catch (Exception ms)
             {
-                MessageBox.Show(ms.Message);
+                MessageBox.Show(ms.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
 
