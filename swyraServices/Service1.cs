@@ -320,6 +320,10 @@ namespace swyraServices
                     p.doc_ant + "', '" + p.tip_doc_sig + "', '" + p.doc_sig + "', '" + p.tiposervicio + "', '" + p.estatuspedido + "', '" +
                     p.ocurredomicilio + "', '" + cobrador + "', 'NORMAL')";
                 var res = GetExecute("DB", query, 8);
+
+                query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                        p.cve_doc + "', '" + p.estatuspedido + "', getdate(), null)";
+                res = GetExecute("DB", query, 8);
                 if (res)
                 {
                     List<DetallePedidos> listFbDetalle = CargaFbDetallePedido(p.cve_doc);
@@ -411,6 +415,9 @@ namespace swyraServices
                             "where CVE_DOC = '" + pedDb.cve_doc + "'";
                 if (GetExecute("DB", query, 12))
                 {
+                    var query3 = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                            pedDb.cve_doc + "', '" + pedDb.estatuspedido + "', getdate(), null)";
+                    var res2 = GetExecute("DB", query, 12);
                     if (pedDb.estatuspedido == "MODIFICACION")
                     {
                         var query2 = "insert DETALLEPEDIDODEV (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
@@ -447,6 +454,9 @@ namespace swyraServices
                             "where CVE_DOC = '" + pedFb.cve_doc + "'";
                 if (GetExecute("DB", query, 14))
                 {
+                    query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                            pedFb.cve_doc + "', '" + pedFb.estatuspedido + "', getdate(), null)";
+                    var res = GetExecute("DB", query, 14);
                     List<DetallePedidos> listFbDetalle = CargaFbDetallePedido(pedFb.cve_doc);
                     List<DetallePedidos> listDbDetalle = CargaDbDetallePedido(pedFb.cve_doc);
                     var detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();

@@ -86,6 +86,9 @@ namespace SWYRA
                             "COBRADOR_AUTORIZO = '" + pedido.cobrador_autorizo + "' " +
                             "WHERE CVE_DOC = '" + pedido.cve_doc + "'";
                 var res = GetExecute("DB", query, 52);
+                query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                        pedido.cve_doc + "', '" + pedido.estatuspedido + "', getdate(), null)";
+                res = GetExecute("DB", query, 53);
                 MessageBox.Show(@"Guardado satisfactoriamente.");
             }catch (Exception ex)
             {

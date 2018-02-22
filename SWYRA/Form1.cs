@@ -71,12 +71,23 @@ namespace SWYRA
                 userActivo = fLog.usActivo;
                 toolStripStatusLabel1.Text = @"Usuario: " + userActivo.Nombre.ToUpper();
                 fLog.Close();
+                MenuPrin();
             }
             catch (Exception ms)
             {
                 MessageBox.Show(ms.Message.ToString());
                 Application.Exit();
             }
+        }
+
+        private void MenuPrin()
+        {
+            var cat = userActivo.Categoria.TrimEnd();
+            activarSwyraMovilToolStripMenuItem.Visible = (cat == "MASTER");
+            catalogosToolStripMenuItem.Visible = (cat == "MASTER");
+            estatusPedidoToolStripMenuItem.Visible = (cat.In(new[] {"MASTER", "ANALISTA DE VENTAS"}));
+            autorizaciónPedidoToolStripMenuItem.Visible = (cat.In(new[] { "MASTER", "COBRADOR" }));
+            remisiónDePedidoToolStripMenuItem.Visible = (cat.In(new[] { "MASTER", "FACTURACION" }));
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)

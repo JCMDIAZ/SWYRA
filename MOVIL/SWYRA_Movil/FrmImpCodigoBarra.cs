@@ -78,13 +78,40 @@ namespace SWYRA_Movil
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
 
         private void dgCodigos_CurrentCellChanged(object sender, EventArgs e)
         {
             dgCodigos.Select(dgCodigos.CurrentRowIndex);
+        }
+
+        private void pbImprimir_Click(object sender, EventArgs e)
+        {
+            FrmImpCodDialog frm2 = new FrmImpCodDialog();
+            var index = dgCodigos.CurrentRowIndex;
+            if (index >= 0)
+            {
+                var cdb = dgCodigos[index, 1].ToString();
+                frm2.lblTotalPiezas.Enabled = (cdb == "1");
+                frm2.nmTotalPiezas.Enabled = (cdb == "1");
+                DialogResult dr = frm2.ShowDialog();
+                if (dr == DialogResult.Cancel)
+                {
+                    frm2.Close();
+                }
+                else if (dr == DialogResult.OK)
+                {
+                    MessageBox.Show(@"Se mando la impresión, satisfactoriamente", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    frm2.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show(@"No ha seleccionado una presentación.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                frm2.Close();
+            }
         }
     }
 }

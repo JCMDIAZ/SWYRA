@@ -144,7 +144,8 @@ namespace SWYRA
         public string cobrador_asignado { get; set; }
         public string cobrador_autorizo { get; set; }
         public string surtidor_asignado { get; set; }
-        public string empaquetador_asignado { get; set; }public string etiquetador_asignado { get; set; }
+        public string empaquetador_asignado { get; set; }
+        public string etiquetador_asignado { get; set; }
         public string surtidor_area { get; set; }
         public float porc_surtido { get; set; }
         public float porc_empaque { get; set; }

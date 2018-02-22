@@ -38,5 +38,11 @@ namespace SWYRA_Movil
             FrmImpCodigoBarra frmImpCod = new FrmImpCodigoBarra();
             frmImpCod.Show();
         }
+
+        private void pnlPedidos_Click(object sender, EventArgs e)
+        {
+            FrmPedidos frmPed = new FrmPedidos();
+            frmPed.Show();
+        }
     }
 }
