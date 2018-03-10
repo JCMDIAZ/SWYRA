@@ -172,7 +172,7 @@ namespace SWYRA_Movil
         public double totatados { get; set; }
         public double tottarimas { get; set; }
         public double totcostoguias { get; set; }
-
+        public bool solarea { get; set; }
     }
 
     public class DetallePedidos
@@ -216,5 +216,29 @@ namespace SWYRA_Movil
         public string imprimir { get; set; }
         public double cantsurtido { get; set; }
         public bool surtido { get; set; }
+        public double cantdevuelto { get; set; }
+        public bool devuelto { get; set; }
+        public double exist { get; set; }
+        public string ubicacion { get; set; }
+        public string descr { get; set; }
+        public string comentario { get; set; }
+        public bool aplicaexist { get; set; } 
+        public double minexist { get; set; }
+        public bool aplicalote { get; set; }
+        public double cantdiferencia { get; set; }
+        public string lin_prod { get; set; }
+    }
+
+    public class DetallePedidoMerc
+    {
+        public string cve_doc { get; set; }
+        public int consec { get; set; }
+        public int num_par { get; set; }
+        public string cve_art { get; set; }
+        public string codigo_barra { get; set; }
+        public int cant { get; set; }
+        public string tipopaquete { get; set; }
+        public int consec_padre { get; set; }
+        public string ultimo { get; set; }
     }
 }

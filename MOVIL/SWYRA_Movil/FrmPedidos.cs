@@ -14,7 +14,6 @@ namespace SWYRA_Movil
     {
         private List<Pedidos> listPedidos = new List<Pedidos>();
         private Pedidos ped = new Pedidos();
-        private DataGridTableStyle DGStyle;
 
         public FrmPedidos()
         {
@@ -27,6 +26,11 @@ namespace SWYRA_Movil
         }
 
         private void FrmPedidos_Load(object sender, EventArgs e)
+        {
+            cargaPedidos();
+        }
+
+        public void cargaPedidos()
         {
             try
             {
@@ -60,7 +64,7 @@ namespace SWYRA_Movil
                         "end Numprioridad " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where (p.ESTATUSPEDIDO = 'SURTIR' and isnull(p.SURTIDOR_ASIGNADO,'') = '" + surtAsig + "') " +
-                        "or (isnull(p.SURTIDOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "' and p.ESTATUSPEDIDO in ('MODIFICACION', 'DETENIDO')) " +
+                        "or (isnull(p.SURTIDOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "' and p.ESTATUSPEDIDO in ('MODIFICACION', 'DETENIDO', 'DEVOLUCION')) " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");
@@ -82,7 +86,25 @@ namespace SWYRA_Movil
 
         private void pbAsignar_Click(object sender, EventArgs e)
         {
-
+            try 
+            {
+                var query = "UPDATE PEDIDO SET SURTIDOR_ASIGNADO = '" + Program.usActivo.Usuario + "' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex,3].ToString() + "'";
+                var res = Program.GetExecute(query, 3);
+                query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " + 
+                        "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex,3].ToString() + "' " +
+                        "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                        "@cvedoc, 'SURTIENDO', getdate(), '" + Program.usActivo.Usuario + "')";
+                res = Program.GetExecute(query, 4);
+                FrmMenuPedidos frmMenuPed = new FrmMenuPedidos();
+                frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString();
+                frmMenuPed.ShowDialog();
+                cargaPedidos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

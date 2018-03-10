@@ -1,0 +1,22 @@
+USE [SWYRA]
+GO
+
+/****** Object:  Table [dbo].[DETALLEPEDIDOMERC]    Script Date: 01/03/2018 04:44:20 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DETALLEPEDIDOMERC](
+	[CVE_DOC] [varchar](50) NOT NULL,
+	[CONSEC] [int] NOT NULL,
+	[NUM_PAR] [int] NOT NULL,
+	[CVE_ART] [varchar](16) NOT NULL,
+	[CODIGO_BARRA] [varchar](20) NOT NULL,
+	[CANT] [int] NOT NULL,
+	[TIPOPAQUETE] [varchar](20) NULL,
+	[CONSEC_PADRE] [int] NULL,
+	[ULTIMO] [bit] NULL
+) ON [PRIMARY]
+GO

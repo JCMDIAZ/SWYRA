@@ -41,6 +41,7 @@
             this.colexistencia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colactivo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkAplicaLote = new DevExpress.XtraEditors.CheckEdit();
             this.txtExistencia = new DevExpress.XtraEditors.TextEdit();
             this.chkEstablece = new DevExpress.XtraEditors.CheckEdit();
             this.meCondicion = new DevExpress.XtraEditors.MemoEdit();
@@ -58,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.inventarioCondicionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAplicaLote.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExistencia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEstablece.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meCondicion.Properties)).BeginInit();
@@ -170,6 +172,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkAplicaLote);
             this.groupBox1.Controls.Add(this.txtExistencia);
             this.groupBox1.Controls.Add(this.chkEstablece);
             this.groupBox1.Controls.Add(this.meCondicion);
@@ -184,10 +187,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Producto Presentación";
             // 
+            // chkAplicaLote
+            // 
+            this.chkAplicaLote.Location = new System.Drawing.Point(6, 132);
+            this.chkAplicaLote.Name = "chkAplicaLote";
+            this.chkAplicaLote.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAplicaLote.Properties.Appearance.Options.UseFont = true;
+            this.chkAplicaLote.Properties.Caption = "Preguntar por el LOTE";
+            this.chkAplicaLote.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
+            this.chkAplicaLote.Size = new System.Drawing.Size(409, 22);
+            this.chkAplicaLote.TabIndex = 51;
+            // 
             // txtExistencia
             // 
             this.txtExistencia.EditValue = 0D;
-            this.txtExistencia.Location = new System.Drawing.Point(424, 116);
+            this.txtExistencia.Location = new System.Drawing.Point(435, 103);
             this.txtExistencia.Name = "txtExistencia";
             this.txtExistencia.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtExistencia.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -199,16 +213,16 @@
             this.txtExistencia.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtExistencia.Properties.Mask.EditMask = "#,##0.00";
             this.txtExistencia.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtExistencia.Size = new System.Drawing.Size(86, 24);
+            this.txtExistencia.Size = new System.Drawing.Size(75, 24);
             this.txtExistencia.TabIndex = 4;
             // 
             // chkEstablece
             // 
-            this.chkEstablece.Location = new System.Drawing.Point(6, 117);
+            this.chkEstablece.Location = new System.Drawing.Point(6, 104);
             this.chkEstablece.Name = "chkEstablece";
-            this.chkEstablece.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.chkEstablece.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEstablece.Properties.Appearance.Options.UseFont = true;
-            this.chkEstablece.Properties.Caption = "Establecer Condicion de existencia si la existencia del  es";
+            this.chkEstablece.Properties.Caption = "Establecer Condicion de existencia si la existencia es";
             this.chkEstablece.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
             this.chkEstablece.Size = new System.Drawing.Size(409, 22);
             this.chkEstablece.TabIndex = 3;
@@ -218,19 +232,19 @@
             this.meCondicion.Location = new System.Drawing.Point(120, 51);
             this.meCondicion.Name = "meCondicion";
             this.meCondicion.Properties.MaxLength = 250;
-            this.meCondicion.Size = new System.Drawing.Size(390, 60);
+            this.meCondicion.Size = new System.Drawing.Size(390, 46);
             this.meCondicion.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label1.Location = new System.Drawing.Point(43, 58);
+            this.label1.Location = new System.Drawing.Point(27, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 18);
+            this.label1.Size = new System.Drawing.Size(86, 18);
             this.label1.TabIndex = 50;
-            this.label1.Text = "Condición";
+            this.label1.Text = "Comentario";
             // 
             // chkActivo
             // 
@@ -349,6 +363,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAplicaLote.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExistencia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEstablece.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meCondicion.Properties)).EndInit();
@@ -386,5 +401,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colexistencia;
         private DevExpress.XtraGrid.Columns.GridColumn colactivo;
         private System.Windows.Forms.BindingSource inventarioBindingSource;
+        private DevExpress.XtraEditors.CheckEdit chkAplicaLote;
     }
 }

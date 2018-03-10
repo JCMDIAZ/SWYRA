@@ -305,5 +305,19 @@ namespace SWYRA
         public bool aplicaexist { get; set; }
         public double existencia { get; set; }
         public bool activo { get; set; }
+        public bool aplicalote { get; set; }
+    }
+
+    public class DetallePedidoMerc
+    {
+        public string cve_doc { get; set; }
+        public int consec { get; set; }
+        public int num_par { get; set; }
+        public string cve_art { get; set; }
+        public string codigo_barra { get; set; }
+        public int cant { get; set; }
+        public string tipopaquete { get; set; }
+        public int consec_padre { get; set; }
+        public string ultimo { get; set; }
     }
 }

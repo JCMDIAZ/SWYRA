@@ -1,0 +1,1 @@
+alter table PEDIDO ADD SOLAREA BIT NULL

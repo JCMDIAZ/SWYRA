@@ -79,15 +79,15 @@ namespace SWYRA
             try
             {
                 var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + pedido.estatuspedido + "', " +
-                            "FECHA_CANCELA = " + pedido.fecha_cancela.ToStrSql() + ", " +
-                            "FECHAAUT = " + pedido.fechaaut.ToStrSql() + ", " +
+                            "FECHA_CANCELA = " + ((pedido.estatuspedido == "CANCELACION") ? "GETDATE()" : "Null") + ", " +
+                            "FECHAAUT = " + ((pedido.estatuspedido == "SURTIR") ? "GETDATE()" : "Null") + ", " +
                             "INDICACIONES = " + (pedido.indicaciones == null ? "NULL" : "'" + pedido.indicaciones.Replace("'", "") + "'") + ", " +
                             "CONTADO = '" + pedido.contado + "', " +
                             "COBRADOR_AUTORIZO = '" + pedido.cobrador_autorizo + "' " +
                             "WHERE CVE_DOC = '" + pedido.cve_doc + "'";
                 var res = GetExecute("DB", query, 52);
                 query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
-                        pedido.cve_doc + "', '" + pedido.estatuspedido + "', getdate(), null)";
+                        pedido.cve_doc + "', '" + pedido.estatuspedido + "', getdate(), '" + userActivo.Usuario + "')";
                 res = GetExecute("DB", query, 53);
                 MessageBox.Show(@"Guardado satisfactoriamente.");
             }catch (Exception ex)

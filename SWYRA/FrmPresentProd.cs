@@ -216,9 +216,9 @@ namespace SWYRA
         private bool ValidaDatos()
         {
             bool b = true;
-            int tot = (int) txtNumPiezas1.EditValue + (int) txtNumPiezas2.EditValue + (int) txtNumPiezas3.EditValue +
-                      (int) txtNumPiezas4.EditValue + (int) txtNumPiezas5.EditValue + (int) txtNumPiezas6.EditValue +
-                      (int) txtNumPiezas5.EditValue + (int) txtNumPiezas6.EditValue + (int) txtNumPiezas7.EditValue;
+            double tot = (double) txtNumPiezas1.EditValue + (double) txtNumPiezas2.EditValue + (double) txtNumPiezas3.EditValue +
+                      (double) txtNumPiezas4.EditValue + (double) txtNumPiezas5.EditValue + (double) txtNumPiezas6.EditValue +
+                      (double) txtNumPiezas5.EditValue + (double) txtNumPiezas6.EditValue + (double) txtNumPiezas7.EditValue;
             string cod = txtCodigoBarra1.Text + txtCodigoBarra2.Text + txtCodigoBarra3.Text +
                          txtCodigoBarra4.Text + txtCodigoBarra5.Text + txtCodigoBarra6.Text +
                          txtCodigoBarra7.Text + txtCodigoBarra8.Text + txtCodigoBarra9.Text;
@@ -257,13 +257,13 @@ namespace SWYRA
                     b = false;
                 }
             }
-            if ((int) pz.EditValue == 0 && cd.Text != "")
+            if ((double) pz.EditValue == 0 && cd.Text != "")
             {
                 MessageBox.Show(@"La presentacion " + pr.ToString() + @" debe ser mayor a cero el numero de piezas.");
                 pz.Focus();
                 b = false;
             }
-            if ((int) pz.EditValue > 0 && cd.Text == "")
+            if ((double) pz.EditValue > 0 && cd.Text == "")
             {
                 MessageBox.Show(@"La presentacion " + pr.ToString() + @" debe contener un codigo o la cantidad de piezas en 0.");
                 pz.Focus();
@@ -513,21 +513,20 @@ namespace SWYRA
         {
             bool b = true;
             if (double.Parse(pz.EditValue.ToString()) == 0) { return; }
-            b = !(txtNumPiezas1.Name != pz.Name && (int) txtNumPiezas1.EditValue == (int) pz.EditValue) &&
-                !(txtNumPiezas2.Name != pz.Name && (int) txtNumPiezas2.EditValue == (int) pz.EditValue) &&
-                !(txtNumPiezas3.Name != pz.Name && (int) txtNumPiezas3.EditValue == (int) pz.EditValue) &&
-                !(txtNumPiezas4.Name != pz.Name && (int) txtNumPiezas4.EditValue == (int) pz.EditValue) &&
-                !(txtNumPiezas5.Name != pz.Name && (int) txtNumPiezas5.EditValue == (int) pz.EditValue) &&
-                !(txtNumPiezas6.Name != pz.Name && (int) txtNumPiezas6.EditValue == (int) pz.EditValue) &&
-                !(txtNumPiezas7.Name != pz.Name && (int) txtNumPiezas7.EditValue == (int) pz.EditValue) &&
-                !(txtNumPiezas8.Name != pz.Name && (int) txtNumPiezas8.EditValue == (int) pz.EditValue) &&
-                !(txtNumPiezas9.Name != pz.Name && (int) txtNumPiezas9.EditValue == (int) pz.EditValue);
+            b = !(txtNumPiezas1.Name != pz.Name && (double) txtNumPiezas1.EditValue == (double) pz.EditValue) &&
+                !(txtNumPiezas2.Name != pz.Name && (double) txtNumPiezas2.EditValue == (double) pz.EditValue) &&
+                !(txtNumPiezas3.Name != pz.Name && (double) txtNumPiezas3.EditValue == (double) pz.EditValue) &&
+                !(txtNumPiezas4.Name != pz.Name && (double) txtNumPiezas4.EditValue == (double) pz.EditValue) &&
+                !(txtNumPiezas5.Name != pz.Name && (double) txtNumPiezas5.EditValue == (double) pz.EditValue) &&
+                !(txtNumPiezas6.Name != pz.Name && (double) txtNumPiezas6.EditValue == (double) pz.EditValue) &&
+                !(txtNumPiezas7.Name != pz.Name && (double) txtNumPiezas7.EditValue == (double) pz.EditValue) &&
+                !(txtNumPiezas8.Name != pz.Name && (double) txtNumPiezas8.EditValue == (double) pz.EditValue) &&
+                !(txtNumPiezas9.Name != pz.Name && (double) txtNumPiezas9.EditValue == (double) pz.EditValue);
             if (!b)
             {
                 MessageBox.Show(@"La cantidad de piezas ya existe en otra presentacion.");
                 pz.Focus();
-            }
-        }
+            }}
 
         private void txtNumPiezas1_Leave(object sender, EventArgs e)
         {

@@ -73,6 +73,12 @@
     <Compile Include="FrmActivacion.Designer.cs">
       <DependentUpon>FrmActivacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDetenerPed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetenerPed.Designer.cs">
+      <DependentUpon>FrmDetenerPed.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmImpCodDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,11 +91,23 @@
     <Compile Include="FrmImpCodigoBarra.Designer.cs">
       <DependentUpon>FrmImpCodigoBarra.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmIncompleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIncompleto.Designer.cs">
+      <DependentUpon>FrmIncompleto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMenuPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenuPedidos.Designer.cs">
+      <DependentUpon>FrmMenuPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -103,6 +121,30 @@
     <Compile Include="FrmPedidos.Designer.cs">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSurtir2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSurtir2.Designer.cs">
+      <DependentUpon>FrmSurtir2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSurtir3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSurtir3.Designer.cs">
+      <DependentUpon>FrmSurtir3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSurtit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSurtit.Designer.cs">
+      <DependentUpon>FrmSurtit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferir.Designer.cs">
+      <DependentUpon>FrmTransferir.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -111,17 +153,38 @@
     <EmbeddedResource Include="FrmActivacion.resx">
       <DependentUpon>FrmActivacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetenerPed.resx">
+      <DependentUpon>FrmDetenerPed.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmImpCodDialog.resx">
       <DependentUpon>FrmImpCodDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmImpCodigoBarra.resx">
       <DependentUpon>FrmImpCodigoBarra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmIncompleto.resx">
+      <DependentUpon>FrmIncompleto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenuPedidos.resx">
+      <DependentUpon>FrmMenuPedidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidos.resx">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSurtir2.resx">
+      <DependentUpon>FrmSurtir2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSurtir3.resx">
+      <DependentUpon>FrmSurtir3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSurtit.resx">
+      <DependentUpon>FrmSurtit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferir.resx">
+      <DependentUpon>FrmTransferir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -141,7 +204,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\CodigosBarra.datasource" />
+    <None Include="Properties\DataSources\DetallePedidos.datasource" />
     <None Include="Properties\DataSources\Pedidos.datasource" />
+    <None Include="Properties\DataSources\Usuarios.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

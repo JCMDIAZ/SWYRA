@@ -51,6 +51,18 @@ namespace SWYRA
             return str;
         }
 
+        public static string ToStrSql(this DateTime? d, string format)
+        {
+            string str = "null";
+            DateTime r = new DateTime();
+            if (d != null)
+            {
+                r = (DateTime)d;
+            }
+            str = (d != null) ? "'" + r.ToString(format) + "'" : "Null";
+            return str;
+        }
+
         private static T CreateItemFromRow<T>(DataRow row, IList<PropertyInfo> properties) where T : new()
         {
             T item = new T();

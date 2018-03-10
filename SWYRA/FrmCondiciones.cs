@@ -73,6 +73,7 @@ namespace SWYRA
             chkEstablece.Checked = cnd.aplicaexist;
             txtExistencia.EditValue = cnd.existencia;
             chkActivo.Checked = cnd.activo;
+            chkAplicaLote.Checked = cnd.aplicalote;
         }
 
         private List<Inventario> CargaInventario()
@@ -95,7 +96,7 @@ namespace SWYRA
         {
             try
             {
-                var query = "SELECT CVE_ART, DESCR, COMENTARIO, APLICAEXIST, EXISTENCIA, ACTIVO " +
+                var query = "SELECT CVE_ART, DESCR, COMENTARIO, APLICAEXIST, EXISTENCIA, ACTIVO, APLICALOTE " +
                             "FROM INVENTARIOCOND WHERE CVE_ART IN(SELECT CVE_ART FROM INVENTARIO " +
                             "WHERE STATUS = 'A') ORDER BY CVE_ART";
                 listInventarioCondicion = GetDataTable("DB", query, 2).ToList<InventarioCondicion>();
@@ -123,13 +124,14 @@ namespace SWYRA
                     var query =
                             @"IF NOT EXISTS (SELECT * FROM INVENTARIOCOND " +
                             " WHERE CVE_ART = '" + cbProducto.EditValue.ToString() + "') BEGIN " +
-                            "INSERT INVENTARIOCOND (CVE_ART, DESCR, COMENTARIO, APLICAEXIST, EXISTENCIA, ACTIVO) " +
+                            "INSERT INVENTARIOCOND (CVE_ART, DESCR, COMENTARIO, APLICAEXIST, EXISTENCIA, ACTIVO, APLICALOTE) " +
                             "VALUES ('" + cbProducto.EditValue.ToString() + "', '" + cbProducto.Text.Replace(",", "") + "', '" +
                             meCondicion.Text + "', " + ((chkEstablece.Checked) ? "1" : "0") + ", " + txtExistencia.EditValue + ", " +
-                            ((chkActivo.Checked) ? "1" : "0") + ") END ELSE BEGIN " +
+                            ((chkActivo.Checked) ? "1" : "0") + ", " + ((chkAplicaLote.Checked) ? "1" : "0") + ") END ELSE BEGIN " +
                             @"UPDATE INVENTARIOCOND SET " +
                             "COMENTARIO = '" + meCondicion.Text + "', APLICAEXIST = " + ((chkEstablece.Checked) ? "1" : "0") + ", " +
-                            "EXISTENCIA = " + txtExistencia.EditValue + ", Activo = " + ((chkActivo.Checked) ? "1" : "0") +
+                            "EXISTENCIA = " + txtExistencia.EditValue + ", Activo = " + ((chkActivo.Checked) ? "1" : "0") + ", " +
+                            "APLICALOTE = " + ((chkActivo.Checked) ? "1" : "0") +
                             " WHERE CVE_ART = '" + cbProducto.EditValue.ToString() + "' END";
                     var res = GetExecute("DB", query, 3);
                     MessageBox.Show(@"Guardado satisfactoriamente.");
@@ -144,8 +146,7 @@ namespace SWYRA
             }
         }
 
-        private bool ValidaDatos()
-        {
+        private bool ValidaDatos(){
             bool b = true;
             if (cbProducto.Text == "")
             {
