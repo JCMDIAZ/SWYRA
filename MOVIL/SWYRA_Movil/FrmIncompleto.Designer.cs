@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIncompleto));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.pnlRetornar = new System.Windows.Forms.Panel();
+            this.pbRegresar = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgDetallePed = new System.Windows.Forms.DataGrid();
@@ -46,7 +47,6 @@
             this.dataGridTextBoxColumn6 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.lblPedido = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pbRegresar = new System.Windows.Forms.PictureBox();
             this.pnlRetornar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidosBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +60,15 @@
             this.pnlRetornar.Location = new System.Drawing.Point(0, 235);
             this.pnlRetornar.Name = "pnlRetornar";
             this.pnlRetornar.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pbRegresar
+            // 
+            this.pbRegresar.Image = ((System.Drawing.Image)(resources.GetObject("pbRegresar.Image")));
+            this.pbRegresar.Location = new System.Drawing.Point(198, 2);
+            this.pbRegresar.Name = "pbRegresar";
+            this.pbRegresar.Size = new System.Drawing.Size(35, 35);
+            this.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbRegresar.Click += new System.EventHandler(this.pbRegresar_Click);
             // 
             // pbSalir
             // 
@@ -165,15 +174,6 @@
             this.label5.Text = "Pedido:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // pbRegresar
-            // 
-            this.pbRegresar.Image = ((System.Drawing.Image)(resources.GetObject("pbRegresar.Image")));
-            this.pbRegresar.Location = new System.Drawing.Point(198, 2);
-            this.pbRegresar.Name = "pbRegresar";
-            this.pbRegresar.Size = new System.Drawing.Size(35, 35);
-            this.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbRegresar.Click += new System.EventHandler(this.pbRegresar_Click);
-            // 
             // FrmIncompleto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -188,7 +188,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "FrmIncompleto";
-            this.Text = "SWYRA";
+            this.Text = "SWRYA";
             this.Load += new System.EventHandler(this.FrmIncompleto_Load);
             this.pnlRetornar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidosBindingSource)).EndInit();

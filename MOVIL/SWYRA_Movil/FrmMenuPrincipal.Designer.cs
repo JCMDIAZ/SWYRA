@@ -236,7 +236,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "FrmMenuPrincipal";
-            this.Text = "SWYRA";
+            this.Text = "SWRYA";
             this.Load += new System.EventHandler(this.FrmMenuPrincipal_Load);
             this.pnlImpCod.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

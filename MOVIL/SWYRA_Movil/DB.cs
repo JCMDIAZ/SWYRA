@@ -240,5 +240,6 @@ namespace SWYRA_Movil
         public string tipopaquete { get; set; }
         public int consec_padre { get; set; }
         public string ultimo { get; set; }
+        public string descr { get; set; }
     }
 }

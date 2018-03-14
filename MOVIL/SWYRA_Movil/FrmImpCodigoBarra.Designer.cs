@@ -205,7 +205,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "FrmImpCodigoBarra";
-            this.Text = "SWYRA";
+            this.Text = "SWRYA";
             this.Load += new System.EventHandler(this.FrmImpCodigoBarra_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
