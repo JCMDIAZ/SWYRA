@@ -254,6 +254,7 @@
             this.pbDevolucion.Name = "pbDevolucion";
             this.pbDevolucion.Size = new System.Drawing.Size(18, 18);
             this.pbDevolucion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbDevolucion.Click += new System.EventHandler(this.pbDevolucion_Click);
             // 
             // pnlDetener
             // 
@@ -410,7 +411,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "FrmMenuPedidos";
-            this.Text = "SWYRA";
+            this.Text = "SWRYA";
             this.Load += new System.EventHandler(this.FrmMenuPedidos_Load);
             this.pnlRetornar.ResumeLayout(false);
             this.pnlPorSurtir.ResumeLayout(false);

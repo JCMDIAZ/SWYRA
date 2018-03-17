@@ -133,7 +133,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "FrmTransferir";
-            this.Text = "SWYRA";
+            this.Text = "SWRYA";
             this.Load += new System.EventHandler(this.FrmTransferir_Load);
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
             this.panel4.ResumeLayout(false);

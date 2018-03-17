@@ -102,7 +102,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "FrmSurtir2";
-            this.Text = "SWYRA";
+            this.Text = "SWRYA";
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 

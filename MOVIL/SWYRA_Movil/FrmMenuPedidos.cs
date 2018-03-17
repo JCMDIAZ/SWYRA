@@ -210,5 +210,10 @@ namespace SWYRA_Movil
                 MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
+
+        private void pbDevolucion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
