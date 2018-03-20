@@ -83,19 +83,19 @@ namespace SWYRA_Movil
 
         private string creteQR(bool Area, bool Devuelto)
         {
-            var query = "SELECT  CVE_DOC, NUM_PAR, dp.CVE_ART, CANT, ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) " + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ", " +
+            var query = "SELECT a.*, isnull(o.ORDEN,0) ORDEN FROM ( SELECT  CVE_DOC, NUM_PAR, dp.CVE_ART, CANT, ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) " + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ", " +
                     "ISNULL(" + (Devuelto ? "DEVUELTO" : "SURTIDO") + ",0) " + (Devuelto ? "DEVUELTO" : "SURTIDO") + ", i.DESCR, i.EXIST, i.LIN_PROD, " +
                     "ISNULL(ic.COMENTARIO,'') COMENTARIO, ISNULL(ic.APLICAEXIST,0) APLICAEXIST, " +
-                    "ISNULL(ic.EXISTENCIA,0) MINEXIST, ISNULL(IC.APLICALOTE,0) APLICALOTE, " +
-                    "case when isnull(i.CTRL_ALM,'') <> '' then i.CTRL_ALM END + " +
-                    "case when isnull(i.CTRL_ALM,'') <> '' AND isnull(i.MASTERS_UBI,'') <> '' then '-' END + " +
-                    "case when isnull(i.MASTERS_UBI,'') <> '' then i.MASTERS_UBI END ubicacion, " +
-                    "CANT -  ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) CANTDIFERENCIA " +
+                    "ISNULL(ic.EXISTENCIA,0) MINEXIST, ISNULL(IC.APLICALOTE,0) APLICALOTE, i.CTRL_ALM, i.MASTERS_UBI, " +
+                    "case when CANT -  ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) > i.MASTERS then " +
+                    "case when isnull(i.MASTERS_UBI,'') <> '' then i.MASTERS_UBI else case when isnull(i.CTRL_ALM,'') <> '' then i.CTRL_ALM else '' END END " +
+	                "else case when isnull(i.CTRL_ALM,'') <> '' then i.CTRL_ALM else '' END END ubicacion, " +
+                    "CANT -  ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) CANTDIFERENCIA, i.UNI_EMP MIN, i.MASTERS MAS " +
                     "FROM " + (Devuelto ? "DETALLEPEDIDODEV" : "DETALLEPEDIDO") + " dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "JOIN AREAS a ON i.CTRL_ALM " + (Area ? "" : "NOT") + " like '%' + a.NOMBRE + '%' " +
                     "LEFT JOIN INVENTARIOCOND ic ON ic.CVE_ART = dp.CVE_ART AND ic.ACTIVO = 1 " +
                     "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
-                    "ORDER By (i.CTRL_ALM + i.MASTERS_UBI)";
+                    "LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI ORDER BY o.ORDEN";
             return query;
         }
 

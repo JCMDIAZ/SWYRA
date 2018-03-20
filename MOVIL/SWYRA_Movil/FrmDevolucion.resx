@@ -142,6 +142,9 @@
         P2uWFLPoTsyiOzGL7sQsug9wvwFHZdHTcR2KjQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="detallePedidoMercBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>134, 17</value>
+  </metadata>
   <metadata name="$this.FormFactorShadowProperty" xml:space="preserve">
     <value>WEBPAD</value>
   </metadata>

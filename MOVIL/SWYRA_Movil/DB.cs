@@ -227,6 +227,11 @@ namespace SWYRA_Movil
         public bool aplicalote { get; set; }
         public double cantdiferencia { get; set; }
         public string lin_prod { get; set; }
+        public string ctrl_alm { get; set; }
+        public string masters_ubi { get; set; }
+        public double min { get; set; }
+        public double mas { get; set; }
+        public int orden { get; set; }
     }
 
     public class DetallePedidoMerc
@@ -241,5 +246,11 @@ namespace SWYRA_Movil
         public int consec_padre { get; set; }
         public string ultimo { get; set; }
         public string descr { get; set; }
+    }
+
+    public class OrdenUbicacion
+    {
+        public string cve_ubi { get; set; }
+        public int orden { get; set; }
     }
 }

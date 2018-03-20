@@ -241,12 +241,12 @@
             // 
             // dataGridTableStyle1
             // 
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn1);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn2);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn1);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn3);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn5);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn7);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn4);
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn5);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn6);
             this.dataGridTableStyle1.MappingName = "detallePedidos";
             // 

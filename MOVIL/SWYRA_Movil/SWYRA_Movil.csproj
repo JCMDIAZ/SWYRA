@@ -207,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\CodigosBarra.datasource" />
+    <None Include="Properties\DataSources\DetallePedidoMerc.datasource" />
     <None Include="Properties\DataSources\DetallePedidos.datasource" />
     <None Include="Properties\DataSources\Pedidos.datasource" />
     <None Include="Properties\DataSources\Usuarios.datasource" />

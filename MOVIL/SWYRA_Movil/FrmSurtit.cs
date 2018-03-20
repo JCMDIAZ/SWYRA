@@ -17,6 +17,7 @@ namespace SWYRA_Movil
         private DetallePedidos art = new DetallePedidos();
         private string lastCB;
         private string Lote;
+        private List<OrdenUbicacion> orbi = new List<OrdenUbicacion>();
 
         public FrmSurtit()
         {
@@ -30,10 +31,24 @@ namespace SWYRA_Movil
 
         private void FrmSurtit_Load(object sender, EventArgs e)
         {
+            CargaUbicaciones();
             var mostrardet = det.Where(o => o.surtido == false).ToList();
             dgDetallePed.DataSource = Program.ToDataTable<DetallePedidos>(mostrardet, "detallePedidos");
             lblPedido.Text = ped.cve_doc.Trim();
             lblComentario.Text = "";
+        }
+
+        private void CargaUbicaciones()
+        {
+            try
+            {
+                var query = "select * from orden_ruta order by ORDEN";
+                orbi = Program.GetDataTable(query, 4).ToList<OrdenUbicacion>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
@@ -165,6 +180,9 @@ namespace SWYRA_Movil
                 art.cantdiferencia = art.cant - art.cantsurtido;
                 art.surtido = (art.cant == art.cantsurtido);
                 art.exist = (art.exist - art.cantsurtido);
+                art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
+                var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
+                art.orden = orb.orden;
                 var query = "DECLARE @consec INT " +
                             "SELECT @consec = (ISNULL(MAX(CONSEC),-1) + 1) FROM DETALLEPEDIDOMERC " +
                             "WHERE CVE_DOC = '" + art.cve_doc + "' " +
@@ -181,6 +199,7 @@ namespace SWYRA_Movil
                 Program.GetExecute(query, 2);
 
                 var mostrardet = det.Where(o => o.surtido == false).ToList();
+                mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
                 dgDetallePed.DataSource = Program.ToDataTable<DetallePedidos>(mostrardet, "detallePedidos");
             }
         }
