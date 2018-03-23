@@ -351,7 +351,7 @@ namespace SWYRA
                                     "CANT_PIEZAS_4, CODIGO_BARRA_4, CANT_PIEZAS_5, CODIGO_BARRA_5, " +
                                     "CANT_PIEZAS_6, CODIGO_BARRA_6, CANT_PIEZAS_7, CODIGO_BARRA_7, " +
                                     "CANT_PIEZAS_8, CODIGO_BARRA_8, CANT_PIEZAS_9, CODIGO_BARRA_9, ACTIVO) " +
-                                    "VALUES ('" + pres.cve_art + "', '" + pres.descr.Replace("'","") + "', " +
+                                    "VALUES ('" + pres.cve_art + "', CAST('" + pres.descr.Replace("'","") + "' AS VARCHAR(40)), " +
                                     pres.cant_piezas_1 + ", '" + pres.codigo_barra_1 + "', " +
                                     pres.cant_piezas_2 + ", '" + pres.codigo_barra_2 + "', " +
                                     pres.cant_piezas_3 + ", '" + pres.codigo_barra_3 + "', " +
@@ -373,7 +373,7 @@ namespace SWYRA
                                     "CANT_PIEZAS_8 = " + pres.cant_piezas_8 + ", CODIGO_BARRA_8 = '" + pres.codigo_barra_8 + "', " +
                                     "CANT_PIEZAS_9 = " + pres.cant_piezas_9 + ", CODIGO_BARRA_9 = '" + pres.codigo_barra_9 + "', " +
                                     "Activo = " + ((pres.activo) ? "1" : "0") +
-                                    " WHERE CVE_ART = '" + cbProducto.EditValue.ToString() + "' END";
+                                    " WHERE CVE_ART = '" + pres.cve_art + "' END";
                             var res = GetExecute("DB", query, 6);
                         }
                         catch (Exception ms)

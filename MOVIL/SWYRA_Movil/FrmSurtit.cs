@@ -183,9 +183,11 @@ namespace SWYRA_Movil
                 art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
                 var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
                 art.orden = orb.orden;
+                var confirmar = "IF EXISTS( SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "') " +
+                                "UPDATE DETALLEPEDIDOMERC SET CANT = CANT + " + txtCant.Value.ToString() + " WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' ELSE ";
                 var query = "DECLARE @consec INT " +
                             "SELECT @consec = (ISNULL(MAX(CONSEC),-1) + 1) FROM DETALLEPEDIDOMERC " +
-                            "WHERE CVE_DOC = '" + art.cve_doc + "' " +
+                            "WHERE CVE_DOC = '" + art.cve_doc + "' " + (cod.cant_piezas == 1 ? confirmar : "") +
                             "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT) " +
                             "VALUES ('" + art.cve_doc + "', @consec, " + art.num_par.ToString() + ", '" + art.cve_art +
                             "', '" + lastCB + "', " + txtCant.Value.ToString() + ") " +
@@ -218,6 +220,7 @@ namespace SWYRA_Movil
         {
             var index = dgDetallePed.CurrentRowIndex;
             if (index >= 0)
+
             {
                 art = det.First(o => o.num_par == int.Parse(dgDetallePed[index, 6].ToString()));
                 art.surtido = true;

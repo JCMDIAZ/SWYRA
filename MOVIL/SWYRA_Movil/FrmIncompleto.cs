@@ -30,7 +30,10 @@ namespace SWYRA_Movil
             var mostrardet = det;
             dgDetallePed.DataSource = Program.ToDataTable<DetallePedidos>(mostrardet, "detallePedidos");
             lblPedido.Text = ped.cve_doc.Trim();
-            dgDetallePed.Select(dgDetallePed.CurrentRowIndex);
+            if (mostrardet.Count > 0)
+            {
+                dgDetallePed.Select(dgDetallePed.CurrentRowIndex);
+            }
         }
 
         private void pbRegresar_Click(object sender, EventArgs e)

@@ -246,6 +246,7 @@ namespace SWYRA_Movil
         public int consec_padre { get; set; }
         public string ultimo { get; set; }
         public string descr { get; set; }
+        public bool cancelado { get; set; }
     }
 
     public class OrdenUbicacion

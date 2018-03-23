@@ -94,7 +94,7 @@ namespace SWYRA_Movil
                     "FROM " + (Devuelto ? "DETALLEPEDIDODEV" : "DETALLEPEDIDO") + " dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "JOIN AREAS a ON i.CTRL_ALM " + (Area ? "" : "NOT") + " like '%' + a.NOMBRE + '%' " +
                     "LEFT JOIN INVENTARIOCOND ic ON ic.CVE_ART = dp.CVE_ART AND ic.ACTIVO = 1 " +
-                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
+                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "')) AS a " +
                     "LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI ORDER BY o.ORDEN";
             return query;
         }

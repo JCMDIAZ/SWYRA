@@ -16,7 +16,6 @@ namespace SWYRA_Movil
         private CodigosBarra cod = new CodigosBarra();
         private DetallePedidoMerc art;
         private string lastCB;
-        private string Lote;
 
         public FrmDevolucion()
         {
@@ -61,13 +60,11 @@ namespace SWYRA_Movil
                     }
                     else if(tot == 1)
                     {
-                        art = det.First(o => o.codigo_barra == cod.codigo_barra);
-                        query = "DELETE DETALLEPEDIDOMERC WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND " +
-                                "CONSEC = " + art.consec;
-
-                    }
-                    else if (tot > 1)
-                    {
+                        txtCant.ReadOnly = !(cod.cant_piezas == 1);
+                        art = det.Find(o => o.codigo_barra == txtCodigo.Text && (o.cancelado == null || o.cancelado == false));
+                        art.cancelado = (cod.cant_piezas != 1);
+                        actualizaDet();
+                        if (cod.cant_piezas == 1) { txtCant.Focus(); }
                     }
                 }
                 else
@@ -79,11 +76,33 @@ namespace SWYRA_Movil
             {
                 MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
+            if (txtCant.ReadOnly)
+            {
+                txtCodigo.Text = "";
+                txtCodigo.Focus();
+            }
+        }
+
+        private void actualizaDet()
+        {
+            if (txtCant.ReadOnly)
+            {
+                var query = "UPDATE DETALLEPEDIDOMERC SET Cancelado = " + (art.cancelado ? "1" : "0") + ", " +
+                            "CANT = " + art.cant + " WHERE CVE_DOC  = '" + art.cve_doc + "' AND CONSEC = " + art.consec.ToString() +
+                            " UPDATE DETALLEPEDIDO SET CANTSURTIDO = CANTSURTIDO - " + txtCant.Value.ToString() +
+                            ", SURTIDO = 0 WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() +
+                            " UPDATE INVENTARIO SET EXIST = EXIST + " + txtCant.Value.ToString() + " WHERE CVE_ART = '" + art.cve_art + "' " +
+                            "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
+                            "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
+                            "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
+                Program.GetExecute(query, 3);
+                det = CargaDetalleMerc();
+            }
         }
 
         private void dgDetallePed_CurrentCellChanged(object sender, EventArgs e)
         {
-
+            dgDetallePed.Select(dgDetallePed.CurrentRowIndex);
         }
 
         private void FrmDevolucion_Load(object sender, EventArgs e)
@@ -109,12 +128,23 @@ namespace SWYRA_Movil
 
         private void txtCant_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-        }
-
-        private void txtCant_LostFocus(object sender, EventArgs e)
-        {
-
+            if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
+            {
+                if ((double)txtCant.Value > art.cant)
+                {
+                    txtCant.Value = (decimal)art.cant;
+                    MessageBox.Show(@"Artículo excede a la cantidad solicitada.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
+                else
+                {
+                    art.cant -= (int)txtCant.Value;
+                    art.cancelado = (art.cant == 0);
+                    txtCant.ReadOnly = true;
+                    txtCodigo.Text = "";
+                    txtCodigo.Focus();
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

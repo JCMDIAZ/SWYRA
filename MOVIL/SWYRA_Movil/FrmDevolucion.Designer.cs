@@ -41,12 +41,12 @@
             this.detallePedidoMercBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgDetallePed = new System.Windows.Forms.DataGrid();
             this.dataGridTableStyle1 = new System.Windows.Forms.DataGridTableStyle();
-            this.txtDescr = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn3 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn4 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.txtDescr = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtCant = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
@@ -118,6 +118,7 @@
             this.dgDetallePed.Size = new System.Drawing.Size(220, 140);
             this.dgDetallePed.TabIndex = 17;
             this.dgDetallePed.TableStyles.Add(this.dataGridTableStyle1);
+            this.dgDetallePed.CurrentCellChanged += new System.EventHandler(this.dgDetallePed_CurrentCellChanged);
             // 
             // dataGridTableStyle1
             // 
@@ -126,31 +127,6 @@
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn4);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn1);
             this.dataGridTableStyle1.MappingName = "detallePedidoMerc";
-            // 
-            // txtDescr
-            // 
-            this.txtDescr.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.txtDescr.Location = new System.Drawing.Point(54, 64);
-            this.txtDescr.Multiline = true;
-            this.txtDescr.Name = "txtDescr";
-            this.txtDescr.ReadOnly = true;
-            this.txtDescr.Size = new System.Drawing.Size(175, 22);
-            this.txtDescr.TabIndex = 19;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label4.Location = new System.Drawing.Point(11, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 19);
-            this.label4.Text = "Desc.";
-            // 
-            // dataGridTextBoxColumn1
-            // 
-            this.dataGridTextBoxColumn1.Format = "";
-            this.dataGridTextBoxColumn1.FormatInfo = null;
-            this.dataGridTextBoxColumn1.HeaderText = "Cons.";
-            this.dataGridTextBoxColumn1.MappingName = "consec";
             // 
             // dataGridTextBoxColumn2
             // 
@@ -173,6 +149,31 @@
             this.dataGridTextBoxColumn4.FormatInfo = null;
             this.dataGridTextBoxColumn4.HeaderText = "Cantidad";
             this.dataGridTextBoxColumn4.MappingName = "cant";
+            // 
+            // dataGridTextBoxColumn1
+            // 
+            this.dataGridTextBoxColumn1.Format = "";
+            this.dataGridTextBoxColumn1.FormatInfo = null;
+            this.dataGridTextBoxColumn1.HeaderText = "Cons.";
+            this.dataGridTextBoxColumn1.MappingName = "consec";
+            // 
+            // txtDescr
+            // 
+            this.txtDescr.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.txtDescr.Location = new System.Drawing.Point(54, 64);
+            this.txtDescr.Multiline = true;
+            this.txtDescr.Name = "txtDescr";
+            this.txtDescr.ReadOnly = true;
+            this.txtDescr.Size = new System.Drawing.Size(175, 22);
+            this.txtDescr.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label4.Location = new System.Drawing.Point(11, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 19);
+            this.label4.Text = "Desc.";
             // 
             // txtCant
             // 
@@ -197,6 +198,7 @@
             0,
             0,
             0});
+            this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCant_KeyPress);
             // 
             // label2
             // 
