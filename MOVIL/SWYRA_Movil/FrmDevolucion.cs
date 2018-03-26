@@ -97,6 +97,7 @@ namespace SWYRA_Movil
                             "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
                 Program.GetExecute(query, 3);
                 det = CargaDetalleMerc();
+                dgDetallePed.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
             }
         }
 
@@ -108,6 +109,7 @@ namespace SWYRA_Movil
         private void FrmDevolucion_Load(object sender, EventArgs e)
         {
             det = CargaDetalleMerc();
+            dgDetallePed.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
         }
 
         private List<DetallePedidoMerc> CargaDetalleMerc()
@@ -116,7 +118,7 @@ namespace SWYRA_Movil
             try
             {
                 var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, dt.CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, i.DESCR " +
-                            "FROM DETALLEPEDIDOMERC dt JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                            "FROM DETALLEPEDIDOMERC dt JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND ISNULL(CANCELADO,0) = 0";
                 tmp = Program.GetDataTable(query, 1).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)
@@ -145,6 +147,11 @@ namespace SWYRA_Movil
                     e.Handled = true;
                 }
             }
+        }
+
+        private void txtCant_LostFocus(object sender, EventArgs e)
+        {
+            actualizaDet();
         }
     }
 }

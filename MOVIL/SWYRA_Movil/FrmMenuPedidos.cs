@@ -213,7 +213,11 @@ namespace SWYRA_Movil
 
         private void pbDevolucion_Click(object sender, EventArgs e)
         {
-
+            FrmDevolucion frmDevolucion = new FrmDevolucion();
+            frmDevolucion.ped = ped;
+            frmDevolucion.ShowDialog();
+            pnlArea.Visible = !validaExis(true) && !ped.solarea;
+            pnlConcluir.Visible = validaExis(false) && !pnlArea.Visible;
         }
     }
 }

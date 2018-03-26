@@ -145,38 +145,40 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(550, 677);
+            this.panel1.Size = new System.Drawing.Size(412, 550);
             this.panel1.TabIndex = 0;
             // 
             // pcProgresBar
             // 
             this.pcProgresBar.Controls.Add(this.progressBarControl1);
             this.pcProgresBar.Controls.Add(this.label13);
-            this.pcProgresBar.Location = new System.Drawing.Point(447, 446);
+            this.pcProgresBar.Location = new System.Drawing.Point(335, 362);
+            this.pcProgresBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pcProgresBar.Name = "pcProgresBar";
-            this.pcProgresBar.Size = new System.Drawing.Size(357, 93);
+            this.pcProgresBar.Size = new System.Drawing.Size(268, 76);
             this.pcProgresBar.TabIndex = 19;
             this.pcProgresBar.Visible = false;
             // 
             // progressBarControl1
             // 
-            this.progressBarControl1.Location = new System.Drawing.Point(7, 42);
+            this.progressBarControl1.Location = new System.Drawing.Point(5, 34);
+            this.progressBarControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBarControl1.Name = "progressBarControl1";
             this.progressBarControl1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.progressBarControl1.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
             this.progressBarControl1.Properties.ShowTitle = true;
-            this.progressBarControl1.Size = new System.Drawing.Size(345, 34);
+            this.progressBarControl1.Size = new System.Drawing.Size(259, 28);
             this.progressBarControl1.TabIndex = 18;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(6, 12);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(4, 10);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(134, 18);
+            this.label13.Size = new System.Drawing.Size(110, 15);
             this.label13.TabIndex = 17;
             this.label13.Text = "Progreso de Carga";
             // 
@@ -187,9 +189,10 @@
             this.pcReporte.Controls.Add(this.simpleButton1);
             this.pcReporte.Controls.Add(this.memoRep);
             this.pcReporte.Controls.Add(this.label14);
-            this.pcReporte.Location = new System.Drawing.Point(3, 363);
+            this.pcReporte.Location = new System.Drawing.Point(2, 295);
+            this.pcReporte.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pcReporte.Name = "pcReporte";
-            this.pcReporte.Size = new System.Drawing.Size(398, 332);
+            this.pcReporte.Size = new System.Drawing.Size(298, 270);
             this.pcReporte.TabIndex = 81;
             this.pcReporte.Visible = false;
             // 
@@ -199,38 +202,41 @@
             this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
             this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(359, 9);
+            this.simpleButton1.Location = new System.Drawing.Point(269, 7);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButton1.Size = new System.Drawing.Size(22, 25);
+            this.simpleButton1.Size = new System.Drawing.Size(20, 20);
             this.simpleButton1.TabIndex = 19;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // memoRep
             // 
-            this.memoRep.Location = new System.Drawing.Point(25, 53);
+            this.memoRep.Location = new System.Drawing.Point(19, 43);
+            this.memoRep.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.memoRep.Name = "memoRep";
-            this.memoRep.Size = new System.Drawing.Size(360, 253);
+            this.memoRep.Size = new System.Drawing.Size(270, 206);
             this.memoRep.TabIndex = 18;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(8, 13);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(6, 11);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(125, 18);
+            this.label14.Size = new System.Drawing.Size(104, 15);
             this.label14.TabIndex = 17;
             this.label14.Text = "Reporte de Carga";
             // 
             // gcPresentaciones
             // 
             this.gcPresentaciones.DataSource = this.inventarioPresentacionBindingSource;
-            this.gcPresentaciones.Location = new System.Drawing.Point(12, 431);
+            this.gcPresentaciones.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gcPresentaciones.Location = new System.Drawing.Point(9, 350);
             this.gcPresentaciones.MainView = this.gridView1;
+            this.gcPresentaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gcPresentaciones.Name = "gcPresentaciones";
-            this.gcPresentaciones.Size = new System.Drawing.Size(525, 232);
+            this.gcPresentaciones.Size = new System.Drawing.Size(394, 188);
             this.gcPresentaciones.TabIndex = 46;
             this.gcPresentaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -499,9 +505,11 @@
             this.groupBox1.Controls.Add(this.chkActivo);
             this.groupBox1.Controls.Add(this.cbProducto);
             this.groupBox1.Controls.Add(this.Label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 39);
+            this.groupBox1.Location = new System.Drawing.Point(9, 32);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(525, 386);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(394, 314);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Producto Presentación";
@@ -510,28 +518,29 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label12.Location = new System.Drawing.Point(43, 324);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(32, 263);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(107, 18);
+            this.label12.Size = new System.Drawing.Size(89, 15);
             this.label12.TabIndex = 78;
             this.label12.Text = "Presentación 9";
             // 
             // txtCodigoBarra9
             // 
-            this.txtCodigoBarra9.Location = new System.Drawing.Point(311, 321);
+            this.txtCodigoBarra9.Location = new System.Drawing.Point(233, 261);
+            this.txtCodigoBarra9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra9.Name = "txtCodigoBarra9";
             this.txtCodigoBarra9.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra9.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra9.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra9.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra9.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra9.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra9.TabIndex = 77;
             this.txtCodigoBarra9.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas9
             // 
-            this.txtNumPiezas9.Location = new System.Drawing.Point(210, 321);
+            this.txtNumPiezas9.Location = new System.Drawing.Point(158, 261);
+            this.txtNumPiezas9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas9.Name = "txtNumPiezas9";
             this.txtNumPiezas9.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas9.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -543,7 +552,7 @@
             this.txtNumPiezas9.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas9.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas9.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas9.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas9.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas9.TabIndex = 76;
             this.txtNumPiezas9.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -551,28 +560,29 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label11.Location = new System.Drawing.Point(43, 294);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(32, 239);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 18);
+            this.label11.Size = new System.Drawing.Size(89, 15);
             this.label11.TabIndex = 75;
             this.label11.Text = "Presentación 8";
             // 
             // txtCodigoBarra8
             // 
-            this.txtCodigoBarra8.Location = new System.Drawing.Point(311, 291);
+            this.txtCodigoBarra8.Location = new System.Drawing.Point(233, 236);
+            this.txtCodigoBarra8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra8.Name = "txtCodigoBarra8";
             this.txtCodigoBarra8.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra8.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra8.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra8.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra8.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra8.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra8.TabIndex = 74;
             this.txtCodigoBarra8.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas8
             // 
-            this.txtNumPiezas8.Location = new System.Drawing.Point(210, 291);
+            this.txtNumPiezas8.Location = new System.Drawing.Point(158, 236);
+            this.txtNumPiezas8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas8.Name = "txtNumPiezas8";
             this.txtNumPiezas8.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas8.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -584,7 +594,7 @@
             this.txtNumPiezas8.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas8.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas8.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas8.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas8.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas8.TabIndex = 73;
             this.txtNumPiezas8.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -592,28 +602,29 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label10.Location = new System.Drawing.Point(43, 264);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(32, 214);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 18);
+            this.label10.Size = new System.Drawing.Size(89, 15);
             this.label10.TabIndex = 72;
             this.label10.Text = "Presentación 7";
             // 
             // txtCodigoBarra7
             // 
-            this.txtCodigoBarra7.Location = new System.Drawing.Point(311, 261);
+            this.txtCodigoBarra7.Location = new System.Drawing.Point(233, 212);
+            this.txtCodigoBarra7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra7.Name = "txtCodigoBarra7";
             this.txtCodigoBarra7.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra7.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra7.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra7.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra7.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra7.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra7.TabIndex = 71;
             this.txtCodigoBarra7.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas7
             // 
-            this.txtNumPiezas7.Location = new System.Drawing.Point(210, 261);
+            this.txtNumPiezas7.Location = new System.Drawing.Point(158, 212);
+            this.txtNumPiezas7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas7.Name = "txtNumPiezas7";
             this.txtNumPiezas7.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas7.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -625,7 +636,7 @@
             this.txtNumPiezas7.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas7.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas7.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas7.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas7.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas7.TabIndex = 70;
             this.txtNumPiezas7.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -633,28 +644,29 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label9.Location = new System.Drawing.Point(43, 234);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(32, 190);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 18);
+            this.label9.Size = new System.Drawing.Size(89, 15);
             this.label9.TabIndex = 69;
             this.label9.Text = "Presentación 6";
             // 
             // txtCodigoBarra6
             // 
-            this.txtCodigoBarra6.Location = new System.Drawing.Point(311, 231);
+            this.txtCodigoBarra6.Location = new System.Drawing.Point(233, 188);
+            this.txtCodigoBarra6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra6.Name = "txtCodigoBarra6";
             this.txtCodigoBarra6.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra6.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra6.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra6.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra6.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra6.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra6.TabIndex = 68;
             this.txtCodigoBarra6.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas6
             // 
-            this.txtNumPiezas6.Location = new System.Drawing.Point(210, 231);
+            this.txtNumPiezas6.Location = new System.Drawing.Point(158, 188);
+            this.txtNumPiezas6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas6.Name = "txtNumPiezas6";
             this.txtNumPiezas6.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas6.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -666,7 +678,7 @@
             this.txtNumPiezas6.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas6.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas6.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas6.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas6.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas6.TabIndex = 67;
             this.txtNumPiezas6.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -674,28 +686,29 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label8.Location = new System.Drawing.Point(43, 204);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(32, 166);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 18);
+            this.label8.Size = new System.Drawing.Size(89, 15);
             this.label8.TabIndex = 66;
             this.label8.Text = "Presentación 5";
             // 
             // txtCodigoBarra5
             // 
-            this.txtCodigoBarra5.Location = new System.Drawing.Point(311, 201);
+            this.txtCodigoBarra5.Location = new System.Drawing.Point(233, 163);
+            this.txtCodigoBarra5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra5.Name = "txtCodigoBarra5";
             this.txtCodigoBarra5.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra5.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra5.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra5.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra5.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra5.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra5.TabIndex = 65;
             this.txtCodigoBarra5.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas5
             // 
-            this.txtNumPiezas5.Location = new System.Drawing.Point(210, 201);
+            this.txtNumPiezas5.Location = new System.Drawing.Point(158, 163);
+            this.txtNumPiezas5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas5.Name = "txtNumPiezas5";
             this.txtNumPiezas5.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas5.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -707,7 +720,7 @@
             this.txtNumPiezas5.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas5.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas5.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas5.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas5.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas5.TabIndex = 64;
             this.txtNumPiezas5.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -715,28 +728,29 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label7.Location = new System.Drawing.Point(43, 174);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(32, 141);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 18);
+            this.label7.Size = new System.Drawing.Size(89, 15);
             this.label7.TabIndex = 63;
             this.label7.Text = "Presentación 4";
             // 
             // txtCodigoBarra4
             // 
-            this.txtCodigoBarra4.Location = new System.Drawing.Point(311, 171);
+            this.txtCodigoBarra4.Location = new System.Drawing.Point(233, 139);
+            this.txtCodigoBarra4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra4.Name = "txtCodigoBarra4";
             this.txtCodigoBarra4.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra4.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra4.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra4.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra4.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra4.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra4.TabIndex = 62;
             this.txtCodigoBarra4.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas4
             // 
-            this.txtNumPiezas4.Location = new System.Drawing.Point(210, 171);
+            this.txtNumPiezas4.Location = new System.Drawing.Point(158, 139);
+            this.txtNumPiezas4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas4.Name = "txtNumPiezas4";
             this.txtNumPiezas4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas4.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -748,7 +762,7 @@
             this.txtNumPiezas4.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas4.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas4.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas4.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas4.TabIndex = 61;
             this.txtNumPiezas4.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -756,28 +770,29 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label6.Location = new System.Drawing.Point(43, 144);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(32, 117);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 18);
+            this.label6.Size = new System.Drawing.Size(89, 15);
             this.label6.TabIndex = 60;
             this.label6.Text = "Presentación 3";
             // 
             // txtCodigoBarra3
             // 
-            this.txtCodigoBarra3.Location = new System.Drawing.Point(311, 141);
+            this.txtCodigoBarra3.Location = new System.Drawing.Point(233, 115);
+            this.txtCodigoBarra3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra3.Name = "txtCodigoBarra3";
             this.txtCodigoBarra3.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra3.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra3.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra3.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra3.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra3.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra3.TabIndex = 59;
             this.txtCodigoBarra3.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas3
             // 
-            this.txtNumPiezas3.Location = new System.Drawing.Point(210, 141);
+            this.txtNumPiezas3.Location = new System.Drawing.Point(158, 115);
+            this.txtNumPiezas3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas3.Name = "txtNumPiezas3";
             this.txtNumPiezas3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas3.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -789,7 +804,7 @@
             this.txtNumPiezas3.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas3.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas3.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas3.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas3.TabIndex = 58;
             this.txtNumPiezas3.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -797,28 +812,29 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label5.Location = new System.Drawing.Point(43, 114);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(32, 93);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 18);
+            this.label5.Size = new System.Drawing.Size(89, 15);
             this.label5.TabIndex = 57;
             this.label5.Text = "Presentación 2";
             // 
             // txtCodigoBarra2
             // 
-            this.txtCodigoBarra2.Location = new System.Drawing.Point(311, 111);
+            this.txtCodigoBarra2.Location = new System.Drawing.Point(233, 90);
+            this.txtCodigoBarra2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra2.Name = "txtCodigoBarra2";
             this.txtCodigoBarra2.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra2.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra2.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra2.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra2.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra2.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra2.TabIndex = 56;
             this.txtCodigoBarra2.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas2
             // 
-            this.txtNumPiezas2.Location = new System.Drawing.Point(210, 111);
+            this.txtNumPiezas2.Location = new System.Drawing.Point(158, 90);
+            this.txtNumPiezas2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas2.Name = "txtNumPiezas2";
             this.txtNumPiezas2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas2.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -830,7 +846,7 @@
             this.txtNumPiezas2.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas2.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas2.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas2.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas2.TabIndex = 55;
             this.txtNumPiezas2.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -838,10 +854,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label1.Location = new System.Drawing.Point(43, 84);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(32, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 18);
+            this.label1.Size = new System.Drawing.Size(89, 15);
             this.label1.TabIndex = 54;
             this.label1.Text = "Presentación 1";
             // 
@@ -849,29 +864,30 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label4.Location = new System.Drawing.Point(382, 60);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(286, 49);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 18);
+            this.label4.Size = new System.Drawing.Size(46, 15);
             this.label4.TabIndex = 53;
             this.label4.Text = "Código";
             // 
             // txtCodigoBarra1
             // 
-            this.txtCodigoBarra1.Location = new System.Drawing.Point(311, 81);
+            this.txtCodigoBarra1.Location = new System.Drawing.Point(233, 66);
+            this.txtCodigoBarra1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCodigoBarra1.Name = "txtCodigoBarra1";
             this.txtCodigoBarra1.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra1.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCodigoBarra1.Properties.Appearance.Options.UseFont = true;
             this.txtCodigoBarra1.Properties.Appearance.Options.UseForeColor = true;
-            this.txtCodigoBarra1.Size = new System.Drawing.Size(199, 24);
+            this.txtCodigoBarra1.Size = new System.Drawing.Size(149, 22);
             this.txtCodigoBarra1.TabIndex = 52;
             this.txtCodigoBarra1.Leave += new System.EventHandler(this.txtCodigoBarra1_Leave);
             // 
             // txtNumPiezas1
             // 
             this.txtNumPiezas1.EditValue = 0D;
-            this.txtNumPiezas1.Location = new System.Drawing.Point(210, 81);
+            this.txtNumPiezas1.Location = new System.Drawing.Point(158, 66);
+            this.txtNumPiezas1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumPiezas1.Name = "txtNumPiezas1";
             this.txtNumPiezas1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas1.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -883,7 +899,7 @@
             this.txtNumPiezas1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtNumPiezas1.Properties.Mask.EditMask = "#,##0.00";
             this.txtNumPiezas1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNumPiezas1.Size = new System.Drawing.Size(86, 24);
+            this.txtNumPiezas1.Size = new System.Drawing.Size(64, 20);
             this.txtNumPiezas1.TabIndex = 51;
             this.txtNumPiezas1.Leave += new System.EventHandler(this.txtNumPiezas1_Leave);
             // 
@@ -891,27 +907,28 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label3.Location = new System.Drawing.Point(227, 60);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(170, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 18);
+            this.label3.Size = new System.Drawing.Size(44, 15);
             this.label3.TabIndex = 50;
             this.label3.Text = "Piezas";
             // 
             // chkActivo
             // 
-            this.chkActivo.Location = new System.Drawing.Point(435, 358);
+            this.chkActivo.Location = new System.Drawing.Point(326, 291);
+            this.chkActivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.chkActivo.Properties.Appearance.Options.UseFont = true;
             this.chkActivo.Properties.Caption = "Activo";
             this.chkActivo.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
-            this.chkActivo.Size = new System.Drawing.Size(75, 22);
+            this.chkActivo.Size = new System.Drawing.Size(56, 22);
             this.chkActivo.TabIndex = 49;
             // 
             // cbProducto
             // 
-            this.cbProducto.Location = new System.Drawing.Point(120, 21);
+            this.cbProducto.Location = new System.Drawing.Point(90, 17);
+            this.cbProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbProducto.Name = "cbProducto";
             this.cbProducto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cbProducto.Properties.Appearance.Options.UseFont = true;
@@ -933,7 +950,7 @@
             this.cbProducto.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.cbProducto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.cbProducto.Properties.ValueMember = "cve_art";
-            this.cbProducto.Size = new System.Drawing.Size(390, 24);
+            this.cbProducto.Size = new System.Drawing.Size(292, 22);
             this.cbProducto.TabIndex = 46;
             this.cbProducto.EditValueChanged += new System.EventHandler(this.cbProducto_EditValueChanged);
             // 
@@ -945,10 +962,9 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Label2.Location = new System.Drawing.Point(43, 26);
-            this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label2.Location = new System.Drawing.Point(32, 21);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(69, 18);
+            this.Label2.Size = new System.Drawing.Size(56, 15);
             this.Label2.TabIndex = 45;
             this.Label2.Text = "Producto";
             // 
@@ -963,7 +979,7 @@
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(550, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(412, 27);
             this.toolStrip1.TabIndex = 40;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -973,7 +989,7 @@
             this.btnGuardar.Image = global::SWYRA.Properties.Resources.save;
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(92, 24);
+            this.btnGuardar.Size = new System.Drawing.Size(76, 24);
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -983,7 +999,7 @@
             this.btnLimpiar.Image = global::SWYRA.Properties.Resources._1366681822_edit_clear;
             this.btnLimpiar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(85, 24);
+            this.btnLimpiar.Size = new System.Drawing.Size(71, 24);
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
@@ -992,7 +1008,7 @@
             this.btnExportar.Image = global::SWYRA.Properties.Resources._1366839417_Arzo_Icons_Icon_96_2;
             this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(89, 24);
+            this.btnExportar.Size = new System.Drawing.Size(74, 24);
             this.btnExportar.Text = "Exportar";
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -1001,7 +1017,7 @@
             this.btnImportar.Image = global::SWYRA.Properties.Resources.download_database;
             this.btnImportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(91, 24);
+            this.btnImportar.Size = new System.Drawing.Size(77, 24);
             this.btnImportar.Text = "Importar";
             this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
@@ -1011,21 +1027,22 @@
             this.btnSalir.Image = global::SWYRA.Properties.Resources.Logout_32x32;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(60, 24);
+            this.btnSalir.Size = new System.Drawing.Size(51, 24);
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // FrmPresentProd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(551, 675);
+            this.ClientSize = new System.Drawing.Size(413, 548);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmPresentProd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Presentaciones de Productos";

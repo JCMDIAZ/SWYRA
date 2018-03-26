@@ -95,6 +95,8 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(175, 19);
             this.txtCodigo.TabIndex = 5;
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
+            this.txtCodigo.LostFocus += new System.EventHandler(this.txtCodigo_LostFocus);
             // 
             // label1
             // 
@@ -199,6 +201,7 @@
             0,
             0});
             this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCant_KeyPress);
+            this.txtCant.LostFocus += new System.EventHandler(this.txtCant_LostFocus);
             // 
             // label2
             // 

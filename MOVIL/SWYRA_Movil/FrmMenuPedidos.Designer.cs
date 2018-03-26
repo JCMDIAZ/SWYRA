@@ -238,6 +238,7 @@
             this.pnlDevolver.Location = new System.Drawing.Point(0, 148);
             this.pnlDevolver.Name = "pnlDevolver";
             this.pnlDevolver.Size = new System.Drawing.Size(115, 24);
+            this.pnlDevolver.Click += new System.EventHandler(this.pbDevolucion_Click);
             // 
             // label7
             // 
