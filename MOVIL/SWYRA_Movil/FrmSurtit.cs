@@ -15,6 +15,8 @@ namespace SWYRA_Movil
         public List<DetallePedidos> det = new List<DetallePedidos>();
         private CodigosBarra cod = new CodigosBarra();
         private DetallePedidos art = new DetallePedidos();
+        private DetallePedidos artFirst = new DetallePedidos();
+        private DetallePedidos artLast = new DetallePedidos();
         private string lastCB;
         private string Lote;
         private List<OrdenUbicacion> orbi = new List<OrdenUbicacion>();
@@ -33,9 +35,25 @@ namespace SWYRA_Movil
         {
             CargaUbicaciones();
             var mostrardet = det.Where(o => o.surtido == false).ToList();
-            dgDetallePed.DataSource = Program.ToDataTable<DetallePedidos>(mostrardet, "detallePedidos");
             lblPedido.Text = ped.cve_doc.Trim();
             lblComentario.Text = "";
+            art = det.FirstOrDefault();
+            artFirst = art;
+            artLast = det.LastOrDefault();
+            cargaDatos();
+        }
+
+        private void cargaDatos()
+        {
+            txtUbica.Text = art.ubicacion;
+            txtClave.Text = art.cve_art;
+            txtDescr.Text = art.descr;
+            txtLinea.Text = art.lin_prod;
+            txtNumpar.Text = art.num_par.ToString();
+            txtPorSurtir.Text = art.cantdiferencia.ToString();
+            txtSurtido.Text = art.cantsurtido.ToString();
+            txtExistencia.Text = art.exist.ToString();
+            lblComentario.Text = art.comentario;
         }
 
         private void CargaUbicaciones()
@@ -202,7 +220,6 @@ namespace SWYRA_Movil
 
                 var mostrardet = det.Where(o => o.surtido == false).ToList();
                 mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
-                dgDetallePed.DataSource = Program.ToDataTable<DetallePedidos>(mostrardet, "detallePedidos");
             }
         }
 
@@ -211,28 +228,43 @@ namespace SWYRA_Movil
             actualizaDet();
         }
 
-        private void dgDetallePed_CurrentCellChanged(object sender, EventArgs e)
-        {
-            dgDetallePed.Select(dgDetallePed.CurrentRowIndex);
-        }
-
         private void pbIncompleto_Click(object sender, EventArgs e)
         {
-            var index = dgDetallePed.CurrentRowIndex;
-            if (index >= 0)
+            art = det.First(o => o.num_par == 0);
+            art.surtido = true;
+            var query = "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") +
+                        " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() + " " +
+                        "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
+                        "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
+                        "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
+            Program.GetExecute(query, 3);
+            var mostrardet = det.Where(o => o.surtido == false).ToList();
+        }
 
+        private void pbSig_Click(object sender, EventArgs e)
+        {
+            if (art.num_par == artLast.num_par)
             {
-                art = det.First(o => o.num_par == int.Parse(dgDetallePed[index, 6].ToString()));
-                art.surtido = true;
-                var query = "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") +
-                            " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() + " " +
-                            "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
-                            "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
-                            "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
-                Program.GetExecute(query, 3);
-                var mostrardet = det.Where(o => o.surtido == false).ToList();
-                dgDetallePed.DataSource = Program.ToDataTable<DetallePedidos>(mostrardet, "detallePedidos");
+                art = artFirst;
             }
+            else
+            {
+                art = det.SkipWhile(o => o.num_par != art.num_par).Skip(1).First();
+            }
+            cargaDatos();
+        }
+
+        private void pbAnt_Click(object sender, EventArgs e)
+        {
+            if (art.num_par == artFirst.num_par)
+            {
+                art = artLast;
+            }
+            else
+            {
+                art = det.SkipWhile(o => o.num_par != art.num_par).Skip(-2).First();
+            }
+            cargaDatos();
         }
     }
 }

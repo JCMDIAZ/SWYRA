@@ -145,7 +145,7 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(412, 550);
             this.panel1.TabIndex = 0;
@@ -155,7 +155,7 @@
             this.pcProgresBar.Controls.Add(this.progressBarControl1);
             this.pcProgresBar.Controls.Add(this.label13);
             this.pcProgresBar.Location = new System.Drawing.Point(335, 362);
-            this.pcProgresBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pcProgresBar.Margin = new System.Windows.Forms.Padding(2);
             this.pcProgresBar.Name = "pcProgresBar";
             this.pcProgresBar.Size = new System.Drawing.Size(268, 76);
             this.pcProgresBar.TabIndex = 19;
@@ -164,7 +164,7 @@
             // progressBarControl1
             // 
             this.progressBarControl1.Location = new System.Drawing.Point(5, 34);
-            this.progressBarControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBarControl1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarControl1.Name = "progressBarControl1";
             this.progressBarControl1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.progressBarControl1.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
@@ -190,7 +190,7 @@
             this.pcReporte.Controls.Add(this.memoRep);
             this.pcReporte.Controls.Add(this.label14);
             this.pcReporte.Location = new System.Drawing.Point(2, 295);
-            this.pcReporte.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pcReporte.Margin = new System.Windows.Forms.Padding(2);
             this.pcReporte.Name = "pcReporte";
             this.pcReporte.Size = new System.Drawing.Size(298, 270);
             this.pcReporte.TabIndex = 81;
@@ -203,7 +203,7 @@
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
             this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.simpleButton1.Location = new System.Drawing.Point(269, 7);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
             this.simpleButton1.Size = new System.Drawing.Size(20, 20);
@@ -213,7 +213,7 @@
             // memoRep
             // 
             this.memoRep.Location = new System.Drawing.Point(19, 43);
-            this.memoRep.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.memoRep.Margin = new System.Windows.Forms.Padding(2);
             this.memoRep.Name = "memoRep";
             this.memoRep.Size = new System.Drawing.Size(270, 206);
             this.memoRep.TabIndex = 18;
@@ -231,10 +231,10 @@
             // gcPresentaciones
             // 
             this.gcPresentaciones.DataSource = this.inventarioPresentacionBindingSource;
-            this.gcPresentaciones.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gcPresentaciones.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.gcPresentaciones.Location = new System.Drawing.Point(9, 350);
             this.gcPresentaciones.MainView = this.gridView1;
-            this.gcPresentaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gcPresentaciones.Margin = new System.Windows.Forms.Padding(2);
             this.gcPresentaciones.Name = "gcPresentaciones";
             this.gcPresentaciones.Size = new System.Drawing.Size(394, 188);
             this.gcPresentaciones.TabIndex = 46;
@@ -506,9 +506,9 @@
             this.groupBox1.Controls.Add(this.cbProducto);
             this.groupBox1.Controls.Add(this.Label2);
             this.groupBox1.Location = new System.Drawing.Point(9, 32);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(394, 314);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
@@ -527,7 +527,7 @@
             // txtCodigoBarra9
             // 
             this.txtCodigoBarra9.Location = new System.Drawing.Point(233, 261);
-            this.txtCodigoBarra9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra9.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra9.Name = "txtCodigoBarra9";
             this.txtCodigoBarra9.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra9.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -540,7 +540,7 @@
             // txtNumPiezas9
             // 
             this.txtNumPiezas9.Location = new System.Drawing.Point(158, 261);
-            this.txtNumPiezas9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas9.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas9.Name = "txtNumPiezas9";
             this.txtNumPiezas9.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas9.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -569,7 +569,7 @@
             // txtCodigoBarra8
             // 
             this.txtCodigoBarra8.Location = new System.Drawing.Point(233, 236);
-            this.txtCodigoBarra8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra8.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra8.Name = "txtCodigoBarra8";
             this.txtCodigoBarra8.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra8.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -582,7 +582,7 @@
             // txtNumPiezas8
             // 
             this.txtNumPiezas8.Location = new System.Drawing.Point(158, 236);
-            this.txtNumPiezas8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas8.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas8.Name = "txtNumPiezas8";
             this.txtNumPiezas8.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas8.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -611,7 +611,7 @@
             // txtCodigoBarra7
             // 
             this.txtCodigoBarra7.Location = new System.Drawing.Point(233, 212);
-            this.txtCodigoBarra7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra7.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra7.Name = "txtCodigoBarra7";
             this.txtCodigoBarra7.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra7.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -624,7 +624,7 @@
             // txtNumPiezas7
             // 
             this.txtNumPiezas7.Location = new System.Drawing.Point(158, 212);
-            this.txtNumPiezas7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas7.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas7.Name = "txtNumPiezas7";
             this.txtNumPiezas7.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas7.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -653,7 +653,7 @@
             // txtCodigoBarra6
             // 
             this.txtCodigoBarra6.Location = new System.Drawing.Point(233, 188);
-            this.txtCodigoBarra6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra6.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra6.Name = "txtCodigoBarra6";
             this.txtCodigoBarra6.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra6.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -666,7 +666,7 @@
             // txtNumPiezas6
             // 
             this.txtNumPiezas6.Location = new System.Drawing.Point(158, 188);
-            this.txtNumPiezas6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas6.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas6.Name = "txtNumPiezas6";
             this.txtNumPiezas6.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas6.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -695,7 +695,7 @@
             // txtCodigoBarra5
             // 
             this.txtCodigoBarra5.Location = new System.Drawing.Point(233, 163);
-            this.txtCodigoBarra5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra5.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra5.Name = "txtCodigoBarra5";
             this.txtCodigoBarra5.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra5.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -708,7 +708,7 @@
             // txtNumPiezas5
             // 
             this.txtNumPiezas5.Location = new System.Drawing.Point(158, 163);
-            this.txtNumPiezas5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas5.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas5.Name = "txtNumPiezas5";
             this.txtNumPiezas5.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas5.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -737,7 +737,7 @@
             // txtCodigoBarra4
             // 
             this.txtCodigoBarra4.Location = new System.Drawing.Point(233, 139);
-            this.txtCodigoBarra4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra4.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra4.Name = "txtCodigoBarra4";
             this.txtCodigoBarra4.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra4.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -750,7 +750,7 @@
             // txtNumPiezas4
             // 
             this.txtNumPiezas4.Location = new System.Drawing.Point(158, 139);
-            this.txtNumPiezas4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas4.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas4.Name = "txtNumPiezas4";
             this.txtNumPiezas4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas4.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -779,7 +779,7 @@
             // txtCodigoBarra3
             // 
             this.txtCodigoBarra3.Location = new System.Drawing.Point(233, 115);
-            this.txtCodigoBarra3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra3.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra3.Name = "txtCodigoBarra3";
             this.txtCodigoBarra3.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra3.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -792,7 +792,7 @@
             // txtNumPiezas3
             // 
             this.txtNumPiezas3.Location = new System.Drawing.Point(158, 115);
-            this.txtNumPiezas3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas3.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas3.Name = "txtNumPiezas3";
             this.txtNumPiezas3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas3.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -821,7 +821,7 @@
             // txtCodigoBarra2
             // 
             this.txtCodigoBarra2.Location = new System.Drawing.Point(233, 90);
-            this.txtCodigoBarra2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra2.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra2.Name = "txtCodigoBarra2";
             this.txtCodigoBarra2.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra2.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -834,7 +834,7 @@
             // txtNumPiezas2
             // 
             this.txtNumPiezas2.Location = new System.Drawing.Point(158, 90);
-            this.txtNumPiezas2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas2.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas2.Name = "txtNumPiezas2";
             this.txtNumPiezas2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas2.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -873,7 +873,7 @@
             // txtCodigoBarra1
             // 
             this.txtCodigoBarra1.Location = new System.Drawing.Point(233, 66);
-            this.txtCodigoBarra1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoBarra1.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoBarra1.Name = "txtCodigoBarra1";
             this.txtCodigoBarra1.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txtCodigoBarra1.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -887,7 +887,7 @@
             // 
             this.txtNumPiezas1.EditValue = 0D;
             this.txtNumPiezas1.Location = new System.Drawing.Point(158, 66);
-            this.txtNumPiezas1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumPiezas1.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumPiezas1.Name = "txtNumPiezas1";
             this.txtNumPiezas1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtNumPiezas1.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -916,7 +916,7 @@
             // chkActivo
             // 
             this.chkActivo.Location = new System.Drawing.Point(326, 291);
-            this.chkActivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkActivo.Margin = new System.Windows.Forms.Padding(2);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.chkActivo.Properties.Appearance.Options.UseFont = true;
@@ -928,7 +928,7 @@
             // cbProducto
             // 
             this.cbProducto.Location = new System.Drawing.Point(90, 17);
-            this.cbProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbProducto.Margin = new System.Windows.Forms.Padding(2);
             this.cbProducto.Name = "cbProducto";
             this.cbProducto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cbProducto.Properties.Appearance.Options.UseFont = true;
@@ -1042,7 +1042,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmPresentProd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Presentaciones de Productos";

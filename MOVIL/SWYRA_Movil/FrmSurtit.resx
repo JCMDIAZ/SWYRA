@@ -232,6 +232,37 @@
   <metadata name="detallePedidosBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>134, 17</value>
   </metadata>
+  <data name="pbAnt.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAJJSURBVDhPnZFbSFRRFIanCzVOokVXu2DzYBBClFEikREUgYEY6YNUlJWkRjn64iCJoVRmD2Em
+        glaThAVmGlg+JJUVXcgwzUozyRy1SZszZ26emTOaX3swKAmM8Yf9sGH931r/WpqpNLdQZl6BxO9vYJqd
+        JbHhuo2IsukAMiWSahyY+n2suBgowGAjodaB4+c4pR9UZhmHAwAYZfY3OBnwjvPYMsapdi/bbjlHo6sc
+        Io6dyAqZiBIJfZEVfbGV0KO9f8HzHKQ1jfDDB3f6RjG0qhjeeGm0jPJo2Mdts8qVL16KuxTy3yvEP1MI
+        OvxpAjDjrAvDkxGsfrN5jLx2ldy3XtJeech4rpDy1M3eJhe77jnZWmcnqlpmtclO0KFuNCFlTs6JYqsK
+        tX1jFIrc+e+8ZLd4OCLMiQ/d7LjvYku9k6ibdtaYZFaJyywrt6NN/ohmUbmLyh6VNnmcok4fhR0qOQKY
+        LrrvE1PtaXKzs9FJjFjs+moBuGpj5WWJxSUycxLbJiIEFznIeqFgEhPkiuwnXntIERmTmhXiHijENrjZ
+        WONi7Q0H4RV2ll6SCb1gY2Z8658l6vJtHBTdznT5SH3pIdlvrpfYXjPMpmoLkde+oy+1EHZ+gAUFZnR5
+        /Wh2t0w+cVCORFydTGabSmKzh+jyXvTGTiIKvhJu7CFMvIXZnwk93o0urRttQsdkgF/azCFiqmwcaPGy
+        uXKIEEPPv0X/09x0C+sqJGLv2pl/0hw4wC/dsW8sPz3IEuPg9AB+aVMHCc4YmAKg0fwCtTGcq9LyGtkA
+        AAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="pbSig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAIwSURBVDhPnZBrSNNRGMb/CebUFDIqW0FE9xIj7GJ4ySiQPhQYzSK6KCLWlyIrA+lD0KdMCpMi
+        6KKYlmZBUkmE04qZzlrJml1kDmU6Wzqn7n79dUZJBWHoAw+cw8vvec9zpMm0oqQb2b5X/LpOXUnNbrbV
+        9BOumGZIynMb7UHYem+A8OxphMgrh2n3wTs/ZNQMEPGvOmuqR9jRMEJ6vYW0B8Ok1g6RVvudzZXfSLk7
+        SIEhQJU5QIMNEisGiNz/+u+QA01jeAGjcK9wj3jyF7HxawDaXJCn85GpdnNa56LUFGRxuZGYQ6rfIckP
+        Ldy2w8XBIOeNQYp7A5zU+zj22Ueu1otC4yJL7WST0kGycpzjej8JVw1ET4SsrzJzeRSK+wIUimEIzNF6
+        ULx1s7vdRWarg1SlnQ3PbCy8b2Vt4zhnPjlIud5DTE4rUuINIxeG4ES3j/yPHg5+8LBH7WJnm5OMFgcb
+        G20kPB5jSZ2V+GoLUomJ1S1O8pUWZuerkVaVGSgyia6dXrI1bnZ1uNiucrJFbF33ZJxltVbk4qNjbw0T
+        dsWEdNPKvHNa4vLaflZYXqqnYBAUXZCpCZD+xk9Sk5uVTx0sqrcRV2Eh/JoZqbSfsDsWZhW+Z/5RsXlC
+        cwo6mHlYRYSw7EgrkaJXlHB0rjiLmVQu4Et9xNaNEnWqk/g/4f8qq5kZZSbmPhpFVqRjwZTgkETA0hd2
+        ZGe7kE8ZDmlvC9HFOiTFy2nAIYXASWFJ+gGtF5XwQb8z1AAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="$this.FormFactorShadowProperty" xml:space="preserve">
     <value>WEBPAD</value>
   </metadata>
