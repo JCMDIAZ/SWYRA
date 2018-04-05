@@ -13,6 +13,7 @@ namespace SWYRA_Movil
     {
         public Pedidos ped = new Pedidos();
         public List<DetallePedidos> det = new List<DetallePedidos>();
+        public List<DetallePedidos> mostrardet = new List<DetallePedidos>();
         private CodigosBarra cod = new CodigosBarra();
         private DetallePedidos art = new DetallePedidos();
         private DetallePedidos artFirst = new DetallePedidos();
@@ -34,17 +35,19 @@ namespace SWYRA_Movil
         private void FrmSurtit_Load(object sender, EventArgs e)
         {
             CargaUbicaciones();
-            var mostrardet = det.Where(o => o.surtido == false).ToList();
+            mostrardet = det.Where(o => o.surtido == false).ToList();
             lblPedido.Text = ped.cve_doc.Trim();
             lblComentario.Text = "";
-            art = det.FirstOrDefault();
+            art = mostrardet.FirstOrDefault();
             artFirst = art;
-            artLast = det.LastOrDefault();
+            artLast = mostrardet.LastOrDefault();
+            lblPendientes.Text = mostrardet.Count.ToString();
             cargaDatos();
         }
 
         private void cargaDatos()
         {
+            txtCant.Value = 1;
             txtUbica.Text = art.ubicacion;
             txtClave.Text = art.cve_art;
             txtDescr.Text = art.descr;
@@ -85,23 +88,25 @@ namespace SWYRA_Movil
                 return;
             }
             lastCB = txtCodigo.Text;
-            txtCant.Value = 1;
-            txtLinea.Text = "";
-            txtDescr.Text = "";
-            lblComentario.Text = "";
+            txtCant.Value = 1;;
             try
             {
+                var str = txtCodigo.Text.Split('-');
                 var query = "SELECT CVE_ART, CANT_PIEZAS, CODIGO_BARRA FROM vw_codigosBarras " +
-                             "WHERE CODIGO_BARRA = '" + txtCodigo.Text + "'";
+                             "WHERE CODIGO_BARRA = '" + str[0] + "'";
                 cod = Program.GetDataTable(query, 1).ToData<CodigosBarra>();
-                if (cod != null)
+                if (str.Length == 2)
+                {
+                    txtCodigo.Text = str[0];
+                    cod.cant_piezas = Convert.ToInt32(str[1]);
+                }
+                if (cod != null && str.Length <= 2)
                 {
                     try
                     {
-                        art = det.First(o => o.cve_art == cod.cve_art);
-                        if (art.surtido)
+                        if (art.cve_art != cod.cve_art)
                         {
-                            MessageBox.Show(@"Artículo ya se encuentra surtido", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                            MessageBox.Show(@"Código NO coincide con el artículo a surtir", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                         }
                         else
                         {
@@ -133,9 +138,6 @@ namespace SWYRA_Movil
                                     }
                                     txtCant.ReadOnly = !(cod.cant_piezas == 1 || dr == DialogResult.Cancel);
                                     txtCant.Value = cod.cant_piezas;
-                                    txtLinea.Text = art.lin_prod;
-                                    txtDescr.Text = art.descr;
-                                    lblComentario.Text = art.comentario;
                                     actualizaDet();
                                     if (cod.cant_piezas == 1) { txtCant.Focus(); }
                                 }
@@ -167,24 +169,27 @@ namespace SWYRA_Movil
         {
             if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
             {
-                if ((double)txtCant.Value > art.cantdiferencia)
+                if (!txtCant.ReadOnly)
                 {
-                    txtCant.Value = (decimal)art.cantdiferencia;
-                    MessageBox.Show(@"Artículo excede a la cantidad solicitada.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                }
-                else
-                {
-                    if ((double)txtCant.Value > art.exist)
+                    if ((double)txtCant.Value > art.cantdiferencia)
                     {
-                        txtCant.Value = (decimal)art.exist;
-                        MessageBox.Show(@"Artículo EXCEDE EN EXISTENCIA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                        txtCant.Value = (decimal)art.cantdiferencia;
+                        MessageBox.Show(@"Artículo excede a la cantidad solicitada.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     }
                     else
                     {
-                        txtCant.ReadOnly = true;
-                        txtCodigo.Text = "";
-                        txtCodigo.Focus();
-                        e.Handled = true;
+                        if ((double)txtCant.Value > art.exist)
+                        {
+                            txtCant.Value = (decimal)art.exist;
+                            MessageBox.Show(@"Artículo EXCEDE EN EXISTENCIA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                        }
+                        else
+                        {
+                            txtCant.ReadOnly = true;
+                            txtCodigo.Text = "";
+                            txtCodigo.Focus();
+                            e.Handled = true;
+                        }
                     }
                 }
             }
@@ -197,7 +202,7 @@ namespace SWYRA_Movil
                 art.cantsurtido += (double)txtCant.Value;
                 art.cantdiferencia = art.cant - art.cantsurtido;
                 art.surtido = (art.cant == art.cantsurtido);
-                art.exist = (art.exist - art.cantsurtido);
+                art.exist = (art.exist - (double)txtCant.Value);
                 art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
                 var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
                 art.orden = orb.orden;
@@ -218,8 +223,13 @@ namespace SWYRA_Movil
                             "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
                 Program.GetExecute(query, 2);
 
-                var mostrardet = det.Where(o => o.surtido == false).ToList();
+                mostrardet = det.Where(o => o.surtido == false).ToList();
                 mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
+                art = mostrardet.FirstOrDefault();
+                artFirst = art;
+                artLast = mostrardet.LastOrDefault();
+                lblPendientes.Text = mostrardet.Count.ToString();
+                cargaDatos();
             }
         }
 
@@ -230,7 +240,6 @@ namespace SWYRA_Movil
 
         private void pbIncompleto_Click(object sender, EventArgs e)
         {
-            art = det.First(o => o.num_par == 0);
             art.surtido = true;
             var query = "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") +
                         " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() + " " +
@@ -238,7 +247,12 @@ namespace SWYRA_Movil
                         "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
                         "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
             Program.GetExecute(query, 3);
-            var mostrardet = det.Where(o => o.surtido == false).ToList();
+            mostrardet = det.Where(o => o.surtido == false).ToList();
+            art = mostrardet.FirstOrDefault();
+            artFirst = art;
+            artLast = mostrardet.LastOrDefault();
+            lblPendientes.Text = mostrardet.Count.ToString();
+            cargaDatos();
         }
 
         private void pbSig_Click(object sender, EventArgs e)
@@ -249,7 +263,7 @@ namespace SWYRA_Movil
             }
             else
             {
-                art = det.SkipWhile(o => o.num_par != art.num_par).Skip(1).First();
+                art = Program.GetNext<DetallePedidos>(mostrardet, art);
             }
             cargaDatos();
         }
@@ -262,7 +276,7 @@ namespace SWYRA_Movil
             }
             else
             {
-                art = det.SkipWhile(o => o.num_par != art.num_par).Skip(-2).First();
+                art = Program.GetPrevious<DetallePedidos>(mostrardet, art);
             }
             cargaDatos();
         }

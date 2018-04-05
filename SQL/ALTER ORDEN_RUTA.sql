@@ -1,0 +1,1 @@
+alter table ORDEN_RUTA add AREA varchar(10) NULL

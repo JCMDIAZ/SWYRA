@@ -59,16 +59,16 @@ namespace SWYRA_Movil
             {
                 if (Area)
                 {
-                    detA = Program.GetDataTable(creteQR(Area, false), 2).ToList<DetallePedidos>();
-                    devA = Program.GetDataTable(creteQR(Area, true), 3).ToList<DetallePedidos>();
+                    detA = Program.GetDataTable(createQR(Area, false), 2).ToList<DetallePedidos>();
+                    devA = Program.GetDataTable(createQR(Area, true), 3).ToList<DetallePedidos>();
                     var cdetA = detA.Where(o => o.surtido == false).ToList().Count;
                     var cdevA = devA.Where(o => o.devuelto == false).ToList().Count;
                     res = (cdetA == 0 && cdevA == 0);
                 }
                 else
                 {
-                    det = Program.GetDataTable(creteQR(Area, false), 4).ToList<DetallePedidos>();
-                    dev = Program.GetDataTable(creteQR(Area, true), 5).ToList<DetallePedidos>();
+                    det = Program.GetDataTable(createQR(Area, false), 4).ToList<DetallePedidos>();
+                    dev = Program.GetDataTable(createQR(Area, true), 5).ToList<DetallePedidos>();
                     var cdet = det.Where(o => o.surtido == false).ToList().Count;
                     var cdev = dev.Where(o => o.devuelto == false).ToList().Count;
                     res = (cdet == 0 && cdev == 0);
@@ -81,7 +81,7 @@ namespace SWYRA_Movil
             return res;
         }
 
-        private string creteQR(bool Area, bool Devuelto)
+        private string createQR(bool Area, bool Devuelto)
         {
             var query = "SELECT a.*, isnull(o.ORDEN,0) ORDEN FROM ( SELECT  CVE_DOC, NUM_PAR, dp.CVE_ART, CANT, ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) " + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ", " +
                     "ISNULL(" + (Devuelto ? "DEVUELTO" : "SURTIDO") + ",0) " + (Devuelto ? "DEVUELTO" : "SURTIDO") + ", i.DESCR, i.EXIST, i.LIN_PROD, " +
@@ -92,10 +92,11 @@ namespace SWYRA_Movil
 	                "else case when isnull(i.CTRL_ALM,'') <> '' then i.CTRL_ALM else '' END END ubicacion, " +
                     "CANT -  ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) CANTDIFERENCIA, i.UNI_EMP MIN, i.MASTERS MAS " +
                     "FROM " + (Devuelto ? "DETALLEPEDIDODEV" : "DETALLEPEDIDO") + " dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
-                    "JOIN AREAS a ON i.CTRL_ALM " + (Area ? "" : "NOT") + " like '%' + a.NOMBRE + '%' " +
                     "LEFT JOIN INVENTARIOCOND ic ON ic.CVE_ART = dp.CVE_ART AND ic.ACTIVO = 1 " +
                     "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "')) AS a " +
-                    "LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI ORDER BY o.ORDEN";
+                    "LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
+                    "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' " +
+                    "ORDER BY o.ORDEN";
             return query;
         }
 
