@@ -147,8 +147,8 @@ namespace SWYRA
         public string empaquetador_asignado { get; set; }
         public string etiquetador_asignado { get; set; }
         public string surtidor_area { get; set; }
-        public float porc_surtido { get; set; }
-        public float porc_empaque { get; set; }
+        public double porc_surtido { get; set; }
+        public double porc_empaque { get; set; }
         public string indicaciones { get; set; }
         public string lote { get; set; }
         public string cliente { get; set; }

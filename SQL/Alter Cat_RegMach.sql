@@ -1,0 +1,1 @@
+alter table Cat_RegMach add deviceID varchar(250) null

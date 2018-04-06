@@ -43,6 +43,7 @@ namespace SWYRA_Movil
                 {
                     if (validaActivacion(dv.Activo))
                     {
+                        
                         Application.Run(new Form1());
                     }
                     else

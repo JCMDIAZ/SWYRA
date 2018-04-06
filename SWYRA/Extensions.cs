@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Linq.Expressions;
 
 namespace SWYRA
 {
@@ -70,9 +71,9 @@ namespace SWYRA
             {
                 if (row.Table.Columns.Contains(property.Name))
                 {
-                    if (property.PropertyType == typeof (System.DayOfWeek))
+                    if (property.PropertyType == typeof(System.DayOfWeek))
                     {
-                        DayOfWeek day = (DayOfWeek) Enum.Parse(typeof (DayOfWeek), row[property.Name].ToString());
+                        DayOfWeek day = (DayOfWeek) Enum.Parse(typeof(DayOfWeek), row[property.Name].ToString());
                         property.SetValue(item, day, null);
                     }
                     else
