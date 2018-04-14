@@ -320,4 +320,11 @@ namespace SWYRA
         public int consec_padre { get; set; }
         public string ultimo { get; set; }
     }
+
+    public class OrdenUbicacion
+    {
+        public string cve_ubi { get; set; }
+        public int orden { get; set; }
+        public  string area { get; set; }
+    }
 }

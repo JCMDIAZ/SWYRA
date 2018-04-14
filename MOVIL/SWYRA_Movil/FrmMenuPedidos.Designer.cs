@@ -65,6 +65,8 @@
             this.pnlConcluir = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.pnlPorSurtir.SuspendLayout();
             this.pnlSurtir.SuspendLayout();
@@ -97,6 +99,8 @@
             // pnlPorSurtir
             // 
             this.pnlPorSurtir.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlPorSurtir.Controls.Add(this.txtMonto);
+            this.pnlPorSurtir.Controls.Add(this.label13);
             this.pnlPorSurtir.Controls.Add(this.txtVendedor);
             this.pnlPorSurtir.Controls.Add(this.txtPrioridad);
             this.pnlPorSurtir.Controls.Add(this.txtServicio);
@@ -110,39 +114,39 @@
             this.pnlPorSurtir.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPorSurtir.Location = new System.Drawing.Point(0, 0);
             this.pnlPorSurtir.Name = "pnlPorSurtir";
-            this.pnlPorSurtir.Size = new System.Drawing.Size(238, 121);
+            this.pnlPorSurtir.Size = new System.Drawing.Size(238, 130);
             // 
             // txtVendedor
             // 
-            this.txtVendedor.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.txtVendedor.Location = new System.Drawing.Point(97, 98);
+            this.txtVendedor.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtVendedor.Location = new System.Drawing.Point(97, 89);
             this.txtVendedor.Name = "txtVendedor";
             this.txtVendedor.ReadOnly = true;
-            this.txtVendedor.Size = new System.Drawing.Size(134, 18);
+            this.txtVendedor.Size = new System.Drawing.Size(134, 17);
             this.txtVendedor.TabIndex = 22;
             // 
             // txtPrioridad
             // 
-            this.txtPrioridad.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.txtPrioridad.Location = new System.Drawing.Point(97, 78);
+            this.txtPrioridad.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtPrioridad.Location = new System.Drawing.Point(97, 71);
             this.txtPrioridad.Name = "txtPrioridad";
             this.txtPrioridad.ReadOnly = true;
-            this.txtPrioridad.Size = new System.Drawing.Size(134, 18);
+            this.txtPrioridad.Size = new System.Drawing.Size(134, 17);
             this.txtPrioridad.TabIndex = 21;
             // 
             // txtServicio
             // 
-            this.txtServicio.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.txtServicio.Location = new System.Drawing.Point(97, 58);
+            this.txtServicio.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtServicio.Location = new System.Drawing.Point(97, 53);
             this.txtServicio.Name = "txtServicio";
             this.txtServicio.ReadOnly = true;
-            this.txtServicio.Size = new System.Drawing.Size(134, 18);
+            this.txtServicio.Size = new System.Drawing.Size(134, 17);
             this.txtServicio.TabIndex = 20;
             // 
             // txtCliente
             // 
-            this.txtCliente.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.txtCliente.Location = new System.Drawing.Point(97, 27);
+            this.txtCliente.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtCliente.Location = new System.Drawing.Point(97, 23);
             this.txtCliente.Multiline = true;
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
@@ -151,17 +155,17 @@
             // 
             // txtPedido
             // 
-            this.txtPedido.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.txtPedido.Location = new System.Drawing.Point(97, 7);
+            this.txtPedido.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtPedido.Location = new System.Drawing.Point(97, 5);
             this.txtPedido.Name = "txtPedido";
             this.txtPedido.ReadOnly = true;
-            this.txtPedido.Size = new System.Drawing.Size(134, 18);
+            this.txtPedido.Size = new System.Drawing.Size(134, 17);
             this.txtPedido.TabIndex = 18;
             // 
             // label10
             // 
-            this.label10.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(4, 99);
+            this.label10.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(4, 92);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 20);
             this.label10.Text = "Vendedor";
@@ -169,8 +173,8 @@
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(4, 79);
+            this.label8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(4, 71);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 20);
             this.label8.Text = "Prioridad";
@@ -178,8 +182,8 @@
             // 
             // label9
             // 
-            this.label9.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(4, 59);
+            this.label9.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(4, 53);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 20);
             this.label9.Text = "Servicio";
@@ -187,8 +191,8 @@
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(4, 27);
+            this.label6.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(4, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 20);
             this.label6.Text = "Cliente";
@@ -196,10 +200,10 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(4, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 20);
+            this.label2.Size = new System.Drawing.Size(91, 17);
             this.label2.Text = "Pedido No.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -225,7 +229,7 @@
             this.pnlSurtir.BackColor = System.Drawing.SystemColors.Window;
             this.pnlSurtir.Controls.Add(this.label1);
             this.pnlSurtir.Controls.Add(this.pbImprimir);
-            this.pnlSurtir.Location = new System.Drawing.Point(0, 121);
+            this.pnlSurtir.Location = new System.Drawing.Point(0, 132);
             this.pnlSurtir.Name = "pnlSurtir";
             this.pnlSurtir.Size = new System.Drawing.Size(115, 24);
             this.pnlSurtir.Click += new System.EventHandler(this.pbImprimir_Click);
@@ -235,7 +239,7 @@
             this.pnlDevolver.BackColor = System.Drawing.SystemColors.Window;
             this.pnlDevolver.Controls.Add(this.label7);
             this.pnlDevolver.Controls.Add(this.pbDevolucion);
-            this.pnlDevolver.Location = new System.Drawing.Point(0, 148);
+            this.pnlDevolver.Location = new System.Drawing.Point(0, 157);
             this.pnlDevolver.Name = "pnlDevolver";
             this.pnlDevolver.Size = new System.Drawing.Size(115, 24);
             this.pnlDevolver.Click += new System.EventHandler(this.pbDevolucion_Click);
@@ -262,7 +266,7 @@
             this.pnlDetener.BackColor = System.Drawing.SystemColors.Window;
             this.pnlDetener.Controls.Add(this.label3);
             this.pnlDetener.Controls.Add(this.pbDetenido);
-            this.pnlDetener.Location = new System.Drawing.Point(120, 121);
+            this.pnlDetener.Location = new System.Drawing.Point(120, 132);
             this.pnlDetener.Name = "pnlDetener";
             this.pnlDetener.Size = new System.Drawing.Size(115, 24);
             this.pnlDetener.Click += new System.EventHandler(this.pbDetenido_Click);
@@ -289,7 +293,7 @@
             this.pnlIncompletos.BackColor = System.Drawing.SystemColors.Window;
             this.pnlIncompletos.Controls.Add(this.label4);
             this.pnlIncompletos.Controls.Add(this.pbIncompletos);
-            this.pnlIncompletos.Location = new System.Drawing.Point(120, 148);
+            this.pnlIncompletos.Location = new System.Drawing.Point(120, 157);
             this.pnlIncompletos.Name = "pnlIncompletos";
             this.pnlIncompletos.Size = new System.Drawing.Size(115, 24);
             this.pnlIncompletos.Click += new System.EventHandler(this.pbIncompletos_Click);
@@ -316,7 +320,7 @@
             this.pnlArea.BackColor = System.Drawing.SystemColors.Window;
             this.pnlArea.Controls.Add(this.label5);
             this.pnlArea.Controls.Add(this.pictureBox1);
-            this.pnlArea.Location = new System.Drawing.Point(120, 175);
+            this.pnlArea.Location = new System.Drawing.Point(120, 182);
             this.pnlArea.Name = "pnlArea";
             this.pnlArea.Size = new System.Drawing.Size(115, 24);
             this.pnlArea.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -343,7 +347,7 @@
             this.pnlTransferir.BackColor = System.Drawing.SystemColors.Window;
             this.pnlTransferir.Controls.Add(this.label11);
             this.pnlTransferir.Controls.Add(this.pbTransferir);
-            this.pnlTransferir.Location = new System.Drawing.Point(0, 175);
+            this.pnlTransferir.Location = new System.Drawing.Point(0, 182);
             this.pnlTransferir.Name = "pnlTransferir";
             this.pnlTransferir.Size = new System.Drawing.Size(115, 24);
             this.pnlTransferir.Click += new System.EventHandler(this.pbTransferir_Click);
@@ -370,7 +374,7 @@
             this.pnlConcluir.BackColor = System.Drawing.SystemColors.Window;
             this.pnlConcluir.Controls.Add(this.label12);
             this.pnlConcluir.Controls.Add(this.pbConcluir);
-            this.pnlConcluir.Location = new System.Drawing.Point(0, 202);
+            this.pnlConcluir.Location = new System.Drawing.Point(0, 207);
             this.pnlConcluir.Name = "pnlConcluir";
             this.pnlConcluir.Size = new System.Drawing.Size(115, 24);
             this.pnlConcluir.Click += new System.EventHandler(this.pbConcluir_Click);
@@ -392,11 +396,28 @@
             this.pbConcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbConcluir.Click += new System.EventHandler(this.pbConcluir_Click);
             // 
+            // txtMonto
+            // 
+            this.txtMonto.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtMonto.Location = new System.Drawing.Point(97, 107);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.ReadOnly = true;
+            this.txtMonto.Size = new System.Drawing.Size(134, 17);
+            this.txtMonto.TabIndex = 29;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(4, 111);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(91, 14);
+            this.label13.Text = "Monto";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // FrmMenuPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
@@ -463,5 +484,7 @@
         private System.Windows.Forms.Panel pnlConcluir;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pbConcluir;
+        private System.Windows.Forms.TextBox txtMonto;
+        private System.Windows.Forms.Label label13;
     }
 }

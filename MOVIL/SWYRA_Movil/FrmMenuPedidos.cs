@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace SWYRA_Movil
 {
@@ -33,7 +34,7 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
-                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO " + 
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE " + 
                             "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 txtPedido.Text = ped.cve_doc;
@@ -41,10 +42,12 @@ namespace SWYRA_Movil
                 txtServicio.Text = ped.tiposervicio;
                 txtPrioridad.Text = ped.prioridad;
                 txtVendedor.Text = ped.cve_vend;
+                CultureInfo culture = new CultureInfo("es-MX");
+                txtMonto.Text = ped.importe.ToString("C2", culture);
 
                 pnlDetener.Visible = !(ped.estatuspedido.Trim() == "DETENIDO");
                 pnlArea.Visible = !validaExis(true) && !ped.solarea;
-                pnlConcluir.Visible = validaExis(false) && !pnlArea.Visible;
+                pnlConcluir.Visible = validaExis(false) && validaExis(true);
             }
             catch (Exception ex)
             {
@@ -105,7 +108,8 @@ namespace SWYRA_Movil
             FrmSurtit frmSurtir = new FrmSurtit();
             frmSurtir.ped = ped;
             frmSurtir.det = det.Where(o => o.surtido == false).ToList();
-            frmSurtir.Show();
+            frmSurtir.ShowDialog();
+            pnlConcluir.Visible = validaExis(false) && validaExis(true);
         }
 
         private void pbIncompletos_Click(object sender, EventArgs e)
@@ -113,7 +117,8 @@ namespace SWYRA_Movil
             FrmIncompleto frmIncompleto = new FrmIncompleto();
             frmIncompleto.ped = ped;
             frmIncompleto.det = det.Where(o => o.surtido == true && o.cantdiferencia > 0).ToList();
-            frmIncompleto.Show();
+            frmIncompleto.ShowDialog();
+            pnlConcluir.Visible = validaExis(false) && validaExis(true);
         }
 
         private void pbDetenido_Click(object sender, EventArgs e)
@@ -200,7 +205,7 @@ namespace SWYRA_Movil
                 var r = Program.GetExecute(query, 10);
                 query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
                         "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
-                        "insert into PEDIDO_HIST (CVE_DOC, EMO, FECHAMOV, USUARIO) values (" +
+                        "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
                         "@cvedoc, 'EMPAQUE', getdate(), '" + Program.usActivo.Usuario + "')";
                 r = Program.GetExecute(query, 11);
                 MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
@@ -218,7 +223,7 @@ namespace SWYRA_Movil
             frmDevolucion.ped = ped;
             frmDevolucion.ShowDialog();
             pnlArea.Visible = !validaExis(true) && !ped.solarea;
-            pnlConcluir.Visible = validaExis(false) && !pnlArea.Visible;
+            pnlConcluir.Visible = validaExis(false) && validaExis(true);
         }
     }
 }

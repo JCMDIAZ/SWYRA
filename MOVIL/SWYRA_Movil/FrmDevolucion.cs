@@ -13,6 +13,7 @@ namespace SWYRA_Movil
     {
         public Pedidos ped = new Pedidos();
         public List<DetallePedidoMerc> det = new List<DetallePedidoMerc>();
+        public bool Area = false;
         private CodigosBarra cod = new CodigosBarra();
         private DetallePedidoMerc art;
         private string lastCB;
@@ -47,12 +48,18 @@ namespace SWYRA_Movil
             txtDescr.Text = "";
             try
             {
+                var str = txtCodigo.Text.Split('-');
                 var query = "SELECT CVE_ART, CANT_PIEZAS, CODIGO_BARRA FROM vw_codigosBarras " +
-                             "WHERE CODIGO_BARRA = '" + txtCodigo.Text + "'";
+                             "WHERE CODIGO_BARRA = '" + str[0] + "'";
                 cod = Program.GetDataTable(query, 2).ToData<CodigosBarra>();
-                if (cod != null)
+                if (str.Length == 2)
                 {
-                    var tot = det.Count(o => o.codigo_barra == cod.codigo_barra);
+                    //txtCodigo.Text = str[0];
+                    cod.cant_piezas = Convert.ToInt32(str[1]);
+                }
+                if (cod != null && str.Length <= 2)
+                {
+                    var tot = det.Count(o => o.codigo_barra == txtCodigo.Text);
                     if(tot == 0)
                     {
                         MessageBox.Show(@"Artículo no registrado en la lista del surtido", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
@@ -61,6 +68,7 @@ namespace SWYRA_Movil
                     else if(tot == 1)
                     {
                         txtCant.ReadOnly = !(cod.cant_piezas == 1);
+                        txtCant.Value = cod.cant_piezas;
                         art = det.Find(o => o.codigo_barra == txtCodigo.Text && (o.cancelado == null || o.cancelado == false));
                         art.cancelado = (cod.cant_piezas != 1);
                         actualizaDet();
@@ -117,8 +125,12 @@ namespace SWYRA_Movil
             List<DetallePedidoMerc> tmp = new List<DetallePedidoMerc>();
             try
             {
-                var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, dt.CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, i.DESCR " +
-                            "FROM DETALLEPEDIDOMERC dt JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND ISNULL(CANCELADO,0) = 0";
+                var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, dt.CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, i.DESCR, CTRL_ALM " +
+                            "FROM DETALLEPEDIDOMERC dt JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART " +
+                            "LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(CTRL_ALM)) = o.CVE_UBI " +
+                            "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND ISNULL(CANCELADO,0) = 0 " +
+                            "ORDER BY CONSEC";
                 tmp = Program.GetDataTable(query, 1).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)

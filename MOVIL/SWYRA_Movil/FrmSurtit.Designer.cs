@@ -45,9 +45,11 @@
             this.lblComentario = new System.Windows.Forms.Label();
             this.txtDescr = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtLinea = new System.Windows.Forms.TextBox();
+            this.txtMinimo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPendientes = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.pbAnt = new System.Windows.Forms.PictureBox();
             this.pbSig = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,14 +59,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtPorSurtir = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtNumpar = new System.Windows.Forms.TextBox();
+            this.txtMaster = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUbica = new System.Windows.Forms.TextBox();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblPendientes = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -211,14 +211,14 @@
             this.label4.Text = "Desc.";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // txtLinea
+            // txtMinimo
             // 
-            this.txtLinea.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtLinea.Location = new System.Drawing.Point(65, 50);
-            this.txtLinea.Name = "txtLinea";
-            this.txtLinea.ReadOnly = true;
-            this.txtLinea.Size = new System.Drawing.Size(54, 19);
-            this.txtLinea.TabIndex = 7;
+            this.txtMinimo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtMinimo.Location = new System.Drawing.Point(65, 50);
+            this.txtMinimo.Name = "txtMinimo";
+            this.txtMinimo.ReadOnly = true;
+            this.txtMinimo.Size = new System.Drawing.Size(54, 19);
+            this.txtMinimo.TabIndex = 7;
             // 
             // label3
             // 
@@ -226,7 +226,7 @@
             this.label3.Location = new System.Drawing.Point(22, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 19);
-            this.label3.Text = "Línea";
+            this.label3.Text = "Mínimo";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel2
@@ -244,18 +244,34 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.txtPorSurtir);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.txtNumpar);
+            this.panel2.Controls.Add(this.txtMaster);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.txtClave);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtUbica);
             this.panel2.Controls.Add(this.txtDescr);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.txtLinea);
+            this.panel2.Controls.Add(this.txtMinimo);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(0, 65);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 170);
+            // 
+            // lblPendientes
+            // 
+            this.lblPendientes.Font = new System.Drawing.Font("Tahoma", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblPendientes.Location = new System.Drawing.Point(124, 152);
+            this.lblPendientes.Name = "lblPendientes";
+            this.lblPendientes.Size = new System.Drawing.Size(66, 15);
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(52, 152);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 15);
+            this.label12.Text = "Pendientes";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pbAnt
             // 
@@ -337,17 +353,17 @@
             this.label8.Location = new System.Drawing.Point(134, 53);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 19);
-            this.label8.Text = "Num";
+            this.label8.Text = "Master";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // txtNumpar
+            // txtMaster
             // 
-            this.txtNumpar.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtNumpar.Location = new System.Drawing.Point(175, 50);
-            this.txtNumpar.Name = "txtNumpar";
-            this.txtNumpar.ReadOnly = true;
-            this.txtNumpar.Size = new System.Drawing.Size(54, 19);
-            this.txtNumpar.TabIndex = 21;
+            this.txtMaster.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtMaster.Location = new System.Drawing.Point(175, 50);
+            this.txtMaster.Name = "txtMaster";
+            this.txtMaster.ReadOnly = true;
+            this.txtMaster.Size = new System.Drawing.Size(54, 19);
+            this.txtMaster.TabIndex = 21;
             // 
             // label7
             // 
@@ -389,22 +405,6 @@
             // 
             this.detallePedidosBindingSource.DataSource = typeof(SWYRA_Movil.DetallePedidos);
             // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(52, 152);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 15);
-            this.label12.Text = "Pendientes";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lblPendientes
-            // 
-            this.lblPendientes.Font = new System.Drawing.Font("Tahoma", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblPendientes.Location = new System.Drawing.Point(124, 152);
-            this.lblPendientes.Name = "lblPendientes";
-            this.lblPendientes.Size = new System.Drawing.Size(66, 15);
-            // 
             // FrmSurtit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -439,7 +439,7 @@
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtDescr;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtLinea;
+        private System.Windows.Forms.TextBox txtMinimo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.BindingSource detallePedidosBindingSource;
         private System.Windows.Forms.Label lblComentario;
@@ -452,7 +452,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtNumpar;
+        private System.Windows.Forms.TextBox txtMaster;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSurtido;
         private System.Windows.Forms.Label label9;

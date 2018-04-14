@@ -150,6 +150,7 @@
             this.pnlSurtido.Location = new System.Drawing.Point(0, 90);
             this.pnlSurtido.Name = "pnlSurtido";
             this.pnlSurtido.Size = new System.Drawing.Size(238, 45);
+            this.pnlSurtido.Click += new System.EventHandler(this.pnlSurtido_Click);
             // 
             // pictureBox2
             // 
@@ -158,6 +159,7 @@
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(35, 35);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.Click += new System.EventHandler(this.pnlSurtido_Click);
             // 
             // label4
             // 

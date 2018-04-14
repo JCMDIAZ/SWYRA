@@ -48,15 +48,15 @@ namespace SWYRA_Movil
         private void cargaDatos()
         {
             txtCant.Value = 1;
-            txtUbica.Text = art.ubicacion;
-            txtClave.Text = art.cve_art;
-            txtDescr.Text = art.descr;
-            txtLinea.Text = art.lin_prod;
-            txtNumpar.Text = art.num_par.ToString();
-            txtPorSurtir.Text = art.cantdiferencia.ToString();
-            txtSurtido.Text = art.cantsurtido.ToString();
-            txtExistencia.Text = art.exist.ToString();
-            lblComentario.Text = art.comentario;
+            txtUbica.Text = (art != null) ? art.ubicacion : "";
+            txtClave.Text = (art != null) ? art.cve_art : "";
+            txtDescr.Text = (art != null) ? art.descr : "";
+            txtMinimo.Text = (art != null) ? art.min.ToString() : "";
+            txtMaster.Text = (art != null) ? art.mas.ToString() : "";
+            txtPorSurtir.Text = (art != null) ? art.cantdiferencia.ToString() : "";
+            txtSurtido.Text = (art != null) ? art.cantsurtido.ToString() : "";
+            txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
+            lblComentario.Text = (art != null) ? art.comentario : "";
         }
 
         private void CargaUbicaciones()
@@ -76,7 +76,7 @@ namespace SWYRA_Movil
         {
             if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
             {
-                txtLinea.Focus();
+                txtMinimo.Focus();
                 e.Handled = true;
             }
         }
@@ -240,45 +240,61 @@ namespace SWYRA_Movil
 
         private void pbIncompleto_Click(object sender, EventArgs e)
         {
-            art.surtido = true;
-            var query = "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") +
-                        " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() + " " +
-                        "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
-                        "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
-                        "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
-            Program.GetExecute(query, 3);
-            mostrardet = det.Where(o => o.surtido == false).ToList();
-            art = mostrardet.FirstOrDefault();
-            artFirst = art;
-            artLast = mostrardet.LastOrDefault();
-            lblPendientes.Text = mostrardet.Count.ToString();
-            cargaDatos();
+            if (art != null)
+            {
+                FrmSurtir4 frmConf = new FrmSurtir4();
+                frmConf.lblCom.Text = "El artículo (" + art.cve_art + ") " + art.descr + " lo consideras INCOMPLETO."; 
+                var dr = frmConf.ShowDialog();
+                frmConf.Close();
+                if (dr == DialogResult.OK)
+                {
+                    art.surtido = true;
+                    var query = "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") +
+                                " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() + " " +
+                                "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
+                                "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
+                                "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
+                    Program.GetExecute(query, 3);
+                    mostrardet = det.Where(o => o.surtido == false).ToList();
+                    art = mostrardet.FirstOrDefault();
+                    artFirst = art;
+                    artLast = mostrardet.LastOrDefault();
+                    lblPendientes.Text = mostrardet.Count.ToString();
+                    cargaDatos();
+                }
+            }
         }
 
         private void pbSig_Click(object sender, EventArgs e)
         {
-            if (art.num_par == artLast.num_par)
+            if (art != null)
             {
-                art = artFirst;
+                if (art.num_par == artLast.num_par)
+                {
+                    art = artFirst;
+                }
+                else
+                {
+                    art = Program.GetNext<DetallePedidos>(mostrardet, art);
+                }
+                cargaDatos();
             }
-            else
-            {
-                art = Program.GetNext<DetallePedidos>(mostrardet, art);
-            }
-            cargaDatos();
         }
 
         private void pbAnt_Click(object sender, EventArgs e)
         {
-            if (art.num_par == artFirst.num_par)
+            if (art != null)
             {
-                art = artLast;
+                if (art.num_par == artFirst.num_par)
+                {
+                    art = artLast;
+                }
+                else
+                {
+                    art = Program.GetPrevious<DetallePedidos>(mostrardet, art);
+                }
+                cargaDatos();
             }
-            else
-            {
-                art = Program.GetPrevious<DetallePedidos>(mostrardet, art);
-            }
-            cargaDatos();
         }
     }
 }

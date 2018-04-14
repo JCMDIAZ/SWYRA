@@ -209,5 +209,12 @@ namespace SWYRA
             fActivMovil.ShowDialog();
             fActivMovil.Close();
         }
+
+        private void ubicacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fUbica = new FrmUbicacion();
+            fUbica.ShowDialog();
+            fUbica.Close();
+        }
     }
 }

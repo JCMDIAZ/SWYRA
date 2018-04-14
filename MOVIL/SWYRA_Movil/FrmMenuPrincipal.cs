@@ -44,5 +44,11 @@ namespace SWYRA_Movil
             FrmPedidos frmPed = new FrmPedidos();
             frmPed.Show();
         }
+
+        private void pnlSurtido_Click(object sender, EventArgs e)
+        {
+            FrmPedidosArea frmPedA = new FrmPedidosArea();
+            frmPedA.Show();
+        }
     }
 }

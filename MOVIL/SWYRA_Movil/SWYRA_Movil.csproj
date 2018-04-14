@@ -109,6 +109,12 @@
     <Compile Include="FrmMenuPedidos.Designer.cs">
       <DependentUpon>FrmMenuPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMenuPedidosArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenuPedidosArea.Designer.cs">
+      <DependentUpon>FrmMenuPedidosArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,12 @@
     <Compile Include="FrmPedidos.Designer.cs">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPedidosArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedidosArea.Designer.cs">
+      <DependentUpon>FrmPedidosArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSurtir2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +144,12 @@
     </Compile>
     <Compile Include="FrmSurtir3.Designer.cs">
       <DependentUpon>FrmSurtir3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSurtir4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSurtir4.Designer.cs">
+      <DependentUpon>FrmSurtir4.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSurtit.cs">
       <SubType>Form</SubType>
@@ -171,17 +189,26 @@
     <EmbeddedResource Include="FrmMenuPedidos.resx">
       <DependentUpon>FrmMenuPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenuPedidosArea.resx">
+      <DependentUpon>FrmMenuPedidosArea.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidos.resx">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedidosArea.resx">
+      <DependentUpon>FrmPedidosArea.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSurtir2.resx">
       <DependentUpon>FrmSurtir2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSurtir3.resx">
       <DependentUpon>FrmSurtir3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSurtir4.resx">
+      <DependentUpon>FrmSurtir4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSurtit.resx">
       <DependentUpon>FrmSurtit.cs</DependentUpon>

@@ -23,6 +23,11 @@ namespace SWYRA
             Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmDeptos_Load(object sender, EventArgs e)
         {
             gcAlmacen.DataSource = CargaAlmacen();
