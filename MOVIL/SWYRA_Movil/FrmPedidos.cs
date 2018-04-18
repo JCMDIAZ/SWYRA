@@ -65,6 +65,7 @@ namespace SWYRA_Movil
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where (p.ESTATUSPEDIDO = 'SURTIR' and isnull(p.SURTIDOR_ASIGNADO,'') = '" + surtAsig + "') " +
                         "or (isnull(p.SURTIDOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "' and p.ESTATUSPEDIDO in ('MODIFICACION', 'DETENIDO', 'DEVOLUCION')) " +
+                        "and isnull(p.SOLAREA,0) = 0 " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");

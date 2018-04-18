@@ -18,6 +18,7 @@ namespace SWYRA_Movil
         private List<DetallePedidos> dev = new List<DetallePedidos>();
         private List<DetallePedidos> detA = new List<DetallePedidos>();
         private List<DetallePedidos> devA = new List<DetallePedidos>();
+        private bool area = false;
 
         public FrmMenuPedidos()
         {
@@ -46,8 +47,8 @@ namespace SWYRA_Movil
                 txtMonto.Text = ped.importe.ToString("C2", culture);
 
                 pnlDetener.Visible = !(ped.estatuspedido.Trim() == "DETENIDO");
-                pnlArea.Visible = !validaExis(true) && !ped.solarea;
-                pnlConcluir.Visible = validaExis(false) && validaExis(true);
+                area = validaExis(true);
+                pnlConcluir.Visible = validaExis(false);
             }
             catch (Exception ex)
             {
@@ -109,7 +110,7 @@ namespace SWYRA_Movil
             frmSurtir.ped = ped;
             frmSurtir.det = det.Where(o => o.surtido == false).ToList();
             frmSurtir.ShowDialog();
-            pnlConcluir.Visible = validaExis(false) && validaExis(true);
+            pnlConcluir.Visible = validaExis(false);
         }
 
         private void pbIncompletos_Click(object sender, EventArgs e)
@@ -118,7 +119,7 @@ namespace SWYRA_Movil
             frmIncompleto.ped = ped;
             frmIncompleto.det = det.Where(o => o.surtido == true && o.cantdiferencia > 0).ToList();
             frmIncompleto.ShowDialog();
-            pnlConcluir.Visible = validaExis(false) && validaExis(true);
+            pnlConcluir.Visible = validaExis(false);
         }
 
         private void pbDetenido_Click(object sender, EventArgs e)
@@ -180,36 +181,39 @@ namespace SWYRA_Movil
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ped.solarea = true;
-                var query = "UPDATE PEDIDO SET SOLAREA = 1 " +
-                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
-                var r = Program.GetExecute(query, 9);
-                pnlArea.Visible = !ped.solarea;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            }
-        }
-
         private void pbConcluir_Click(object sender, EventArgs e)
         {
             try
             {
-                var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + ((ped.estatuspedido == "DEVOLUCION") ? "CANCELACION" : "EMPAQUE") + "' " +
-                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
-                var r = Program.GetExecute(query, 10);
-                query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
-                        "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
-                        "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
-                        "@cvedoc, 'EMPAQUE', getdate(), '" + Program.usActivo.Usuario + "')";
-                r = Program.GetExecute(query, 11);
-                MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                Close();
+                FrmAreaEmpaque frmAreaEmp = new FrmAreaEmpaque();
+                frmAreaEmp.lblPedido.Text = ped.cve_doc;
+                var dr = frmAreaEmp.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    if (area)
+                    {
+                            var estatus = (ped.estatuspedido == "DEVOLUCION") ? "CANCELACION" : "EMPAQUE";
+                            var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + estatus + "', " +
+                                        "UbicacionEmpaque = '" + frmAreaEmp.cbAreaEmpaque.Text + "' " +
+                                        "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                            var r = Program.GetExecute(query, 10);
+                            query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                                    "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                                    "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                                    "@cvedoc, '" + estatus + "', getdate(), '" + Program.usActivo.Usuario + "')";
+                            r = Program.GetExecute(query, 11);
+                    }
+                    else
+                    {
+                        ped.solarea = true;
+                        var query = "UPDATE PEDIDO SET SOLAREA = 1, " +
+                                    "UbicacionEmpaque = '" + frmAreaEmp.cbAreaEmpaque.Text + "' " +
+                                    "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                        var r = Program.GetExecute(query, 9);
+                    }
+                    MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    Close();
+                }
             }
             catch (Exception ex)
             {
@@ -222,8 +226,7 @@ namespace SWYRA_Movil
             FrmDevolucion frmDevolucion = new FrmDevolucion();
             frmDevolucion.ped = ped;
             frmDevolucion.ShowDialog();
-            pnlArea.Visible = !validaExis(true) && !ped.solarea;
-            pnlConcluir.Visible = validaExis(false) && validaExis(true);
+            pnlConcluir.Visible = validaExis(false);
         }
     }
 }

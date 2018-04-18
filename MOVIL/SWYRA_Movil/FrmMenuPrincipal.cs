@@ -11,6 +11,8 @@ namespace SWYRA_Movil
 {
     public partial class FrmMenuPrincipal : Form
     {
+        private List<Pedidos> listPedidos = new List<Pedidos>();
+
         public FrmMenuPrincipal()
         {
             InitializeComponent();
@@ -31,6 +33,8 @@ namespace SWYRA_Movil
             pnlSurtido.Visible = (Program.usActivo.Categoria.Trim().In(surt));
             pnlEmpaque.Visible = (Program.usActivo.Categoria.Trim().In(empq) && Program.usActivo.AreaAsignada != "GENERAL");
             pnlGuías.Visible = (Program.usActivo.Categoria.Trim().In(guia));
+            CuentaPedidos();
+            timer1.Enabled = true;
         }
 
         private void pnlImpCod_Click(object sender, EventArgs e)
@@ -49,6 +53,33 @@ namespace SWYRA_Movil
         {
             FrmPedidosArea frmPedA = new FrmPedidosArea();
             frmPedA.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            CuentaPedidos();
+        }
+
+        private void CuentaPedidos()
+        {
+            try
+            {
+                var query = "select ESTATUSPEDIDO, ISNULL(SOLAREA,0) SOLAREA from PEDIDO where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE')";
+                listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
+                string[] opc = {"SURTIR", "MODIFICACION", "DETENIDO", "DEVOLUCION"};
+                var ped = listPedidos.Where(o => o.estatuspedido.In(opc) && o.solarea == false).ToList().Count.ToString();
+                var are = listPedidos.Where(o => o.estatuspedido.In(opc) && o.solarea == true).ToList().Count.ToString();
+                var emp = listPedidos.Where(o => o.estatuspedido == "EMPAQUE").ToList().Count.ToString();
+                if (lblCantPed.Text != ped || lblCantArea.Text != are || lblCantEmp.Text != emp) { Program.Beep(); }
+                lblCantPed.Text = ped;
+                lblCantArea.Text = are;
+                lblCantEmp.Text = emp;
+            }
+            catch (Exception ex)
+            {
+                timer1.Enabled = false;
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

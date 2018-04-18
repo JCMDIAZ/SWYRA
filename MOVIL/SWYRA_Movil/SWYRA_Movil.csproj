@@ -73,6 +73,12 @@
     <Compile Include="FrmActivacion.Designer.cs">
       <DependentUpon>FrmActivacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAreaEmpaque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAreaEmpaque.Designer.cs">
+      <DependentUpon>FrmAreaEmpaque.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDetenerPed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     <EmbeddedResource Include="FrmActivacion.resx">
       <DependentUpon>FrmActivacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAreaEmpaque.resx">
+      <DependentUpon>FrmAreaEmpaque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDetenerPed.resx">
       <DependentUpon>FrmDetenerPed.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +246,7 @@
     <None Include="Properties\DataSources\DetallePedidoMerc.datasource" />
     <None Include="Properties\DataSources\DetallePedidos.datasource" />
     <None Include="Properties\DataSources\Pedidos.datasource" />
+    <None Include="Properties\DataSources\UbicacionEntrega.datasource" />
     <None Include="Properties\DataSources\Usuarios.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />

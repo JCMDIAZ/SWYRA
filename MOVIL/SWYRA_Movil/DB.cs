@@ -149,7 +149,8 @@ namespace SWYRA_Movil
         public string cobrador_asignado { get; set; }
         public string cobrador_autorizo { get; set; }
         public string surtidor_asignado { get; set; }
-        public string empaquetador_asignado { get; set; }public string etiquetador_asignado { get; set; }
+        public string empaquetador_asignado { get; set; }
+        public string etiquetador_asignado { get; set; }
         public string surtidor_area { get; set; }
         public float porc_surtido { get; set; }
         public float porc_empaque { get; set; }
@@ -173,6 +174,7 @@ namespace SWYRA_Movil
         public double tottarimas { get; set; }
         public double totcostoguias { get; set; }
         public bool solarea { get; set; }
+        public string ubicacionempaque { get; set; }
     }
 
     public class DetallePedidos
@@ -253,5 +255,11 @@ namespace SWYRA_Movil
     {
         public string cve_ubi { get; set; }
         public int orden { get; set; }
+    }
+
+    public class UbicacionEntrega
+    {
+        public string cve_zona { get; set; }
+        public string cve_ubicacion { get; set; }
     }
 }

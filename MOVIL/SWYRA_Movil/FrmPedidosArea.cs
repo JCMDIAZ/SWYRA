@@ -60,7 +60,8 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select top 1 CVE_DOC from PEDIDO where " +
-                            "isnull(SURTIDOR_AREA,'') = '" + Program.usActivo.Usuario + "' AND isnull(SOLAREA,0) = 1";
+                            "isnull(SURTIDOR_AREA,'') = '" + Program.usActivo.Usuario + "' AND isnull(SOLAREA,0) = 1 " +
+                            "and ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION') ";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 string surtAsig = (ped == null) ? "" : Program.usActivo.Usuario;
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, p.ESTATUSPEDIDO, p.TIPOSERVICIO, p.PRIORIDAD, " +
@@ -86,10 +87,10 @@ namespace SWYRA_Movil
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 9 " +
                         "            when p.TIPOSERVICIO = 'LOCAL' THEN 10 " +
                         "        end " +
-                        "end Numprioridad " +
+                        "end Numprioridad, UbicacionEmpaque " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where (isnull(p.SURTIDOR_AREA,'') = '" + Program.usActivo.Usuario + "' OR '' = '" + surtAsig + "') " +
-                        "and isnull(p.SOLAREA,0) = 1 " +
+                        "and p.ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION') and isnull(p.SOLAREA,0) = 1 " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");

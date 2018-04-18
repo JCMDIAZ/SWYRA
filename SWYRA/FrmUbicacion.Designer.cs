@@ -48,6 +48,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnLimpiar = new System.Windows.Forms.ToolStripButton();
+            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbArea.Properties)).BeginInit();
@@ -85,13 +86,13 @@
             this.cbArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbArea.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Clave", "Clave", 58, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre", 59, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("areaid", "ID", 45, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("nombre", "Nombre", 150, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
             this.cbArea.Properties.DataSource = this.areasBindingSource;
-            this.cbArea.Properties.DisplayMember = "Nombre";
+            this.cbArea.Properties.DisplayMember = "nombre";
             this.cbArea.Properties.NullText = "";
             this.cbArea.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
-            this.cbArea.Properties.ValueMember = "Nombre";
+            this.cbArea.Properties.ValueMember = "nombre";
             this.cbArea.Size = new System.Drawing.Size(128, 22);
             this.cbArea.TabIndex = 54;
             // 
@@ -118,7 +119,9 @@
             this.txtOrden.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtOrden.Properties.Appearance.Options.UseFont = true;
             this.txtOrden.Properties.Appearance.Options.UseForeColor = true;
-            this.txtOrden.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtOrden.Properties.DisplayFormat.FormatString = "#,##0";
+            this.txtOrden.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtOrden.Properties.EditFormat.FormatString = "#,##0";
             this.txtOrden.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtOrden.Properties.Mask.EditMask = "##0.00";
             this.txtOrden.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -169,7 +172,7 @@
             this.gcAlmacen.MainView = this.gridView1;
             this.gcAlmacen.Margin = new System.Windows.Forms.Padding(2);
             this.gcAlmacen.Name = "gcAlmacen";
-            this.gcAlmacen.Size = new System.Drawing.Size(266, 161);
+            this.gcAlmacen.Size = new System.Drawing.Size(295, 161);
             this.gcAlmacen.TabIndex = 46;
             this.gcAlmacen.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -222,6 +225,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnGuardar,
             this.btnLimpiar,
+            this.btnEliminar,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -237,6 +241,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(83, 24);
             this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnLimpiar
             // 
@@ -247,6 +252,15 @@
             this.btnLimpiar.Size = new System.Drawing.Size(80, 24);
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Image = global::SWYRA.Properties.Resources.delete;
+            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(74, 24);
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // btnSalir
             // 
@@ -307,5 +321,6 @@
         private DevExpress.XtraEditors.LookUpEdit cbArea;
         internal System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource areasBindingSource;
+        private System.Windows.Forms.ToolStripButton btnEliminar;
     }
 }

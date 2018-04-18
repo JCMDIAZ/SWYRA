@@ -33,11 +33,26 @@ namespace SWYRA_Movil
         {
             try
             {
-                var query = "UPDATE PEDIDO SET SOLAREA = 0 " + 
-                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
-                var r = Program.GetExecute(query, 10);
-                MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                Close();
+                FrmAreaEmpaque frmAreaEmp = new FrmAreaEmpaque();
+                frmAreaEmp.lblPedido.Text = ped.cve_doc;
+                frmAreaEmp.txtAreaEmpaque.Text = ped.ubicacionempaque;
+                frmAreaEmp.cbAreaEmpaque.Visible = false;
+                frmAreaEmp.txtAreaEmpaque.Visible = true;
+                var dr = frmAreaEmp.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    var estatus = (ped.estatuspedido == "DEVOLUCION") ? "CANCELACION" : "EMPAQUE";
+                    var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + estatus + "' " +
+                                "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                    var r = Program.GetExecute(query, 10);
+                    query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                            "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                            "@cvedoc, '" + estatus + "', getdate(), '" + Program.usActivo.Usuario + "')";
+                    r = Program.GetExecute(query, 11);
+                    MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    Close();
+                }
             }
             catch (Exception ex)
             {
@@ -77,7 +92,7 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
-                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE " +
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, UbicacionEmpaque " +
                             "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 txtPedido.Text = ped.cve_doc;

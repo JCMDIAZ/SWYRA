@@ -1,0 +1,1 @@
+alter table PEDIDO add UbicacionEmpaque varchar(50) NULL

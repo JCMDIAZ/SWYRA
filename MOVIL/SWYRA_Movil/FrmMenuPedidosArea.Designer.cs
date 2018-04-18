@@ -283,7 +283,7 @@
             this.label7.Location = new System.Drawing.Point(35, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 16);
-            this.label7.Text = "Devolución";
+            this.label7.Text = "Remover";
             // 
             // pbDevolucion
             // 

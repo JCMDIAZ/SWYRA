@@ -34,6 +34,8 @@
             this.pnlRetornar = new System.Windows.Forms.Panel();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.pnlPorSurtir = new System.Windows.Forms.Panel();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtVendedor = new System.Windows.Forms.TextBox();
             this.txtPrioridad = new System.Windows.Forms.TextBox();
             this.txtServicio = new System.Windows.Forms.TextBox();
@@ -56,24 +58,18 @@
             this.pnlIncompletos = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pbIncompletos = new System.Windows.Forms.PictureBox();
-            this.pnlArea = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlTransferir = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.pbTransferir = new System.Windows.Forms.PictureBox();
             this.pnlConcluir = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
-            this.txtMonto = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.pnlPorSurtir.SuspendLayout();
             this.pnlSurtir.SuspendLayout();
             this.pnlDevolver.SuspendLayout();
             this.pnlDetener.SuspendLayout();
             this.pnlIncompletos.SuspendLayout();
-            this.pnlArea.SuspendLayout();
             this.pnlTransferir.SuspendLayout();
             this.pnlConcluir.SuspendLayout();
             this.SuspendLayout();
@@ -115,6 +111,24 @@
             this.pnlPorSurtir.Location = new System.Drawing.Point(0, 0);
             this.pnlPorSurtir.Name = "pnlPorSurtir";
             this.pnlPorSurtir.Size = new System.Drawing.Size(238, 130);
+            // 
+            // txtMonto
+            // 
+            this.txtMonto.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtMonto.Location = new System.Drawing.Point(97, 107);
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.ReadOnly = true;
+            this.txtMonto.Size = new System.Drawing.Size(134, 17);
+            this.txtMonto.TabIndex = 29;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(4, 111);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(91, 14);
+            this.label13.Text = "Monto";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtVendedor
             // 
@@ -250,7 +264,7 @@
             this.label7.Location = new System.Drawing.Point(35, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 16);
-            this.label7.Text = "Devolución";
+            this.label7.Text = "Remover";
             // 
             // pbDevolucion
             // 
@@ -315,33 +329,6 @@
             this.pbIncompletos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbIncompletos.Click += new System.EventHandler(this.pbIncompletos_Click);
             // 
-            // pnlArea
-            // 
-            this.pnlArea.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlArea.Controls.Add(this.label5);
-            this.pnlArea.Controls.Add(this.pictureBox1);
-            this.pnlArea.Location = new System.Drawing.Point(120, 182);
-            this.pnlArea.Name = "pnlArea";
-            this.pnlArea.Size = new System.Drawing.Size(115, 24);
-            this.pnlArea.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(35, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 16);
-            this.label5.Text = "Sol. a áreas";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(18, 18);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // pnlTransferir
             // 
             this.pnlTransferir.BackColor = System.Drawing.SystemColors.Window;
@@ -374,7 +361,7 @@
             this.pnlConcluir.BackColor = System.Drawing.SystemColors.Window;
             this.pnlConcluir.Controls.Add(this.label12);
             this.pnlConcluir.Controls.Add(this.pbConcluir);
-            this.pnlConcluir.Location = new System.Drawing.Point(0, 207);
+            this.pnlConcluir.Location = new System.Drawing.Point(120, 182);
             this.pnlConcluir.Name = "pnlConcluir";
             this.pnlConcluir.Size = new System.Drawing.Size(115, 24);
             this.pnlConcluir.Click += new System.EventHandler(this.pbConcluir_Click);
@@ -396,24 +383,6 @@
             this.pbConcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbConcluir.Click += new System.EventHandler(this.pbConcluir_Click);
             // 
-            // txtMonto
-            // 
-            this.txtMonto.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtMonto.Location = new System.Drawing.Point(97, 107);
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.ReadOnly = true;
-            this.txtMonto.Size = new System.Drawing.Size(134, 17);
-            this.txtMonto.TabIndex = 29;
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(4, 111);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 14);
-            this.label13.Text = "Monto";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // FrmMenuPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -422,7 +391,6 @@
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
             this.Controls.Add(this.pnlConcluir);
-            this.Controls.Add(this.pnlArea);
             this.Controls.Add(this.pnlTransferir);
             this.Controls.Add(this.pnlIncompletos);
             this.Controls.Add(this.pnlDetener);
@@ -441,7 +409,6 @@
             this.pnlDevolver.ResumeLayout(false);
             this.pnlDetener.ResumeLayout(false);
             this.pnlIncompletos.ResumeLayout(false);
-            this.pnlArea.ResumeLayout(false);
             this.pnlTransferir.ResumeLayout(false);
             this.pnlConcluir.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -475,9 +442,6 @@
         private System.Windows.Forms.Panel pnlIncompletos;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pbIncompletos;
-        private System.Windows.Forms.Panel pnlArea;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlTransferir;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pbTransferir;

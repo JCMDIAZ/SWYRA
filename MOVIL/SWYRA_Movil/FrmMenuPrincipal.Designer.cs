@@ -49,6 +49,11 @@
             this.pnlGuías = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblCantPed = new System.Windows.Forms.Label();
+            this.lblCantArea = new System.Windows.Forms.Label();
+            this.lblCantEmp = new System.Windows.Forms.Label();
+            this.lblCantLev = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer();
             this.pnlImpCod.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlPedidos.SuspendLayout();
@@ -116,6 +121,7 @@
             // pnlPedidos
             // 
             this.pnlPedidos.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlPedidos.Controls.Add(this.lblCantPed);
             this.pnlPedidos.Controls.Add(this.pictureBox1);
             this.pnlPedidos.Controls.Add(this.label3);
             this.pnlPedidos.Dock = System.Windows.Forms.DockStyle.Top;
@@ -144,6 +150,7 @@
             // pnlSurtido
             // 
             this.pnlSurtido.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlSurtido.Controls.Add(this.lblCantArea);
             this.pnlSurtido.Controls.Add(this.pictureBox2);
             this.pnlSurtido.Controls.Add(this.label4);
             this.pnlSurtido.Dock = System.Windows.Forms.DockStyle.Top;
@@ -172,6 +179,7 @@
             // pnlEmpaque
             // 
             this.pnlEmpaque.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlEmpaque.Controls.Add(this.lblCantEmp);
             this.pnlEmpaque.Controls.Add(this.pictureBox3);
             this.pnlEmpaque.Controls.Add(this.label5);
             this.pnlEmpaque.Dock = System.Windows.Forms.DockStyle.Top;
@@ -198,6 +206,7 @@
             // pnlGuías
             // 
             this.pnlGuías.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlGuías.Controls.Add(this.lblCantLev);
             this.pnlGuías.Controls.Add(this.pictureBox4);
             this.pnlGuías.Controls.Add(this.label6);
             this.pnlGuías.Dock = System.Windows.Forms.DockStyle.Top;
@@ -220,6 +229,39 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(139, 35);
             this.label6.Text = "Levantamiento de Guías ";
+            // 
+            // lblCantPed
+            // 
+            this.lblCantPed.Location = new System.Drawing.Point(183, 12);
+            this.lblCantPed.Name = "lblCantPed";
+            this.lblCantPed.Size = new System.Drawing.Size(42, 20);
+            this.lblCantPed.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblCantArea
+            // 
+            this.lblCantArea.Location = new System.Drawing.Point(183, 10);
+            this.lblCantArea.Name = "lblCantArea";
+            this.lblCantArea.Size = new System.Drawing.Size(42, 20);
+            this.lblCantArea.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblCantEmp
+            // 
+            this.lblCantEmp.Location = new System.Drawing.Point(183, 10);
+            this.lblCantEmp.Name = "lblCantEmp";
+            this.lblCantEmp.Size = new System.Drawing.Size(42, 20);
+            this.lblCantEmp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblCantLev
+            // 
+            this.lblCantLev.Location = new System.Drawing.Point(183, 6);
+            this.lblCantLev.Name = "lblCantLev";
+            this.lblCantLev.Size = new System.Drawing.Size(42, 20);
+            this.lblCantLev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmMenuPrincipal
             // 
@@ -270,5 +312,10 @@
         private System.Windows.Forms.Panel pnlGuías;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCantPed;
+        private System.Windows.Forms.Label lblCantArea;
+        private System.Windows.Forms.Label lblCantEmp;
+        private System.Windows.Forms.Label lblCantLev;
+        private System.Windows.Forms.Timer timer1;
     }
 }
