@@ -249,6 +249,7 @@ namespace SWYRA_Movil
         public string ultimo { get; set; }
         public string descr { get; set; }
         public bool cancelado { get; set; }
+        public int totart { get; set; }
     }
 
     public class OrdenUbicacion
@@ -261,5 +262,13 @@ namespace SWYRA_Movil
     {
         public string cve_zona { get; set; }
         public string cve_ubicacion { get; set; }
+    }
+
+    public class Catalogos
+    {
+        public int id { get; set; }
+        public string catalogo { get; set; }
+        public string valor { get; set; }
+        public string valortexto { get; set; }
     }
 }

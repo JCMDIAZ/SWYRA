@@ -45,25 +45,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlRetornar = new System.Windows.Forms.Panel();
-            this.pbSalir = new System.Windows.Forms.PictureBox();
-            this.pnlConcluir = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
-            this.pnlIncompletos = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.pbSalir = new System.Windows.Forms.PictureBox();
+            this.pbSurtir = new System.Windows.Forms.PictureBox();
+            this.pbRemover = new System.Windows.Forms.PictureBox();
             this.pbIncompletos = new System.Windows.Forms.PictureBox();
-            this.pnlDevolver = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.pbDevolucion = new System.Windows.Forms.PictureBox();
-            this.pnlSurtir = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pbImprimir = new System.Windows.Forms.PictureBox();
             this.pnlPorSurtir.SuspendLayout();
             this.pnlRetornar.SuspendLayout();
-            this.pnlConcluir.SuspendLayout();
-            this.pnlIncompletos.SuspendLayout();
-            this.pnlDevolver.SuspendLayout();
-            this.pnlSurtir.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlPorSurtir
@@ -84,12 +73,12 @@
             this.pnlPorSurtir.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPorSurtir.Location = new System.Drawing.Point(0, 0);
             this.pnlPorSurtir.Name = "pnlPorSurtir";
-            this.pnlPorSurtir.Size = new System.Drawing.Size(238, 130);
+            this.pnlPorSurtir.Size = new System.Drawing.Size(238, 166);
             // 
             // txtMonto
             // 
             this.txtMonto.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtMonto.Location = new System.Drawing.Point(97, 107);
+            this.txtMonto.Location = new System.Drawing.Point(97, 117);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.ReadOnly = true;
             this.txtMonto.Size = new System.Drawing.Size(134, 17);
@@ -98,7 +87,7 @@
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(4, 111);
+            this.label13.Location = new System.Drawing.Point(4, 121);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(91, 14);
             this.label13.Text = "Monto";
@@ -107,7 +96,7 @@
             // txtVendedor
             // 
             this.txtVendedor.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtVendedor.Location = new System.Drawing.Point(97, 89);
+            this.txtVendedor.Location = new System.Drawing.Point(97, 97);
             this.txtVendedor.Name = "txtVendedor";
             this.txtVendedor.ReadOnly = true;
             this.txtVendedor.Size = new System.Drawing.Size(134, 17);
@@ -116,7 +105,7 @@
             // txtPrioridad
             // 
             this.txtPrioridad.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtPrioridad.Location = new System.Drawing.Point(97, 71);
+            this.txtPrioridad.Location = new System.Drawing.Point(97, 77);
             this.txtPrioridad.Name = "txtPrioridad";
             this.txtPrioridad.ReadOnly = true;
             this.txtPrioridad.Size = new System.Drawing.Size(134, 17);
@@ -125,7 +114,7 @@
             // txtServicio
             // 
             this.txtServicio.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtServicio.Location = new System.Drawing.Point(97, 53);
+            this.txtServicio.Location = new System.Drawing.Point(97, 57);
             this.txtServicio.Name = "txtServicio";
             this.txtServicio.ReadOnly = true;
             this.txtServicio.Size = new System.Drawing.Size(134, 17);
@@ -134,7 +123,7 @@
             // txtCliente
             // 
             this.txtCliente.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtCliente.Location = new System.Drawing.Point(97, 23);
+            this.txtCliente.Location = new System.Drawing.Point(97, 25);
             this.txtCliente.Multiline = true;
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
@@ -153,7 +142,7 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(4, 92);
+            this.label10.Location = new System.Drawing.Point(4, 100);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 20);
             this.label10.Text = "Vendedor";
@@ -162,7 +151,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(4, 71);
+            this.label8.Location = new System.Drawing.Point(4, 77);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 20);
             this.label8.Text = "Prioridad";
@@ -171,7 +160,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(4, 53);
+            this.label9.Location = new System.Drawing.Point(4, 57);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 20);
             this.label9.Text = "Servicio";
@@ -180,7 +169,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(4, 25);
+            this.label6.Location = new System.Drawing.Point(4, 27);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 20);
             this.label6.Text = "Cliente";
@@ -198,11 +187,21 @@
             // pnlRetornar
             // 
             this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.pbConcluir);
             this.pnlRetornar.Controls.Add(this.pbSalir);
             this.pnlRetornar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlRetornar.Location = new System.Drawing.Point(0, 235);
             this.pnlRetornar.Name = "pnlRetornar";
             this.pnlRetornar.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pbConcluir
+            // 
+            this.pbConcluir.Image = ((System.Drawing.Image)(resources.GetObject("pbConcluir.Image")));
+            this.pbConcluir.Location = new System.Drawing.Point(198, 3);
+            this.pbConcluir.Name = "pbConcluir";
+            this.pbConcluir.Size = new System.Drawing.Size(35, 35);
+            this.pbConcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbConcluir.Click += new System.EventHandler(this.pbConcluir_Click);
             // 
             // pbSalir
             // 
@@ -213,113 +212,41 @@
             this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
             // 
-            // pnlConcluir
+            // pbSurtir
             // 
-            this.pnlConcluir.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlConcluir.Controls.Add(this.label12);
-            this.pnlConcluir.Controls.Add(this.pbConcluir);
-            this.pnlConcluir.Location = new System.Drawing.Point(0, 158);
-            this.pnlConcluir.Name = "pnlConcluir";
-            this.pnlConcluir.Size = new System.Drawing.Size(115, 24);
-            this.pnlConcluir.Click += new System.EventHandler(this.pbConcluir_Click);
+            this.pbSurtir.Image = ((System.Drawing.Image)(resources.GetObject("pbSurtir.Image")));
+            this.pbSurtir.Location = new System.Drawing.Point(4, 197);
+            this.pbSurtir.Name = "pbSurtir";
+            this.pbSurtir.Size = new System.Drawing.Size(35, 35);
+            this.pbSurtir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbSurtir.Click += new System.EventHandler(this.pbImprimir_Click);
             // 
-            // label12
+            // pbRemover
             // 
-            this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(35, 5);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(77, 16);
-            this.label12.Text = "Concluir";
-            // 
-            // pbConcluir
-            // 
-            this.pbConcluir.Image = ((System.Drawing.Image)(resources.GetObject("pbConcluir.Image")));
-            this.pbConcluir.Location = new System.Drawing.Point(16, 3);
-            this.pbConcluir.Name = "pbConcluir";
-            this.pbConcluir.Size = new System.Drawing.Size(18, 18);
-            this.pbConcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbConcluir.Click += new System.EventHandler(this.pbConcluir_Click);
-            // 
-            // pnlIncompletos
-            // 
-            this.pnlIncompletos.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlIncompletos.Controls.Add(this.label4);
-            this.pnlIncompletos.Controls.Add(this.pbIncompletos);
-            this.pnlIncompletos.Location = new System.Drawing.Point(120, 158);
-            this.pnlIncompletos.Name = "pnlIncompletos";
-            this.pnlIncompletos.Size = new System.Drawing.Size(115, 24);
-            this.pnlIncompletos.Click += new System.EventHandler(this.pbIncompletos_Click);
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(35, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 16);
-            this.label4.Text = "Incompletos";
+            this.pbRemover.Image = ((System.Drawing.Image)(resources.GetObject("pbRemover.Image")));
+            this.pbRemover.Location = new System.Drawing.Point(45, 197);
+            this.pbRemover.Name = "pbRemover";
+            this.pbRemover.Size = new System.Drawing.Size(35, 35);
+            this.pbRemover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbRemover.Click += new System.EventHandler(this.pbDevolucion_Click);
             // 
             // pbIncompletos
             // 
             this.pbIncompletos.Image = ((System.Drawing.Image)(resources.GetObject("pbIncompletos.Image")));
-            this.pbIncompletos.Location = new System.Drawing.Point(16, 3);
+            this.pbIncompletos.Location = new System.Drawing.Point(86, 197);
             this.pbIncompletos.Name = "pbIncompletos";
-            this.pbIncompletos.Size = new System.Drawing.Size(18, 18);
+            this.pbIncompletos.Size = new System.Drawing.Size(35, 35);
             this.pbIncompletos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbIncompletos.Click += new System.EventHandler(this.pbIncompletos_Click);
-            // 
-            // pnlDevolver
-            // 
-            this.pnlDevolver.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlDevolver.Controls.Add(this.label7);
-            this.pnlDevolver.Controls.Add(this.pbDevolucion);
-            this.pnlDevolver.Location = new System.Drawing.Point(120, 133);
-            this.pnlDevolver.Name = "pnlDevolver";
-            this.pnlDevolver.Size = new System.Drawing.Size(115, 24);
-            this.pnlDevolver.Click += new System.EventHandler(this.pbDevolucion_Click);
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(35, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 16);
-            this.label7.Text = "Remover";
             // 
             // pbDevolucion
             // 
             this.pbDevolucion.Image = ((System.Drawing.Image)(resources.GetObject("pbDevolucion.Image")));
-            this.pbDevolucion.Location = new System.Drawing.Point(16, 3);
+            this.pbDevolucion.Location = new System.Drawing.Point(127, 197);
             this.pbDevolucion.Name = "pbDevolucion";
-            this.pbDevolucion.Size = new System.Drawing.Size(18, 18);
+            this.pbDevolucion.Size = new System.Drawing.Size(35, 35);
             this.pbDevolucion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbDevolucion.Click += new System.EventHandler(this.pbDevolucion_Click);
-            // 
-            // pnlSurtir
-            // 
-            this.pnlSurtir.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlSurtir.Controls.Add(this.label1);
-            this.pnlSurtir.Controls.Add(this.pbImprimir);
-            this.pnlSurtir.Location = new System.Drawing.Point(0, 133);
-            this.pnlSurtir.Name = "pnlSurtir";
-            this.pnlSurtir.Size = new System.Drawing.Size(115, 24);
-            this.pnlSurtir.Click += new System.EventHandler(this.pbImprimir_Click);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(35, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 16);
-            this.label1.Text = "Surtir";
-            // 
-            // pbImprimir
-            // 
-            this.pbImprimir.Image = ((System.Drawing.Image)(resources.GetObject("pbImprimir.Image")));
-            this.pbImprimir.Location = new System.Drawing.Point(16, 3);
-            this.pbImprimir.Name = "pbImprimir";
-            this.pbImprimir.Size = new System.Drawing.Size(18, 18);
-            this.pbImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbImprimir.Click += new System.EventHandler(this.pbImprimir_Click);
+            this.pbDevolucion.Click += new System.EventHandler(this.pbDevolucion_Click_1);
             // 
             // FrmMenuPedidosArea
             // 
@@ -328,10 +255,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
-            this.Controls.Add(this.pnlConcluir);
-            this.Controls.Add(this.pnlIncompletos);
-            this.Controls.Add(this.pnlDevolver);
-            this.Controls.Add(this.pnlSurtir);
+            this.Controls.Add(this.pbDevolucion);
+            this.Controls.Add(this.pbIncompletos);
+            this.Controls.Add(this.pbRemover);
+            this.Controls.Add(this.pbSurtir);
             this.Controls.Add(this.pnlRetornar);
             this.Controls.Add(this.pnlPorSurtir);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -341,10 +268,6 @@
             this.Load += new System.EventHandler(this.FrmMenuPedidosArea_Load);
             this.pnlPorSurtir.ResumeLayout(false);
             this.pnlRetornar.ResumeLayout(false);
-            this.pnlConcluir.ResumeLayout(false);
-            this.pnlIncompletos.ResumeLayout(false);
-            this.pnlDevolver.ResumeLayout(false);
-            this.pnlSurtir.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -366,17 +289,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlRetornar;
         private System.Windows.Forms.PictureBox pbSalir;
-        private System.Windows.Forms.Panel pnlConcluir;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.PictureBox pbConcluir;
-        private System.Windows.Forms.Panel pnlIncompletos;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pbSurtir;
+        private System.Windows.Forms.PictureBox pbRemover;
         private System.Windows.Forms.PictureBox pbIncompletos;
-        private System.Windows.Forms.Panel pnlDevolver;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pbConcluir;
         private System.Windows.Forms.PictureBox pbDevolucion;
-        private System.Windows.Forms.Panel pnlSurtir;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pbImprimir;
     }
 }

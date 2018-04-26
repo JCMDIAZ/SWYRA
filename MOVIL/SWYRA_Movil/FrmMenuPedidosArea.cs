@@ -65,8 +65,10 @@ namespace SWYRA_Movil
             FrmIncompleto frmIncompleto = new FrmIncompleto();
             frmIncompleto.ped = ped;
             frmIncompleto.det = detA.Where(o => o.surtido == true && o.cantdiferencia > 0).ToList();
+            frmIncompleto.pbRegresar.Visible = false;
+            frmIncompleto.pbRegresarB.Visible = true;
             frmIncompleto.ShowDialog();
-            pnlConcluir.Visible = validaExis(false) && validaExis(true);
+            pbConcluir.Visible = validaExis(false) && validaExis(true);
         }
 
         private void pbDevolucion_Click(object sender, EventArgs e)
@@ -75,7 +77,7 @@ namespace SWYRA_Movil
             frmDevolucion.ped = ped;
             frmDevolucion.Area = true;
             frmDevolucion.ShowDialog();
-            pnlConcluir.Visible = validaExis(false) && validaExis(true);
+            pbConcluir.Visible = validaExis(false) && validaExis(true);
         }
 
         private void pbImprimir_Click(object sender, EventArgs e)
@@ -83,8 +85,10 @@ namespace SWYRA_Movil
             FrmSurtit frmSurtir = new FrmSurtit();
             frmSurtir.ped = ped;
             frmSurtir.det = detA.Where(o => o.surtido == false).ToList();
+            frmSurtir.pbIncompleto.Visible = false;
+            frmSurtir.pbIncompletoB.Visible = true;
             frmSurtir.ShowDialog();
-            pnlConcluir.Visible = validaExis(false) && validaExis(true);
+            pbConcluir.Visible = validaExis(false) && validaExis(true);
         }
 
         private void FrmMenuPedidosArea_Load(object sender, EventArgs e)
@@ -103,7 +107,7 @@ namespace SWYRA_Movil
                 CultureInfo culture = new CultureInfo("es-MX");
                 txtMonto.Text = ped.importe.ToString("C2", culture);
 
-                pnlConcluir.Visible = validaExis(true);
+                pbConcluir.Visible = validaExis(true);
             }
             catch (Exception ex)
             {
@@ -157,6 +161,15 @@ namespace SWYRA_Movil
                     "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' " +
                     "ORDER BY o.ORDEN";
             return query;
+        }
+
+        private void pbDevolucion_Click_1(object sender, EventArgs e)
+        {
+            FrmCancelacion frmCan = new FrmCancelacion();
+            frmCan.ped = ped;
+            frmCan.det = devA.Where(o => o.devuelto == false).ToList();
+            frmCan.Show();
+            pbConcluir.Visible = validaExis(false);
         }
     }
 }

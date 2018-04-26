@@ -1,6 +1,6 @@
 ﻿namespace SWYRA_Movil
 {
-    partial class FrmSurtit
+    partial class FrmCancelacion
     {
         /// <summary>
         /// Required designer variable.
@@ -30,27 +30,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSurtit));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCancelacion));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
-            this.pnlRetornar = new System.Windows.Forms.Panel();
-            this.pbIncompletoB = new System.Windows.Forms.PictureBox();
-            this.pbIncompleto = new System.Windows.Forms.PictureBox();
-            this.pbSalir = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblPedido = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtCant = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblComentario = new System.Windows.Forms.Label();
-            this.txtDescr = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtMinimo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblPendientes = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lblComentario = new System.Windows.Forms.Label();
             this.pbAnt = new System.Windows.Forms.PictureBox();
             this.pbSig = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -65,181 +50,26 @@
             this.txtClave = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUbica = new System.Windows.Forms.TextBox();
+            this.txtDescr = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMinimo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblPedido = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCant = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlRetornar = new System.Windows.Forms.Panel();
+            this.pbSalir = new System.Windows.Forms.PictureBox();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pnlRetornar.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlRetornar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidosBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pnlRetornar
-            // 
-            this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlRetornar.Controls.Add(this.pbIncompletoB);
-            this.pnlRetornar.Controls.Add(this.pbIncompleto);
-            this.pnlRetornar.Controls.Add(this.pbSalir);
-            this.pnlRetornar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlRetornar.Location = new System.Drawing.Point(0, 235);
-            this.pnlRetornar.Name = "pnlRetornar";
-            this.pnlRetornar.Size = new System.Drawing.Size(238, 40);
-            // 
-            // pbIncompletoB
-            // 
-            this.pbIncompletoB.Image = ((System.Drawing.Image)(resources.GetObject("pbIncompletoB.Image")));
-            this.pbIncompletoB.Location = new System.Drawing.Point(198, 3);
-            this.pbIncompletoB.Name = "pbIncompletoB";
-            this.pbIncompletoB.Size = new System.Drawing.Size(35, 35);
-            this.pbIncompletoB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbIncompletoB.Visible = false;
-            this.pbIncompletoB.Click += new System.EventHandler(this.pbIncompleto_Click);
-            // 
-            // pbIncompleto
-            // 
-            this.pbIncompleto.Image = ((System.Drawing.Image)(resources.GetObject("pbIncompleto.Image")));
-            this.pbIncompleto.Location = new System.Drawing.Point(198, 3);
-            this.pbIncompleto.Name = "pbIncompleto";
-            this.pbIncompleto.Size = new System.Drawing.Size(35, 35);
-            this.pbIncompleto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbIncompleto.Click += new System.EventHandler(this.pbIncompleto_Click);
-            // 
-            // pbSalir
-            // 
-            this.pbSalir.Image = ((System.Drawing.Image)(resources.GetObject("pbSalir.Image")));
-            this.pbSalir.Location = new System.Drawing.Point(4, 3);
-            this.pbSalir.Name = "pbSalir";
-            this.pbSalir.Size = new System.Drawing.Size(35, 35);
-            this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click_1);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lblPedido);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtCant);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtCodigo);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(238, 64);
-            // 
-            // lblPedido
-            // 
-            this.lblPedido.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.lblPedido.Location = new System.Drawing.Point(146, 5);
-            this.lblPedido.Name = "lblPedido";
-            this.lblPedido.Size = new System.Drawing.Size(81, 11);
-            this.lblPedido.Text = "Pedido:";
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(83, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 11);
-            this.label5.Text = "Pedido:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txtCant
-            // 
-            this.txtCant.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtCant.Location = new System.Drawing.Point(161, 39);
-            this.txtCant.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.txtCant.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtCant.Name = "txtCant";
-            this.txtCant.ReadOnly = true;
-            this.txtCant.Size = new System.Drawing.Size(66, 20);
-            this.txtCant.TabIndex = 4;
-            this.txtCant.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCant_KeyPress);
-            this.txtCant.LostFocus += new System.EventHandler(this.txtCant_LostFocus);
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.label2.Location = new System.Drawing.Point(132, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 19);
-            this.label2.Text = "Cant.";
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtCodigo.Location = new System.Drawing.Point(52, 18);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(175, 19);
-            this.txtCodigo.TabIndex = 1;
-            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
-            this.txtCodigo.LostFocus += new System.EventHandler(this.txtCodigo_LostFocus);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.label1.Location = new System.Drawing.Point(9, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 19);
-            this.label1.Text = "Código";
-            // 
-            // lblComentario
-            // 
-            this.lblComentario.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.lblComentario.ForeColor = System.Drawing.Color.Red;
-            this.lblComentario.Location = new System.Drawing.Point(11, 112);
-            this.lblComentario.Name = "lblComentario";
-            this.lblComentario.Size = new System.Drawing.Size(218, 27);
-            this.lblComentario.Text = "Comentario";
-            this.lblComentario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtDescr
-            // 
-            this.txtDescr.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.txtDescr.Location = new System.Drawing.Point(65, 24);
-            this.txtDescr.Multiline = true;
-            this.txtDescr.Name = "txtDescr";
-            this.txtDescr.ReadOnly = true;
-            this.txtDescr.Size = new System.Drawing.Size(164, 22);
-            this.txtDescr.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label4.Location = new System.Drawing.Point(11, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 19);
-            this.label4.Text = "Desc.";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txtMinimo
-            // 
-            this.txtMinimo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtMinimo.Location = new System.Drawing.Point(65, 48);
-            this.txtMinimo.Name = "txtMinimo";
-            this.txtMinimo.ReadOnly = true;
-            this.txtMinimo.Size = new System.Drawing.Size(54, 19);
-            this.txtMinimo.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label3.Location = new System.Drawing.Point(22, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 19);
-            this.label3.Text = "Mínimo";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel2
             // 
@@ -284,6 +114,16 @@
             this.label12.Size = new System.Drawing.Size(66, 15);
             this.label12.Text = "Pendientes";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblComentario
+            // 
+            this.lblComentario.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lblComentario.ForeColor = System.Drawing.Color.Red;
+            this.lblComentario.Location = new System.Drawing.Point(11, 112);
+            this.lblComentario.Name = "lblComentario";
+            this.lblComentario.Size = new System.Drawing.Size(218, 27);
+            this.lblComentario.Text = "Comentario";
+            this.lblComentario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pbAnt
             // 
@@ -413,11 +253,159 @@
             this.txtUbica.Size = new System.Drawing.Size(54, 19);
             this.txtUbica.TabIndex = 15;
             // 
+            // txtDescr
+            // 
+            this.txtDescr.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.txtDescr.Location = new System.Drawing.Point(65, 24);
+            this.txtDescr.Multiline = true;
+            this.txtDescr.Name = "txtDescr";
+            this.txtDescr.ReadOnly = true;
+            this.txtDescr.Size = new System.Drawing.Size(164, 22);
+            this.txtDescr.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.label3.Location = new System.Drawing.Point(22, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 19);
+            this.label3.Text = "Mínimo";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtMinimo
+            // 
+            this.txtMinimo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtMinimo.Location = new System.Drawing.Point(65, 48);
+            this.txtMinimo.Name = "txtMinimo";
+            this.txtMinimo.ReadOnly = true;
+            this.txtMinimo.Size = new System.Drawing.Size(54, 19);
+            this.txtMinimo.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.label4.Location = new System.Drawing.Point(11, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 19);
+            this.label4.Text = "Desc.";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.lblPedido);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.txtCant);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtCodigo);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(238, 64);
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(9, 42);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(122, 18);
+            this.label13.Text = "Devolución de Artículo";
+            // 
+            // lblPedido
+            // 
+            this.lblPedido.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lblPedido.Location = new System.Drawing.Point(146, 5);
+            this.lblPedido.Name = "lblPedido";
+            this.lblPedido.Size = new System.Drawing.Size(81, 11);
+            this.lblPedido.Text = "Pedido:";
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(83, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 11);
+            this.label5.Text = "Pedido:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtCant
+            // 
+            this.txtCant.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtCant.Location = new System.Drawing.Point(161, 39);
+            this.txtCant.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.txtCant.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtCant.Name = "txtCant";
+            this.txtCant.ReadOnly = true;
+            this.txtCant.Size = new System.Drawing.Size(66, 20);
+            this.txtCant.TabIndex = 4;
+            this.txtCant.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCant_KeyPress);
+            this.txtCant.LostFocus += new System.EventHandler(this.txtCant_LostFocus);
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label2.Location = new System.Drawing.Point(132, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 19);
+            this.label2.Text = "Cant.";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtCodigo.Location = new System.Drawing.Point(52, 18);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(175, 19);
+            this.txtCodigo.TabIndex = 1;
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
+            this.txtCodigo.LostFocus += new System.EventHandler(this.txtCodigo_LostFocus);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label1.Location = new System.Drawing.Point(9, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 19);
+            this.label1.Text = "Código";
+            // 
+            // pnlRetornar
+            // 
+            this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.pbSalir);
+            this.pnlRetornar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlRetornar.Location = new System.Drawing.Point(0, 235);
+            this.pnlRetornar.Name = "pnlRetornar";
+            this.pnlRetornar.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pbSalir
+            // 
+            this.pbSalir.Image = ((System.Drawing.Image)(resources.GetObject("pbSalir.Image")));
+            this.pbSalir.Location = new System.Drawing.Point(4, 3);
+            this.pbSalir.Name = "pbSalir";
+            this.pbSalir.Size = new System.Drawing.Size(35, 35);
+            this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click_1);
+            // 
             // detallePedidosBindingSource
             // 
             this.detallePedidosBindingSource.DataSource = typeof(SWYRA_Movil.DetallePedidos);
             // 
-            // FrmSurtit
+            // FrmCancelacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -429,12 +417,12 @@
             this.Controls.Add(this.pnlRetornar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
-            this.Name = "FrmSurtit";
+            this.Name = "FrmCancelacion";
             this.Text = "SWRYA";
-            this.Load += new System.EventHandler(this.FrmSurtit_Load);
-            this.pnlRetornar.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.FrmCancelacion_Load);
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.pnlRetornar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -442,39 +430,38 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlRetornar;
-        private System.Windows.Forms.PictureBox pbSalir;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown txtCant;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.TextBox txtDescr;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtMinimo;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.BindingSource detallePedidosBindingSource;
-        private System.Windows.Forms.Label lblComentario;
-        private System.Windows.Forms.Label lblPedido;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtUbica;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtClave;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtMaster;
+        private System.Windows.Forms.Label lblPendientes;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblComentario;
+        private System.Windows.Forms.PictureBox pbAnt;
+        private System.Windows.Forms.PictureBox pbSig;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtExistencia;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSurtido;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPorSurtir;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtExistencia;
-        private System.Windows.Forms.PictureBox pbSig;
-        private System.Windows.Forms.PictureBox pbAnt;
-        private System.Windows.Forms.Label lblPendientes;
-        private System.Windows.Forms.Label label12;
-        public System.Windows.Forms.PictureBox pbIncompletoB;
-        public System.Windows.Forms.PictureBox pbIncompleto;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtMaster;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtClave;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtUbica;
+        private System.Windows.Forms.TextBox txtDescr;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMinimo;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblPedido;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown txtCant;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlRetornar;
+        private System.Windows.Forms.PictureBox pbSalir;
+        private System.Windows.Forms.Label label13;
     }
 }

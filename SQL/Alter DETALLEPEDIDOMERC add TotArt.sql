@@ -1,0 +1,1 @@
+alter table DETALLEPEDIDOMERC add TotArt int null

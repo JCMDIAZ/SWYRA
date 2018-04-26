@@ -81,5 +81,11 @@ namespace SWYRA_Movil
                 MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
+
+        private void pnlEmpaque_Click(object sender, EventArgs e)
+        {
+            FrmPedidoEmpaque frmPedE = new FrmPedidoEmpaque();
+            frmPedE.Show();
+        }
     }
 }

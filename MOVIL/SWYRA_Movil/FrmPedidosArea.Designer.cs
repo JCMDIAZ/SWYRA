@@ -36,16 +36,16 @@
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgPedidos = new System.Windows.Forms.DataGrid();
             this.dataGridTableStyle1 = new System.Windows.Forms.DataGridTableStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pbAsignar = new System.Windows.Forms.PictureBox();
-            this.pbSalir = new System.Windows.Forms.PictureBox();
             this.dgtEstatus = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dgtPrioridad = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dgtServicio = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dgtPedido = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dgtCliente = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dgtFecha = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pbAsignar = new System.Windows.Forms.PictureBox();
+            this.pbSalir = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -87,43 +87,6 @@
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtCliente);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtFecha);
             this.dataGridTableStyle1.MappingName = "Pedidos";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(5, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 20);
-            this.label1.Text = "Selecciona Pedido";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Window;
-            this.panel2.Controls.Add(this.pbAsignar);
-            this.panel2.Controls.Add(this.pbSalir);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 235);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(238, 40);
-            // 
-            // pbAsignar
-            // 
-            this.pbAsignar.Image = ((System.Drawing.Image)(resources.GetObject("pbAsignar.Image")));
-            this.pbAsignar.Location = new System.Drawing.Point(198, 3);
-            this.pbAsignar.Name = "pbAsignar";
-            this.pbAsignar.Size = new System.Drawing.Size(35, 35);
-            this.pbAsignar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbAsignar.Click += new System.EventHandler(this.pbAsignar_Click);
-            // 
-            // pbSalir
-            // 
-            this.pbSalir.Image = ((System.Drawing.Image)(resources.GetObject("pbSalir.Image")));
-            this.pbSalir.Location = new System.Drawing.Point(5, 3);
-            this.pbSalir.Name = "pbSalir";
-            this.pbSalir.Size = new System.Drawing.Size(35, 35);
-            this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
             // 
             // dgtEstatus
             // 
@@ -168,6 +131,43 @@
             this.dgtFecha.FormatInfo = null;
             this.dgtFecha.MappingName = "fecha_doc";
             this.dgtFecha.Width = 60;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(5, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(228, 20);
+            this.label1.Text = "Selecciona Pedido";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.pbAsignar);
+            this.panel2.Controls.Add(this.pbSalir);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 235);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pbAsignar
+            // 
+            this.pbAsignar.Image = ((System.Drawing.Image)(resources.GetObject("pbAsignar.Image")));
+            this.pbAsignar.Location = new System.Drawing.Point(198, 3);
+            this.pbAsignar.Name = "pbAsignar";
+            this.pbAsignar.Size = new System.Drawing.Size(35, 35);
+            this.pbAsignar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbAsignar.Click += new System.EventHandler(this.pbAsignar_Click);
+            // 
+            // pbSalir
+            // 
+            this.pbSalir.Image = ((System.Drawing.Image)(resources.GetObject("pbSalir.Image")));
+            this.pbSalir.Location = new System.Drawing.Point(5, 3);
+            this.pbSalir.Name = "pbSalir";
+            this.pbSalir.Size = new System.Drawing.Size(35, 35);
+            this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
             // 
             // FrmPedidosArea
             // 

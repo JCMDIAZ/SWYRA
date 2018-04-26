@@ -38,21 +38,21 @@
             this.pnlImpCod = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlPedidos = new System.Windows.Forms.Panel();
+            this.lblCantPed = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlSurtido = new System.Windows.Forms.Panel();
+            this.lblCantArea = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlEmpaque = new System.Windows.Forms.Panel();
+            this.lblCantEmp = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pnlGuías = new System.Windows.Forms.Panel();
+            this.lblCantLev = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.lblCantPed = new System.Windows.Forms.Label();
-            this.lblCantArea = new System.Windows.Forms.Label();
-            this.lblCantEmp = new System.Windows.Forms.Label();
-            this.lblCantLev = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer();
             this.pnlImpCod.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -130,6 +130,13 @@
             this.pnlPedidos.Size = new System.Drawing.Size(238, 45);
             this.pnlPedidos.Click += new System.EventHandler(this.pnlPedidos_Click);
             // 
+            // lblCantPed
+            // 
+            this.lblCantPed.Location = new System.Drawing.Point(183, 12);
+            this.lblCantPed.Name = "lblCantPed";
+            this.lblCantPed.Size = new System.Drawing.Size(42, 20);
+            this.lblCantPed.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -159,6 +166,13 @@
             this.pnlSurtido.Size = new System.Drawing.Size(238, 45);
             this.pnlSurtido.Click += new System.EventHandler(this.pnlSurtido_Click);
             // 
+            // lblCantArea
+            // 
+            this.lblCantArea.Location = new System.Drawing.Point(183, 10);
+            this.lblCantArea.Name = "lblCantArea";
+            this.lblCantArea.Size = new System.Drawing.Size(42, 20);
+            this.lblCantArea.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -174,7 +188,7 @@
             this.label4.Location = new System.Drawing.Point(61, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(139, 15);
-            this.label4.Text = "Área de Surtido";
+            this.label4.Text = "Área de Brocas";
             // 
             // pnlEmpaque
             // 
@@ -186,6 +200,14 @@
             this.pnlEmpaque.Location = new System.Drawing.Point(0, 135);
             this.pnlEmpaque.Name = "pnlEmpaque";
             this.pnlEmpaque.Size = new System.Drawing.Size(238, 45);
+            this.pnlEmpaque.Click += new System.EventHandler(this.pnlEmpaque_Click);
+            // 
+            // lblCantEmp
+            // 
+            this.lblCantEmp.Location = new System.Drawing.Point(183, 10);
+            this.lblCantEmp.Name = "lblCantEmp";
+            this.lblCantEmp.Size = new System.Drawing.Size(42, 20);
+            this.lblCantEmp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox3
             // 
@@ -194,6 +216,7 @@
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(35, 35);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.Click += new System.EventHandler(this.pnlEmpaque_Click);
             // 
             // label5
             // 
@@ -214,6 +237,13 @@
             this.pnlGuías.Name = "pnlGuías";
             this.pnlGuías.Size = new System.Drawing.Size(238, 45);
             // 
+            // lblCantLev
+            // 
+            this.lblCantLev.Location = new System.Drawing.Point(183, 6);
+            this.lblCantLev.Name = "lblCantLev";
+            this.lblCantLev.Size = new System.Drawing.Size(42, 20);
+            this.lblCantLev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
@@ -229,34 +259,6 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(139, 35);
             this.label6.Text = "Levantamiento de Guías ";
-            // 
-            // lblCantPed
-            // 
-            this.lblCantPed.Location = new System.Drawing.Point(183, 12);
-            this.lblCantPed.Name = "lblCantPed";
-            this.lblCantPed.Size = new System.Drawing.Size(42, 20);
-            this.lblCantPed.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblCantArea
-            // 
-            this.lblCantArea.Location = new System.Drawing.Point(183, 10);
-            this.lblCantArea.Name = "lblCantArea";
-            this.lblCantArea.Size = new System.Drawing.Size(42, 20);
-            this.lblCantArea.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblCantEmp
-            // 
-            this.lblCantEmp.Location = new System.Drawing.Point(183, 10);
-            this.lblCantEmp.Name = "lblCantEmp";
-            this.lblCantEmp.Size = new System.Drawing.Size(42, 20);
-            this.lblCantEmp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblCantLev
-            // 
-            this.lblCantLev.Location = new System.Drawing.Point(183, 6);
-            this.lblCantLev.Name = "lblCantLev";
-            this.lblCantLev.Size = new System.Drawing.Size(42, 20);
-            this.lblCantLev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // timer1
             // 

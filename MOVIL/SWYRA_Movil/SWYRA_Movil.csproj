@@ -79,6 +79,12 @@
     <Compile Include="FrmAreaEmpaque.Designer.cs">
       <DependentUpon>FrmAreaEmpaque.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCancelacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCancelacion.Designer.cs">
+      <DependentUpon>FrmCancelacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDetenerPed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,18 @@
     </Compile>
     <Compile Include="FrmDevolucion.Designer.cs">
       <DependentUpon>FrmDevolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpaque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpaque.Designer.cs">
+      <DependentUpon>FrmEmpaque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpaqueAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpaqueAdd.Designer.cs">
+      <DependentUpon>FrmEmpaqueAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmImpCodDialog.cs">
       <SubType>Form</SubType>
@@ -126,6 +144,12 @@
     </Compile>
     <Compile Include="FrmMenuPrincipal.Designer.cs">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPedidoEmpaque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedidoEmpaque.Designer.cs">
+      <DependentUpon>FrmPedidoEmpaque.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPedidos.cs">
       <SubType>Form</SubType>
@@ -180,11 +204,20 @@
     <EmbeddedResource Include="FrmAreaEmpaque.resx">
       <DependentUpon>FrmAreaEmpaque.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCancelacion.resx">
+      <DependentUpon>FrmCancelacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDetenerPed.resx">
       <DependentUpon>FrmDetenerPed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDevolucion.resx">
       <DependentUpon>FrmDevolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpaque.resx">
+      <DependentUpon>FrmEmpaque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpaqueAdd.resx">
+      <DependentUpon>FrmEmpaqueAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmImpCodDialog.resx">
       <DependentUpon>FrmImpCodDialog.cs</DependentUpon>
@@ -203,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedidoEmpaque.resx">
+      <DependentUpon>FrmPedidoEmpaque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidos.resx">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
@@ -242,6 +278,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\Catalogos.datasource" />
     <None Include="Properties\DataSources\CodigosBarra.datasource" />
     <None Include="Properties\DataSources\DetallePedidoMerc.datasource" />
     <None Include="Properties\DataSources\DetallePedidos.datasource" />

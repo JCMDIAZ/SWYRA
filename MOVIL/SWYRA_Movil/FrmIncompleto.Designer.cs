@@ -47,6 +47,7 @@
             this.dataGridTextBoxColumn6 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.lblPedido = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pbRegresarB = new System.Windows.Forms.PictureBox();
             this.pnlRetornar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidosBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             // pnlRetornar
             // 
             this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.pbRegresarB);
             this.pnlRetornar.Controls.Add(this.pbRegresar);
             this.pnlRetornar.Controls.Add(this.pbSalir);
             this.pnlRetornar.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -64,7 +66,7 @@
             // pbRegresar
             // 
             this.pbRegresar.Image = ((System.Drawing.Image)(resources.GetObject("pbRegresar.Image")));
-            this.pbRegresar.Location = new System.Drawing.Point(198, 2);
+            this.pbRegresar.Location = new System.Drawing.Point(198, 3);
             this.pbRegresar.Name = "pbRegresar";
             this.pbRegresar.Size = new System.Drawing.Size(35, 35);
             this.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -174,6 +176,16 @@
             this.label5.Text = "Pedido:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // pbRegresarB
+            // 
+            this.pbRegresarB.Image = ((System.Drawing.Image)(resources.GetObject("pbRegresarB.Image")));
+            this.pbRegresarB.Location = new System.Drawing.Point(198, 3);
+            this.pbRegresarB.Name = "pbRegresarB";
+            this.pbRegresarB.Size = new System.Drawing.Size(35, 35);
+            this.pbRegresarB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbRegresarB.Visible = false;
+            this.pbRegresarB.Click += new System.EventHandler(this.pbRegresar_Click);
+            // 
             // FrmIncompleto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -212,6 +224,7 @@
         private System.Windows.Forms.Label lblPedido;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn7;
-        private System.Windows.Forms.PictureBox pbRegresar;
+        public System.Windows.Forms.PictureBox pbRegresarB;
+        public System.Windows.Forms.PictureBox pbRegresar;
     }
 }

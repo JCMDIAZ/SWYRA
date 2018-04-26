@@ -31,18 +31,21 @@ namespace SWYRA_Movil
         {
             try
             {
-                var query = "UPDATE PEDIDO SET SURTIDOR_AREA = '" + Program.usActivo.Usuario + "' " +
-                            "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "'";
-                var res = Program.GetExecute(query, 3);
-                query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
-                        "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "' " +
-                        "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
-                        "@cvedoc, 'SURTIENDO AREA', getdate(), '" + Program.usActivo.Usuario + "')";
-                res = Program.GetExecute(query, 4);
-                FrmMenuPedidosArea frmMenuPed = new FrmMenuPedidosArea();
-                frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString();
-                frmMenuPed.ShowDialog();
-                cargaPedidos();
+                if (listPedidos.Count > 0)
+                {
+                    var query = "UPDATE PEDIDO SET SURTIDOR_AREA = '" + Program.usActivo.Usuario + "' " +
+                                "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "'";
+                    var res = Program.GetExecute(query, 3);
+                    query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                            "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "' " +
+                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                            "@cvedoc, 'SURTIENDO AREA', getdate(), '" + Program.usActivo.Usuario + "')";
+                    res = Program.GetExecute(query, 4);
+                    FrmMenuPedidosArea frmMenuPed = new FrmMenuPedidosArea();
+                    frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString();
+                    frmMenuPed.ShowDialog();
+                    cargaPedidos();
+                }
             }
             catch (Exception ex)
             {
@@ -89,8 +92,7 @@ namespace SWYRA_Movil
                         "        end " +
                         "end Numprioridad, UbicacionEmpaque " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
-                        "where (isnull(p.SURTIDOR_AREA,'') = '" + Program.usActivo.Usuario + "' OR '' = '" + surtAsig + "') " +
-                        "and p.ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION') and isnull(p.SOLAREA,0) = 1 " +
+                        "where isnull(p.SURTIDOR_AREA,'') = '" +surtAsig + "' and p.ESTATUSPEDIDO in ('SURTIR','MODIFICACION', 'DETENIDO', 'DEVOLUCION') and isnull(p.SOLAREA,0) = 1 " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");

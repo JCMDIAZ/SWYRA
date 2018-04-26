@@ -46,9 +46,9 @@ namespace SWYRA_Movil
                 CultureInfo culture = new CultureInfo("es-MX");
                 txtMonto.Text = ped.importe.ToString("C2", culture);
 
-                pnlDetener.Visible = !(ped.estatuspedido.Trim() == "DETENIDO");
+                pbDetener.Visible = !(ped.estatuspedido.Trim() == "DETENIDO");
                 area = validaExis(true);
-                pnlConcluir.Visible = validaExis(false);
+                pbConcluir.Visible = validaExis(false);
             }
             catch (Exception ex)
             {
@@ -110,7 +110,7 @@ namespace SWYRA_Movil
             frmSurtir.ped = ped;
             frmSurtir.det = det.Where(o => o.surtido == false).ToList();
             frmSurtir.ShowDialog();
-            pnlConcluir.Visible = validaExis(false);
+            pbConcluir.Visible = validaExis(false);
         }
 
         private void pbIncompletos_Click(object sender, EventArgs e)
@@ -119,7 +119,7 @@ namespace SWYRA_Movil
             frmIncompleto.ped = ped;
             frmIncompleto.det = det.Where(o => o.surtido == true && o.cantdiferencia > 0).ToList();
             frmIncompleto.ShowDialog();
-            pnlConcluir.Visible = validaExis(false);
+            pbConcluir.Visible = validaExis(false);
         }
 
         private void pbDetenido_Click(object sender, EventArgs e)
@@ -226,7 +226,16 @@ namespace SWYRA_Movil
             FrmDevolucion frmDevolucion = new FrmDevolucion();
             frmDevolucion.ped = ped;
             frmDevolucion.ShowDialog();
-            pnlConcluir.Visible = validaExis(false);
+            pbConcluir.Visible = validaExis(false);
+        }
+
+        private void pbDevolucion_Click_1(object sender, EventArgs e)
+        {
+            FrmCancelacion frmCan = new FrmCancelacion();
+            frmCan.ped = ped;
+            frmCan.det = dev.Where(o => o.devuelto == false).ToList();
+            frmCan.Show();
+            pbConcluir.Visible = validaExis(false);
         }
     }
 }
