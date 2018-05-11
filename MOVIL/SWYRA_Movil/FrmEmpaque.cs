@@ -20,11 +20,6 @@ namespace SWYRA_Movil
             InitializeComponent();
         }
 
-        private void pnlSurtido_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pbSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -49,7 +44,8 @@ namespace SWYRA_Movil
                 lblCliente.Text = ped.cliente;
 
                 cargaPaquetes();
-                pbConcluir.Visible = validaExis();
+                pbImprimir.Visible = validaExis(1);
+                pbConcluir.Visible = validaExis(2);
             }
             catch (Exception ex)
             {
@@ -61,7 +57,7 @@ namespace SWYRA_Movil
         {
             try
             {
-                var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO, TOTART " +
+                var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO, TOTART, CONSEC_EMPAQUE " +
                             "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
                             "AND (ISNULL(CANCELADO, 0) = 0) AND (TIPOPAQUETE IS NOT NULL) AND (CONSEC_PADRE IS NULL) ORDER BY CONSEC DESC";
                 lstPaquetes = Program.GetDataTable(query, 4).ToList<DetallePedidoMerc>();
@@ -91,14 +87,24 @@ namespace SWYRA_Movil
             }
         }
 
-        private bool validaExis()
+        private bool validaExis(int opc)
         {
             bool b = false;
             try
             {
-                var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO " +
+                var query = "";
+                if (opc == 1)
+                {
+                    query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO " +
                             "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
                             "AND (ISNULL(CANCELADO, 0) = 0) AND (TIPOPAQUETE IS NULL) AND (CONSEC_PADRE IS NULL) ORDER BY CONSEC";
+                }
+                else if (opc == 2)
+                {
+                    query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO " +
+                            "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
+                            "AND (ISNULL(CANCELADO, 0) = 0) AND (ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA')) AND (ISNULL(ULTIMO,0) = 0) ORDER BY CONSEC";
+                }
                 var lsArt = Program.GetDataTable(query, 3).ToList<DetallePedidoMerc>();
                 b = (lsArt.Count == 0);
             }
@@ -134,11 +140,13 @@ namespace SWYRA_Movil
         {
             try
             {
-                var query = "DECLARE @consec int, @cvedoc varchar(50) " +
-                            "SELECT @cvedoc = CVE_DOC, @consec = (ISNULL(MAX(CONSEC),-1) + 1) FROM DETALLEPEDIDOMERC " +
+                var query = "DECLARE @consec int, @consecEmpaque int, @cvedoc varchar(50) " +
+                            "SELECT @cvedoc = CVE_DOC, @consec = (ISNULL(MAX(CONSEC),-1) + 1), " +
+                            "@consecEmpaque = (ISNULL(MAX(CONSEC_EMPAQUE), 0) + 1) FROM DETALLEPEDIDOMERC " +
                             "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') GROUP BY CVE_DOC " +
-                            "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, TOTART) " + 
-                            "VALUES (@cvedoc, @consec, 0, '', '" + ped.cve_doc + "-' + CAST(@consec AS VARCHAR(10)), 0, '" + cbTipoEmpaque.Text + "', 0) ";
+                            "IF @cvedoc IS NOT NULL " +
+                            "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, TOTART, CONSEC_EMPAQUE) " +
+                            "VALUES (@cvedoc, @consec, 0, '', '" + ped.cve_doc + "-' + CAST(@consecEmpaque AS VARCHAR(10)), 0, '" + cbTipoEmpaque.Text + "', 0, @consecEmpaque) ";
                 Program.GetExecute(query, 5);
                 ActualizaPedido();
                 cargaPaquetes();
@@ -207,12 +215,23 @@ namespace SWYRA_Movil
         {
             if (lstPaquetes.Count > 0)
             {
-                FrmEmpaqueAdd frmEmpacar = new FrmEmpaqueAdd();
-                frmEmpacar.ped = lstPaquetes.Find(o => o.consec == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
-                frmEmpacar.ShowDialog();
+                var emp = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
+                if (emp != "ATADOS" && emp != "TARIMA")
+                {
+                    FrmEmpaqueAdd frmEmpacar = new FrmEmpaqueAdd();
+                    frmEmpacar.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
+                    frmEmpacar.ShowDialog();
+                }
+                else
+                {
+                    FrmEmpaqueAT frmEmpacar = new FrmEmpaqueAT();
+                    frmEmpacar.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
+                    frmEmpacar.ShowDialog();
+                }
                 ActualizaPedido();
                 cargaPaquetes();
-                pbConcluir.Visible = validaExis();
+                pbImprimir.Visible = validaExis(1);
+                pbConcluir.Visible = validaExis(2);
             }
         }
 
@@ -220,13 +239,39 @@ namespace SWYRA_Movil
         {
             if (lstPaquetes.Count > 0)
             {
-                FrmEmpaqueAdd frmEmpacar = new FrmEmpaqueAdd();
-                frmEmpacar.proceso = "DES";
-                frmEmpacar.ped = lstPaquetes.Find(o => o.consec == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
-                frmEmpacar.ShowDialog();
+                var emp = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
+                if (emp != "ATADOS" && emp != "TARIMA")
+                {
+                    FrmEmpaqueAdd frmEmpacar = new FrmEmpaqueAdd();
+                    frmEmpacar.proceso = "DES";
+                    frmEmpacar.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
+                    frmEmpacar.ShowDialog();
+                }
+                else
+                {
+                    FrmEmpaqueAT frmEmpacar = new FrmEmpaqueAT();
+                    frmEmpacar.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
+                    frmEmpacar.ShowDialog();
+                }
                 ActualizaPedido();
                 cargaPaquetes();
-                pbConcluir.Visible = validaExis();
+                pbImprimir.Visible = validaExis(1);
+                pbConcluir.Visible = validaExis(2);
+            }
+        }
+
+        private void pbImprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var query = "UPDATE DETALLEPEDIDOMERC SET ULTIMO = 1 WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
+                      "AND (ISNULL(CANCELADO, 0) = 0) AND (ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA')) AND (ISNULL(ULTIMO,0) = 0) ";
+                Program.GetExecute(query, 8);
+                MessageBox.Show("Impresion Exitosa", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
     }

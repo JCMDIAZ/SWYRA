@@ -39,6 +39,7 @@ namespace SWYRA
             chkEstablece.Checked = false;
             txtExistencia.EditValue = 0;
             chkActivo.Checked = true;
+            chkAplicaLote.Checked = false;
         }
 
         private void gcPresentaciones_Load(object sender, EventArgs e)
@@ -131,7 +132,7 @@ namespace SWYRA
                             @"UPDATE INVENTARIOCOND SET " +
                             "COMENTARIO = '" + meCondicion.Text + "', APLICAEXIST = " + ((chkEstablece.Checked) ? "1" : "0") + ", " +
                             "EXISTENCIA = " + txtExistencia.EditValue + ", Activo = " + ((chkActivo.Checked) ? "1" : "0") + ", " +
-                            "APLICALOTE = " + ((chkActivo.Checked) ? "1" : "0") +
+                            "APLICALOTE = " + ((chkAplicaLote.Checked) ? "1" : "0") +
                             " WHERE CVE_ART = '" + cbProducto.EditValue.ToString() + "' END";
                     var res = GetExecute("DB", query, 3);
                     MessageBox.Show(@"Guardado satisfactoriamente.");

@@ -34,6 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -141,6 +144,12 @@
     <Compile Include="FrmEstatusPedido.Designer.cs">
       <DependentUpon>FrmEstatusPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmGeneraGuias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGeneraGuias.Designer.cs">
+      <DependentUpon>FrmGeneraGuias.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +216,9 @@
     <EmbeddedResource Include="FrmEstatusPedido.resx">
       <DependentUpon>FrmEstatusPedido.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmGeneraGuias.resx">
+      <DependentUpon>FrmGeneraGuias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,6 +276,8 @@
     <None Include="Properties\DataSources\Alamcen.datasource" />
     <None Include="Properties\DataSources\Almacen.datasource" />
     <None Include="Properties\DataSources\Areas.datasource" />
+    <None Include="Properties\DataSources\DetallePedidoMerc.datasource" />
+    <None Include="Properties\DataSources\DetallePedidos.datasource" />
     <None Include="Properties\DataSources\Inventario.datasource" />
     <None Include="Properties\DataSources\InventarioCondicion.datasource" />
     <None Include="Properties\DataSources\InventarioPresentacion.datasource" />

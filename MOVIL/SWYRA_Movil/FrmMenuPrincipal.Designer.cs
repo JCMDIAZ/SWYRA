@@ -224,7 +224,7 @@
             this.label5.Location = new System.Drawing.Point(61, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(139, 15);
-            this.label5.Text = "Epaquetado";
+            this.label5.Text = "Empaquetado";
             // 
             // pnlGuías
             // 

@@ -70,71 +70,62 @@ namespace SWYRA_Movil
             txtCant.Value = 1;
             try
             {
-                if (ped.tipopaquete == "ATADOS" || ped.tipopaquete == "TARIMA")
-                {
-                    var query2 = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO, TotArt " +
-                                 "FROM DETALLEPEDIDOMERC WHERE (CVE_DOC = '" + ped.cve_doc + "') AND " +
-                                 "(CODIGO_BARRA = '" + txtCodigo.Text + "') AND (ISNULL(CANCELADO, 0) = 0)";
-                    art = Program.GetDataTable(query2, 6).ToData<DetallePedidoMerc>();
-                    if (art != null)
-                    {
-                        art.consec_padre = (proceso == "EMP") ? ped.consec : 0;
-                        actualizaDet();
-                        return;
-                    }
-                }
                 var str = txtCodigo.Text.Split('-');
                 var query = "SELECT CVE_ART, CANT_PIEZAS, CODIGO_BARRA FROM vw_codigosBarras " +
                              "WHERE CODIGO_BARRA = '" + str[0] + "'";
                 cod = Program.GetDataTable(query, 2).ToData<CodigosBarra>();
-                if (str.Length == 2)
+                if (cod != null)
                 {
-                    //txtCodigo.Text = str[0];
-                    cod.cant_piezas = Convert.ToInt32(str[1]);
-                }
-                if (cod != null && str.Length <= 2)
-                {
-                    var tot = det.Count(o => o.codigo_barra == txtCodigo.Text);
-                    if (tot == 0)
+                    if (str.Length == 2)
                     {
-                        MessageBox.Show(@"Artículo no registrado en la lista del surtido", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                        txtCodigo.Focus();
+                        //txtCodigo.Text = str[0];
+                        cod.cant_piezas = Convert.ToInt32(str[1]);
                     }
-                    else
+                    if (str.Length <= 2)
                     {
-                        txtCant.ReadOnly = !(cod.cant_piezas == 1);
-                        txtCant.Value = cod.cant_piezas;
-                        if (proceso == "EMP")
+                        var tot = det.Count(o => o.codigo_barra == txtCodigo.Text);
+                        if (tot == 0)
                         {
-                            art = det.Find(o => o.codigo_barra == txtCodigo.Text && (o.cancelado == null || o.cancelado == false) && (o.consec_padre == null || o.consec_padre == 0));
-                        }
-                        else
-                        {
-                            art = det.Find(o => o.codigo_barra == txtCodigo.Text && (o.cancelado == null || o.cancelado == false) && o.consec_padre == ped.consec);
-                        }
-                        if (art == null)
-                        {
-                            if (proceso == "EMP")
-                            {
-                                MessageBox.Show(@"Artículo ya empaquetado favor de validar", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                            }
-                            else
-                            {
-                                MessageBox.Show(@"Artículo no empaquetado en esta " + ped.tipopaquete + " favor de validar", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                            }
+                            MessageBox.Show(@"Artículo no registrado en la lista del surtido", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                             txtCodigo.Focus();
                         }
                         else
                         {
-                            art.consec_padre = (proceso == "EMP") ? ped.consec : 0;
-                            actualizaDet();
-                            if (cod.cant_piezas == 1) { txtCant.Focus(); }
+                            txtCant.ReadOnly = !(cod.cant_piezas == 1);
+                            txtCant.Value = cod.cant_piezas;
+                            if (proceso == "EMP")
+                            {
+                                art = det.Find(o => o.codigo_barra == txtCodigo.Text && (o.cancelado == null || o.cancelado == false) && (o.consec_padre == null || o.consec_padre == 0));
+                            }
+                            else
+                            {
+                                art = det.Find(o => o.codigo_barra == txtCodigo.Text && (o.cancelado == null || o.cancelado == false) && o.consec_padre == ped.consec);
+                            }
+                            if (art == null)
+                            {
+                                if (proceso == "EMP")
+                                {
+                                    MessageBox.Show(@"Artículo ya empaquetado favor de validar", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(@"Artículo no empaquetado en esta " + ped.tipopaquete + " favor de validar", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                                }
+                                txtCodigo.Focus();
+                            }
+                            else
+                            {
+                                art.consec_padre = (proceso == "EMP") ? ped.consec : 0;
+                                actualizaDet();
+                                if (cod.cant_piezas == 1) { txtCant.Focus(); }
+                            }
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show(@"Código de Barra INEXISTENTE, favor de validar.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    var msj = @"Código de Barra INEXISTENTE, favor de validar.";
+                    MessageBox.Show(msj, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 }
             }
             catch (Exception ex)
@@ -166,7 +157,6 @@ namespace SWYRA_Movil
                             "VALUES ('" + art.cve_doc + "', @consec, " + art.num_par.ToString() + ", '" + art.cve_art +
                             "', '" + art.codigo_barra + "', " + dif.ToString() + ") ";
                     Program.GetExecute(query2, 8);
-                    det = CargaDetalleMerc();
                 }
                 var query = "UPDATE DETALLEPEDIDOMERC SET CONSEC_PADRE = " + ((proceso == "EMP") ? art.consec_padre.ToString() : "NULL")  + " " +
                             "WHERE CVE_DOC  = '" + art.cve_doc + "' AND CONSEC = " + art.consec.ToString() +
@@ -178,6 +168,7 @@ namespace SWYRA_Movil
                             "FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND (ISNULL(CANCELADO, 0) = 0) group by CVE_DOC) " +
                             "as r ON p.CVE_DOC = r.CVE_DOC ";
                 Program.GetExecute(query, 3);
+                det = CargaDetalleMerc();
                 var mostrardet = det.Where(o => o.consec_padre == ped.consec).ToList();
                 dgDetallePed.DataSource = Program.ToDataTable<DetallePedidoMerc>(mostrardet, "detallePedidoMerc");
             }
@@ -193,7 +184,7 @@ namespace SWYRA_Movil
             lblEstatusB.Visible = (proceso != "EMP");
             lblEstatusA.Visible = (proceso == "EMP");
             lblPedido.Text = ped.cve_doc.Trim();
-            lblPaquete.Text = "(" + ped.consec.ToString() + ") - " + ped.tipopaquete;
+            lblPaquete.Text = "(" + ped.consec_empaque.ToString() + ") - " + ped.tipopaquete;
             det = CargaDetalleMerc();
             var mostrardet = det.Where(o => o.consec_padre == ped.consec).ToList();
             dgDetallePed.DataSource = Program.ToDataTable<DetallePedidoMerc>(mostrardet, "detallePedidoMerc");
@@ -204,13 +195,11 @@ namespace SWYRA_Movil
             List<DetallePedidoMerc> tmp = new List<DetallePedidoMerc>();
             try
             {
-                string[] opc = {"ATADOS", "TARIMA"};
-                var flt = (ped.tipopaquete == "ATADOS" || ped.tipopaquete == "TARIMA") ? "NOT IN ('ATADOS', 'TARIMA')" : "IN ('')";
                 var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, dt.CVE_ART, CODIGO_BARRA, CASE WHEN CANT = 0 THEN TOTART ELSE CANT END CANT, " +
                             "TIPOPAQUETE, CONSEC_PADRE, ULTIMO, isnull(i.DESCR, TIPOPAQUETE) DESCR " +
                             "FROM DETALLEPEDIDOMERC dt LEFT JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART " +
                             "WHERE CVE_DOC = '" + ped.cve_doc + "' AND ISNULL(CANCELADO,0) = 0 " +
-                            "AND ISNULL(TIPOPAQUETE,'') " + flt + " ORDER BY CONSEC";
+                            "AND ISNULL(TIPOPAQUETE,'') = '' ORDER BY CONSEC";
                 tmp = Program.GetDataTable(query, 1).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)

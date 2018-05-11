@@ -246,11 +246,11 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Image = global::SWYRA.Properties.Resources._1366681822_edit_clear;
+            this.btnLimpiar.Image = global::SWYRA.Properties.Resources._new;
             this.btnLimpiar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(80, 24);
-            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(71, 24);
+            this.btnLimpiar.Text = "Nueva";
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnEliminar

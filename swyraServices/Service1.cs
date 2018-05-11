@@ -63,6 +63,19 @@ namespace swyraServices
 
         private void consultar()
         {
+            List<Precios> listFbPrecios = CargaFbPrecios();
+            List<Precios> listDbPrecios = CargaDbPrecios();
+            var preciosAct = listFbPrecios.Where(o => listDbPrecios.Any(p => p.cve_art == o.cve_art && p.cve_precio == o.cve_precio)).ToList();
+            var preciosNvo = listFbPrecios.Except(preciosAct).ToList();
+            var preciosDif = preciosAct.Except(preciosAct.Where(o => listDbPrecios.Any(p => p.precio == o.precio)).ToList()).ToList();
+            foreach (var clt in preciosNvo)
+            {
+                GuardaPrecios(clt);
+            }
+            foreach (var clt in preciosDif)
+            {
+                ModificaPrecios(clt);
+            }
             List<Cliente> listFbClientes = cargaFbClientes();
             List<Cliente> listDbClientes = cargaDbClientes();
             var clientesAct = listFbClientes.Where(o => listDbClientes.Any(p => p.clave == o.clave)).ToList();
@@ -108,6 +121,70 @@ namespace swyraServices
             {
                 var pedDb = listDbPedidos.FirstOrDefault(o => o.cve_doc == pedFb.cve_doc);
                 ModificaDbPedidos(pedFb, pedDb);
+            }
+        }
+
+        private List<Precios> CargaFbPrecios()
+        {
+            List<Precios> listFbPrecios = new List<Precios>();
+            try
+            {
+                var query =
+                    "select CVE_ART, CVE_PRECIO, PRECIO " +
+                    "from PRECIO_X_PROD01";
+                listFbPrecios = GetFbDataTable("FB", query, 25).ToList<Precios>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("25: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listFbPrecios;
+        }
+
+        private List<Precios> CargaDbPrecios()
+        {
+            List<Precios> listDbPrecios = new List<Precios>();
+            try
+            {
+                var query =
+                    "select CVE_ART, CVE_PRECIO, PRECIO " +
+                    "from INVENTARIOPRECIOS";
+                listDbPrecios = GetDataTable("DB", query, 26).ToList<Precios>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("26: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listDbPrecios;
+        }
+
+        private void GuardaPrecios(Precios clt)
+        {
+            try
+            {
+                var query =
+                    "insert INVENTARIOPRECIOS (CVE_ART, CVE_PRECIO, PRECIO )" +
+                    "values ('" + clt.cve_art+ "', " + clt.cve_precio.ToString() + ", " + clt.precio.ToString(CultureInfo.CurrentCulture) + " )";
+                var res = GetExecute("DB", query, 27);
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("27: " + ex.Message, EventLogEntryType.Error);
+            }
+        }
+
+        private void ModificaPrecios(Precios clt)
+        {
+            try
+            {
+                var query =
+                    "update INVENTARIOPRECIOS set PRECIO = " + clt.precio.ToString(CultureInfo.CurrentCulture) +
+                    " where CVE_ART = '" + clt.cve_art + "' AND CVE_PRECIO = " + clt.cve_precio.ToString();
+                var res = GetExecute("DB", query, 28);
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("28: " + ex.Message, EventLogEntryType.Error);
             }
         }
 

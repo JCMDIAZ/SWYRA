@@ -75,17 +75,20 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(551, 449);
+            this.panel1.Size = new System.Drawing.Size(413, 384);
             this.panel1.TabIndex = 0;
             // 
             // gcCondiciones
             // 
             this.gcCondiciones.DataSource = this.inventarioCondicionBindingSource;
-            this.gcCondiciones.Location = new System.Drawing.Point(12, 207);
+            this.gcCondiciones.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
+            this.gcCondiciones.Location = new System.Drawing.Point(9, 188);
             this.gcCondiciones.MainView = this.gridView1;
+            this.gcCondiciones.Margin = new System.Windows.Forms.Padding(2);
             this.gcCondiciones.Name = "gcCondiciones";
-            this.gcCondiciones.Size = new System.Drawing.Size(525, 232);
+            this.gcCondiciones.Size = new System.Drawing.Size(394, 188);
             this.gcCondiciones.TabIndex = 47;
             this.gcCondiciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -180,28 +183,32 @@
             this.groupBox1.Controls.Add(this.chkActivo);
             this.groupBox1.Controls.Add(this.cbProducto);
             this.groupBox1.Controls.Add(this.Label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 30);
+            this.groupBox1.Location = new System.Drawing.Point(9, 24);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(525, 171);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(394, 160);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Producto Presentación";
             // 
             // chkAplicaLote
             // 
-            this.chkAplicaLote.Location = new System.Drawing.Point(6, 132);
+            this.chkAplicaLote.Location = new System.Drawing.Point(4, 107);
+            this.chkAplicaLote.Margin = new System.Windows.Forms.Padding(2);
             this.chkAplicaLote.Name = "chkAplicaLote";
             this.chkAplicaLote.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkAplicaLote.Properties.Appearance.Options.UseFont = true;
             this.chkAplicaLote.Properties.Caption = "Preguntar por el LOTE";
             this.chkAplicaLote.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
-            this.chkAplicaLote.Size = new System.Drawing.Size(409, 22);
+            this.chkAplicaLote.Size = new System.Drawing.Size(307, 22);
             this.chkAplicaLote.TabIndex = 51;
             // 
             // txtExistencia
             // 
             this.txtExistencia.EditValue = 0D;
-            this.txtExistencia.Location = new System.Drawing.Point(435, 103);
+            this.txtExistencia.Location = new System.Drawing.Point(326, 84);
+            this.txtExistencia.Margin = new System.Windows.Forms.Padding(2);
             this.txtExistencia.Name = "txtExistencia";
             this.txtExistencia.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.txtExistencia.Properties.Appearance.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -213,53 +220,56 @@
             this.txtExistencia.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtExistencia.Properties.Mask.EditMask = "#,##0.00";
             this.txtExistencia.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtExistencia.Size = new System.Drawing.Size(75, 24);
+            this.txtExistencia.Size = new System.Drawing.Size(56, 20);
             this.txtExistencia.TabIndex = 4;
             // 
             // chkEstablece
             // 
-            this.chkEstablece.Location = new System.Drawing.Point(6, 104);
+            this.chkEstablece.Location = new System.Drawing.Point(4, 84);
+            this.chkEstablece.Margin = new System.Windows.Forms.Padding(2);
             this.chkEstablece.Name = "chkEstablece";
             this.chkEstablece.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEstablece.Properties.Appearance.Options.UseFont = true;
             this.chkEstablece.Properties.Caption = "Establecer Condicion de existencia si la existencia es";
             this.chkEstablece.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
-            this.chkEstablece.Size = new System.Drawing.Size(409, 22);
+            this.chkEstablece.Size = new System.Drawing.Size(307, 22);
             this.chkEstablece.TabIndex = 3;
             // 
             // meCondicion
             // 
-            this.meCondicion.Location = new System.Drawing.Point(120, 51);
+            this.meCondicion.Location = new System.Drawing.Point(90, 41);
+            this.meCondicion.Margin = new System.Windows.Forms.Padding(2);
             this.meCondicion.Name = "meCondicion";
             this.meCondicion.Properties.MaxLength = 250;
-            this.meCondicion.Size = new System.Drawing.Size(390, 46);
+            this.meCondicion.Size = new System.Drawing.Size(292, 37);
             this.meCondicion.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label1.Location = new System.Drawing.Point(27, 52);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(20, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 18);
+            this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 50;
             this.label1.Text = "Comentario";
             // 
             // chkActivo
             // 
-            this.chkActivo.Location = new System.Drawing.Point(435, 146);
+            this.chkActivo.Location = new System.Drawing.Point(326, 134);
+            this.chkActivo.Margin = new System.Windows.Forms.Padding(2);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.chkActivo.Properties.Appearance.Options.UseFont = true;
             this.chkActivo.Properties.Caption = "Activo";
             this.chkActivo.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
-            this.chkActivo.Size = new System.Drawing.Size(75, 22);
+            this.chkActivo.Size = new System.Drawing.Size(56, 22);
             this.chkActivo.TabIndex = 5;
             // 
             // cbProducto
             // 
-            this.cbProducto.Location = new System.Drawing.Point(120, 21);
+            this.cbProducto.Location = new System.Drawing.Point(90, 17);
+            this.cbProducto.Margin = new System.Windows.Forms.Padding(2);
             this.cbProducto.Name = "cbProducto";
             this.cbProducto.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cbProducto.Properties.Appearance.Options.UseFont = true;
@@ -281,7 +291,7 @@
             this.cbProducto.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.cbProducto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.cbProducto.Properties.ValueMember = "cve_art";
-            this.cbProducto.Size = new System.Drawing.Size(390, 24);
+            this.cbProducto.Size = new System.Drawing.Size(292, 22);
             this.cbProducto.TabIndex = 1;
             // 
             // inventarioBindingSource
@@ -292,10 +302,9 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Label2.Location = new System.Drawing.Point(43, 26);
-            this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label2.Location = new System.Drawing.Point(32, 21);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(69, 18);
+            this.Label2.Size = new System.Drawing.Size(56, 15);
             this.Label2.TabIndex = 45;
             this.Label2.Text = "Producto";
             // 
@@ -308,7 +317,7 @@
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(551, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(413, 27);
             this.toolStrip1.TabIndex = 41;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -318,18 +327,18 @@
             this.btnGuardar.Image = global::SWYRA.Properties.Resources.save;
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(92, 24);
+            this.btnGuardar.Size = new System.Drawing.Size(76, 24);
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.btnLimpiar.Image = global::SWYRA.Properties.Resources._1366681822_edit_clear;
+            this.btnLimpiar.Image = global::SWYRA.Properties.Resources._new;
             this.btnLimpiar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(85, 24);
-            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(68, 24);
+            this.btnLimpiar.Text = "Nuevo";
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnSalir
@@ -338,21 +347,22 @@
             this.btnSalir.Image = global::SWYRA.Properties.Resources.Logout_32x32;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(60, 24);
+            this.btnSalir.Size = new System.Drawing.Size(51, 24);
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // FrmCondiciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(552, 448);
+            this.ClientSize = new System.Drawing.Size(414, 383);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmCondiciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Condiciones de Productos";

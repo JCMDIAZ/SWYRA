@@ -236,4 +236,11 @@ namespace swyraServices
         public DateTime fch_ultcom { get; set; }
         public string clasific { get; set; }
     }
+
+    public class Precios
+    {
+        public string cve_art { get; set; }
+        public int cve_precio { get; set; }
+        public double precio { get; set; }
+    }
 }

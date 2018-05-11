@@ -48,11 +48,22 @@
             this.coltotatados = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltottarimas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltotcostoguias = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbPaqueteria = new DevExpress.XtraBars.BarButtonItem();
+            this.bbFacturacion = new DevExpress.XtraBars.BarButtonItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.bbLevGuia = new DevExpress.XtraBars.BarButtonItem();
             coltotcajacarton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // coltotcajacarton
@@ -71,7 +82,7 @@
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1064, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(798, 27);
             this.toolStrip1.TabIndex = 41;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -81,7 +92,7 @@
             this.btnSalir.Image = global::SWYRA.Properties.Resources.Logout_32x32;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(60, 24);
+            this.btnSalir.Size = new System.Drawing.Size(51, 24);
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -92,13 +103,16 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.pedidosBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 42);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
+            this.gridControl1.Location = new System.Drawing.Point(9, 34);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1040, 417);
+            this.gridControl1.Size = new System.Drawing.Size(780, 339);
             this.gridControl1.TabIndex = 43;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridControl1_MouseDown);
             // 
             // gridView1
             // 
@@ -147,7 +161,7 @@
             this.colcve_doc.OptionsColumn.FixedWidth = true;
             this.colcve_doc.Visible = true;
             this.colcve_doc.VisibleIndex = 0;
-            this.colcve_doc.Width = 90;
+            this.colcve_doc.Width = 100;
             // 
             // colcliente
             // 
@@ -241,26 +255,107 @@
             this.coltotcostoguias.Visible = true;
             this.coltotcostoguias.VisibleIndex = 12;
             // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbPaqueteria),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbFacturacion)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // bbPaqueteria
+            // 
+            this.bbPaqueteria.Caption = "Asigna Empresa de Paquetería";
+            this.bbPaqueteria.Id = 0;
+            this.bbPaqueteria.Name = "bbPaqueteria";
+            this.bbPaqueteria.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbPaqueteria_ItemClick);
+            // 
+            // bbFacturacion
+            // 
+            this.bbFacturacion.Caption = "Enviar a Facturación";
+            this.bbFacturacion.Id = 2;
+            this.bbFacturacion.Name = "bbFacturacion";
+            this.bbFacturacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbFacturacion_ItemClick);
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.bbPaqueteria,
+            this.bbLevGuia,
+            this.bbFacturacion});
+            this.barManager1.MaxItemId = 3;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(798, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 383);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(798, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 383);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(798, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 383);
+            // 
+            // bbLevGuia
+            // 
+            this.bbLevGuia.Caption = "Levantamiento de Guía";
+            this.bbLevGuia.Id = 1;
+            this.bbLevGuia.Name = "bbLevGuia";
+            // 
             // FrmRemision
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1064, 471);
+            this.ClientSize = new System.Drawing.Size(798, 383);
             this.ControlBox = false;
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmRemision";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GENERACION DE REMISION";
+            this.Load += new System.EventHandler(this.FrmRemision_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,5 +380,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn coltotatados;
         private DevExpress.XtraGrid.Columns.GridColumn coltottarimas;
         private DevExpress.XtraGrid.Columns.GridColumn coltotcostoguias;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem bbPaqueteria;
+        private DevExpress.XtraBars.BarButtonItem bbFacturacion;
+        private DevExpress.XtraBars.BarButtonItem bbLevGuia;
     }
 }

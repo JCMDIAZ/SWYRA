@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,7 @@ namespace SWYRA
         public string status { get; set; }
         public double masters { get; set; }
         public string masters_ubi { get; set; }
+        public double precio { get; set; }
     }
 
     public class InventarioPresentacion
@@ -212,6 +214,8 @@ namespace SWYRA
         public string imprimir { get; set; }
         public double cantsurtido { get; set; }
         public bool surtido { get; set; }
+        public string descr { get; set; }
+        public string comen { get; set; }
     }
 
     public class Actividad
@@ -319,6 +323,15 @@ namespace SWYRA
         public string tipopaquete { get; set; }
         public int consec_padre { get; set; }
         public string ultimo { get; set; }
+        public string descr { get; set; }
+        public bool cancelado { get; set; }
+        public int totart { get; set; }
+        public int consec_empaque { get; set; }
+        public int consec_padre_guia { get; set; }
+        public string cve_art_guia { get; set; }
+        public double precio_guia { get; set; }
+        public bool asig_pedido_guia { get; set; }
+        public string num_guia { get; set; }
     }
 
     public class OrdenUbicacion
@@ -326,5 +339,12 @@ namespace SWYRA
         public string cve_ubi { get; set; }
         public int orden { get; set; }
         public  string area { get; set; }
+    }
+
+    public class Precios
+    {
+        public string cve_art { get; set; }
+        public int cve_precio { get; set; }
+        public double precio { get; set; }
     }
 }

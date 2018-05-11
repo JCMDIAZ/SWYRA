@@ -82,7 +82,7 @@
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1064, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(798, 27);
             this.toolStrip1.TabIndex = 41;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -92,7 +92,7 @@
             this.btnSalir.Image = global::SWYRA.Properties.Resources.Logout_32x32;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(60, 24);
+            this.btnSalir.Size = new System.Drawing.Size(51, 24);
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -100,9 +100,11 @@
             // 
             this.gpoFiltro.Controls.Add(this.Label1);
             this.gpoFiltro.Controls.Add(this.tsTodos);
-            this.gpoFiltro.Location = new System.Drawing.Point(12, 30);
+            this.gpoFiltro.Location = new System.Drawing.Point(9, 24);
+            this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gpoFiltro.Name = "gpoFiltro";
-            this.gpoFiltro.Size = new System.Drawing.Size(1040, 65);
+            this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpoFiltro.Size = new System.Drawing.Size(780, 53);
             this.gpoFiltro.TabIndex = 42;
             this.gpoFiltro.TabStop = false;
             this.gpoFiltro.Text = " Filtrar Usuario ";
@@ -111,32 +113,34 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(46, 30);
-            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label1.Location = new System.Drawing.Point(34, 24);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(117, 18);
+            this.Label1.Size = new System.Drawing.Size(94, 15);
             this.Label1.TabIndex = 3;
             this.Label1.Text = "VER USUARIO :";
             // 
             // tsTodos
             // 
-            this.tsTodos.Location = new System.Drawing.Point(170, 26);
+            this.tsTodos.Location = new System.Drawing.Point(128, 21);
+            this.tsTodos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tsTodos.Name = "tsTodos";
             this.tsTodos.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsTodos.Properties.Appearance.Options.UseFont = true;
             this.tsTodos.Properties.OffText = "ACTUAL";
             this.tsTodos.Properties.OnText = "TODOS";
-            this.tsTodos.Size = new System.Drawing.Size(170, 27);
+            this.tsTodos.Size = new System.Drawing.Size(128, 24);
             this.tsTodos.TabIndex = 0;
             this.tsTodos.Toggled += new System.EventHandler(this.tsTodos_Toggled);
             // 
             // gridControl1
             // 
             this.gridControl1.DataSource = this.pedidosBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 113);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControl1.Location = new System.Drawing.Point(9, 92);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1040, 346);
+            this.gridControl1.Size = new System.Drawing.Size(780, 281);
             this.gridControl1.TabIndex = 43;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -312,15 +316,17 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1064, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 471);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 383);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1064, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlLeft
             // 
@@ -328,15 +334,17 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 471);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 383);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1064, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(798, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 471);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 383);
             // 
             // barLargeButtonItem1
             // 
@@ -351,10 +359,11 @@
             this.ppIndicaciones.Controls.Add(this.BtnAceptarIN);
             this.ppIndicaciones.Controls.Add(this.txtIndicaciones);
             this.ppIndicaciones.Controls.Add(this.label7);
-            this.ppIndicaciones.Location = new System.Drawing.Point(378, 159);
+            this.ppIndicaciones.Location = new System.Drawing.Point(284, 129);
             this.ppIndicaciones.Manager = this.barManager1;
+            this.ppIndicaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ppIndicaciones.Name = "ppIndicaciones";
-            this.ppIndicaciones.Size = new System.Drawing.Size(357, 163);
+            this.ppIndicaciones.Size = new System.Drawing.Size(268, 132);
             this.ppIndicaciones.TabIndex = 63;
             this.ppIndicaciones.Visible = false;
             // 
@@ -364,10 +373,9 @@
             this.BtnAceptarIN.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BtnAceptarIN.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAceptarIN.ForeColor = System.Drawing.Color.White;
-            this.BtnAceptarIN.Location = new System.Drawing.Point(209, 107);
-            this.BtnAceptarIN.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAceptarIN.Location = new System.Drawing.Point(157, 87);
             this.BtnAceptarIN.Name = "BtnAceptarIN";
-            this.BtnAceptarIN.Size = new System.Drawing.Size(131, 46);
+            this.BtnAceptarIN.Size = new System.Drawing.Size(98, 37);
             this.BtnAceptarIN.TabIndex = 20;
             this.BtnAceptarIN.Text = "ACEPTAR";
             this.BtnAceptarIN.UseVisualStyleBackColor = false;
@@ -375,37 +383,38 @@
             // 
             // txtIndicaciones
             // 
-            this.txtIndicaciones.Location = new System.Drawing.Point(17, 35);
+            this.txtIndicaciones.Location = new System.Drawing.Point(13, 28);
+            this.txtIndicaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtIndicaciones.MenuManager = this.barManager1;
             this.txtIndicaciones.Name = "txtIndicaciones";
-            this.txtIndicaciones.Size = new System.Drawing.Size(324, 65);
+            this.txtIndicaciones.Size = new System.Drawing.Size(243, 53);
             this.txtIndicaciones.TabIndex = 19;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(14, 14);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(10, 11);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(193, 18);
+            this.label7.Size = new System.Drawing.Size(162, 15);
             this.label7.TabIndex = 18;
             this.label7.Text = "Indicaciones de cancelación";
             // 
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1064, 468);
+            this.panel1.Size = new System.Drawing.Size(798, 380);
             this.panel1.TabIndex = 68;
             // 
             // FrmAutorizaCobro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1064, 471);
+            this.ClientSize = new System.Drawing.Size(798, 383);
             this.ControlBox = false;
             this.Controls.Add(this.ppIndicaciones);
             this.Controls.Add(this.gridControl1);
@@ -418,6 +427,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmAutorizaCobro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AUTORIZACIÓN DE PEDIDOS";

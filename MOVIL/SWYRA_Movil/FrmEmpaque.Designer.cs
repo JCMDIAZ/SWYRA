@@ -46,7 +46,7 @@
             this.pbEmpacar = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pbElimina = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pbImprimir = new System.Windows.Forms.PictureBox();
             this.detallePedidoMercBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgPedidos = new System.Windows.Forms.DataGrid();
             this.dataGridTableStyle1 = new System.Windows.Forms.DataGridTableStyle();
@@ -181,13 +181,14 @@
             this.pbElimina.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbElimina.Click += new System.EventHandler(this.pbElimina_Click);
             // 
-            // pictureBox5
+            // pbImprimir
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(184, 72);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbImprimir.Image = ((System.Drawing.Image)(resources.GetObject("pbImprimir.Image")));
+            this.pbImprimir.Location = new System.Drawing.Point(184, 72);
+            this.pbImprimir.Name = "pbImprimir";
+            this.pbImprimir.Size = new System.Drawing.Size(35, 35);
+            this.pbImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbImprimir.Click += new System.EventHandler(this.pbImprimir_Click);
             // 
             // detallePedidoMercBindingSource
             // 
@@ -218,7 +219,7 @@
             this.dataGridTextBoxColumn1.Format = "";
             this.dataGridTextBoxColumn1.FormatInfo = null;
             this.dataGridTextBoxColumn1.HeaderText = "Consec.";
-            this.dataGridTextBoxColumn1.MappingName = "consec";
+            this.dataGridTextBoxColumn1.MappingName = "consec_empaque";
             this.dataGridTextBoxColumn1.NullText = "";
             this.dataGridTextBoxColumn1.Width = 45;
             // 
@@ -246,7 +247,7 @@
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
             this.Controls.Add(this.dgPedidos);
-            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pbImprimir);
             this.Controls.Add(this.pbElimina);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pbEmpacar);
@@ -285,7 +286,7 @@
         private System.Windows.Forms.PictureBox pbEmpacar;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pbElimina;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pbImprimir;
         private System.Windows.Forms.DataGrid dgPedidos;
         private System.Windows.Forms.DataGridTableStyle dataGridTableStyle1;
         private System.Windows.Forms.BindingSource catalogosBindingSource;
