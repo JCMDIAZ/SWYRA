@@ -110,7 +110,7 @@ namespace swyraServices
         public string ocurredomicilio { get; set; }
     }
 
-    public class DetallePedidos
+    public class DetallePedidos : IDisposable
     {
         public string cve_doc { get; set; }
         public int num_par { get; set; }
@@ -151,6 +151,10 @@ namespace swyraServices
         public string imprimir { get; set; }
         public double cantsurtido { get; set; }
         public bool surtido { get; set; }
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class Actividad

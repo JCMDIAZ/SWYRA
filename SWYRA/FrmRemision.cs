@@ -62,7 +62,7 @@ namespace SWYRA
         {
             if (e.Button == MouseButtons.Right && gridView1.RowCount > 0)
             {
-                popupMenu1.ShowPopup(MousePosition);
+                //popupMenu1.ShowPopup(MousePosition); --Deshabilitado temporalmente por el usuario
             }
         }
 
@@ -99,12 +99,44 @@ namespace SWYRA
             var lsPaquetes = listDetMerc.Where(o => o.consec_padre_guia == 0 && o.tipopaquete != "GUIA").ToList();
             if (lsPaquetes.Count == 0)
             {
-
+                var fAjustePedido = new FrmAjustePedido();
+                fAjustePedido.cve_doc = cve_doc.ToString();
+                fAjustePedido.ShowDialog();
+                fAjustePedido.Close();
+                if (fAjustePedido.cve_doc == "")
+                {
+                    listPedidos = CargaPedidos();
+                    gridControl1.DataSource = listPedidos;
+                }
             }
             else
             {
                 MessageBox.Show(@"Aún existen Paquetes sin asignar guías");
             }
+        }
+
+        private void btnFactura_Click(object sender, EventArgs e)
+        {
+            var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
+            CargaDetallePedidoMercs(cve_doc.ToString());
+            var lsPaquetes = listDetMerc.Where(o => o.consec_padre_guia == 0 && o.tipopaquete != "GUIA").ToList();
+            //if (lsPaquetes.Count == 0) -- se quito temporalmente esta condición solicitado por el usuario.
+            {
+                var fAjustePedido = new FrmAjustePedido();
+                fAjustePedido.cve_doc = cve_doc.ToString();
+                fAjustePedido.userActivo = userActivo;
+                fAjustePedido.ShowDialog();
+                fAjustePedido.Close();
+                if (fAjustePedido.cve_doc == "")
+                {
+                    listPedidos = CargaPedidos();
+                    gridControl1.DataSource = listPedidos;
+                }
+            }
+            /*else
+            {
+                MessageBox.Show(@"Aún existen Paquetes sin asignar guías");
+            }*/
         }
     }
 }

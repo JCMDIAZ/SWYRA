@@ -57,6 +57,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bbLevGuia = new DevExpress.XtraBars.BarButtonItem();
+            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             coltotcajacarton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
@@ -79,6 +80,7 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnFactura,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -328,6 +330,15 @@
             this.bbLevGuia.Id = 1;
             this.bbLevGuia.Name = "bbLevGuia";
             // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
+            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(93, 24);
+            this.btnFactura.Text = "Facturación";
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
+            // 
             // FrmRemision
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,5 +400,6 @@
         private DevExpress.XtraBars.BarButtonItem bbPaqueteria;
         private DevExpress.XtraBars.BarButtonItem bbFacturacion;
         private DevExpress.XtraBars.BarButtonItem bbLevGuia;
+        private System.Windows.Forms.ToolStripButton btnFactura;
     }
 }

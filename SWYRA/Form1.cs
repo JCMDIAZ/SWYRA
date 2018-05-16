@@ -185,6 +185,7 @@ namespace SWYRA
         private void remisiónDePedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var fRemision = new FrmRemision();
+            fRemision.userActivo = userActivo;
             fRemision.ShowDialog();
             fRemision.Close();
         }

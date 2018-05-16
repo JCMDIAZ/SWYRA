@@ -170,7 +170,7 @@ namespace SWYRA
         public double totatados { get; set; }
         public double tottarimas { get; set; }
         public double totcostoguias { get; set; }
-
+        public string ubicacionempaque { get; set; }
     }
 
     public class DetallePedidos
@@ -216,6 +216,11 @@ namespace SWYRA
         public bool surtido { get; set; }
         public string descr { get; set; }
         public string comen { get; set; }
+        public double tdesc { get; set; }
+        public double subto { get; set; }
+        public double tcomi { get; set; }
+        public double importe { get; set; }
+        public string empaque { get; set; }
     }
 
     public class Actividad
