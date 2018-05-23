@@ -170,7 +170,7 @@ namespace SWYRA_Movil
                     else
                     {
                         var query = "UPDATE DETALLEPEDIDOMERC SET CANCELADO = 1 " +
-                                    "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND CONSEC = " + dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString();
+                                    "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND CONSEC_EMPAQUE = " + dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString();
                         Program.GetExecute(query, 6);
                         ActualizaPedido();
                         cargaPaquetes();
@@ -268,6 +268,7 @@ namespace SWYRA_Movil
                       "AND (ISNULL(CANCELADO, 0) = 0) AND (ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA')) AND (ISNULL(ULTIMO,0) = 0) ";
                 Program.GetExecute(query, 8);
                 MessageBox.Show("Impresion Exitosa", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                pbConcluir.Visible = validaExis(2);
             }
             catch (Exception ex)
             {

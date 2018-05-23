@@ -39,6 +39,7 @@
             this.áreasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mínimosYMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.condicionesDeProdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ubicacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,6 @@
             this.remisiónDePedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stb = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ubicacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.stb.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +138,13 @@
             this.condicionesDeProdToolStripMenuItem.Text = "Condiciones de Prod.";
             this.condicionesDeProdToolStripMenuItem.Click += new System.EventHandler(this.condicionesDeProdToolStripMenuItem_Click);
             // 
+            // ubicacionesToolStripMenuItem
+            // 
+            this.ubicacionesToolStripMenuItem.Name = "ubicacionesToolStripMenuItem";
+            this.ubicacionesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.ubicacionesToolStripMenuItem.Text = "Ubicaciones";
+            this.ubicacionesToolStripMenuItem.Click += new System.EventHandler(this.ubicacionesToolStripMenuItem_Click);
+            // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
@@ -159,7 +166,7 @@
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Visible = false;
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
@@ -167,22 +174,22 @@
             // estatusPedidoToolStripMenuItem
             // 
             this.estatusPedidoToolStripMenuItem.Name = "estatusPedidoToolStripMenuItem";
-            this.estatusPedidoToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.estatusPedidoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.estatusPedidoToolStripMenuItem.Text = "Estatus Pedido";
             this.estatusPedidoToolStripMenuItem.Click += new System.EventHandler(this.estatusPedidoToolStripMenuItem_Click);
             // 
             // autorizaciónPedidoToolStripMenuItem
             // 
             this.autorizaciónPedidoToolStripMenuItem.Name = "autorizaciónPedidoToolStripMenuItem";
-            this.autorizaciónPedidoToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.autorizaciónPedidoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.autorizaciónPedidoToolStripMenuItem.Text = "Autorización Pedido";
             this.autorizaciónPedidoToolStripMenuItem.Click += new System.EventHandler(this.autorizaciónPedidoToolStripMenuItem_Click);
             // 
             // remisiónDePedidoToolStripMenuItem
             // 
             this.remisiónDePedidoToolStripMenuItem.Name = "remisiónDePedidoToolStripMenuItem";
-            this.remisiónDePedidoToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.remisiónDePedidoToolStripMenuItem.Text = "Remisión de Pedido";
+            this.remisiónDePedidoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.remisiónDePedidoToolStripMenuItem.Text = "Resumen del Pedido";
             this.remisiónDePedidoToolStripMenuItem.Click += new System.EventHandler(this.remisiónDePedidoToolStripMenuItem_Click);
             // 
             // stb
@@ -203,13 +210,6 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(53, 17);
             this.toolStripStatusLabel1.Text = "Usuario: ";
             // 
-            // ubicacionesToolStripMenuItem
-            // 
-            this.ubicacionesToolStripMenuItem.Name = "ubicacionesToolStripMenuItem";
-            this.ubicacionesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.ubicacionesToolStripMenuItem.Text = "Ubicaciones";
-            this.ubicacionesToolStripMenuItem.Click += new System.EventHandler(this.ubicacionesToolStripMenuItem_Click);
-            // 
             // MDIPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,7 +224,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MDIPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control Almacen";

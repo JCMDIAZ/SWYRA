@@ -126,7 +126,7 @@
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1064, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(798, 27);
             this.toolStrip1.TabIndex = 40;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -135,7 +135,7 @@
             this.btnExportar.Image = global::SWYRA.Properties.Resources._1366839417_Arzo_Icons_Icon_96_2;
             this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(89, 24);
+            this.btnExportar.Size = new System.Drawing.Size(74, 24);
             this.btnExportar.Text = "Exportar";
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -145,7 +145,7 @@
             this.btnSalir.Image = global::SWYRA.Properties.Resources.Logout_32x32;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(60, 24);
+            this.btnSalir.Size = new System.Drawing.Size(51, 24);
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -158,9 +158,11 @@
             this.gpoFiltro.Controls.Add(this.txtFechIni);
             this.gpoFiltro.Controls.Add(this.Label1);
             this.gpoFiltro.Controls.Add(this.cbEstatusPed);
-            this.gpoFiltro.Location = new System.Drawing.Point(12, 30);
+            this.gpoFiltro.Location = new System.Drawing.Point(9, 24);
+            this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gpoFiltro.Name = "gpoFiltro";
-            this.gpoFiltro.Size = new System.Drawing.Size(1040, 65);
+            this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpoFiltro.Size = new System.Drawing.Size(780, 53);
             this.gpoFiltro.TabIndex = 41;
             this.gpoFiltro.TabStop = false;
             this.gpoFiltro.Text = " Filtrar Pedidos ";
@@ -168,20 +170,22 @@
             // chkActual
             // 
             this.chkActual.EditValue = true;
-            this.chkActual.Location = new System.Drawing.Point(864, 27);
+            this.chkActual.Location = new System.Drawing.Point(648, 22);
+            this.chkActual.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkActual.Name = "chkActual";
             this.chkActual.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkActual.Properties.Appearance.Options.UseFont = true;
             this.chkActual.Properties.Caption = "DATOS ACTUALES";
             this.chkActual.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
-            this.chkActual.Size = new System.Drawing.Size(165, 22);
+            this.chkActual.Size = new System.Drawing.Size(124, 22);
             this.chkActual.TabIndex = 43;
             this.chkActual.CheckedChanged += new System.EventHandler(this.chkActual_CheckedChanged);
             // 
             // txtFechFin
             // 
             this.txtFechFin.EditValue = null;
-            this.txtFechFin.Location = new System.Drawing.Point(686, 26);
+            this.txtFechFin.Location = new System.Drawing.Point(514, 21);
+            this.txtFechFin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFechFin.Name = "txtFechFin";
             this.txtFechFin.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFechFin.Properties.Appearance.Options.UseFont = true;
@@ -189,7 +193,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtFechFin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtFechFin.Size = new System.Drawing.Size(147, 24);
+            this.txtFechFin.Size = new System.Drawing.Size(110, 22);
             this.txtFechFin.TabIndex = 42;
             this.txtFechFin.TextChanged += new System.EventHandler(this.txtFechFin_TextChanged);
             // 
@@ -197,10 +201,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(660, 29);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(495, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 18);
+            this.label3.Size = new System.Drawing.Size(17, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "al";
             // 
@@ -208,17 +211,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(339, 32);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(254, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 18);
+            this.label2.Size = new System.Drawing.Size(110, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Fecha Elaboración";
             // 
             // txtFechIni
             // 
             this.txtFechIni.EditValue = null;
-            this.txtFechIni.Location = new System.Drawing.Point(506, 26);
+            this.txtFechIni.Location = new System.Drawing.Point(380, 21);
+            this.txtFechIni.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFechIni.Name = "txtFechIni";
             this.txtFechIni.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFechIni.Properties.Appearance.Options.UseFont = true;
@@ -226,7 +229,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtFechIni.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtFechIni.Size = new System.Drawing.Size(147, 24);
+            this.txtFechIni.Size = new System.Drawing.Size(110, 22);
             this.txtFechIni.TabIndex = 3;
             this.txtFechIni.TextChanged += new System.EventHandler(this.txtFechIni_TextChanged);
             // 
@@ -234,16 +237,16 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(17, 29);
-            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label1.Location = new System.Drawing.Point(13, 24);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(108, 18);
+            this.Label1.Size = new System.Drawing.Size(89, 15);
             this.Label1.TabIndex = 2;
             this.Label1.Text = "Estatus Pedido";
             // 
             // cbEstatusPed
             // 
-            this.cbEstatusPed.Location = new System.Drawing.Point(141, 26);
+            this.cbEstatusPed.Location = new System.Drawing.Point(106, 21);
+            this.cbEstatusPed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbEstatusPed.Name = "cbEstatusPed";
             this.cbEstatusPed.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstatusPed.Properties.Appearance.Options.UseFont = true;
@@ -255,22 +258,24 @@
             "DETENIDO",
             "EMPAQUE",
             "REMISION",
-            "LEVANTAMIENTO DE GUIAS",
+            "GUIAS",
             "MODIFICACION",
             "CANCELACION",
             "TERMINADO",
             "TODOS"});
-            this.cbEstatusPed.Size = new System.Drawing.Size(171, 24);
+            this.cbEstatusPed.Size = new System.Drawing.Size(128, 22);
             this.cbEstatusPed.TabIndex = 0;
             this.cbEstatusPed.SelectedValueChanged += new System.EventHandler(this.cbEstatusPed_SelectedValueChanged);
             // 
             // gridControl1
             // 
             this.gridControl1.DataSource = this.pedidosBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 113);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControl1.Location = new System.Drawing.Point(9, 92);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1040, 346);
+            this.gridControl1.Size = new System.Drawing.Size(780, 281);
             this.gridControl1.TabIndex = 42;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -557,15 +562,17 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1064, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 471);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 383);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1064, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlLeft
             // 
@@ -573,15 +580,17 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 471);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 383);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1064, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(798, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 471);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 383);
             // 
             // barStaticItem1
             // 
@@ -598,10 +607,11 @@
             this.ppTipoServicio.Controls.Add(this.BtnAceptarTS);
             this.ppTipoServicio.Controls.Add(this.cbTipoServicio);
             this.ppTipoServicio.Controls.Add(this.label4);
-            this.ppTipoServicio.Location = new System.Drawing.Point(393, 163);
+            this.ppTipoServicio.Location = new System.Drawing.Point(295, 132);
             this.ppTipoServicio.Manager = this.barManager1;
+            this.ppTipoServicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ppTipoServicio.Name = "ppTipoServicio";
-            this.ppTipoServicio.Size = new System.Drawing.Size(357, 111);
+            this.ppTipoServicio.Size = new System.Drawing.Size(268, 90);
             this.ppTipoServicio.TabIndex = 47;
             this.ppTipoServicio.Visible = false;
             // 
@@ -611,10 +621,9 @@
             this.BtnAceptarTS.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BtnAceptarTS.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAceptarTS.ForeColor = System.Drawing.Color.White;
-            this.BtnAceptarTS.Location = new System.Drawing.Point(209, 51);
-            this.BtnAceptarTS.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAceptarTS.Location = new System.Drawing.Point(157, 41);
             this.BtnAceptarTS.Name = "BtnAceptarTS";
-            this.BtnAceptarTS.Size = new System.Drawing.Size(131, 46);
+            this.BtnAceptarTS.Size = new System.Drawing.Size(98, 37);
             this.BtnAceptarTS.TabIndex = 13;
             this.BtnAceptarTS.Text = "ACEPTAR";
             this.BtnAceptarTS.UseVisualStyleBackColor = false;
@@ -622,7 +631,8 @@
             // 
             // cbTipoServicio
             // 
-            this.cbTipoServicio.Location = new System.Drawing.Point(138, 20);
+            this.cbTipoServicio.Location = new System.Drawing.Point(104, 16);
+            this.cbTipoServicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbTipoServicio.Name = "cbTipoServicio";
             this.cbTipoServicio.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTipoServicio.Properties.Appearance.Options.UseFont = true;
@@ -633,17 +643,16 @@
             "LOCAL URGENTE",
             "FORANEO",
             "FORANEO URGENTE"});
-            this.cbTipoServicio.Size = new System.Drawing.Size(202, 24);
+            this.cbTipoServicio.Size = new System.Drawing.Size(152, 22);
             this.cbTipoServicio.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 23);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(3, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 18);
+            this.label4.Size = new System.Drawing.Size(94, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "Tipo de Servicio";
             // 
@@ -655,10 +664,11 @@
             this.ppPrioridad.Controls.Add(this.BtnAceptarPR);
             this.ppPrioridad.Controls.Add(this.cbPrioridad);
             this.ppPrioridad.Controls.Add(this.label5);
-            this.ppPrioridad.Location = new System.Drawing.Point(675, 122);
+            this.ppPrioridad.Location = new System.Drawing.Point(506, 99);
             this.ppPrioridad.Manager = this.barManager1;
+            this.ppPrioridad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ppPrioridad.Name = "ppPrioridad";
-            this.ppPrioridad.Size = new System.Drawing.Size(357, 111);
+            this.ppPrioridad.Size = new System.Drawing.Size(268, 90);
             this.ppPrioridad.TabIndex = 52;
             this.ppPrioridad.Visible = false;
             // 
@@ -668,10 +678,9 @@
             this.BtnAceptarPR.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BtnAceptarPR.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAceptarPR.ForeColor = System.Drawing.Color.White;
-            this.BtnAceptarPR.Location = new System.Drawing.Point(210, 48);
-            this.BtnAceptarPR.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAceptarPR.Location = new System.Drawing.Point(158, 39);
             this.BtnAceptarPR.Name = "BtnAceptarPR";
-            this.BtnAceptarPR.Size = new System.Drawing.Size(131, 46);
+            this.BtnAceptarPR.Size = new System.Drawing.Size(98, 37);
             this.BtnAceptarPR.TabIndex = 16;
             this.BtnAceptarPR.Text = "ACEPTAR";
             this.BtnAceptarPR.UseVisualStyleBackColor = false;
@@ -679,7 +688,8 @@
             // 
             // cbPrioridad
             // 
-            this.cbPrioridad.Location = new System.Drawing.Point(139, 17);
+            this.cbPrioridad.Location = new System.Drawing.Point(104, 14);
+            this.cbPrioridad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbPrioridad.Name = "cbPrioridad";
             this.cbPrioridad.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPrioridad.Properties.Appearance.Options.UseFont = true;
@@ -688,17 +698,16 @@
             this.cbPrioridad.Properties.Items.AddRange(new object[] {
             "ALTA",
             "NORMAL"});
-            this.cbPrioridad.Size = new System.Drawing.Size(202, 24);
+            this.cbPrioridad.Size = new System.Drawing.Size(152, 22);
             this.cbPrioridad.TabIndex = 15;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 20);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(3, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 18);
+            this.label5.Size = new System.Drawing.Size(57, 15);
             this.label5.TabIndex = 14;
             this.label5.Text = "Prioridad";
             // 
@@ -710,10 +719,11 @@
             this.ppEntrega.Controls.Add(this.BtnAceptarEN);
             this.ppEntrega.Controls.Add(this.cbEntrega);
             this.ppEntrega.Controls.Add(this.label6);
-            this.ppEntrega.Location = new System.Drawing.Point(393, 307);
+            this.ppEntrega.Location = new System.Drawing.Point(295, 249);
             this.ppEntrega.Manager = this.barManager1;
+            this.ppEntrega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ppEntrega.Name = "ppEntrega";
-            this.ppEntrega.Size = new System.Drawing.Size(357, 111);
+            this.ppEntrega.Size = new System.Drawing.Size(268, 90);
             this.ppEntrega.TabIndex = 57;
             this.ppEntrega.Visible = false;
             // 
@@ -723,10 +733,9 @@
             this.BtnAceptarEN.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BtnAceptarEN.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAceptarEN.ForeColor = System.Drawing.Color.White;
-            this.BtnAceptarEN.Location = new System.Drawing.Point(209, 48);
-            this.BtnAceptarEN.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAceptarEN.Location = new System.Drawing.Point(157, 39);
             this.BtnAceptarEN.Name = "BtnAceptarEN";
-            this.BtnAceptarEN.Size = new System.Drawing.Size(131, 46);
+            this.BtnAceptarEN.Size = new System.Drawing.Size(98, 37);
             this.BtnAceptarEN.TabIndex = 19;
             this.BtnAceptarEN.Text = "ACEPTAR";
             this.BtnAceptarEN.UseVisualStyleBackColor = false;
@@ -734,7 +743,8 @@
             // 
             // cbEntrega
             // 
-            this.cbEntrega.Location = new System.Drawing.Point(138, 17);
+            this.cbEntrega.Location = new System.Drawing.Point(104, 14);
+            this.cbEntrega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbEntrega.Name = "cbEntrega";
             this.cbEntrega.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEntrega.Properties.Appearance.Options.UseFont = true;
@@ -743,17 +753,16 @@
             this.cbEntrega.Properties.Items.AddRange(new object[] {
             "DOMICILIO",
             "OCURRE"});
-            this.cbEntrega.Size = new System.Drawing.Size(202, 24);
+            this.cbEntrega.Size = new System.Drawing.Size(152, 22);
             this.cbEntrega.TabIndex = 18;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(4, 20);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(3, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 18);
+            this.label6.Size = new System.Drawing.Size(50, 15);
             this.label6.TabIndex = 17;
             this.label6.Text = "Entrega";
             // 
@@ -765,10 +774,11 @@
             this.ppIndicaciones.Controls.Add(this.BtnAceptarIN);
             this.ppIndicaciones.Controls.Add(this.txtIndicaciones);
             this.ppIndicaciones.Controls.Add(this.label7);
-            this.ppIndicaciones.Location = new System.Drawing.Point(30, 133);
+            this.ppIndicaciones.Location = new System.Drawing.Point(22, 108);
             this.ppIndicaciones.Manager = this.barManager1;
+            this.ppIndicaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ppIndicaciones.Name = "ppIndicaciones";
-            this.ppIndicaciones.Size = new System.Drawing.Size(357, 163);
+            this.ppIndicaciones.Size = new System.Drawing.Size(268, 132);
             this.ppIndicaciones.TabIndex = 62;
             this.ppIndicaciones.Visible = false;
             // 
@@ -778,10 +788,9 @@
             this.BtnAceptarIN.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BtnAceptarIN.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAceptarIN.ForeColor = System.Drawing.Color.White;
-            this.BtnAceptarIN.Location = new System.Drawing.Point(209, 107);
-            this.BtnAceptarIN.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAceptarIN.Location = new System.Drawing.Point(157, 87);
             this.BtnAceptarIN.Name = "BtnAceptarIN";
-            this.BtnAceptarIN.Size = new System.Drawing.Size(131, 46);
+            this.BtnAceptarIN.Size = new System.Drawing.Size(98, 37);
             this.BtnAceptarIN.TabIndex = 20;
             this.BtnAceptarIN.Text = "ACEPTAR";
             this.BtnAceptarIN.UseVisualStyleBackColor = false;
@@ -789,37 +798,38 @@
             // 
             // txtIndicaciones
             // 
-            this.txtIndicaciones.Location = new System.Drawing.Point(17, 35);
+            this.txtIndicaciones.Location = new System.Drawing.Point(13, 28);
+            this.txtIndicaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtIndicaciones.MenuManager = this.barManager1;
             this.txtIndicaciones.Name = "txtIndicaciones";
-            this.txtIndicaciones.Size = new System.Drawing.Size(324, 65);
+            this.txtIndicaciones.Size = new System.Drawing.Size(243, 53);
             this.txtIndicaciones.TabIndex = 19;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(14, 14);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(10, 11);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 18);
+            this.label7.Size = new System.Drawing.Size(76, 15);
             this.label7.TabIndex = 18;
             this.label7.Text = "Indicaciones";
             // 
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1064, 471);
+            this.panel1.Size = new System.Drawing.Size(798, 383);
             this.panel1.TabIndex = 67;
             // 
             // FrmEstatusPedido
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1064, 471);
+            this.ClientSize = new System.Drawing.Size(798, 383);
             this.ControlBox = false;
             this.Controls.Add(this.ppIndicaciones);
             this.Controls.Add(this.ppEntrega);
@@ -835,6 +845,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmEstatusPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ESTATUS PEDIDO";

@@ -28,6 +28,7 @@ namespace SWYRA
         {
             AjusteSaldos();
             CargaPedido();
+            lblContado.Text = (ped.contado == "S") ? "AUTORIZADO CONTADO" : "AUTORIZADO";
             Cargadatos();
         }
 
@@ -35,18 +36,35 @@ namespace SWYRA
         {
             try
             {
-                var query = "SELECT CVE_DOC, CVE_CLPV, p.STATUS, FECHA_DOC, FECHA_CANCELA, CAN_TOT,  IMP_TOT4, DES_TOT, COM_TOT, CONDICION, " +
-                            "NUM_MONED, FECHAELAB, CONTADO, FORMAENVIO, IMPORTE, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, INDICACIONES, " +
-                            "LOTE, PRIORIDAD, UbicacionEmpaque, OCURREDOMICILIO, c.NOMBRE Cliente, TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, " +
-                            "TotCubetas, TotAtados, TotTarimas, TotCostoGuias " +
-                            "FROM PEDIDO p JOIN CLIENTE c ON p.CVE_CLPV = c.CLAVE WHERE(CVE_DOC = '" + cve_doc + "')";
+                var query = "SELECT  TIP_DOC, CVE_DOC, CVE_CLPV, p.STATUS, DAT_MOSTR, p.CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, " +
+                            "FECHA_VEN, FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, " +
+                            "CONDICION, p.CVE_OBS, NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, " +
+                            "FECHAELAB, PRIMERPAGO, RFC, CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, " +
+                            "BLOQ, FORMAENVIO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, " +
+                            "DOC_ANT, TIP_DOC_SIG, DOC_SIG, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, " +
+                            "COBRADOR_AUTORIZO, SURTIDOR_ASIGNADO, EMPAQUETADOR_ASIGNADO, ETIQUETADOR_ASIGNADO, SURTIDOR_AREA, " +
+                            "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, " +
+                            "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
+                            "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, " +
+                            "TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, TotCostoGuias, " +
+                            "cliente.FLETE, p.OBSERVACIONES, p.CONSIGNACION, p.NOMBRE_VENDEDOR, uCapturo.Nombre capturo_n " +
+                            "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
+                            "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
+                            "left join USUARIOS uSurAsig on uSurAsig.Usuario = p.SURTIDOR_ASIGNADO " +
+                            "left join USUARIOS uEmpAsig on uEmpAsig.Usuario = p.EMPAQUETADOR_ASIGNADO " +
+                            "left join USUARIOS uEtiAsig on uEtiAsig.Usuario = p.ETIQUETADOR_ASIGNADO " +
+                            "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
+                            "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
+                            "left join USUARIOS uCapturo on uCapturo.LetraERP = substring(cliente.CLASIFIC,1,1) " +
+                            "WHERE(CVE_DOC = '" + cve_doc + "')";
                 ped = GetDataTable("DB", query, 5).ToData<Pedidos>();
                 query =
                     "SELECT dp.CVE_DOC, dp.NUM_PAR, dp.CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
-                    "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, " +
+                    "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, ic.COMENTARIO comen, " +
                     "UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, CANTSURTIDO, SURTIDO, res.Empaque, " +
-                    "TDESC, SUBTO, TCOMI, i.DESCR, (SUBTO + TOTIMP4) IMPORTE FROM DETALLEPEDIDO dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
-
+                    "TDESC, SUBTO, TCOMI, i.DESCR, (SUBTO + TOTIMP4) IMPORTE, PESO, VOLUMEN " + 
+                    "FROM DETALLEPEDIDO dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
+                    "LEFT join INVENTARIOCOND ic on dp.CVE_ART = ic.CVE_ART " +
                     "LEFT JOIN ( select distinct CVE_DOC, NUM_PAR, STUFF((select ', ' + ('(' + CAST(SUM(d.CANT) AS VARCHAR(5)) + ') ' + e.Empaque) " + 
                     "from DETALLEPEDIDOMERC d join(select CVE_DOC, CONSEC, TIPOPAQUETE + ' ' + CAST(CONSEC_EMPAQUE AS VARCHAR(2)) Empaque " +
                     "from DETALLEPEDIDOMERC WHERE (CVE_DOC = '" + cve_doc + "') AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') " +
@@ -77,14 +95,22 @@ namespace SWYRA
             txtTipoServicio.Text = ped.tiposervicio;
             txtOcurredom.Text = ped.ocurredomicilio;
             txtPrioridad.Text = ped.prioridad;
-            txtUbicacion.Text = ped.ubicacionempaque;
             txtCajaCarton.Text = ped.totcajacarton.ToString();
             txtCajaMadera.Text = ped.totcajamadera.ToString();
-            txtBulto.Text = ped.totbultos.ToString();
-            txtRollo.Text = ped.totrollos.ToString();
+            txtBulto.Text = ped.totbultos.ToString();txtRollo.Text = ped.totrollos.ToString();
             txtCubeta.Text = ped.totcubetas.ToString();
             txtAtados.Text = ped.totatados.ToString();
             txtTarimas.Text = ped.tottarimas.ToString();
+            txtNumCli.Text = ped.cve_clpv;
+            txtNumVendedor.Text = @"(" + ped.cve_vend.Trim() + @") - " + ped.nombre_vendedor;
+            txtCondiciones.Text = ped.condicion;
+            txtObservaciones.Text = ped.observaciones;
+            txtFlete.Text = ped.flete;
+            txtCapturo.Text = ped.capturo_n;
+            txtAutorizo.Text = ped.cobrador_autorizo_n;
+            txtSurtio.Text = ped.surtidor_asignado_n;
+            txtEmpaco.Text = ped.empaquetador_asignado_n;
+            txtOrdenCompra.Text = ped.cve_pedi;
 
             gcDetPedido.DataSource = lsDetallePedidos;
             gcPaquetes.DataSource = lsDetPedMerc;

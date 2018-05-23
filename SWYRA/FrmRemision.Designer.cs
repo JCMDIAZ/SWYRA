@@ -32,6 +32,7 @@
             DevExpress.XtraGrid.Columns.GridColumn coltotcajacarton;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRemision));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -57,7 +58,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bbLevGuia = new DevExpress.XtraBars.BarButtonItem();
-            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             coltotcajacarton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
@@ -87,6 +87,15 @@
             this.toolStrip1.Size = new System.Drawing.Size(798, 27);
             this.toolStrip1.TabIndex = 41;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
+            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(80, 24);
+            this.btnFactura.Text = "Resumen";
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
             // 
             // btnSalir
             // 
@@ -330,15 +339,6 @@
             this.bbLevGuia.Id = 1;
             this.bbLevGuia.Name = "bbLevGuia";
             // 
-            // btnFactura
-            // 
-            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
-            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(93, 24);
-            this.btnFactura.Text = "Facturación";
-            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
-            // 
             // FrmRemision
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,7 +358,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmRemision";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "GENERACION DE REMISION";
+            this.Text = "GENERACION DE RESUMEN";
             this.Load += new System.EventHandler(this.FrmRemision_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

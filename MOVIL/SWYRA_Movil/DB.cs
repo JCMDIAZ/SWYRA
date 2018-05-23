@@ -266,6 +266,7 @@ namespace SWYRA_Movil
 
     public class UbicacionEntrega
     {
+        public bool seleccionado { get; set; }
         public string cve_zona { get; set; }
         public string cve_ubicacion { get; set; }
     }

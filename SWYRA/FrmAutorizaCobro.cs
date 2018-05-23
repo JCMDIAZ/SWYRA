@@ -79,7 +79,7 @@ namespace SWYRA
             try
             {
                 var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + pedido.estatuspedido + "', " +
-                            "FECHA_CANCELA = " + ((pedido.estatuspedido == "CANCELACION") ? "GETDATE()" : "Null") + ", " +
+                            "FECHA_CANCELA = " + ((pedido.estatuspedido == "PORCANCELAR") ? "GETDATE()" : "Null") + ", " +
                             "FECHAAUT = " + ((pedido.estatuspedido == "SURTIR") ? "GETDATE()" : "Null") + ", " +
                             "INDICACIONES = " + (pedido.indicaciones == null ? "NULL" : "'" + pedido.indicaciones.Replace("'", "") + "'") + ", " +
                             "CONTADO = '" + pedido.contado + "', " +
@@ -153,7 +153,7 @@ namespace SWYRA
                 @"CANCELAR", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                pedido.estatuspedido = "CANCELACION";
+                pedido.estatuspedido = "PORCANCELAR";
                 pedido.fecha_cancela = DateTime.Now;
                 pedido.cobrador_autorizo = userActivo.Usuario;
                 pedido.cobrador_autorizo_n = userActivo.Nombre;

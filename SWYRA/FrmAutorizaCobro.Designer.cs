@@ -101,9 +101,9 @@
             this.gpoFiltro.Controls.Add(this.Label1);
             this.gpoFiltro.Controls.Add(this.tsTodos);
             this.gpoFiltro.Location = new System.Drawing.Point(9, 24);
-            this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.gpoFiltro.Name = "gpoFiltro";
-            this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2);
             this.gpoFiltro.Size = new System.Drawing.Size(780, 53);
             this.gpoFiltro.TabIndex = 42;
             this.gpoFiltro.TabStop = false;
@@ -122,7 +122,7 @@
             // tsTodos
             // 
             this.tsTodos.Location = new System.Drawing.Point(128, 21);
-            this.tsTodos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tsTodos.Margin = new System.Windows.Forms.Padding(2);
             this.tsTodos.Name = "tsTodos";
             this.tsTodos.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsTodos.Properties.Appearance.Options.UseFont = true;
@@ -135,10 +135,10 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.pedidosBindingSource;
-            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Location = new System.Drawing.Point(9, 92);
             this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.Size = new System.Drawing.Size(780, 281);
             this.gridControl1.TabIndex = 43;
@@ -316,7 +316,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlTop.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlBottom
@@ -325,7 +325,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 383);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlBottom.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlLeft
@@ -334,7 +334,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 383);
             // 
             // barDockControlRight
@@ -343,7 +343,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(798, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 383);
             // 
             // barLargeButtonItem1
@@ -361,7 +361,7 @@
             this.ppIndicaciones.Controls.Add(this.label7);
             this.ppIndicaciones.Location = new System.Drawing.Point(284, 129);
             this.ppIndicaciones.Manager = this.barManager1;
-            this.ppIndicaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ppIndicaciones.Margin = new System.Windows.Forms.Padding(2);
             this.ppIndicaciones.Name = "ppIndicaciones";
             this.ppIndicaciones.Size = new System.Drawing.Size(268, 132);
             this.ppIndicaciones.TabIndex = 63;
@@ -384,7 +384,7 @@
             // txtIndicaciones
             // 
             this.txtIndicaciones.Location = new System.Drawing.Point(13, 28);
-            this.txtIndicaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIndicaciones.Margin = new System.Windows.Forms.Padding(2);
             this.txtIndicaciones.MenuManager = this.barManager1;
             this.txtIndicaciones.Name = "txtIndicaciones";
             this.txtIndicaciones.Size = new System.Drawing.Size(243, 53);
@@ -403,7 +403,7 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(798, 380);
             this.panel1.TabIndex = 68;
@@ -427,7 +427,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmAutorizaCobro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AUTORIZACIÓN DE PEDIDOS";

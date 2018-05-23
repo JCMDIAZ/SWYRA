@@ -236,6 +236,7 @@
             this.pnlGuías.Location = new System.Drawing.Point(0, 180);
             this.pnlGuías.Name = "pnlGuías";
             this.pnlGuías.Size = new System.Drawing.Size(238, 45);
+            this.pnlGuías.Click += new System.EventHandler(this.pnlGuías_Click);
             // 
             // lblCantLev
             // 
@@ -251,6 +252,7 @@
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(35, 35);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox4.Click += new System.EventHandler(this.pnlGuías_Click);
             // 
             // label6
             // 

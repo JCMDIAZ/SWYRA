@@ -115,6 +115,12 @@
     <Compile Include="FrmEmpaqueAT.Designer.cs">
       <DependentUpon>FrmEmpaqueAT.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmGuia2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGuia2.Designer.cs">
+      <DependentUpon>FrmGuia2.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmImpCodDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,12 @@
     </Compile>
     <Compile Include="FrmIncompleto.Designer.cs">
       <DependentUpon>FrmIncompleto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMenuGuia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenuGuia.Designer.cs">
+      <DependentUpon>FrmMenuGuia.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMenuPedidos.cs">
       <SubType>Form</SubType>
@@ -156,6 +168,12 @@
     </Compile>
     <Compile Include="FrmPedidoEmpaque.Designer.cs">
       <DependentUpon>FrmPedidoEmpaque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPedidoGuia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedidoGuia.Designer.cs">
+      <DependentUpon>FrmPedidoGuia.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPedidos.cs">
       <SubType>Form</SubType>
@@ -228,6 +246,9 @@
     <EmbeddedResource Include="FrmEmpaqueAT.resx">
       <DependentUpon>FrmEmpaqueAT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmGuia2.resx">
+      <DependentUpon>FrmGuia2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmImpCodDialog.resx">
       <DependentUpon>FrmImpCodDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmIncompleto.resx">
       <DependentUpon>FrmIncompleto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenuGuia.resx">
+      <DependentUpon>FrmMenuGuia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPedidos.resx">
       <DependentUpon>FrmMenuPedidos.cs</DependentUpon>
@@ -248,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidoEmpaque.resx">
       <DependentUpon>FrmPedidoEmpaque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedidoGuia.resx">
+      <DependentUpon>FrmPedidoGuia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidos.resx">
       <DependentUpon>FrmPedidos.cs</DependentUpon>

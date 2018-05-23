@@ -48,6 +48,8 @@ namespace swyraServices
         public string status { get; set; }
         public double masters { get; set; }
         public string masters_ubi { get; set; }
+        public double peso { get; set; }
+        public double volumen { get; set; }
     }
 
     public class Pedidos
@@ -108,6 +110,10 @@ namespace swyraServices
         public string tiposervicio { get; set; }
         public string estatuspedido { get; set; }
         public string ocurredomicilio { get; set; }
+        public string observaciones { get; set; }
+        public string nombre_vendedor { get; set; }
+        public string consignacion { get; set; }
+        public string indicacion { get; set; }
     }
 
     public class DetallePedidos : IDisposable
@@ -239,6 +245,7 @@ namespace swyraServices
         public double ult_compm { get; set; }
         public DateTime fch_ultcom { get; set; }
         public string clasific { get; set; }
+        public string flete { get; set; }
     }
 
     public class Precios
@@ -246,5 +253,14 @@ namespace swyraServices
         public string cve_art { get; set; }
         public int cve_precio { get; set; }
         public double precio { get; set; }
+    }
+
+    public class Factura
+    {
+        public string cve_doc { get; set; }
+        public string doc_ant { get; set; }
+        public int dat_envio { get; set; }
+        public int cve_obs { get; set; }
+        public string str_obs { get; set; }
     }
 }

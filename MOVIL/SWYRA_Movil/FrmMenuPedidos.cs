@@ -193,8 +193,7 @@ namespace SWYRA_Movil
                     if (area)
                     {
                             var estatus = (ped.estatuspedido == "DEVOLUCION") ? "CANCELACION" : "EMPAQUE";
-                            var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + estatus + "', " +
-                                        "UbicacionEmpaque = '" + frmAreaEmp.cbAreaEmpaque.Text + "' " +
+                            var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + estatus + "' " +
                                         "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
                             var r = Program.GetExecute(query, 10);
                             query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
@@ -206,9 +205,14 @@ namespace SWYRA_Movil
                     else
                     {
                         ped.solarea = true;
-                        var query = "UPDATE PEDIDO SET SOLAREA = 1, " +
-                                    "UbicacionEmpaque = '" + frmAreaEmp.cbAreaEmpaque.Text + "' " +
+                        var query = "UPDATE PEDIDO SET SOLAREA = 1 " +
                                     "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                        var r = Program.GetExecute(query, 9);
+                    }
+                    foreach (var ubi in frmAreaEmp.lst)
+                    {
+                        var query = "Declare @cvedoc varchar(20) Select @cvedoc = cve_doc from PEDIDO WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                                "INSERT PEDIDO_Ubicacion (CVE_DOC, UbicacionEmpaque) VALUES (@cvedoc, '" + ubi.cve_ubicacion + "')";
                         var r = Program.GetExecute(query, 9);
                     }
                     MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);

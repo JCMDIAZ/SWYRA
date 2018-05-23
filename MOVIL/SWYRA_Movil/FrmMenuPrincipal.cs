@@ -64,16 +64,18 @@ namespace SWYRA_Movil
         {
             try
             {
-                var query = "select ESTATUSPEDIDO, ISNULL(SOLAREA,0) SOLAREA from PEDIDO where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE')";
+                var query = "select ESTATUSPEDIDO, ISNULL(SOLAREA,0) SOLAREA from PEDIDO where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE', 'GUIA')";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 string[] opc = {"SURTIR", "MODIFICACION", "DETENIDO", "DEVOLUCION"};
                 var ped = listPedidos.Where(o => o.estatuspedido.In(opc) && o.solarea == false).ToList().Count.ToString();
                 var are = listPedidos.Where(o => o.estatuspedido.In(opc) && o.solarea == true).ToList().Count.ToString();
                 var emp = listPedidos.Where(o => o.estatuspedido == "EMPAQUE").ToList().Count.ToString();
-                if (lblCantPed.Text != ped || lblCantArea.Text != are || lblCantEmp.Text != emp) { Program.Beep(); }
+                var lev = listPedidos.Where(o => o.estatuspedido == "GUIA").ToList().Count.ToString();
+                if (lblCantPed.Text != ped || lblCantArea.Text != are || lblCantEmp.Text != emp || lblCantLev.Text != lev) { Program.Beep(); }
                 lblCantPed.Text = ped;
                 lblCantArea.Text = are;
                 lblCantEmp.Text = emp;
+                lblCantLev.Text = lev;
             }
             catch (Exception ex)
             {
@@ -86,6 +88,12 @@ namespace SWYRA_Movil
         {
             FrmPedidoEmpaque frmPedE = new FrmPedidoEmpaque();
             frmPedE.Show();
+        }
+
+        private void pnlGuías_Click(object sender, EventArgs e)
+        {
+            FrmPedidoGuia frmPedG = new FrmPedidoGuia();
+            frmPedG.Show();
         }
     }
 }

@@ -376,9 +376,9 @@ namespace SWYRA
                 var query =
                     "select CLAVE, STATUS, NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
                     "CODIGO, MUNICIPIO, ESTADO, PAIS, TELEFONO, CVE_VEND, CVE_OBS, TIPO_EMPRESA, CALLE_ENVIO, " +
-                    "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, " +
+                    "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, CAMPLIB2 FLETE, " +
                     "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM " +
-                    "from CLIE01";
+                    "from CLIE01 c JOIN CLIE_CLIB01 b ON b.CVE_CLIE = c.CLAVE";
                 listFbClientes = GetFbDataTable("FB", query, 15).ToList<Cliente>();
             }
             catch (Exception ex)
@@ -527,6 +527,11 @@ namespace SWYRA
         private void button4_Click(object sender, EventArgs e)
         {
             barCodeControl1.Text = memoEdit1.Text;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            cargaFbClientes();
         }
     }
 }

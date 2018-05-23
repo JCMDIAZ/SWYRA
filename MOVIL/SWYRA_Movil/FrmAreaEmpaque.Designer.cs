@@ -36,11 +36,12 @@
             this.btnActivar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.ubicacionEntregaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cbAreaEmpaque = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPedido = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtAreaEmpaque = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ubicacionEntregaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -81,23 +82,12 @@
             // 
             this.ubicacionEntregaBindingSource.DataSource = typeof(SWYRA_Movil.UbicacionEntrega);
             // 
-            // cbAreaEmpaque
-            // 
-            this.cbAreaEmpaque.DataSource = this.ubicacionEntregaBindingSource;
-            this.cbAreaEmpaque.DisplayMember = "cve_ubicacion";
-            this.cbAreaEmpaque.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.cbAreaEmpaque.Location = new System.Drawing.Point(4, 169);
-            this.cbAreaEmpaque.Name = "cbAreaEmpaque";
-            this.cbAreaEmpaque.Size = new System.Drawing.Size(228, 26);
-            this.cbAreaEmpaque.TabIndex = 13;
-            this.cbAreaEmpaque.ValueMember = "cve_ubicacion";
-            // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(16, 90);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(16, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 76);
+            this.label1.Size = new System.Drawing.Size(207, 23);
             this.label1.Text = "Área de EMPAQUE :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -119,15 +109,36 @@
             this.label2.Text = "Pedido Número";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtAreaEmpaque
+            // listBox1
             // 
-            this.txtAreaEmpaque.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.txtAreaEmpaque.Location = new System.Drawing.Point(5, 169);
-            this.txtAreaEmpaque.Name = "txtAreaEmpaque";
-            this.txtAreaEmpaque.ReadOnly = true;
-            this.txtAreaEmpaque.Size = new System.Drawing.Size(228, 26);
-            this.txtAreaEmpaque.TabIndex = 17;
-            this.txtAreaEmpaque.Visible = false;
+            this.listBox1.DataSource = this.ubicacionEntregaBindingSource;
+            this.listBox1.DisplayMember = "cve_ubicacion";
+            this.listBox1.Location = new System.Drawing.Point(3, 128);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(110, 98);
+            this.listBox1.TabIndex = 22;
+            this.listBox1.ValueMember = "cve_ubicacion";
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // listBox2
+            // 
+            this.listBox2.DataSource = this.ubicacionEntregaBindingSource;
+            this.listBox2.DisplayMember = "cve_ubicacion";
+            this.listBox2.Location = new System.Drawing.Point(128, 128);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(107, 98);
+            this.listBox2.TabIndex = 27;
+            this.listBox2.ValueMember = "cve_ubicacion";
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(122, 111);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 14);
+            this.label3.Text = "Seleccionado";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FrmAreaEmpaque
             // 
@@ -136,9 +147,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
-            this.Controls.Add(this.txtAreaEmpaque);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.cbAreaEmpaque);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPedido);
             this.Controls.Add(this.label2);
@@ -157,12 +169,13 @@
 
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnActivar;
-        public System.Windows.Forms.ComboBox cbAreaEmpaque;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label lblPedido;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.BindingSource ubicacionEntregaBindingSource;
-        public System.Windows.Forms.TextBox txtAreaEmpaque;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.ListBox listBox2;
     }
 }

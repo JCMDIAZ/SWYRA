@@ -35,15 +35,14 @@ namespace SWYRA_Movil
             {
                 FrmAreaEmpaque frmAreaEmp = new FrmAreaEmpaque();
                 frmAreaEmp.lblPedido.Text = ped.cve_doc;
-                frmAreaEmp.txtAreaEmpaque.Text = ped.ubicacionempaque;
-                frmAreaEmp.cbAreaEmpaque.Visible = false;
-                frmAreaEmp.txtAreaEmpaque.Visible = true;
+                frmAreaEmp.listBox1.Enabled = false;
                 var dr = frmAreaEmp.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
                     var estatus = (ped.estatuspedido == "DEVOLUCION") ? "CANCELACION" : "EMPAQUE";
                     var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + estatus + "' " +
-                                "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                                "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                                "DELETE PEDIDO_Ubicacion WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' ";
                     var r = Program.GetExecute(query, 10);
                     query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
                             "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +

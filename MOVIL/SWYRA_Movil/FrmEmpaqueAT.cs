@@ -56,7 +56,7 @@ namespace SWYRA_Movil
             List<DetallePedidoMerc> tmp = new List<DetallePedidoMerc>();
             try
             {
-                var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, dt.CVE_ART, CODIGO_BARRA, CASE WHEN CANT = 0 THEN TOTART ELSE CANT END CANT, " +
+                var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, dt.CVE_ART, CODIGO_BARRA, CASE WHEN CANT = 0 THEN TOTART ELSE CANT END TOTART, " +
                             "TIPOPAQUETE, ISNULL(CONSEC_PADRE,0) CONSEC_PADRE, ULTIMO, isnull(i.DESCR, TIPOPAQUETE) DESCR, CONSEC_EMPAQUE " +
                             "FROM DETALLEPEDIDOMERC dt LEFT JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART " +
                             "WHERE CVE_DOC = '" + ped.cve_doc + "' AND ISNULL(CANCELADO,0) = 0 " +

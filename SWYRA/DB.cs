@@ -171,6 +171,11 @@ namespace SWYRA
         public double tottarimas { get; set; }
         public double totcostoguias { get; set; }
         public string ubicacionempaque { get; set; }
+        public string flete { get; set; }
+        public string observaciones { get; set; }
+        public string consignacion { get; set; }
+        public string nombre_vendedor { get; set; }
+        public string capturo_n { get; set; }
     }
 
     public class DetallePedidos
@@ -221,6 +226,8 @@ namespace SWYRA
         public double tcomi { get; set; }
         public double importe { get; set; }
         public string empaque { get; set; }
+        public double volumen { get; set; }
+        public double peso { get; set; }
     }
 
     public class Actividad
@@ -304,6 +311,7 @@ namespace SWYRA
         public double ult_compm { get; set; }
         public DateTime fch_ultcom { get; set; }
         public string clasific { get; set; }
+        public string flete { get; set; }
     }
 
     public class InventarioCondicion

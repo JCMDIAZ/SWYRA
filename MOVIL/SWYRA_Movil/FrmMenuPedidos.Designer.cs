@@ -53,6 +53,13 @@
             this.pbIncompletos = new System.Windows.Forms.PictureBox();
             this.pbTransferir = new System.Windows.Forms.PictureBox();
             this.pbDevolucion = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblDetenido = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.pnlPorSurtir.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +67,7 @@
             // pnlRetornar
             // 
             this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.label11);
             this.pnlRetornar.Controls.Add(this.pbConcluir);
             this.pnlRetornar.Controls.Add(this.pbSalir);
             this.pnlRetornar.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -268,6 +276,62 @@
             this.pbDevolucion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbDevolucion.Click += new System.EventHandler(this.pbDevolucion_Click_1);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(12, 178);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 20);
+            this.label1.Text = "S";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(51, 178);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 20);
+            this.label3.Text = "Q";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblDetenido
+            // 
+            this.lblDetenido.Location = new System.Drawing.Point(90, 178);
+            this.lblDetenido.Name = "lblDetenido";
+            this.lblDetenido.Size = new System.Drawing.Size(18, 20);
+            this.lblDetenido.Text = "D";
+            this.lblDetenido.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(129, 178);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 20);
+            this.label4.Text = "I";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(168, 178);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 20);
+            this.label5.Text = "T";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(207, 178);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 20);
+            this.label7.Text = "M";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(180, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 20);
+            this.label11.Text = "F";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // FrmMenuPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -276,11 +340,17 @@
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
             this.Controls.Add(this.pbDevolucion);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.pbTransferir);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.pbIncompletos);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pbDetener);
+            this.Controls.Add(this.lblDetenido);
             this.Controls.Add(this.pbRemover);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pbSurtir);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlRetornar);
             this.Controls.Add(this.pnlPorSurtir);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -318,5 +388,12 @@
         private System.Windows.Forms.PictureBox pbConcluir;
         private System.Windows.Forms.PictureBox pbTransferir;
         private System.Windows.Forms.PictureBox pbDevolucion;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDetenido;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
     }
 }

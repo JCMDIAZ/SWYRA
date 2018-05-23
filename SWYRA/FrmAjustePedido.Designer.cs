@@ -36,24 +36,41 @@
             this.gcPaquetes = new DevExpress.XtraGrid.GridControl();
             this.detallePedidoMercBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvPaquetes = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colconsec_empaque = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltipopaquete = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colconsec_empaque = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltotart = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcDetPedido = new DevExpress.XtraGrid.GridControl();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colnum_par = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcantsurtido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcve_art = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coldescr = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcantsurtido = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colprec = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coltot_partida = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coltdesc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colsubto = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coltotimp4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colimporte = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colempaque = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcomen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colvolumen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colpeso = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtCapturo = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtCondiciones = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtFlete = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtConsigna = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtEmpaco = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtSurtio = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtAutorizo = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtNumVendedor = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtOrdenCompra = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtNumCli = new System.Windows.Forms.TextBox();
             this.txtTarimas = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtAtados = new System.Windows.Forms.TextBox();
@@ -68,8 +85,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtCajaCarton = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtUbicacion = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtPrioridad = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtOcurredom = new System.Windows.Forms.TextBox();
@@ -85,6 +100,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
+            this.lblContado = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPaquetes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
@@ -100,6 +116,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblContado);
             this.panel1.Controls.Add(this.gcPaquetes);
             this.panel1.Controls.Add(this.gcDetPedido);
             this.panel1.Controls.Add(this.groupBox1);
@@ -115,10 +132,10 @@
             gridLevelNode1.RelationName = "Level1";
             this.gcPaquetes.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gcPaquetes.Location = new System.Drawing.Point(690, 30);
+            this.gcPaquetes.Location = new System.Drawing.Point(690, 76);
             this.gcPaquetes.MainView = this.gvPaquetes;
             this.gcPaquetes.Name = "gcPaquetes";
-            this.gcPaquetes.Size = new System.Drawing.Size(231, 200);
+            this.gcPaquetes.Size = new System.Drawing.Size(231, 239);
             this.gcPaquetes.TabIndex = 30;
             this.gcPaquetes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPaquetes});
@@ -146,6 +163,15 @@
             this.gvPaquetes.OptionsView.ColumnAutoWidth = false;
             this.gvPaquetes.OptionsView.ShowGroupPanel = false;
             // 
+            // coltipopaquete
+            // 
+            this.coltipopaquete.Caption = "Atado/Tarima";
+            this.coltipopaquete.FieldName = "tipopaquete";
+            this.coltipopaquete.Name = "coltipopaquete";
+            this.coltipopaquete.Visible = true;
+            this.coltipopaquete.VisibleIndex = 0;
+            this.coltipopaquete.Width = 100;
+            // 
             // colconsec_empaque
             // 
             this.colconsec_empaque.Caption = "#";
@@ -155,23 +181,14 @@
             this.colconsec_empaque.VisibleIndex = 1;
             this.colconsec_empaque.Width = 30;
             // 
-            // coltipopaquete
-            // 
-            this.coltipopaquete.Caption = "Paquete";
-            this.coltipopaquete.FieldName = "tipopaquete";
-            this.coltipopaquete.Name = "coltipopaquete";
-            this.coltipopaquete.Visible = true;
-            this.coltipopaquete.VisibleIndex = 0;
-            this.coltipopaquete.Width = 100;
-            // 
             // coltotart
             // 
-            this.coltotart.Caption = "Artículos";
+            this.coltotart.Caption = "Paquetes";
             this.coltotart.FieldName = "totart";
             this.coltotart.Name = "coltotart";
             this.coltotart.Visible = true;
             this.coltotart.VisibleIndex = 2;
-            this.coltotart.Width = 50;
+            this.coltotart.Width = 70;
             // 
             // gcDetPedido
             // 
@@ -179,10 +196,10 @@
             gridLevelNode2.RelationName = "Level1";
             this.gcDetPedido.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode2});
-            this.gcDetPedido.Location = new System.Drawing.Point(9, 238);
+            this.gcDetPedido.Location = new System.Drawing.Point(9, 321);
             this.gcDetPedido.MainView = this.gridView1;
             this.gcDetPedido.Name = "gcDetPedido";
-            this.gcDetPedido.Size = new System.Drawing.Size(912, 385);
+            this.gcDetPedido.Size = new System.Drawing.Size(912, 302);
             this.gcDetPedido.TabIndex = 6;
             this.gcDetPedido.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -203,17 +220,13 @@
             this.gridView1.Appearance.ViewCaption.Options.UseForeColor = true;
             this.gridView1.Appearance.ViewCaption.Options.UseImage = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colnum_par,
+            this.colcantsurtido,
             this.colcve_art,
             this.coldescr,
-            this.colcantsurtido,
-            this.colprec,
-            this.coltot_partida,
-            this.coltdesc,
-            this.colsubto,
-            this.coltotimp4,
-            this.colimporte,
-            this.colempaque});
+            this.colempaque,
+            this.colcomen,
+            this.colvolumen,
+            this.colpeso});
             this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView1.GridControl = this.gcDetPedido;
             this.gridView1.Name = "gridView1";
@@ -224,121 +237,39 @@
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowViewCaption = true;
             this.gridView1.ViewCaption = "Detalle del Pedido";
-            // 
-            // colnum_par
-            // 
-            this.colnum_par.Caption = "#";
-            this.colnum_par.FieldName = "num_par";
-            this.colnum_par.Name = "colnum_par";
-            this.colnum_par.Visible = true;
-            this.colnum_par.VisibleIndex = 0;
-            this.colnum_par.Width = 30;
-            // 
-            // colcve_art
-            // 
-            this.colcve_art.Caption = "Clave";
-            this.colcve_art.FieldName = "cve_art";
-            this.colcve_art.Name = "colcve_art";
-            this.colcve_art.Visible = true;
-            this.colcve_art.VisibleIndex = 1;
-            // 
-            // coldescr
-            // 
-            this.coldescr.Caption = "Descripción";
-            this.coldescr.FieldName = "descr";
-            this.coldescr.Name = "coldescr";
-            this.coldescr.Visible = true;
-            this.coldescr.VisibleIndex = 2;
-            this.coldescr.Width = 250;
             // 
             // colcantsurtido
             // 
             this.colcantsurtido.Caption = "Cant.";
             this.colcantsurtido.FieldName = "cantsurtido";
+            this.colcantsurtido.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.colcantsurtido.Name = "colcantsurtido";
             this.colcantsurtido.Visible = true;
-            this.colcantsurtido.VisibleIndex = 3;
+            this.colcantsurtido.VisibleIndex = 0;
             this.colcantsurtido.Width = 40;
             // 
-            // colprec
+            // colcve_art
             // 
-            this.colprec.Caption = "Precio";
-            this.colprec.DisplayFormat.FormatString = "$ #,##0.00";
-            this.colprec.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.colprec.FieldName = "prec";
-            this.colprec.Name = "colprec";
-            this.colprec.Visible = true;
-            this.colprec.VisibleIndex = 4;
-            this.colprec.Width = 80;
+            this.colcve_art.Caption = "Clave";
+            this.colcve_art.FieldName = "cve_art";
+            this.colcve_art.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colcve_art.Name = "colcve_art";
+            this.colcve_art.Visible = true;
+            this.colcve_art.VisibleIndex = 1;
+            this.colcve_art.Width = 50;
             // 
-            // coltot_partida
+            // coldescr
             // 
-            this.coltot_partida.Caption = "Costo";
-            this.coltot_partida.DisplayFormat.FormatString = "$ #,##0.00";
-            this.coltot_partida.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.coltot_partida.FieldName = "tot_partida";
-            this.coltot_partida.Name = "coltot_partida";
-            this.coltot_partida.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "tot_partida", "$ {0:n2}")});
-            this.coltot_partida.Visible = true;
-            this.coltot_partida.VisibleIndex = 5;
-            this.coltot_partida.Width = 80;
-            // 
-            // coltdesc
-            // 
-            this.coltdesc.Caption = "Descuento";
-            this.coltdesc.DisplayFormat.FormatString = "$ #,##0.00";
-            this.coltdesc.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.coltdesc.FieldName = "tdesc";
-            this.coltdesc.Name = "coltdesc";
-            this.coltdesc.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "tdesc", "$ {0:n2}")});
-            this.coltdesc.Visible = true;
-            this.coltdesc.VisibleIndex = 6;
-            this.coltdesc.Width = 80;
-            // 
-            // colsubto
-            // 
-            this.colsubto.Caption = "Sub Total";
-            this.colsubto.DisplayFormat.FormatString = "$ #,##0.00";
-            this.colsubto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.colsubto.FieldName = "subto";
-            this.colsubto.Name = "colsubto";
-            this.colsubto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "subto", "$ {0:n2}")});
-            this.colsubto.Visible = true;
-            this.colsubto.VisibleIndex = 7;
-            this.colsubto.Width = 80;
-            // 
-            // coltotimp4
-            // 
-            this.coltotimp4.Caption = "IVA";
-            this.coltotimp4.DisplayFormat.FormatString = "$ #,##0.00";
-            this.coltotimp4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.coltotimp4.FieldName = "totimp4";
-            this.coltotimp4.Name = "coltotimp4";
-            this.coltotimp4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "totimp4", "$ {0:n2}")});
-            this.coltotimp4.Visible = true;
-            this.coltotimp4.VisibleIndex = 8;
-            this.coltotimp4.Width = 80;
-            // 
-            // colimporte
-            // 
-            this.colimporte.Caption = "Importe";
-            this.colimporte.DisplayFormat.FormatString = "$ #,##0.00";
-            this.colimporte.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.colimporte.FieldName = "importe";
-            this.colimporte.Name = "colimporte";
-            this.colimporte.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "importe", "$ {0:n2}")});
-            this.colimporte.Visible = true;
-            this.colimporte.VisibleIndex = 9;
-            this.colimporte.Width = 80;
+            this.coldescr.Caption = "Descripción";
+            this.coldescr.FieldName = "descr";
+            this.coldescr.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.coldescr.Name = "coldescr";
+            this.coldescr.Visible = true;
+            this.coldescr.VisibleIndex = 2;
+            this.coldescr.Width = 220;
             // 
             // colempaque
             // 
@@ -346,11 +277,60 @@
             this.colempaque.FieldName = "empaque";
             this.colempaque.Name = "colempaque";
             this.colempaque.Visible = true;
-            this.colempaque.VisibleIndex = 10;
-            this.colempaque.Width = 200;
+            this.colempaque.VisibleIndex = 3;
+            this.colempaque.Width = 220;
+            // 
+            // colcomen
+            // 
+            this.colcomen.Caption = "Indicaciones";
+            this.colcomen.FieldName = "comen";
+            this.colcomen.Name = "colcomen";
+            this.colcomen.Visible = true;
+            this.colcomen.VisibleIndex = 4;
+            this.colcomen.Width = 220;
+            // 
+            // colvolumen
+            // 
+            this.colvolumen.Caption = "Volumen";
+            this.colvolumen.DisplayFormat.FormatString = "n:2";
+            this.colvolumen.FieldName = "volumen";
+            this.colvolumen.Name = "colvolumen";
+            this.colvolumen.Visible = true;
+            this.colvolumen.VisibleIndex = 5;
+            this.colvolumen.Width = 50;
+            // 
+            // colpeso
+            // 
+            this.colpeso.Caption = "Peso";
+            this.colpeso.FieldName = "peso";
+            this.colpeso.Name = "colpeso";
+            this.colpeso.Visible = true;
+            this.colpeso.VisibleIndex = 6;
+            this.colpeso.Width = 50;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtObservaciones);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.txtCapturo);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.txtCondiciones);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.txtFlete);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.txtConsigna);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.txtEmpaco);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.txtSurtio);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.txtAutorizo);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.txtNumVendedor);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.txtOrdenCompra);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtNumCli);
             this.groupBox1.Controls.Add(this.txtTarimas);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtAtados);
@@ -365,8 +345,6 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtCajaCarton);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtUbicacion);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtPrioridad);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtOcurredom);
@@ -381,15 +359,210 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(9, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(675, 200);
+            this.groupBox1.Size = new System.Drawing.Size(675, 285);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Pedido";
             // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.BackColor = System.Drawing.Color.White;
+            this.txtObservaciones.Location = new System.Drawing.Point(101, 173);
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.ReadOnly = true;
+            this.txtObservaciones.Size = new System.Drawing.Size(559, 20);
+            this.txtObservaciones.TabIndex = 49;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(18, 176);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(78, 13);
+            this.label23.TabIndex = 48;
+            this.label23.Text = "Observaciones";
+            // 
+            // txtCapturo
+            // 
+            this.txtCapturo.BackColor = System.Drawing.Color.White;
+            this.txtCapturo.Location = new System.Drawing.Point(154, 220);
+            this.txtCapturo.Name = "txtCapturo";
+            this.txtCapturo.ReadOnly = true;
+            this.txtCapturo.Size = new System.Drawing.Size(122, 20);
+            this.txtCapturo.TabIndex = 47;
+            this.txtCapturo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(184, 204);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(59, 13);
+            this.label22.TabIndex = 46;
+            this.label22.Text = "CAPTURO";
+            // 
+            // txtCondiciones
+            // 
+            this.txtCondiciones.BackColor = System.Drawing.Color.White;
+            this.txtCondiciones.Location = new System.Drawing.Point(101, 147);
+            this.txtCondiciones.Name = "txtCondiciones";
+            this.txtCondiciones.ReadOnly = true;
+            this.txtCondiciones.Size = new System.Drawing.Size(559, 20);
+            this.txtCondiciones.TabIndex = 45;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(31, 150);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 13);
+            this.label21.TabIndex = 44;
+            this.label21.Text = "Condiciones";
+            // 
+            // txtFlete
+            // 
+            this.txtFlete.BackColor = System.Drawing.Color.White;
+            this.txtFlete.Location = new System.Drawing.Point(454, 121);
+            this.txtFlete.Name = "txtFlete";
+            this.txtFlete.ReadOnly = true;
+            this.txtFlete.Size = new System.Drawing.Size(206, 20);
+            this.txtFlete.TabIndex = 43;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(418, 124);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(30, 13);
+            this.label19.TabIndex = 42;
+            this.label19.Text = "Flete";
+            // 
+            // txtConsigna
+            // 
+            this.txtConsigna.BackColor = System.Drawing.Color.White;
+            this.txtConsigna.Location = new System.Drawing.Point(101, 121);
+            this.txtConsigna.Name = "txtConsigna";
+            this.txtConsigna.ReadOnly = true;
+            this.txtConsigna.Size = new System.Drawing.Size(206, 20);
+            this.txtConsigna.TabIndex = 41;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(25, 124);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(71, 13);
+            this.label20.TabIndex = 40;
+            this.label20.Text = "Consignación";
+            // 
+            // txtEmpaco
+            // 
+            this.txtEmpaco.BackColor = System.Drawing.Color.White;
+            this.txtEmpaco.Location = new System.Drawing.Point(538, 220);
+            this.txtEmpaco.Name = "txtEmpaco";
+            this.txtEmpaco.ReadOnly = true;
+            this.txtEmpaco.Size = new System.Drawing.Size(122, 20);
+            this.txtEmpaco.TabIndex = 39;
+            this.txtEmpaco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(573, 204);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 13);
+            this.label15.TabIndex = 38;
+            this.label15.Text = "EMPACO";
+            // 
+            // txtSurtio
+            // 
+            this.txtSurtio.BackColor = System.Drawing.Color.White;
+            this.txtSurtio.Location = new System.Drawing.Point(410, 220);
+            this.txtSurtio.Name = "txtSurtio";
+            this.txtSurtio.ReadOnly = true;
+            this.txtSurtio.Size = new System.Drawing.Size(122, 20);
+            this.txtSurtio.TabIndex = 37;
+            this.txtSurtio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(447, 204);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(48, 13);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "SURTIO";
+            // 
+            // txtAutorizo
+            // 
+            this.txtAutorizo.BackColor = System.Drawing.Color.White;
+            this.txtAutorizo.Location = new System.Drawing.Point(282, 220);
+            this.txtAutorizo.Name = "txtAutorizo";
+            this.txtAutorizo.ReadOnly = true;
+            this.txtAutorizo.Size = new System.Drawing.Size(122, 20);
+            this.txtAutorizo.TabIndex = 35;
+            this.txtAutorizo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(312, 204);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 13);
+            this.label17.TabIndex = 34;
+            this.label17.Text = "AUTORIZO";
+            // 
+            // txtNumVendedor
+            // 
+            this.txtNumVendedor.BackColor = System.Drawing.Color.White;
+            this.txtNumVendedor.Location = new System.Drawing.Point(22, 220);
+            this.txtNumVendedor.Name = "txtNumVendedor";
+            this.txtNumVendedor.ReadOnly = true;
+            this.txtNumVendedor.Size = new System.Drawing.Size(126, 20);
+            this.txtNumVendedor.TabIndex = 33;
+            this.txtNumVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(54, 204);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(68, 13);
+            this.label18.TabIndex = 32;
+            this.label18.Text = "VENDEDOR";
+            // 
+            // txtOrdenCompra
+            // 
+            this.txtOrdenCompra.BackColor = System.Drawing.Color.White;
+            this.txtOrdenCompra.Location = new System.Drawing.Point(454, 95);
+            this.txtOrdenCompra.Name = "txtOrdenCompra";
+            this.txtOrdenCompra.ReadOnly = true;
+            this.txtOrdenCompra.Size = new System.Drawing.Size(206, 20);
+            this.txtOrdenCompra.TabIndex = 31;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(358, 98);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Orden de Compra";
+            // 
+            // txtNumCli
+            // 
+            this.txtNumCli.BackColor = System.Drawing.Color.White;
+            this.txtNumCli.Location = new System.Drawing.Point(101, 43);
+            this.txtNumCli.Name = "txtNumCli";
+            this.txtNumCli.ReadOnly = true;
+            this.txtNumCli.Size = new System.Drawing.Size(86, 20);
+            this.txtNumCli.TabIndex = 29;
+            this.txtNumCli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // txtTarimas
             // 
             this.txtTarimas.BackColor = System.Drawing.Color.White;
-            this.txtTarimas.Location = new System.Drawing.Point(571, 164);
+            this.txtTarimas.Location = new System.Drawing.Point(574, 259);
             this.txtTarimas.Name = "txtTarimas";
             this.txtTarimas.ReadOnly = true;
             this.txtTarimas.Size = new System.Drawing.Size(86, 20);
@@ -399,7 +572,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(592, 148);
+            this.label14.Location = new System.Drawing.Point(595, 243);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 13);
             this.label14.TabIndex = 27;
@@ -408,7 +581,7 @@
             // txtAtados
             // 
             this.txtAtados.BackColor = System.Drawing.Color.White;
-            this.txtAtados.Location = new System.Drawing.Point(479, 164);
+            this.txtAtados.Location = new System.Drawing.Point(482, 259);
             this.txtAtados.Name = "txtAtados";
             this.txtAtados.ReadOnly = true;
             this.txtAtados.Size = new System.Drawing.Size(86, 20);
@@ -418,7 +591,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(502, 148);
+            this.label13.Location = new System.Drawing.Point(505, 243);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 13);
             this.label13.TabIndex = 25;
@@ -427,7 +600,7 @@
             // txtCubeta
             // 
             this.txtCubeta.BackColor = System.Drawing.Color.White;
-            this.txtCubeta.Location = new System.Drawing.Point(387, 164);
+            this.txtCubeta.Location = new System.Drawing.Point(390, 259);
             this.txtCubeta.Name = "txtCubeta";
             this.txtCubeta.ReadOnly = true;
             this.txtCubeta.Size = new System.Drawing.Size(86, 20);
@@ -437,7 +610,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(407, 148);
+            this.label12.Location = new System.Drawing.Point(410, 243);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(46, 13);
             this.label12.TabIndex = 23;
@@ -446,7 +619,7 @@
             // txtRollo
             // 
             this.txtRollo.BackColor = System.Drawing.Color.White;
-            this.txtRollo.Location = new System.Drawing.Point(295, 164);
+            this.txtRollo.Location = new System.Drawing.Point(298, 259);
             this.txtRollo.Name = "txtRollo";
             this.txtRollo.ReadOnly = true;
             this.txtRollo.Size = new System.Drawing.Size(86, 20);
@@ -456,7 +629,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(320, 148);
+            this.label11.Location = new System.Drawing.Point(323, 243);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 21;
@@ -465,7 +638,7 @@
             // txtBulto
             // 
             this.txtBulto.BackColor = System.Drawing.Color.White;
-            this.txtBulto.Location = new System.Drawing.Point(203, 164);
+            this.txtBulto.Location = new System.Drawing.Point(206, 259);
             this.txtBulto.Name = "txtBulto";
             this.txtBulto.ReadOnly = true;
             this.txtBulto.Size = new System.Drawing.Size(86, 20);
@@ -475,7 +648,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(228, 148);
+            this.label10.Location = new System.Drawing.Point(231, 243);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 19;
@@ -484,7 +657,7 @@
             // txtCajaMadera
             // 
             this.txtCajaMadera.BackColor = System.Drawing.Color.White;
-            this.txtCajaMadera.Location = new System.Drawing.Point(111, 164);
+            this.txtCajaMadera.Location = new System.Drawing.Point(114, 259);
             this.txtCajaMadera.Name = "txtCajaMadera";
             this.txtCajaMadera.ReadOnly = true;
             this.txtCajaMadera.Size = new System.Drawing.Size(86, 20);
@@ -494,7 +667,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(113, 148);
+            this.label9.Location = new System.Drawing.Point(116, 243);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 13);
             this.label9.TabIndex = 17;
@@ -503,7 +676,7 @@
             // txtCajaCarton
             // 
             this.txtCajaCarton.BackColor = System.Drawing.Color.White;
-            this.txtCajaCarton.Location = new System.Drawing.Point(19, 164);
+            this.txtCajaCarton.Location = new System.Drawing.Point(22, 259);
             this.txtCajaCarton.Name = "txtCajaCarton";
             this.txtCajaCarton.ReadOnly = true;
             this.txtCajaCarton.Size = new System.Drawing.Size(86, 20);
@@ -513,34 +686,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 148);
+            this.label8.Location = new System.Drawing.Point(27, 243);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 13);
             this.label8.TabIndex = 15;
             this.label8.Text = "Caja de Cartón";
             // 
-            // txtUbicacion
-            // 
-            this.txtUbicacion.BackColor = System.Drawing.Color.White;
-            this.txtUbicacion.Location = new System.Drawing.Point(454, 103);
-            this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.ReadOnly = true;
-            this.txtUbicacion.Size = new System.Drawing.Size(206, 20);
-            this.txtUbicacion.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(340, 106);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Ubicación del Pedido";
-            // 
             // txtPrioridad
             // 
             this.txtPrioridad.BackColor = System.Drawing.Color.White;
-            this.txtPrioridad.Location = new System.Drawing.Point(101, 103);
+            this.txtPrioridad.Location = new System.Drawing.Point(101, 95);
             this.txtPrioridad.Name = "txtPrioridad";
             this.txtPrioridad.ReadOnly = true;
             this.txtPrioridad.Size = new System.Drawing.Size(206, 20);
@@ -549,7 +704,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(48, 106);
+            this.label7.Location = new System.Drawing.Point(48, 98);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 11;
@@ -558,7 +713,7 @@
             // txtOcurredom
             // 
             this.txtOcurredom.BackColor = System.Drawing.Color.White;
-            this.txtOcurredom.Location = new System.Drawing.Point(454, 77);
+            this.txtOcurredom.Location = new System.Drawing.Point(454, 69);
             this.txtOcurredom.Name = "txtOcurredom";
             this.txtOcurredom.ReadOnly = true;
             this.txtOcurredom.Size = new System.Drawing.Size(206, 20);
@@ -567,7 +722,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(355, 80);
+            this.label5.Location = new System.Drawing.Point(355, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 9;
@@ -576,7 +731,7 @@
             // txtTipoServicio
             // 
             this.txtTipoServicio.BackColor = System.Drawing.Color.White;
-            this.txtTipoServicio.Location = new System.Drawing.Point(101, 77);
+            this.txtTipoServicio.Location = new System.Drawing.Point(101, 69);
             this.txtTipoServicio.Name = "txtTipoServicio";
             this.txtTipoServicio.ReadOnly = true;
             this.txtTipoServicio.Size = new System.Drawing.Size(206, 20);
@@ -585,7 +740,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 80);
+            this.label4.Location = new System.Drawing.Point(27, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 7;
@@ -594,16 +749,16 @@
             // txtCliente
             // 
             this.txtCliente.BackColor = System.Drawing.Color.White;
-            this.txtCliente.Location = new System.Drawing.Point(101, 51);
+            this.txtCliente.Location = new System.Drawing.Point(188, 43);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
-            this.txtCliente.Size = new System.Drawing.Size(559, 20);
+            this.txtCliente.Size = new System.Drawing.Size(472, 20);
             this.txtCliente.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 54);
+            this.label3.Location = new System.Drawing.Point(56, 46);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 5;
@@ -612,7 +767,7 @@
             // deFecha
             // 
             this.deFecha.EditValue = null;
-            this.deFecha.Location = new System.Drawing.Point(454, 26);
+            this.deFecha.Location = new System.Drawing.Point(454, 18);
             this.deFecha.Name = "deFecha";
             this.deFecha.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.deFecha.Properties.Appearance.Options.UseBackColor = true;
@@ -627,7 +782,7 @@
             // txtPedido
             // 
             this.txtPedido.BackColor = System.Drawing.Color.White;
-            this.txtPedido.Location = new System.Drawing.Point(101, 26);
+            this.txtPedido.Location = new System.Drawing.Point(101, 18);
             this.txtPedido.Name = "txtPedido";
             this.txtPedido.ReadOnly = true;
             this.txtPedido.Size = new System.Drawing.Size(206, 20);
@@ -636,7 +791,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(349, 29);
+            this.label2.Location = new System.Drawing.Point(349, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 1;
@@ -645,7 +800,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 29);
+            this.label1.Location = new System.Drawing.Point(27, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 0;
@@ -683,6 +838,17 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // lblContado
+            // 
+            this.lblContado.AutoSize = true;
+            this.lblContado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContado.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblContado.Location = new System.Drawing.Point(690, 44);
+            this.lblContado.Name = "lblContado";
+            this.lblContado.Size = new System.Drawing.Size(215, 20);
+            this.lblContado.TabIndex = 31;
+            this.lblContado.Text = "AUTORIZADO CONTADO";
+            // 
             // FrmAjustePedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -694,7 +860,7 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAjustePedido";
-            this.Text = "ENVIO A FACTURACIÓN";
+            this.Text = "RESUMEN";
             this.Load += new System.EventHandler(this.FrmAjustePedido_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -721,8 +887,6 @@
         private System.Windows.Forms.ToolStripButton btnGuardar;
         private System.Windows.Forms.ToolStripButton btnSalir;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtUbicacion;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPrioridad;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtOcurredom;
@@ -752,16 +916,9 @@
         private DevExpress.XtraGrid.GridControl gcDetPedido;
         private System.Windows.Forms.BindingSource detallePedidosBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colnum_par;
         private DevExpress.XtraGrid.Columns.GridColumn colcve_art;
-        private DevExpress.XtraGrid.Columns.GridColumn colprec;
-        private DevExpress.XtraGrid.Columns.GridColumn coltotimp4;
-        private DevExpress.XtraGrid.Columns.GridColumn coltot_partida;
         private DevExpress.XtraGrid.Columns.GridColumn colcantsurtido;
         private DevExpress.XtraGrid.Columns.GridColumn coldescr;
-        private DevExpress.XtraGrid.Columns.GridColumn coltdesc;
-        private DevExpress.XtraGrid.Columns.GridColumn colsubto;
-        private DevExpress.XtraGrid.Columns.GridColumn colimporte;
         private DevExpress.XtraGrid.GridControl gcPaquetes;
         private DevExpress.XtraGrid.Views.Grid.GridView gvPaquetes;
         private DevExpress.XtraGrid.Columns.GridColumn colconsec_empaque;
@@ -769,5 +926,30 @@
         private DevExpress.XtraGrid.Columns.GridColumn coltotart;
         private System.Windows.Forms.BindingSource detallePedidoMercBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colempaque;
+        private System.Windows.Forms.TextBox txtNumCli;
+        private System.Windows.Forms.TextBox txtEmpaco;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtSurtio;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtAutorizo;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtNumVendedor;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtOrdenCompra;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtCondiciones;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtFlete;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtConsigna;
+        private System.Windows.Forms.Label label20;
+        private DevExpress.XtraGrid.Columns.GridColumn colcomen;
+        private System.Windows.Forms.TextBox txtCapturo;
+        private System.Windows.Forms.Label label22;
+        private DevExpress.XtraGrid.Columns.GridColumn colvolumen;
+        private DevExpress.XtraGrid.Columns.GridColumn colpeso;
+        private System.Windows.Forms.TextBox txtObservaciones;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblContado;
     }
 }

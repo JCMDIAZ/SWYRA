@@ -76,6 +76,7 @@ namespace swyraServices
             {
                 ModificaPrecios(clt);
             }
+
             List<Cliente> listFbClientes = cargaFbClientes();
             List<Cliente> listDbClientes = cargaDbClientes();
             var clientesAct = listFbClientes.Where(o => listDbClientes.Any(p => p.clave == o.clave)).ToList();
@@ -89,6 +90,7 @@ namespace swyraServices
             {
                 ModificaCliente(clt);
             }
+
             List<Inventario> listFbInventarios = CargaFbInventarios();
             List<Inventario> listDbInventarios = CargaDbInventarios();
             var inventarioAct = listFbInventarios.Where(o => listDbInventarios.Any(p => p.cve_art == o.cve_art)).ToList();
@@ -137,6 +139,24 @@ namespace swyraServices
 
                 ModificaFbPedido(pedFac);
                 ModificaDbPedidos(null, pedFac);
+            }
+
+            List<Pedidos> listDbPedidosGuia = CargaDbPedidosGuia();
+            foreach (var pedGuia in listDbPedidosGuia)
+            {
+                var fac = CargaFbFactura(pedGuia.cve_doc);
+                if (fac != null)
+                {
+                    ModificaFbFactura(fac, pedGuia);
+                    ModificaDbPedidos(null, pedGuia);
+                }
+            }
+
+            List<Pedidos> listDbPedidosCan = CargaDbPedidosCan();
+            foreach (var pedCan in listDbPedidosCan)
+            {
+                ModificaFbPedido(pedCan);
+                ModificaDbPedidos(null, pedCan);
             }
         }
 
@@ -212,9 +232,9 @@ namespace swyraServices
                 var query =
                     "select CLAVE, STATUS, replace(NOMBRE,'''','') NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
                     "CODIGO, MUNICIPIO, ESTADO, PAIS, TELEFONO, CVE_VEND, CVE_OBS, TIPO_EMPRESA, CALLE_ENVIO, " +
-                    "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, " +
+                    "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, CAMPLIB2 FLETE, " +
                     "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM, CLASIFIC " +
-                    "from CLIE01";
+                    "from CLIE01 c LEFT JOIN CLIE_CLIB01 b ON b.CVE_CLIE = c.CLAVE";
                 listFbClientes = GetFbDataTable("FB", query, 21).ToList<Cliente>();
             }
             catch (Exception ex)
@@ -252,7 +272,7 @@ namespace swyraServices
                     "insert CLIENTE (CLAVE, STATUS, NOMBRE, CALLE, NUMINT, NUMEXT, CRUZAMIENTOS, CRUZAMIENTOS2, COLONIA, " +
                     "CODIGO, MUNICIPIO, ESTADO, PAIS, TELEFONO, CVE_VEND, CVE_OBS, TIPO_EMPRESA, CALLE_ENVIO, " +
                     "NUMINT_ENVIO, NUMEXT_ENVIO, CRUZAMIENTOS_ENVIO, CRUZAMIENTOS_ENVIO2, COLONIA_ENVIO, " +
-                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM, CLASIFIC) " +
+                    "LOCALIDAD_ENVIO, MUNICIPIO_ENVIO, ESTADO_ENVIO, PAIS_ENVIO, CODIGO_ENVIO, ULT_COMPM, FCH_ULTCOM, CLASIFIC, FLETE) " +
                     "values ('" + clt.clave + "', '" + clt.status + "', '" + clt.nombre + "', '" + clt.calle + "', '" +
                     clt.numint + "', '" + clt.numext + "', '" + clt.cruzamientos + "', '" + clt.cruzamientos2 + "', '" +
                     clt.colonia + "', '" + clt.codigo + "', '" + clt.municipio + "', '" + clt.estado + "', '" + clt.pais + "', '" +
@@ -261,7 +281,7 @@ namespace swyraServices
                     clt.cruzamientos_envio2 + "', '" + clt.colonia_envio + "', '" + clt.localidad_envio + "', '" +
                     clt.municipio_envio + "', '" + clt.estado_envio + "', '" + clt.pais_envio + "', '" + clt.codigo_envio + "', " +
                     clt.ult_compm.ToString(cultureInfo) + ", " + ((clt.ult_compm == 0.00) ? "NULL" : "'" + clt.fch_ultcom.ToString("yyyy-MM-dd") + "'") + ", '" +
-                    clt.clasific + "' )";
+                    clt.clasific + "', '" + clt.flete + "' )";
                 var res = GetExecute("DB", query, 23);
             }
             catch (Exception ex)
@@ -288,7 +308,7 @@ namespace swyraServices
                     clt.estado_envio + "', PAIS_ENVIO = '" + clt.pais_envio + "', CODIGO_ENVIO = '" +
                     clt.codigo_envio + "', ULT_COMPM = " + clt.ult_compm.ToString(cultureInfo) + ", " + 
                     "FCH_ULTCOM = " + ((clt.ult_compm == 0.00) ? "NULL" : "'" + clt.fch_ultcom.ToString("yyyy-MM-dd") + "'") + ", " +
-                    "CLASIFIC = '" + clt.clasific + "' where CLAVE = '" + clt.clave + "'";
+                    "CLASIFIC = '" + clt.clasific + "', FLETE = '" + clt.flete + "' where CLAVE = '" + clt.clave + "'";
                 var res = GetExecute("DB", query, 24);
             }
             catch (Exception ex)
@@ -303,12 +323,15 @@ namespace swyraServices
             try
             {
                 var query =
-                    "select TIP_DOC, CVE_DOC, CVE_CLPV, STATUS, DAT_MOSTR, CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, FECHA_VEN, " +
-                    "FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, CONDICION, CVE_OBS, " +
+                    "select TIP_DOC, p.CVE_DOC, CVE_CLPV, STATUS, DAT_MOSTR, CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, FECHA_VEN, " +
+                    "FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, CONDICION, p.CVE_OBS, " +
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
-                    "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG " +
-                    "from FACTP01 where FECHA_ENT between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
+                    "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
+                    "STR_OBS OBSERVACIONES, v.NOMBRE NOMBRE_VENDEDOR, (i.CALLE + ' # ' + i.NUMEXT + ' COL. ' + i.COLONIA + '; ' + i.MUNICIPIO + ', ' + i.ESTADO) consignacion " +
+                    "from FACTP01 p LEFT JOIN OBS_DOCF01 o ON p.CVE_OBS = o.CVE_OBS LEFT JOIN VEND01 v ON p.CVE_VEND = v.CVE_VEND " +
+                    "LEFT JOIN INFENVIO01 i ON i.CVE_INFO = p.DAT_ENVIO " +
+                    "where FECHA_ENT between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
                     ffin.ToString("yyyy-MM-dd") + "'";
                 listFbPedidos = GetFbDataTable("FB", query, 6).ToList<Pedidos>();
             }
@@ -398,7 +421,7 @@ namespace swyraServices
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
                     "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
-                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, PRIORIDAD) values ('" +
+                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, PRIORIDAD, OBSERVACIONES, NOMBRE_VENDEDOR, CONSIGNACION) values ('" +
                     p.tip_doc + "', '" + p.cve_doc + "', '" + p.cve_clpv + "', '" + p.status + "', " + p.dat_mostr.ToString() + ", '" + p.cve_vend + "', '" +
                     p.cve_pedi + "', " + p.fecha_doc.ToStrSql() + ", " + p.fecha_ent.ToStrSql() + ", " +
                     p.fecha_ven.ToStrSql() + ", " + p.fecha_cancela.ToStrSql() + ", " + p.can_tot.ToString(cultureInfo) + ", " +
@@ -411,7 +434,7 @@ namespace swyraServices
                     p.cve_bita + ", '" + p.bloq + "', '" + p.formaenvio + "', " + p.des_fin_porc.ToString(cultureInfo) + ", " + p.des_tot_porc.ToString(cultureInfo) + ", " +
                     p.importe.ToString(cultureInfo) + ", " + p.com_tot_porc.ToString(cultureInfo) + ", '" + p.metododepago + "', '" + p.numctapago + "', '" + p.tip_doc_ant + "', '" +
                     p.doc_ant + "', '" + p.tip_doc_sig + "', '" + p.doc_sig + "', '" + p.tiposervicio + "', '" + p.estatuspedido + "', '" +
-                    p.ocurredomicilio + "', '" + cobrador + "', 'NORMAL')";
+                    p.ocurredomicilio + "', '" + cobrador + "', 'NORMAL', '" + p.observaciones + "', '" + p.nombre_vendedor + "', '" + p.consignacion + "' )";
                 var res = GetExecute("DB", query, 8);
 
                 query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
@@ -502,10 +525,10 @@ namespace swyraServices
             try
             {
                 pedDb.status = "C";
-                string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE" };
+                string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE", "MODIFICACION" };
                 if (pedDb.estatuspedido.In(dats))
                 {
-                    pedDb.estatuspedido = (pedDb.estatuspedido == "AUTORIZACION") ? "CANCELACION" : "MODIFICACION";
+                    pedDb.estatuspedido = (pedDb.estatuspedido == "AUTORIZACION") ? "CANCELACION" : "DEVOLUCION";
                     var query = "update PEDIDO set STATUS = '" + pedDb.status + "', " +
                                 "ESTATUSPEDIDO = '" + pedDb.estatuspedido + "' " +
                                 "where CVE_DOC = '" + pedDb.cve_doc + "'";
@@ -568,13 +591,10 @@ namespace swyraServices
                         var res = GetExecute("DB", query, 14);
                         List<DetallePedidos> listFbDetalle = CargaFbDetallePedido(pedFb.cve_doc);
                         List<DetallePedidos> listDbDetalle = CargaDbDetallePedido(pedFb.cve_doc);
-                        var detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art))
-                            .ToList();
+                        var detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();
                         var detalleNuevos = listFbDetalle.Except(detalleAct).ToList();
-                        var detalleExcluidos = listDbDetalle
-                            .Except(listDbDetalle.Where(o => listFbDetalle.Any(p => o.cve_art == p.cve_art))).ToList();
-                        var detalleDiferentes = detalleAct.Except(detalleAct.Where(o =>
-                            listDbDetalle.Any(p => p.cve_art == o.cve_art && p.cant == o.cant))).ToList();
+                        var detalleExcluidos = listDbDetalle.Except(listDbDetalle.Where(o => listFbDetalle.Any(p => o.cve_art == p.cve_art))).ToList();
+                        var detalleDiferentes = detalleAct.Except(detalleAct.Where(o => listDbDetalle.Any(p => p.cve_art == o.cve_art && p.cant == o.cant))).ToList();
                         foreach (var det in detalleNuevos)
                         {
                             GuardaDbDetallePedido(det);
@@ -592,14 +612,35 @@ namespace swyraServices
                 }
                 else if(pedDb.estatuspedido == "FACTURACION")
                 {
+                    var est = (pedDb.ocurredomicilio == "PASAN" || ((pedDb.tiposervicio == "LOCAL" || pedDb.tiposervicio == "LOCAL URGENTE") &&
+                               pedDb.ocurredomicilio == "DOMICILIO")) ? "TERMINADO" : "GUIA";
                     var query = "update PEDIDO set " +
-                                "ESTATUSPEDIDO = 'LEVANTAMIENTO DE GUIAS' " +
-                                "where CVE_DOC = '" + pedFb.cve_doc + "'";
+                                "ESTATUSPEDIDO = '" + est + "' " +
+                                "where CVE_DOC = '" + pedDb.cve_doc + "'";
                     var res = GetExecute("DB", query, 35);
                     query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
-                            pedFb.cve_doc + "', 'LEVANTAMIENTO DE GUIAS', getdate(), null)";
+                            pedFb.cve_doc + "', 'LEVANTAMIENTO', getdate(), null)";
                     res = GetExecute("DB", query, 36);
                 }
+                else if (pedDb.estatuspedido == "INGRESARGUIA")
+                {
+                    var query = "update PEDIDO set ESTATUSPEDIDO = 'TERMINADO' " +
+                                "where CVE_DOC = '" + pedDb.cve_doc + "'";
+                    var res = GetExecute("DB", query, 35);
+                    query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                            pedFb.cve_doc + "', 'TERMINADO', getdate(), null)";
+                    res = GetExecute("DB", query, 36);
+                }
+                else if (pedDb.estatuspedido == "PORCANCELAR")
+                {
+                    var query = "update PEDIDO set ESTATUSPEDIDO = 'CANCELACION' " +
+                                "where CVE_DOC = '" + pedDb.cve_doc + "'";
+                    var res = GetExecute("DB", query, 35);
+                    query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                            pedFb.cve_doc + "', 'CANCELACION', getdate(), null)";
+                    res = GetExecute("DB", query, 36);
+                }
+
             }
             catch (Exception ex)
             {
@@ -712,11 +753,12 @@ namespace swyraServices
                 if(inv.cve_art.In("he2025", "tn3014")) { return; }
                 query =
                     "insert INVENTARIO (CVE_ART, DESCR, LIN_PROD, CON_SERIE, UNI_MED, UNI_EMP, CTRL_ALM, STOCK_MIN, " +
-                    "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, MASTERS, MASTERS_UBI) " +
+                    "STOCK_MAX, FCH_ULTVTA, EXIST, STATUS, MASTERS, MASTERS_UBI, PESO, VOLUMEN) " +
                     "values ('" + inv.cve_art + "', '" + inv.descr + "', '" + inv.lin_prod + "', '" + inv.con_serie + "', '" +
                     inv.uni_med + "', " + inv.uni_emp.ToString(cultureInfo) + ", '" + inv.ctrl_alm + "', " + inv.stock_min + ", " +
                     inv.stock_max.ToString(cultureInfo) + ", " + ((inv.fch_ultvta.Year == 1) ? "Null" : "'" + inv.fch_ultvta.ToString("yyyy-MM-dd") + "'") + ", " +
-                    inv.exist.ToString(cultureInfo) + ", '" + inv.status + "', " + inv.masters.ToString(cultureInfo) + ", '" + inv.masters_ubi + "' )";
+                    inv.exist.ToString(cultureInfo) + ", '" + inv.status + "', " + inv.masters.ToString(cultureInfo) + ", '" + inv.masters_ubi + "', " +
+                    inv.peso + ", " + inv.volumen + ")";
                 var res = GetExecute("DB", query, 19);
             }
             catch (Exception ex)
@@ -766,6 +808,44 @@ namespace swyraServices
             return listDbPedidos;
         }
 
+        private List<Pedidos> CargaDbPedidosGuia()
+        {
+            List<Pedidos> listDbPedidos = new List<Pedidos>();
+            try
+            {
+                var query =
+                    "SELECT p.CVE_DOC, ('A ' + p.OCURREDOMICILIO + ' ' + o.Guias) observaciones FROM PEDIDO p JOIN ( " +
+                    "SELECT d1.CVE_DOC, 'TOTAL DE GUIAS : ' + CAST(COUNT(DISTINCT d1.NUM_GUIA) AS VARCHAR(MAX)) + '; ' + STUFF((select '; ' + " +
+                    "CASE WHEN TIPOPAQUETE IN('ATADOS', 'TARIMA') THEN TIPOPAQUETE + ' C/' + CAST(TOTART AS VARCHAR(2)) ELSE TIPOPAQUETE END + ' NUM. GUIA ' + d2.NUM_GUIA " +
+                    "from DETALLEPEDIDOMERC d2 where d2.NUM_GUIA IS NOT NULL and d2.CVE_DOC = d1.CVE_DOC FOR XML PATH('')), 1, 1, '') Guias " +
+                    "FROM DETALLEPEDIDOMERC d1 WHERE NUM_GUIA IS NOT NULL GROUP BY CVE_DOC) o ON p.CVE_DOC = o.CVE_DOC " +
+                    "WHERE p.ESTATUSPEDIDO = 'INGRESARGUIA' ";
+                listDbPedidos = GetDataTable("DB", query, 30).ToList<Pedidos>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("30: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listDbPedidos;
+        }
+
+        private List<Pedidos> CargaDbPedidosCan()
+        {
+            List<Pedidos> listDbPedidos = new List<Pedidos>();
+            try
+            {
+                var query =
+                    "SELECT CVE_DOC, ESTATUSPEDIDO FROM PEDIDO " +
+                    "WHERE ESTATUSPEDIDO = 'PORCANCELAR' ";
+                listDbPedidos = GetDataTable("DB", query, 30).ToList<Pedidos>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("50: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listDbPedidos;
+        }
+
         private void ModificaFbDetallePedido(DetallePedidos detDB, DetallePedidos detFB)
         {
             try
@@ -807,17 +887,80 @@ namespace swyraServices
         {
             try
             {
-                var query3 = "update PAR_FACTP01 SET CAN_TOT = " + pedFac.can_tot + 
-                             ", IMP_TOT4 = " + pedFac.imp_tot4 + 
-                             ", DES_TOT = " + pedFac.des_tot + 
-                             ", COM_TOT = " + pedFac.com_tot + 
-                             ", IMPORTE = " + pedFac.importe + 
+                var query3 = "";
+                if (pedFac.estatuspedido == "PORCANCELAR")
+                {
+                    query3 = "update PAR_FACTP01 SET STATUS = 'C'" + 
+                             ", FECHA_CANCELA = GETDATE()" +
+                             ", CONDICION = CONDICION + '" + pedFac.indicacion + "' " +
                              "where CVE_DOC = '" + pedFac.cve_doc + "'";
+                }
+                else
+                {
+                    query3 = "update PAR_FACTP01 SET CAN_TOT = " + pedFac.can_tot +
+                             ", IMP_TOT4 = " + pedFac.imp_tot4 +
+                             ", DES_TOT = " + pedFac.des_tot +
+                             ", COM_TOT = " + pedFac.com_tot +
+                             ", IMPORTE = " + pedFac.importe +
+                             ", CONTADO = '" + pedFac.contado + "' " +
+                             "where CVE_DOC = '" + pedFac.cve_doc + "'";
+                }
                 GetFbExecute("FB", query3, 33);
             }
             catch (Exception ex)
             {
                 eventLog1.WriteEntry("33: " + ex.Message, EventLogEntryType.Error);
+            }
+        }
+
+        private Factura CargaFbFactura(string cvedoc)
+        {
+            Factura fac = new Factura();
+            try
+            {
+                var query = "SELECT f.CVE_DOC, f.DOC_ANT, f.DAT_ENVIO, i.CVE_OBS, o.STR_OBS " +
+                            "FROM FACTF01 f LEFT JOIN INFENVIO01 i ON i.CVE_INFO = f.DAT_ENVIO " +
+                            "LEFT JOIN OBS_DOCF01 o ON o.CVE_OBS = i.CVE_OBS " +
+                            "WHERE f.DOC_ANT = '" + cvedoc + "'";
+                fac = GetFbDataTable("FB", query, 40).ToData<Factura>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("40: " + ex.Message, EventLogEntryType.Error);
+            }
+            return fac;
+        }
+
+        private void ModificaFbFactura(Factura fac, Pedidos ped)
+        {
+            try
+            {
+                var query = "";
+                if (fac.dat_envio == 0)
+                {
+                    query = "declare maxdat int" +
+                            "select max(CVE_INFO) + 1 FROM INFENVIO01 INTO maxdat " +
+                            "insert into INFENVIO01 (CVE_INFO) values (maxdat) " +
+                            "update FACTF01 set DAT_ENVIO = maxdat where CVE_DOC = '" + fac.cve_doc + "'";
+                    var res = GetFbExecute("FB", query, 41);
+                    fac = CargaFbFactura(fac.doc_ant);
+                }
+                if (fac.dat_envio == 0)
+                {
+                    query = "declare maxdat int" +
+                            "select max(CVE_OBS) + 1 FROM OBS_DOCF01 INTO maxdat " +
+                            "insert into OBS_DOCF01 (CVE_INFO) values (maxdat) " +
+                            "update INFENVIO01 set CVE_OBS = maxdat where CVE_INFO = '" + fac.dat_envio + "'";
+                    var res = GetFbExecute("FB", query, 42);
+                    fac = CargaFbFactura(fac.doc_ant);
+                }
+                query = "update OBS_DOCF01 set STR_OBS = '" + ped.observaciones +
+                        "' where CVE_OBS = '" + fac.cve_obs + "' ";
+                fac = GetFbDataTable("FB", query, 43).ToData<Factura>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("41: " + ex.Message, EventLogEntryType.Error);
             }
         }
 
