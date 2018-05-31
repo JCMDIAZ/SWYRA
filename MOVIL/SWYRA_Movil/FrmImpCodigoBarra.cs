@@ -6,6 +6,12 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
+using MobilePrinter.TSCWinCE;
+using MobilePrinter.Connectivity;
+using MobilePrinter.BarcodePrinter;
+using MobilePrinter;
 
 namespace SWYRA_Movil
 {
@@ -73,6 +79,8 @@ namespace SWYRA_Movil
                                      "WHERE CVE_ART = '" + inv.cve_art + "'";
                         listCB = Program.GetDataTable(query2, 2).ToList<CodigosBarra>();
                         dgCodigos.DataSource = Program.ToDataTable<CodigosBarra>(listCB, "CodigosBarra");
+                        txtBuscar.Text = "";
+                        txtBuscar.Focus();
                     }
                 }
             }
@@ -94,6 +102,7 @@ namespace SWYRA_Movil
             if (index >= 0)
             {
                 var cdb = dgCodigos[index, 1].ToString();
+                frm2.nmTotalPiezas.Value = decimal.Parse(cdb);
                 frm2.lblTotalPiezas.Enabled = (cdb == "1");
                 frm2.nmTotalPiezas.Enabled = (cdb == "1");
                 DialogResult dr = frm2.ShowDialog();
@@ -103,6 +112,24 @@ namespace SWYRA_Movil
                 }
                 else if (dr == DialogResult.OK)
                 {
+                    TSCBluetooth bt = new TSCBluetooth();
+                    bt.openport("COM0");
+                    string strcdb = dgCodigos[index, 2].ToString() + ((frm2.nmTotalPiezas.Value > 1 && frm2.nmTotalPiezas.Enabled) ? "-" + frm2.nmTotalPiezas.Value : "");
+                    string str = "SIZE 50 mm,28 mm\n" +
+                                 "GAP 0,0\n" +
+                                 "DIRECTION 0\n" +
+                                 "TEXT 185,45,\"2\",0,1,1,\"HERIMSA SA DE CV\"\n" +
+                                 "PUTPCX 70,20,\"dogotuls2.pcx\"\n" +
+                                 "TEXT 70,80,\"1\",0,1,1,\"" + txtDesc.Text.Replace("\\","").Replace("\"","") + "\"\n" +
+                                 "TEXT 70,95,\"1\",0,1,1,\"" + frm2.nmTotalPiezas.Value.ToString() + " Piezas\"\n" +
+                                 "BARCODE 110,110,\"128\",90,1,0,2,2,\"" + strcdb + "\"\n";
+
+                    var directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    bt.clearbuffer();
+                    bt.downloadfile(directoryName + @"\dogotuls2.pcx", "dogotuls2.pcx");
+                    bt.sendcommand(str);
+                    bt.printlabel(1, (int)frm2.nmCantEti.Value);
+
                     MessageBox.Show(@"Se mando la impresión, satisfactoriamente", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     frm2.Close();
                 }

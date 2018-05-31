@@ -209,6 +209,13 @@ namespace SWYRA_Movil
                                     "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
                         var r = Program.GetExecute(query, 9);
                     }
+                    var query2 = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                                 "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                                 "DECLARE @num INT " +
+                                 "SELECT @num = ISNULL(MAX(ID),0) + 1 FROM IMPRESION " +
+                                 "INSERT IMPRESION (ID, FECHA, CVE_DOC, CVE_IMP, IMPRESION) " +
+                                 "VALUES ( @num, GETDATE(), @cvedoc, 1, 'HOJA DE SURTIDO')";
+                    var r2 = Program.GetExecute(query2, 13);
                     foreach (var ubi in frmAreaEmp.lst)
                     {
                         var query = "Declare @cvedoc varchar(20) Select @cvedoc = cve_doc from PEDIDO WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +

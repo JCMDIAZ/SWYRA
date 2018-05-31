@@ -49,6 +49,7 @@
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.2.UI, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraCharts.v16.2.Extensions, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -180,6 +181,12 @@
     <Compile Include="FrmGeneraGuias.Designer.cs">
       <DependentUpon>FrmGeneraGuias.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmImpresion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmImpresion.Designer.cs">
+      <DependentUpon>FrmImpresion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +225,12 @@
     </Compile>
     <Compile Include="XtraReport1.Designer.cs">
       <DependentUpon>XtraReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XtraReport1_Detalle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraReport1_Detalle.Designer.cs">
+      <DependentUpon>XtraReport1_Detalle.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -258,6 +271,9 @@
     <EmbeddedResource Include="FrmGeneraGuias.resx">
       <DependentUpon>FrmGeneraGuias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmImpresion.resx">
+      <DependentUpon>FrmImpresion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XtraReport1.resx">
       <DependentUpon>XtraReport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraReport1_Detalle.resx">
+      <DependentUpon>XtraReport1_Detalle.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="LinqToDB.Templates\DataAnnotations.ttinclude" />
     <None Include="LinqToDB.Templates\DataModel.ttinclude" />
@@ -320,6 +339,7 @@
     <None Include="Properties\DataSources\Areas.datasource" />
     <None Include="Properties\DataSources\DetallePedidoMerc.datasource" />
     <None Include="Properties\DataSources\DetallePedidos.datasource" />
+    <None Include="Properties\DataSources\Impresion.datasource" />
     <None Include="Properties\DataSources\Inventario.datasource" />
     <None Include="Properties\DataSources\InventarioCondicion.datasource" />
     <None Include="Properties\DataSources\InventarioPresentacion.datasource" />

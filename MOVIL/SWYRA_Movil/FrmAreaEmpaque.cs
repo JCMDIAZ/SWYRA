@@ -23,7 +23,7 @@ namespace SWYRA_Movil
         {
             try
             {
-                var query = "select *, false selecionado from UBICACION_ENTREGA where cve_zona = 'EMPAQUE' and " +
+                var query = "select *, cast(0 as bit) selecionado from UBICACION_ENTREGA where cve_zona = 'EMPAQUE' and " +
                             "cve_ubicacion not in ( select distinct UbicacionEmpaque from ( " +
                             "select isnull(p.UbicacionEmpaque, u.UbicacionEmpaque) UbicacionEmpaque from PEDIDO p " +
                             "left join PEDIDO_Ubicacion u on p.CVE_DOC = u.cve_doc " +
@@ -54,7 +54,7 @@ namespace SWYRA_Movil
                 }
                 else
                 {
-                    var query = "select *, false selecionado from UBICACION_ENTREGA where cve_zona = 'EMPAQUE' and " +
+                    var query = "select *, cast(0 as bit) selecionado from UBICACION_ENTREGA where cve_zona = 'EMPAQUE' and " +
                                 "cve_ubicacion in ( select distinct UbicacionEmpaque from ( " +
                                 "select isnull(p.UbicacionEmpaque, u.UbicacionEmpaque) UbicacionEmpaque from PEDIDO p " +
                                 "left join PEDIDO_Ubicacion u on p.CVE_DOC = u.cve_doc " +

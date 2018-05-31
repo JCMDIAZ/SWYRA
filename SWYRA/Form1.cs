@@ -217,5 +217,12 @@ namespace SWYRA
             fUbica.ShowDialog();
             fUbica.Close();
         }
+
+        private void moduloDeImpresiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fImpresion = new FrmImpresion();
+            fImpresion.userActivo = userActivo;
+            fImpresion.Show();
+        }
     }
 }

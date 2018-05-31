@@ -323,12 +323,12 @@ namespace swyraServices
             try
             {
                 var query =
-                    "select TIP_DOC, p.CVE_DOC, CVE_CLPV, STATUS, DAT_MOSTR, CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, FECHA_VEN, " +
+                    "select TIP_DOC, p.CVE_DOC, CVE_CLPV, p.STATUS, DAT_MOSTR, p.CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, FECHA_VEN, " +
                     "FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, CONDICION, p.CVE_OBS, " +
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
                     "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
-                    "STR_OBS OBSERVACIONES, v.NOMBRE NOMBRE_VENDEDOR, (i.CALLE + ' # ' + i.NUMEXT + ' COL. ' + i.COLONIA + '; ' + i.MUNICIPIO + ', ' + i.ESTADO) consignacion " +
+                    "STR_OBS OBSERVACIONES, v.NOMBRE NOMBRE_VENDEDOR, (i.CALLE || ' # ' || i.NUMEXT || ' COL. ' || i.COLONIA || '; ' || i.MUNICIPIO || ', ' || i.ESTADO) consignacion " +
                     "from FACTP01 p LEFT JOIN OBS_DOCF01 o ON p.CVE_OBS = o.CVE_OBS LEFT JOIN VEND01 v ON p.CVE_VEND = v.CVE_VEND " +
                     "LEFT JOIN INFENVIO01 i ON i.CVE_INFO = p.DAT_ENVIO " +
                     "where FECHA_ENT between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
@@ -519,7 +519,6 @@ namespace swyraServices
                 eventLog1.WriteEntry("11: " + ex.Message, EventLogEntryType.Error);
             }
         }
-
         private void CancelaDbPedidos(Pedidos pedDb)
         {
             try

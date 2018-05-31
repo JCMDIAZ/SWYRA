@@ -33,6 +33,7 @@
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activarSwyraMovilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moduloDeImpresiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catalogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +72,7 @@
             this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cambiarContraseñaToolStripMenuItem,
             this.activarSwyraMovilToolStripMenuItem,
+            this.moduloDeImpresiónToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
@@ -79,21 +81,28 @@
             // cambiarContraseñaToolStripMenuItem
             // 
             this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
-            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
             this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
             // 
             // activarSwyraMovilToolStripMenuItem
             // 
             this.activarSwyraMovilToolStripMenuItem.Name = "activarSwyraMovilToolStripMenuItem";
-            this.activarSwyraMovilToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.activarSwyraMovilToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.activarSwyraMovilToolStripMenuItem.Text = "Activar Swyra Movil";
             this.activarSwyraMovilToolStripMenuItem.Click += new System.EventHandler(this.activarSwyraMovilToolStripMenuItem_Click);
+            // 
+            // moduloDeImpresiónToolStripMenuItem
+            // 
+            this.moduloDeImpresiónToolStripMenuItem.Name = "moduloDeImpresiónToolStripMenuItem";
+            this.moduloDeImpresiónToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.moduloDeImpresiónToolStripMenuItem.Text = "Módulo de Impresión";
+            this.moduloDeImpresiónToolStripMenuItem.Click += new System.EventHandler(this.moduloDeImpresiónToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -261,6 +270,7 @@
         private System.Windows.Forms.ToolStripMenuItem remisiónDePedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem activarSwyraMovilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ubicacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moduloDeImpresiónToolStripMenuItem;
     }
 }
 

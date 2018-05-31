@@ -360,4 +360,14 @@ namespace SWYRA
         public int cve_precio { get; set; }
         public double precio { get; set; }
     }
+
+    public class Impresion
+    {
+        public int id { get; set; }
+        public DateTime fecha { get; set; }
+        public string cve_doc { get; set; }
+        public int cve_imp { get; set; }
+        public string impresion { get; set; }
+        public bool realizado { get; set; }
+    }
 }
