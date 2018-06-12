@@ -246,6 +246,7 @@ namespace swyraServices
         public DateTime fch_ultcom { get; set; }
         public string clasific { get; set; }
         public string flete { get; set; }
+        public string flete2 { get; set; }
     }
 
     public class Precios

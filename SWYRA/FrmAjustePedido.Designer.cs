@@ -33,6 +33,7 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAjustePedido));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblContado = new System.Windows.Forms.Label();
             this.gcPaquetes = new DevExpress.XtraGrid.GridControl();
             this.detallePedidoMercBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvPaquetes = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -50,6 +51,7 @@
             this.colvolumen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colpeso = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFlete2 = new System.Windows.Forms.TextBox();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtCapturo = new System.Windows.Forms.TextBox();
@@ -100,7 +102,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
-            this.lblContado = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPaquetes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
@@ -125,6 +127,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(930, 633);
             this.panel1.TabIndex = 0;
+            // 
+            // lblContado
+            // 
+            this.lblContado.AutoSize = true;
+            this.lblContado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContado.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblContado.Location = new System.Drawing.Point(690, 44);
+            this.lblContado.Name = "lblContado";
+            this.lblContado.Size = new System.Drawing.Size(215, 20);
+            this.lblContado.TabIndex = 31;
+            this.lblContado.Text = "AUTORIZADO CONTADO";
             // 
             // gcPaquetes
             // 
@@ -310,6 +323,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtFlete2);
             this.groupBox1.Controls.Add(this.txtObservaciones);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.txtCapturo);
@@ -363,6 +377,15 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Pedido";
+            // 
+            // txtFlete2
+            // 
+            this.txtFlete2.BackColor = System.Drawing.Color.White;
+            this.txtFlete2.Location = new System.Drawing.Point(564, 121);
+            this.txtFlete2.Name = "txtFlete2";
+            this.txtFlete2.ReadOnly = true;
+            this.txtFlete2.Size = new System.Drawing.Size(96, 20);
+            this.txtFlete2.TabIndex = 50;
             // 
             // txtObservaciones
             // 
@@ -425,17 +448,17 @@
             this.txtFlete.Location = new System.Drawing.Point(454, 121);
             this.txtFlete.Name = "txtFlete";
             this.txtFlete.ReadOnly = true;
-            this.txtFlete.Size = new System.Drawing.Size(206, 20);
+            this.txtFlete.Size = new System.Drawing.Size(104, 20);
             this.txtFlete.TabIndex = 43;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(418, 124);
+            this.label19.Location = new System.Drawing.Point(413, 124);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(30, 13);
+            this.label19.Size = new System.Drawing.Size(35, 13);
             this.label19.TabIndex = 42;
-            this.label19.Text = "Flete";
+            this.label19.Text = "Fletes";
             // 
             // txtConsigna
             // 
@@ -811,6 +834,7 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnGuardar,
+            this.btnImprimir,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -838,16 +862,15 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // lblContado
+            // btnImprimir
             // 
-            this.lblContado.AutoSize = true;
-            this.lblContado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContado.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblContado.Location = new System.Drawing.Point(690, 44);
-            this.lblContado.Name = "lblContado";
-            this.lblContado.Size = new System.Drawing.Size(215, 20);
-            this.lblContado.TabIndex = 31;
-            this.lblContado.Text = "AUTORIZADO CONTADO";
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Image = global::SWYRA.Properties.Resources._1366681786_print;
+            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(66, 24);
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // FrmAjustePedido
             // 
@@ -951,5 +974,7 @@
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label lblContado;
+        private System.Windows.Forms.TextBox txtFlete2;
+        private System.Windows.Forms.ToolStripButton btnImprimir;
     }
 }

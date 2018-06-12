@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DevExpress.XtraReports.UI;
 using LinqToDB;
 using static SWYRA.General;
+using System.Net.Sockets;
 
 namespace SWYRA
 {
@@ -589,6 +590,90 @@ namespace SWYRA
                 MessageBox.Show(ex.Message);
             }
             return dets;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // Printer IP Address and communication port
+            string ipAddress = "192.168.1.207";
+            int port = 9100;
+
+            // ZPL Command(s)
+            string ZPLString =
+                "^XA" +
+                "^FO10,10^GFA,870,870,15,,::I02,0066,00FF,00FF8,:00FFC,00FDC,01F9CI03FFC01FF80C7E03FF," +
+                "03FFEI03IF07FFC1IF0IFC,03IFI03F3F8FCFE3IF0IFE,03FFB8003F0F8F83E3EI0F83E,03FFB8003F0F8F83E3EI0F03E," +
+                "03IF8003F0F8F83E3EI0F83E,07FFD8003F0F8F83E3EI0F03E,07FCF8003F0F8F83E3E7F8F83E,07FF8I03F0F8F83E3E7F8F03E," +
+                "0IF8I03F0F8F83E3E4F8F83E,0IF8I03F0F8F83E3E0F8F83E,0IFCI03F0F8F83E3E0F8F83E,1IFEI03F0F8F83E3E0F8F83E," +
+                "1JFC003F0F8F83E3E1F8F87E,1KF003IF8IFE3IF8IFC,1KF003IF07FFC1FF787FFC,3KF8,1KFC,::0KFE03FFE0F8060F8003FF8," +
+                "0KFE07IF1F8060FC007FFC,0KFE077E30F8060F800FDEC,0KFE003E00F8060F800F8,0F1IFE003E00F8060F800F8," + 
+                "0701FCF003E00F8060F800FC,0700FC7003E00F8060F800IFC,07007C3003E00F8060F800IFC,0700741003E00F8060F800IFC," + 
+                "0700741803E00F8060F800IFC,0701F01803E00F8060F8007FFC,0703F00C03E00F8060FCJ07C,0703F00C03E00F8060F8J07C," +
+                "0701700603E00F80E0F8J07C,0700700703E00IFC0IF8IFD,0700700303E007FFC0IF07FF84,0F007W04,0F007,1F00F,0C00F8,J09,0804," +
+                "08C6036CDBJ63923030361E188,19EOFCE7FE7IFEJFBC,1BEDFC9FEIFDE7FEJFEJF3C,1DC8649D08CA4E73466F679959B8,Y08,,^FS" +
+                "^FO130,40^A0,42,50^FDHERIMSA SA DE CV^FS" +
+                "^FO10,78^GB760,110,1,,2^FS" +
+                "^FO20,85^A0,30,25^FDNum.Pedido :^FS" +
+                "^FO160,85^A0,30,30^FD0000197852^FS" +
+                "^FO405,85^A0,30,25^FDFecha :^FS" +
+                "^FO555,85^A0,30,30^FD04 / 06 / 2018^FS" +
+                "^FO20,110^A0,30,25^FDCliente :^FS" +
+                "^FO160,110^A0,30,30^FD(4327) DANIEL OLIVERA GONZALEZ^FS" +
+                "^FO20,135^A0,30,25^FDTipo Servicio:^FS" +
+                "^FO160,135^A0,30,30^FDFORANEO^FS" +
+                "^FO405,135^A0,30,25^FDOcu./ Dom. :^FS" +
+                "^FO555,135^A0,30,30^FDDOMICILIO^FS" +
+                "^FO20,160^A0,30,25^FDPrioridad :^FS" +
+                "^FO160,160^A0,30,30^FDNORMAL^FS" +
+                "^FO405,160^A0,30,25^FDOrden Comp. :^FS" +
+                "^FO555,160^A0,30,30^FD74019^FS" +
+                "^FO10,200^A0,30,75^FB760,1,0,C,0^FR^FDCAJA CARTON^FS" +
+                "^BY4,2,80^FO50,230^BC^FD0000197852-1^FS" +
+                "^FO10,360^A0,50,100^FB760,1,0,C,0^FR^FDCONTADO^FS" +
+                "^FO10,450^A0,25,35^FR^FDContenido :^FS" +
+                "^FO10,470^GB760,530,1,,0^FS" +
+                "^FO20,480^A0,25,20^FD10^FS" +
+                "^FO50,480^A0,25,20^FD(NH2006) TEE DE REPARACION PARA VALVULA Y  PIVOTE^FS" +
+                "^FO610,480^A0,25,20^FD17502215659955^FS" +
+                "^FO20,501^A0,25,20^FD3^FS" +
+                "^FO50,501^A0,25,20^FD(SH9007) CANDADO DE HIERRO 25MM GANCHO CORTO^FS" +
+                "^FO610,501^A0,25,20^FD7502248042369^FS" +
+                "^FO20,522^A0,25,20^FD2^FS" +
+                "^FO50,522^A0,25,20^FD(SH9007) CANDADO DE HIERRO 25MM GANCHO CORTO^FS" +
+                "^FO610,522^A0,25,20^FD7502248042369-2^FS" +
+                "^FO20,543^A0,25,20^FD6^FS" +
+                "^FO50,543^A0,25,20^FD(SH9015) CANDADO DE HIERRO 50MM GANCHO LARGO^FS" +
+                "^FO610,543^A0,25,20^FD17502248040522^FS" +
+                "^FO20,564^A0,25,20^FD6^FS" +
+                "^FO50,564^A0,25,20^FD(SH9013) CANDADO DE HIERRO 38MM GANCHO LARGO^FS" +
+                "^FO610,564^A0,25,20^FD17502248040515^FS" +
+                "^XZ";
+
+            try
+            {
+                // Open connection
+                TcpClient client = new TcpClient();
+                client.Connect(ipAddress, port);
+
+                // Write ZPL String to connection
+                System.IO.StreamWriter writer =
+                    new System.IO.StreamWriter(client.GetStream());
+                writer.Write(ZPLString);
+                writer.Flush();
+
+                // Close Connection
+                writer.Close();
+                client.Close();
+            }
+            catch (Exception ex)
+            {
+                // Catch Exception
+            }
+        }
+
+        private void Test_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

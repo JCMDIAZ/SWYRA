@@ -102,6 +102,7 @@ namespace SWYRA_Movil
             if (index >= 0)
             {
                 var cdb = dgCodigos[index, 1].ToString();
+                var clv = dgCodigos[index, 0].ToString();
                 frm2.nmTotalPiezas.Value = decimal.Parse(cdb);
                 frm2.lblTotalPiezas.Enabled = (cdb == "1");
                 frm2.nmTotalPiezas.Enabled = (cdb == "1");
@@ -112,26 +113,35 @@ namespace SWYRA_Movil
                 }
                 else if (dr == DialogResult.OK)
                 {
-                    TSCBluetooth bt = new TSCBluetooth();
-                    bt.openport("COM0");
-                    string strcdb = dgCodigos[index, 2].ToString() + ((frm2.nmTotalPiezas.Value > 1 && frm2.nmTotalPiezas.Enabled) ? "-" + frm2.nmTotalPiezas.Value : "");
-                    string str = "SIZE 50 mm,28 mm\n" +
-                                 "GAP 0,0\n" +
-                                 "DIRECTION 0\n" +
-                                 "TEXT 185,45,\"2\",0,1,1,\"HERIMSA SA DE CV\"\n" +
-                                 "PUTPCX 70,20,\"dogotuls2.pcx\"\n" +
-                                 "TEXT 70,80,\"1\",0,1,1,\"" + txtDesc.Text.Replace("\\","").Replace("\"","") + "\"\n" +
-                                 "TEXT 70,95,\"1\",0,1,1,\"" + frm2.nmTotalPiezas.Value.ToString() + " Piezas\"\n" +
-                                 "BARCODE 110,110,\"128\",90,1,0,2,2,\"" + strcdb + "\"\n";
+                    try
+                    {
+                        TSCBluetooth bt = new TSCBluetooth();
+                        bt.openport("COM0");
+                        string strcdb = dgCodigos[index, 2].ToString() + ((frm2.nmTotalPiezas.Value > 1 && frm2.nmTotalPiezas.Enabled) ? "-" + frm2.nmTotalPiezas.Value : "");
+                        string str = "SIZE 50 mm,28 mm\n" +
+                                     "GAP 0,0\n" +
+                                     "DIRECTION 0\n" +
+                                     "TEXT 125,20,\"D.FNT\",0,1,1,\"Herramientas Importadas\"\n" +
+                                     "TEXT 125,40,\"D.FNT\",0,1,1,\"Monterrey SA CV\"\n" +
+                                     "PUTPCX 10,5,\"dogotuls2.pcx\"\n" +
+                                     "TEXT 10,65,\"1\",0,1,1,\"" + txtDesc.Text.Replace("\\", "").Replace("\"", "") + "\"\n" +
+                                     "TEXT 10,80,\"1\",0,1,1,\"(" + clv + ")\"\n" +
+                                     "TEXT 290,80,\"1\",0,1,1,\"" + frm2.nmTotalPiezas.Value.ToString() + " Piezas\"\n" +
+                                     "BARCODE 30,95,\"128\",70,1,0,2,2,\"" + strcdb + "\"\n";
 
-                    var directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
-                    bt.clearbuffer();
-                    bt.downloadfile(directoryName + @"\dogotuls2.pcx", "dogotuls2.pcx");
-                    bt.sendcommand(str);
-                    bt.printlabel(1, (int)frm2.nmCantEti.Value);
+                        var directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
+                        bt.clearbuffer();
+                        bt.downloadfile(directoryName + @"\dogotuls2.pcx", "dogotuls2.pcx");
+                        bt.sendcommand(str);
+                        bt.printlabel(1, (int)frm2.nmCantEti.Value);
 
-                    MessageBox.Show(@"Se mando la impresión, satisfactoriamente", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-                    frm2.Close();
+                        MessageBox.Show(@"Se mando la impresión, satisfactoriamente", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                        frm2.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Impresora no disponible.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    }
                 }
             }
             else

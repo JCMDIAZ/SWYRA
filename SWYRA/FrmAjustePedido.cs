@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SWYRA.General;
+using DevExpress.XtraReports.UI;
 
 namespace SWYRA
 {
@@ -15,6 +16,7 @@ namespace SWYRA
     {
         public string cve_doc = "";
         private Pedidos ped = new Pedidos();
+        private List<Pedidos> lsPedidos = new List<Pedidos>();
         private List<DetallePedidos> lsDetallePedidos = new List<DetallePedidos>();
         private List<DetallePedidoMerc> lsDetPedMerc = new List<DetallePedidoMerc>();
         public Usuarios userActivo = new Usuarios();
@@ -57,7 +59,8 @@ namespace SWYRA
                             "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
                             "left join USUARIOS uCapturo on uCapturo.LetraERP = substring(cliente.CLASIFIC,1,1) " +
                             "WHERE(CVE_DOC = '" + cve_doc + "')";
-                ped = GetDataTable("DB", query, 5).ToData<Pedidos>();
+                lsPedidos = GetDataTable("DB", query, 5).ToList<Pedidos>();
+                ped = lsPedidos.FirstOrDefault();
                 query =
                     "SELECT dp.CVE_DOC, dp.NUM_PAR, dp.CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
                     "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, ic.COMENTARIO comen, " +
@@ -180,6 +183,20 @@ namespace SWYRA
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ResumenPedido resumenPedido = new ResumenPedido();
+            resumenPedido.DataSource = lsPedidos;
+            ResumenPedidoAT resumenPedidoAt = new ResumenPedidoAT();
+            resumenPedidoAt.DataSource = lsDetPedMerc;
+            ResumenPedidoDT resumenPedidoDt = new ResumenPedidoDT();
+            resumenPedidoDt.DataSource = lsDetallePedidos;
+
+            resumenPedido.xrSubreport1.ReportSource = resumenPedidoAt;
+            resumenPedido.xrSubreport2.ReportSource = resumenPedidoDt;
+            resumenPedido.ShowPreview();
         }
     }
 }

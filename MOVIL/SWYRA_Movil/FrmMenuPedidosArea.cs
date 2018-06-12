@@ -49,6 +49,13 @@ namespace SWYRA_Movil
                             "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
                             "@cvedoc, '" + estatus + "', getdate(), '" + Program.usActivo.Usuario + "')";
                     r = Program.GetExecute(query, 11);
+                    var query2 = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                                 "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                                 "DECLARE @num INT " +
+                                 "SELECT @num = ISNULL(MAX(ID),0) + 1 FROM IMPRESION " +
+                                 "INSERT IMPRESION (ID, FECHA, CVE_DOC, CVE_IMP, IMPRESION) " +
+                                 "VALUES ( @num, GETDATE(), @cvedoc, 1, 'HOJA DE SURTIDO')";
+                    var r2 = Program.GetExecute(query2, 13);
                     MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     Close();
                 }

@@ -124,11 +124,11 @@ namespace SWYRA
             try
             {
                 var query =
-                    "SELECT CVE_DOC, CONSEC, NUM_PAR, d.CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, " +
-                    "ULTIMO, CANCELADO, TotArt, CONSEC_EMPAQUE, CONSEC_PADRE_GUIA, CVE_ART_GUIA, PRECIO_GUIA, " +
-                    "ASIG_PEDIDO_GUIA, NUM_GUIA,i.DESCR FROM DETALLEPEDIDOMERC d LEFT JOIN INVENTARIO i ON d.CVE_ART = i.CVE_ART " +
-                    "WHERE ISNULL(TIPOPAQUETE,'') = ''AND ISNULL(CANCELADO,0) = 0 AND CVE_DOC = '" + cvedoc + "' " +
-                    "ORDER BY CONSEC";
+                    "SELECT CVE_DOC, d.CVE_ART, CODIGO_BARRA, SUM(CANT) CANT, i.DESCR " +
+                    "FROM DETALLEPEDIDOMERC d LEFT JOIN INVENTARIO i ON d.CVE_ART = i.CVE_ART " +
+                    "WHERE ISNULL(TIPOPAQUETE,'') = '' AND ISNULL(CANCELADO,0) = 0 AND CVE_DOC = '" + cvedoc + "' " +
+                    "GROUP BY CVE_DOC, d.CVE_ART, CODIGO_BARRA, i.DESCR " +
+                    "ORDER BY d.CVE_ART";
                 dets = GetDataTable("DB", query, 3).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)

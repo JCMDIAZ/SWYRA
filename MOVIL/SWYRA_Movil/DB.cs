@@ -175,6 +175,10 @@ namespace SWYRA_Movil
         public double totcostoguias { get; set; }
         public bool solarea { get; set; }
         public string ubicacionempaque { get; set; }
+        public string direccion1 { get; set; }
+        public string direccion2 { get; set; }
+        public string flete { get; set; }
+        public string flete2 { get; set; }
     }
 
     public class DetallePedidos
