@@ -122,7 +122,7 @@ namespace SWYRA_Movil
                                 }
                                 else
                                 {
-                                    DialogResult dr = DialogResult.OK;
+                                    DialogResult dr = DialogResult.Cancel;
                                     if (art.lin_prod.Contains("EXHIB"))
                                     {
                                         FrmSurtir2 frmConf1 = new FrmSurtir2();
@@ -136,7 +136,7 @@ namespace SWYRA_Movil
                                         Lote = frmConf2.txtLote.Text;
                                         frmConf2.Close();
                                     }
-                                    txtCant.ReadOnly = !(cod.cant_piezas == 1 || dr == DialogResult.Cancel);
+                                    //txtCant.ReadOnly = !(cod.cant_piezas == 1 || dr == DialogResult.Cancel);
                                     txtCant.Value = cod.cant_piezas;
                                     actualizaDet();
                                     if (cod.cant_piezas == 1) { txtCant.Focus(); }
@@ -200,10 +200,11 @@ namespace SWYRA_Movil
             if (txtCant.ReadOnly)
             {
                 art.cantsurtido += (double)txtCant.Value;
-                art.cantdiferencia = art.cant - art.cantsurtido;
+                art.con = (art.sel > 0) ? (int)((art.cant - (int)art.cantsurtido - 1) / art.sel) : 0;
+                art.cantdiferencia = art.cant - (art.sel * art.con) - art.cantsurtido;
                 art.surtido = (art.cant == art.cantsurtido);
                 art.exist = (art.exist - (double)txtCant.Value);
-                art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
+                art.ubicacion = (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi));
                 var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
                 art.orden = orb.orden;
                 var confirmar = "IF EXISTS( SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' AND ISNULL(CANCELADO,0) = 0) " +

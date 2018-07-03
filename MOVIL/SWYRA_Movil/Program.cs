@@ -125,6 +125,30 @@ namespace SWYRA_Movil
             }
         }
 
+        public static string ptoImp()
+        {
+            var ip = "";
+            try
+            {
+                var directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
+                StreamReader str = new StreamReader(directoryName + "\\Config.txt");
+                var row = str.ReadLine().Split('=');
+                row = str.ReadLine().Split('='); //Segunda Línea
+                row = str.ReadLine().Split('='); //Tercera Línea
+                if (row[0] != "PTO_IMP")
+                {
+                    MessageBox.Show("Error de configuración, revise Config.txt", "ERROR DE SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button1);
+                    Application.Exit();
+                }
+                ip = row[1];
+                return ip;
+            }
+            catch
+            {
+                throw new ApplicationException(string.Format("No se pudo conectar a la Impresora de Etiquetas."));
+            }
+        }
+
         public static SqlConnection GetConnection()
         {
             var Server = "";

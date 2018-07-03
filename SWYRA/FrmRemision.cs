@@ -34,6 +34,7 @@ namespace SWYRA
         {
             listPedidos = CargaPedidos();
             gridControl1.DataSource = listPedidos;
+            gridView1.OptionsFind.AlwaysVisible = true;
         }
 
         private List<Pedidos> CargaPedidos()

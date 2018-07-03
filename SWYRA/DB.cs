@@ -340,6 +340,7 @@ namespace SWYRA
         public bool cancelado { get; set; }
         public int totart { get; set; }
         public int consec_empaque { get; set; }
+        public string str_consec_empaque { get; set; }
         public int consec_padre_guia { get; set; }
         public string cve_art_guia { get; set; }
         public double precio_guia { get; set; }

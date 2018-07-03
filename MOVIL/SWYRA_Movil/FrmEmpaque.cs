@@ -16,6 +16,7 @@ namespace SWYRA_Movil
         public string cvedoc;
         private Pedidos ped = new Pedidos();
         private List<DetallePedidoMerc> lstPaquetes = new List<DetallePedidoMerc>();
+        private List<DetallePedidoMerc> lstMercancia = new List<DetallePedidoMerc>();
         private int Rini = 530;
         private int Rlim = 981;
         private int Rsal = 30;
@@ -65,6 +66,7 @@ namespace SWYRA_Movil
                 cargaPaquetes();
                 pbImprimir.Visible = validaExis(1);
                 pbConcluir.Visible = validaExis(2);
+                cargaDetalleMerc();
             }
             catch (Exception ex)
             {
@@ -85,6 +87,23 @@ namespace SWYRA_Movil
                     dgPedidos.Select(dgPedidos.CurrentRowIndex);
                     cbTipoEmpaque.Text = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void cargaDetalleMerc()
+        {
+            try
+            {
+                var query = "SELECT CVE_DOC, CONSEC, d.CVE_ART, i.DESCR, CANT, cast(case when CONSEC_PADRE is null then 'NO' else 'SI' END as varchar(5)) ULTIMO " +
+                            "FROM DETALLEPEDIDOMERC d JOIN INVENTARIO i ON i.CVE_ART = d.CVE_ART WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
+                            "AND (ISNULL(CANCELADO, 0) = 0) AND (TIPOPAQUETE IS NULL) ORDER BY CONSEC DESC";
+                lstMercancia = Program.GetDataTable(query, 4).ToList<DetallePedidoMerc>();
+                var pend = lstMercancia.Where(o => o.ultimo == "NO").ToList().Sum(o => o.cant);
+                lblPendientes.Text = "Pendientes " + pend;
             }
             catch (Exception ex)
             {
@@ -176,15 +195,20 @@ namespace SWYRA_Movil
             try
             {
                 var query = "DECLARE @consec int, @consecEmpaque int, @cvedoc varchar(50) " +
-                            "SELECT @cvedoc = CVE_DOC, @consec = (ISNULL(MAX(CONSEC),-1) + 1), " +
-                            "@consecEmpaque = (ISNULL(MAX(CONSEC_EMPAQUE), 0) + 1) FROM DETALLEPEDIDOMERC " +
+                            "SELECT @cvedoc = CVE_DOC, @consec = (ISNULL(MAX(CONSEC),-1) + 1) FROM DETALLEPEDIDOMERC " +
                             "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') GROUP BY CVE_DOC " +
+                            "SELECT @consecEmpaque = (ISNULL(MAX(CONSEC_EMPAQUE), 0) + 1) FROM DETALLEPEDIDOMERC " +
+                            "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
+                            ((cbTipoEmpaque.Text == "ATADOS" || cbTipoEmpaque.Text == "TARIMA") ? "AND TIPOPAQUETE = '" + cbTipoEmpaque.Text + "' " : "AND TIPOPAQUETE NOT IN ('ATADOS', 'TARIMA') ") +
                             "IF @cvedoc IS NOT NULL " +
                             "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, TOTART, CONSEC_EMPAQUE) " +
-                            "VALUES (@cvedoc, @consec, 0, '', '" + ped.cve_doc + "-' + CAST(@consecEmpaque AS VARCHAR(10)), 0, '" + cbTipoEmpaque.Text + "', 0, @consecEmpaque) ";
+                            "VALUES (@cvedoc, @consec, 0, '', '" + ped.cve_doc + "-'" +
+                            ((cbTipoEmpaque.Text == "ATADOS") ? "A" : ((cbTipoEmpaque.Text == "TARIMA") ? "T" : "")) +
+                            " + CAST(@consecEmpaque AS VARCHAR(10)), 0, '" + cbTipoEmpaque.Text + "', 0, @consecEmpaque) ";
                 Program.GetExecute(query, 5);
                 ActualizaPedido();
                 cargaPaquetes();
+                cargaDetalleMerc();
             }
             catch (Exception ex)
             {
@@ -209,6 +233,7 @@ namespace SWYRA_Movil
                         Program.GetExecute(query, 6);
                         ActualizaPedido();
                         cargaPaquetes();
+                        cargaDetalleMerc();
                     }
                 }
                 catch (Exception ex)
@@ -267,6 +292,7 @@ namespace SWYRA_Movil
                 cargaPaquetes();
                 pbImprimir.Visible = validaExis(1);
                 pbConcluir.Visible = validaExis(2);
+                cargaDetalleMerc();
             }
         }
 
@@ -292,6 +318,7 @@ namespace SWYRA_Movil
                 cargaPaquetes();
                 pbImprimir.Visible = validaExis(1);
                 pbConcluir.Visible = validaExis(2);
+                cargaDetalleMerc();
             }
         }
 
@@ -411,6 +438,19 @@ namespace SWYRA_Movil
                         DatosPedido +
                         DatosPaquete +
                         "^XZ";
+
+                    if (paq.tipopaquete == "ATADOS" || paq.tipopaquete == "TARIMA")
+                    {
+                        for (var i = 2; i <= paq.totart; i++)
+                        {
+                            ZPLString +=
+                                "^XA" +
+                                Encabezado +
+                                DatosPedido +
+                                DatosPaquete +
+                                "^XZ";
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -496,6 +536,14 @@ namespace SWYRA_Movil
                 }
             }
             return str;
+        }
+
+        private void pbListado_Click(object sender, EventArgs e)
+        {
+            FrmEmpaqueList frmEmpList = new FrmEmpaqueList();
+            frmEmpList.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
+            frmEmpList.det = lstMercancia.Where(o => o.ultimo == "NO").ToList();
+            frmEmpList.ShowDialog();
         }
     }
 }

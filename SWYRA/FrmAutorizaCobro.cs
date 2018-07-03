@@ -23,6 +23,7 @@ namespace SWYRA
         {
             FiltrarCarga();
             gridControl1.DataSource = listPedidos;
+            gridView1.OptionsFind.AlwaysVisible = true;
         }
 
         private void FiltrarCarga()
@@ -37,7 +38,7 @@ namespace SWYRA
             try
             {
                 var query =
-                    "SELECT  CVE_DOC, CVE_CLPV, FECHA_ENT, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, " +
+                    "SELECT  CVE_DOC, CVE_CLPV, FECHA_ENT, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, FECHA_DOC, " +
                     "CONDICION, RFC, AUTORIZA, FOLIO, CONTADO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, TIPOSERVICIO, ESTATUSPEDIDO, COBRADOR_ASIGNADO, " +
                     "COBRADOR_AUTORIZO, uCobAsig.Nombre cobrador_asignado_n, uCobAut.Nombre cobrador_autorizo_n, cliente.NOMBRE CLIENTE, FECHAAUT " +
                     "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
@@ -161,6 +162,17 @@ namespace SWYRA
                 FiltrarCarga();
                 gridControl1.DataSource = listPedidos;
             }
+        }
+
+        private void btnFactura_Click(object sender, EventArgs e)
+        {
+            var cveDoc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
+            var fAjustePedido = new FrmAjustePedido();
+            fAjustePedido.btnGuardar.Visible = false;
+            fAjustePedido.cve_doc = cveDoc.ToString();
+            fAjustePedido.userActivo = userActivo;
+            fAjustePedido.ShowDialog();
+            fAjustePedido.Close();
         }
     }
 }

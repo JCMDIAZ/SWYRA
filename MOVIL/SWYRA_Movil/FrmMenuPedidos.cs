@@ -35,12 +35,13 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
-                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE " + 
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, OCURREDOMICILIO " + 
                             "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 txtPedido.Text = ped.cve_doc;
                 txtCliente.Text = "(" + ped.cve_clpv + ") " + ped.cliente;
                 txtServicio.Text = ped.tiposervicio;
+                txtOcurrDom.Text = ped.ocurredomicilio;
                 txtPrioridad.Text = ped.prioridad;
                 txtVendedor.Text = ped.cve_vend;
                 CultureInfo culture = new CultureInfo("es-MX");
@@ -49,6 +50,7 @@ namespace SWYRA_Movil
                 pbDetener.Visible = !(ped.estatuspedido.Trim() == "DETENIDO");
                 area = validaExis(true);
                 pbConcluir.Visible = validaExis(false);
+                lblConcluir.Visible = pbConcluir.Visible;
             }
             catch (Exception ex)
             {
@@ -76,6 +78,8 @@ namespace SWYRA_Movil
                     var cdet = det.Where(o => o.surtido == false).ToList().Count;
                     var cdev = dev.Where(o => o.devuelto == false).ToList().Count;
                     res = (cdet == 0 && cdev == 0);
+                    lblPendS.Text = cdet.ToString();
+                    lblPendM.Text = cdev.ToString();
                 }
             }
             catch (Exception ex)
@@ -87,20 +91,22 @@ namespace SWYRA_Movil
 
         private string createQR(bool Area, bool Devuelto)
         {
-            var query = "SELECT a.*, isnull(o.ORDEN,0) ORDEN FROM ( SELECT  CVE_DOC, NUM_PAR, dp.CVE_ART, CANT, ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) " + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ", " +
+            var query = "select a.*, isnull(o.ORDEN,0) ORDEN FROM( select *, " +
+                    "case when sel > 0 then cast(((CANT - ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) - 1) / sel) as int) else 0 end con, " +
+                    "case when (case when sel > 0 then cast(((CANT - ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) - 1) / sel) as int) else 1 end) > 0 then CTRL_ALM " +
+                    "else case when MASTERS_UBI = '' then CTRL_ALM else MASTERS_UBI end end ubicacion, " +
+                    "(CANT - (sel * (case when sel > 0 then cast(((CANT - ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) - 1) / sel) as int) " +
+                    "else 0 end)) - ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0)) CANTDIFERENCIA " +
+                    "from ( SELECT  CVE_DOC, NUM_PAR, dp.CVE_ART, CANT, ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) " + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ", " +
                     "ISNULL(" + (Devuelto ? "DEVUELTO" : "SURTIDO") + ",0) " + (Devuelto ? "DEVUELTO" : "SURTIDO") + ", i.DESCR, i.EXIST, i.LIN_PROD, " +
                     "ISNULL(ic.COMENTARIO,'') COMENTARIO, ISNULL(ic.APLICAEXIST,0) APLICAEXIST, " +
-                    "ISNULL(ic.EXISTENCIA,0) MINEXIST, ISNULL(IC.APLICALOTE,0) APLICALOTE, i.CTRL_ALM, i.MASTERS_UBI, " +
-                    "case when CANT -  ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) > i.MASTERS then " +
-                    "case when isnull(i.MASTERS_UBI,'') <> '' then i.MASTERS_UBI else case when isnull(i.CTRL_ALM,'') <> '' then i.CTRL_ALM else '' END END " +
-	                "else case when isnull(i.CTRL_ALM,'') <> '' then i.CTRL_ALM else '' END END ubicacion, " +
-                    "CANT -  ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) CANTDIFERENCIA, i.UNI_EMP MIN, i.MASTERS MAS " +
+                    "ISNULL(ic.EXISTENCIA,0) MINEXIST, ISNULL(IC.APLICALOTE,0) APLICALOTE, " +
+                    "i.CTRL_ALM, i.MASTERS_UBI, i.UNI_EMP MIN, i.MASTERS MAS, " +
+                    "cast(cast(case when i.MASTERS > 0 then (CANT / i.MASTERS) else 0 end as int) * i.MASTERS as int) sel " +
                     "FROM " + (Devuelto ? "DETALLEPEDIDODEV" : "DETALLEPEDIDO") + " dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "LEFT JOIN INVENTARIOCOND ic ON ic.CVE_ART = dp.CVE_ART AND ic.ACTIVO = 1 " +
-                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "')) AS a " +
-                    "LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
-                    "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' " +
-                    "ORDER BY o.ORDEN";
+                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "')) as c) as a LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
+                    "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' ORDER BY o.ORDEN";
             return query;
         }
 
@@ -131,7 +137,11 @@ namespace SWYRA_Movil
                 var rs = frmDetenerPed.ShowDialog();
                 if (rs == DialogResult.OK)
                 {
-                    var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'DETENIDO' " +
+                    FrmDetenerPedCausa frmCausa = new FrmDetenerPedCausa();
+                    frmCausa.lblPedido.Text = ped.cve_doc.Trim();
+                    frmCausa.ShowDialog();
+                    var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'DETENIDO', " +
+                                "CAUSADETENIDO = '" + frmCausa.txtCausa.Text + "' " +
                                 "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
                     var r = Program.GetExecute(query, 6);
                     query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +

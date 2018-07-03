@@ -179,6 +179,7 @@ namespace SWYRA_Movil
         public string direccion2 { get; set; }
         public string flete { get; set; }
         public string flete2 { get; set; }
+        public string causadetenido { get; set; }
     }
 
     public class DetallePedidos
@@ -238,6 +239,8 @@ namespace SWYRA_Movil
         public double min { get; set; }
         public double mas { get; set; }
         public int orden { get; set; }
+        public int sel { get; set; }
+        public int con { get; set; }
     }
 
     public class DetallePedidoMerc

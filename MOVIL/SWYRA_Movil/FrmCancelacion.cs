@@ -168,7 +168,8 @@ namespace SWYRA_Movil
                 art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
                 var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
                 art.orden = orb.orden;
-                var query = "UPDATE DETALLEPEDIDOMERC SET CANT = CANT - " + txtCant.Value.ToString() + ", CANCELADO = CASE WHEN CANT = 0 THEN 1 ELSE 0 END " +
+                var query = "UPDATE DETALLEPEDIDOMERC SET CANCELADO = CASE WHEN (CANT - " + txtCant.Value.ToString() + ") <= 0 THEN 1 ELSE 0 END, " +
+                            "CANT = CANT - " + txtCant.Value.ToString() + " " +
                             "WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "'  AND ISNULL(CANCELADO,0) = 0) " + 
                             "UPDATE DETALLEPEDIDODEV SET CANTDEVUELTO = " + art.cantdevuelto + ", DEVUELTO = " + ((art.devuelto) ? "1" : "0") +
                             " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() +

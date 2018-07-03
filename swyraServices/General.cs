@@ -160,8 +160,11 @@ namespace swyraServices
             try
             {
                 var sqlCon = GetFbConnection(db);
+                FbTransaction myTR = sqlCon.BeginTransaction();
                 var sqlCmd = new FbCommand(query, sqlCon);
                 sqlCmd.ExecuteNonQuery();
+                myTR.Commit();
+                sqlCmd.Dispose();
                 b = true;
                 CloseFbConnection(sqlCon);
             }

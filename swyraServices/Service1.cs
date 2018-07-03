@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Configuration;
+using System.Diagnostics.Eventing.Reader;
 using static swyraServices.General;
 using System.Globalization;
 using System.Threading;
@@ -52,7 +53,7 @@ namespace swyraServices
         protected override void OnStart(string[] args)
         {
             eventLog1.WriteEntry("In OnStart");
-            timer1.Interval = 2 * 60 * 1000;
+            timer1.Interval = 1 * 60 * 1000;
             timer1.Enabled = true;
         }
 
@@ -390,6 +391,7 @@ namespace swyraServices
         {
             var query = "";
             var seguimiento = "";
+            int index = -1;
             try
             {
                 p.condicion = p.condicion ?? "";
@@ -398,20 +400,20 @@ namespace swyraServices
                 {
                     string[] clvTipoServ = {"L", "F", "LU", "FU"};
                     string[] catTipoServ = {"LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE"};
-                    int index = Array.IndexOf(clvTipoServ, dats[0]);
+                    index = Array.IndexOf(clvTipoServ, dats[0]);
                     p.tiposervicio = (index > 0) ? catTipoServ[index] : "LOCAL";
                 }
                 else if (dats.Length > 1)
                 {
                     string[] clvTipoServ = { "L", "F", "LU", "FU" };
                     string[] catTipoServ = { "LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE" };
-                    int index = Array.IndexOf(clvTipoServ, dats[0]);
+                    index = Array.IndexOf(clvTipoServ, dats[0]);
                     p.tiposervicio = (index > 0) ? catTipoServ[index] : "LOCAL";
 
                     string[] clvTipoDom = { "OCU", "PAS", "DOM" };
                     string[] catTipoDom = { "OCURRE", "PASAN", "DOMICILIO" };
-                    index = Array.IndexOf(clvTipoDom, dats[1]);
-                    p.ocurredomicilio = (index > 0) ? catTipoDom[index] : "OCURRE";
+                    int index2 = Array.IndexOf(clvTipoDom, dats[1]);
+                    p.ocurredomicilio = (index2 > 0) ? catTipoDom[index2] : "OCURRE";
                 }
                 p.estatuspedido = "AUTORIZACION";
                 var cobrador = GetUsuarioIdByERP(p.cve_clpv);
@@ -434,7 +436,7 @@ namespace swyraServices
                     p.cve_bita + ", '" + p.bloq + "', '" + p.formaenvio + "', " + p.des_fin_porc.ToString(cultureInfo) + ", " + p.des_tot_porc.ToString(cultureInfo) + ", " +
                     p.importe.ToString(cultureInfo) + ", " + p.com_tot_porc.ToString(cultureInfo) + ", '" + p.metododepago + "', '" + p.numctapago + "', '" + p.tip_doc_ant + "', '" +
                     p.doc_ant + "', '" + p.tip_doc_sig + "', '" + p.doc_sig + "', '" + p.tiposervicio + "', '" + p.estatuspedido + "', '" +
-                    p.ocurredomicilio + "', '" + cobrador + "', 'NORMAL', '" + p.observaciones + "', '" + p.nombre_vendedor + "', '" + p.consignacion + "' )";
+                    p.ocurredomicilio + "', '" + cobrador + "', '" + ((index > 1) ? "URGENTE" : "NORMAL") + "', '" + p.observaciones + "', '" + p.nombre_vendedor + "', '" + p.consignacion + "' )";
                 var res = GetExecute("DB", query, 8);
 
                 query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
@@ -493,6 +495,25 @@ namespace swyraServices
             return listDbDetalle;
         }
 
+        private List<DetallePedidos> CargaDbDetallePedidoDev(string cvedoc)
+        {
+            List<DetallePedidos> listDbDetalle = new List<DetallePedidos>();
+            try
+            {
+                var query =
+                    "select CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
+                    "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, " +
+                    "TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, CANTDEVUELTO, DEVUELTO " +
+                    "from DETALLEPEDIDODEV where CVE_DOC = '" + cvedoc + "'";
+                listDbDetalle = GetDataTable("DB", query, 10).ToList<DetallePedidos>();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("50: " + ex.Message, EventLogEntryType.Error);
+            }
+            return listDbDetalle;
+        }
+
         private void GuardaDbDetallePedido(DetallePedidos ped)
         {
             try
@@ -519,6 +540,7 @@ namespace swyraServices
                 eventLog1.WriteEntry("11: " + ex.Message, EventLogEntryType.Error);
             }
         }
+
         private void CancelaDbPedidos(Pedidos pedDb)
         {
             try
@@ -590,6 +612,7 @@ namespace swyraServices
                         var res = GetExecute("DB", query, 14);
                         List<DetallePedidos> listFbDetalle = CargaFbDetallePedido(pedFb.cve_doc);
                         List<DetallePedidos> listDbDetalle = CargaDbDetallePedido(pedFb.cve_doc);
+                        List<DetallePedidos> listDbDetalleEx = CargaDbDetallePedidoDev(pedFb.cve_doc);
                         var detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();
                         var detalleNuevos = listFbDetalle.Except(detalleAct).ToList();
                         var detalleExcluidos = listDbDetalle.Except(listDbDetalle.Where(o => listFbDetalle.Any(p => o.cve_art == p.cve_art))).ToList();
@@ -597,6 +620,26 @@ namespace swyraServices
                         foreach (var det in detalleNuevos)
                         {
                             GuardaDbDetallePedido(det);
+                            var detEx = listDbDetalleEx.First(o => o.cve_art == det.cve_art);
+                            if (detEx != null)
+                            {
+                                if (detEx.devuelto == false && detEx.cant > det.cant)
+                                {
+                                    detEx.cant = detEx.cant - det.cant;
+                                    var query2 = "update DETALLEPEDIDODEV set " +
+                                                "CANT = " + detEx.cant + " " +
+                                                "where CVE_DOC = '" + detEx.cve_doc + "' " +
+                                                "and NUM_PAR = " + detEx.num_par;
+                                    GetExecute("DB", query, 51);
+                                }
+                                else if (detEx.devuelto == false && detEx.cant <= det.cant)
+                                {
+                                    var query2 = "delete DETALLEPEDIDODEV " +
+                                                 "where CVE_DOC = '" + detEx.cve_doc + "' " +
+                                                 "and NUM_PAR = " + detEx.num_par;
+                                    GetExecute("DB", query, 52);
+                                }
+                            }
                         }
                         foreach (var det in detalleExcluidos)
                         {

@@ -265,8 +265,8 @@
 		<row><td>NewBinary18</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\InstallStateMenu.ico</td></row>
 		<row><td>NewBinary19</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\Resources\2561.png</td></row>
 		<row><td>NewBinary2</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\New.ibd</td></row>
-		<row><td>NewBinary20</td><td/><td>&lt;ISProductFolder&gt;\Support\Themes\InstallShield Blue Theme\banner.jpg</td></row>
-		<row><td>NewBinary21</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\Resources\2561.png</td></row>
+		<row><td>NewBinary20</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\Resources\banner.jpg</td></row>
+		<row><td>NewBinary21</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\Resources\welcome.jpg</td></row>
 		<row><td>NewBinary3</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\Up.ibd</td></row>
 		<row><td>NewBinary4</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\WarningIcon.ibd</td></row>
 		<row><td>NewBinary5</td><td/><td>&lt;ISProductFolder&gt;\Support\Themes\InstallShield Blue Theme\welcome.jpg</td></row>
@@ -343,83 +343,117 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>DevExpress.Data.v16.2.dll</td><td>{F3884EFA-6214-4961-B02F-E134DB06E5FC}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.data.v16.2.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Charts.v16.2.Core.dll</td><td>{6C90E8CE-6BFD-44DC-9668-7069A6BC89EC}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.charts.v16.2.core</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.CodeParser.v16.2.dll</td><td>{6475A9BD-6534-4433-855D-990F6B817C49}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.codeparser.v16.2.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Data.v16.2.dll</td><td>{1F683540-3EE6-44F1-9CAB-D1D25F5BFFFC}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.data.v16.2.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Data.v16.2.resources.dll</td><td>{44EF42C4-DE24-457F-8473-B35AE650838A}</td><td>DE</td><td>2</td><td/><td>devexpress.data.v16.2.resour</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Data.v16.2.resources.dll1</td><td>{688FF852-2659-47DC-8203-0F818AB4EC37}</td><td>ES</td><td>2</td><td/><td>devexpress.data.v16.2.resour1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Data.v16.2.resources.dll2</td><td>{11673C74-54F7-4F6A-AB0E-4AA0E36C96EA}</td><td>JA</td><td>2</td><td/><td>devexpress.data.v16.2.resour2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Data.v16.2.resources.dll3</td><td>{15F97BA2-6573-44F7-897B-A75E1154B56E}</td><td>RU</td><td>2</td><td/><td>devexpress.data.v16.2.resour3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Office.v16.2.Core.dll</td><td>{1AAC2683-DB27-42BA-9875-878126657E54}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.office.v16.2.core</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.DataAccess.v16.2.UI.dll</td><td>{60E04EBB-040C-410C-B32E-6DDB631F228B}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.dataaccess.v16.2.1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.DataAccess.v16.2.UI.resources.dll</td><td>{13EDF0E0-4792-417A-B434-0BA5CAA85F66}</td><td>ES</td><td>2</td><td/><td>devexpress.dataaccess.v16.2.5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.DataAccess.v16.2.dll</td><td>{B61ADD59-DB49-40CA-9179-0B16BA06862D}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.dataaccess.v16.2.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.DataAccess.v16.2.resources.dll</td><td>{0932A976-E49B-49F7-A483-57151D9593D1}</td><td>ES</td><td>2</td><td/><td>devexpress.dataaccess.v16.2.4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Diagram.v16.2.Core.dll</td><td>{BC1958C0-05DC-4CF6-9A19-B080FA8E7AC0}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.diagram.v16.2.cor</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Diagram.v16.2.Core.resources.dll</td><td>{01481178-1A02-4052-BBC3-EF3AF052CC8C}</td><td>ES</td><td>2</td><td/><td>devexpress.diagram.v16.2.cor2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Office.v16.2.Core.dll</td><td>{1E1A2652-296A-45FC-ACDF-63F03B62F46C}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.office.v16.2.core</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Office.v16.2.Core.resources.dll</td><td>{2C9FF348-D368-47AF-8C30-FEA82270AD73}</td><td>DE</td><td>2</td><td/><td>devexpress.office.v16.2.core2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Office.v16.2.Core.resources.dll1</td><td>{3FF93559-CB30-4243-91DB-66CAFE1E3AB4}</td><td>ES</td><td>2</td><td/><td>devexpress.office.v16.2.core3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Office.v16.2.Core.resources.dll2</td><td>{C826471F-C761-4583-91AF-B2BF6B979E20}</td><td>JA</td><td>2</td><td/><td>devexpress.office.v16.2.core4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Office.v16.2.Core.resources.dll3</td><td>{118772A3-B553-4DE1-8175-A97B739C2273}</td><td>RU</td><td>2</td><td/><td>devexpress.office.v16.2.core5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Pdf.v16.2.Core.dll</td><td>{436828AA-CFC7-44E9-AADD-27D6FDD8AB1B}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.pdf.v16.2.core.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Pdf.v16.2.Core.dll</td><td>{E875CBBD-D8AA-46C7-BCDB-6CCCECED875D}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.pdf.v16.2.core.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Pdf.v16.2.Core.resources.dll</td><td>{D55CDC8E-B279-4B5F-BDE3-66AF90F834A4}</td><td>DE</td><td>2</td><td/><td>devexpress.pdf.v16.2.core.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Pdf.v16.2.Core.resources.dll1</td><td>{198E18C8-3B4D-4E4E-A74D-C3FCB4AE71D0}</td><td>ES</td><td>2</td><td/><td>devexpress.pdf.v16.2.core.re1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Pdf.v16.2.Core.resources.dll2</td><td>{A47EF176-058A-4C94-83A6-3CFAA35E0B7A}</td><td>JA</td><td>2</td><td/><td>devexpress.pdf.v16.2.core.re2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Pdf.v16.2.Core.resources.dll3</td><td>{0FEB1BBF-ECE1-41DE-9CB1-5260E10D50C4}</td><td>RU</td><td>2</td><td/><td>devexpress.pdf.v16.2.core.re3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Printing.v16.2.Core.dll</td><td>{1111228F-7082-430A-B981-A6EF2B0FB25C}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.printing.v16.2.co</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.PivotGrid.v16.2.Core.dll</td><td>{D3646E3B-FE8A-4761-AA40-95223BF5B915}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.pivotgrid.v16.2.c</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.PivotGrid.v16.2.Core.resources.dll</td><td>{77A58D01-78BA-43ED-95A1-FACCB9A7D34F}</td><td>ES</td><td>2</td><td/><td>devexpress.pivotgrid.v16.2.c2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Printing.v16.2.Core.dll</td><td>{7F2BE845-2786-4055-A04C-D7342595C264}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.printing.v16.2.co</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Printing.v16.2.Core.resources.dll</td><td>{A7B3791F-E185-46CB-A2CF-62F23C27E5F4}</td><td>DE</td><td>2</td><td/><td>devexpress.printing.v16.2.co2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Printing.v16.2.Core.resources.dll1</td><td>{36D4F482-9F93-478A-B89A-F06418BC8243}</td><td>ES</td><td>2</td><td/><td>devexpress.printing.v16.2.co3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Printing.v16.2.Core.resources.dll2</td><td>{1C576322-1525-435A-AD62-D89AB39D8771}</td><td>JA</td><td>2</td><td/><td>devexpress.printing.v16.2.co4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Printing.v16.2.Core.resources.dll3</td><td>{B84DAEA7-1978-4A4B-87DD-C033829F7692}</td><td>RU</td><td>2</td><td/><td>devexpress.printing.v16.2.co5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.RichEdit.v16.2.Core.dll</td><td>{C9CAC4BA-E731-4213-87FB-C12A3E4631CA}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.richedit.v16.2.co</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.RichEdit.v16.2.Core.dll</td><td>{A3B99FF3-89ED-4E8F-9F13-421271F01E39}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.richedit.v16.2.co</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>{64569AD1-519D-4DB8-A02A-7A9E3E0CA561}</td><td>DE</td><td>2</td><td/><td>devexpress.richedit.v16.2.co2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.RichEdit.v16.2.Core.resources.dll1</td><td>{CDE37018-8C95-4947-90D8-D5459F244CF5}</td><td>ES</td><td>2</td><td/><td>devexpress.richedit.v16.2.co3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.RichEdit.v16.2.Core.resources.dll2</td><td>{D67AB426-42C5-43B3-935E-88C7318161AE}</td><td>JA</td><td>2</td><td/><td>devexpress.richedit.v16.2.co4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.RichEdit.v16.2.Core.resources.dll3</td><td>{B7452397-386E-43E5-8E9F-5275932F43A8}</td><td>RU</td><td>2</td><td/><td>devexpress.richedit.v16.2.co5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Sparkline.v16.2.Core.dll</td><td>{BA8949D3-1B7F-45BF-82DB-675490CB7955}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.sparkline.v16.2.c</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Sparkline.v16.2.Core.dll</td><td>{B485A936-A2BB-49D6-8C0B-8A8ED0E362A6}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.sparkline.v16.2.c</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>{2D607CED-7095-45B0-B657-5DBC9B565496}</td><td>DE</td><td>2</td><td/><td>devexpress.sparkline.v16.2.c2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Sparkline.v16.2.Core.resources.dll1</td><td>{BFDE5ADB-D6A9-46C3-B70D-E0799371D45D}</td><td>ES</td><td>2</td><td/><td>devexpress.sparkline.v16.2.c3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Sparkline.v16.2.Core.resources.dll2</td><td>{E4E32FFB-C770-4FE5-BEAC-ABAF4F3339A8}</td><td>JA</td><td>2</td><td/><td>devexpress.sparkline.v16.2.c4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Sparkline.v16.2.Core.resources.dll3</td><td>{E2C118BD-8CCF-4648-91C4-9E243C008414}</td><td>RU</td><td>2</td><td/><td>devexpress.sparkline.v16.2.c5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.Utils.v16.2.dll</td><td>{838206C1-4414-4689-A699-321FE540172C}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.utils.v16.2.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Utils.v16.2.UI.dll</td><td>{28FBCE3F-AE41-4FF0-964A-8F7499D142DA}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.utils.v16.2.ui.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Utils.v16.2.UI.resources.dll</td><td>{CB5B6F1D-0DE4-4B85-AA74-0B651D1935A5}</td><td>ES</td><td>2</td><td/><td>devexpress.utils.v16.2.ui.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Utils.v16.2.dll</td><td>{D0522905-ACB7-4631-97A0-081D1E6658A2}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.utils.v16.2.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Utils.v16.2.resources.dll</td><td>{FECCBEC2-E27B-4357-9315-2FEE42FDD7D3}</td><td>DE</td><td>2</td><td/><td>devexpress.utils.v16.2.resou</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Utils.v16.2.resources.dll1</td><td>{E39F8F5A-56B5-4159-B3A8-C55DFA41F822}</td><td>ES</td><td>2</td><td/><td>devexpress.utils.v16.2.resou1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Utils.v16.2.resources.dll2</td><td>{4C2CF23E-E236-43B6-815F-EDF80F8A3B47}</td><td>JA</td><td>2</td><td/><td>devexpress.utils.v16.2.resou2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.Utils.v16.2.resources.dll3</td><td>{1C27461C-9FA8-482B-8617-87960DE14678}</td><td>RU</td><td>2</td><td/><td>devexpress.utils.v16.2.resou3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.XtraBars.v16.2.dll</td><td>{21C4E7CF-5F24-4784-985E-FFB426393991}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtrabars.v16.2.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Xpo.v16.2.dll</td><td>{E83117A6-CD48-4712-8304-7AA208D4CB50}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xpo.v16.2.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.Xpo.v16.2.resources.dll</td><td>{75207E70-9060-4150-A989-E34CB79A318B}</td><td>ES</td><td>2</td><td/><td>devexpress.xpo.v16.2.resourc</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraBars.v16.2.dll</td><td>{B30E4FC9-89A1-4303-8B66-3180133AB658}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtrabars.v16.2.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraBars.v16.2.resources.dll</td><td>{9375D0E2-48AE-438A-9132-327C40C5DB98}</td><td>DE</td><td>2</td><td/><td>devexpress.xtrabars.v16.2.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraBars.v16.2.resources.dll1</td><td>{5001237B-8A10-4EC9-A605-9C3F1F0ED2C3}</td><td>ES</td><td>2</td><td/><td>devexpress.xtrabars.v16.2.re1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraBars.v16.2.resources.dll2</td><td>{1CC0E34B-B433-415E-A2B3-3FF1407FB8D4}</td><td>JA</td><td>2</td><td/><td>devexpress.xtrabars.v16.2.re2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraBars.v16.2.resources.dll3</td><td>{CDAFAF51-E136-4B2C-B563-5924154AA5E1}</td><td>RU</td><td>2</td><td/><td>devexpress.xtrabars.v16.2.re3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.XtraEditors.v16.2.dll</td><td>{C5750013-0124-4F9E-9BF4-653E96FFE25A}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtraeditors.v16.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraCharts.v16.2.Extensions.dll</td><td>{0F0B0180-6DAF-4548-9EC4-60291A508C34}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtracharts.v16.2.1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraCharts.v16.2.Wizard.dll</td><td>{6D2C3DB2-F55D-4BFE-857A-0B7475495371}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtracharts.v16.2.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraCharts.v16.2.Wizard.resources.dll</td><td>{2329CBD3-DEAD-4665-B478-353967A7E01E}</td><td>ES</td><td>2</td><td/><td>devexpress.xtracharts.v16.2.6</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraCharts.v16.2.dll</td><td>{36BD9A27-84B4-4219-9A9B-754AF139DA1C}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtracharts.v16.2.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraCharts.v16.2.resources.dll</td><td>{B0AA2B60-A7AF-4694-8D4D-79D5112391E7}</td><td>ES</td><td>2</td><td/><td>devexpress.xtracharts.v16.2.5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraDiagram.v16.2.dll</td><td>{EB0A0DCE-D08A-4AEB-8F57-698F462CA1AD}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtradiagram.v16.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraEditors.v16.2.dll</td><td>{8D0B9830-8F9A-4254-8E31-3648FA86F58B}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtraeditors.v16.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraEditors.v16.2.resources.dll</td><td>{5C65166A-7F89-4B77-B16E-BF31E13E38A8}</td><td>DE</td><td>2</td><td/><td>devexpress.xtraeditors.v16.22</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraEditors.v16.2.resources.dll1</td><td>{EB575F19-72B7-4E6E-AA24-A5C3F1B22C11}</td><td>ES</td><td>2</td><td/><td>devexpress.xtraeditors.v16.23</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraEditors.v16.2.resources.dll2</td><td>{E8513843-3438-4CDE-8548-9C452D96B033}</td><td>JA</td><td>2</td><td/><td>devexpress.xtraeditors.v16.24</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraEditors.v16.2.resources.dll3</td><td>{B7258DC1-B517-472A-846B-65BBA8C0BF5B}</td><td>RU</td><td>2</td><td/><td>devexpress.xtraeditors.v16.25</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.XtraGrid.v16.2.dll</td><td>{F2E760AD-E99D-41E6-BB8E-ABEECB042AFD}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtragrid.v16.2.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraGauges.v16.2.Core.dll</td><td>{A7B3C803-9703-4015-9C0B-3A7A0E64B183}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtragauges.v16.2.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraGauges.v16.2.Core.resources.dll</td><td>{24E12BD8-E2B5-4D14-A4A2-A675E9137E23}</td><td>ES</td><td>2</td><td/><td>devexpress.xtragauges.v16.2.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraGrid.v16.2.dll</td><td>{1B590B07-F74B-4E2F-A559-E8232A8F0BC4}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtragrid.v16.2.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraGrid.v16.2.resources.dll</td><td>{02CA0168-28A4-4791-82F2-DE03E692C784}</td><td>DE</td><td>2</td><td/><td>devexpress.xtragrid.v16.2.re</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraGrid.v16.2.resources.dll1</td><td>{7961342E-CA8C-4EC4-9B6D-692CF464A44F}</td><td>ES</td><td>2</td><td/><td>devexpress.xtragrid.v16.2.re1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraGrid.v16.2.resources.dll2</td><td>{3BA47C6E-D665-4E41-BD25-A60E1275AFCB}</td><td>JA</td><td>2</td><td/><td>devexpress.xtragrid.v16.2.re2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraGrid.v16.2.resources.dll3</td><td>{76EC842F-79E8-4A07-86C2-A0E076D23EB3}</td><td>RU</td><td>2</td><td/><td>devexpress.xtragrid.v16.2.re3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.XtraLayout.v16.2.dll</td><td>{9A474CA8-60D0-48C4-8BDB-B04D05456845}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtralayout.v16.2.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraLayout.v16.2.dll</td><td>{10BA22F3-3F25-4B40-AFD5-7BA9A2FD90C8}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtralayout.v16.2.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraLayout.v16.2.resources.dll</td><td>{43C1A17F-1F7A-4217-91EF-D713EF1332D6}</td><td>DE</td><td>2</td><td/><td>devexpress.xtralayout.v16.2.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraLayout.v16.2.resources.dll1</td><td>{88B6B647-E121-476C-A066-5D73F22A88E0}</td><td>ES</td><td>2</td><td/><td>devexpress.xtralayout.v16.2.3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraLayout.v16.2.resources.dll2</td><td>{41B5C129-8933-4881-BE3E-38B0F9C5ADE6}</td><td>JA</td><td>2</td><td/><td>devexpress.xtralayout.v16.2.4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraLayout.v16.2.resources.dll3</td><td>{B3495D55-3DC6-4EF6-847A-C224FDDE002F}</td><td>RU</td><td>2</td><td/><td>devexpress.xtralayout.v16.2.5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.XtraPrinting.v16.2.dll</td><td>{BCEE67C3-4A8D-4B82-8C80-14721B4E8192}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtraprinting.v16.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraNavBar.v16.2.dll</td><td>{2D912E51-029E-4380-820C-EB6967727474}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtranavbar.v16.2.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraNavBar.v16.2.resources.dll</td><td>{F518A046-62CA-434F-AEE1-D9416B8ECB94}</td><td>ES</td><td>2</td><td/><td>devexpress.xtranavbar.v16.2.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraPivotGrid.v16.2.dll</td><td>{33D08633-69E3-4AB5-905A-1314DD95DB5B}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtrapivotgrid.v16</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraPivotGrid.v16.2.resources.dll</td><td>{6D6502D6-6D6C-4FAC-BE09-6CAE026184C0}</td><td>ES</td><td>2</td><td/><td>devexpress.xtrapivotgrid.v162</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraPrinting.v16.2.dll</td><td>{B12ADB28-A862-4D3F-9F54-D32F9440A346}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtraprinting.v16.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraPrinting.v16.2.resources.dll</td><td>{956DE224-B732-4AAD-8DF6-6E5B2464F15B}</td><td>DE</td><td>2</td><td/><td>devexpress.xtraprinting.v16.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraPrinting.v16.2.resources.dll1</td><td>{72FB0169-4EDA-4413-9214-03EA1AF33126}</td><td>ES</td><td>2</td><td/><td>devexpress.xtraprinting.v16.3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraPrinting.v16.2.resources.dll2</td><td>{AE8DBA43-4DBF-432F-B8DC-CE5ECA045AA7}</td><td>JA</td><td>2</td><td/><td>devexpress.xtraprinting.v16.4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraPrinting.v16.2.resources.dll3</td><td>{87498DB9-404B-4055-B910-5D61E155CFC9}</td><td>RU</td><td>2</td><td/><td>devexpress.xtraprinting.v16.5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DevExpress.XtraTreeList.v16.2.dll</td><td>{42400F2B-8EE4-467D-A9EA-FD206C688E5A}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtratreelist.v16.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraReports.v16.2.Extensions.dll</td><td>{A6368199-CE0D-475A-B139-C1CD0F786B44}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtrareports.v16.21</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraReports.v16.2.Extensions.resources.dll</td><td>{FBBCB7C4-F32E-4569-8190-46AF25404DC8}</td><td>ES</td><td>2</td><td/><td>devexpress.xtrareports.v16.24</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraReports.v16.2.dll</td><td>{FD35C390-231E-440C-83A5-1272C25B37E3}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtrareports.v16.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraReports.v16.2.resources.dll</td><td>{33D1E14B-D5EE-4359-BA78-9F215D1D856D}</td><td>ES</td><td>2</td><td/><td>devexpress.xtrareports.v16.25</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraRichEdit.v16.2.dll</td><td>{52E614F6-0C63-4665-BCC7-5CE97008B731}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtrarichedit.v16.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraRichEdit.v16.2.resources.dll</td><td>{E367A37B-87A5-4331-B329-254C498C3A42}</td><td>ES</td><td>2</td><td/><td>devexpress.xtrarichedit.v16.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraTreeList.v16.2.dll</td><td>{6E6CB6A6-2F76-4021-B099-E51313B0FAF2}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtratreelist.v16.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraTreeList.v16.2.resources.dll</td><td>{FD7678AC-CEB3-4B02-B3E4-0A96DF9C0A66}</td><td>DE</td><td>2</td><td/><td>devexpress.xtratreelist.v16.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraTreeList.v16.2.resources.dll1</td><td>{B4C69E15-02A3-4F4B-867E-3871410ACC5E}</td><td>ES</td><td>2</td><td/><td>devexpress.xtratreelist.v16.3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraTreeList.v16.2.resources.dll2</td><td>{AE93F4D7-2900-47DC-87AE-3E285203DDF9}</td><td>JA</td><td>2</td><td/><td>devexpress.xtratreelist.v16.4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DevExpress.XtraTreeList.v16.2.resources.dll3</td><td>{B5425BE0-1DE4-41E4-BAB6-9A476B60705F}</td><td>RU</td><td>2</td><td/><td>devexpress.xtratreelist.v16.5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.Firebird.dll</td><td>{EFE15247-23D6-4D9B-AA99-4275EF4119B7}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.firebird.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.SqlServer.dll</td><td>{078E2AF8-EA71-4BE7-B584-73F6BF3FD352}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.sqlserver.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.dll</td><td>{3B73CF8E-DDFA-4152-9B33-AC14C18B4B51}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>FirebirdSql.Data.FirebirdClient.dll</td><td>{B3E2700E-DD2F-4899-9BA0-F58D85D41B01}</td><td>INSTALLDIR</td><td>2</td><td/><td>firebirdsql.data.firebirdcli</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraVerticalGrid.v16.2.dll</td><td>{4055EAA0-DDB8-4DAB-90C3-03CF8699E321}</td><td>INSTALLDIR</td><td>2</td><td/><td>devexpress.xtraverticalgrid.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DevExpress.XtraVerticalGrid.v16.2.resources.dll</td><td>{41A4B18C-43C7-47B9-9B76-DD0E3A739D94}</td><td>ES</td><td>2</td><td/><td>devexpress.xtraverticalgrid.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.Firebird.dll</td><td>{232872F2-8FD6-4059-B7C0-958C1EA3B9B5}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.firebird.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.SqlServer.dll</td><td>{529CCCD5-DFA0-4AF1-BF15-738AC2BFB016}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.sqlserver.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.dll</td><td>{4AD9087A-9A67-46CF-B116-67FB7BA6E93A}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>FirebirdSql.Data.FirebirdClient.dll</td><td>{615AE343-064A-4215-B833-9135111EC647}</td><td>INSTALLDIR</td><td>2</td><td/><td>firebirdsql.data.firebirdcli</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{4C05D9E0-F793-4291-9EE2-9AED02E8FB82}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{9A548D0A-EE07-445A-B6CE-A2423209BEC8}</td><td>DE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{96512D64-6E42-4751-A985-1053C04D2F11}</td><td>ES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT3</td><td>{0C3CB6A2-2950-42FC-8417-6C7926D31DCD}</td><td>JA</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{D5499E3F-CBFA-4322-A579-4F55A0E29ACF}</td><td>RU</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>SWYRA.exe</td><td>{D9FF376C-883D-436B-9C00-8A76470ECD69}</td><td>INSTALLDIR</td><td>2</td><td/><td>swyra.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>SWYRA.vshost.exe</td><td>{6A7842D3-277F-4B42-B618-5E3FF95C1D0C}</td><td>INSTALLDIR</td><td>2</td><td/><td>swyra.vshost.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>linq2db.dll</td><td>{912A4DCC-FEE6-464D-8CE5-2CAA5DED68A7}</td><td>INSTALLDIR</td><td>2</td><td/><td>linq2db.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SWYRA.exe</td><td>{F1B7A51D-743F-4489-AB2A-56450B1C09DD}</td><td>INSTALLDIR</td><td>2</td><td/><td>swyra.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SWYRA.vshost.exe</td><td>{1E7B11F9-5C11-4A92-BAC9-F4F1926C11F4}</td><td>INSTALLDIR</td><td>2</td><td/><td>swyra.vshost.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>linq2db.dll</td><td>{6A94CF47-2C23-4FE9-AB0D-B069CC1EDD8D}</td><td>INSTALLDIR</td><td>2</td><td/><td>linq2db.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -528,7 +562,7 @@
 		<row><td>CustomSetupTips</td><td>OK</td><td>PushButton</td><td>301</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_SetupTips_OK##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>CustomSetupTips</td><td>PartialText</td><td>Text</td><td>60</td><td>130</td><td>300</td><td>20</td><td>3</td><td/><td>##IDS_SetupTips_SubFeaturesInstalledLocal##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>CustomerInformation</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_BACK##</td><td>Next</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>CustomerInformation</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary1</td></row>
+		<row><td>CustomerInformation</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary20</td></row>
 		<row><td>CustomerInformation</td><td>BannerLine</td><td>Line</td><td>0</td><td>44</td><td>374</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>CustomerInformation</td><td>Branding1</td><td>Text</td><td>4</td><td>229</td><td>50</td><td>13</td><td>3</td><td/><td>##IDS_INSTALLSHIELD_FORMATTED##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>CustomerInformation</td><td>Branding2</td><td>Text</td><td>3</td><td>228</td><td>50</td><td>13</td><td>65537</td><td/><td>##IDS_INSTALLSHIELD##</td><td/><td/><td>0</td><td/><td/><td/></row>
@@ -611,17 +645,17 @@
 		<row><td>InstallChangeFolder</td><td>Tail</td><td>PathEdit</td><td>21</td><td>207</td><td>332</td><td>17</td><td>15</td><td>_BrowseProperty</td><td>##IDS__IsBrowseFolderDlg_11##</td><td>OK</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>InstallChangeFolder</td><td>TailText</td><td>Text</td><td>21</td><td>193</td><td>99</td><td>13</td><td>3</td><td/><td>##IDS__IsBrowseFolderDlg_FolderName##</td><td>Tail</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>InstallChangeFolder</td><td>Up</td><td>PushButton</td><td>310</td><td>66</td><td>19</td><td>19</td><td>3670019</td><td/><td/><td>NewFolder</td><td>##IDS__IsBrowseFolderDlg_UpOneLevel##</td><td>0</td><td/><td/><td>NewBinary3</td></row>
-		<row><td>InstallWelcome</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_BACK##</td><td>Copyright</td><td/><td>0</td><td/><td/><td/></row>
+		<row><td>InstallWelcome</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>1</td><td/><td>##IDS_BACK##</td><td>Copyright</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>InstallWelcome</td><td>Cancel</td><td>PushButton</td><td>301</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_CANCEL##</td><td>Back</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>InstallWelcome</td><td>Copyright</td><td>Text</td><td>135</td><td>144</td><td>228</td><td>73</td><td>65539</td><td/><td>##IDS__IsWelcomeDlg_WarningCopyright##</td><td>Next</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>InstallWelcome</td><td>DlgLine</td><td>Line</td><td>0</td><td>234</td><td>374</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>InstallWelcome</td><td>Image</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>234</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary20</td></row>
+		<row><td>InstallWelcome</td><td>Image</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>234</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary21</td></row>
 		<row><td>InstallWelcome</td><td>Next</td><td>PushButton</td><td>230</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_NEXT##</td><td>Cancel</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>InstallWelcome</td><td>TextLine1</td><td>Text</td><td>135</td><td>8</td><td>225</td><td>45</td><td>196611</td><td/><td>##IDS__IsWelcomeDlg_WelcomeProductName##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>InstallWelcome</td><td>TextLine2</td><td>Text</td><td>135</td><td>55</td><td>228</td><td>45</td><td>196611</td><td/><td>##IDS__IsWelcomeDlg_InstallProductName##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>LicenseAgreement</td><td>Agree</td><td>RadioButtonGroup</td><td>8</td><td>190</td><td>291</td><td>40</td><td>3</td><td>AgreeToLicense</td><td/><td>Back</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>LicenseAgreement</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_BACK##</td><td>Next</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>LicenseAgreement</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary1</td></row>
+		<row><td>LicenseAgreement</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary20</td></row>
 		<row><td>LicenseAgreement</td><td>BannerLine</td><td>Line</td><td>0</td><td>44</td><td>374</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>LicenseAgreement</td><td>Branding1</td><td>Text</td><td>4</td><td>229</td><td>50</td><td>13</td><td>3</td><td/><td>##IDS_INSTALLSHIELD_FORMATTED##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>LicenseAgreement</td><td>Branding2</td><td>Text</td><td>3</td><td>228</td><td>50</td><td>13</td><td>65537</td><td/><td>##IDS_INSTALLSHIELD##</td><td/><td/><td>0</td><td/><td/><td/></row>
@@ -686,7 +720,7 @@
 		<row><td>PatchWelcome</td><td>TextLine1</td><td>Text</td><td>135</td><td>8</td><td>225</td><td>45</td><td>196611</td><td/><td>##IDS__IsPatchDlg_WelcomePatchWizard##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>PatchWelcome</td><td>TextLine2</td><td>Text</td><td>135</td><td>54</td><td>228</td><td>45</td><td>196611</td><td/><td>##IDS__IsPatchDlg_PatchClickUpdate##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>ReadmeInformation</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>1048579</td><td/><td>##IDS_BACK##</td><td>Next</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>ReadmeInformation</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>3</td><td/><td/><td>DlgTitle</td><td/><td>0</td><td/><td/><td>NewBinary1</td></row>
+		<row><td>ReadmeInformation</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>3</td><td/><td/><td>DlgTitle</td><td/><td>0</td><td/><td/><td>NewBinary20</td></row>
 		<row><td>ReadmeInformation</td><td>Branding1</td><td>Text</td><td>4</td><td>229</td><td>50</td><td>13</td><td>3</td><td/><td>##IDS_INSTALLSHIELD_FORMATTED##</td><td/><td/><td>0</td><td>0</td><td/><td/></row>
 		<row><td>ReadmeInformation</td><td>Branding2</td><td>Text</td><td>3</td><td>228</td><td>50</td><td>13</td><td>65537</td><td/><td>##IDS_INSTALLSHIELD##</td><td/><td/><td>0</td><td>0</td><td/><td/></row>
 		<row><td>ReadmeInformation</td><td>Cancel</td><td>PushButton</td><td>301</td><td>243</td><td>66</td><td>17</td><td>1048579</td><td/><td>##IDS__IsReadmeDlg_Cancel##</td><td>Readme</td><td/><td>0</td><td/><td/><td/></row>
@@ -696,7 +730,7 @@
 		<row><td>ReadmeInformation</td><td>Next</td><td>PushButton</td><td>230</td><td>243</td><td>66</td><td>17</td><td>1048579</td><td/><td>##IDS_NEXT##</td><td>Cancel</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>ReadmeInformation</td><td>Readme</td><td>ScrollableText</td><td>10</td><td>55</td><td>353</td><td>166</td><td>3</td><td/><td/><td>Banner</td><td/><td>0</td><td/><td>&lt;ISProductFolder&gt;\Redist\0409\Readme.rtf</td><td/></row>
 		<row><td>ReadyToInstall</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_BACK##</td><td>GroupBox1</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>ReadyToInstall</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary1</td></row>
+		<row><td>ReadyToInstall</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary20</td></row>
 		<row><td>ReadyToInstall</td><td>BannerLine</td><td>Line</td><td>0</td><td>44</td><td>374</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>ReadyToInstall</td><td>Branding1</td><td>Text</td><td>4</td><td>229</td><td>50</td><td>13</td><td>3</td><td/><td>##IDS_INSTALLSHIELD_FORMATTED##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>ReadyToInstall</td><td>Branding2</td><td>Text</td><td>3</td><td>228</td><td>50</td><td>13</td><td>65537</td><td/><td>##IDS_INSTALLSHIELD##</td><td/><td/><td>0</td><td/><td/><td/></row>
@@ -755,7 +789,7 @@
 		<row><td>SetupCompleteSuccess</td><td>CheckLaunchReadme</td><td>CheckBox</td><td>151</td><td>148</td><td>10</td><td>9</td><td>2</td><td>LAUNCHREADME</td><td/><td>CheckBoxUpdates</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>SetupCompleteSuccess</td><td>CheckShowMsiLog</td><td>CheckBox</td><td>151</td><td>182</td><td>10</td><td>9</td><td>2</td><td>ISSHOWMSILOG</td><td/><td>Back</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>SetupCompleteSuccess</td><td>DlgLine</td><td>Line</td><td>0</td><td>234</td><td>374</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>SetupCompleteSuccess</td><td>Image</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>234</td><td>1</td><td/><td/><td>CheckLaunchProgram</td><td/><td>0</td><td/><td/><td>NewBinary5</td></row>
+		<row><td>SetupCompleteSuccess</td><td>Image</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>234</td><td>1</td><td/><td/><td>CheckLaunchProgram</td><td/><td>0</td><td/><td/><td>NewBinary21</td></row>
 		<row><td>SetupCompleteSuccess</td><td>LaunchProgramText</td><td>Text</td><td>164</td><td>112</td><td>98</td><td>15</td><td>65538</td><td/><td>##IDS__IsExitDialog_LaunchProgram##</td><td/><td/><td>0</td><td>0</td><td/><td/></row>
 		<row><td>SetupCompleteSuccess</td><td>LaunchReadmeText</td><td>Text</td><td>164</td><td>148</td><td>120</td><td>13</td><td>65538</td><td/><td>##IDS__IsExitDialog_ShowReadMe##</td><td/><td/><td>0</td><td>0</td><td/><td/></row>
 		<row><td>SetupCompleteSuccess</td><td>OK</td><td>PushButton</td><td>230</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS__IsExitDialog_Finish##</td><td>Cancel</td><td/><td>0</td><td/><td/><td/></row>
@@ -800,7 +834,7 @@
 		<row><td>SetupProgress</td><td>ActionProgress95</td><td>ProgressBar</td><td>59</td><td>113</td><td>275</td><td>12</td><td>65537</td><td/><td>##IDS__IsProgressDlg_ProgressDone##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>SetupProgress</td><td>ActionText</td><td>Text</td><td>59</td><td>100</td><td>275</td><td>12</td><td>3</td><td/><td>##IDS__IsProgressDlg_2##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>SetupProgress</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>1</td><td/><td>##IDS_BACK##</td><td>Next</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>SetupProgress</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary1</td></row>
+		<row><td>SetupProgress</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary20</td></row>
 		<row><td>SetupProgress</td><td>BannerLine</td><td>Line</td><td>0</td><td>44</td><td>374</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>SetupProgress</td><td>Branding1</td><td>Text</td><td>4</td><td>229</td><td>50</td><td>13</td><td>3</td><td/><td>##IDS_INSTALLSHIELD_FORMATTED##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>SetupProgress</td><td>Branding2</td><td>Text</td><td>3</td><td>228</td><td>50</td><td>13</td><td>65537</td><td/><td>##IDS_INSTALLSHIELD##</td><td/><td/><td>0</td><td/><td/><td/></row>
@@ -849,7 +883,7 @@
 		<row><td>SplashBitmap</td><td>Branding2</td><td>Text</td><td>3</td><td>228</td><td>50</td><td>13</td><td>65537</td><td/><td>##IDS_INSTALLSHIELD##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>SplashBitmap</td><td>Cancel</td><td>PushButton</td><td>301</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_CANCEL##</td><td>Back</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>SplashBitmap</td><td>DlgLine</td><td>Line</td><td>48</td><td>234</td><td>326</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>SplashBitmap</td><td>Image</td><td>Bitmap</td><td>13</td><td>12</td><td>349</td><td>211</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary21</td></row>
+		<row><td>SplashBitmap</td><td>Image</td><td>Bitmap</td><td>13</td><td>12</td><td>349</td><td>211</td><td>5</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary21</td></row>
 		<row><td>SplashBitmap</td><td>Next</td><td>PushButton</td><td>230</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_NEXT##</td><td>Cancel</td><td/><td>0</td><td/><td/><td/></row>
 	</table>
 
@@ -1143,24 +1177,47 @@
 		<row><td>DE</td><td>DevExpress.XtraTreeList.v16.2.resources.dll</td></row>
 		<row><td>DE</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>ES</td><td>DevExpress.Data.v16.2.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.DataAccess.v16.2.UI.resources.dll</td></row>
+		<row><td>ES</td><td>DevExpress.DataAccess.v16.2.resources.dll</td></row>
+		<row><td>ES</td><td>DevExpress.Diagram.v16.2.Core.resources.dll</td></row>
 		<row><td>ES</td><td>DevExpress.Office.v16.2.Core.resources.dll1</td></row>
 		<row><td>ES</td><td>DevExpress.Pdf.v16.2.Core.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.PivotGrid.v16.2.Core.resources.dll</td></row>
 		<row><td>ES</td><td>DevExpress.Printing.v16.2.Core.resources.dll1</td></row>
 		<row><td>ES</td><td>DevExpress.RichEdit.v16.2.Core.resources.dll1</td></row>
 		<row><td>ES</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.Utils.v16.2.UI.resources.dll</td></row>
 		<row><td>ES</td><td>DevExpress.Utils.v16.2.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.Xpo.v16.2.resources.dll</td></row>
 		<row><td>ES</td><td>DevExpress.XtraBars.v16.2.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.XtraCharts.v16.2.Wizard.resources.dll</td></row>
+		<row><td>ES</td><td>DevExpress.XtraCharts.v16.2.resources.dll</td></row>
 		<row><td>ES</td><td>DevExpress.XtraEditors.v16.2.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.XtraGauges.v16.2.Core.resources.dll</td></row>
 		<row><td>ES</td><td>DevExpress.XtraGrid.v16.2.resources.dll1</td></row>
 		<row><td>ES</td><td>DevExpress.XtraLayout.v16.2.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.XtraNavBar.v16.2.resources.dll</td></row>
+		<row><td>ES</td><td>DevExpress.XtraPivotGrid.v16.2.resources.dll</td></row>
 		<row><td>ES</td><td>DevExpress.XtraPrinting.v16.2.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.XtraReports.v16.2.Extensions.resources.dll</td></row>
+		<row><td>ES</td><td>DevExpress.XtraReports.v16.2.resources.dll</td></row>
+		<row><td>ES</td><td>DevExpress.XtraRichEdit.v16.2.resources.dll</td></row>
 		<row><td>ES</td><td>DevExpress.XtraTreeList.v16.2.resources.dll1</td></row>
+		<row><td>ES</td><td>DevExpress.XtraVerticalGrid.v16.2.resources.dll</td></row>
 		<row><td>ES</td><td>ISX_DEFAULTCOMPONENT2</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.Charts.v16.2.Core.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.CodeParser.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Data.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Data.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Data.v16.2.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Data.v16.2.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Data.v16.2.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.DataAccess.v16.2.UI.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.DataAccess.v16.2.UI.resources.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.DataAccess.v16.2.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.DataAccess.v16.2.resources.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.Diagram.v16.2.Core.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.Diagram.v16.2.Core.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Office.v16.2.Core.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Office.v16.2.Core.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Office.v16.2.Core.resources.dll1</td></row>
@@ -1171,6 +1228,8 @@
 		<row><td>INSTALLDIR</td><td>DevExpress.Pdf.v16.2.Core.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Pdf.v16.2.Core.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Pdf.v16.2.Core.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.PivotGrid.v16.2.Core.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.PivotGrid.v16.2.Core.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Printing.v16.2.Core.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Printing.v16.2.Core.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Printing.v16.2.Core.resources.dll1</td></row>
@@ -1186,21 +1245,33 @@
 		<row><td>INSTALLDIR</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.Utils.v16.2.UI.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.Utils.v16.2.UI.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Utils.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Utils.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Utils.v16.2.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Utils.v16.2.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.Utils.v16.2.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.Xpo.v16.2.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.Xpo.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraBars.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraBars.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraBars.v16.2.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraBars.v16.2.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraBars.v16.2.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraCharts.v16.2.Extensions.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraCharts.v16.2.Wizard.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraCharts.v16.2.Wizard.resources.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraCharts.v16.2.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraCharts.v16.2.resources.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraDiagram.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraEditors.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraEditors.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraEditors.v16.2.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraEditors.v16.2.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraEditors.v16.2.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraGauges.v16.2.Core.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraGauges.v16.2.Core.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraGrid.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraGrid.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraGrid.v16.2.resources.dll1</td></row>
@@ -1211,16 +1282,28 @@
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraLayout.v16.2.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraLayout.v16.2.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraLayout.v16.2.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraNavBar.v16.2.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraNavBar.v16.2.resources.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraPivotGrid.v16.2.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraPivotGrid.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraPrinting.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraPrinting.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraPrinting.v16.2.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraPrinting.v16.2.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraPrinting.v16.2.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraReports.v16.2.Extensions.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraReports.v16.2.Extensions.resources.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraReports.v16.2.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraReports.v16.2.resources.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraRichEdit.v16.2.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraRichEdit.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraTreeList.v16.2.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraTreeList.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraTreeList.v16.2.resources.dll1</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraTreeList.v16.2.resources.dll2</td></row>
 		<row><td>INSTALLDIR</td><td>DevExpress.XtraTreeList.v16.2.resources.dll3</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraVerticalGrid.v16.2.dll</td></row>
+		<row><td>INSTALLDIR</td><td>DevExpress.XtraVerticalGrid.v16.2.resources.dll</td></row>
 		<row><td>INSTALLDIR</td><td>EntityFramework.Firebird.dll</td></row>
 		<row><td>INSTALLDIR</td><td>EntityFramework.SqlServer.dll</td></row>
 		<row><td>INSTALLDIR</td><td>EntityFramework.dll</td></row>
@@ -2076,11 +2159,19 @@
 	<table name="FeatureComponents">
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>AlwaysInstall</td><td>DevExpress.Charts.v16.2.Core.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.CodeParser.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Data.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Data.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Data.v16.2.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Data.v16.2.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Data.v16.2.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.DataAccess.v16.2.UI.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.DataAccess.v16.2.UI.resources.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.DataAccess.v16.2.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.DataAccess.v16.2.resources.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.Diagram.v16.2.Core.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.Diagram.v16.2.Core.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Office.v16.2.Core.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Office.v16.2.Core.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Office.v16.2.Core.resources.dll1</td></row>
@@ -2091,6 +2182,8 @@
 		<row><td>AlwaysInstall</td><td>DevExpress.Pdf.v16.2.Core.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Pdf.v16.2.Core.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Pdf.v16.2.Core.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.PivotGrid.v16.2.Core.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.PivotGrid.v16.2.Core.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Printing.v16.2.Core.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Printing.v16.2.Core.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Printing.v16.2.Core.resources.dll1</td></row>
@@ -2106,21 +2199,33 @@
 		<row><td>AlwaysInstall</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.Utils.v16.2.UI.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.Utils.v16.2.UI.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Utils.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Utils.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Utils.v16.2.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Utils.v16.2.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.Utils.v16.2.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.Xpo.v16.2.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.Xpo.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraBars.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraBars.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraBars.v16.2.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraBars.v16.2.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraBars.v16.2.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraCharts.v16.2.Extensions.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraCharts.v16.2.Wizard.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraCharts.v16.2.Wizard.resources.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraCharts.v16.2.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraCharts.v16.2.resources.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraDiagram.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraEditors.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraEditors.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraEditors.v16.2.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraEditors.v16.2.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraEditors.v16.2.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraGauges.v16.2.Core.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraGauges.v16.2.Core.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraGrid.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraGrid.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraGrid.v16.2.resources.dll1</td></row>
@@ -2131,16 +2236,28 @@
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraLayout.v16.2.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraLayout.v16.2.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraLayout.v16.2.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraNavBar.v16.2.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraNavBar.v16.2.resources.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraPivotGrid.v16.2.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraPivotGrid.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraPrinting.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraPrinting.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraPrinting.v16.2.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraPrinting.v16.2.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraPrinting.v16.2.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraReports.v16.2.Extensions.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraReports.v16.2.Extensions.resources.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraReports.v16.2.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraReports.v16.2.resources.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraRichEdit.v16.2.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraRichEdit.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraTreeList.v16.2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraTreeList.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraTreeList.v16.2.resources.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraTreeList.v16.2.resources.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DevExpress.XtraTreeList.v16.2.resources.dll3</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraVerticalGrid.v16.2.dll</td></row>
+		<row><td>AlwaysInstall</td><td>DevExpress.XtraVerticalGrid.v16.2.resources.dll</td></row>
 		<row><td>AlwaysInstall</td><td>EntityFramework.Firebird.dll</td></row>
 		<row><td>AlwaysInstall</td><td>EntityFramework.SqlServer.dll</td></row>
 		<row><td>AlwaysInstall</td><td>EntityFramework.dll</td></row>
@@ -2167,100 +2284,151 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>devexpress.data.v16.2.dll</td><td>DevExpress.Data.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.Data.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Data.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.charts.v16.2.core</td><td>DevExpress.Charts.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Charts.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Charts.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.codeparser.v16.2.</td><td>DevExpress.CodeParser.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.CodeParser.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.CodeParser.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.data.v16.2.dll</td><td>DevExpress.Data.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.Data.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Data.v16.2.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.data.v16.2.resour</td><td>DevExpress.Data.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Data.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.Data.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.data.v16.2.resour1</td><td>DevExpress.Data.v16.2.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.Data.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.Data.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.data.v16.2.resour2</td><td>DevExpress.Data.v16.2.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.Data.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.Data.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.data.v16.2.resour3</td><td>DevExpress.Data.v16.2.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.Data.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.Data.v16.2.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.data.v16.2.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Data.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Data.v16.2.xml</td><td>1</td><td/></row>
-		<row><td>devexpress.office.v16.2.core</td><td>DevExpress.Office.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Office.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Office.v16.2.Core.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.office.v16.2.core1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Office.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Office.v16.2.Core.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.data.v16.2.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Data.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Data.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.dataaccess.v16.2.</td><td>DevExpress.DataAccess.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.DataAccess.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.DataAccess.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.dataaccess.v16.2.1</td><td>DevExpress.DataAccess.v16.2.UI.dll</td><td>DEVEXP~1.DLL|DevExpress.DataAccess.v16.2.UI.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.DataAccess.v16.2.UI.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.dataaccess.v16.2.2</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.DataAccess.v16.2.UI.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.DataAccess.v16.2.UI.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.dataaccess.v16.2.3</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.DataAccess.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.DataAccess.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.dataaccess.v16.2.4</td><td>DevExpress.DataAccess.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.DataAccess.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.DataAccess.v16.2.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.dataaccess.v16.2.5</td><td>DevExpress.DataAccess.v16.2.UI.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.DataAccess.v16.2.UI.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.DataAccess.v16.2.UI.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.diagram.v16.2.cor</td><td>DevExpress.Diagram.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Diagram.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Diagram.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.diagram.v16.2.cor1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Diagram.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Diagram.v16.2.Core.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.diagram.v16.2.cor2</td><td>DevExpress.Diagram.v16.2.Core.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Diagram.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.Diagram.v16.2.Core.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.office.v16.2.core</td><td>DevExpress.Office.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Office.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Office.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.office.v16.2.core1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Office.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Office.v16.2.Core.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.office.v16.2.core2</td><td>DevExpress.Office.v16.2.Core.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Office.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.Office.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.office.v16.2.core3</td><td>DevExpress.Office.v16.2.Core.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.Office.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.Office.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.office.v16.2.core4</td><td>DevExpress.Office.v16.2.Core.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.Office.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.Office.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.office.v16.2.core5</td><td>DevExpress.Office.v16.2.Core.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.Office.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.Office.v16.2.Core.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.pdf.v16.2.core.dl</td><td>DevExpress.Pdf.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Pdf.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Pdf.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.pdf.v16.2.core.dl</td><td>DevExpress.Pdf.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Pdf.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Pdf.v16.2.Core.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.pdf.v16.2.core.re</td><td>DevExpress.Pdf.v16.2.Core.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Pdf.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.Pdf.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.pdf.v16.2.core.re1</td><td>DevExpress.Pdf.v16.2.Core.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.Pdf.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.Pdf.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.pdf.v16.2.core.re2</td><td>DevExpress.Pdf.v16.2.Core.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.Pdf.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.Pdf.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.pdf.v16.2.core.re3</td><td>DevExpress.Pdf.v16.2.Core.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.Pdf.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.Pdf.v16.2.Core.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.pdf.v16.2.core.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Pdf.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Pdf.v16.2.Core.xml</td><td>1</td><td/></row>
-		<row><td>devexpress.printing.v16.2.co</td><td>DevExpress.Printing.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Printing.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Printing.v16.2.Core.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.printing.v16.2.co1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Printing.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Printing.v16.2.Core.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.pdf.v16.2.core.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Pdf.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Pdf.v16.2.Core.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.pivotgrid.v16.2.c</td><td>DevExpress.PivotGrid.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.PivotGrid.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.PivotGrid.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.pivotgrid.v16.2.c1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.PivotGrid.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.PivotGrid.v16.2.Core.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.pivotgrid.v16.2.c2</td><td>DevExpress.PivotGrid.v16.2.Core.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.PivotGrid.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.PivotGrid.v16.2.Core.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.printing.v16.2.co</td><td>DevExpress.Printing.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Printing.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Printing.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.printing.v16.2.co1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Printing.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Printing.v16.2.Core.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.printing.v16.2.co2</td><td>DevExpress.Printing.v16.2.Core.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Printing.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.Printing.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.printing.v16.2.co3</td><td>DevExpress.Printing.v16.2.Core.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.Printing.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.Printing.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.printing.v16.2.co4</td><td>DevExpress.Printing.v16.2.Core.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.Printing.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.Printing.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.printing.v16.2.co5</td><td>DevExpress.Printing.v16.2.Core.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.Printing.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.Printing.v16.2.Core.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.richedit.v16.2.co</td><td>DevExpress.RichEdit.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.RichEdit.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.RichEdit.v16.2.Core.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.richedit.v16.2.co1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.RichEdit.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.RichEdit.v16.2.Core.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.richedit.v16.2.co</td><td>DevExpress.RichEdit.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.RichEdit.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.RichEdit.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.richedit.v16.2.co1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.RichEdit.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.RichEdit.v16.2.Core.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.richedit.v16.2.co2</td><td>DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.richedit.v16.2.co3</td><td>DevExpress.RichEdit.v16.2.Core.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.richedit.v16.2.co4</td><td>DevExpress.RichEdit.v16.2.Core.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.richedit.v16.2.co5</td><td>DevExpress.RichEdit.v16.2.Core.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.RichEdit.v16.2.Core.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.sparkline.v16.2.c</td><td>DevExpress.Sparkline.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Sparkline.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Sparkline.v16.2.Core.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.sparkline.v16.2.c1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Sparkline.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Sparkline.v16.2.Core.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.sparkline.v16.2.c</td><td>DevExpress.Sparkline.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.Sparkline.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Sparkline.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.sparkline.v16.2.c1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Sparkline.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Sparkline.v16.2.Core.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.sparkline.v16.2.c2</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.sparkline.v16.2.c3</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.sparkline.v16.2.c4</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.sparkline.v16.2.c5</td><td>DevExpress.Sparkline.v16.2.Core.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.Sparkline.v16.2.Core.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.utils.v16.2.dll</td><td>DevExpress.Utils.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.Utils.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Utils.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.utils.v16.2.dll</td><td>DevExpress.Utils.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.Utils.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Utils.v16.2.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.utils.v16.2.resou</td><td>DevExpress.Utils.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Utils.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.Utils.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.utils.v16.2.resou1</td><td>DevExpress.Utils.v16.2.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.Utils.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.Utils.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.utils.v16.2.resou2</td><td>DevExpress.Utils.v16.2.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.Utils.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.Utils.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.utils.v16.2.resou3</td><td>DevExpress.Utils.v16.2.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.Utils.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.Utils.v16.2.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.utils.v16.2.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Utils.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.Utils.v16.2.xml</td><td>1</td><td/></row>
-		<row><td>devexpress.xtrabars.v16.2.dl</td><td>DevExpress.XtraBars.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraBars.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraBars.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.utils.v16.2.ui.dl</td><td>DevExpress.Utils.v16.2.UI.dll</td><td>DEVEXP~1.DLL|DevExpress.Utils.v16.2.UI.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Utils.v16.2.UI.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.utils.v16.2.ui.re</td><td>DevExpress.Utils.v16.2.UI.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Utils.v16.2.UI.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.Utils.v16.2.UI.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.utils.v16.2.ui.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Utils.v16.2.UI.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Utils.v16.2.UI.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.utils.v16.2.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Utils.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Utils.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xpo.v16.2.dll</td><td>DevExpress.Xpo.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.Xpo.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Xpo.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xpo.v16.2.resourc</td><td>DevExpress.Xpo.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.Xpo.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.Xpo.v16.2.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xpo.v16.2.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.Xpo.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.Xpo.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrabars.v16.2.dl</td><td>DevExpress.XtraBars.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraBars.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraBars.v16.2.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtrabars.v16.2.re</td><td>DevExpress.XtraBars.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraBars.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.XtraBars.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtrabars.v16.2.re1</td><td>DevExpress.XtraBars.v16.2.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.XtraBars.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.XtraBars.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtrabars.v16.2.re2</td><td>DevExpress.XtraBars.v16.2.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.XtraBars.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.XtraBars.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtrabars.v16.2.re3</td><td>DevExpress.XtraBars.v16.2.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.XtraBars.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.XtraBars.v16.2.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtrabars.v16.2.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraBars.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraBars.v16.2.xml</td><td>1</td><td/></row>
-		<row><td>devexpress.xtraeditors.v16.2</td><td>DevExpress.XtraEditors.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraEditors.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraEditors.v16.2.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtraeditors.v16.21</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraEditors.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraEditors.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrabars.v16.2.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraBars.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraBars.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtracharts.v16.2.</td><td>DevExpress.XtraCharts.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraCharts.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraCharts.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtracharts.v16.2.1</td><td>DevExpress.XtraCharts.v16.2.Extensions.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraCharts.v16.2.Extensions.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraCharts.v16.2.Extensions.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtracharts.v16.2.2</td><td>DevExpress.XtraCharts.v16.2.Wizard.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraCharts.v16.2.Wizard.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraCharts.v16.2.Wizard.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtracharts.v16.2.3</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraCharts.v16.2.Wizard.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraCharts.v16.2.Wizard.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtracharts.v16.2.4</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraCharts.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraCharts.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtracharts.v16.2.5</td><td>DevExpress.XtraCharts.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraCharts.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraCharts.v16.2.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtracharts.v16.2.6</td><td>DevExpress.XtraCharts.v16.2.Wizard.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraCharts.v16.2.Wizard.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraCharts.v16.2.Wizard.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtradiagram.v16.2</td><td>DevExpress.XtraDiagram.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraDiagram.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraDiagram.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtradiagram.v16.21</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraDiagram.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraDiagram.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtraeditors.v16.2</td><td>DevExpress.XtraEditors.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraEditors.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraEditors.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtraeditors.v16.21</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraEditors.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraEditors.v16.2.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.xtraeditors.v16.22</td><td>DevExpress.XtraEditors.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraEditors.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.XtraEditors.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtraeditors.v16.23</td><td>DevExpress.XtraEditors.v16.2.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.XtraEditors.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.XtraEditors.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtraeditors.v16.24</td><td>DevExpress.XtraEditors.v16.2.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.XtraEditors.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.XtraEditors.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtraeditors.v16.25</td><td>DevExpress.XtraEditors.v16.2.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.XtraEditors.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.XtraEditors.v16.2.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtragrid.v16.2.dl</td><td>DevExpress.XtraGrid.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraGrid.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraGrid.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtragauges.v16.2.</td><td>DevExpress.XtraGauges.v16.2.Core.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraGauges.v16.2.Core.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraGauges.v16.2.Core.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtragauges.v16.2.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraGauges.v16.2.Core.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraGauges.v16.2.Core.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtragauges.v16.2.2</td><td>DevExpress.XtraGauges.v16.2.Core.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraGauges.v16.2.Core.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraGauges.v16.2.Core.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtragrid.v16.2.dl</td><td>DevExpress.XtraGrid.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraGrid.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraGrid.v16.2.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtragrid.v16.2.re</td><td>DevExpress.XtraGrid.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraGrid.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.XtraGrid.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtragrid.v16.2.re1</td><td>DevExpress.XtraGrid.v16.2.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.XtraGrid.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.XtraGrid.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtragrid.v16.2.re2</td><td>DevExpress.XtraGrid.v16.2.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.XtraGrid.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.XtraGrid.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtragrid.v16.2.re3</td><td>DevExpress.XtraGrid.v16.2.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.XtraGrid.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.XtraGrid.v16.2.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtragrid.v16.2.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraGrid.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraGrid.v16.2.xml</td><td>1</td><td/></row>
-		<row><td>devexpress.xtralayout.v16.2.</td><td>DevExpress.XtraLayout.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraLayout.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraLayout.v16.2.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtralayout.v16.2.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraLayout.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraLayout.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtragrid.v16.2.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraGrid.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraGrid.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtralayout.v16.2.</td><td>DevExpress.XtraLayout.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraLayout.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraLayout.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtralayout.v16.2.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraLayout.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraLayout.v16.2.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.xtralayout.v16.2.2</td><td>DevExpress.XtraLayout.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraLayout.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.XtraLayout.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtralayout.v16.2.3</td><td>DevExpress.XtraLayout.v16.2.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.XtraLayout.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.XtraLayout.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtralayout.v16.2.4</td><td>DevExpress.XtraLayout.v16.2.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.XtraLayout.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.XtraLayout.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtralayout.v16.2.5</td><td>DevExpress.XtraLayout.v16.2.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.XtraLayout.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.XtraLayout.v16.2.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtraprinting.v16.</td><td>DevExpress.XtraPrinting.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraPrinting.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraPrinting.v16.2.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtraprinting.v16.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraPrinting.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraPrinting.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtranavbar.v16.2.</td><td>DevExpress.XtraNavBar.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraNavBar.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraNavBar.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtranavbar.v16.2.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraNavBar.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraNavBar.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtranavbar.v16.2.2</td><td>DevExpress.XtraNavBar.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraNavBar.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraNavBar.v16.2.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrapivotgrid.v16</td><td>DevExpress.XtraPivotGrid.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraPivotGrid.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraPivotGrid.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrapivotgrid.v161</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraPivotGrid.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraPivotGrid.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrapivotgrid.v162</td><td>DevExpress.XtraPivotGrid.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraPivotGrid.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraPivotGrid.v16.2.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtraprinting.v16.</td><td>DevExpress.XtraPrinting.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraPrinting.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraPrinting.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtraprinting.v16.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraPrinting.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraPrinting.v16.2.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.xtraprinting.v16.2</td><td>DevExpress.XtraPrinting.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraPrinting.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.XtraPrinting.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtraprinting.v16.3</td><td>DevExpress.XtraPrinting.v16.2.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.XtraPrinting.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.XtraPrinting.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtraprinting.v16.4</td><td>DevExpress.XtraPrinting.v16.2.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.XtraPrinting.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.XtraPrinting.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtraprinting.v16.5</td><td>DevExpress.XtraPrinting.v16.2.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.XtraPrinting.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.XtraPrinting.v16.2.resources.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtratreelist.v16.</td><td>DevExpress.XtraTreeList.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraTreeList.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraTreeList.v16.2.dll</td><td>1</td><td/></row>
-		<row><td>devexpress.xtratreelist.v16.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraTreeList.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\DevExpress.XtraTreeList.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrareports.v16.2</td><td>DevExpress.XtraReports.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraReports.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraReports.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrareports.v16.21</td><td>DevExpress.XtraReports.v16.2.Extensions.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraReports.v16.2.Extensions.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrareports.v16.22</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraReports.v16.2.Extensions.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraReports.v16.2.Extensions.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrareports.v16.23</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraReports.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraReports.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrareports.v16.24</td><td>DevExpress.XtraReports.v16.2.Extensions.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraReports.v16.2.Extensions.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraReports.v16.2.Extensions.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrareports.v16.25</td><td>DevExpress.XtraReports.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraReports.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraReports.v16.2.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrarichedit.v16.</td><td>DevExpress.XtraRichEdit.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraRichEdit.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraRichEdit.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrarichedit.v16.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraRichEdit.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraRichEdit.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtrarichedit.v16.2</td><td>DevExpress.XtraRichEdit.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraRichEdit.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraRichEdit.v16.2.resources.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtratreelist.v16.</td><td>DevExpress.XtraTreeList.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraTreeList.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraTreeList.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtratreelist.v16.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraTreeList.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraTreeList.v16.2.xml</td><td>1</td><td/></row>
 		<row><td>devexpress.xtratreelist.v16.2</td><td>DevExpress.XtraTreeList.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraTreeList.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\de\DevExpress.XtraTreeList.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtratreelist.v16.3</td><td>DevExpress.XtraTreeList.v16.2.resources.dll1</td><td>DEVEXP~1.DLL|DevExpress.XtraTreeList.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\es\DevExpress.XtraTreeList.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtratreelist.v16.4</td><td>DevExpress.XtraTreeList.v16.2.resources.dll2</td><td>DEVEXP~1.DLL|DevExpress.XtraTreeList.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ja\DevExpress.XtraTreeList.v16.2.resources.dll</td><td>1</td><td/></row>
 		<row><td>devexpress.xtratreelist.v16.5</td><td>DevExpress.XtraTreeList.v16.2.resources.dll3</td><td>DEVEXP~1.DLL|DevExpress.XtraTreeList.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\ru\DevExpress.XtraTreeList.v16.2.resources.dll</td><td>1</td><td/></row>
-		<row><td>entityframework.dll</td><td>EntityFramework.dll</td><td>ENTITY~1.DLL|EntityFramework.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\EntityFramework.dll</td><td>1</td><td/></row>
-		<row><td>entityframework.firebird.dll</td><td>EntityFramework.Firebird.dll</td><td>ENTITY~1.DLL|EntityFramework.Firebird.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\EntityFramework.Firebird.dll</td><td>1</td><td/></row>
-		<row><td>entityframework.firebird.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.PDB|EntityFramework.Firebird.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\EntityFramework.Firebird.pdb</td><td>1</td><td/></row>
-		<row><td>entityframework.sqlserver.dl</td><td>EntityFramework.SqlServer.dll</td><td>ENTITY~1.DLL|EntityFramework.SqlServer.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\EntityFramework.SqlServer.dll</td><td>1</td><td/></row>
-		<row><td>entityframework.sqlserver.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.SqlServer.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\EntityFramework.SqlServer.xml</td><td>1</td><td/></row>
-		<row><td>entityframework.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\EntityFramework.xml</td><td>1</td><td/></row>
-		<row><td>firebirdsql.data.firebirdcli</td><td>FirebirdSql.Data.FirebirdClient.dll</td><td>FIREBI~1.DLL|FirebirdSql.Data.FirebirdClient.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\FirebirdSql.Data.FirebirdClient.dll</td><td>1</td><td/></row>
-		<row><td>firebirdsql.data.firebirdcli1</td><td>ISX_DEFAULTCOMPONENT</td><td>FIREBI~1.PDB|FirebirdSql.Data.FirebirdClient.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\FirebirdSql.Data.FirebirdClient.pdb</td><td>1</td><td/></row>
-		<row><td>linq2db.dll</td><td>linq2db.dll</td><td>linq2db.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\linq2db.dll</td><td>1</td><td/></row>
-		<row><td>linq2db.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>linq2db.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\linq2db.pdb</td><td>1</td><td/></row>
-		<row><td>swyra.exe</td><td>SWYRA.exe</td><td>SWYRA.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\SWYRA.exe</td><td>1</td><td/></row>
-		<row><td>swyra.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAE~1.CON|SWYRA.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\SWYRA.exe.config</td><td>1</td><td/></row>
-		<row><td>swyra.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRA.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\SWYRA.pdb</td><td>1</td><td/></row>
-		<row><td>swyra.vshost.exe</td><td>SWYRA.vshost.exe</td><td>SWYRAV~1.EXE|SWYRA.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\SWYRA.vshost.exe</td><td>1</td><td/></row>
-		<row><td>swyra.vshost.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAV~1.CON|SWYRA.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\SWYRA.vshost.exe.config</td><td>1</td><td/></row>
-		<row><td>swyra.vshost.exe.manifest</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAV~1.MAN|SWYRA.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Release\SWYRA.vshost.exe.manifest</td><td>1</td><td/></row>
+		<row><td>devexpress.xtraverticalgrid.</td><td>DevExpress.XtraVerticalGrid.v16.2.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraVerticalGrid.v16.2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraVerticalGrid.v16.2.dll</td><td>1</td><td/></row>
+		<row><td>devexpress.xtraverticalgrid.1</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVEXP~1.XML|DevExpress.XtraVerticalGrid.v16.2.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\DevExpress.XtraVerticalGrid.v16.2.xml</td><td>1</td><td/></row>
+		<row><td>devexpress.xtraverticalgrid.2</td><td>DevExpress.XtraVerticalGrid.v16.2.resources.dll</td><td>DEVEXP~1.DLL|DevExpress.XtraVerticalGrid.v16.2.resources.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\es\DevExpress.XtraVerticalGrid.v16.2.resources.dll</td><td>1</td><td/></row>
+		<row><td>entityframework.dll</td><td>EntityFramework.dll</td><td>ENTITY~1.DLL|EntityFramework.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\EntityFramework.dll</td><td>1</td><td/></row>
+		<row><td>entityframework.firebird.dll</td><td>EntityFramework.Firebird.dll</td><td>ENTITY~1.DLL|EntityFramework.Firebird.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\EntityFramework.Firebird.dll</td><td>1</td><td/></row>
+		<row><td>entityframework.firebird.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.PDB|EntityFramework.Firebird.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\EntityFramework.Firebird.pdb</td><td>1</td><td/></row>
+		<row><td>entityframework.sqlserver.dl</td><td>EntityFramework.SqlServer.dll</td><td>ENTITY~1.DLL|EntityFramework.SqlServer.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\EntityFramework.SqlServer.dll</td><td>1</td><td/></row>
+		<row><td>entityframework.sqlserver.xm</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.SqlServer.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\EntityFramework.SqlServer.xml</td><td>1</td><td/></row>
+		<row><td>entityframework.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>ENTITY~1.XML|EntityFramework.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\EntityFramework.xml</td><td>1</td><td/></row>
+		<row><td>firebirdsql.data.firebirdcli</td><td>FirebirdSql.Data.FirebirdClient.dll</td><td>FIREBI~1.DLL|FirebirdSql.Data.FirebirdClient.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\FirebirdSql.Data.FirebirdClient.dll</td><td>1</td><td/></row>
+		<row><td>firebirdsql.data.firebirdcli1</td><td>ISX_DEFAULTCOMPONENT</td><td>FIREBI~1.PDB|FirebirdSql.Data.FirebirdClient.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\FirebirdSql.Data.FirebirdClient.pdb</td><td>1</td><td/></row>
+		<row><td>linq2db.dll</td><td>linq2db.dll</td><td>linq2db.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\linq2db.dll</td><td>1</td><td/></row>
+		<row><td>linq2db.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>linq2db.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\linq2db.pdb</td><td>1</td><td/></row>
+		<row><td>linq2db.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>linq2db.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\linq2db.xml</td><td>1</td><td/></row>
+		<row><td>swyra.exe</td><td>SWYRA.exe</td><td>SWYRA.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.exe</td><td>1</td><td/></row>
+		<row><td>swyra.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAE~1.CON|SWYRA.exe.Config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.exe.Config</td><td>1</td><td/></row>
+		<row><td>swyra.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRA.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.pdb</td><td>1</td><td/></row>
+		<row><td>swyra.vshost.exe</td><td>SWYRA.vshost.exe</td><td>SWYRAV~1.EXE|SWYRA.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.vshost.exe</td><td>1</td><td/></row>
+		<row><td>swyra.vshost.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAV~1.CON|SWYRA.vshost.exe.Config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.vshost.exe.Config</td><td>1</td><td/></row>
+		<row><td>swyra.vshost.exe.manifest</td><td>ISX_DEFAULTCOMPONENT</td><td>SWYRAV~1.MAN|SWYRA.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.vshost.exe.manifest</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2402,83 +2570,117 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>DevExpress.Data.v16.2.dll</td><td/><td/><td>_C3254A75_F626_40D4_A2D3_DCF3CCAE420D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Charts.v16.2.Core.dll</td><td/><td/><td>_4177DFD1_2D36_49A7_A490_AFE4A6DACEE3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.CodeParser.v16.2.dll</td><td/><td/><td>_6B25853F_817E_488B_A1D4_FED30B64FAF4_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Data.v16.2.dll</td><td/><td/><td>_8ACE4F50_B52F_438B_BF1A_C89871D7AFB3_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Data.v16.2.resources.dll</td><td/><td/><td>_23E2F422_4E12_4047_B063_150C41F22E37_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Data.v16.2.resources.dll1</td><td/><td/><td>_FE09D741_528A_4E6B_B68E_9F62FAE16AD1_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Data.v16.2.resources.dll2</td><td/><td/><td>_FBBA38B9_B4D6_4D80_B00C_BCF24A050D1E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Data.v16.2.resources.dll3</td><td/><td/><td>_59F6476F_ACAA_45BE_B82A_03D94DA8EBF2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Office.v16.2.Core.dll</td><td/><td/><td>_FB41AA93_0A83_416E_B34D_69A037732D2E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.DataAccess.v16.2.UI.dll</td><td/><td/><td>_E0EF4198_2387_41A9_A9E9_911D2D0ADEE7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.DataAccess.v16.2.UI.resources.dll</td><td/><td/><td>_62A30E4F_92AB_47D7_AE35_017FACE66D52_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.DataAccess.v16.2.dll</td><td/><td/><td>_FA58E3AC_15ED_4478_86D0_C5BAA2031295_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.DataAccess.v16.2.resources.dll</td><td/><td/><td>_47858708_14E3_41E9_8482_65506D3E125D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Diagram.v16.2.Core.dll</td><td/><td/><td>_9264E3BF_C809_4A71_8867_D02FE01C7760_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Diagram.v16.2.Core.resources.dll</td><td/><td/><td>_A1014B9C_8734_44A3_A2B2_D565A7D3BD8C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Office.v16.2.Core.dll</td><td/><td/><td>_319C19C6_9AAA_47DB_864C_63230D9CDA96_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Office.v16.2.Core.resources.dll</td><td/><td/><td>_C70EB475_7F96_4A46_90A2_4FF91C907A2F_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Office.v16.2.Core.resources.dll1</td><td/><td/><td>_84D6EAE2_63FB_4B53_B234_FFFF3A255DC0_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Office.v16.2.Core.resources.dll2</td><td/><td/><td>_F7B71607_4C03_498D_8BD7_A05943366E4B_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Office.v16.2.Core.resources.dll3</td><td/><td/><td>_0912DFD6_892F_4E22_A532_7C2B1BC57411_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Pdf.v16.2.Core.dll</td><td/><td/><td>_BBB0D7F1_7C21_44B1_AAC8_0FF1970FD3D9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Pdf.v16.2.Core.dll</td><td/><td/><td>_01DB8082_DE88_411A_9FEE_7DA3FB840B18_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Pdf.v16.2.Core.resources.dll</td><td/><td/><td>_EA1BCE0A_D52B_4329_BADF_0DA52F03AAC2_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Pdf.v16.2.Core.resources.dll1</td><td/><td/><td>_EF5A90E7_41C3_4D67_A962_F04D13E6BC99_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Pdf.v16.2.Core.resources.dll2</td><td/><td/><td>_42FDFF21_2247_44C8_ABFD_600C71A847FC_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Pdf.v16.2.Core.resources.dll3</td><td/><td/><td>_920829EF_1D84_46E4_AD08_0B8462C51434_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Printing.v16.2.Core.dll</td><td/><td/><td>_5BA62BA3_9780_4484_A7EB_707AAB0EBB8E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.PivotGrid.v16.2.Core.dll</td><td/><td/><td>_30640FC7_3E2B_46EA_9D12_B9BAD8B926CB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.PivotGrid.v16.2.Core.resources.dll</td><td/><td/><td>_6B046B8B_4029_45B5_9505_546E6FCFCC82_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Printing.v16.2.Core.dll</td><td/><td/><td>_9EB57767_C39C_4F3D_9645_9A096AB49411_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Printing.v16.2.Core.resources.dll</td><td/><td/><td>_3F12DC6B_1A68_4063_B98A_37D1242254F1_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Printing.v16.2.Core.resources.dll1</td><td/><td/><td>_AF14E489_589D_45D0_980C_3C734E150C19_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Printing.v16.2.Core.resources.dll2</td><td/><td/><td>_205B1171_7389_49B5_9936_A2F0648AEED4_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Printing.v16.2.Core.resources.dll3</td><td/><td/><td>_F1C4467D_B23E_4C66_8BE6_2C2C465610B8_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.RichEdit.v16.2.Core.dll</td><td/><td/><td>_19AC4423_1D63_442E_A090_AE18B5831DA3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.RichEdit.v16.2.Core.dll</td><td/><td/><td>_F2127958_CFE5_403B_9612_F7B0DE75250E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.RichEdit.v16.2.Core.resources.dll</td><td/><td/><td>_A72553F3_64A4_479B_8F5B_8DDC2B26EE1A_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.RichEdit.v16.2.Core.resources.dll1</td><td/><td/><td>_4E272226_FE72_4194_879D_22E36A650BAC_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.RichEdit.v16.2.Core.resources.dll2</td><td/><td/><td>_2F97CD69_EE3E_4D62_B49B_959D3E216884_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.RichEdit.v16.2.Core.resources.dll3</td><td/><td/><td>_F6DD6E44_66DD_4158_A520_CA2FAB1D23A2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Sparkline.v16.2.Core.dll</td><td/><td/><td>_05938C27_5953_44E9_BF3A_AB4DC306B1E1_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Sparkline.v16.2.Core.dll</td><td/><td/><td>_6F6AFD78_66F1_4C04_B6F3_636A51D772DE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Sparkline.v16.2.Core.resources.dll</td><td/><td/><td>_366B1A62_2B87_4969_8E74_FEC3BADC280D_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Sparkline.v16.2.Core.resources.dll1</td><td/><td/><td>_0ACADBAB_250B_47AD_9ADD_F2361ACE9BC4_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Sparkline.v16.2.Core.resources.dll2</td><td/><td/><td>_B05CB2A4_B7C1_4103_B93A_5714333664DE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Sparkline.v16.2.Core.resources.dll3</td><td/><td/><td>_36080A9E_D9DA_453F_88DE_667B7F2F305D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.Utils.v16.2.dll</td><td/><td/><td>_D6EE8FDC_EE1F_4F4A_A865_F38BCCF814EF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Utils.v16.2.UI.dll</td><td/><td/><td>_6381A64D_154A_4B91_ABB8_4F7363EDF28E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Utils.v16.2.UI.resources.dll</td><td/><td/><td>_BDD45F8E_A506_4168_AE6E_FA9554878DD8_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Utils.v16.2.dll</td><td/><td/><td>_AB79F4A1_030F_4844_B172_7A6FE2D33DE8_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Utils.v16.2.resources.dll</td><td/><td/><td>_3EB4F0B1_35E1_45B0_A62A_09DD07A31DB6_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Utils.v16.2.resources.dll1</td><td/><td/><td>_AD0B8E01_C7A7_48C7_BF35_31D80219BEB6_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Utils.v16.2.resources.dll2</td><td/><td/><td>_76C10545_19E4_4592_9E6F_1CCDD5791AA4_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.Utils.v16.2.resources.dll3</td><td/><td/><td>_ABB1F6CE_9CEB_4CE1_BF44_52A5C15BF2A2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.XtraBars.v16.2.dll</td><td/><td/><td>_FFC0D241_B0A2_4FE0_8826_2CB3F5CD6628_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Xpo.v16.2.dll</td><td/><td/><td>_AD07AC80_621D_4CC3_B8D8_E3C91734EF1B_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.Xpo.v16.2.resources.dll</td><td/><td/><td>_71A251AC_0CF7_4555_8902_7CA36665C150_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraBars.v16.2.dll</td><td/><td/><td>_906FC377_1D9A_4A5B_9734_B261C04CE065_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraBars.v16.2.resources.dll</td><td/><td/><td>_F6F2648D_AE4A_4300_A245_BE713E6E23EF_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraBars.v16.2.resources.dll1</td><td/><td/><td>_34620A3D_4F31_4BB4_B7C1_3F7C7D58531B_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraBars.v16.2.resources.dll2</td><td/><td/><td>_7243EE50_4F5F_4135_B589_3CA512D4E923_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraBars.v16.2.resources.dll3</td><td/><td/><td>_6B6F9261_C83F_4DCC_B24A_44566C35C4C5_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.XtraEditors.v16.2.dll</td><td/><td/><td>_E0354028_D5EF_49AC_92A8_CBDBC52043C1_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraCharts.v16.2.Extensions.dll</td><td/><td/><td>_146F2E92_A29D_4E2C_A8A0_7A8B1DFDF904_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraCharts.v16.2.Wizard.dll</td><td/><td/><td>_C655E689_8B92_4CA6_86EE_E6428126F4E3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraCharts.v16.2.Wizard.resources.dll</td><td/><td/><td>_3442E61F_EB94_4275_97E5_EF8A529B7F70_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraCharts.v16.2.dll</td><td/><td/><td>_9EF7DEBF_4D95_457C_B62B_30084C3E3135_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraCharts.v16.2.resources.dll</td><td/><td/><td>_64A80873_A1DE_42D2_9921_C37E0C5A9384_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraDiagram.v16.2.dll</td><td/><td/><td>_F4A08B17_5C31_406A_A3E6_19E21788275F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraEditors.v16.2.dll</td><td/><td/><td>_A6F2ADE7_0C20_4D96_9195_7F774C624862_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraEditors.v16.2.resources.dll</td><td/><td/><td>_2000EB93_8D2A_434F_8299_71B6F742E248_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraEditors.v16.2.resources.dll1</td><td/><td/><td>_68FC1D9C_A60F_40D9_9B9B_A338B5AEEE1E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraEditors.v16.2.resources.dll2</td><td/><td/><td>_29CD7EC1_B99B_4700_85A5_866BA8C55A92_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraEditors.v16.2.resources.dll3</td><td/><td/><td>_FC854AC5_BAC2_4D28_91D2_17A7E88D4F2F_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.XtraGrid.v16.2.dll</td><td/><td/><td>_4174CAE8_F703_4590_94D8_30FFBB6AF562_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraGauges.v16.2.Core.dll</td><td/><td/><td>_F247937E_333C_4B33_A700_C23878B5BFF9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraGauges.v16.2.Core.resources.dll</td><td/><td/><td>_9D27FA80_B763_45EB_975C_8A481A779A1C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraGrid.v16.2.dll</td><td/><td/><td>_B6C60C32_FF99_4989_909A_0AD59EFAFAC5_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraGrid.v16.2.resources.dll</td><td/><td/><td>_5FA970E8_39C0_4313_95C6_033015E881C3_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraGrid.v16.2.resources.dll1</td><td/><td/><td>_7A8A4457_6884_4C7A_AAAC_1D4FD7B041BD_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraGrid.v16.2.resources.dll2</td><td/><td/><td>_BB834C3E_D016_4B8B_AF04_5610FB5D9B6F_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraGrid.v16.2.resources.dll3</td><td/><td/><td>_3C04D8A2_17CD_4014_BDA2_384D73213CB5_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.XtraLayout.v16.2.dll</td><td/><td/><td>_52E1355C_2D43_419F_BBF9_A00D62CDB0FB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraLayout.v16.2.dll</td><td/><td/><td>_F67F6CC2_5D82_4E75_873E_C9159D90F349_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraLayout.v16.2.resources.dll</td><td/><td/><td>_38535235_1346_44EC_BF8F_475A8E17DB65_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraLayout.v16.2.resources.dll1</td><td/><td/><td>_6E2339DA_362B_4AF0_A027_C25B2F275461_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraLayout.v16.2.resources.dll2</td><td/><td/><td>_587F769D_8615_4BA6_BED1_FEB47B4D93A5_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraLayout.v16.2.resources.dll3</td><td/><td/><td>_B6C07F2D_0592_4E96_9100_2FED2F86DA21_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.XtraPrinting.v16.2.dll</td><td/><td/><td>_E44A1FED_C3E3_44DF_913C_344532E00E9C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraNavBar.v16.2.dll</td><td/><td/><td>_AED4DE7E_938B_483D_B353_C9E8FB651E45_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraNavBar.v16.2.resources.dll</td><td/><td/><td>_FE8CFA1C_CC0B_4E84_BD1D_A46017A7D62E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraPivotGrid.v16.2.dll</td><td/><td/><td>_7112D6C5_61E4_427D_9CA2_21197E5DD6F3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraPivotGrid.v16.2.resources.dll</td><td/><td/><td>_4A038FD1_05DC_4EE8_A095_19CEFA02868A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraPrinting.v16.2.dll</td><td/><td/><td>_6C95733E_7BFE_4220_91ED_B10ADF78A65A_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraPrinting.v16.2.resources.dll</td><td/><td/><td>_37B16F4B_B408_4BCB_8C3F_C5D78540AB0B_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraPrinting.v16.2.resources.dll1</td><td/><td/><td>_56875C8D_772C_4F5E_85C7_DEDB857B283F_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraPrinting.v16.2.resources.dll2</td><td/><td/><td>_02955611_353D_4775_99B2_EEF783CD22FE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraPrinting.v16.2.resources.dll3</td><td/><td/><td>_77B55B6C_5F1C_4557_8911_6FD6928972C1_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DevExpress.XtraTreeList.v16.2.dll</td><td/><td/><td>_73BDF9F8_06CA_4499_A66B_21B735822EDA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraReports.v16.2.Extensions.dll</td><td/><td/><td>_233A120E_CBA8_4348_BD30_322C4FE40DB5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraReports.v16.2.Extensions.resources.dll</td><td/><td/><td>_6E94A458_5354_47AC_B7B1_3CEBEC0A5B47_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraReports.v16.2.dll</td><td/><td/><td>_F658F41B_93D2_4F58_8774_5FB10F4A7B06_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraReports.v16.2.resources.dll</td><td/><td/><td>_9D011147_AF55_4C76_A882_959731158D12_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraRichEdit.v16.2.dll</td><td/><td/><td>_C5BD443A_449D_43C8_BF6E_A1FC278BCBF8_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraRichEdit.v16.2.resources.dll</td><td/><td/><td>_CB9A3003_246A_4763_B7AC_7CE5515EB5EF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraTreeList.v16.2.dll</td><td/><td/><td>_59B19B2F_FF6F_457B_AC72_04B1AECE687C_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraTreeList.v16.2.resources.dll</td><td/><td/><td>_6FA6A811_1AB9_4215_9DD0_67034C8E8076_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraTreeList.v16.2.resources.dll1</td><td/><td/><td>_8A4DE93F_208D_4479_8548_D09DD4B99755_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraTreeList.v16.2.resources.dll2</td><td/><td/><td>_345EE692_C057_4E3D_B43D_D28B05E1678C_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DevExpress.XtraTreeList.v16.2.resources.dll3</td><td/><td/><td>_F9B2C4C7_30F3_499E_935B_78A82716FA61_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.Firebird.dll</td><td/><td/><td>_A70FB6AD_E12F_435D_89AF_829A034D6BDE_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.SqlServer.dll</td><td/><td/><td>_7137D5DB_C596_46BB_90FE_ECCDCC5F2058_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.dll</td><td/><td/><td>_89C4AA1C_E3BF_4FEC_925C_34545F65CB1C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>FirebirdSql.Data.FirebirdClient.dll</td><td/><td/><td>_12893542_925A_40D9_9397_56393085CAC7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraVerticalGrid.v16.2.dll</td><td/><td/><td>_2BF0AA36_B353_4505_AA82_D973FBA86A55_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DevExpress.XtraVerticalGrid.v16.2.resources.dll</td><td/><td/><td>_5DBD7076_4F10_4C5A_BF8F_0ABE1C7211C5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.Firebird.dll</td><td/><td/><td>_3443BCFA_339D_42FF_AB62_29AF0C014AFB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.SqlServer.dll</td><td/><td/><td>_BC424CAC_43AD_4098_9638_753C519A26EB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.dll</td><td/><td/><td>_989D2B3D_AF58_4564_98BD_CD4E4CEF870F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>FirebirdSql.Data.FirebirdClient.dll</td><td/><td/><td>_F6515C32_881D_4FCF_9FF1_BEB4BE5B6AEE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_CDF52565_3D4D_4810_9EC4_581BA07BEB9C_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_DDEF5636_9681_4C1C_9142_F19D5F72A466_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_F0680842_2995_4BA8_9084_5A29ACCC9467_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT3</td><td/><td/><td>_6A0ABA60_09BA_460C_BBC6_59B334D0F747_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_82942CD2_EE5D_4E80_9922_7EAD191DC2BD_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>SWYRA.exe</td><td/><td/><td>_AB6017F5_31D7_4777_B124_7E6D52D67BEC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>SWYRA.vshost.exe</td><td/><td/><td>_C557F692_EE04_4512_A211_BE2F316343C3_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>linq2db.dll</td><td/><td/><td>_E51D8F96_E0BC_4271_9B79_FEC628D3ECD5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SWYRA.exe</td><td/><td/><td>_167CC822_16C2_4722_B3E4_D4EEE16E25B0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SWYRA.vshost.exe</td><td/><td/><td>_21E4DD1B_36A8_432B_B927_FDC815FB22DB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>linq2db.dll</td><td/><td/><td>_5E70CAB2_E1D0_410E_804F_A791FAB79AB3_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -4170,9 +4372,13 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1034</td><td>El procesador no es el adecuado para ejecutar [ProductName].</td><td>0</td><td/><td>-1926928208</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1034</td><td>La cantidad de RAM no es la adecuada para ejecutar [ProductName].</td><td>0</td><td/><td>-1926928208</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1034</td><td>La resolución de pantalla no es la adecuada para ejecutar [ProductName].</td><td>0</td><td/><td>-1926928208</td></row>
-		<row><td>ID_STRING1</td><td>1034</td><td>http://www.Visiontec.com</td><td>0</td><td/><td>-1926928208</td></row>
+		<row><td>ID_STRING1</td><td>1034</td><td>http://www.visiontec.com.mx</td><td>0</td><td/><td>1663446605</td></row>
 		<row><td>ID_STRING10</td><td>1033</td><td>SWYRA</td><td>0</td><td/><td>-1524295159</td></row>
 		<row><td>ID_STRING10</td><td>1034</td><td>SWYRA</td><td>0</td><td/><td>-1524295159</td></row>
+		<row><td>ID_STRING11</td><td>1033</td><td>NEWSHO~1|NewShortcut1</td><td>0</td><td/><td>1797670639</td></row>
+		<row><td>ID_STRING11</td><td>1034</td><td>SWRYA</td><td>0</td><td/><td>1797684975</td></row>
+		<row><td>ID_STRING12</td><td>1033</td><td>NEWSHO~1|NewShortcut2</td><td>0</td><td/><td>1797701359</td></row>
+		<row><td>ID_STRING12</td><td>1034</td><td>SWRYA</td><td>0</td><td/><td>1797709551</td></row>
 		<row><td>ID_STRING2</td><td>1034</td><td>Visiontec</td><td>0</td><td/><td>-1926928208</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Soporte de sistemas Visiontec</td><td>0</td><td/><td>-1926928144</td></row>
 		<row><td>ID_STRING3</td><td>1034</td><td>Soporte de sistemas Visiontec</td><td>0</td><td/><td>-1926926096</td></row>
@@ -4303,8 +4509,10 @@
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;VSSolutionFolder&gt;\SWYRA\Resources\logoprueba-ConvertImage.ico</td><td>0</td></row>
 		<row><td>NewShortcut11_4D96EFF7B1324F75BF8871DC43E4444A.exe</td><td/><td>&lt;VSSolutionFolder&gt;\SWYRA\Resources\SWRYA.ico</td><td>0</td></row>
+		<row><td>NewShortcut1_771F81AD64AB4EE9A82F000995D49D4B.exe</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.exe</td><td>0</td></row>
 		<row><td>NewShortcut1_902FE45611734B79B82DD41946B7583D.exe</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.exe</td><td>0</td></row>
 		<row><td>NewShortcut1_A6A4F4EBA0A4446AA6690C747082C592.exe</td><td/><td>&lt;VSSolutionFolder&gt;\SWYRA\Resources\SWRYA.ico</td><td>0</td></row>
+		<row><td>NewShortcut2_95028D3725AA417988BF866B9B4F9AE6.exe</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.exe</td><td>0</td></row>
 		<row><td>NewShortcut2_F6B8B801C2364F4BB55A07FC41EE0A61.exe</td><td/><td>C:\Proyectos\HERYMSA\SWYRA\SWYRA\bin\Debug\SWYRA.exe</td><td>0</td></row>
 	</table>
 
@@ -4438,7 +4646,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{B03DC71F-0A9B-4682-88DE-1BD75117A2E0}</td></row>
 		<row><td>ISUSSignature</td><td>{51C5BB1B-9B79-4B32-A52E-68089E337D25}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewAppFiles,viewISToday,viewLearnMore,viewProject,viewUpgradePaths,viewShortcuts,viewIniFiles,viewUI,viewTextMessages,viewSystemSearch,viewCustomActions,viewRelease</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewAppFiles,viewISToday,viewLearnMore,viewProject,viewUpgradePaths,viewShortcuts,viewIniFiles,viewUI,viewTextMessages,viewSystemSearch,viewCustomActions,viewRelease,viewObjects</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4468,6 +4676,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>FileCost</td><td/><td>900</td><td>FileCost</td><td/></row>
 		<row><td>FindRelatedProducts</td><td/><td>430</td><td>FindRelatedProducts</td><td/></row>
 		<row><td>ISPreventDowngrade</td><td>ISFOUNDNEWERPRODUCTVERSION</td><td>450</td><td>ISPreventDowngrade</td><td/></row>
+		<row><td>InstallWelcome</td><td>Not UITEST And Not Installed</td><td>1110</td><td/><td/></row>
 		<row><td>IsolateComponents</td><td/><td>950</td><td>IsolateComponents</td><td/></row>
 		<row><td>LaunchConditions</td><td>Not Installed</td><td>410</td><td>LaunchConditions</td><td/></row>
 		<row><td>MaintenanceWelcome</td><td>Installed And Not RESUME And Not Preselected And Not PATCH</td><td>1230</td><td>MaintenanceWelcome</td><td/></row>
@@ -4482,7 +4691,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SetupInterrupted</td><td/><td>-2</td><td>SetupInterrupted</td><td/></row>
 		<row><td>SetupProgress</td><td/><td>1240</td><td>SetupProgress</td><td/></row>
 		<row><td>SetupResume</td><td>Installed And (RESUME Or Preselected) And Not PATCH</td><td>1220</td><td>SetupResume</td><td/></row>
-		<row><td>SplashBitmap</td><td>Not UITEST And Not Installed</td><td>1110</td><td/><td/></row>
 		<row><td>ValidateProductID</td><td/><td>700</td><td>ValidateProductID</td><td/></row>
 		<row><td>setAllUsersProfile2K</td><td>VersionNT &gt;= 500</td><td>980</td><td/><td/></row>
 		<row><td>setUserProfileNT</td><td>VersionNT</td><td>960</td><td/><td/></row>
@@ -4816,7 +5024,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{1C72F93F-9661-482F-91EA-4A295DB668D5}</td><td/></row>
 		<row><td>ProductName</td><td>Setup Swyra</td><td/></row>
-		<row><td>ProductVersion</td><td>1.00.0000</td><td/></row>
+		<row><td>ProductVersion</td><td>2.00.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4892,7 +5100,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>NewShortcut11</td><td>SWYRA.exe</td><td/><td>newfolder1</td><td>2</td></row>
+		<row><td>NewShortcut1</td><td>SWYRA.exe</td><td/><td>newfolder1</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4978,8 +5186,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>NewShortcut1</td><td>DesktopFolder</td><td>##ID_STRING9##</td><td>SWYRA.exe</td><td>[INSTALLDIR]SWYRA.exe</td><td/><td/><td/><td>NewShortcut1_A6A4F4EBA0A4446AA6690C747082C592.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>NewShortcut11</td><td>newfolder1</td><td>##ID_STRING10##</td><td>SWYRA.exe</td><td>[INSTALLDIR]SWYRA.exe</td><td/><td/><td/><td>NewShortcut11_4D96EFF7B1324F75BF8871DC43E4444A.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>NewShortcut1</td><td>newfolder1</td><td>##ID_STRING11##</td><td>SWYRA.exe</td><td>[INSTALLDIR]SWYRA.exe</td><td/><td/><td/><td>NewShortcut1_771F81AD64AB4EE9A82F000995D49D4B.exe</td><td>1</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>NewShortcut2</td><td>DesktopFolder</td><td>##ID_STRING12##</td><td>SWYRA.exe</td><td>[INSTALLDIR]SWYRA.exe</td><td/><td/><td/><td>NewShortcut2_95028D3725AA417988BF866B9B4F9AE6.exe</td><td>1</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

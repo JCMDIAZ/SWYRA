@@ -116,7 +116,7 @@ namespace SWYRA_Movil
                     try
                     {
                         TSCBluetooth bt = new TSCBluetooth();
-                        bt.openport("COM0");
+                        bt.openport(Program.ptoImp());
                         string strcdb = dgCodigos[index, 2].ToString() + ((frm2.nmTotalPiezas.Value > 1 && frm2.nmTotalPiezas.Enabled) ? "-" + frm2.nmTotalPiezas.Value : "");
                         string str = "SIZE 50 mm,28 mm\n" +
                                      "GAP 0,0\n" +

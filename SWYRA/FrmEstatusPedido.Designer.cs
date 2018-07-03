@@ -45,6 +45,7 @@
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colcve_doc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcve_clpv = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltiposervicio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colprioridad = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,6 +54,7 @@
             this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colfecha_cancela = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcondicion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colnombre_vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcobrador_asignado_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcobrador_autorizo_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colsurtidor_asignado_n = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -91,6 +93,7 @@
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
@@ -122,6 +125,7 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnFactura,
             this.btnExportar,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -158,11 +162,12 @@
             this.gpoFiltro.Controls.Add(this.txtFechIni);
             this.gpoFiltro.Controls.Add(this.Label1);
             this.gpoFiltro.Controls.Add(this.cbEstatusPed);
-            this.gpoFiltro.Location = new System.Drawing.Point(9, 24);
-            this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpoFiltro.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gpoFiltro.Location = new System.Drawing.Point(0, 27);
+            this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.gpoFiltro.Name = "gpoFiltro";
-            this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gpoFiltro.Size = new System.Drawing.Size(780, 53);
+            this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2);
+            this.gpoFiltro.Size = new System.Drawing.Size(798, 53);
             this.gpoFiltro.TabIndex = 41;
             this.gpoFiltro.TabStop = false;
             this.gpoFiltro.Text = " Filtrar Pedidos ";
@@ -171,7 +176,7 @@
             // 
             this.chkActual.EditValue = true;
             this.chkActual.Location = new System.Drawing.Point(648, 22);
-            this.chkActual.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkActual.Margin = new System.Windows.Forms.Padding(2);
             this.chkActual.Name = "chkActual";
             this.chkActual.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkActual.Properties.Appearance.Options.UseFont = true;
@@ -185,7 +190,7 @@
             // 
             this.txtFechFin.EditValue = null;
             this.txtFechFin.Location = new System.Drawing.Point(514, 21);
-            this.txtFechFin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFechFin.Margin = new System.Windows.Forms.Padding(2);
             this.txtFechFin.Name = "txtFechFin";
             this.txtFechFin.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFechFin.Properties.Appearance.Options.UseFont = true;
@@ -221,7 +226,7 @@
             // 
             this.txtFechIni.EditValue = null;
             this.txtFechIni.Location = new System.Drawing.Point(380, 21);
-            this.txtFechIni.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFechIni.Margin = new System.Windows.Forms.Padding(2);
             this.txtFechIni.Name = "txtFechIni";
             this.txtFechIni.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFechIni.Properties.Appearance.Options.UseFont = true;
@@ -246,7 +251,7 @@
             // cbEstatusPed
             // 
             this.cbEstatusPed.Location = new System.Drawing.Point(106, 21);
-            this.cbEstatusPed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbEstatusPed.Margin = new System.Windows.Forms.Padding(2);
             this.cbEstatusPed.Name = "cbEstatusPed";
             this.cbEstatusPed.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstatusPed.Properties.Appearance.Options.UseFont = true;
@@ -270,12 +275,13 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.pedidosBindingSource;
-            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gridControl1.Location = new System.Drawing.Point(9, 92);
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
+            this.gridControl1.Location = new System.Drawing.Point(0, 80);
             this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(780, 281);
+            this.gridControl1.Size = new System.Drawing.Size(798, 303);
             this.gridControl1.TabIndex = 42;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -289,6 +295,7 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colcve_doc,
+            this.colcve_clpv,
             this.colcliente,
             this.coltiposervicio,
             this.colprioridad,
@@ -297,6 +304,7 @@
             this.colfecha_doc,
             this.colfecha_cancela,
             this.colcondicion,
+            this.colnombre_vendedor,
             this.colcobrador_asignado_n,
             this.colcobrador_autorizo_n,
             this.colsurtidor_asignado_n,
@@ -329,6 +337,15 @@
             this.colcve_doc.VisibleIndex = 0;
             this.colcve_doc.Width = 90;
             // 
+            // colcve_clpv
+            // 
+            this.colcve_clpv.Caption = "# Cliente";
+            this.colcve_clpv.FieldName = "cve_clpv";
+            this.colcve_clpv.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colcve_clpv.Name = "colcve_clpv";
+            this.colcve_clpv.Visible = true;
+            this.colcve_clpv.VisibleIndex = 1;
+            // 
             // colcliente
             // 
             this.colcliente.Caption = "Cliente";
@@ -338,7 +355,7 @@
             this.colcliente.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.colcliente.OptionsColumn.FixedWidth = true;
             this.colcliente.Visible = true;
-            this.colcliente.VisibleIndex = 1;
+            this.colcliente.VisibleIndex = 2;
             this.colcliente.Width = 205;
             // 
             // coltiposervicio
@@ -347,7 +364,7 @@
             this.coltiposervicio.FieldName = "tiposervicio";
             this.coltiposervicio.Name = "coltiposervicio";
             this.coltiposervicio.Visible = true;
-            this.coltiposervicio.VisibleIndex = 2;
+            this.coltiposervicio.VisibleIndex = 3;
             this.coltiposervicio.Width = 90;
             // 
             // colprioridad
@@ -356,7 +373,7 @@
             this.colprioridad.FieldName = "prioridad";
             this.colprioridad.Name = "colprioridad";
             this.colprioridad.Visible = true;
-            this.colprioridad.VisibleIndex = 3;
+            this.colprioridad.VisibleIndex = 4;
             this.colprioridad.Width = 90;
             // 
             // colestatuspedido
@@ -365,7 +382,7 @@
             this.colestatuspedido.FieldName = "estatuspedido";
             this.colestatuspedido.Name = "colestatuspedido";
             this.colestatuspedido.Visible = true;
-            this.colestatuspedido.VisibleIndex = 4;
+            this.colestatuspedido.VisibleIndex = 5;
             this.colestatuspedido.Width = 120;
             // 
             // colocurredomicilio
@@ -374,7 +391,7 @@
             this.colocurredomicilio.FieldName = "ocurredomicilio";
             this.colocurredomicilio.Name = "colocurredomicilio";
             this.colocurredomicilio.Visible = true;
-            this.colocurredomicilio.VisibleIndex = 5;
+            this.colocurredomicilio.VisibleIndex = 6;
             this.colocurredomicilio.Width = 90;
             // 
             // colfecha_doc
@@ -385,7 +402,7 @@
             this.colfecha_doc.FieldName = "fecha_doc";
             this.colfecha_doc.Name = "colfecha_doc";
             this.colfecha_doc.Visible = true;
-            this.colfecha_doc.VisibleIndex = 6;
+            this.colfecha_doc.VisibleIndex = 7;
             this.colfecha_doc.Width = 90;
             // 
             // colfecha_cancela
@@ -396,7 +413,7 @@
             this.colfecha_cancela.FieldName = "fecha_cancela";
             this.colfecha_cancela.Name = "colfecha_cancela";
             this.colfecha_cancela.Visible = true;
-            this.colfecha_cancela.VisibleIndex = 7;
+            this.colfecha_cancela.VisibleIndex = 8;
             this.colfecha_cancela.Width = 110;
             // 
             // colcondicion
@@ -405,8 +422,17 @@
             this.colcondicion.FieldName = "condicion";
             this.colcondicion.Name = "colcondicion";
             this.colcondicion.Visible = true;
-            this.colcondicion.VisibleIndex = 8;
+            this.colcondicion.VisibleIndex = 9;
             this.colcondicion.Width = 205;
+            // 
+            // colnombre_vendedor
+            // 
+            this.colnombre_vendedor.Caption = "Vendedor";
+            this.colnombre_vendedor.FieldName = "nombre_vendedor";
+            this.colnombre_vendedor.Name = "colnombre_vendedor";
+            this.colnombre_vendedor.Visible = true;
+            this.colnombre_vendedor.VisibleIndex = 10;
+            this.colnombre_vendedor.Width = 150;
             // 
             // colcobrador_asignado_n
             // 
@@ -414,7 +440,7 @@
             this.colcobrador_asignado_n.FieldName = "cobrador_asignado_n";
             this.colcobrador_asignado_n.Name = "colcobrador_asignado_n";
             this.colcobrador_asignado_n.Visible = true;
-            this.colcobrador_asignado_n.VisibleIndex = 9;
+            this.colcobrador_asignado_n.VisibleIndex = 11;
             this.colcobrador_asignado_n.Width = 150;
             // 
             // colcobrador_autorizo_n
@@ -424,7 +450,7 @@
             this.colcobrador_autorizo_n.FieldName = "cobrador_autorizo_n";
             this.colcobrador_autorizo_n.Name = "colcobrador_autorizo_n";
             this.colcobrador_autorizo_n.Visible = true;
-            this.colcobrador_autorizo_n.VisibleIndex = 10;
+            this.colcobrador_autorizo_n.VisibleIndex = 12;
             this.colcobrador_autorizo_n.Width = 150;
             // 
             // colsurtidor_asignado_n
@@ -433,7 +459,7 @@
             this.colsurtidor_asignado_n.FieldName = "surtidor_asignado_n";
             this.colsurtidor_asignado_n.Name = "colsurtidor_asignado_n";
             this.colsurtidor_asignado_n.Visible = true;
-            this.colsurtidor_asignado_n.VisibleIndex = 11;
+            this.colsurtidor_asignado_n.VisibleIndex = 13;
             this.colsurtidor_asignado_n.Width = 150;
             // 
             // colempaquetador_asignado_n
@@ -442,7 +468,7 @@
             this.colempaquetador_asignado_n.FieldName = "empaquetador_asignado_n";
             this.colempaquetador_asignado_n.Name = "colempaquetador_asignado_n";
             this.colempaquetador_asignado_n.Visible = true;
-            this.colempaquetador_asignado_n.VisibleIndex = 12;
+            this.colempaquetador_asignado_n.VisibleIndex = 14;
             this.colempaquetador_asignado_n.Width = 150;
             // 
             // coletiquetador_asignado_n
@@ -451,16 +477,16 @@
             this.coletiquetador_asignado_n.FieldName = "etiquetador_asignado_n";
             this.coletiquetador_asignado_n.Name = "coletiquetador_asignado_n";
             this.coletiquetador_asignado_n.Visible = true;
-            this.coletiquetador_asignado_n.VisibleIndex = 13;
+            this.coletiquetador_asignado_n.VisibleIndex = 15;
             this.coletiquetador_asignado_n.Width = 150;
             // 
             // colsurtidor_area_n
             // 
-            this.colsurtidor_area_n.Caption = "Surtidor Área";
+            this.colsurtidor_area_n.Caption = "Surtidor Broca";
             this.colsurtidor_area_n.FieldName = "surtidor_area_n";
             this.colsurtidor_area_n.Name = "colsurtidor_area_n";
             this.colsurtidor_area_n.Visible = true;
-            this.colsurtidor_area_n.VisibleIndex = 14;
+            this.colsurtidor_area_n.VisibleIndex = 16;
             this.colsurtidor_area_n.Width = 150;
             // 
             // colporc_surtido
@@ -469,7 +495,7 @@
             this.colporc_surtido.FieldName = "porc_surtido";
             this.colporc_surtido.Name = "colporc_surtido";
             this.colporc_surtido.Visible = true;
-            this.colporc_surtido.VisibleIndex = 15;
+            this.colporc_surtido.VisibleIndex = 17;
             this.colporc_surtido.Width = 150;
             // 
             // colporc_empaque
@@ -478,7 +504,7 @@
             this.colporc_empaque.FieldName = "porc_empaque";
             this.colporc_empaque.Name = "colporc_empaque";
             this.colporc_empaque.Visible = true;
-            this.colporc_empaque.VisibleIndex = 16;
+            this.colporc_empaque.VisibleIndex = 18;
             this.colporc_empaque.Width = 150;
             // 
             // colindicaciones
@@ -487,7 +513,7 @@
             this.colindicaciones.FieldName = "indicaciones";
             this.colindicaciones.Name = "colindicaciones";
             this.colindicaciones.Visible = true;
-            this.colindicaciones.VisibleIndex = 17;
+            this.colindicaciones.VisibleIndex = 19;
             this.colindicaciones.Width = 150;
             // 
             // collote
@@ -496,7 +522,7 @@
             this.collote.FieldName = "lote";
             this.collote.Name = "collote";
             this.collote.Visible = true;
-            this.collote.VisibleIndex = 18;
+            this.collote.VisibleIndex = 20;
             this.collote.Width = 90;
             // 
             // popupMenu1
@@ -562,7 +588,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlTop.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlBottom
@@ -571,7 +597,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 383);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlBottom.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlLeft
@@ -580,7 +606,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 383);
             // 
             // barDockControlRight
@@ -589,7 +615,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(798, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 383);
             // 
             // barStaticItem1
@@ -609,7 +635,7 @@
             this.ppTipoServicio.Controls.Add(this.label4);
             this.ppTipoServicio.Location = new System.Drawing.Point(295, 132);
             this.ppTipoServicio.Manager = this.barManager1;
-            this.ppTipoServicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ppTipoServicio.Margin = new System.Windows.Forms.Padding(2);
             this.ppTipoServicio.Name = "ppTipoServicio";
             this.ppTipoServicio.Size = new System.Drawing.Size(268, 90);
             this.ppTipoServicio.TabIndex = 47;
@@ -632,7 +658,7 @@
             // cbTipoServicio
             // 
             this.cbTipoServicio.Location = new System.Drawing.Point(104, 16);
-            this.cbTipoServicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTipoServicio.Margin = new System.Windows.Forms.Padding(2);
             this.cbTipoServicio.Name = "cbTipoServicio";
             this.cbTipoServicio.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTipoServicio.Properties.Appearance.Options.UseFont = true;
@@ -666,7 +692,7 @@
             this.ppPrioridad.Controls.Add(this.label5);
             this.ppPrioridad.Location = new System.Drawing.Point(506, 99);
             this.ppPrioridad.Manager = this.barManager1;
-            this.ppPrioridad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ppPrioridad.Margin = new System.Windows.Forms.Padding(2);
             this.ppPrioridad.Name = "ppPrioridad";
             this.ppPrioridad.Size = new System.Drawing.Size(268, 90);
             this.ppPrioridad.TabIndex = 52;
@@ -689,7 +715,7 @@
             // cbPrioridad
             // 
             this.cbPrioridad.Location = new System.Drawing.Point(104, 14);
-            this.cbPrioridad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPrioridad.Margin = new System.Windows.Forms.Padding(2);
             this.cbPrioridad.Name = "cbPrioridad";
             this.cbPrioridad.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPrioridad.Properties.Appearance.Options.UseFont = true;
@@ -721,7 +747,7 @@
             this.ppEntrega.Controls.Add(this.label6);
             this.ppEntrega.Location = new System.Drawing.Point(295, 249);
             this.ppEntrega.Manager = this.barManager1;
-            this.ppEntrega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ppEntrega.Margin = new System.Windows.Forms.Padding(2);
             this.ppEntrega.Name = "ppEntrega";
             this.ppEntrega.Size = new System.Drawing.Size(268, 90);
             this.ppEntrega.TabIndex = 57;
@@ -744,7 +770,7 @@
             // cbEntrega
             // 
             this.cbEntrega.Location = new System.Drawing.Point(104, 14);
-            this.cbEntrega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbEntrega.Margin = new System.Windows.Forms.Padding(2);
             this.cbEntrega.Name = "cbEntrega";
             this.cbEntrega.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEntrega.Properties.Appearance.Options.UseFont = true;
@@ -776,7 +802,7 @@
             this.ppIndicaciones.Controls.Add(this.label7);
             this.ppIndicaciones.Location = new System.Drawing.Point(22, 108);
             this.ppIndicaciones.Manager = this.barManager1;
-            this.ppIndicaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ppIndicaciones.Margin = new System.Windows.Forms.Padding(2);
             this.ppIndicaciones.Name = "ppIndicaciones";
             this.ppIndicaciones.Size = new System.Drawing.Size(268, 132);
             this.ppIndicaciones.TabIndex = 62;
@@ -799,7 +825,7 @@
             // txtIndicaciones
             // 
             this.txtIndicaciones.Location = new System.Drawing.Point(13, 28);
-            this.txtIndicaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIndicaciones.Margin = new System.Windows.Forms.Padding(2);
             this.txtIndicaciones.MenuManager = this.barManager1;
             this.txtIndicaciones.Name = "txtIndicaciones";
             this.txtIndicaciones.Size = new System.Drawing.Size(243, 53);
@@ -818,10 +844,19 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(798, 383);
             this.panel1.TabIndex = 67;
+            // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
+            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(80, 24);
+            this.btnFactura.Text = "Resumen";
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
             // 
             // FrmEstatusPedido
             // 
@@ -830,7 +865,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(798, 383);
-            this.ControlBox = false;
             this.Controls.Add(this.ppIndicaciones);
             this.Controls.Add(this.ppEntrega);
             this.Controls.Add(this.ppPrioridad);
@@ -845,7 +879,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmEstatusPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ESTATUS PEDIDO";
@@ -949,5 +983,8 @@
         internal System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripButton btnExportar;
+        private DevExpress.XtraGrid.Columns.GridColumn colnombre_vendedor;
+        private DevExpress.XtraGrid.Columns.GridColumn colcve_clpv;
+        private System.Windows.Forms.ToolStripButton btnFactura;
     }
 }

@@ -83,6 +83,7 @@ namespace SWYRA
         private void MenuPrin()
         {
             var cat = userActivo.Categoria.TrimEnd();
+            moduloDeImpresiónToolStripMenuItem.Visible = (cat == "MASTER");
             activarSwyraMovilToolStripMenuItem.Visible = (cat == "MASTER");
             catalogosToolStripMenuItem.Visible = (cat == "MASTER");
             estatusPedidoToolStripMenuItem.Visible = (cat.In(new[] {"MASTER", "ANALISTA DE VENTAS"}));

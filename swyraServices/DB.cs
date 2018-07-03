@@ -156,7 +156,9 @@ namespace swyraServices
         public double tot_partida { get; set; }
         public string imprimir { get; set; }
         public double cantsurtido { get; set; }
+        public double cantdevuelto { get; set; }
         public bool surtido { get; set; }
+        public bool devuelto { get; set; }
         public void Dispose()
         {
             throw new NotImplementedException();

@@ -53,6 +53,8 @@
             this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn3 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.pbListado = new System.Windows.Forms.PictureBox();
+            this.lblPendientes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.catalogosBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
@@ -120,6 +122,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.lblPendientes);
             this.panel2.Controls.Add(this.pbConcluir);
             this.panel2.Controls.Add(this.pbSalir);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -148,7 +151,7 @@
             // pbAgregar
             // 
             this.pbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("pbAgregar.Image")));
-            this.pbAgregar.Location = new System.Drawing.Point(20, 72);
+            this.pbAgregar.Location = new System.Drawing.Point(8, 72);
             this.pbAgregar.Name = "pbAgregar";
             this.pbAgregar.Size = new System.Drawing.Size(35, 35);
             this.pbAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -157,7 +160,7 @@
             // pbEmpacar
             // 
             this.pbEmpacar.Image = ((System.Drawing.Image)(resources.GetObject("pbEmpacar.Image")));
-            this.pbEmpacar.Location = new System.Drawing.Point(61, 72);
+            this.pbEmpacar.Location = new System.Drawing.Point(46, 72);
             this.pbEmpacar.Name = "pbEmpacar";
             this.pbEmpacar.Size = new System.Drawing.Size(35, 35);
             this.pbEmpacar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -166,7 +169,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(102, 72);
+            this.pictureBox3.Location = new System.Drawing.Point(84, 72);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(35, 35);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -175,7 +178,7 @@
             // pbElimina
             // 
             this.pbElimina.Image = ((System.Drawing.Image)(resources.GetObject("pbElimina.Image")));
-            this.pbElimina.Location = new System.Drawing.Point(143, 72);
+            this.pbElimina.Location = new System.Drawing.Point(122, 72);
             this.pbElimina.Name = "pbElimina";
             this.pbElimina.Size = new System.Drawing.Size(35, 35);
             this.pbElimina.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -184,7 +187,7 @@
             // pbImprimir
             // 
             this.pbImprimir.Image = ((System.Drawing.Image)(resources.GetObject("pbImprimir.Image")));
-            this.pbImprimir.Location = new System.Drawing.Point(184, 72);
+            this.pbImprimir.Location = new System.Drawing.Point(198, 72);
             this.pbImprimir.Name = "pbImprimir";
             this.pbImprimir.Size = new System.Drawing.Size(35, 35);
             this.pbImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -239,6 +242,23 @@
             this.dataGridTextBoxColumn3.MappingName = "totart";
             this.dataGridTextBoxColumn3.Width = 80;
             // 
+            // pbListado
+            // 
+            this.pbListado.Image = ((System.Drawing.Image)(resources.GetObject("pbListado.Image")));
+            this.pbListado.Location = new System.Drawing.Point(160, 72);
+            this.pbListado.Name = "pbListado";
+            this.pbListado.Size = new System.Drawing.Size(35, 35);
+            this.pbListado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbListado.Click += new System.EventHandler(this.pbListado_Click);
+            // 
+            // lblPendientes
+            // 
+            this.lblPendientes.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Italic);
+            this.lblPendientes.Location = new System.Drawing.Point(63, 11);
+            this.lblPendientes.Name = "lblPendientes";
+            this.lblPendientes.Size = new System.Drawing.Size(100, 18);
+            this.lblPendientes.Text = "Pendientes 0";
+            // 
             // FrmEmpaque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -246,6 +266,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.pbListado);
             this.Controls.Add(this.dgPedidos);
             this.Controls.Add(this.pbImprimir);
             this.Controls.Add(this.pbElimina);
@@ -294,5 +315,7 @@
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn1;
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn2;
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn3;
+        private System.Windows.Forms.Label lblPendientes;
+        private System.Windows.Forms.PictureBox pbListado;
     }
 }

@@ -49,7 +49,7 @@ namespace SWYRA_Movil
         private void txtCant_LostFocus(object sender, EventArgs e)
         {
             art.consec_padre = (proceso == "EMP") ? ped.consec : 0;
-            actualizaDet();
+            //actualizaDet();
         }
 
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
@@ -91,7 +91,7 @@ namespace SWYRA_Movil
                         }
                         else
                         {
-                            txtCant.ReadOnly = !(cod.cant_piezas == 1);
+                            //txtCant.ReadOnly = !(cod.cant_piezas == 1);
                             txtCant.Value = cod.cant_piezas;
                             if (proceso == "EMP")
                             {
@@ -117,7 +117,7 @@ namespace SWYRA_Movil
                             {
                                 art.consec_padre = (proceso == "EMP") ? ped.consec : 0;
                                 actualizaDet();
-                                if (cod.cant_piezas == 1) { txtCant.Focus(); }
+                                //if (cod.cant_piezas == 1) { txtCant.Focus(); }
                             }
                         }
                     }

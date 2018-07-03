@@ -64,23 +64,24 @@ namespace SWYRA
                 query =
                     "SELECT dp.CVE_DOC, dp.NUM_PAR, dp.CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
                     "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, ic.COMENTARIO comen, " +
-                    "UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, CANTSURTIDO, SURTIDO, res.Empaque, " +
-                    "TDESC, SUBTO, TCOMI, i.DESCR, (SUBTO + TOTIMP4) IMPORTE, PESO, VOLUMEN " + 
+                    "UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, ISNULL(CANTSURTIDO, CANT) CANTSURTIDO, SURTIDO, res.Empaque, " +
+                    "TDESC, SUBTO, TCOMI, i.DESCR, (SUBTO + TOTIMP4) IMPORTE, (CANT * PESO) PESO, (CANT * VOLUMEN) VOLUMEN " + 
                     "FROM DETALLEPEDIDO dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "LEFT join INVENTARIOCOND ic on dp.CVE_ART = ic.CVE_ART " +
                     "LEFT JOIN ( select distinct CVE_DOC, NUM_PAR, STUFF((select ', ' + ('(' + CAST(SUM(d.CANT) AS VARCHAR(5)) + ') ' + e.Empaque) " + 
-                    "from DETALLEPEDIDOMERC d join(select CVE_DOC, CONSEC, TIPOPAQUETE + ' ' + CAST(CONSEC_EMPAQUE AS VARCHAR(2)) Empaque " +
+                    "from DETALLEPEDIDOMERC d join(select CVE_DOC, CONSEC, TIPOPAQUETE + ' # ' + CAST(CONSEC_EMPAQUE AS VARCHAR(2)) Empaque " +
                     "from DETALLEPEDIDOMERC WHERE (CVE_DOC = '" + cve_doc + "') AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') " +
                     "NOT IN('', 'GUIA'))) as e on d.CVE_DOC = e.CVE_DOC and d.CONSEC_PADRE = e.CONSEC WHERE(d.CVE_DOC = '" + cve_doc + "') " +
                     "AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') IN('')) AND a.CVE_DOC = d.CVE_DOC and a.CVE_ART = d.CVE_ART " +
                     "group by e.Empaque, d.NUM_PAR order by d.NUM_PAR FOR XML PATH('')), 1, 1, '') as Empaque from DETALLEPEDIDOMERC as a " +
                     "where (a.CVE_DOC = '" + cve_doc + "') AND(NUM_PAR > 0) ) as res on dp.NUM_PAR = res.NUM_PAR " + 
 
-                    "WHERE (dp.CVE_DOC = '" + cve_doc + "') AND (CANTSURTIDO > 0)";
+                    "WHERE (dp.CVE_DOC = '" + cve_doc + "') AND (ISNULL(CANTSURTIDO,CANT) > 0)";
                 lsDetallePedidos = GetDataTable("DB", query, 6).ToList<DetallePedidos>();
                 query =
                     "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO, TotArt, " + 
-                    "CONSEC_EMPAQUE, CONSEC_PADRE_GUIA, CVE_ART_GUIA, PRECIO_GUIA, ASIG_PEDIDO_GUIA, NUM_GUIA FROM DETALLEPEDIDOMERC " +
+                    "CONSEC_EMPAQUE, CONSEC_PADRE_GUIA, CVE_ART_GUIA, PRECIO_GUIA, ASIG_PEDIDO_GUIA, NUM_GUIA, " +
+                    "(CASE WHEN TIPOPAQUETE = 'ATADOS' THEN 'A' ELSE 'T' END + CAST(CONSEC_EMPAQUE AS VARCHAR(5))) STR_CONSEC_EMPAQUE FROM DETALLEPEDIDOMERC " +
                     "WHERE (CVE_DOC = '" + cve_doc + "') AND (TIPOPAQUETE IN ('ATADOS', 'TARIMA')) AND (ISNULL(CANCELADO, 0) = 0)";
                 lsDetPedMerc = GetDataTable("DB", query, 8).ToList<DetallePedidoMerc>();
             }

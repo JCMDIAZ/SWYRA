@@ -28,7 +28,7 @@ namespace SWYRA_Movil
         {
             string[] surt = { "MASTER", "SURTIDOR" };
             string[] empq = { "MASTER", "EMPAQUETADOR" };
-            string[] guia = { "MASTER", "ETIQUETADOR GUIA" };
+            string[] guia = { "MASTER", "ETIQUETADOR GUIAS" };
             pnlImpCod.Visible = (Program.usActivo.Categoria.Trim().In(surt));
             pnlPedidos.Visible = (Program.usActivo.Categoria.Trim().In(surt));
             pnlSurtido.Visible = (Program.usActivo.Categoria.Trim().In(surt));

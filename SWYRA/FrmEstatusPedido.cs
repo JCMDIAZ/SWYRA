@@ -66,6 +66,7 @@ namespace SWYRA
             validaFiltro();
             FiltrarCarga();
             gridControl1.DataSource = listPedidos;
+            gridView1.OptionsFind.AlwaysVisible = true;
         }
 
         private void FiltrarCarga()
@@ -106,7 +107,7 @@ namespace SWYRA
                     "COBRADOR_AUTORIZO, SURTIDOR_ASIGNADO, EMPAQUETADOR_ASIGNADO, ETIQUETADOR_ASIGNADO, SURTIDOR_AREA, " +
                     "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, " +
                     "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
-                    "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD " +
+                    "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, NOMBRE_VENDEDOR " +
                     "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
                     "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
                     "left join USUARIOS uSurAsig on uSurAsig.Usuario = p.SURTIDOR_ASIGNADO " +
@@ -115,12 +116,11 @@ namespace SWYRA
                     "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
                     "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
                     "WHERE p.FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") +
-                    "'";
+                    "' ORDER BY CVE_DOC DESC";
                 list = GetDataTable("DB", query, 51).ToList<Pedidos>();
             }
             catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+            {MessageBox.Show(ex.Message);
             }
             return list;
         }
@@ -284,6 +284,17 @@ namespace SWYRA
             {
                 gridControl1.ExportToXlsx(sfd.FileName);
             }
+        }
+
+        private void btnFactura_Click(object sender, EventArgs e)
+        {
+            var cveDoc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
+            var fAjustePedido = new FrmAjustePedido();
+            fAjustePedido.btnGuardar.Visible = false;
+            fAjustePedido.cve_doc = cveDoc.ToString();
+            fAjustePedido.userActivo = userActivo;
+            fAjustePedido.ShowDialog();
+            fAjustePedido.Close();
         }
     }
 }

@@ -38,12 +38,11 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcobrador_asignado_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcve_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colimporte = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colfechaaut = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colfecha_cancela = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcondicion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colindicaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcontado = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,6 +61,7 @@
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsTodos.Properties)).BeginInit();
@@ -79,6 +79,7 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnFactura,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -153,12 +154,11 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colfecha_doc,
             this.colcobrador_asignado_n,
             this.colcve_doc,
             this.colcliente,
             this.colimporte,
-            this.colfechaaut,
-            this.colfecha_cancela,
             this.colcondicion,
             this.colindicaciones,
             this.colcontado});
@@ -172,6 +172,17 @@
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             // 
+            // colfecha_doc
+            // 
+            this.colfecha_doc.Caption = "Fecha";
+            this.colfecha_doc.DisplayFormat.FormatString = "d";
+            this.colfecha_doc.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colfecha_doc.FieldName = "fecha_doc";
+            this.colfecha_doc.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colfecha_doc.Name = "colfecha_doc";
+            this.colfecha_doc.Visible = true;
+            this.colfecha_doc.VisibleIndex = 0;
+            // 
             // colcobrador_asignado_n
             // 
             this.colcobrador_asignado_n.Caption = "Cobrador Asignado";
@@ -179,7 +190,7 @@
             this.colcobrador_asignado_n.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.colcobrador_asignado_n.Name = "colcobrador_asignado_n";
             this.colcobrador_asignado_n.Visible = true;
-            this.colcobrador_asignado_n.VisibleIndex = 0;
+            this.colcobrador_asignado_n.VisibleIndex = 1;
             this.colcobrador_asignado_n.Width = 150;
             // 
             // colcve_doc
@@ -191,7 +202,7 @@
             this.colcve_doc.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.colcve_doc.OptionsColumn.FixedWidth = true;
             this.colcve_doc.Visible = true;
-            this.colcve_doc.VisibleIndex = 1;
+            this.colcve_doc.VisibleIndex = 2;
             this.colcve_doc.Width = 150;
             // 
             // colcliente
@@ -203,7 +214,7 @@
             this.colcliente.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.colcliente.OptionsColumn.FixedWidth = true;
             this.colcliente.Visible = true;
-            this.colcliente.VisibleIndex = 2;
+            this.colcliente.VisibleIndex = 3;
             this.colcliente.Width = 205;
             // 
             // colimporte
@@ -214,30 +225,8 @@
             this.colimporte.FieldName = "importe";
             this.colimporte.Name = "colimporte";
             this.colimporte.Visible = true;
-            this.colimporte.VisibleIndex = 3;
+            this.colimporte.VisibleIndex = 4;
             this.colimporte.Width = 160;
-            // 
-            // colfechaaut
-            // 
-            this.colfechaaut.Caption = "Fecha Autorización";
-            this.colfechaaut.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.colfechaaut.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.colfechaaut.FieldName = "fechaaut";
-            this.colfechaaut.Name = "colfechaaut";
-            this.colfechaaut.Visible = true;
-            this.colfechaaut.VisibleIndex = 4;
-            this.colfechaaut.Width = 110;
-            // 
-            // colfecha_cancela
-            // 
-            this.colfecha_cancela.Caption = "Fecha Cancelado";
-            this.colfecha_cancela.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.colfecha_cancela.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.colfecha_cancela.FieldName = "fecha_cancela";
-            this.colfecha_cancela.Name = "colfecha_cancela";
-            this.colfecha_cancela.Visible = true;
-            this.colfecha_cancela.VisibleIndex = 5;
-            this.colfecha_cancela.Width = 110;
             // 
             // colcondicion
             // 
@@ -245,7 +234,7 @@
             this.colcondicion.FieldName = "condicion";
             this.colcondicion.Name = "colcondicion";
             this.colcondicion.Visible = true;
-            this.colcondicion.VisibleIndex = 6;
+            this.colcondicion.VisibleIndex = 5;
             this.colcondicion.Width = 205;
             // 
             // colindicaciones
@@ -254,7 +243,7 @@
             this.colindicaciones.FieldName = "indicaciones";
             this.colindicaciones.Name = "colindicaciones";
             this.colindicaciones.Visible = true;
-            this.colindicaciones.VisibleIndex = 7;
+            this.colindicaciones.VisibleIndex = 6;
             this.colindicaciones.Width = 150;
             // 
             // colcontado
@@ -263,7 +252,7 @@
             this.colcontado.FieldName = "contado";
             this.colcontado.Name = "colcontado";
             this.colcontado.Visible = true;
-            this.colcontado.VisibleIndex = 8;
+            this.colcontado.VisibleIndex = 7;
             // 
             // popupMenu1
             // 
@@ -408,6 +397,15 @@
             this.panel1.Size = new System.Drawing.Size(798, 380);
             this.panel1.TabIndex = 68;
             // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
+            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(80, 24);
+            this.btnFactura.Text = "Resumen";
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
+            // 
             // FrmAutorizaCobro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,10 +461,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colcobrador_asignado_n;
         private DevExpress.XtraGrid.Columns.GridColumn colcve_doc;
         private DevExpress.XtraGrid.Columns.GridColumn colcliente;
-        private DevExpress.XtraGrid.Columns.GridColumn colfecha_cancela;
         private DevExpress.XtraGrid.Columns.GridColumn colcondicion;
         private DevExpress.XtraGrid.Columns.GridColumn colindicaciones;
-        private DevExpress.XtraGrid.Columns.GridColumn colfechaaut;
         private System.Windows.Forms.BindingSource pedidosBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colimporte;
         private DevExpress.XtraGrid.Columns.GridColumn colcontado;
@@ -485,5 +481,7 @@
         private DevExpress.XtraEditors.MemoEdit txtIndicaciones;
         internal System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraGrid.Columns.GridColumn colfecha_doc;
+        private System.Windows.Forms.ToolStripButton btnFactura;
     }
 }

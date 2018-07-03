@@ -18,6 +18,7 @@
     <NativePlatformName>Windows CE</NativePlatformName>
     <FormFactorID>
     </FormFactorID>
+    <ApplicationIcon>SWRYA.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -95,6 +96,12 @@
     <Compile Include="FrmDetenerPed.Designer.cs">
       <DependentUpon>FrmDetenerPed.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDetenerPedCausa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetenerPedCausa.Designer.cs">
+      <DependentUpon>FrmDetenerPedCausa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDevolucion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +125,12 @@
     </Compile>
     <Compile Include="FrmEmpaqueAT.Designer.cs">
       <DependentUpon>FrmEmpaqueAT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpaqueList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpaqueList.Designer.cs">
+      <DependentUpon>FrmEmpaqueList.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGuia2.cs">
       <SubType>Form</SubType>
@@ -238,6 +251,9 @@
     <EmbeddedResource Include="FrmDetenerPed.resx">
       <DependentUpon>FrmDetenerPed.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetenerPedCausa.resx">
+      <DependentUpon>FrmDetenerPedCausa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDevolucion.resx">
       <DependentUpon>FrmDevolucion.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpaqueAT.resx">
       <DependentUpon>FrmEmpaqueAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpaqueList.resx">
+      <DependentUpon>FrmEmpaqueList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGuia2.resx">
       <DependentUpon>FrmGuia2.cs</DependentUpon>
@@ -313,6 +332,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.txt" />
+    <Content Include="SWRYA.ico" />
     <Content Include="SWYRA.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
