@@ -49,6 +49,8 @@
             this.txtMinimo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtMasterUbi = new System.Windows.Forms.TextBox();
             this.lblPendientes = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pbAnt = new System.Windows.Forms.PictureBox();
@@ -244,6 +246,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.txtMasterUbi);
             this.panel2.Controls.Add(this.lblPendientes);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.lblComentario);
@@ -268,6 +272,24 @@
             this.panel2.Location = new System.Drawing.Point(0, 65);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 167);
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.label13.Location = new System.Drawing.Point(119, 93);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 19);
+            this.label13.Text = "Mast. Ubi.";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtMasterUbi
+            // 
+            this.txtMasterUbi.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtMasterUbi.Location = new System.Drawing.Point(175, 90);
+            this.txtMasterUbi.Name = "txtMasterUbi";
+            this.txtMasterUbi.ReadOnly = true;
+            this.txtMasterUbi.Size = new System.Drawing.Size(54, 19);
+            this.txtMasterUbi.TabIndex = 39;
             // 
             // lblPendientes
             // 
@@ -476,5 +498,7 @@
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.PictureBox pbIncompletoB;
         public System.Windows.Forms.PictureBox pbIncompleto;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtMasterUbi;
     }
 }

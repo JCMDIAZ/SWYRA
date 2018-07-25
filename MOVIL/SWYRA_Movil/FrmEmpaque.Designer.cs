@@ -40,6 +40,8 @@
             this.catalogosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbTipoEmpaque = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbInfo = new System.Windows.Forms.PictureBox();
+            this.lblPendientes = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.pbAgregar = new System.Windows.Forms.PictureBox();
@@ -54,7 +56,7 @@
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn3 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.pbListado = new System.Windows.Forms.PictureBox();
-            this.lblPendientes = new System.Windows.Forms.Label();
+            this.lblfletes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.catalogosBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
@@ -122,6 +124,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.pbInfo);
             this.panel2.Controls.Add(this.lblPendientes);
             this.panel2.Controls.Add(this.pbConcluir);
             this.panel2.Controls.Add(this.pbSalir);
@@ -129,6 +132,23 @@
             this.panel2.Location = new System.Drawing.Point(0, 235);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pbInfo
+            // 
+            this.pbInfo.Image = ((System.Drawing.Image)(resources.GetObject("pbInfo.Image")));
+            this.pbInfo.Location = new System.Drawing.Point(160, 3);
+            this.pbInfo.Name = "pbInfo";
+            this.pbInfo.Size = new System.Drawing.Size(35, 35);
+            this.pbInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbInfo.Click += new System.EventHandler(this.pbInfo_Click);
+            // 
+            // lblPendientes
+            // 
+            this.lblPendientes.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Italic);
+            this.lblPendientes.Location = new System.Drawing.Point(50, 11);
+            this.lblPendientes.Name = "lblPendientes";
+            this.lblPendientes.Size = new System.Drawing.Size(100, 18);
+            this.lblPendientes.Text = "Pendientes 0";
             // 
             // pbConcluir
             // 
@@ -205,7 +225,7 @@
             this.dgPedidos.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
             this.dgPedidos.Location = new System.Drawing.Point(8, 111);
             this.dgPedidos.Name = "dgPedidos";
-            this.dgPedidos.Size = new System.Drawing.Size(223, 118);
+            this.dgPedidos.Size = new System.Drawing.Size(223, 104);
             this.dgPedidos.TabIndex = 20;
             this.dgPedidos.TableStyles.Add(this.dataGridTableStyle1);
             this.dgPedidos.CurrentCellChanged += new System.EventHandler(this.dgPedidos_CurrentCellChanged);
@@ -251,13 +271,15 @@
             this.pbListado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbListado.Click += new System.EventHandler(this.pbListado_Click);
             // 
-            // lblPendientes
+            // lblfletes
             // 
-            this.lblPendientes.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Italic);
-            this.lblPendientes.Location = new System.Drawing.Point(63, 11);
-            this.lblPendientes.Name = "lblPendientes";
-            this.lblPendientes.Size = new System.Drawing.Size(100, 18);
-            this.lblPendientes.Text = "Pendientes 0";
+            this.lblfletes.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
+            this.lblfletes.ForeColor = System.Drawing.Color.Maroon;
+            this.lblfletes.Location = new System.Drawing.Point(3, 214);
+            this.lblfletes.Name = "lblfletes";
+            this.lblfletes.Size = new System.Drawing.Size(232, 21);
+            this.lblfletes.Text = "fletes : ";
+            this.lblfletes.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FrmEmpaque
             // 
@@ -266,6 +288,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.lblfletes);
             this.Controls.Add(this.pbListado);
             this.Controls.Add(this.dgPedidos);
             this.Controls.Add(this.pbImprimir);
@@ -317,5 +340,7 @@
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn3;
         private System.Windows.Forms.Label lblPendientes;
         private System.Windows.Forms.PictureBox pbListado;
+        private System.Windows.Forms.PictureBox pbInfo;
+        private System.Windows.Forms.Label lblfletes;
     }
 }

@@ -96,7 +96,7 @@ namespace swyraServices
             List<Inventario> listDbInventarios = CargaDbInventarios();
             var inventarioAct = listFbInventarios.Where(o => listDbInventarios.Any(p => p.cve_art == o.cve_art)).ToList();
             var inventarioNvo = listFbInventarios.Except(inventarioAct).ToList();
-            var inventarioDif = inventarioAct.Except(inventarioAct.Where(o => listFbInventarios.Any(p => p.fch_ultvta == o.fch_ultvta || p.uni_emp == o.uni_emp)).ToList()).ToList();
+            var inventarioDif = inventarioAct.Except(inventarioAct.Where(o => listFbInventarios.Any(p => p.fch_ultvta == o.fch_ultvta || p.uni_emp == o.uni_emp || p.ctrl_alm == o.ctrl_alm || p.masters_ubi == o.masters_ubi)).ToList()).ToList();
             foreach (var inv in inventarioNvo)
             {
                 GuardaInventario(inv);
@@ -104,26 +104,6 @@ namespace swyraServices
             foreach (var inv in inventarioDif)
             {
                 ModificaInventario(inv);
-            }
-            List<Pedidos> listFbPedidos = CargaFbPedidos(DateTime.Today.AddDays(-3), DateTime.Today);
-            List<Pedidos> listDbPedidos = CargaDbPedidos(DateTime.Today.AddDays(-3), DateTime.Today);
-            var pedidosAct = listFbPedidos.Where(o => listDbPedidos.Any(p => o.cve_doc == p.cve_doc && p.status != "C") && o.status != "C").ToList();
-            var pedidosNuevos = listFbPedidos.Where(o => o.status != "C").Except(pedidosAct).ToList();
-            var pedidosCan = listFbPedidos.Where(o => listDbPedidos.Any(p => o.cve_doc == p.cve_doc && p.status != "C") && o.status == "C").ToList();
-            var pedidosDiferentes = pedidosAct.Except(pedidosAct.Where(o => listDbPedidos.Any(p => o.cve_doc == p.cve_doc && Math.Round(o.importe, 2) == Math.Round(p.importe, 2))).ToList()).ToList();
-            foreach (var ped in pedidosNuevos)
-            {
-                GuardarDbPedidos(ped);
-            }
-            foreach (var ped in pedidosCan)
-            {
-                var pedDb = listDbPedidos.FirstOrDefault(o => o.cve_doc == ped.cve_doc);
-                CancelaDbPedidos(pedDb);
-            }
-            foreach (var pedFb in pedidosDiferentes)
-            {
-                var pedDb = listDbPedidos.FirstOrDefault(o => o.cve_doc == pedFb.cve_doc);
-                ModificaDbPedidos(pedFb, pedDb);
             }
 
             List<Pedidos> listDbPedidosFac = CargaDbPedidosFac();
@@ -158,6 +138,27 @@ namespace swyraServices
             {
                 ModificaFbPedido(pedCan);
                 ModificaDbPedidos(null, pedCan);
+            }
+
+            List<Pedidos> listFbPedidos = CargaFbPedidos(DateTime.Today.AddDays(-3), DateTime.Today);
+            List<Pedidos> listDbPedidos = CargaDbPedidos(DateTime.Today.AddDays(-3), DateTime.Today);
+            var pedidosAct = listFbPedidos.Where(o => listDbPedidos.Any(p => o.cve_doc == p.cve_doc && p.status != "C") && o.status != "C").ToList();
+            var pedidosNuevos = listFbPedidos.Where(o => o.status != "C").Except(pedidosAct).ToList();
+            var pedidosCan = listFbPedidos.Where(o => listDbPedidos.Any(p => o.cve_doc == p.cve_doc && p.status != "C") && o.status == "C").ToList();
+            var pedidosDiferentes = pedidosAct.Except(pedidosAct.Where(o => listDbPedidos.Any(p => o.cve_doc == p.cve_doc && Math.Round(o.importe, 2) == Math.Round(p.importe, 2))).ToList()).ToList();
+            foreach (var ped in pedidosNuevos)
+            {
+                GuardarDbPedidos(ped);
+            }
+            foreach (var ped in pedidosCan)
+            {
+                var pedDb = listDbPedidos.FirstOrDefault(o => o.cve_doc == ped.cve_doc);
+                CancelaDbPedidos(pedDb);
+            }
+            foreach (var pedFb in pedidosDiferentes)
+            {
+                var pedDb = listDbPedidos.FirstOrDefault(o => o.cve_doc == pedFb.cve_doc);
+                ModificaDbPedidos(pedFb, pedDb);
             }
         }
 
@@ -328,7 +329,7 @@ namespace swyraServices
                     "FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, CONDICION, p.CVE_OBS, " +
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
-                    "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
+                    "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, i.NOMBRE ENVIAR, " +
                     "STR_OBS OBSERVACIONES, v.NOMBRE NOMBRE_VENDEDOR, (i.CALLE || ' # ' || i.NUMEXT || ' COL. ' || i.COLONIA || '; ' || i.MUNICIPIO || ', ' || i.ESTADO) consignacion " +
                     "from FACTP01 p LEFT JOIN OBS_DOCF01 o ON p.CVE_OBS = o.CVE_OBS LEFT JOIN VEND01 v ON p.CVE_VEND = v.CVE_VEND " +
                     "LEFT JOIN INFENVIO01 i ON i.CVE_INFO = p.DAT_ENVIO " +
@@ -354,7 +355,7 @@ namespace swyraServices
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
                     "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
-                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO " +
+                    "ENVIAR, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO " +
                     "from PEDIDO where FECHA_ENT between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
                     ffin.ToString("yyyy-MM-dd") + "'";
                 listDbPedidos = GetDataTable("DB", query, 7).ToList<Pedidos>();
@@ -377,6 +378,22 @@ namespace swyraServices
             try
             {
                 var query = "select u.Usuario from CLIENTE c join  USUARIOS u on u.LetraERP = SUBSTRING(c.CLASIFIC, 1, 1) " +
+                            "where c.CLAVE = '" + cve_clpv + "'";
+                result = GetDataTable("DB", query, 26).ToList<Results>().FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("26: " + ex.Message, EventLogEntryType.Error);
+            }
+            return ((result == null) ? "" : result.usuario);
+        }
+
+        private string GetUsuarioIdByLastERP(string cve_clpv)
+        {
+            Results result = new Results();
+            try
+            {
+                var query = "select u.Usuario from CLIENTE c join  USUARIOS u on u.LetraERP = RIGHT(CLASIFIC,1) " +
                             "where c.CLAVE = '" + cve_clpv + "'";
                 result = GetDataTable("DB", query, 26).ToList<Results>().FirstOrDefault();
             }
@@ -417,13 +434,14 @@ namespace swyraServices
                 }
                 p.estatuspedido = "AUTORIZACION";
                 var cobrador = GetUsuarioIdByERP(p.cve_clpv);
+                var capturo = GetUsuarioIdByLastERP(p.cve_clpv);
                 query =
                     "insert into PEDIDO (TIP_DOC, CVE_DOC, CVE_CLPV, STATUS, DAT_MOSTR, CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, FECHA_VEN, " +
                     "FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, CONDICION, CVE_OBS, " +
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
                     "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
-                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, PRIORIDAD, OBSERVACIONES, NOMBRE_VENDEDOR, CONSIGNACION) values ('" +
+                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, PRIORIDAD, OBSERVACIONES, NOMBRE_VENDEDOR, CONSIGNACION, ENVIAR, CAPTURO) values ('" +
                     p.tip_doc + "', '" + p.cve_doc + "', '" + p.cve_clpv + "', '" + p.status + "', " + p.dat_mostr.ToString() + ", '" + p.cve_vend + "', '" +
                     p.cve_pedi + "', " + p.fecha_doc.ToStrSql() + ", " + p.fecha_ent.ToStrSql() + ", " +
                     p.fecha_ven.ToStrSql() + ", " + p.fecha_cancela.ToStrSql() + ", " + p.can_tot.ToString(cultureInfo) + ", " +
@@ -436,7 +454,8 @@ namespace swyraServices
                     p.cve_bita + ", '" + p.bloq + "', '" + p.formaenvio + "', " + p.des_fin_porc.ToString(cultureInfo) + ", " + p.des_tot_porc.ToString(cultureInfo) + ", " +
                     p.importe.ToString(cultureInfo) + ", " + p.com_tot_porc.ToString(cultureInfo) + ", '" + p.metododepago + "', '" + p.numctapago + "', '" + p.tip_doc_ant + "', '" +
                     p.doc_ant + "', '" + p.tip_doc_sig + "', '" + p.doc_sig + "', '" + p.tiposervicio + "', '" + p.estatuspedido + "', '" +
-                    p.ocurredomicilio + "', '" + cobrador + "', '" + ((index > 1) ? "URGENTE" : "NORMAL") + "', '" + p.observaciones + "', '" + p.nombre_vendedor + "', '" + p.consignacion + "' )";
+                    p.ocurredomicilio + "', '" + cobrador + "', '" + ((index > 1) ? "URGENTE" : "NORMAL") + "', '" + p.observaciones + "', '" + p.nombre_vendedor + "', '" + 
+                    p.consignacion + "', '" + p.enviar + "', '" + capturo + "' )";
                 var res = GetExecute("DB", query, 8);
 
                 query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
@@ -518,7 +537,16 @@ namespace swyraServices
         {
             try
             {
-                var query = "insert DETALLEPEDIDO (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
+                var query = "if EXISTS(select * from DETALLEPEDIDO where CVE_DOC = '" + ped.cve_doc + "' and NUM_PAR = " + ped.num_par + " and isnull(CANTSURTIDO,0) > 0) " +
+                            "insert DETALLEPEDIDODEV (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, " +
+                            "IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, " +
+                            "POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR) " +
+                            "select CVE_DOC, NUM_PAR, CVE_ART, CANTSURTIDO, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, " +
+                            "IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, " +
+                            "POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR " +
+                            "from DETALLEPEDIDO where CVE_DOC = '" + ped.cve_doc + "' and NUM_PAR = " + ped.num_par + " " +
+                            "DELETE DETALLEPEDIDO where CVE_DOC = '" + ped.cve_doc + "' and NUM_PAR = " + ped.num_par + " " +
+                            "insert DETALLEPEDIDO (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
                             "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, " +
                             "IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
                             "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, " +
@@ -553,25 +581,31 @@ namespace swyraServices
                     var query = "update PEDIDO set STATUS = '" + pedDb.status + "', " +
                                 "ESTATUSPEDIDO = '" + pedDb.estatuspedido + "' " +
                                 "where CVE_DOC = '" + pedDb.cve_doc + "'";
-                    if (GetExecute("DB", query, 12))
+                    GetExecute("DB", query, 12);
+                    var query3 = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                                    pedDb.cve_doc + "', '" + pedDb.estatuspedido + "', getdate(), null)";
+                    var res2 = GetExecute("DB", query, 12);
+                    if (pedDb.estatuspedido == "DEVOLUCION")
                     {
-                        var query3 = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
-                                     pedDb.cve_doc + "', '" + pedDb.estatuspedido + "', getdate(), null)";
-                        var res2 = GetExecute("DB", query, 12);
-                        if (pedDb.estatuspedido == "MODIFICACION")
-                        {
-                            var query2 = "insert DETALLEPEDIDODEV (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
-                                         "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
-                                         "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
-                                         "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR) select CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
-                                         "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
-                                         "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
-                                         "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_DOC = '" +
-                                         pedDb.cve_doc + "' " +
-                                         "and isnull(SURTIDO,0) = 1 delete DETALLEPEDIDO where CVE_DOC = '" +
-                                         pedDb.cve_doc + "'";
-                            var res = GetExecute("DB", query2, 13);
-                        }
+                        var query2 = "if EXISTS(select * from DETALLEPEDIDODEV where CVE_DOC = '" + pedDb.cve_doc + "' ) " +
+                                     "UPDATE DETALLEPEDIDODEV SET NUM_PAR = NUM_PAR + 1000 where CVE_DOC = '" + pedDb.cve_doc + "' " +
+                                     "insert DETALLEPEDIDODEV (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
+                                        "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
+                                        "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
+                                        "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR) select CVE_DOC, NUM_PAR, CVE_ART, CANTSURTIDO CANT, PXS, PREC, COST, " +
+                                        "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
+                                        "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
+                                        "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_DOC = '" +
+                                        pedDb.cve_doc + "' and isnull(CANTSURTIDO,0) > 0 delete DETALLEPEDIDO where CVE_DOC = '" +
+                                        pedDb.cve_doc + "'";
+                        var res = GetExecute("DB", query2, 13);
+                        query2 = "update DETALLEPEDIDODEV set CANT = d2.CANT " +
+                                 "from DETALLEPEDIDODEV d1 join ( select cve_doc, CVE_ART, sum(CANT) CANT from DETALLEPEDIDODEV " +
+                                 "where (CVE_DOC = '" + pedDb.cve_doc + "') and isnull(DEVUELTO,0) = 0 " +
+                                 "group by CVE_DOC, CVE_ART) as d2 on d1.CVE_DOC = d2.CVE_DOC and d1.CVE_ART = d2.CVE_ART " +
+                                 "update DETALLEPEDIDODEV set DEVUELTO = 1, CANTDEVUELTO = CANT " +
+                                 "where(LTRIM(CVE_DOC) = '" + pedDb.cve_doc + "') and NUM_PAR > 999";
+                        res = GetExecute("DB", query2, 201);
                     }
                 }
             }
@@ -583,13 +617,18 @@ namespace swyraServices
 
         private void ModificaDbPedidos(Pedidos pedFb, Pedidos pedDb)
         {
+            string linea = "";
             try
             {
+                linea = "1";
                 string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE", "MODIFICACION" };
+                linea = "2";
                 if (pedDb.estatuspedido.In(dats))
                 {
+                    linea = "3";
                     pedFb.estatuspedido = (pedDb.estatuspedido != "EMPAQUE") ? pedDb.estatuspedido : "MODIFICACION";
 
+                    linea = "4";
                     var query = "update PEDIDO set " +
                                 "CAN_TOT = " + pedFb.can_tot.ToString(cultureInfo) + 
                                 ", IMP_TOT1 = " + pedFb.imp_tot1.ToString(cultureInfo) + 
@@ -605,88 +644,147 @@ namespace swyraServices
                                 ", COM_TOT_PORC = " + pedFb.com_tot_porc.ToString(cultureInfo) +
                                 ", ESTATUSPEDIDO = '" + pedFb.estatuspedido + "' " +
                                 "where CVE_DOC = '" + pedFb.cve_doc + "'";
+                    linea = "5";
                     if (GetExecute("DB", query, 14))
                     {
+                        linea = "6";
                         query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
                                 pedFb.cve_doc + "', '" + pedFb.estatuspedido + "', getdate(), null)";
-                        var res = GetExecute("DB", query, 14);
+                        linea = "7";
+                        var res = GetExecute("DB", query, 50);
+
+                        linea = "8";
                         List<DetallePedidos> listFbDetalle = CargaFbDetallePedido(pedFb.cve_doc);
+                        linea = "9";
                         List<DetallePedidos> listDbDetalle = CargaDbDetallePedido(pedFb.cve_doc);
+                        linea = "10";
                         List<DetallePedidos> listDbDetalleEx = CargaDbDetallePedidoDev(pedFb.cve_doc);
+                        linea = "11";
                         var detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();
+                        linea = "12";
                         var detalleNuevos = listFbDetalle.Except(detalleAct).ToList();
-                        var detalleExcluidos = listDbDetalle.Except(listDbDetalle.Where(o => listFbDetalle.Any(p => o.cve_art == p.cve_art))).ToList();
-                        var detalleDiferentes = detalleAct.Except(detalleAct.Where(o => listDbDetalle.Any(p => p.cve_art == o.cve_art && p.cant == o.cant))).ToList();
+                        linea = "13";
                         foreach (var det in detalleNuevos)
                         {
+                            linea = "14-" + det.cve_doc.Trim();
                             GuardaDbDetallePedido(det);
-                            var detEx = listDbDetalleEx.First(o => o.cve_art == det.cve_art);
-                            if (detEx != null)
+                            linea = "15-" + det.cve_doc.Trim();
+                            if (listDbDetalleEx.Count > 0)
                             {
-                                if (detEx.devuelto == false && detEx.cant > det.cant)
+                                linea = "16-" + det.cve_doc.Trim();
+                                var detEx = listDbDetalleEx.Find(o => o.cve_art == det.cve_art);
+                                linea = "17-" + det.cve_doc.Trim();
+                                if (detEx != null)
                                 {
-                                    detEx.cant = detEx.cant - det.cant;
-                                    var query2 = "update DETALLEPEDIDODEV set " +
-                                                "CANT = " + detEx.cant + " " +
-                                                "where CVE_DOC = '" + detEx.cve_doc + "' " +
-                                                "and NUM_PAR = " + detEx.num_par;
-                                    GetExecute("DB", query, 51);
-                                }
-                                else if (detEx.devuelto == false && detEx.cant <= det.cant)
-                                {
-                                    var query2 = "delete DETALLEPEDIDODEV " +
-                                                 "where CVE_DOC = '" + detEx.cve_doc + "' " +
-                                                 "and NUM_PAR = " + detEx.num_par;
-                                    GetExecute("DB", query, 52);
+                                    linea = "18-" + det.cve_doc.Trim();
+                                    if (detEx.devuelto == false && detEx.cant > det.cant)
+                                    {
+                                        linea = "19-" + det.cve_doc.Trim();
+                                        detEx.cant = detEx.cant - det.cant;
+                                        linea = "20-" + det.cve_doc.Trim();
+                                        var query2 = "update DETALLEPEDIDODEV set " +
+                                                     "CANT = " + detEx.cant + " " +
+                                                     "where CVE_DOC = '" + detEx.cve_doc + "' " +
+                                                     "and NUM_PAR = " + detEx.num_par;
+                                        linea = "21-" + det.cve_doc.Trim();
+                                        GetExecute("DB", query, 51);
+                                    }
+                                    else if (detEx.devuelto == false && detEx.cant <= det.cant)
+                                    {
+                                        linea = "22-" + det.cve_doc.Trim();
+                                        var query2 = "delete DETALLEPEDIDODEV " +
+                                                     "where CVE_DOC = '" + detEx.cve_doc + "' " +
+                                                     "and NUM_PAR = " + detEx.num_par;
+                                        linea = "23-" + det.cve_doc.Trim();
+                                        GetExecute("DB", query, 52);
+                                    }
                                 }
                             }
                         }
+
+                        linea = "23";
+                        listFbDetalle = CargaFbDetallePedido(pedFb.cve_doc);
+                        linea = "24";
+                        listDbDetalle = CargaDbDetallePedido(pedFb.cve_doc);
+                        linea = "25";
+                        var detalleAnt = listDbDetalle.Where(o => listFbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();
+                        linea = "26";
+                        var detalleExcluidos = listDbDetalle.Except(detalleAnt).ToList();
+                        linea = "27";
                         foreach (var det in detalleExcluidos)
                         {
+                            linea = "28-" + det.cve_doc.Trim();
                             CancelaDbDetallePedido(det);
                         }
+
+                        linea = "29";
+                        listFbDetalle = CargaFbDetallePedido(pedFb.cve_doc);
+                        linea = "30";
+                        listDbDetalle = CargaDbDetallePedido(pedFb.cve_doc);
+                        linea = "31";
+                        detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();
+                        linea = "32";
+                        var detalleIden = detalleAct.Where(o => listDbDetalle.Any(p => p.cve_art == o.cve_art && p.cant == o.cant)).ToList();
+                        linea = "33";
+                        var detalleDiferentes = detalleAct.Except(detalleIden).ToList();
+                        linea = "34";
                         foreach (var detFB in detalleDiferentes)
                         {
+                            linea = "35-" + detFB.cve_doc;
                             DetallePedidos detDB = listDbDetalle.FirstOrDefault(o => o.cve_art == detFB.cve_art);
+                            linea = "36-" + detFB.cve_doc;
                             ModificaDbDetallePedido(detDB, detFB);
                         }
                     }
                 }
                 else if(pedDb.estatuspedido == "FACTURACION")
                 {
+                    linea = "37";
                     var est = (pedDb.ocurredomicilio == "PASAN" || ((pedDb.tiposervicio == "LOCAL" || pedDb.tiposervicio == "LOCAL URGENTE") &&
                                pedDb.ocurredomicilio == "DOMICILIO")) ? "TERMINADO" : "GUIA";
+                    linea = "38";
                     var query = "update PEDIDO set " +
                                 "ESTATUSPEDIDO = '" + est + "' " +
                                 "where CVE_DOC = '" + pedDb.cve_doc + "'";
+                    linea = "39";
                     var res = GetExecute("DB", query, 35);
+                    linea = "40";
                     query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
-                            pedFb.cve_doc + "', 'LEVANTAMIENTO', getdate(), null)";
+                            pedDb.cve_doc + "', 'LEVANTAMIENTO', getdate(), null)";
+                    linea = "41";
                     res = GetExecute("DB", query, 36);
                 }
                 else if (pedDb.estatuspedido == "INGRESARGUIA")
                 {
+                    linea = "42";
                     var query = "update PEDIDO set ESTATUSPEDIDO = 'TERMINADO' " +
                                 "where CVE_DOC = '" + pedDb.cve_doc + "'";
+                    linea = "43";
                     var res = GetExecute("DB", query, 35);
+                    linea = "44";
                     query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
                             pedFb.cve_doc + "', 'TERMINADO', getdate(), null)";
+                    linea = "45";
                     res = GetExecute("DB", query, 36);
                 }
                 else if (pedDb.estatuspedido == "PORCANCELAR")
                 {
+                    linea = "46";
                     var query = "update PEDIDO set ESTATUSPEDIDO = 'CANCELACION' " +
                                 "where CVE_DOC = '" + pedDb.cve_doc + "'";
+                    linea = "47";
                     var res = GetExecute("DB", query, 35);
+                    linea = "48";
                     query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
                             pedFb.cve_doc + "', 'CANCELACION', getdate(), null)";
+                    linea = "49";
                     res = GetExecute("DB", query, 36);
                 }
 
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("14: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("14: " + ex.Message + " Linea : " + linea, EventLogEntryType.Error);
             }
         }
 
@@ -709,21 +807,29 @@ namespace swyraServices
                             "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_ART = '" + detDB.cve_art + "' AND " +
                             "CVE_DOC = '" + detDB.cve_doc + "'";
                         GetExecute("DB", query2, 25);
+                        detDB.cant = detFB.cant;
                         detDB.cantsurtido = detFB.cant;
+                        detDB.cantpendiente = 0;
+                        detDB.surtido = true;
                     }
-                    else
+                    else if (detDB.cantsurtido <= detFB.cant)
                     {
-                        detFB.cant = detDB.cantsurtido;
+                        detDB.cant = detFB.cant;
+                        if (detDB.cantpendiente > 0)
+                        {
+                            detDB.cantpendiente = detDB.cant - detDB.cantsurtido;
+                        }
+                        detDB.surtido = ((detDB.cantsurtido + detDB.cantpendiente) == detDB.cant);
                     }
                 }
-                var query3 = "update DETALLEPEDIDO SET CANT = " + detFB.cant.ToString(cultureInfo) + ", PXS = " + detFB.pxs.ToString(cultureInfo) + ", PREC = " + detFB.prec.ToString(cultureInfo) + ", COST = " + detFB.cost.ToString(cultureInfo) + ", " +
+                var query3 = "update DETALLEPEDIDO SET CANT = " + detDB.cant.ToString(cultureInfo) + ", PXS = " + detFB.pxs.ToString(cultureInfo) + ", PREC = " + detFB.prec.ToString(cultureInfo) + ", COST = " + detFB.cost.ToString(cultureInfo) + ", " +
                              "IMPU1 = " + detFB.impu1.ToString(cultureInfo) + ", IMPU2 = " + detFB.impu2.ToString(cultureInfo) + ", IMPU3 = " + detFB.impu3.ToString(cultureInfo) + ", IMPU4 = " + detFB.impu4.ToString(cultureInfo) + ", " +
                              "IMP1APLA = " + detFB.imp1apla + ", IMP2APLA = " + detFB.imp2apla + ", IMP3APLA = " + detFB.imp3apla + ", IMP4APLA = " + detFB.imp4apla + ", " +
                              "TOTIMP1 = " + detFB.totimp1.ToString(cultureInfo) + ", TOTIMP2 = " + detFB.totimp2.ToString(cultureInfo) + ", TOTIMP3 = " + detFB.totimp3 + ", TOTIMP4 = " + detFB.totimp4.ToString(cultureInfo) + ", " +
                              "DESC1 = " + detFB.desc1.ToString(cultureInfo) + ", DESC2 = " + detFB.desc2.ToString(cultureInfo) + ", DESC3 = " + detFB.desc3.ToString(cultureInfo) + ", COMI = " + detFB.comi.ToString(cultureInfo) + ", APAR = " + detFB.apar.ToString(cultureInfo) + ", " +
                              "NUM_ALM = " + detFB.num_alm + ", TIP_CAM = " + detFB.tip_cam + ", TOT_PARTIDA = " + detFB.tot_partida + ", " +
-                             "CANTSURTIDO = " + detDB.cantsurtido + ", SURTIDO = 0 where CVE_ART = '" + detFB.cve_art + "' AND " +
-                             "CVE_DOC = '" + detFB.cve_doc + "'";
+                             "CANTSURTIDO = " + detDB.cantsurtido + ", SURTIDO = " + ((detDB.surtido) ? "1" : "0") + ", CANTPENDIENTE = " + detDB.cantpendiente + 
+                             " where CVE_ART = '" + detFB.cve_art + "' AND CVE_DOC = '" + detFB.cve_doc + "'";
                 GetExecute("DB", query3, 15);
             }
             catch (Exception ex)
@@ -739,11 +845,11 @@ namespace swyraServices
                 var query = "insert DETALLEPEDIDODEV (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
                              "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
                              "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
-                             "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR) select CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
+                             "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR) select CVE_DOC, NUM_PAR, CVE_ART, isnull(CANTSURTIDO,0), PXS, PREC, COST, " +
                              "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
                              "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
                              "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_DOC = '" + det.cve_doc + "' " +
-                             "and CVE_ART = '" + det.cve_art + "' and isnull(SURTIDO,0) = 1 " +
+                             "and CVE_ART = '" + det.cve_art + "' and isnull(CANTSURTIDO,0) > 0 " +
                              "delete DETALLEPEDIDO where CVE_DOC = '" + det.cve_doc + "' and CVE_ART = '" + det.cve_art + "'";
                 var res = GetExecute("DB", query, 16);
             }
@@ -913,9 +1019,9 @@ namespace swyraServices
                 else
                 {
                     var query3 = "update PAR_FACTP01 SET CANT = " + detDB.cantsurtido.ToString(cultureInfo) + 
-                                 ", TOTIMP4 = " + detDB.totimp4.ToString(cultureInfo) + ", " +
+                                 ", TOTIMP4 = " + detDB.totimp4.ToString(cultureInfo) +
                                  ", TOT_PARTIDA = " + detDB.tot_partida.ToString() + " where NUM_PAR = " +
-                                 detDB.num_par + "' AND CVE_DOC = '" + detDB.cve_doc + "'";
+                                 detDB.num_par + " AND CVE_DOC = '" + detDB.cve_doc + "'";
                     GetFbExecute("FB", query3, 31);
                 }
             }
@@ -932,14 +1038,14 @@ namespace swyraServices
                 var query3 = "";
                 if (pedFac.estatuspedido == "PORCANCELAR")
                 {
-                    query3 = "update PAR_FACTP01 SET STATUS = 'C'" + 
+                    query3 = "update FACTP01 SET STATUS = 'C'" + 
                              ", FECHA_CANCELA = GETDATE()" +
                              ", CONDICION = CONDICION + '" + pedFac.indicacion + "' " +
                              "where CVE_DOC = '" + pedFac.cve_doc + "'";
                 }
                 else
                 {
-                    query3 = "update PAR_FACTP01 SET CAN_TOT = " + pedFac.can_tot +
+                    query3 = "update FACTP01 SET CAN_TOT = " + pedFac.can_tot +
                              ", IMP_TOT4 = " + pedFac.imp_tot4 +
                              ", DES_TOT = " + pedFac.des_tot +
                              ", COM_TOT = " + pedFac.com_tot +

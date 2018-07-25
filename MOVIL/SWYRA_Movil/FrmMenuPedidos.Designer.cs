@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuPedidos));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.pnlRetornar = new System.Windows.Forms.Panel();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.lblConcluir = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
@@ -41,12 +42,10 @@
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtVendedor = new System.Windows.Forms.TextBox();
-            this.txtPrioridad = new System.Windows.Forms.TextBox();
             this.txtServicio = new System.Windows.Forms.TextBox();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.txtPedido = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,6 +70,7 @@
             // pnlRetornar
             // 
             this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.lblInfo);
             this.pnlRetornar.Controls.Add(this.lblConcluir);
             this.pnlRetornar.Controls.Add(this.pbConcluir);
             this.pnlRetornar.Controls.Add(this.pbSalir);
@@ -78,6 +78,15 @@
             this.pnlRetornar.Location = new System.Drawing.Point(0, 235);
             this.pnlRetornar.Name = "pnlRetornar";
             this.pnlRetornar.Size = new System.Drawing.Size(238, 40);
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.lblInfo.ForeColor = System.Drawing.Color.Maroon;
+            this.lblInfo.Location = new System.Drawing.Point(45, 10);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(141, 20);
+            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblConcluir
             // 
@@ -113,12 +122,10 @@
             this.pnlPorSurtir.Controls.Add(this.txtMonto);
             this.pnlPorSurtir.Controls.Add(this.label13);
             this.pnlPorSurtir.Controls.Add(this.txtVendedor);
-            this.pnlPorSurtir.Controls.Add(this.txtPrioridad);
             this.pnlPorSurtir.Controls.Add(this.txtServicio);
             this.pnlPorSurtir.Controls.Add(this.txtCliente);
             this.pnlPorSurtir.Controls.Add(this.txtPedido);
             this.pnlPorSurtir.Controls.Add(this.label10);
-            this.pnlPorSurtir.Controls.Add(this.label8);
             this.pnlPorSurtir.Controls.Add(this.label9);
             this.pnlPorSurtir.Controls.Add(this.label6);
             this.pnlPorSurtir.Controls.Add(this.label2);
@@ -148,7 +155,7 @@
             // txtMonto
             // 
             this.txtMonto.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtMonto.Location = new System.Drawing.Point(97, 138);
+            this.txtMonto.Location = new System.Drawing.Point(97, 117);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.ReadOnly = true;
             this.txtMonto.Size = new System.Drawing.Size(134, 17);
@@ -157,7 +164,7 @@
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(4, 142);
+            this.label13.Location = new System.Drawing.Point(4, 121);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(91, 14);
             this.label13.Text = "Monto";
@@ -166,20 +173,11 @@
             // txtVendedor
             // 
             this.txtVendedor.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtVendedor.Location = new System.Drawing.Point(97, 118);
+            this.txtVendedor.Location = new System.Drawing.Point(97, 97);
             this.txtVendedor.Name = "txtVendedor";
             this.txtVendedor.ReadOnly = true;
             this.txtVendedor.Size = new System.Drawing.Size(134, 17);
             this.txtVendedor.TabIndex = 22;
-            // 
-            // txtPrioridad
-            // 
-            this.txtPrioridad.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtPrioridad.Location = new System.Drawing.Point(97, 98);
-            this.txtPrioridad.Name = "txtPrioridad";
-            this.txtPrioridad.ReadOnly = true;
-            this.txtPrioridad.Size = new System.Drawing.Size(134, 17);
-            this.txtPrioridad.TabIndex = 21;
             // 
             // txtServicio
             // 
@@ -212,20 +210,11 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(4, 121);
+            this.label10.Location = new System.Drawing.Point(4, 100);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 20);
             this.label10.Text = "Vendedor";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(4, 100);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 20);
-            this.label8.Text = "Prioridad";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label9
             // 
@@ -416,13 +405,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.TextBox txtPedido;
         private System.Windows.Forms.TextBox txtServicio;
         private System.Windows.Forms.TextBox txtVendedor;
-        private System.Windows.Forms.TextBox txtPrioridad;
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox pbSurtir;
@@ -443,5 +430,6 @@
         private System.Windows.Forms.Label lblPendM;
         private System.Windows.Forms.TextBox txtOcurrDom;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblInfo;
     }
 }

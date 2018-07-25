@@ -150,6 +150,7 @@ namespace SWYRA
         public string etiquetador_asignado { get; set; }
         public string surtidor_area { get; set; }
         public double porc_surtido { get; set; }
+        public double porc_surtidoReal { get; set; }
         public double porc_empaque { get; set; }
         public string indicaciones { get; set; }
         public string lote { get; set; }
@@ -172,10 +173,12 @@ namespace SWYRA
         public double totcostoguias { get; set; }
         public string ubicacionempaque { get; set; }
         public string flete { get; set; }
+        public string flete2 { get; set; }
         public string observaciones { get; set; }
         public string consignacion { get; set; }
         public string nombre_vendedor { get; set; }
         public string capturo_n { get; set; }
+        public string enviar { get; set; }
     }
 
     public class DetallePedidos
@@ -228,6 +231,7 @@ namespace SWYRA
         public string empaque { get; set; }
         public double volumen { get; set; }
         public double peso { get; set; }
+        public double cantpendiente { get; set; }
     }
 
     public class Actividad
@@ -346,6 +350,7 @@ namespace SWYRA
         public double precio_guia { get; set; }
         public bool asig_pedido_guia { get; set; }
         public string num_guia { get; set; }
+        public double faltan { get; set; }
     }
 
     public class OrdenUbicacion

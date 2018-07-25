@@ -17,6 +17,11 @@ namespace SWYRA_Movil
         private Pedidos ped = new Pedidos();
         private List<DetallePedidoMerc> lstPaquetes = new List<DetallePedidoMerc>();
         private List<DetallePedidoMerc> lstMercancia = new List<DetallePedidoMerc>();
+        private List<DetallePedidos> det = new List<DetallePedidos>();
+        private List<DetallePedidos> dev = new List<DetallePedidos>();
+        private List<DetallePedidos> detA = new List<DetallePedidos>();
+        private List<DetallePedidos> devA = new List<DetallePedidos>();
+
         private int Rini = 530;
         private int Rlim = 981;
         private int Rsal = 30;
@@ -40,7 +45,26 @@ namespace SWYRA_Movil
 
         private void pbSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (!validaExis(true))
+            {
+                ped.solarea = true;
+                var query = "UPDATE PEDIDO SET SOLAREA = 1, ESTATUSPEDIDO = 'MODIFICACION' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var r = Program.GetExecute(query, 9);
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver del área de Brocas. Se regresara al SURTIDOR DEL AREA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
+                return;
+            }
+            if (!validaExis(false))
+            {
+                ped.solarea = false;
+                var query = "UPDATE PEDIDO SET SOLAREA = 0, ESTATUSPEDIDO = 'MODIFICACION' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var r = Program.GetExecute(query, 9);
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver. Se regresara al SURTIDOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
+                return;
+            }
         }
 
         private void dgPedidos_CurrentCellChanged(object sender, EventArgs e)
@@ -49,24 +73,78 @@ namespace SWYRA_Movil
             cbTipoEmpaque.Text = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
         }
 
+        private bool validaExis(bool Area)
+        {
+            bool res = false;
+            try
+            {
+                if (Area)
+                {
+                    detA = Program.GetDataTable(createQR(Area, false), 2).ToList<DetallePedidos>();
+                    devA = Program.GetDataTable(createQR(Area, true), 3).ToList<DetallePedidos>();
+                    var cdetA = detA.Where(o => o.surtido == false).ToList().Count;
+                    var cdevA = devA.Where(o => o.devuelto == false).ToList().Count;
+                    res = (cdetA == 0 && cdevA == 0);
+                }
+                else
+                {
+                    det = Program.GetDataTable(createQR(Area, false), 4).ToList<DetallePedidos>();
+                    dev = Program.GetDataTable(createQR(Area, true), 5).ToList<DetallePedidos>();
+                    var cdet = det.Where(o => o.surtido == false).ToList().Count;
+                    var cdev = dev.Where(o => o.devuelto == false).ToList().Count;
+                    res = (cdet == 0 && cdev == 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            return res;
+        }
+
+        private string createQR(bool Area, bool Devuelto)
+        {
+            var query = "select a.*, isnull(o.ORDEN,0) ORDEN FROM( select *, " +
+                    "case when sel > 0 then cast(((CANT - (ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) + CANTPENDIENTE) - 1) / sel) as int) else 0 end con, " +
+                    "case when (case when sel > 0 then cast(((CANT - (ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) + CANTPENDIENTE) - 1) / sel) as int) else 1 end) > 0 then CTRL_ALM " +
+                    "else case when MASTERS_UBI = '' then CTRL_ALM else MASTERS_UBI end end ubicacion, " +
+                    "(CANT - (sel * (case when sel > 0 then cast(((CANT - (ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) + CANTPENDIENTE) - 1) / sel) as int) " +
+                    "else 0 end)) - (ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) + CANTPENDIENTE)) CANTDIFERENCIA " +
+                    "from ( SELECT  CVE_DOC, NUM_PAR, dp.CVE_ART, CANT, ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) " + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ", " +
+                    "ISNULL(" + (Devuelto ? "DEVUELTO" : "SURTIDO") + ",0) " + (Devuelto ? "DEVUELTO" : "SURTIDO") + ", i.DESCR, i.EXIST, i.LIN_PROD, " +
+                    "ISNULL(ic.COMENTARIO,'') COMENTARIO, ISNULL(ic.APLICAEXIST,0) APLICAEXIST, " +
+                    "ISNULL(ic.EXISTENCIA,0) MINEXIST, ISNULL(IC.APLICALOTE,0) APLICALOTE, " +
+                    "i.CTRL_ALM, i.MASTERS_UBI, i.UNI_EMP MIN, i.MASTERS MAS, " +
+                    "cast(cast(case when i.MASTERS > 0 then (CANT / i.MASTERS) else 0 end as int) * i.MASTERS as int) sel, " +
+                    (Devuelto ? "0" : "ISNULL(CANTPENDIENTE,0)") + " CANTPENDIENTE " +
+                    "FROM " + (Devuelto ? "DETALLEPEDIDODEV" : "DETALLEPEDIDO") + " dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
+                    "LEFT JOIN INVENTARIOCOND ic ON ic.CVE_ART = dp.CVE_ART AND ic.ACTIVO = 1 " +
+                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') AND dp.NUM_PAR < 1000 ) as c) as a LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
+                    "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' ORDER BY o.ORDEN";
+            return query;
+        }
+
         private void FrmEmpaque_Load(object sender, EventArgs e)
         {
             try
             {
                 cargaTipoEmpaque();
                 var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
-                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, " +
-                            "CVE_PEDI, OCURREDOMICILIO, FECHA_ENT, " + 
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, CONTADO, p.STATUS, " +
+                            "CVE_PEDI, OCURREDOMICILIO, FECHA_ENT, STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
+                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, OBSERVACIONES, CONSIGNACION, " + 
                             "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2, FLETE, FLETE2 " +
                             "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 lblPedido.Text = ped.cve_doc;
                 lblCliente.Text = ped.cliente;
+                lblfletes.Text = ped.flete + "; " + ped.flete2;
 
                 cargaPaquetes();
                 pbImprimir.Visible = validaExis(1);
                 pbConcluir.Visible = validaExis(2);
                 cargaDetalleMerc();
+                info();
             }
             catch (Exception ex)
             {
@@ -79,7 +157,7 @@ namespace SWYRA_Movil
             try
             {
                 var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, cast(ULTIMO as varchar(5)) ULTIMO,  CANCELADO, TOTART, CONSEC_EMPAQUE " +
-                            "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
+                            "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') AND (CODIGO_BARRA <> '') " +
                             "AND (ISNULL(CANCELADO, 0) = 0) AND (TIPOPAQUETE IS NOT NULL) AND (CONSEC_PADRE IS NULL) ORDER BY CONSEC DESC";
                 lstPaquetes = Program.GetDataTable(query, 4).ToList<DetallePedidoMerc>();
                 dgPedidos.DataSource = Program.ToDataTable(lstPaquetes, "detallePedidoMerc");
@@ -100,7 +178,7 @@ namespace SWYRA_Movil
             {
                 var query = "SELECT CVE_DOC, CONSEC, d.CVE_ART, i.DESCR, CANT, cast(case when CONSEC_PADRE is null then 'NO' else 'SI' END as varchar(5)) ULTIMO " +
                             "FROM DETALLEPEDIDOMERC d JOIN INVENTARIO i ON i.CVE_ART = d.CVE_ART WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
-                            "AND (ISNULL(CANCELADO, 0) = 0) AND (TIPOPAQUETE IS NULL) ORDER BY CONSEC DESC";
+                            " AND (CODIGO_BARRA <> '') AND (ISNULL(CANCELADO, 0) = 0) AND (TIPOPAQUETE IS NULL) ORDER BY CONSEC DESC";
                 lstMercancia = Program.GetDataTable(query, 4).ToList<DetallePedidoMerc>();
                 var pend = lstMercancia.Where(o => o.ultimo == "NO").ToList().Sum(o => o.cant);
                 lblPendientes.Text = "Pendientes " + pend;
@@ -117,7 +195,7 @@ namespace SWYRA_Movil
             try
             {
                 var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, NULL ULTIMO, CANCELADO, TOTART, CONSEC_EMPAQUE " +
-                            "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + cvedoc.Trim() + "') AND (CONSEC_PADRE = " + consec + ") ORDER BY CONSEC";
+                            "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + cvedoc.Trim() + "') AND (CODIGO_BARRA <> '') AND (CONSEC_PADRE = " + consec + ") ORDER BY CONSEC";
                 ls = Program.GetDataTable(query, 4).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)
@@ -151,13 +229,13 @@ namespace SWYRA_Movil
                 {
                     query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO " +
                             "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
-                            "AND (ISNULL(CANCELADO, 0) = 0) AND (TIPOPAQUETE IS NULL) AND (CONSEC_PADRE IS NULL) ORDER BY CONSEC";
+                            "AND (CODIGO_BARRA <> '') AND (ISNULL(CANCELADO, 0) = 0) AND (TIPOPAQUETE IS NULL) AND (CONSEC_PADRE IS NULL) ORDER BY CONSEC";
                 }
                 else if (opc == 2)
                 {
                     query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO " +
                             "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
-                            "AND (ISNULL(CANCELADO, 0) = 0) AND (ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA')) AND (ISNULL(ULTIMO,0) = 0) ORDER BY CONSEC";
+                            "AND (CODIGO_BARRA <> '') AND (ISNULL(CANCELADO, 0) = 0) AND (ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA')) AND (ISNULL(ULTIMO,0) = 0) ORDER BY CONSEC";
                 }
                 var lsArt = Program.GetDataTable(query, 3).ToList<DetallePedidoMerc>();
                 b = (lsArt.Count == 0);
@@ -171,6 +249,26 @@ namespace SWYRA_Movil
 
         private void pbConcluir_Click(object sender, EventArgs e)
         {
+            if (!validaExis(true))
+            {
+                ped.solarea = true;
+                var query = "UPDATE PEDIDO SET SOLAREA = 1, ESTATUSPEDIDO = 'MODIFICACION' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var r = Program.GetExecute(query, 9);
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver del área de Brocas. Se regresara al SURTIDOR DEL AREA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
+                return;
+            }
+            if (!validaExis(false))
+            {
+                ped.solarea = false;
+                var query = "UPDATE PEDIDO SET SOLAREA = 0, ESTATUSPEDIDO = 'MODIFICACION' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var r = Program.GetExecute(query, 9);
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver. Se regresara al SURTIDOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
+                return;
+            }
             try
             {
                 var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'REMISION' " +
@@ -199,12 +297,12 @@ namespace SWYRA_Movil
                             "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') GROUP BY CVE_DOC " +
                             "SELECT @consecEmpaque = (ISNULL(MAX(CONSEC_EMPAQUE), 0) + 1) FROM DETALLEPEDIDOMERC " +
                             "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
-                            ((cbTipoEmpaque.Text == "ATADOS" || cbTipoEmpaque.Text == "TARIMA") ? "AND TIPOPAQUETE = '" + cbTipoEmpaque.Text + "' " : "AND TIPOPAQUETE NOT IN ('ATADOS', 'TARIMA') ") +
+                            ((cbTipoEmpaque.Text == "ATADOS" || cbTipoEmpaque.Text == "TARIMA") ? " AND TIPOPAQUETE = '" + cbTipoEmpaque.Text + "' " : " AND TIPOPAQUETE NOT IN ('ATADOS', 'TARIMA') ") +
                             "IF @cvedoc IS NOT NULL " +
                             "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, TOTART, CONSEC_EMPAQUE) " +
-                            "VALUES (@cvedoc, @consec, 0, '', '" + ped.cve_doc + "-'" +
+                            "VALUES (@cvedoc, @consec, 0, '', '" + ped.cve_doc + "-" +
                             ((cbTipoEmpaque.Text == "ATADOS") ? "A" : ((cbTipoEmpaque.Text == "TARIMA") ? "T" : "")) +
-                            " + CAST(@consecEmpaque AS VARCHAR(10)), 0, '" + cbTipoEmpaque.Text + "', 0, @consecEmpaque) ";
+                            "' + CAST(@consecEmpaque AS VARCHAR(10)), 0, '" + cbTipoEmpaque.Text + "', 0, @consecEmpaque) ";
                 Program.GetExecute(query, 5);
                 ActualizaPedido();
                 cargaPaquetes();
@@ -228,8 +326,10 @@ namespace SWYRA_Movil
                     }
                     else
                     {
+                        var tp = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
                         var query = "UPDATE DETALLEPEDIDOMERC SET CANCELADO = 1 " +
-                                    "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND CONSEC_EMPAQUE = " + dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString();
+                                    "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND CONSEC_EMPAQUE = " + dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString() + " AND " +
+                                    ((tp == "ATADOS" || tp == "TARIMA") ? "TIPOPAQUETE = " + tp : "TIPOPAQUETE NOT IN ('ATADOS', 'TARIMA')");
                         Program.GetExecute(query, 6);
                         ActualizaPedido();
                         cargaPaquetes();
@@ -258,7 +358,7 @@ namespace SWYRA_Movil
                             "@totTarimas = sum(case when TIPOPAQUETE = 'TARIMA' then 1 else 0 end), " +
                             "@totArt = sum(case when isnull(TIPOPAQUETE, '') = '' then 1 else 0 end), " +
                             "@totEmp = sum(case when isnull(TIPOPAQUETE, '') = '' and isnull(CONSEC_PADRE,'') <> '' then 1 else 0 end) " +
-                            "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') AND (ISNULL(CANCELADO, 0) = 0) " +
+                            "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') AND (CODIGO_BARRA <> '') AND (ISNULL(CANCELADO, 0) = 0) " +
                             "UPDATE PEDIDO SET totCajaCarton =  @totCajaCarton, totCajaMadera =  @totCajaMadera, " +
                             "totbultos = @totbultos, totRollos = @totRollos, totCubetas = @totCubetas, totAtados = @totAtados, " +
                             "totTarimas = @totTarimas, PORC_EMPAQUE = (@totEmp / @totArt) * 100.00 " +
@@ -279,14 +379,15 @@ namespace SWYRA_Movil
                 if (emp != "ATADOS" && emp != "TARIMA")
                 {
                     FrmEmpaqueAdd frmEmpacar = new FrmEmpaqueAdd();
-                    frmEmpacar.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
+                    frmEmpacar.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()) && o.tipopaquete != "ATADOS" && o.tipopaquete != "TARIMA");
                     frmEmpacar.ShowDialog();
                 }
                 else
                 {
-                    FrmEmpaqueAT frmEmpacar = new FrmEmpaqueAT();
-                    frmEmpacar.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
-                    frmEmpacar.ShowDialog();
+                    var tp = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
+                    FrmEmpaqueAT frmEmpacar2 = new FrmEmpaqueAT();
+                    frmEmpacar2.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()) && o.tipopaquete == tp);
+                    frmEmpacar2.ShowDialog();
                 }
                 ActualizaPedido();
                 cargaPaquetes();
@@ -322,8 +423,44 @@ namespace SWYRA_Movil
             }
         }
 
+        private bool validaEstatusPedido()
+        {
+            bool b = false;
+            try
+            {
+                var query = "select CVE_DOC, ESTATUSPEDIDO from PEDIDO where CVE_DOC = '" + ped.cve_doc + "'";
+                var valped = Program.GetDataTable(query, 100).ToData<Pedidos>();
+                b = (valped.estatuspedido == "EMPAQUE");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            return b;
+        }
+
         private void pbImprimir_Click(object sender, EventArgs e)
         {
+            if (!validaExis(true))
+            {
+                ped.solarea = true;
+                var query = "UPDATE PEDIDO SET SOLAREA = 1, ESTATUSPEDIDO = 'MODIFICACION' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var r = Program.GetExecute(query, 9);
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver del área de Brocas. Se regresara al SURTIDOR DEL AREA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
+                return;
+            }
+            if (!validaExis(false))
+            {
+                ped.solarea = false;
+                var query = "UPDATE PEDIDO SET SOLAREA = 0, ESTATUSPEDIDO = 'MODIFICACION' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var r = Program.GetExecute(query, 9);
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver. Se regresara al SURTIDOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
+                return;
+            }
             // Printer IP Address and communication port
             string ipAddress = Program.ipImpEti();
             int port = 9100;
@@ -354,7 +491,7 @@ namespace SWYRA_Movil
 
             try
             {
-                var query = "UPDATE DETALLEPEDIDOMERC SET ULTIMO = 1 WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') " +
+                var query = "UPDATE DETALLEPEDIDOMERC SET ULTIMO = 1 WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') AND (CODIGO_BARRA <> '') " +
                       "AND (ISNULL(CANCELADO, 0) = 0) AND (ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA')) AND (ISNULL(ULTIMO,0) = 0) ";
                 Program.GetExecute(query, 8);
                 MessageBox.Show("Impresion Exitosa", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
@@ -544,6 +681,18 @@ namespace SWYRA_Movil
             frmEmpList.ped = lstPaquetes.Find(o => o.consec_empaque == int.Parse(dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString()));
             frmEmpList.det = lstMercancia.Where(o => o.ultimo == "NO").ToList();
             frmEmpList.ShowDialog();
+        }
+
+        private void pbInfo_Click(object sender, EventArgs e)
+        {
+            info();
+        }
+
+        private void info()
+        {
+            FrmEmpaqueInfo inf = new FrmEmpaqueInfo();
+            inf.ped = ped;
+            inf.ShowDialog();
         }
     }
 }

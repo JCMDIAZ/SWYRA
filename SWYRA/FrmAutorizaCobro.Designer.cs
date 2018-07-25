@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAutorizaCobro));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.gpoFiltro = new System.Windows.Forms.GroupBox();
             this.Label1 = new System.Windows.Forms.Label();
@@ -41,10 +42,12 @@
             this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcobrador_asignado_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcve_doc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcve_clpv = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPorcDesc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colimporte = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcondicion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colindicaciones = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colobservaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcontado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -61,7 +64,6 @@
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsTodos.Properties)).BeginInit();
@@ -87,6 +89,15 @@
             this.toolStrip1.TabIndex = 41;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
+            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(80, 24);
+            this.btnFactura.Text = "Resumen";
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
+            // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,11 +112,12 @@
             // 
             this.gpoFiltro.Controls.Add(this.Label1);
             this.gpoFiltro.Controls.Add(this.tsTodos);
-            this.gpoFiltro.Location = new System.Drawing.Point(9, 24);
+            this.gpoFiltro.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gpoFiltro.Location = new System.Drawing.Point(0, 27);
             this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.gpoFiltro.Name = "gpoFiltro";
             this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2);
-            this.gpoFiltro.Size = new System.Drawing.Size(780, 53);
+            this.gpoFiltro.Size = new System.Drawing.Size(798, 53);
             this.gpoFiltro.TabIndex = 42;
             this.gpoFiltro.TabStop = false;
             this.gpoFiltro.Text = " Filtrar Usuario ";
@@ -136,12 +148,13 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.pedidosBindingSource;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
-            this.gridControl1.Location = new System.Drawing.Point(9, 92);
+            this.gridControl1.Location = new System.Drawing.Point(0, 80);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(780, 281);
+            this.gridControl1.Size = new System.Drawing.Size(798, 303);
             this.gridControl1.TabIndex = 43;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -157,10 +170,12 @@
             this.colfecha_doc,
             this.colcobrador_asignado_n,
             this.colcve_doc,
+            this.colcve_clpv,
             this.colcliente,
+            this.colPorcDesc,
             this.colimporte,
             this.colcondicion,
-            this.colindicaciones,
+            this.colobservaciones,
             this.colcontado});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
@@ -205,6 +220,15 @@
             this.colcve_doc.VisibleIndex = 2;
             this.colcve_doc.Width = 150;
             // 
+            // colcve_clpv
+            // 
+            this.colcve_clpv.Caption = "# Cliente";
+            this.colcve_clpv.FieldName = "cve_clpv";
+            this.colcve_clpv.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colcve_clpv.Name = "colcve_clpv";
+            this.colcve_clpv.Visible = true;
+            this.colcve_clpv.VisibleIndex = 3;
+            // 
             // colcliente
             // 
             this.colcliente.Caption = "Cliente";
@@ -214,8 +238,16 @@
             this.colcliente.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.colcliente.OptionsColumn.FixedWidth = true;
             this.colcliente.Visible = true;
-            this.colcliente.VisibleIndex = 3;
+            this.colcliente.VisibleIndex = 4;
             this.colcliente.Width = 205;
+            // 
+            // colPorcDesc
+            // 
+            this.colPorcDesc.Caption = "Porc. Desc.";
+            this.colPorcDesc.FieldName = "des_tot_porc";
+            this.colPorcDesc.Name = "colPorcDesc";
+            this.colPorcDesc.Visible = true;
+            this.colPorcDesc.VisibleIndex = 5;
             // 
             // colimporte
             // 
@@ -225,7 +257,7 @@
             this.colimporte.FieldName = "importe";
             this.colimporte.Name = "colimporte";
             this.colimporte.Visible = true;
-            this.colimporte.VisibleIndex = 4;
+            this.colimporte.VisibleIndex = 6;
             this.colimporte.Width = 160;
             // 
             // colcondicion
@@ -234,17 +266,17 @@
             this.colcondicion.FieldName = "condicion";
             this.colcondicion.Name = "colcondicion";
             this.colcondicion.Visible = true;
-            this.colcondicion.VisibleIndex = 5;
+            this.colcondicion.VisibleIndex = 7;
             this.colcondicion.Width = 205;
             // 
-            // colindicaciones
+            // colobservaciones
             // 
-            this.colindicaciones.Caption = "Indicaciones";
-            this.colindicaciones.FieldName = "indicaciones";
-            this.colindicaciones.Name = "colindicaciones";
-            this.colindicaciones.Visible = true;
-            this.colindicaciones.VisibleIndex = 6;
-            this.colindicaciones.Width = 150;
+            this.colobservaciones.Caption = "Observaciones";
+            this.colobservaciones.FieldName = "observaciones";
+            this.colobservaciones.Name = "colobservaciones";
+            this.colobservaciones.Visible = true;
+            this.colobservaciones.VisibleIndex = 8;
+            this.colobservaciones.Width = 150;
             // 
             // colcontado
             // 
@@ -252,7 +284,7 @@
             this.colcontado.FieldName = "contado";
             this.colcontado.Name = "colcontado";
             this.colcontado.Visible = true;
-            this.colcontado.VisibleIndex = 7;
+            this.colcontado.VisibleIndex = 9;
             // 
             // popupMenu1
             // 
@@ -397,15 +429,6 @@
             this.panel1.Size = new System.Drawing.Size(798, 380);
             this.panel1.TabIndex = 68;
             // 
-            // btnFactura
-            // 
-            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
-            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(80, 24);
-            this.btnFactura.Text = "Resumen";
-            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
-            // 
             // FrmAutorizaCobro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,7 +436,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(798, 383);
-            this.ControlBox = false;
             this.Controls.Add(this.ppIndicaciones);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.gpoFiltro);
@@ -462,7 +484,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colcve_doc;
         private DevExpress.XtraGrid.Columns.GridColumn colcliente;
         private DevExpress.XtraGrid.Columns.GridColumn colcondicion;
-        private DevExpress.XtraGrid.Columns.GridColumn colindicaciones;
+        private DevExpress.XtraGrid.Columns.GridColumn colobservaciones;
         private System.Windows.Forms.BindingSource pedidosBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colimporte;
         private DevExpress.XtraGrid.Columns.GridColumn colcontado;
@@ -483,5 +505,7 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraGrid.Columns.GridColumn colfecha_doc;
         private System.Windows.Forms.ToolStripButton btnFactura;
+        private DevExpress.XtraGrid.Columns.GridColumn colcve_clpv;
+        private DevExpress.XtraGrid.Columns.GridColumn colPorcDesc;
     }
 }

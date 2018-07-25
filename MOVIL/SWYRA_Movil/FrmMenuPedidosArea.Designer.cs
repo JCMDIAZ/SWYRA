@@ -51,6 +51,13 @@
             this.pbRemover = new System.Windows.Forms.PictureBox();
             this.pbIncompletos = new System.Windows.Forms.PictureBox();
             this.pbDevolucion = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblPendM = new System.Windows.Forms.Label();
+            this.lblPendS = new System.Windows.Forms.Label();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.pnlPorSurtir.SuspendLayout();
             this.pnlRetornar.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +80,7 @@
             this.pnlPorSurtir.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPorSurtir.Location = new System.Drawing.Point(0, 0);
             this.pnlPorSurtir.Name = "pnlPorSurtir";
-            this.pnlPorSurtir.Size = new System.Drawing.Size(238, 166);
+            this.pnlPorSurtir.Size = new System.Drawing.Size(238, 151);
             // 
             // txtMonto
             // 
@@ -187,6 +194,7 @@
             // pnlRetornar
             // 
             this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.lblInfo);
             this.pnlRetornar.Controls.Add(this.pbConcluir);
             this.pnlRetornar.Controls.Add(this.pbSalir);
             this.pnlRetornar.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -215,7 +223,7 @@
             // pbSurtir
             // 
             this.pbSurtir.Image = ((System.Drawing.Image)(resources.GetObject("pbSurtir.Image")));
-            this.pbSurtir.Location = new System.Drawing.Point(4, 197);
+            this.pbSurtir.Location = new System.Drawing.Point(4, 179);
             this.pbSurtir.Name = "pbSurtir";
             this.pbSurtir.Size = new System.Drawing.Size(35, 35);
             this.pbSurtir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -224,7 +232,7 @@
             // pbRemover
             // 
             this.pbRemover.Image = ((System.Drawing.Image)(resources.GetObject("pbRemover.Image")));
-            this.pbRemover.Location = new System.Drawing.Point(45, 197);
+            this.pbRemover.Location = new System.Drawing.Point(45, 179);
             this.pbRemover.Name = "pbRemover";
             this.pbRemover.Size = new System.Drawing.Size(35, 35);
             this.pbRemover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -233,7 +241,7 @@
             // pbIncompletos
             // 
             this.pbIncompletos.Image = ((System.Drawing.Image)(resources.GetObject("pbIncompletos.Image")));
-            this.pbIncompletos.Location = new System.Drawing.Point(86, 197);
+            this.pbIncompletos.Location = new System.Drawing.Point(86, 179);
             this.pbIncompletos.Name = "pbIncompletos";
             this.pbIncompletos.Size = new System.Drawing.Size(35, 35);
             this.pbIncompletos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -242,11 +250,70 @@
             // pbDevolucion
             // 
             this.pbDevolucion.Image = ((System.Drawing.Image)(resources.GetObject("pbDevolucion.Image")));
-            this.pbDevolucion.Location = new System.Drawing.Point(127, 197);
+            this.pbDevolucion.Location = new System.Drawing.Point(127, 179);
             this.pbDevolucion.Name = "pbDevolucion";
             this.pbDevolucion.Size = new System.Drawing.Size(35, 35);
             this.pbDevolucion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbDevolucion.Click += new System.EventHandler(this.pbDevolucion_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(12, 156);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 20);
+            this.label1.Text = "S";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(53, 156);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 20);
+            this.label3.Text = "Q";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(94, 156);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 20);
+            this.label4.Text = "I";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(135, 156);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 20);
+            this.label5.Text = "M";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblPendM
+            // 
+            this.lblPendM.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic);
+            this.lblPendM.Location = new System.Drawing.Point(127, 215);
+            this.lblPendM.Name = "lblPendM";
+            this.lblPendM.Size = new System.Drawing.Size(35, 17);
+            this.lblPendM.Text = "0";
+            this.lblPendM.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblPendS
+            // 
+            this.lblPendS.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic);
+            this.lblPendS.Location = new System.Drawing.Point(4, 215);
+            this.lblPendS.Name = "lblPendS";
+            this.lblPendS.Size = new System.Drawing.Size(35, 17);
+            this.lblPendS.Text = "0";
+            this.lblPendS.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.lblInfo.ForeColor = System.Drawing.Color.Maroon;
+            this.lblInfo.Location = new System.Drawing.Point(45, 10);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(141, 20);
+            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FrmMenuPedidosArea
             // 
@@ -255,6 +322,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.lblPendM);
+            this.Controls.Add(this.lblPendS);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pbDevolucion);
             this.Controls.Add(this.pbIncompletos);
             this.Controls.Add(this.pbRemover);
@@ -294,5 +367,12 @@
         private System.Windows.Forms.PictureBox pbIncompletos;
         private System.Windows.Forms.PictureBox pbConcluir;
         private System.Windows.Forms.PictureBox pbDevolucion;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPendM;
+        private System.Windows.Forms.Label lblPendS;
+        private System.Windows.Forms.Label lblInfo;
     }
 }

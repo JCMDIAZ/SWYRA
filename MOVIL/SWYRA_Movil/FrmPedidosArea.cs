@@ -34,15 +34,15 @@ namespace SWYRA_Movil
                 if (listPedidos.Count > 0)
                 {
                     var query = "UPDATE PEDIDO SET SURTIDOR_AREA = '" + Program.usActivo.Usuario + "' " +
-                                "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "'";
+                                "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "'";
                     var res = Program.GetExecute(query, 3);
                     query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
-                            "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "' " +
+                            "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "' " +
                             "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
                             "@cvedoc, 'SURTIENDO AREA', getdate(), '" + Program.usActivo.Usuario + "')";
                     res = Program.GetExecute(query, 4);
                     FrmMenuPedidosArea frmMenuPed = new FrmMenuPedidosArea();
-                    frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString();
+                    frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString();
                     frmMenuPed.ShowDialog();
                     cargaPedidos();
                 }
@@ -90,7 +90,7 @@ namespace SWYRA_Movil
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 9 " +
                         "            when p.TIPOSERVICIO = 'LOCAL' THEN 10 " +
                         "        end " +
-                        "end Numprioridad, UbicacionEmpaque " +
+                        "end Numprioridad, UbicacionEmpaque, p.CVE_CLPV " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where isnull(p.SURTIDOR_AREA,'') = '" +surtAsig + "' and p.ESTATUSPEDIDO in ('SURTIR','MODIFICACION', 'DETENIDO', 'DEVOLUCION') and isnull(p.SOLAREA,0) = 1 " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";

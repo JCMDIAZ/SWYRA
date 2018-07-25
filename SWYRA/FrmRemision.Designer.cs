@@ -37,11 +37,12 @@
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcve_doc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcve_clpv = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltiposervicio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colocurredomicilio = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltotcajamadera = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltotbultos = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltotrollos = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -74,7 +75,7 @@
             coltotcajacarton.FieldName = "totcajacarton";
             coltotcajacarton.Name = "coltotcajacarton";
             coltotcajacarton.Visible = true;
-            coltotcajacarton.VisibleIndex = 5;
+            coltotcajacarton.VisibleIndex = 6;
             // 
             // toolStrip1
             // 
@@ -114,12 +115,13 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.pedidosBindingSource;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
-            this.gridControl1.Location = new System.Drawing.Point(9, 34);
+            this.gridControl1.Location = new System.Drawing.Point(0, 27);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(780, 339);
+            this.gridControl1.Size = new System.Drawing.Size(798, 356);
             this.gridControl1.TabIndex = 43;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -128,11 +130,12 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colfecha_doc,
             this.colcve_doc,
+            this.colcve_clpv,
             this.colcliente,
             this.coltiposervicio,
             this.colocurredomicilio,
+            this.colfecha_doc,
             coltotcajacarton,
             this.coltotcajamadera,
             this.coltotbultos,
@@ -151,17 +154,6 @@
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             // 
-            // colfecha_doc
-            // 
-            this.colfecha_doc.Caption = "Fecha";
-            this.colfecha_doc.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.colfecha_doc.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.colfecha_doc.FieldName = "fecha_doc";
-            this.colfecha_doc.Name = "colfecha_doc";
-            this.colfecha_doc.Visible = true;
-            this.colfecha_doc.VisibleIndex = 4;
-            this.colfecha_doc.Width = 90;
-            // 
             // colcve_doc
             // 
             this.colcve_doc.Caption = "Orden ID";
@@ -174,6 +166,15 @@
             this.colcve_doc.VisibleIndex = 0;
             this.colcve_doc.Width = 100;
             // 
+            // colcve_clpv
+            // 
+            this.colcve_clpv.Caption = "# Cliente";
+            this.colcve_clpv.FieldName = "cve_clpv";
+            this.colcve_clpv.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colcve_clpv.Name = "colcve_clpv";
+            this.colcve_clpv.Visible = true;
+            this.colcve_clpv.VisibleIndex = 1;
+            // 
             // colcliente
             // 
             this.colcliente.Caption = "Cliente";
@@ -183,7 +184,7 @@
             this.colcliente.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.colcliente.OptionsColumn.FixedWidth = true;
             this.colcliente.Visible = true;
-            this.colcliente.VisibleIndex = 1;
+            this.colcliente.VisibleIndex = 2;
             this.colcliente.Width = 205;
             // 
             // coltiposervicio
@@ -192,7 +193,7 @@
             this.coltiposervicio.FieldName = "tiposervicio";
             this.coltiposervicio.Name = "coltiposervicio";
             this.coltiposervicio.Visible = true;
-            this.coltiposervicio.VisibleIndex = 2;
+            this.coltiposervicio.VisibleIndex = 3;
             this.coltiposervicio.Width = 90;
             // 
             // colocurredomicilio
@@ -201,8 +202,19 @@
             this.colocurredomicilio.FieldName = "ocurredomicilio";
             this.colocurredomicilio.Name = "colocurredomicilio";
             this.colocurredomicilio.Visible = true;
-            this.colocurredomicilio.VisibleIndex = 3;
+            this.colocurredomicilio.VisibleIndex = 4;
             this.colocurredomicilio.Width = 90;
+            // 
+            // colfecha_doc
+            // 
+            this.colfecha_doc.Caption = "Fecha";
+            this.colfecha_doc.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.colfecha_doc.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.colfecha_doc.FieldName = "fecha_doc";
+            this.colfecha_doc.Name = "colfecha_doc";
+            this.colfecha_doc.Visible = true;
+            this.colfecha_doc.VisibleIndex = 5;
+            this.colfecha_doc.Width = 90;
             // 
             // coltotcajamadera
             // 
@@ -211,7 +223,7 @@
             this.coltotcajamadera.FieldName = "totcajamadera";
             this.coltotcajamadera.Name = "coltotcajamadera";
             this.coltotcajamadera.Visible = true;
-            this.coltotcajamadera.VisibleIndex = 6;
+            this.coltotcajamadera.VisibleIndex = 7;
             // 
             // coltotbultos
             // 
@@ -220,7 +232,7 @@
             this.coltotbultos.FieldName = "totbultos";
             this.coltotbultos.Name = "coltotbultos";
             this.coltotbultos.Visible = true;
-            this.coltotbultos.VisibleIndex = 7;
+            this.coltotbultos.VisibleIndex = 8;
             // 
             // coltotrollos
             // 
@@ -229,7 +241,7 @@
             this.coltotrollos.FieldName = "totrollos";
             this.coltotrollos.Name = "coltotrollos";
             this.coltotrollos.Visible = true;
-            this.coltotrollos.VisibleIndex = 8;
+            this.coltotrollos.VisibleIndex = 9;
             // 
             // coltotcubetas
             // 
@@ -238,7 +250,7 @@
             this.coltotcubetas.FieldName = "totcubetas";
             this.coltotcubetas.Name = "coltotcubetas";
             this.coltotcubetas.Visible = true;
-            this.coltotcubetas.VisibleIndex = 9;
+            this.coltotcubetas.VisibleIndex = 10;
             // 
             // coltotatados
             // 
@@ -247,7 +259,7 @@
             this.coltotatados.FieldName = "totatados";
             this.coltotatados.Name = "coltotatados";
             this.coltotatados.Visible = true;
-            this.coltotatados.VisibleIndex = 10;
+            this.coltotatados.VisibleIndex = 11;
             // 
             // coltottarimas
             // 
@@ -256,7 +268,7 @@
             this.coltottarimas.FieldName = "tottarimas";
             this.coltottarimas.Name = "coltottarimas";
             this.coltottarimas.Visible = true;
-            this.coltottarimas.VisibleIndex = 11;
+            this.coltottarimas.VisibleIndex = 12;
             // 
             // coltotcostoguias
             // 
@@ -264,7 +276,7 @@
             this.coltotcostoguias.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.coltotcostoguias.Name = "coltotcostoguias";
             this.coltotcostoguias.Visible = true;
-            this.coltotcostoguias.VisibleIndex = 12;
+            this.coltotcostoguias.VisibleIndex = 13;
             // 
             // popupMenu1
             // 
@@ -346,7 +358,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(798, 383);
-            this.ControlBox = false;
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.barDockControlLeft);
@@ -401,5 +412,6 @@
         private DevExpress.XtraBars.BarButtonItem bbFacturacion;
         private DevExpress.XtraBars.BarButtonItem bbLevGuia;
         private System.Windows.Forms.ToolStripButton btnFactura;
+        private DevExpress.XtraGrid.Columns.GridColumn colcve_clpv;
     }
 }

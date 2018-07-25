@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstatusPedido));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.gpoFiltro = new System.Windows.Forms.GroupBox();
@@ -65,6 +66,7 @@
             this.colporc_empaque = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colindicaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.collote = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colporc_surtidoreal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -93,7 +95,6 @@
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
@@ -133,6 +134,15 @@
             this.toolStrip1.Size = new System.Drawing.Size(798, 27);
             this.toolStrip1.TabIndex = 40;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnFactura
+            // 
+            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
+            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(80, 24);
+            this.btnFactura.Text = "Resumen";
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
             // 
             // btnExportar
             // 
@@ -311,6 +321,7 @@
             this.colempaquetador_asignado_n,
             this.coletiquetador_asignado_n,
             this.colsurtidor_area_n,
+            this.colporc_surtidoreal,
             this.colporc_surtido,
             this.colporc_empaque,
             this.colindicaciones,
@@ -491,20 +502,22 @@
             // 
             // colporc_surtido
             // 
-            this.colporc_surtido.Caption = "Porcentaje Surtido";
+            this.colporc_surtido.Caption = "Avance Surtido";
+            this.colporc_surtido.DisplayFormat.FormatString = "#0.00 %";
             this.colporc_surtido.FieldName = "porc_surtido";
             this.colporc_surtido.Name = "colporc_surtido";
             this.colporc_surtido.Visible = true;
-            this.colporc_surtido.VisibleIndex = 17;
+            this.colporc_surtido.VisibleIndex = 18;
             this.colporc_surtido.Width = 150;
             // 
             // colporc_empaque
             // 
-            this.colporc_empaque.Caption = "Porcentaje Empaque";
+            this.colporc_empaque.Caption = "Avance Empaque";
+            this.colporc_empaque.DisplayFormat.FormatString = "#0.00 %";
             this.colporc_empaque.FieldName = "porc_empaque";
             this.colporc_empaque.Name = "colporc_empaque";
             this.colporc_empaque.Visible = true;
-            this.colporc_empaque.VisibleIndex = 18;
+            this.colporc_empaque.VisibleIndex = 19;
             this.colporc_empaque.Width = 150;
             // 
             // colindicaciones
@@ -513,7 +526,7 @@
             this.colindicaciones.FieldName = "indicaciones";
             this.colindicaciones.Name = "colindicaciones";
             this.colindicaciones.Visible = true;
-            this.colindicaciones.VisibleIndex = 19;
+            this.colindicaciones.VisibleIndex = 20;
             this.colindicaciones.Width = 150;
             // 
             // collote
@@ -522,8 +535,18 @@
             this.collote.FieldName = "lote";
             this.collote.Name = "collote";
             this.collote.Visible = true;
-            this.collote.VisibleIndex = 20;
+            this.collote.VisibleIndex = 21;
             this.collote.Width = 90;
+            // 
+            // colporc_surtidoreal
+            // 
+            this.colporc_surtidoreal.Caption = "Porcentaje Surtido";
+            this.colporc_surtidoreal.DisplayFormat.FormatString = "#0.00 %";
+            this.colporc_surtidoreal.FieldName = "porc_surtidoReal";
+            this.colporc_surtidoreal.Name = "colporc_surtidoreal";
+            this.colporc_surtidoreal.Visible = true;
+            this.colporc_surtidoreal.VisibleIndex = 17;
+            this.colporc_surtidoreal.Width = 150;
             // 
             // popupMenu1
             // 
@@ -722,7 +745,7 @@
             this.cbPrioridad.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbPrioridad.Properties.Items.AddRange(new object[] {
-            "ALTA",
+            "URGENTE",
             "NORMAL"});
             this.cbPrioridad.Size = new System.Drawing.Size(152, 22);
             this.cbPrioridad.TabIndex = 15;
@@ -848,15 +871,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(798, 383);
             this.panel1.TabIndex = 67;
-            // 
-            // btnFactura
-            // 
-            this.btnFactura.Image = global::SWYRA.Properties.Resources.full_page;
-            this.btnFactura.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(80, 24);
-            this.btnFactura.Text = "Resumen";
-            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
             // 
             // FrmEstatusPedido
             // 
@@ -986,5 +1000,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colnombre_vendedor;
         private DevExpress.XtraGrid.Columns.GridColumn colcve_clpv;
         private System.Windows.Forms.ToolStripButton btnFactura;
+        private DevExpress.XtraGrid.Columns.GridColumn colporc_surtidoreal;
     }
 }

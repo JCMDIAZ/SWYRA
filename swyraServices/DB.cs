@@ -114,6 +114,7 @@ namespace swyraServices
         public string nombre_vendedor { get; set; }
         public string consignacion { get; set; }
         public string indicacion { get; set; }
+        public string enviar { get; set; }
     }
 
     public class DetallePedidos : IDisposable
@@ -159,6 +160,7 @@ namespace swyraServices
         public double cantdevuelto { get; set; }
         public bool surtido { get; set; }
         public bool devuelto { get; set; }
+        public double cantpendiente { get; set; }
         public void Dispose()
         {
             throw new NotImplementedException();

@@ -180,6 +180,8 @@ namespace SWYRA_Movil
         public string flete { get; set; }
         public string flete2 { get; set; }
         public string causadetenido { get; set; }
+        public string consignacion { get; set; }
+        public string observaciones { get; set; }
     }
 
     public class DetallePedidos
@@ -241,6 +243,7 @@ namespace SWYRA_Movil
         public int orden { get; set; }
         public int sel { get; set; }
         public int con { get; set; }
+        public double cantpendiente { get; set; }
     }
 
     public class DetallePedidoMerc
@@ -263,6 +266,7 @@ namespace SWYRA_Movil
         public double precio_guia { get; set; }
         public bool asig_pedido_guia { get; set; }
         public string num_guia { get; set; }
+        public double pend { get; set; }
     }
 
     public class OrdenUbicacion

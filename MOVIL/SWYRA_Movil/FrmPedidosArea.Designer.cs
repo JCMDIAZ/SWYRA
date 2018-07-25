@@ -46,6 +46,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbAsignar = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
+            this.dgtCve_clpv = new System.Windows.Forms.DataGridTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -80,12 +81,13 @@
             // 
             // dataGridTableStyle1
             // 
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtEstatus);
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtPrioridad);
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtServicio);
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtPedido);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtCve_clpv);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtCliente);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtPedido);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtFecha);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtEstatus);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtServicio);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtPrioridad);
             this.dataGridTableStyle1.MappingName = "Pedidos";
             // 
             // dgtEstatus
@@ -169,6 +171,13 @@
             this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
             // 
+            // dgtCve_clpv
+            // 
+            this.dgtCve_clpv.Format = "";
+            this.dgtCve_clpv.FormatInfo = null;
+            this.dgtCve_clpv.HeaderText = "# Clte.";
+            this.dgtCve_clpv.MappingName = "cve_clpv";
+            // 
             // FrmPedidosArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -206,5 +215,6 @@
         private System.Windows.Forms.DataGridTextBoxColumn dgtPedido;
         private System.Windows.Forms.DataGridTextBoxColumn dgtCliente;
         private System.Windows.Forms.DataGridTextBoxColumn dgtFecha;
+        private System.Windows.Forms.DataGridTextBoxColumn dgtCve_clpv;
     }
 }

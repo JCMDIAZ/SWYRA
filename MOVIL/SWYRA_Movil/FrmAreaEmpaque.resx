@@ -123,13 +123,43 @@
   <metadata name="ubicacionEntregaBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>134, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pbSig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAjBJREFUOE+d
+        kGtI01EYxv8J5tQUMipbQUT3EiPsYnjJKJA+FBjNIrooItaXIisD6UPQp0wKkyLoopiWZkFSSYTTipnO
+        WsmaXWQOZTpbOqfufv11RkkFYegDD5zDy+95z3OkybSipBvZvlf8uk5dSc1uttX0E66YZkjKcxvtQdh6
+        b4Dw7GmEyCuHaffBOz9k1AwQ8a86a6pH2NEwQnq9hbQHw6TWDpFW+53Nld9IuTtIgSFAlTlAgw0SKwaI
+        3P/675ADTWN4AaNwr3CPePIXsfFrANpckKfzkal2c1rnotQUZHG5kZhDqt8hyQ8t3LbDxcEg541BinsD
+        nNT7OPbZR67Wi0LjIkvtZJPSQbJynON6PwlXDURPhKyvMnN5FIr7AhSKYQjM0XpQvHWzu91FZquDVKWd
+        Dc9sLLxvZW3jOGc+OUi53kNMTitS4g0jF4bgRLeP/I8eDn7wsEftYmebk4wWBxsbbSQ8HmNJnZX4agtS
+        iYnVLU7ylRZm56uRVpUZKDKJrp1esjVudnW42K5yskVsXfdknGW1VuTio2NvDRN2xYR008q8c1ri8tp+
+        VlheqqdgEBRdkKkJkP7GT1KTm5VPHSyqtxFXYSH8mhmptJ+wOxZmFb5n/lGxeUJzCjqYeVhFhLDsSCuR
+        oleUcHSuOIuZVC7gS33E1o0SdaqT+D/h/yqrmRllJuY+GkVWpGPBlOCQRMDSF3ZkZ7uQTxkOaW8L0cU6
+        JMXLacAhhcBJYUn6Aa0XlfBBvzPUAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="pbAnt.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAklJREFUOE+d
+        kVtIVFEUhqcLNU6iRVe7YPNgEEKUUSKRERSBgRjpg1SUlaRGOfriIImhVGYPYSaCVpOEBWYaWD4klRVd
+        yDDNSjPJHLVJmzNnbp6ZM5pfezAoCYzxh/2wYf3fWv9amqk0t1BmXoHE729gmp0lseG6jYiy6QAyJZJq
+        HJj6fay4GCjAYCOh1oHj5zilH1RmGYcDABhl9jc4GfCO89gyxql2L9tuOUejqxwijp3ICpmIEgl9kRV9
+        sZXQo71/wfMcpDWN8MMHd/pGMbSqGN54abSM8mjYx22zypUvXoq7FPLfK8Q/Uwg6/GkCMOOsC8OTEax+
+        s3mMvHaV3Lde0l55yHiukPLUzd4mF7vuOdlaZyeqWma1yU7QoW40IWVOzoliqwq1fWMUitz577xkt3g4
+        IsyJD93suO9iS72TqJt21phkVonLLCu3o03+iGZRuYvKHpU2eZyiTh+FHSo5Apguuu8TU+1pcrOz0UmM
+        WOz6agG4amPlZYnFJTJzEtsmIgQXOch6oWASE+SK7Cdee0gRGZOaFeIeKMQ2uNlY42LtDQfhFXaWXpIJ
+        vWBjZnzrnyXq8m0cFN3OdPlIfekh2W+ul9heM8ymaguR176jL7UQdn6ABQVmdHn9aHa3TD5xUI5EXJ1M
+        ZptKYrOH6PJe9MZOIgq+Em7sIUy8hdmfCT3ejS6tG21Cx2SAX9rMIWKqbBxo8bK5cogQQ8+/Rf/T3HQL
+        6yokYu/amX/SHDjAL92xbyw/PcgS4+D0AH5pUwcJzhiYAqDR/AK1MZyr0vIa2QAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="$this.FormFactorShadowProperty" xml:space="preserve">
     <value>WEBPAD</value>
   </metadata>
   <metadata name="$this.Skin" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAACQAABIXAAASFwAAAAAAAAAA

@@ -137,7 +137,7 @@ namespace SWYRA
             cbCategoria.Text = empleado.Categoria.TrimEnd();
             Chkact.Checked = empleado.Activo;
 
-            txtLetra.Enabled = (cbCategoria.Text == @"COBRADOR");
+            txtLetra.Enabled = ((cbCategoria.Text == @"COBRADOR") || (cbCategoria.Text == @"ANALISTA DE VENTAS"));
             txtLetra.Text = empleado.LetraERP;
 
             listUsuarioAlmacen = CargaUsuarioAlmacenes(empleado.Usuario);
@@ -303,7 +303,7 @@ namespace SWYRA
             }
             else if (txtLetra.Enabled && txtLetra.Text == "")
             {
-                MessageBox.Show(@"Favor de asignarle una letra clave al Cobrador.");
+                MessageBox.Show(@"Favor de asignarle una letra clave al Usuario.");
                 txtLetra.Focus();
                 b = false;
             }
@@ -318,8 +318,8 @@ namespace SWYRA
 
         private void habilitaCampos()
         {
-            txtLetra.Text = (cbCategoria.Text != @"COBRADOR") ? "" : txtLetra.Text;
-            txtLetra.Enabled = (cbCategoria.Text == @"COBRADOR");
+            txtLetra.Text = ((cbCategoria.Text != @"COBRADOR") && (cbCategoria.Text != @"ANALISTA DE VENTAS")) ? "" : txtLetra.Text;
+            txtLetra.Enabled = ((cbCategoria.Text == @"COBRADOR") || (cbCategoria.Text == @"ANALISTA DE VENTAS"));
 
             cbArea.EditValue = null;cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
         }

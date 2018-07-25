@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIncompleto));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.pnlRetornar = new System.Windows.Forms.Panel();
+            this.pbRegresarB = new System.Windows.Forms.PictureBox();
             this.pbRegresar = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -47,7 +48,6 @@
             this.dataGridTextBoxColumn6 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.lblPedido = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pbRegresarB = new System.Windows.Forms.PictureBox();
             this.pnlRetornar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidosBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +62,16 @@
             this.pnlRetornar.Location = new System.Drawing.Point(0, 235);
             this.pnlRetornar.Name = "pnlRetornar";
             this.pnlRetornar.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pbRegresarB
+            // 
+            this.pbRegresarB.Image = ((System.Drawing.Image)(resources.GetObject("pbRegresarB.Image")));
+            this.pbRegresarB.Location = new System.Drawing.Point(198, 3);
+            this.pbRegresarB.Name = "pbRegresarB";
+            this.pbRegresarB.Size = new System.Drawing.Size(35, 35);
+            this.pbRegresarB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbRegresarB.Visible = false;
+            this.pbRegresarB.Click += new System.EventHandler(this.pbRegresar_Click);
             // 
             // pbRegresar
             // 
@@ -127,7 +137,7 @@
             this.dataGridTextBoxColumn3.Format = "";
             this.dataGridTextBoxColumn3.FormatInfo = null;
             this.dataGridTextBoxColumn3.HeaderText = "Pendiente";
-            this.dataGridTextBoxColumn3.MappingName = "cantdiferencia";
+            this.dataGridTextBoxColumn3.MappingName = "cantpendiente";
             // 
             // dataGridTextBoxColumn7
             // 
@@ -175,16 +185,6 @@
             this.label5.Size = new System.Drawing.Size(61, 11);
             this.label5.Text = "Pedido:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // pbRegresarB
-            // 
-            this.pbRegresarB.Image = ((System.Drawing.Image)(resources.GetObject("pbRegresarB.Image")));
-            this.pbRegresarB.Location = new System.Drawing.Point(198, 3);
-            this.pbRegresarB.Name = "pbRegresarB";
-            this.pbRegresarB.Size = new System.Drawing.Size(35, 35);
-            this.pbRegresarB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbRegresarB.Visible = false;
-            this.pbRegresarB.Click += new System.EventHandler(this.pbRegresar_Click);
             // 
             // FrmIncompleto
             // 

@@ -161,7 +161,7 @@ namespace swyraServices
             {
                 var sqlCon = GetFbConnection(db);
                 FbTransaction myTR = sqlCon.BeginTransaction();
-                var sqlCmd = new FbCommand(query, sqlCon);
+                var sqlCmd = new FbCommand(query, sqlCon, myTR);
                 sqlCmd.ExecuteNonQuery();
                 myTR.Commit();
                 sqlCmd.Dispose();

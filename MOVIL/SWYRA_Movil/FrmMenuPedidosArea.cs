@@ -31,18 +31,41 @@ namespace SWYRA_Movil
 
         private void pbConcluir_Click(object sender, EventArgs e)
         {
+            if(!validaExis(false))
+            {
+                ped.solarea = false;
+                var query = "UPDATE PEDIDO SET SOLAREA = 0 " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var r = Program.GetExecute(query, 9);
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver fuera del área de Brocas. Favor de validar.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            if (!validaExis(true))
+            {
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver del área de Brocas. Favor de validar.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                return;
+            }
             try
             {
                 FrmAreaEmpaque frmAreaEmp = new FrmAreaEmpaque();
                 frmAreaEmp.lblPedido.Text = ped.cve_doc;
-                frmAreaEmp.listBox1.Enabled = false;
-                var dr = frmAreaEmp.ShowDialog();
+                frmAreaEmp.listBox1.Visible = false;
+                frmAreaEmp.pbSig.Visible = false;
+                frmAreaEmp.pbAnt.Visible = false;
+                DialogResult dr = new DialogResult();
+                if (ped.estatuspedido != "DEVOLUCION")
+                {
+                    dr = frmAreaEmp.ShowDialog();
+                }
+                else
+                {
+                    dr = DialogResult.OK;
+                }
                 if (dr == DialogResult.OK)
                 {
                     var estatus = (ped.estatuspedido == "DEVOLUCION") ? "CANCELACION" : "EMPAQUE";
                     var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + estatus + "' " +
-                                "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
-                                "DELETE PEDIDO_Ubicacion WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' ";
+                                "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' ";
                     var r = Program.GetExecute(query, 10);
                     query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
                             "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
@@ -70,7 +93,7 @@ namespace SWYRA_Movil
         {
             FrmIncompleto frmIncompleto = new FrmIncompleto();
             frmIncompleto.ped = ped;
-            frmIncompleto.det = detA.Where(o => o.surtido == true && o.cantdiferencia > 0).ToList();
+            frmIncompleto.det = detA.Where(o => o.cantpendiente > 0).ToList();
             frmIncompleto.pbRegresar.Visible = false;
             frmIncompleto.pbRegresarB.Visible = true;
             frmIncompleto.ShowDialog();
@@ -112,6 +135,7 @@ namespace SWYRA_Movil
                 txtVendedor.Text = ped.cve_vend;
                 CultureInfo culture = new CultureInfo("es-MX");
                 txtMonto.Text = ped.importe.ToString("C2", culture);
+                if (ped.estatuspedido == "DEVOLUCION") { lblInfo.Text = "POR CANCELAR"; }
 
                 pbConcluir.Visible = validaExis(true);
             }
@@ -133,6 +157,8 @@ namespace SWYRA_Movil
                     var cdetA = detA.Where(o => o.surtido == false).ToList().Count;
                     var cdevA = devA.Where(o => o.devuelto == false).ToList().Count;
                     res = (cdetA == 0 && cdevA == 0);
+                    lblPendS.Text = cdetA.ToString();
+                    lblPendM.Text = cdevA.ToString();
                 }
                 else
                 {
@@ -152,20 +178,23 @@ namespace SWYRA_Movil
 
         private string createQR(bool Area, bool Devuelto)
         {
-            var query = "SELECT a.*, isnull(o.ORDEN,0) ORDEN FROM ( SELECT  CVE_DOC, NUM_PAR, dp.CVE_ART, CANT, ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) " + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ", " +
+            var query = "select a.*, isnull(o.ORDEN,0) ORDEN FROM( select *, " +
+                    "case when sel > 0 then cast(((CANT - (ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) + CANTPENDIENTE) - 1) / sel) as int) else 0 end con, " +
+                    "case when (case when sel > 0 then cast(((CANT - (ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) + CANTPENDIENTE) - 1) / sel) as int) else 1 end) > 0 then CTRL_ALM " +
+                    "else case when MASTERS_UBI = '' then CTRL_ALM else MASTERS_UBI end end ubicacion, " +
+                    "(CANT - (sel * (case when sel > 0 then cast(((CANT - (ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) + CANTPENDIENTE) - 1) / sel) as int) " +
+                    "else 0 end)) - (ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) + CANTPENDIENTE)) CANTDIFERENCIA " +
+                    "from ( SELECT  CVE_DOC, NUM_PAR, dp.CVE_ART, CANT, ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) " + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ", " +
                     "ISNULL(" + (Devuelto ? "DEVUELTO" : "SURTIDO") + ",0) " + (Devuelto ? "DEVUELTO" : "SURTIDO") + ", i.DESCR, i.EXIST, i.LIN_PROD, " +
                     "ISNULL(ic.COMENTARIO,'') COMENTARIO, ISNULL(ic.APLICAEXIST,0) APLICAEXIST, " +
-                    "ISNULL(ic.EXISTENCIA,0) MINEXIST, ISNULL(IC.APLICALOTE,0) APLICALOTE, i.CTRL_ALM, i.MASTERS_UBI, " +
-                    "case when CANT -  ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) > i.MASTERS then " +
-                    "case when isnull(i.MASTERS_UBI,'') <> '' then i.MASTERS_UBI else case when isnull(i.CTRL_ALM,'') <> '' then i.CTRL_ALM else '' END END " +
-                    "else case when isnull(i.CTRL_ALM,'') <> '' then i.CTRL_ALM else '' END END ubicacion, " +
-                    "CANT -  ISNULL(" + (Devuelto ? "CANTDEVUELTO" : "CANTSURTIDO") + ",0) CANTDIFERENCIA, i.UNI_EMP MIN, i.MASTERS MAS " +
+                    "ISNULL(ic.EXISTENCIA,0) MINEXIST, ISNULL(IC.APLICALOTE,0) APLICALOTE, " +
+                    "i.CTRL_ALM, i.MASTERS_UBI, i.UNI_EMP MIN, i.MASTERS MAS, " +
+                    "cast(cast(case when i.MASTERS > 0 then (CANT / i.MASTERS) else 0 end as int) * i.MASTERS as int) sel, " +
+                    (Devuelto ? "0" : "ISNULL(CANTPENDIENTE,0)") + " CANTPENDIENTE " +
                     "FROM " + (Devuelto ? "DETALLEPEDIDODEV" : "DETALLEPEDIDO") + " dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "LEFT JOIN INVENTARIOCOND ic ON ic.CVE_ART = dp.CVE_ART AND ic.ACTIVO = 1 " +
-                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "')) AS a " +
-                    "LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
-                    "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' " +
-                    "ORDER BY o.ORDEN";
+                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') AND dp.NUM_PAR < 1000 ) as c) as a LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
+                    "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' ORDER BY o.ORDEN";
             return query;
         }
 
@@ -174,8 +203,8 @@ namespace SWYRA_Movil
             FrmCancelacion frmCan = new FrmCancelacion();
             frmCan.ped = ped;
             frmCan.det = devA.Where(o => o.devuelto == false).ToList();
-            frmCan.Show();
-            pbConcluir.Visible = validaExis(false);
+            frmCan.ShowDialog();
+            pbConcluir.Visible = validaExis(false) && validaExis(true);
         }
     }
 }

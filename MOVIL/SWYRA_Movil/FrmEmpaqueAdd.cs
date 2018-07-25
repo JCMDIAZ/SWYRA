@@ -199,7 +199,7 @@ namespace SWYRA_Movil
                             "TIPOPAQUETE, CONSEC_PADRE, ULTIMO, isnull(i.DESCR, TIPOPAQUETE) DESCR " +
                             "FROM DETALLEPEDIDOMERC dt LEFT JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART " +
                             "WHERE CVE_DOC = '" + ped.cve_doc + "' AND ISNULL(CANCELADO,0) = 0 " +
-                            "AND ISNULL(TIPOPAQUETE,'') = '' ORDER BY CONSEC";
+                            "AND ISNULL(TIPOPAQUETE,'') = '' ORDER BY CONSEC DESC";
                 tmp = Program.GetDataTable(query, 1).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)

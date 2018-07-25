@@ -82,7 +82,7 @@ namespace SWYRA_Movil
 
         private void txtCant_LostFocus(object sender, EventArgs e)
         {
-            actualizaDet();
+            //actualizaDet();
         }
 
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
@@ -129,10 +129,10 @@ namespace SWYRA_Movil
                             }
                             else
                             {
-                                txtCant.ReadOnly = !(cod.cant_piezas == 1);
+                                //txtCant.ReadOnly = !(cod.cant_piezas == 1);
                                 txtCant.Value = cod.cant_piezas;
                                 actualizaDet();
-                                if (cod.cant_piezas == 1) { txtCant.Focus(); }
+                                //if (cod.cant_piezas == 1) { txtCant.Focus(); }
                             }
                         }
                     }
@@ -162,15 +162,18 @@ namespace SWYRA_Movil
             if (txtCant.ReadOnly)
             {
                 art.cantdevuelto += (double)txtCant.Value;
-                art.cantdiferencia = art.cant - art.cantdevuelto;
-                art.devuelto = (art.cant == art.cantdevuelto);
+                art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantdevuelto + art.cantpendiente) - 1) / art.sel) : 0;
+                art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantdevuelto + art.cantpendiente);
+                art.devuelto = (art.cant == (art.cantdevuelto + art.cantpendiente));
                 art.exist = (art.exist + (double)txtCant.Value);
-                art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
+                var ubiant = art.ubicacion;
+                art.ubicacion = (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi));
+                //art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
                 var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
                 art.orden = orb.orden;
                 var query = "UPDATE DETALLEPEDIDOMERC SET CANCELADO = CASE WHEN (CANT - " + txtCant.Value.ToString() + ") <= 0 THEN 1 ELSE 0 END, " +
                             "CANT = CANT - " + txtCant.Value.ToString() + " " +
-                            "WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "'  AND ISNULL(CANCELADO,0) = 0) " + 
+                            "WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "'  AND ISNULL(CANCELADO,0) = 0 " + 
                             "UPDATE DETALLEPEDIDODEV SET CANTDEVUELTO = " + art.cantdevuelto + ", DEVUELTO = " + ((art.devuelto) ? "1" : "0") +
                             " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() +
                             " UPDATE INVENTARIO SET EXIST = EXIST + " + txtCant.Value.ToString() + " WHERE CVE_ART = '" + art.cve_art + "' " +
@@ -179,13 +182,17 @@ namespace SWYRA_Movil
                             "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
                 Program.GetExecute(query, 2);
 
-                mostrardet = det.Where(o => o.devuelto == false).ToList();
-                mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
-                art = mostrardet.FirstOrDefault();
-                artFirst = art;
-                artLast = mostrardet.LastOrDefault();
-                lblPendientes.Text = mostrardet.Count.ToString();
+                if (art.cantdiferencia == 0 || ubiant != art.ubicacion)
+                {
+                    mostrardet = det.Where(o => o.devuelto == false).ToList();
+                    mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
+                    art = mostrardet.FirstOrDefault();
+                    artFirst = art;
+                    artLast = mostrardet.LastOrDefault();
+                    lblPendientes.Text = mostrardet.Count.ToString();
+                }
                 cargaDatos();
+                txtCodigo.Focus();
             }
         }
 
@@ -205,6 +212,7 @@ namespace SWYRA_Movil
             artLast = mostrardet.LastOrDefault();
             lblPendientes.Text = mostrardet.Count.ToString();
             cargaDatos();
+            txtCodigo.Focus();
         }
 
         private void cargaDatos()
@@ -216,9 +224,10 @@ namespace SWYRA_Movil
             txtMinimo.Text = (art != null) ? art.min.ToString() : "";
             txtMaster.Text = (art != null) ? art.mas.ToString() : "";
             txtPorSurtir.Text = (art != null) ? art.cantdiferencia.ToString() : "";
-            txtSurtido.Text = (art != null) ? art.cantsurtido.ToString() : "";
+            txtSurtido.Text = (art != null) ? art.cantdevuelto.ToString() : "";
             txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
             lblComentario.Text = (art != null) ? art.comentario : "";
+            txtMasterUbi.Text = (art != null) ? art.masters_ubi : "";
         }
 
         private void CargaUbicaciones()

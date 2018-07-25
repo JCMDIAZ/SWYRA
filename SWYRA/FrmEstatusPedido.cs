@@ -98,25 +98,29 @@ namespace SWYRA
             try
             {
                 var query =
-                    "SELECT  TIP_DOC, CVE_DOC, CVE_CLPV, p.STATUS, DAT_MOSTR, p.CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, " +
+                    "declare @pedidos table (cve_doc varchar(20)) insert @pedidos (cve_doc) select CVE_DOC from PEDIDO " +
+                    "WHERE FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
+                    "SELECT  TIP_DOC, p.CVE_DOC, CVE_CLPV, p.STATUS, DAT_MOSTR, p.CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, " +
                     "FECHA_VEN, FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, " +
                     "CONDICION, p.CVE_OBS, NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, " +
                     "FECHAELAB, PRIMERPAGO, RFC, CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, " +
                     "BLOQ, FORMAENVIO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, " +
                     "DOC_ANT, TIP_DOC_SIG, DOC_SIG, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, COBRADOR_ASIGNADO, " +
                     "COBRADOR_AUTORIZO, SURTIDOR_ASIGNADO, EMPAQUETADOR_ASIGNADO, ETIQUETADOR_ASIGNADO, SURTIDOR_AREA, " +
-                    "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, " +
+                    "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, det.porc_surtidoReal, " +
                     "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
                     "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, NOMBRE_VENDEDOR " +
-                    "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
+                    "FROM PEDIDO p left join (select cve_doc, ((SUM(isnull(CANTSURTIDO, 0)) / sum(CANT)) * 100.0) porc_surtidoReal from DETALLEPEDIDO " +
+                    "where CVE_DOC in (select CVE_DOC from @pedidos) group by cve_doc) as det on p.cve_doc = det.cve_doc " +
+                    "left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
                     "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
                     "left join USUARIOS uSurAsig on uSurAsig.Usuario = p.SURTIDOR_ASIGNADO " +
                     "left join USUARIOS uEmpAsig on uEmpAsig.Usuario = p.EMPAQUETADOR_ASIGNADO " +
                     "left join USUARIOS uEtiAsig on uEtiAsig.Usuario = p.ETIQUETADOR_ASIGNADO " +
                     "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
                     "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
-                    "WHERE p.FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") +
-                    "' ORDER BY CVE_DOC DESC";
+                    "WHERE FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
+                    "ORDER BY CVE_DOC DESC";
                 list = GetDataTable("DB", query, 51).ToList<Pedidos>();
             }
             catch (Exception ex)

@@ -126,6 +126,12 @@
     <Compile Include="FrmEmpaqueAT.Designer.cs">
       <DependentUpon>FrmEmpaqueAT.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEmpaqueInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpaqueInfo.Designer.cs">
+      <DependentUpon>FrmEmpaqueInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEmpaqueList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpaqueAT.resx">
       <DependentUpon>FrmEmpaqueAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpaqueInfo.resx">
+      <DependentUpon>FrmEmpaqueInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpaqueList.resx">
       <DependentUpon>FrmEmpaqueList.cs</DependentUpon>

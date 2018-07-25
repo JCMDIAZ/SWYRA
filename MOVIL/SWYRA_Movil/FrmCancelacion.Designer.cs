@@ -65,6 +65,8 @@
             this.pnlRetornar = new System.Windows.Forms.Panel();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtMasterUbi = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlRetornar.SuspendLayout();
@@ -74,7 +76,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.lblPendientes);
+            this.panel2.Controls.Add(this.txtMasterUbi);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.lblComentario);
             this.panel2.Controls.Add(this.pbAnt);
@@ -166,10 +170,10 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label10.Location = new System.Drawing.Point(134, 72);
+            this.label10.Location = new System.Drawing.Point(119, 72);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 19);
-            this.label10.Text = "Surtido";
+            this.label10.Size = new System.Drawing.Size(50, 19);
+            this.label10.Text = "Devuelto";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtSurtido
@@ -187,7 +191,7 @@
             this.label9.Location = new System.Drawing.Point(11, 72);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 19);
-            this.label9.Text = "Por Surtir";
+            this.label9.Text = "Por Devol.";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtPorSurtir
@@ -405,6 +409,24 @@
             // 
             this.detallePedidosBindingSource.DataSource = typeof(SWYRA_Movil.DetallePedidos);
             // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.label14.Location = new System.Drawing.Point(119, 93);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 19);
+            this.label14.Text = "Mast. Ubi.";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtMasterUbi
+            // 
+            this.txtMasterUbi.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtMasterUbi.Location = new System.Drawing.Point(175, 90);
+            this.txtMasterUbi.Name = "txtMasterUbi";
+            this.txtMasterUbi.ReadOnly = true;
+            this.txtMasterUbi.Size = new System.Drawing.Size(54, 19);
+            this.txtMasterUbi.TabIndex = 41;
+            // 
             // FrmCancelacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -463,5 +485,7 @@
         private System.Windows.Forms.Panel pnlRetornar;
         private System.Windows.Forms.PictureBox pbSalir;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtMasterUbi;
     }
 }

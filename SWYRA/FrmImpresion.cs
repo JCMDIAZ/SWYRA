@@ -109,7 +109,7 @@ namespace SWYRA
                     "SELECT  CVE_DOC, CVE_CLPV, @fech FECHA_DOC, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, p.CVE_VEND, OBSERVACIONES, " +
                     "CONDICION, RFC, AUTORIZA, FOLIO, CONTADO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, TIPOSERVICIO, ESTATUSPEDIDO, COBRADOR_ASIGNADO, @porc porc_surtido, " +
                     "COBRADOR_AUTORIZO, uCobAsig.Nombre cobrador_asignado_n, uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, cliente.NOMBRE CLIENTE, FECHAAUT, " +
-                    "TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, TotCostoGuias, OCURREDOMICILIO, p.NOMBRE_VENDEDOR, " +
+                    "TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, TotCostoGuias, OCURREDOMICILIO, p.NOMBRE_VENDEDOR, CONSIGNACION, " +
                     "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque " +
                     "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
                     "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
@@ -130,7 +130,7 @@ namespace SWYRA
             try
             {
                 var query =
-                    "SELECT CVE_DOC, d.CVE_ART, CODIGO_BARRA, SUM(CANT) CANT, i.DESCR " +
+                    "SELECT CVE_DOC, d.CVE_ART, CODIGO_BARRA, SUM(CANT) CANT, i.DESCR, SUM(ISNULL(PEND,0)) FALTAN " +
                     "FROM DETALLEPEDIDOMERC d LEFT JOIN INVENTARIO i ON d.CVE_ART = i.CVE_ART " +
                     "WHERE ISNULL(TIPOPAQUETE,'') = '' AND ISNULL(CANCELADO,0) = 0 AND CVE_DOC = '" + cvedoc + "' " +
                     "GROUP BY CVE_DOC, d.CVE_ART, CODIGO_BARRA, i.DESCR " +

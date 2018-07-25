@@ -46,10 +46,10 @@ namespace SWYRA_Movil
             if (sw)
             {
                 var lst1 = lst.Where(o => o.seleccionado != true).ToList();
+                var lst2 = lst.Where(o => o.seleccionado == true).ToList();
                 listBox1.DataSource = lst1;
-                if (listBox1.Enabled)
+                if (listBox1.Visible)
                 {
-                    var lst2 = lst.Where(o => o.seleccionado == true).ToList();
                     listBox2.DataSource = lst2;
                 }
                 else
@@ -59,15 +59,16 @@ namespace SWYRA_Movil
                                 "select isnull(p.UbicacionEmpaque, u.UbicacionEmpaque) UbicacionEmpaque from PEDIDO p " +
                                 "left join PEDIDO_Ubicacion u on p.CVE_DOC = u.cve_doc " +
                                 "where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE') " +
-                                "and LTRIM(CVE_DOC) = '" + lblPedido.Text + "') as a " +
+                                "and LTRIM(p.CVE_DOC) = '" + lblPedido.Text + "') as a " +
                                 "where UbicacionEmpaque is not null ) ";
-                    var lst2 = Program.GetDataTable(query, 1).ToList<UbicacionEntrega>();
+                    lst2 = Program.GetDataTable(query, 1).ToList<UbicacionEntrega>();
                     listBox2.DataSource = lst2;
                 }
+                btnActivar.Visible = (lst2.Count > 0);
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void pbSig_Click(object sender, EventArgs e)
         {
             if (!sw)
             {
@@ -80,9 +81,9 @@ namespace SWYRA_Movil
             }
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void pbAnt_Click(object sender, EventArgs e)
         {
-            if (!sw && listBox1.Enabled)
+            if (!sw)
             {
                 var s = listBox2.SelectedValue.ToString();
                 var dat = lst.Find(o => o.cve_ubicacion == s);

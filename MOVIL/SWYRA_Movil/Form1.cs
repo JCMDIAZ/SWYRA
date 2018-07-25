@@ -26,7 +26,7 @@ namespace SWYRA_Movil
             Application.Exit();
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void ejecuta()
         {
             if (valida())
             {
@@ -64,6 +64,11 @@ namespace SWYRA_Movil
             }
         }
 
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            ejecuta();
+        }
+
         private bool valida() 
         {
             bool b = true;
@@ -80,6 +85,24 @@ namespace SWYRA_Movil
                 b = false;
             }
             return b;
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
+            {
+                ejecuta();
+                e.Handled = true;
+            }
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
+            {
+                txtPassword.Focus();
+                e.Handled = true;
+            }
         }
     }
 }

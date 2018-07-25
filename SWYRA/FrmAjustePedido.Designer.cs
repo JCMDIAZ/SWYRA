@@ -87,7 +87,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtCajaCarton = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtPrioridad = new System.Windows.Forms.TextBox();
+            this.txtEnviar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtOcurredom = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -359,7 +359,7 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtCajaCarton);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtPrioridad);
+            this.groupBox1.Controls.Add(this.txtEnviar);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtOcurredom);
             this.groupBox1.Controls.Add(this.label5);
@@ -715,23 +715,23 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "Caja de Cartón";
             // 
-            // txtPrioridad
+            // txtEnviar
             // 
-            this.txtPrioridad.BackColor = System.Drawing.Color.White;
-            this.txtPrioridad.Location = new System.Drawing.Point(101, 95);
-            this.txtPrioridad.Name = "txtPrioridad";
-            this.txtPrioridad.ReadOnly = true;
-            this.txtPrioridad.Size = new System.Drawing.Size(206, 20);
-            this.txtPrioridad.TabIndex = 12;
+            this.txtEnviar.BackColor = System.Drawing.Color.White;
+            this.txtEnviar.Location = new System.Drawing.Point(101, 95);
+            this.txtEnviar.Name = "txtEnviar";
+            this.txtEnviar.ReadOnly = true;
+            this.txtEnviar.Size = new System.Drawing.Size(206, 20);
+            this.txtEnviar.TabIndex = 12;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(48, 98);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 11;
-            this.label7.Text = "Prioridad";
+            this.label7.Text = "Enviar a";
             // 
             // txtOcurredom
             // 
@@ -909,7 +909,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnSalir;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtPrioridad;
+        private System.Windows.Forms.TextBox txtEnviar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtOcurredom;
         private System.Windows.Forms.Label label5;

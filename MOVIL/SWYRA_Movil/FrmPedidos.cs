@@ -61,7 +61,7 @@ namespace SWYRA_Movil
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 9 " +
                         "            when p.TIPOSERVICIO = 'LOCAL' THEN 10 " +
                         "        end " +
-                        "end Numprioridad " +
+                        "end Numprioridad, p.CVE_CLPV " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where ((p.ESTATUSPEDIDO = 'SURTIR' and isnull(p.SURTIDOR_ASIGNADO,'') = '" + surtAsig + "') " +
                         "or (isnull(p.SURTIDOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "' and p.ESTATUSPEDIDO in ('MODIFICACION', 'DETENIDO', 'DEVOLUCION'))) " +
@@ -83,7 +83,7 @@ namespace SWYRA_Movil
         private void dgPedidos_CurrentCellChanged(object sender, EventArgs e)
         {
             var index = dgPedidos.CurrentRowIndex;
-            var goindex = (dgPedidos[index, 0].ToString() == "SURTIR" || dgPedidos[index, 0].ToString() == "MODIFICACION") ? 0 : index;
+            var goindex = (dgPedidos[index, 4].ToString() == "SURTIR" || dgPedidos[index, 4].ToString() == "MODIFICACION") ? 0 : index;
             dgPedidos.Select(goindex);
             dgPedidos.CurrentRowIndex = goindex;
         }
@@ -95,15 +95,15 @@ namespace SWYRA_Movil
                 if (listPedidos.Count > 0)
                 {
                     var query = "UPDATE PEDIDO SET SURTIDOR_ASIGNADO = '" + Program.usActivo.Usuario + "' " +
-                                "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "'";
+                                "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "'";
                     var res = Program.GetExecute(query, 3);
                     query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
-                            "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "' " +
+                            "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "' " +
                             "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
                             "@cvedoc, 'SURTIENDO', getdate(), '" + Program.usActivo.Usuario + "')";
                     res = Program.GetExecute(query, 4);
                     FrmMenuPedidos frmMenuPed = new FrmMenuPedidos();
-                    frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString();
+                    frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString();
                     frmMenuPed.ShowDialog();
                     cargaPedidos();
                 }

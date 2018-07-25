@@ -43,6 +43,7 @@ namespace SWYRA_Movil
             artLast = mostrardet.LastOrDefault();
             lblPendientes.Text = mostrardet.Count.ToString();
             cargaDatos();
+            txtCodigo.Focus();
         }
 
         private void cargaDatos()
@@ -57,6 +58,7 @@ namespace SWYRA_Movil
             txtSurtido.Text = (art != null) ? art.cantsurtido.ToString() : "";
             txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
             lblComentario.Text = (art != null) ? art.comentario : "";
+            txtMasterUbi.Text = (art != null) ? art.masters_ubi : "";
         }
 
         private void CargaUbicaciones()
@@ -110,17 +112,20 @@ namespace SWYRA_Movil
                         }
                         else
                         {
-                            if (cod.cant_piezas > art.cantdiferencia)
+                            if (cod.cant_piezas > art.exist)
                             {
-                                MessageBox.Show(@"Presentación del artículo excede a la cantidad solicitada.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                                MessageBox.Show(@"Artículo NO HAY EN EXISTENCIA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                             }
                             else
                             {
-                                if (cod.cant_piezas > art.exist)
+                                DialogResult drm = DialogResult.OK;
+                                if (cod.cant_piezas > art.cantdiferencia)
                                 {
-                                    MessageBox.Show(@"Artículo NO HAY EN EXISTENCIA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                                    var res = "La Presentación del artículo (" + art.cve_art + ") " + art.descr + " excede a la cantidad por surtir. Favor de validar con el ANALISTA DE VENTAS.";
+                                    MessageBox.Show(res, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                                    drm = DialogResult.No;
                                 }
-                                else
+                                if (drm == DialogResult.OK)
                                 {
                                     DialogResult dr = DialogResult.Cancel;
                                     if (art.lin_prod.Contains("EXHIB"))
@@ -139,7 +144,7 @@ namespace SWYRA_Movil
                                     //txtCant.ReadOnly = !(cod.cant_piezas == 1 || dr == DialogResult.Cancel);
                                     txtCant.Value = cod.cant_piezas;
                                     actualizaDet();
-                                    if (cod.cant_piezas == 1) { txtCant.Focus(); }
+                                    //if (cod.cant_piezas == 1) { txtCant.Focus(); }
                                 }
                             }
                         }
@@ -200,21 +205,25 @@ namespace SWYRA_Movil
             if (txtCant.ReadOnly)
             {
                 art.cantsurtido += (double)txtCant.Value;
-                art.con = (art.sel > 0) ? (int)((art.cant - (int)art.cantsurtido - 1) / art.sel) : 0;
-                art.cantdiferencia = art.cant - (art.sel * art.con) - art.cantsurtido;
-                art.surtido = (art.cant == art.cantsurtido);
+                art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
+                art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
+                art.surtido = (art.cant == (art.cantsurtido + art.cantpendiente));
                 art.exist = (art.exist - (double)txtCant.Value);
+                var ubiant = art.ubicacion;
                 art.ubicacion = (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi));
                 var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
                 art.orden = orb.orden;
                 var confirmar = "IF EXISTS( SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' AND ISNULL(CANCELADO,0) = 0) " +
-                                "UPDATE DETALLEPEDIDOMERC SET CANT = CANT + " + txtCant.Value.ToString() + " WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' ELSE ";
+                                "UPDATE DETALLEPEDIDOMERC SET CANT = CANT + " + txtCant.Value.ToString() + ", " +
+                                "lote = (isnull(lote,'') + case when isnull(lote,'') <> '' then ';' else '' end + '" + Lote + "') " + 
+                                "WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' ELSE ";
                 var query = "DECLARE @consec INT " +
                             "SELECT @consec = (ISNULL(MAX(CONSEC),-1) + 1) FROM DETALLEPEDIDOMERC " +
-                            "WHERE CVE_DOC = '" + art.cve_doc + "' " + (cod.cant_piezas == 1 ? confirmar : "") +
-                            "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT) " +
+                            "WHERE CVE_DOC = '" + art.cve_doc + "' " + 
+                            (cod.cant_piezas == 1 ? confirmar : "") +
+                            "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, lote) " +
                             "VALUES ('" + art.cve_doc + "', @consec, " + art.num_par.ToString() + ", '" + art.cve_art +
-                            "', '" + lastCB + "', " + txtCant.Value.ToString() + ") " +
+                            "', '" + lastCB + "', " + txtCant.Value.ToString() + ", '" + Lote + "') " +
                             "UPDATE DETALLEPEDIDO SET CANTSURTIDO = " + art.cantsurtido +
                             ", SURTIDO = " + ((art.surtido) ? "1" : "0") +
                             " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() +
@@ -223,20 +232,25 @@ namespace SWYRA_Movil
                             "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
                             "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
                 Program.GetExecute(query, 2);
+                Lote = "";
 
-                mostrardet = det.Where(o => o.surtido == false).ToList();
-                mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
-                art = mostrardet.FirstOrDefault();
-                artFirst = art;
-                artLast = mostrardet.LastOrDefault();
-                lblPendientes.Text = mostrardet.Count.ToString();
+                if (art.cantdiferencia == 0 || ubiant != art.ubicacion)
+                {
+                    mostrardet = det.Where(o => o.surtido == false).ToList();
+                    mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
+                    art = mostrardet.FirstOrDefault();
+                    artFirst = art;
+                    artLast = mostrardet.LastOrDefault();
+                    lblPendientes.Text = mostrardet.Count.ToString();
+                }
                 cargaDatos();
+                txtCodigo.Focus();
             }
         }
 
         private void txtCant_LostFocus(object sender, EventArgs e)
         {
-            actualizaDet();
+            //actualizaDet();
         }
 
         private void pbIncompleto_Click(object sender, EventArgs e)
@@ -244,18 +258,39 @@ namespace SWYRA_Movil
             if (art != null)
             {
                 FrmSurtir4 frmConf = new FrmSurtir4();
-                frmConf.lblCom.Text = "El artículo (" + art.cve_art + ") " + art.descr + " lo consideras INCOMPLETO."; 
+                frmConf.lblCom.Text = "El artículo (" + art.cve_art + ") " + art.descr + " lo consideras INCOMPLETO, con " + art.cantdiferencia + " piezas restantes."; 
                 var dr = frmConf.ShowDialog();
                 frmConf.Close();
                 if (dr == DialogResult.OK)
                 {
-                    art.surtido = true;
-                    var query = "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") +
+                    var query = "IF EXISTS(SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CVE_ART = '" + art.cve_art + "') " +
+                                "BEGIN DECLARE @MAXCONSEC INT SELECT @MAXCONSEC = CONSEC FROM DETALLEPEDIDOMERC " +
+                                "WHERE CVE_DOC = '" + art.cve_doc + "' AND CVE_ART = '" + art.cve_art + "' " +
+                                "UPDATE DETALLEPEDIDOMERC SET PEND = " + art.cantdiferencia +
+                                " WHERE CVE_DOC = '" + art.cve_doc + "' AND CVE_ART = '" + art.cve_art + "' AND CONSEC = @MAXCONSEC " +
+                                "END ELSE BEGIN DECLARE @consec INT SELECT @consec = (ISNULL(MAX(CONSEC),-1) + 1) FROM DETALLEPEDIDOMERC " +
+                                "WHERE CVE_DOC = '" + art.cve_doc + "' " +
+                                "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, PEND) " +
+                                "VALUES ('" + art.cve_doc + "', @consec, " + art.num_par + ", '" + art.cve_art + "', '', 0, " + art.cantdiferencia + ") END";
+                    Program.GetExecute(query, 100);
+
+                    art.cantpendiente = art.cantpendiente + art.cantdiferencia;
+                    art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
+                    art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
+                    art.surtido = (art.cant == (art.cantsurtido + art.cantpendiente));
+                    art.ubicacion = (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi));
+                    var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
+                    art.orden = orb.orden;
+
+                    query = 
+                                "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") + ", CANTPENDIENTE = " + art.cantpendiente +
                                 " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() + " " +
                                 "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
                                 "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
                                 "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
                     Program.GetExecute(query, 3);
+                    Lote = "";
+
                     mostrardet = det.Where(o => o.surtido == false).ToList();
                     art = mostrardet.FirstOrDefault();
                     artFirst = art;
