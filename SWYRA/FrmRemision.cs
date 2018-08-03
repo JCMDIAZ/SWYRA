@@ -35,6 +35,7 @@ namespace SWYRA
             listPedidos = CargaPedidos();
             gridControl1.DataSource = listPedidos;
             gridView1.OptionsFind.AlwaysVisible = true;
+            timer1.Start();
         }
 
         private List<Pedidos> CargaPedidos()
@@ -50,7 +51,7 @@ namespace SWYRA
                     "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
                     "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
                     "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
-                    "WHERE ESTATUSPEDIDO = 'REMISION' Order by CVE_DOC";
+                    "WHERE ESTATUSPEDIDO IN ('REMISION','FACTURACION') Order by CVE_DOC";
                 list = GetDataTable("DB", query, 51).ToList<Pedidos>();}
             catch (Exception ex)
             {
@@ -118,6 +119,7 @@ namespace SWYRA
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
+            timer1.Stop();
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             CargaDetallePedidoMercs(cve_doc.ToString());
             var lsPaquetes = listDetMerc.Where(o => o.consec_padre_guia == 0 && o.tipopaquete != "GUIA").ToList();
@@ -138,6 +140,40 @@ namespace SWYRA
             {
                 MessageBox.Show(@"Aún existen Paquetes sin asignar guías");
             }*/
+            timer1.Start();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            listPedidos = CargaPedidos();
+            gridControl1.DataSource = listPedidos;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            listPedidos = CargaPedidos();
+            gridControl1.DataSource = listPedidos;
+            timer1.Start();
+        }
+
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            try
+            {
+                var estatus = gridView1.GetRowCellValue(e.RowHandle, "estatuspedido");
+                if (estatus != null)
+                {
+                    if (estatus.ToString() == "FACTURACION")
+                    {
+                        e.Appearance.BackColor = Color.Aqua;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                return;
+            }
         }
     }
 }

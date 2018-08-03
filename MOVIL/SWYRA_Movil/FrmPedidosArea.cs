@@ -79,16 +79,16 @@ namespace SWYRA_Movil
                         "    when p.ESTATUSPEDIDO = 'SURTIR' then " +
                         "        case " +
                         "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 5 " +
-                        "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 5 " +
-                        "            when p.TIPOSERVICIO = 'FORANEO' THEN 6 " +
-                        "            when p.TIPOSERVICIO = 'LOCAL' THEN 5 " +
+                        "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 6 " +
+                        "            when p.TIPOSERVICIO = 'FORANEO' THEN 7 " +
+                        "            when p.TIPOSERVICIO = 'LOCAL' THEN 8 " +
                         "        END " +
                         "    when p.ESTATUSPEDIDO = 'DETENIDO' then " +
                         "        case  " +
-                        "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 7 " +
-                        "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 8 " +
-                        "            when p.TIPOSERVICIO = 'FORANEO' THEN 9 " +
-                        "            when p.TIPOSERVICIO = 'LOCAL' THEN 10 " +
+                        "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 9 " +
+                        "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 10 " +
+                        "            when p.TIPOSERVICIO = 'FORANEO' THEN 11 " +
+                        "            when p.TIPOSERVICIO = 'LOCAL' THEN 12 " +
                         "        end " +
                         "end Numprioridad, UbicacionEmpaque, p.CVE_CLPV " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +

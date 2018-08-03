@@ -59,6 +59,9 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bbLevGuia = new DevExpress.XtraBars.BarButtonItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.colEstatusPedido = new DevExpress.XtraGrid.Columns.GridColumn();
             coltotcajacarton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
@@ -82,7 +85,8 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnFactura,
-            this.btnSalir});
+            this.btnSalir,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(798, 27);
@@ -143,7 +147,8 @@
             this.coltotcubetas,
             this.coltotatados,
             this.coltottarimas,
-            this.coltotcostoguias});
+            this.coltotcostoguias,
+            this.colEstatusPedido});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView1.Name = "gridView1";
@@ -153,6 +158,7 @@
             this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
             // 
             // colcve_doc
             // 
@@ -351,6 +357,28 @@
             this.bbLevGuia.Id = 1;
             this.bbLevGuia.Name = "bbLevGuia";
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(83, 24);
+            this.toolStripButton1.Text = "Actualizar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 30000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // colEstatusPedido
+            // 
+            this.colEstatusPedido.Caption = "ESTATUS";
+            this.colEstatusPedido.FieldName = "estatuspedido";
+            this.colEstatusPedido.Name = "colEstatusPedido";
+            this.colEstatusPedido.Visible = true;
+            this.colEstatusPedido.VisibleIndex = 14;
+            // 
             // FrmRemision
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,5 +441,8 @@
         private DevExpress.XtraBars.BarButtonItem bbLevGuia;
         private System.Windows.Forms.ToolStripButton btnFactura;
         private DevExpress.XtraGrid.Columns.GridColumn colcve_clpv;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.Timer timer1;
+        private DevExpress.XtraGrid.Columns.GridColumn colEstatusPedido;
     }
 }

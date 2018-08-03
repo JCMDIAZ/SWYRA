@@ -109,7 +109,7 @@ namespace SWYRA
                     "COBRADOR_AUTORIZO, SURTIDOR_ASIGNADO, EMPAQUETADOR_ASIGNADO, ETIQUETADOR_ASIGNADO, SURTIDOR_AREA, " +
                     "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, det.porc_surtidoReal, " +
                     "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
-                    "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, NOMBRE_VENDEDOR " +
+                    "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, NOMBRE_VENDEDOR, uCapturo.Nombre capturo_n " +
                     "FROM PEDIDO p left join (select cve_doc, ((SUM(isnull(CANTSURTIDO, 0)) / sum(CANT)) * 100.0) porc_surtidoReal from DETALLEPEDIDO " +
                     "where CVE_DOC in (select CVE_DOC from @pedidos) group by cve_doc) as det on p.cve_doc = det.cve_doc " +
                     "left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
@@ -118,13 +118,15 @@ namespace SWYRA
                     "left join USUARIOS uEmpAsig on uEmpAsig.Usuario = p.EMPAQUETADOR_ASIGNADO " +
                     "left join USUARIOS uEtiAsig on uEtiAsig.Usuario = p.ETIQUETADOR_ASIGNADO " +
                     "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
+                    "left join USUARIOS uCapturo on uCapturo.Usuario = p.CAPTURO " +
                     "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
                     "WHERE FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
                     "ORDER BY CVE_DOC DESC";
                 list = GetDataTable("DB", query, 51).ToList<Pedidos>();
             }
             catch (Exception ex)
-            {MessageBox.Show(ex.Message);
+            {
+                MessageBox.Show(ex.Message);
             }
             return list;
         }
@@ -299,6 +301,12 @@ namespace SWYRA
             fAjustePedido.userActivo = userActivo;
             fAjustePedido.ShowDialog();
             fAjustePedido.Close();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            FiltrarCarga();
+            gridControl1.DataSource = listPedidos;
         }
     }
 }

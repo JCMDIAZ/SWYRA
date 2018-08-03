@@ -20,6 +20,7 @@ namespace SWYRA_Movil
         private DetallePedidos artLast = new DetallePedidos();
         private string lastCB;
         private List<OrdenUbicacion> orbi = new List<OrdenUbicacion>();
+        private List<DetallePedidoMerc> merc = new List<DetallePedidoMerc>();
 
         public FrmCancelacion()
         {
@@ -129,10 +130,17 @@ namespace SWYRA_Movil
                             }
                             else
                             {
-                                //txtCant.ReadOnly = !(cod.cant_piezas == 1);
-                                txtCant.Value = cod.cant_piezas;
-                                actualizaDet();
-                                //if (cod.cant_piezas == 1) { txtCant.Focus(); }
+                                if (art.cantdiferencia >= art.mas && cod.cant_piezas < art.mas)
+                                {
+                                    MessageBox.Show(@"Presentación del artículo debe ser mayor o igual al MASTER.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                                }
+                                else
+                                {
+                                    //txtCant.ReadOnly = !(cod.cant_piezas == 1);
+                                    txtCant.Value = cod.cant_piezas;
+                                    actualizaDet();
+                                    //if (cod.cant_piezas == 1) { txtCant.Focus(); }
+                                }
                             }
                         }
                     }
@@ -228,6 +236,8 @@ namespace SWYRA_Movil
             txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
             lblComentario.Text = (art != null) ? art.comentario : "";
             txtMasterUbi.Text = (art != null) ? art.masters_ubi : "";
+            var mercF = merc.Find(o => o.cve_art == art.cve_art);
+            lblEmp.Text = (mercF == null) ? "" : mercF.empaque;
         }
 
         private void CargaUbicaciones()
@@ -236,6 +246,29 @@ namespace SWYRA_Movil
             {
                 var query = "select * from orden_ruta order by ORDEN";
                 orbi = Program.GetDataTable(query, 4).ToList<OrdenUbicacion>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void CargaEmpaque()
+        {
+            try
+            {
+                var query = 
+                    "select distinct CVE_DOC, NUM_PAR, CVE_ART, STUFF((select ', ' + e.Empaque " +
+                    "from DETALLEPEDIDOMERC d join( select h.CVE_DOC, h.CONSEC, h.TIPOPAQUETE + ' # ' + CAST(h.CONSEC_EMPAQUE AS VARCHAR(2)) + " +
+                    "case when p.TIPOPAQUETE = 'ATADOS' then ' (A' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' " +
+                    "when p.TIPOPAQUETE = 'TARIMA' then ' (T' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' ELSE '' END Empaque " +
+                    "FROM DETALLEPEDIDOMERC h LEFT JOIN DETALLEPEDIDOMERC p ON p.CONSEC = h.CONSEC_PADRE and p.CVE_DOC = h.CVE_DOC " +
+                    "WHERE (h.CVE_DOC = '" + ped.cve_doc + "') AND(ISNULL(h.CANCELADO, 0) = 0) AND(ISNULL(h.TIPOPAQUETE, '') " +
+                    "NOT IN('', 'GUIA'))) as e on d.CVE_DOC = e.CVE_DOC and d.CONSEC_PADRE = e.CONSEC WHERE(d.CVE_DOC = '" + ped.cve_doc + "') " +
+                    "AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') IN('')) AND a.CVE_DOC = d.CVE_DOC and a.CVE_ART = d.CVE_ART " +
+                    "group by e.Empaque, d.NUM_PAR order by d.NUM_PAR FOR XML PATH('')), 1, 1, '') as Empaque from DETALLEPEDIDOMERC as a " +
+                    "where (a.CVE_DOC = '" + ped.cve_doc + "') AND(NUM_PAR > 0)";
+                merc = Program.GetDataTable(query, 20).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)
             {

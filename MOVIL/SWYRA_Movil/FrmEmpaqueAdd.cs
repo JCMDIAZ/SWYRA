@@ -158,7 +158,10 @@ namespace SWYRA_Movil
                             "', '" + art.codigo_barra + "', " + dif.ToString() + ") ";
                     Program.GetExecute(query2, 8);
                 }
-                var query = "UPDATE DETALLEPEDIDOMERC SET CONSEC_PADRE = " + ((proceso == "EMP") ? art.consec_padre.ToString() : "NULL")  + " " +
+                var query = "declare @cpc int select @cpc =  isnull(max(cpc),0) + 1 from DETALLEPEDIDOMERC " +
+                            "where CVE_DOC = '" + art.cve_doc + "' and CONSEC_PADRE = " + art.consec_padre.ToString() +
+                            " UPDATE DETALLEPEDIDOMERC SET CONSEC_PADRE = " + ((proceso == "EMP") ? art.consec_padre.ToString() : "NULL")  + ", " +
+                            "CPC = " + ((proceso == "EMP") ? "@cpc" : "NULL") + " " +
                             "WHERE CVE_DOC  = '" + art.cve_doc + "' AND CONSEC = " + art.consec.ToString() +
                             " UPDATE DETALLEPEDIDOMERC SET TotArt = isnull(TotArt,0) " + ((proceso == "EMP") ? "+" : "-") + " 1 " +
                             "WHERE CVE_DOC  = '" + ped.cve_doc + "' AND CONSEC = " + ped.consec.ToString() +
@@ -199,7 +202,7 @@ namespace SWYRA_Movil
                             "TIPOPAQUETE, CONSEC_PADRE, ULTIMO, isnull(i.DESCR, TIPOPAQUETE) DESCR " +
                             "FROM DETALLEPEDIDOMERC dt LEFT JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART " +
                             "WHERE CVE_DOC = '" + ped.cve_doc + "' AND ISNULL(CANCELADO,0) = 0 " +
-                            "AND ISNULL(TIPOPAQUETE,'') = '' ORDER BY CONSEC DESC";
+                            "AND ISNULL(TIPOPAQUETE,'') = '' ORDER BY CONSEC_PADRE, CPC DESC";
                 tmp = Program.GetDataTable(query, 1).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)

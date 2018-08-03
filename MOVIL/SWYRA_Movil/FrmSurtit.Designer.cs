@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSurtit));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.pnlRetornar = new System.Windows.Forms.Panel();
+            this.pbFinal = new System.Windows.Forms.PictureBox();
             this.pbIncompletoB = new System.Windows.Forms.PictureBox();
             this.pbIncompleto = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
@@ -77,6 +78,7 @@
             // pnlRetornar
             // 
             this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.pbFinal);
             this.pnlRetornar.Controls.Add(this.pbIncompletoB);
             this.pnlRetornar.Controls.Add(this.pbIncompleto);
             this.pnlRetornar.Controls.Add(this.pbSalir);
@@ -84,6 +86,15 @@
             this.pnlRetornar.Location = new System.Drawing.Point(0, 235);
             this.pnlRetornar.Name = "pnlRetornar";
             this.pnlRetornar.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pbFinal
+            // 
+            this.pbFinal.Image = ((System.Drawing.Image)(resources.GetObject("pbFinal.Image")));
+            this.pbFinal.Location = new System.Drawing.Point(157, 3);
+            this.pbFinal.Name = "pbFinal";
+            this.pbFinal.Size = new System.Drawing.Size(35, 35);
+            this.pbFinal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbFinal.Click += new System.EventHandler(this.pbFinal_Click);
             // 
             // pbIncompletoB
             // 
@@ -500,5 +511,6 @@
         public System.Windows.Forms.PictureBox pbIncompleto;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtMasterUbi;
+        public System.Windows.Forms.PictureBox pbFinal;
     }
 }

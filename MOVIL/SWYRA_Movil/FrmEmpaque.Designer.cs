@@ -157,6 +157,7 @@
             this.pbConcluir.Name = "pbConcluir";
             this.pbConcluir.Size = new System.Drawing.Size(35, 35);
             this.pbConcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbConcluir.Visible = false;
             this.pbConcluir.Click += new System.EventHandler(this.pbConcluir_Click);
             // 
             // pbSalir
@@ -189,7 +190,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(84, 72);
+            this.pictureBox3.Location = new System.Drawing.Point(122, 72);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(35, 35);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -198,7 +199,7 @@
             // pbElimina
             // 
             this.pbElimina.Image = ((System.Drawing.Image)(resources.GetObject("pbElimina.Image")));
-            this.pbElimina.Location = new System.Drawing.Point(122, 72);
+            this.pbElimina.Location = new System.Drawing.Point(84, 73);
             this.pbElimina.Name = "pbElimina";
             this.pbElimina.Size = new System.Drawing.Size(35, 35);
             this.pbElimina.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;

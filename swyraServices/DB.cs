@@ -50,6 +50,7 @@ namespace swyraServices
         public string masters_ubi { get; set; }
         public double peso { get; set; }
         public double volumen { get; set; }
+        public DateTime fch_ultcom { get; set; }
     }
 
     public class Pedidos
@@ -267,5 +268,18 @@ namespace swyraServices
         public int dat_envio { get; set; }
         public int cve_obs { get; set; }
         public string str_obs { get; set; }
+        public string str_paq { get; set; }
+    }
+
+    public class FacturaDet
+    {
+        public string cve_doc { get; set; }
+        public string descr { get; set; }
+    }
+
+    public class Guias
+    {
+        public double cve_info { get; set; }
+        public double cve_obs { get; set; }
     }
 }

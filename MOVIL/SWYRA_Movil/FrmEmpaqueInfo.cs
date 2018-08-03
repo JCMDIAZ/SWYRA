@@ -31,8 +31,9 @@ namespace SWYRA_Movil
             txtEstatus.Text = ((ped.status == "C") ? "CANCELADO" : ((ped.contado == "S") ? "CONTADO" : "AUTORIZADO"));
             txtOcuDom.Text = ped.ocurredomicilio;
             txtUbicacion.Text = ped.ubicacionempaque;
-            txtConsigna.Text = ped.consignacion;
+            txtConsigna.Text = ((ped.enviar == "")? ped.direccion1 + " " + ped.direccion2 : ped.consignacion);
             txtObservaciones.Text = ped.observaciones;
+            txtFecha.Text = ped.fecha_doc.ToString("yyyy-mm-dd");
         }
     }
 }  

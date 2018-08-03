@@ -33,6 +33,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuGuia));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblContado = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.lblCliente = new System.Windows.Forms.Label();
@@ -49,7 +51,8 @@
             this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn3 = new System.Windows.Forms.DataGridTextBoxColumn();
-            this.lblContado = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +60,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.lblContado);
             this.panel2.Controls.Add(this.pbConcluir);
             this.panel2.Controls.Add(this.pbSalir);
@@ -64,6 +68,26 @@
             this.panel2.Location = new System.Drawing.Point(0, 235);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(162, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // lblContado
+            // 
+            this.lblContado.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.lblContado.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblContado.Location = new System.Drawing.Point(46, 3);
+            this.lblContado.Name = "lblContado";
+            this.lblContado.Size = new System.Drawing.Size(110, 35);
+            this.lblContado.Text = "PONER ETIQUETA DE CONTADO";
+            this.lblContado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblContado.Visible = false;
             // 
             // pbConcluir
             // 
@@ -86,7 +110,7 @@
             // lblCliente
             // 
             this.lblCliente.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.lblCliente.Location = new System.Drawing.Point(78, 21);
+            this.lblCliente.Location = new System.Drawing.Point(78, 20);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(157, 25);
             this.lblCliente.Text = "cliente";
@@ -94,7 +118,7 @@
             // lblPedido
             // 
             this.lblPedido.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.lblPedido.Location = new System.Drawing.Point(78, 4);
+            this.lblPedido.Location = new System.Drawing.Point(78, 3);
             this.lblPedido.Name = "lblPedido";
             this.lblPedido.Size = new System.Drawing.Size(69, 17);
             this.lblPedido.Text = "9999";
@@ -102,7 +126,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(3, 21);
+            this.label2.Location = new System.Drawing.Point(3, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.Text = "Cliente :";
@@ -111,7 +135,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 4);
+            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.Text = "Pedido :";
@@ -120,7 +144,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtCodigo.Location = new System.Drawing.Point(53, 51);
+            this.txtCodigo.Location = new System.Drawing.Point(53, 68);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(175, 19);
             this.txtCodigo.TabIndex = 32;
@@ -130,7 +154,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.label7.Location = new System.Drawing.Point(10, 54);
+            this.label7.Location = new System.Drawing.Point(10, 71);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 19);
             this.label7.Text = "Código";
@@ -138,15 +162,15 @@
             // lblGuia
             // 
             this.lblGuia.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.lblGuia.Location = new System.Drawing.Point(78, 76);
+            this.lblGuia.Location = new System.Drawing.Point(78, 91);
             this.lblGuia.Name = "lblGuia";
-            this.lblGuia.Size = new System.Drawing.Size(157, 25);
+            this.lblGuia.Size = new System.Drawing.Size(157, 17);
             this.lblGuia.Text = "guía";
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(3, 76);
+            this.label4.Location = new System.Drawing.Point(3, 91);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.Text = "Guía :";
@@ -198,16 +222,27 @@
             this.dataGridTextBoxColumn3.MappingName = "num_guia";
             this.dataGridTextBoxColumn3.Width = 70;
             // 
-            // lblContado
+            // lbl1
             // 
-            this.lblContado.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.lblContado.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblContado.Location = new System.Drawing.Point(46, 3);
-            this.lblContado.Name = "lblContado";
-            this.lblContado.Size = new System.Drawing.Size(146, 35);
-            this.lblContado.Text = "PONER ETIQUETA DE CONTADO";
-            this.lblContado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblContado.Visible = false;
+            this.lbl1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.lbl1.ForeColor = System.Drawing.Color.Blue;
+            this.lbl1.Location = new System.Drawing.Point(3, 49);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(232, 15);
+            this.lbl1.Text = "INGRESA LA GUIA";
+            this.lbl1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl1.Visible = false;
+            // 
+            // lbl2
+            // 
+            this.lbl2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.lbl2.ForeColor = System.Drawing.Color.Green;
+            this.lbl2.Location = new System.Drawing.Point(3, 49);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(232, 15);
+            this.lbl2.Text = "INGRESA EL REMITENTE";
+            this.lbl2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl2.Visible = false;
             // 
             // FrmMenuGuia
             // 
@@ -216,6 +251,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.lbl2);
+            this.Controls.Add(this.lbl1);
             this.Controls.Add(this.dgDetPedidos);
             this.Controls.Add(this.lblGuia);
             this.Controls.Add(this.label4);
@@ -257,5 +294,8 @@
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn2;
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn3;
         private System.Windows.Forms.Label lblContado;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl2;
     }
 }

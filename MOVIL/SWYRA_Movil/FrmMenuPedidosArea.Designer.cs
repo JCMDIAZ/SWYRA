@@ -45,6 +45,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlRetornar = new System.Windows.Forms.Panel();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.pbSurtir = new System.Windows.Forms.PictureBox();
@@ -57,7 +58,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblPendM = new System.Windows.Forms.Label();
             this.lblPendS = new System.Windows.Forms.Label();
-            this.lblInfo = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pbDetener = new System.Windows.Forms.PictureBox();
             this.pnlPorSurtir.SuspendLayout();
             this.pnlRetornar.SuspendLayout();
             this.SuspendLayout();
@@ -202,6 +204,15 @@
             this.pnlRetornar.Name = "pnlRetornar";
             this.pnlRetornar.Size = new System.Drawing.Size(238, 40);
             // 
+            // lblInfo
+            // 
+            this.lblInfo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.lblInfo.ForeColor = System.Drawing.Color.Maroon;
+            this.lblInfo.Location = new System.Drawing.Point(45, 10);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(141, 20);
+            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // pbConcluir
             // 
             this.pbConcluir.Image = ((System.Drawing.Image)(resources.GetObject("pbConcluir.Image")));
@@ -241,7 +252,7 @@
             // pbIncompletos
             // 
             this.pbIncompletos.Image = ((System.Drawing.Image)(resources.GetObject("pbIncompletos.Image")));
-            this.pbIncompletos.Location = new System.Drawing.Point(86, 179);
+            this.pbIncompletos.Location = new System.Drawing.Point(127, 179);
             this.pbIncompletos.Name = "pbIncompletos";
             this.pbIncompletos.Size = new System.Drawing.Size(35, 35);
             this.pbIncompletos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -250,7 +261,7 @@
             // pbDevolucion
             // 
             this.pbDevolucion.Image = ((System.Drawing.Image)(resources.GetObject("pbDevolucion.Image")));
-            this.pbDevolucion.Location = new System.Drawing.Point(127, 179);
+            this.pbDevolucion.Location = new System.Drawing.Point(168, 179);
             this.pbDevolucion.Name = "pbDevolucion";
             this.pbDevolucion.Size = new System.Drawing.Size(35, 35);
             this.pbDevolucion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -274,7 +285,7 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(94, 156);
+            this.label4.Location = new System.Drawing.Point(135, 156);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.Text = "I";
@@ -282,7 +293,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(135, 156);
+            this.label5.Location = new System.Drawing.Point(176, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 20);
             this.label5.Text = "M";
@@ -291,7 +302,7 @@
             // lblPendM
             // 
             this.lblPendM.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic);
-            this.lblPendM.Location = new System.Drawing.Point(127, 215);
+            this.lblPendM.Location = new System.Drawing.Point(168, 215);
             this.lblPendM.Name = "lblPendM";
             this.lblPendM.Size = new System.Drawing.Size(35, 17);
             this.lblPendM.Text = "0";
@@ -306,14 +317,22 @@
             this.lblPendS.Text = "0";
             this.lblPendS.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblInfo
+            // label7
             // 
-            this.lblInfo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.lblInfo.ForeColor = System.Drawing.Color.Maroon;
-            this.lblInfo.Location = new System.Drawing.Point(45, 10);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(141, 20);
-            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label7.Location = new System.Drawing.Point(94, 156);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 20);
+            this.label7.Text = "D";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pbDetener
+            // 
+            this.pbDetener.Image = ((System.Drawing.Image)(resources.GetObject("pbDetener.Image")));
+            this.pbDetener.Location = new System.Drawing.Point(86, 179);
+            this.pbDetener.Name = "pbDetener";
+            this.pbDetener.Size = new System.Drawing.Size(35, 35);
+            this.pbDetener.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbDetener.Click += new System.EventHandler(this.pbDetener_Click);
             // 
             // FrmMenuPedidosArea
             // 
@@ -322,6 +341,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.pbDetener);
             this.Controls.Add(this.lblPendM);
             this.Controls.Add(this.lblPendS);
             this.Controls.Add(this.label5);
@@ -374,5 +395,7 @@
         private System.Windows.Forms.Label lblPendM;
         private System.Windows.Forms.Label lblPendS;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pbDetener;
     }
 }

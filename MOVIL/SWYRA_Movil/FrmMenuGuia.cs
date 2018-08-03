@@ -95,17 +95,19 @@ namespace SWYRA_Movil
                 }
                 dgDetPedidos.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
                 pbConcluir.Visible = (det.Where(o => o.num_guia == "").ToList().Count == 0);
-                txtCodigo.Focus();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
+            txtCodigo.Focus();
+            cambiaLeyenda();
         }
 
         private void dgPedidos_CurrentCellChanged(object sender, EventArgs e)
         {
             dgDetPedidos.Select(dgDetPedidos.CurrentRowIndex);
+            txtCodigo.Focus();
         }
 
         private void FrmMenuGuia_Load(object sender, EventArgs e)
@@ -121,6 +123,14 @@ namespace SWYRA_Movil
             det = CargaDetalleMerc();
             dgDetPedidos.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
             pbConcluir.Visible = (det.Where(o => o.num_guia == "").ToList().Count == 0);
+            cambiaLeyenda();
+            txtCodigo.Focus();
+        }
+
+        private void cambiaLeyenda()
+        {
+            lbl1.Visible = (lblGuia.Text == "");
+            lbl2.Visible = (lblGuia.Text != "");
         }
 
         private List<DetallePedidoMerc> CargaDetalleMerc()
@@ -139,6 +149,27 @@ namespace SWYRA_Movil
                 MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
             return tmp;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var index = dgDetPedidos.CurrentRowIndex;
+                var codigo = dgDetPedidos[index, 1].ToString();
+                var d = det.Find(o => o.codigo_barra == codigo);
+                d.num_guia = "";
+                var query = "UPDATE DETALLEPEDIDOMERC SET NUM_GUIA = NULL " +
+                    "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND CODIGO_BARRA = '" + codigo + "'";
+                var res = Program.GetExecute(query, 3);
+                dgDetPedidos.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
+                pbConcluir.Visible = (det.Where(o => o.num_guia == "").ToList().Count == 0);
+                txtCodigo.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

@@ -61,9 +61,10 @@
             this.panel1.Controls.Add(this.gridControl1);
             this.panel1.Controls.Add(this.gpoFiltro);
             this.panel1.Controls.Add(this.toolStrip1);
-            this.panel1.Location = new System.Drawing.Point(0, 1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(285, 261);
+            this.panel1.Size = new System.Drawing.Size(351, 293);
             this.panel1.TabIndex = 0;
             // 
             // gridControl1
@@ -75,7 +76,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(285, 181);
+            this.gridControl1.Size = new System.Drawing.Size(351, 213);
             this.gridControl1.TabIndex = 46;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -155,7 +156,7 @@
             this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.gpoFiltro.Name = "gpoFiltro";
             this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2);
-            this.gpoFiltro.Size = new System.Drawing.Size(285, 53);
+            this.gpoFiltro.Size = new System.Drawing.Size(351, 53);
             this.gpoFiltro.TabIndex = 45;
             this.gpoFiltro.TabStop = false;
             // 
@@ -190,7 +191,7 @@
             this.btnImprimir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(285, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(351, 27);
             this.toolStrip1.TabIndex = 44;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -225,7 +226,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(351, 293);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmImpresion";

@@ -53,8 +53,9 @@ namespace SWYRA_Movil
         private void dgPedidos_CurrentCellChanged(object sender, EventArgs e)
         {
             var index = dgPedidos.CurrentRowIndex;
-            dgPedidos.Select(index);
-            dgPedidos.CurrentRowIndex = index;
+            var goindex = (dgPedidos[index, 3].ToString() == "EMPAQUE") ? 0 : index;
+            dgPedidos.Select(goindex);
+            dgPedidos.CurrentRowIndex = goindex;
         }
 
         private void pnlSurtido_Click(object sender, EventArgs e)
@@ -78,11 +79,28 @@ namespace SWYRA_Movil
                             "(ESTATUSPEDIDO = 'EMPAQUE' and isnull(EMPAQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 string surtAsig = (ped == null) ? "" : Program.usActivo.Usuario;
-                query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
+                query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, p.ESTATUSPEDIDO, " +
+                        "case " +
+                        "    when p.ESTATUSPEDIDO = 'EMPAQUE' then " +
+                        "        case " +
+                        "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 5 " +
+                        "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 6 " +
+                        "            when p.TIPOSERVICIO = 'FORANEO' THEN 7 " +
+                        "            when p.TIPOSERVICIO = 'LOCAL' THEN 8 " +
+                        "        END " +
+                        "    when p.ESTATUSPEDIDO = 'DETENIDO EMP' then " +
+                        "        case  " +
+                        "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 9 " +
+                        "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 10 " +
+                        "            when p.TIPOSERVICIO = 'FORANEO' THEN 11 " +
+                        "            when p.TIPOSERVICIO = 'LOCAL' THEN 12 " +
+                        "        end " +
+                        "end Numprioridad, " +
+                        "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
                         "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where (p.ESTATUSPEDIDO = 'EMPAQUE' and isnull(p.EMPAQUETADOR_ASIGNADO,'') = '" + surtAsig + "') " +
-                        "order by PRIORIDAD, CVE_DOC ";
+                        "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");
                 if (listPedidos.Count != 0)

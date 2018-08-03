@@ -127,24 +127,31 @@ namespace SWYRA_Movil
                                 }
                                 if (drm == DialogResult.OK)
                                 {
-                                    DialogResult dr = DialogResult.Cancel;
-                                    if (art.lin_prod.Contains("EXHIB"))
+                                    if (art.cantdiferencia >= art.mas && cod.cant_piezas < art.mas)
                                     {
-                                        FrmSurtir2 frmConf1 = new FrmSurtir2();
-                                        dr = frmConf1.ShowDialog();
-                                        frmConf1.Close();
+                                        MessageBox.Show(@"Presentación del artículo debe ser mayor o igual al MASTER.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                                     }
-                                    if (art.aplicalote)
+                                    else
                                     {
-                                        FrmSurtir3 frmConf2 = new FrmSurtir3();
-                                        frmConf2.ShowDialog();
-                                        Lote = frmConf2.txtLote.Text;
-                                        frmConf2.Close();
+                                        DialogResult dr = DialogResult.Cancel;
+                                        if (art.lin_prod.Contains("EXHIB"))
+                                        {
+                                            FrmSurtir2 frmConf1 = new FrmSurtir2();
+                                            dr = frmConf1.ShowDialog();
+                                            frmConf1.Close();
+                                        }
+                                        if (art.aplicalote)
+                                        {
+                                            FrmSurtir3 frmConf2 = new FrmSurtir3();
+                                            frmConf2.ShowDialog();
+                                            Lote = frmConf2.txtLote.Text;
+                                            frmConf2.Close();
+                                        }
+                                        //txtCant.ReadOnly = !(cod.cant_piezas == 1 || dr == DialogResult.Cancel);
+                                        txtCant.Value = cod.cant_piezas;
+                                        actualizaDet();
+                                        //if (cod.cant_piezas == 1) { txtCant.Focus(); }
                                     }
-                                    //txtCant.ReadOnly = !(cod.cant_piezas == 1 || dr == DialogResult.Cancel);
-                                    txtCant.Value = cod.cant_piezas;
-                                    actualizaDet();
-                                    //if (cod.cant_piezas == 1) { txtCant.Focus(); }
                                 }
                             }
                         }
@@ -204,23 +211,35 @@ namespace SWYRA_Movil
         {
             if (txtCant.ReadOnly)
             {
-                art.cantsurtido += (double)txtCant.Value;
-                art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
-                art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
-                art.surtido = (art.cant == (art.cantsurtido + art.cantpendiente));
-                art.exist = (art.exist - (double)txtCant.Value);
+                if (art.cantsurtido < art.cant)
+                {
+                    art.cantsurtido += (double)txtCant.Value;
+                    art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
+                    art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
+                    art.surtido = (art.cant == (art.cantsurtido + art.cantpendiente));
+                    art.exist = (art.exist - (double)txtCant.Value);
+                }
+                else
+                {
+                    txtCant.Value = 0;
+                    art.cantdiferencia = 0.0;
+                    art.cantsurtido = art.cant;
+                    art.surtido = true;
+                }
+
                 var ubiant = art.ubicacion;
                 art.ubicacion = (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi));
                 var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
                 art.orden = orb.orden;
+
                 var confirmar = "IF EXISTS( SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' AND ISNULL(CANCELADO,0) = 0) " +
                                 "UPDATE DETALLEPEDIDOMERC SET CANT = CANT + " + txtCant.Value.ToString() + ", " +
-                                "lote = (isnull(lote,'') + case when isnull(lote,'') <> '' then ';' else '' end + '" + Lote + "') " + 
+                                "lote = (isnull(lote,'') + case when isnull(lote,'') <> '' then ';' else '' end + '" + Lote + "') " +
                                 "WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' ELSE ";
                 var query = "DECLARE @consec INT " +
                             "SELECT @consec = (ISNULL(MAX(CONSEC),-1) + 1) FROM DETALLEPEDIDOMERC " +
-                            "WHERE CVE_DOC = '" + art.cve_doc + "' " + 
-                            (cod.cant_piezas == 1 ? confirmar : "") +
+                            "WHERE CVE_DOC = '" + art.cve_doc + "' " +
+                            ((double)txtCant.Value == 1.0 ? confirmar : "") +
                             "INSERT DETALLEPEDIDOMERC (CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, lote) " +
                             "VALUES ('" + art.cve_doc + "', @consec, " + art.num_par.ToString() + ", '" + art.cve_art +
                             "', '" + lastCB + "', " + txtCant.Value.ToString() + ", '" + Lote + "') " +
@@ -274,6 +293,7 @@ namespace SWYRA_Movil
                                 "VALUES ('" + art.cve_doc + "', @consec, " + art.num_par + ", '" + art.cve_art + "', '', 0, " + art.cantdiferencia + ") END";
                     Program.GetExecute(query, 100);
 
+                    if (art.cantsurtido < art.cant) { art.cantdiferencia = art.cant - art.cantsurtido; } else { art.cantdiferencia = 0; }
                     art.cantpendiente = art.cantpendiente + art.cantdiferencia;
                     art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
                     art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
@@ -331,6 +351,23 @@ namespace SWYRA_Movil
                 }
                 cargaDatos();
             }
+        }
+
+        private void pbFinal_Click(object sender, EventArgs e)
+        {
+            art.sel = 0;
+            art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
+            art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
+            var ubiant = art.ubicacion;
+            art.ubicacion = (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi));
+            var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
+            art.orden = orb.orden;
+            mostrardet = det.Where(o => o.surtido == false).ToList();
+            mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
+            art = mostrardet.FirstOrDefault();
+            artFirst = art;
+            artLast = mostrardet.LastOrDefault();
+            lblPendientes.Text = mostrardet.Count.ToString();
         }
     }
 }

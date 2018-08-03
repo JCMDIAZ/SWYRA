@@ -73,8 +73,11 @@ namespace SWYRA
                     "FROM DETALLEPEDIDO dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "LEFT join INVENTARIOCOND ic on dp.CVE_ART = ic.CVE_ART " +
                     "LEFT JOIN ( select distinct CVE_DOC, NUM_PAR, STUFF((select ', ' + ('(' + CAST(SUM(d.CANT) AS VARCHAR(5)) + ') ' + e.Empaque) " + 
-                    "from DETALLEPEDIDOMERC d join(select CVE_DOC, CONSEC, TIPOPAQUETE + ' # ' + CAST(CONSEC_EMPAQUE AS VARCHAR(2)) Empaque " +
-                    "from DETALLEPEDIDOMERC WHERE (CVE_DOC = '" + cve_doc + "') AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') " +
+                    "from DETALLEPEDIDOMERC d join(select h.CVE_DOC, h.CONSEC, h.TIPOPAQUETE + ' # ' + CAST(h.CONSEC_EMPAQUE AS VARCHAR(2)) + " +
+                    "case when p.TIPOPAQUETE = 'ATADOS' then ' (A' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' " +
+                    "when p.TIPOPAQUETE = 'TARIMA' then ' (T' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' ELSE '' END Empaque " +
+                    "FROM DETALLEPEDIDOMERC h LEFT JOIN DETALLEPEDIDOMERC p ON p.CONSEC = h.CONSEC_PADRE and p.CVE_DOC = h.CVE_DOC " +
+                    "WHERE (h.CVE_DOC = '" + cve_doc + "') AND(ISNULL(h.CANCELADO, 0) = 0) AND(ISNULL(h.TIPOPAQUETE, '') " +
                     "NOT IN('', 'GUIA'))) as e on d.CVE_DOC = e.CVE_DOC and d.CONSEC_PADRE = e.CONSEC WHERE(d.CVE_DOC = '" + cve_doc + "') " +
                     "AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') IN('')) AND a.CVE_DOC = d.CVE_DOC and a.CVE_ART = d.CVE_ART " +
                     "group by e.Empaque, d.NUM_PAR order by d.NUM_PAR FOR XML PATH('')), 1, 1, '') as Empaque, isnull(a.lote,'') lote from DETALLEPEDIDOMERC as a " +

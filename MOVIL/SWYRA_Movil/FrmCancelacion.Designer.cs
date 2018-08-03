@@ -33,7 +33,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCancelacion));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.lblPendientes = new System.Windows.Forms.Label();
+            this.txtMasterUbi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lblComentario = new System.Windows.Forms.Label();
             this.pbAnt = new System.Windows.Forms.PictureBox();
@@ -65,8 +67,7 @@
             this.pnlRetornar = new System.Windows.Forms.Panel();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtMasterUbi = new System.Windows.Forms.TextBox();
+            this.lblEmp = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlRetornar.SuspendLayout();
@@ -103,12 +104,30 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 167);
             // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.label14.Location = new System.Drawing.Point(119, 93);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 19);
+            this.label14.Text = "Mast. Ubi.";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // lblPendientes
             // 
             this.lblPendientes.Font = new System.Drawing.Font("Tahoma", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblPendientes.Location = new System.Drawing.Point(124, 147);
             this.lblPendientes.Name = "lblPendientes";
             this.lblPendientes.Size = new System.Drawing.Size(66, 15);
+            // 
+            // txtMasterUbi
+            // 
+            this.txtMasterUbi.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtMasterUbi.Location = new System.Drawing.Point(175, 90);
+            this.txtMasterUbi.Name = "txtMasterUbi";
+            this.txtMasterUbi.ReadOnly = true;
+            this.txtMasterUbi.Size = new System.Drawing.Size(54, 19);
+            this.txtMasterUbi.TabIndex = 41;
             // 
             // label12
             // 
@@ -297,6 +316,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblEmp);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.lblPedido);
             this.panel1.Controls.Add(this.label5);
@@ -313,10 +333,10 @@
             // 
             this.label13.Font = new System.Drawing.Font("Tahoma", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(9, 42);
+            this.label13.Location = new System.Drawing.Point(4, 4);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(122, 18);
-            this.label13.Text = "Devolución de Artículo";
+            this.label13.Size = new System.Drawing.Size(77, 11);
+            this.label13.Text = "DEVOLUCION";
             // 
             // lblPedido
             // 
@@ -409,23 +429,13 @@
             // 
             this.detallePedidosBindingSource.DataSource = typeof(SWYRA_Movil.DetallePedidos);
             // 
-            // label14
+            // lblEmp
             // 
-            this.label14.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label14.Location = new System.Drawing.Point(119, 93);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(50, 19);
-            this.label14.Text = "Mast. Ubi.";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txtMasterUbi
-            // 
-            this.txtMasterUbi.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtMasterUbi.Location = new System.Drawing.Point(175, 90);
-            this.txtMasterUbi.Name = "txtMasterUbi";
-            this.txtMasterUbi.ReadOnly = true;
-            this.txtMasterUbi.Size = new System.Drawing.Size(54, 19);
-            this.txtMasterUbi.TabIndex = 41;
+            this.lblEmp.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lblEmp.Location = new System.Drawing.Point(3, 40);
+            this.lblEmp.Name = "lblEmp";
+            this.lblEmp.Size = new System.Drawing.Size(131, 22);
+            this.lblEmp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FrmCancelacion
             // 
@@ -487,5 +497,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtMasterUbi;
+        private System.Windows.Forms.Label lblEmp;
     }
 }

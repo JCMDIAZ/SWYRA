@@ -49,6 +49,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtFecha = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +109,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(3, 58);
+            this.label3.Location = new System.Drawing.Point(3, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 17);
             this.label3.Text = "Servicio :";
@@ -116,7 +118,7 @@
             // txtTipoServicio
             // 
             this.txtTipoServicio.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtTipoServicio.Location = new System.Drawing.Point(78, 54);
+            this.txtTipoServicio.Location = new System.Drawing.Point(78, 74);
             this.txtTipoServicio.Name = "txtTipoServicio";
             this.txtTipoServicio.Size = new System.Drawing.Size(149, 19);
             this.txtTipoServicio.TabIndex = 11;
@@ -124,7 +126,7 @@
             // txtEstatus
             // 
             this.txtEstatus.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtEstatus.Location = new System.Drawing.Point(78, 79);
+            this.txtEstatus.Location = new System.Drawing.Point(78, 95);
             this.txtEstatus.Name = "txtEstatus";
             this.txtEstatus.Size = new System.Drawing.Size(149, 19);
             this.txtEstatus.TabIndex = 13;
@@ -132,7 +134,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(3, 83);
+            this.label4.Location = new System.Drawing.Point(3, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.Text = "Estatus :";
@@ -141,7 +143,7 @@
             // txtOcuDom
             // 
             this.txtOcuDom.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtOcuDom.Location = new System.Drawing.Point(78, 104);
+            this.txtOcuDom.Location = new System.Drawing.Point(78, 116);
             this.txtOcuDom.Name = "txtOcuDom";
             this.txtOcuDom.Size = new System.Drawing.Size(149, 19);
             this.txtOcuDom.TabIndex = 16;
@@ -149,7 +151,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(3, 108);
+            this.label5.Location = new System.Drawing.Point(3, 120);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 17);
             this.label5.Text = "Ocu/Dom :";
@@ -158,7 +160,7 @@
             // txtUbicacion
             // 
             this.txtUbicacion.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtUbicacion.Location = new System.Drawing.Point(78, 129);
+            this.txtUbicacion.Location = new System.Drawing.Point(78, 137);
             this.txtUbicacion.Name = "txtUbicacion";
             this.txtUbicacion.Size = new System.Drawing.Size(149, 19);
             this.txtUbicacion.TabIndex = 19;
@@ -166,7 +168,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(3, 133);
+            this.label6.Location = new System.Drawing.Point(3, 141);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 17);
             this.label6.Text = "Ubicación :";
@@ -175,7 +177,7 @@
             // txtConsigna
             // 
             this.txtConsigna.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtConsigna.Location = new System.Drawing.Point(78, 154);
+            this.txtConsigna.Location = new System.Drawing.Point(78, 158);
             this.txtConsigna.Multiline = true;
             this.txtConsigna.Name = "txtConsigna";
             this.txtConsigna.Size = new System.Drawing.Size(149, 36);
@@ -184,10 +186,10 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(3, 158);
+            this.label7.Location = new System.Drawing.Point(3, 162);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 17);
-            this.label7.Text = "Consigna :";
+            this.label7.Text = "Dirección :";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtObservaciones
@@ -208,6 +210,23 @@
             this.label8.Text = "Observa-ciones :";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // txtFecha
+            // 
+            this.txtFecha.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtFecha.Location = new System.Drawing.Point(78, 53);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(149, 19);
+            this.txtFecha.TabIndex = 38;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(3, 57);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 17);
+            this.label9.Text = "Fecha :";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // FrmEmpaqueInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -215,6 +234,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.txtFecha);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtObservaciones);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtConsigna);
@@ -262,5 +283,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtFecha;
+        private System.Windows.Forms.Label label9;
     }
 }

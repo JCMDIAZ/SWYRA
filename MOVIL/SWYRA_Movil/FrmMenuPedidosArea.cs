@@ -26,7 +26,15 @@ namespace SWYRA_Movil
 
         private void pbSalir_Click(object sender, EventArgs e)
         {
-            Close();
+            if (!validaExis(false))
+            {
+                ped.solarea = false;
+                var query = "UPDATE PEDIDO SET SOLAREA = 0 " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var r = Program.GetExecute(query, 9);
+                MessageBox.Show(@"Existe Artículos por Agregar o Devolver fuera del área de Brocas. Favor de validar.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            this.Close();
         }
 
         private void pbConcluir_Click(object sender, EventArgs e)
@@ -38,7 +46,7 @@ namespace SWYRA_Movil
                             "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
                 var r = Program.GetExecute(query, 9);
                 MessageBox.Show(@"Existe Artículos por Agregar o Devolver fuera del área de Brocas. Favor de validar.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                return;
+                this.Close();
             }
             if (!validaExis(true))
             {
@@ -205,6 +213,42 @@ namespace SWYRA_Movil
             frmCan.det = devA.Where(o => o.devuelto == false).ToList();
             frmCan.ShowDialog();
             pbConcluir.Visible = validaExis(false) && validaExis(true);
+        }
+
+        private void pbDetener_Click(object sender, EventArgs e)
+        {
+           try
+            {
+                FrmDetenerPed frmDetenerPed = new FrmDetenerPed();
+                frmDetenerPed.lblPedido.Text = ped.cve_doc.Trim();
+                var rs = frmDetenerPed.ShowDialog();
+                if (rs == DialogResult.OK)
+                {
+                    FrmDetenerPedCausa frmCausa = new FrmDetenerPedCausa();
+                    frmCausa.lblPedido.Text = ped.cve_doc.Trim();
+                    frmCausa.ShowDialog();
+                    var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'DETENIDO', " +
+                                "CAUSADETENIDO = '" + frmCausa.txtCausa.Text + "' " +
+                                "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                    var r = Program.GetExecute(query, 6);
+                    query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                            "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                            "@cvedoc, 'DETENIDO', getdate(), '" + Program.usActivo.Usuario + "')";
+                    r = Program.GetExecute(query, 7);
+                    MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    frmDetenerPed.Close();
+                    Close();
+                }
+                else
+                {
+                    frmDetenerPed.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

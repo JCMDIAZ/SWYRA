@@ -182,6 +182,7 @@ namespace SWYRA_Movil
         public string causadetenido { get; set; }
         public string consignacion { get; set; }
         public string observaciones { get; set; }
+        public string enviar { get; set; }
     }
 
     public class DetallePedidos
@@ -267,6 +268,7 @@ namespace SWYRA_Movil
         public bool asig_pedido_guia { get; set; }
         public string num_guia { get; set; }
         public double pend { get; set; }
+        public string empaque { get; set; }
     }
 
     public class OrdenUbicacion

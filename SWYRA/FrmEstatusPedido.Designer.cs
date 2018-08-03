@@ -56,17 +56,17 @@
             this.colfecha_cancela = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcondicion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colnombre_vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcobrador_asignado_n = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcapturo_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcobrador_autorizo_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colsurtidor_asignado_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colempaquetador_asignado_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coletiquetador_asignado_n = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colsurtidor_area_n = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colporc_surtidoreal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colporc_surtido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colporc_empaque = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colindicaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.collote = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colporc_surtidoreal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -95,6 +95,7 @@
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
@@ -128,7 +129,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnFactura,
             this.btnExportar,
-            this.btnSalir});
+            this.btnSalir,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(798, 27);
@@ -315,7 +317,7 @@
             this.colfecha_cancela,
             this.colcondicion,
             this.colnombre_vendedor,
-            this.colcobrador_asignado_n,
+            this.colcapturo_n,
             this.colcobrador_autorizo_n,
             this.colsurtidor_asignado_n,
             this.colempaquetador_asignado_n,
@@ -445,14 +447,14 @@
             this.colnombre_vendedor.VisibleIndex = 10;
             this.colnombre_vendedor.Width = 150;
             // 
-            // colcobrador_asignado_n
+            // colcapturo_n
             // 
-            this.colcobrador_asignado_n.Caption = "Cobrador Asignado";
-            this.colcobrador_asignado_n.FieldName = "cobrador_asignado_n";
-            this.colcobrador_asignado_n.Name = "colcobrador_asignado_n";
-            this.colcobrador_asignado_n.Visible = true;
-            this.colcobrador_asignado_n.VisibleIndex = 11;
-            this.colcobrador_asignado_n.Width = 150;
+            this.colcapturo_n.Caption = "Asistente Venta";
+            this.colcapturo_n.FieldName = "capturo_n";
+            this.colcapturo_n.Name = "colcapturo_n";
+            this.colcapturo_n.Visible = true;
+            this.colcapturo_n.VisibleIndex = 11;
+            this.colcapturo_n.Width = 150;
             // 
             // colcobrador_autorizo_n
             // 
@@ -500,6 +502,16 @@
             this.colsurtidor_area_n.VisibleIndex = 16;
             this.colsurtidor_area_n.Width = 150;
             // 
+            // colporc_surtidoreal
+            // 
+            this.colporc_surtidoreal.Caption = "Porcentaje Surtido";
+            this.colporc_surtidoreal.DisplayFormat.FormatString = "#0.00 %";
+            this.colporc_surtidoreal.FieldName = "porc_surtidoReal";
+            this.colporc_surtidoreal.Name = "colporc_surtidoreal";
+            this.colporc_surtidoreal.Visible = true;
+            this.colporc_surtidoreal.VisibleIndex = 17;
+            this.colporc_surtidoreal.Width = 150;
+            // 
             // colporc_surtido
             // 
             this.colporc_surtido.Caption = "Avance Surtido";
@@ -537,16 +549,6 @@
             this.collote.Visible = true;
             this.collote.VisibleIndex = 21;
             this.collote.Width = 90;
-            // 
-            // colporc_surtidoreal
-            // 
-            this.colporc_surtidoreal.Caption = "Porcentaje Surtido";
-            this.colporc_surtidoreal.DisplayFormat.FormatString = "#0.00 %";
-            this.colporc_surtidoreal.FieldName = "porc_surtidoReal";
-            this.colporc_surtidoreal.Name = "colporc_surtidoreal";
-            this.colporc_surtidoreal.Visible = true;
-            this.colporc_surtidoreal.VisibleIndex = 17;
-            this.colporc_surtidoreal.Width = 150;
             // 
             // popupMenu1
             // 
@@ -872,6 +874,15 @@
             this.panel1.Size = new System.Drawing.Size(798, 383);
             this.panel1.TabIndex = 67;
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(83, 24);
+            this.toolStripButton1.Text = "Actualizar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // FrmEstatusPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -956,7 +967,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn coltiposervicio;
         private DevExpress.XtraGrid.Columns.GridColumn colestatuspedido;
         private DevExpress.XtraGrid.Columns.GridColumn colocurredomicilio;
-        private DevExpress.XtraGrid.Columns.GridColumn colcobrador_asignado_n;
+        private DevExpress.XtraGrid.Columns.GridColumn colcapturo_n;
         private DevExpress.XtraGrid.Columns.GridColumn colcobrador_autorizo_n;
         private DevExpress.XtraGrid.Columns.GridColumn colsurtidor_asignado_n;
         private DevExpress.XtraGrid.Columns.GridColumn colempaquetador_asignado_n;
@@ -1001,5 +1012,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colcve_clpv;
         private System.Windows.Forms.ToolStripButton btnFactura;
         private DevExpress.XtraGrid.Columns.GridColumn colporc_surtidoreal;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

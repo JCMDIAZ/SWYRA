@@ -11,7 +11,7 @@ namespace SWYRA_Movil
 {
     public partial class FrmEmpaqueList : Form
     {
-        public DetallePedidoMerc ped;
+        public Pedidos ped;
         public List<DetallePedidoMerc> det = new List<DetallePedidoMerc>();
 
         public FrmEmpaqueList()
