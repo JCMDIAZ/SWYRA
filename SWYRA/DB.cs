@@ -179,6 +179,8 @@ namespace SWYRA
         public string nombre_vendedor { get; set; }
         public string capturo_n { get; set; }
         public string enviar { get; set; }
+        public string direccion1 { get; set; }
+        public string direccion2 { get; set; }
     }
 
     public class DetallePedidos

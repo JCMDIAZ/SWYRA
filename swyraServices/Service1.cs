@@ -342,7 +342,7 @@ namespace swyraServices
                     "STR_OBS OBSERVACIONES, v.NOMBRE NOMBRE_VENDEDOR, (i.CALLE || ' # ' || i.NUMEXT || ' COL. ' || i.COLONIA || '; ' || i.MUNICIPIO || ', ' || i.ESTADO) consignacion " +
                     "from FACTP01 p LEFT JOIN OBS_DOCF01 o ON p.CVE_OBS = o.CVE_OBS LEFT JOIN VEND01 v ON p.CVE_VEND = v.CVE_VEND " +
                     "LEFT JOIN INFENVIO01 i ON i.CVE_INFO = p.DAT_ENVIO " +
-                    "where FECHA_ENT between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
+                    "where FECHA_DOC between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
                     ffin.ToString("yyyy-MM-dd") + "'";
                 listFbPedidos = GetFbDataTable("FB", query, 6).ToList<Pedidos>();
             }
@@ -365,7 +365,7 @@ namespace swyraServices
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
                     "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
                     "ENVIAR, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO " +
-                    "from PEDIDO where FECHA_ENT between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
+                    "from PEDIDO where FECHA_DOC between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
                     ffin.ToString("yyyy-MM-dd") + "'";
                 listDbPedidos = GetDataTable("DB", query, 7).ToList<Pedidos>();
             }
@@ -1085,7 +1085,7 @@ namespace swyraServices
                 if (detFB == null)
                 {
                     var query2 =
-                        "INSERT PAR_FACTP01 (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
+                        "INSERT INTO PAR_FACTP01 (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
                         "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
                         "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
                         "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, MAN_IEPS, APL_MAN_IMP, COUTA_IEPS, APL_MAN_IEPS, MTO_CUOTA, " +
@@ -1217,7 +1217,9 @@ namespace swyraServices
                     res = GetFbExecute("FB", query, 46);
                     fac = CargaFbFactura(fac.doc_ant);
                 }
-                query = "update OBS_DOCF01 set STR_OBS = 'Paquetería :" + fac.str_paq + " " + ped.observaciones +
+                var sf = "Paquetería : " + fac.str_paq + " " + ped.observaciones;
+                var mf = (sf.Length > 255) ? 255 : sf.Length;
+                query = "update OBS_DOCF01 set STR_OBS = '" + sf.Substring(0,mf) +
                         "' where CVE_OBS = '" + fac.cve_obs + "' ";
                 var res2 = GetFbExecute("FB", query, 47);
             }

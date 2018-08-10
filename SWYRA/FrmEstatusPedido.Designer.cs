@@ -34,6 +34,7 @@
             this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.gpoFiltro = new System.Windows.Forms.GroupBox();
             this.chkActual = new DevExpress.XtraEditors.CheckEdit();
             this.txtFechFin = new DevExpress.XtraEditors.DateEdit();
@@ -95,7 +96,6 @@
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
@@ -164,6 +164,15 @@
             this.btnSalir.Size = new System.Drawing.Size(51, 24);
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(83, 24);
+            this.toolStripButton1.Text = "Actualizar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // gpoFiltro
             // 
@@ -566,6 +575,7 @@
             this.barButtonItem1.Caption = "Cambiar Prioridad";
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
@@ -873,15 +883,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(798, 383);
             this.panel1.TabIndex = 67;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(83, 24);
-            this.toolStripButton1.Text = "Actualizar";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // FrmEstatusPedido
             // 

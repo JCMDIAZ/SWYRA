@@ -32,17 +32,26 @@ namespace SWYRA_Movil
             {
                 if (listPedidos.Count > 0)
                 {
-                    var query = "UPDATE PEDIDO SET ETIQUETADOR_ASIGNADO = '" + Program.usActivo.Usuario + "' " +
-                                "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString() + "'";
-                    var res = Program.GetExecute(query, 4);
-                    query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
-                            "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString() + "' " +
-                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
-                            "@cvedoc, 'GUIA', getdate(), '" + Program.usActivo.Usuario + "')";
-                    res = Program.GetExecute(query, 5);
-                    FrmMenuGuia frmGuia = new FrmMenuGuia();
-                    frmGuia.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
-                    frmGuia.ShowDialog();
+                    var query = "SELECT CVE_DOC, ETIQUETADOR_ASIGNADO FROM PEDIDO WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString().Trim() + "'";
+                    var ls = Program.GetDataTable(query, 51).ToData<Pedidos>();
+                    if (ls.etiquetador_asignado == "" || ls.etiquetador_asignado == Program.usActivo.Usuario || ls.etiquetador_asignado == null)
+                    {
+                        query = "UPDATE PEDIDO SET ETIQUETADOR_ASIGNADO = '" + Program.usActivo.Usuario + "' " +
+                                    "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString() + "'";
+                        var res = Program.GetExecute(query, 4);
+                        query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                                "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString() + "' " +
+                                "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                                "@cvedoc, 'GUIA', getdate(), '" + Program.usActivo.Usuario + "')";
+                        res = Program.GetExecute(query, 5);
+                        FrmMenuGuia frmGuia = new FrmMenuGuia();
+                        frmGuia.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
+                        frmGuia.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El pedido " + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString().Trim() + " lo ha tomado otro ETIQUETADOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    }
                     cargaPedidos();
                 }
             }

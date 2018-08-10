@@ -34,7 +34,7 @@ namespace SWYRA_Movil
                 {
                     var query = "select top 1 Usuario, Nombre, Categoria, " +
                                 "cast(DECRYPTBYPASSPHRASE('swyra',[Contraseña]) as varchar(15)) Password, " +
-                                "Activo, [ID_StatusPermisosUser] IDStatusPermisosUser " +
+                                "Activo, [ID_StatusPermisosUser] IDStatusPermisosUser, AreaAsignada " +
                                 "from usuarios where usuario = '" + txtUsuario.Text + "' ";
                     List<Usuarios> us = Program.GetDataTable(query, 1).ToList<Usuarios>();
                     if (us.Count == 0)

@@ -33,17 +33,26 @@ namespace SWYRA_Movil
             {
                 if (listPedidos.Count > 0)
                 {
-                    var query = "UPDATE PEDIDO SET SURTIDOR_AREA = '" + Program.usActivo.Usuario + "' " +
-                                "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "'";
-                    var res = Program.GetExecute(query, 3);
-                    query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
-                            "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "' " +
-                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
-                            "@cvedoc, 'SURTIENDO AREA', getdate(), '" + Program.usActivo.Usuario + "')";
-                    res = Program.GetExecute(query, 4);
-                    FrmMenuPedidosArea frmMenuPed = new FrmMenuPedidosArea();
-                    frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString();
-                    frmMenuPed.ShowDialog();
+                    var query = "SELECT CVE_DOC, SURTIDOR_AREA FROM PEDIDO WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString().Trim() + "'";
+                    var ls = Program.GetDataTable(query, 51).ToData<Pedidos>();
+                    if (ls.surtidor_area == "" || ls.surtidor_area == Program.usActivo.Usuario || ls.surtidor_area == null)
+                    {
+                        query = "UPDATE PEDIDO SET SURTIDOR_AREA = '" + Program.usActivo.Usuario + "' " +
+                                    "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "'";
+                        var res = Program.GetExecute(query, 3);
+                        query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                                "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "' " +
+                                "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                                "@cvedoc, 'SURTIENDO AREA', getdate(), '" + Program.usActivo.Usuario + "')";
+                        res = Program.GetExecute(query, 4);
+                        FrmMenuPedidosArea frmMenuPed = new FrmMenuPedidosArea();
+                        frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString();
+                        frmMenuPed.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El pedido " + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString().Trim() + " lo ha tomado otro SURTIDOR DE BROCAS.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    }
                     cargaPedidos();
                 }
             }

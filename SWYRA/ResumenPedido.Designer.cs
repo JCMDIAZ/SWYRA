@@ -97,6 +97,7 @@
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.xrLabel19 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel20 = new DevExpress.XtraReports.UI.XRLabel();
+            this.direccion = new DevExpress.XtraReports.UI.CalculatedField();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -1078,7 +1079,7 @@
             this.xrLabel14.BackColor = System.Drawing.Color.White;
             this.xrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "consignacion")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "direccion")});
             this.xrLabel14.Dpi = 100F;
             this.xrLabel14.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel14.ForeColor = System.Drawing.Color.Black;
@@ -1189,7 +1190,7 @@
             this.xrLabel7.StylePriority.UseFont = false;
             this.xrLabel7.StylePriority.UseForeColor = false;
             this.xrLabel7.StylePriority.UseTextAlignment = false;
-            this.xrLabel7.Text = "Consignación :";
+            this.xrLabel7.Text = "Domicilio :";
             this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // xrLabel5
@@ -1375,6 +1376,12 @@
             this.xrLabel20.Text = "TOTAL DE IMPORTE";
             this.xrLabel20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             // 
+            // direccion
+            // 
+            this.direccion.DisplayName = "direccion";
+            this.direccion.Expression = "Iif([enviar]== \'\' , [direccion1] + \' \' +[direccion2]  , [consignacion])";
+            this.direccion.Name = "direccion";
+            // 
             // ResumenPedido
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1384,7 +1391,8 @@
             this.ReportFooter});
             this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
             this.strContado,
-            this.totRemitentes});
+            this.totRemitentes,
+            this.direccion});
             this.DataSource = this.bindingSource1;
             this.Margins = new System.Drawing.Printing.Margins(50, 50, 101, 50);
             this.Version = "16.2";
@@ -1462,5 +1470,6 @@
         private DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
         private DevExpress.XtraReports.UI.XRLabel xrLabel19;
         private DevExpress.XtraReports.UI.XRLabel xrLabel20;
+        private DevExpress.XtraReports.UI.CalculatedField direccion;
     }
 }

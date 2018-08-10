@@ -476,6 +476,14 @@ namespace SWYRA_Movil
                 this.Close();
                 return;
             }
+
+            var query2 = "UPDATE DETALLEPEDIDOMERC SET CANCELADO = 1 WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() +
+                         "' AND ISNULL(TIPOPAQUETE,'') <> '' AND ISNULL(TotArt,0) = 0 AND ISNULL(CANCELADO,0) = 0";
+            Program.GetExecute(query2, 51);
+
+            cargaPaquetes();
+            cargaDetalleMerc();
+
             // Printer IP Address and communication port
             string ipAddress = Program.ipImpEti();
             int port = 9100;

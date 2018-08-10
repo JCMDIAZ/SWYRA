@@ -67,7 +67,7 @@ namespace SWYRA_Movil
                     }
                     else if(tot == 1)
                     {
-                        txtCant.ReadOnly = !(cod.cant_piezas == 1);
+                        txtCant.ReadOnly = true; // !(cod.cant_piezas == 1);
                         txtCant.Value = cod.cant_piezas;
                         art = det.Find(o => o.codigo_barra == txtCodigo.Text && (o.cancelado == null || o.cancelado == false));
                         art.cancelado = (cod.cant_piezas != 1);

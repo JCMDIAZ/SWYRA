@@ -49,7 +49,8 @@ namespace SWYRA
                             "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
                             "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, " +
                             "TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, TotCostoGuias, p.ENVIAR, " +
-                            "cliente.FLETE, cliente.FLETE2, p.OBSERVACIONES, p.CONSIGNACION, p.NOMBRE_VENDEDOR, uCapturo.Nombre capturo_n " +
+                            "cliente.FLETE, cliente.FLETE2, p.OBSERVACIONES, p.CONSIGNACION, p.NOMBRE_VENDEDOR, uCapturo.Nombre capturo_n, " +
+                            "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2 " +
                             "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
                             "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
                             "left join USUARIOS uSurAsig on uSurAsig.Usuario = p.SURTIDOR_ASIGNADO " +

@@ -245,6 +245,7 @@ namespace SWYRA_Movil
         public int sel { get; set; }
         public int con { get; set; }
         public double cantpendiente { get; set; }
+        public bool sw { get; set; }
     }
 
     public class DetallePedidoMerc
