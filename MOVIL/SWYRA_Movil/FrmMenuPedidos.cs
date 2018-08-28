@@ -35,14 +35,16 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
-                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, OCURREDOMICILIO " + 
-                            "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, OCURREDOMICILIO, NOMBRE_VENDEDOR, " + 
+                            "CAPTURO, u.Nombre CAPTURO_N from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
+                            "left join USUARIOS u on u.Usuario = p.CAPTURO WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 txtPedido.Text = ped.cve_doc;
                 txtCliente.Text = "(" + ped.cve_clpv + ") " + ped.cliente;
                 txtServicio.Text = ped.tiposervicio;
                 txtOcurrDom.Text = ped.ocurredomicilio;
-                txtVendedor.Text = ped.cve_vend;
+                txtVendedor.Text = ped.nombre_vendedor;
+                txtCapturo.Text = ped.capturo_n;
                 CultureInfo culture = new CultureInfo("es-MX");
                 txtMonto.Text = ped.importe.ToString("C2", culture);
 
@@ -240,6 +242,7 @@ namespace SWYRA_Movil
                         var query = "UPDATE PEDIDO SET SOLAREA = 1 " +
                                     "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
                         var r = Program.GetExecute(query, 9);
+                        MessageBox.Show(@"Falta por surtir en el área de Brocas.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     }
                     var lst2 = frmAreaEmp.lst.Where(o => o.seleccionado == true).ToList();
                     foreach (var ubi in lst2)

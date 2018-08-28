@@ -91,6 +91,7 @@ namespace SWYRA_Movil
                         var query = "UPDATE DETALLEPEDIDOMERC SET NUM_GUIA = '" + d.num_guia + 
                             "' WHERE LTRIM(CVE_DOC) = '" + cvedoc + "' AND CONSEC = " + d.consec;
                         var res = Program.GetExecute(query, 3);
+                        det = CargaDetalleMerc();
                     }
                 }
                 dgDetPedidos.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");

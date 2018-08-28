@@ -210,6 +210,11 @@ namespace SWYRA_Movil
         private void actualizaDet()
         {
             var linea = "";
+            if (ValidaCambios())
+            {
+                MessageBox.Show("Existen cambios en el PEDIDO, por lo que el último movimiento no se registro, se regresara al menú anterior", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                return;
+            }
             try
             {
                 linea = "1";
@@ -335,8 +340,8 @@ namespace SWYRA_Movil
                     art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
                     art.surtido = (art.cant == (art.cantsurtido + art.cantpendiente));
                     art.ubicacion = art.ubicacion = ((art.sw) ? ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi) : (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi)));
-                    var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
-                    art.orden = orb.orden;
+                    var orb = orbi.Find(o => o.cve_ubi == art.ubicacion);
+                    art.orden = (orb == null) ? 0 : orb.orden;
 
                     query = 
                                 "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") + ", CANTPENDIENTE = " + art.cantpendiente +
@@ -404,7 +409,30 @@ namespace SWYRA_Movil
             artFirst = art;
             artLast = mostrardet.LastOrDefault();
             lblPendientes.Text = mostrardet.Count.ToString();
-            pbAnt_Click(sender, e);
+            pbSig_Click(sender, e);
+        }
+
+        private bool ValidaCambios()
+        {
+            bool b = false;
+            try
+            {
+                var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, OCURREDOMICILIO, NOMBRE_VENDEDOR, " + 
+                            "CAPTURO, u.Nombre CAPTURO_N from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
+                            "left join USUARIOS u on u.Usuario = p.CAPTURO WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var pedcam = Program.GetDataTable(query, 1).ToData<Pedidos>();
+                if (ped.importe != pedcam.importe)
+                {
+                    ped = pedcam;
+                    b = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            return b;
         }
     }
 }

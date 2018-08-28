@@ -63,6 +63,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblPendS = new System.Windows.Forms.Label();
             this.lblPendM = new System.Windows.Forms.Label();
+            this.txtCapturo = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.pnlPorSurtir.SuspendLayout();
             this.SuspendLayout();
@@ -117,6 +119,8 @@
             // pnlPorSurtir
             // 
             this.pnlPorSurtir.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlPorSurtir.Controls.Add(this.txtCapturo);
+            this.pnlPorSurtir.Controls.Add(this.label8);
             this.pnlPorSurtir.Controls.Add(this.txtOcurrDom);
             this.pnlPorSurtir.Controls.Add(this.label12);
             this.pnlPorSurtir.Controls.Add(this.txtMonto);
@@ -363,6 +367,24 @@
             this.lblPendM.Text = "0";
             this.lblPendM.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // txtCapturo
+            // 
+            this.txtCapturo.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtCapturo.Location = new System.Drawing.Point(97, 137);
+            this.txtCapturo.Name = "txtCapturo";
+            this.txtCapturo.ReadOnly = true;
+            this.txtCapturo.Size = new System.Drawing.Size(134, 17);
+            this.txtCapturo.TabIndex = 45;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(4, 140);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 20);
+            this.label8.Text = "Capturo";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // FrmMenuPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -431,5 +453,7 @@
         private System.Windows.Forms.TextBox txtOcurrDom;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.TextBox txtCapturo;
+        private System.Windows.Forms.Label label8;
     }
 }

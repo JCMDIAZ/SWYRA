@@ -102,7 +102,7 @@ namespace SWYRA
             popupMenu1.HidePopup();
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.FirstOrDefault(o => o.cve_doc == cve_doc);
-            DialogResult dialogResult = MessageBox.Show(@"¿Esta seguro de autorizar el pedido " + pedido.cve_doc.Trim() + @"?",
+            DialogResult dialogResult = MessageBox.Show(@"¿Esta seguro de AUTORIZAR el pedido " + pedido.cve_doc.Trim() + @"?",
                 @"AUTORIZAR", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -121,8 +121,8 @@ namespace SWYRA
             popupMenu1.HidePopup();
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.FirstOrDefault(o => o.cve_doc == cve_doc);
-            DialogResult dialogResult = MessageBox.Show(@"¿Esta seguro de autorizar el pedido " + pedido.cve_doc.Trim() + @"?",
-                @"AUTORIZAR", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show(@"¿Esta seguro de AUTORIZAR DE CONTADO el pedido " + pedido.cve_doc.Trim() + @"?",
+                @"AUTORIZAR CONTADO", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 pedido.estatuspedido = "SURTIR";

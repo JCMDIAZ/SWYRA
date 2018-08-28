@@ -32,10 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuPedidosArea));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.pnlPorSurtir = new System.Windows.Forms.Panel();
+            this.txtCapturo = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtVendedor = new System.Windows.Forms.TextBox();
-            this.txtPrioridad = new System.Windows.Forms.TextBox();
+            this.txtOcurrDom = new System.Windows.Forms.TextBox();
             this.txtServicio = new System.Windows.Forms.TextBox();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.txtPedido = new System.Windows.Forms.TextBox();
@@ -67,10 +69,12 @@
             // pnlPorSurtir
             // 
             this.pnlPorSurtir.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlPorSurtir.Controls.Add(this.txtCapturo);
+            this.pnlPorSurtir.Controls.Add(this.label11);
             this.pnlPorSurtir.Controls.Add(this.txtMonto);
             this.pnlPorSurtir.Controls.Add(this.label13);
             this.pnlPorSurtir.Controls.Add(this.txtVendedor);
-            this.pnlPorSurtir.Controls.Add(this.txtPrioridad);
+            this.pnlPorSurtir.Controls.Add(this.txtOcurrDom);
             this.pnlPorSurtir.Controls.Add(this.txtServicio);
             this.pnlPorSurtir.Controls.Add(this.txtCliente);
             this.pnlPorSurtir.Controls.Add(this.txtPedido);
@@ -82,7 +86,25 @@
             this.pnlPorSurtir.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPorSurtir.Location = new System.Drawing.Point(0, 0);
             this.pnlPorSurtir.Name = "pnlPorSurtir";
-            this.pnlPorSurtir.Size = new System.Drawing.Size(238, 151);
+            this.pnlPorSurtir.Size = new System.Drawing.Size(238, 163);
+            // 
+            // txtCapturo
+            // 
+            this.txtCapturo.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtCapturo.Location = new System.Drawing.Point(97, 138);
+            this.txtCapturo.Name = "txtCapturo";
+            this.txtCapturo.ReadOnly = true;
+            this.txtCapturo.Size = new System.Drawing.Size(134, 17);
+            this.txtCapturo.TabIndex = 47;
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(4, 141);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 20);
+            this.label11.Text = "Capturo";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtMonto
             // 
@@ -111,14 +133,14 @@
             this.txtVendedor.Size = new System.Drawing.Size(134, 17);
             this.txtVendedor.TabIndex = 22;
             // 
-            // txtPrioridad
+            // txtOcurrDom
             // 
-            this.txtPrioridad.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtPrioridad.Location = new System.Drawing.Point(97, 77);
-            this.txtPrioridad.Name = "txtPrioridad";
-            this.txtPrioridad.ReadOnly = true;
-            this.txtPrioridad.Size = new System.Drawing.Size(134, 17);
-            this.txtPrioridad.TabIndex = 21;
+            this.txtOcurrDom.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtOcurrDom.Location = new System.Drawing.Point(97, 77);
+            this.txtOcurrDom.Name = "txtOcurrDom";
+            this.txtOcurrDom.ReadOnly = true;
+            this.txtOcurrDom.Size = new System.Drawing.Size(134, 17);
+            this.txtOcurrDom.TabIndex = 21;
             // 
             // txtServicio
             // 
@@ -163,7 +185,7 @@
             this.label8.Location = new System.Drawing.Point(4, 77);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 20);
-            this.label8.Text = "Prioridad";
+            this.label8.Text = "Ocurr. / Dom.";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label9
@@ -269,7 +291,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 156);
+            this.label1.Location = new System.Drawing.Point(12, 166);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.Text = "S";
@@ -277,7 +299,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(53, 156);
+            this.label3.Location = new System.Drawing.Point(53, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 20);
             this.label3.Text = "Q";
@@ -285,7 +307,7 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(135, 156);
+            this.label4.Location = new System.Drawing.Point(135, 166);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.Text = "I";
@@ -293,7 +315,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(176, 156);
+            this.label5.Location = new System.Drawing.Point(176, 166);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 20);
             this.label5.Text = "M";
@@ -319,7 +341,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(94, 156);
+            this.label7.Location = new System.Drawing.Point(94, 166);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(18, 20);
             this.label7.Text = "D";
@@ -341,18 +363,18 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.pbDevolucion);
+            this.Controls.Add(this.pbIncompletos);
             this.Controls.Add(this.pbDetener);
+            this.Controls.Add(this.pbRemover);
+            this.Controls.Add(this.pbSurtir);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblPendM);
             this.Controls.Add(this.lblPendS);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pbDevolucion);
-            this.Controls.Add(this.pbIncompletos);
-            this.Controls.Add(this.pbRemover);
-            this.Controls.Add(this.pbSurtir);
             this.Controls.Add(this.pnlRetornar);
             this.Controls.Add(this.pnlPorSurtir);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -372,7 +394,7 @@
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtVendedor;
-        private System.Windows.Forms.TextBox txtPrioridad;
+        private System.Windows.Forms.TextBox txtOcurrDom;
         private System.Windows.Forms.TextBox txtServicio;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.TextBox txtPedido;
@@ -397,5 +419,7 @@
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pbDetener;
+        private System.Windows.Forms.TextBox txtCapturo;
+        private System.Windows.Forms.Label label11;
     }
 }

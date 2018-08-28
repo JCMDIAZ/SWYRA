@@ -34,6 +34,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnFactura = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -50,6 +51,7 @@
             this.coltotatados = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltottarimas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltotcostoguias = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEstatusPedido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbPaqueteria = new DevExpress.XtraBars.BarButtonItem();
             this.bbFacturacion = new DevExpress.XtraBars.BarButtonItem();
@@ -59,9 +61,8 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bbLevGuia = new DevExpress.XtraBars.BarButtonItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.colEstatusPedido = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             coltotcajacarton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
@@ -111,6 +112,15 @@
             this.btnSalir.Size = new System.Drawing.Size(51, 24);
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(83, 24);
+            this.toolStripButton1.Text = "Actualizar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // pedidosBindingSource
             // 
@@ -284,11 +294,20 @@
             this.coltotcostoguias.Visible = true;
             this.coltotcostoguias.VisibleIndex = 13;
             // 
+            // colEstatusPedido
+            // 
+            this.colEstatusPedido.Caption = "ESTATUS";
+            this.colEstatusPedido.FieldName = "estatuspedido";
+            this.colEstatusPedido.Name = "colEstatusPedido";
+            this.colEstatusPedido.Visible = true;
+            this.colEstatusPedido.VisibleIndex = 14;
+            // 
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbPaqueteria),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbFacturacion)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbFacturacion),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
@@ -316,8 +335,9 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbPaqueteria,
             this.bbLevGuia,
-            this.bbFacturacion});
-            this.barManager1.MaxItemId = 3;
+            this.bbFacturacion,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 4;
             // 
             // barDockControlTop
             // 
@@ -357,27 +377,17 @@
             this.bbLevGuia.Id = 1;
             this.bbLevGuia.Name = "bbLevGuia";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(83, 24);
-            this.toolStripButton1.Text = "Actualizar";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // timer1
             // 
             this.timer1.Interval = 30000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // colEstatusPedido
+            // barButtonItem1
             // 
-            this.colEstatusPedido.Caption = "ESTATUS";
-            this.colEstatusPedido.FieldName = "estatuspedido";
-            this.colEstatusPedido.Name = "colEstatusPedido";
-            this.colEstatusPedido.Visible = true;
-            this.colEstatusPedido.VisibleIndex = 14;
+            this.barButtonItem1.Caption = "Imprimir Etiquetas";
+            this.barButtonItem1.Id = 3;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // FrmRemision
             // 
@@ -444,5 +454,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraGrid.Columns.GridColumn colEstatusPedido;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

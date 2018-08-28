@@ -28,36 +28,49 @@ namespace SWYRA_Movil
 
         private void pbAsignar_Click(object sender, EventArgs e)
         {
+            var linea = "1";
             try
             {
+                linea = "2";
                 if (listPedidos.Count > 0)
                 {
-                    var query = "SELECT CVE_DOC, ETIQUETADOR_ASIGNADO FROM PEDIDO WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString().Trim() + "'";
+                    linea = "3";
+                    var query = "SELECT CVE_DOC, ETIQUETADOR_ASIGNADO FROM PEDIDO WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString().Trim() + "'";
+                    linea = "4";
                     var ls = Program.GetDataTable(query, 51).ToData<Pedidos>();
+                    linea = "5";
                     if (ls.etiquetador_asignado == "" || ls.etiquetador_asignado == Program.usActivo.Usuario || ls.etiquetador_asignado == null)
                     {
+                        linea = "6";
                         query = "UPDATE PEDIDO SET ETIQUETADOR_ASIGNADO = '" + Program.usActivo.Usuario + "' " +
-                                    "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString() + "'";
+                                    "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString() + "'";
+                        linea = "7";
                         var res = Program.GetExecute(query, 4);
+                        linea = "8";
                         query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
-                                "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString() + "' " +
+                                "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString() + "' " +
                                 "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
                                 "@cvedoc, 'GUIA', getdate(), '" + Program.usActivo.Usuario + "')";
+                        linea = "9";
                         res = Program.GetExecute(query, 5);
+                        linea = "10";
                         FrmMenuGuia frmGuia = new FrmMenuGuia();
-                        frmGuia.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
+                        linea = "11";
+                        frmGuia.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString();
+                        linea = "12";
                         frmGuia.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("El pedido " + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString().Trim() + " lo ha tomado otro ETIQUETADOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                        MessageBox.Show("El pedido " + dgPedidos[dgPedidos.CurrentRowIndex, 0].ToString().Trim() + " lo ha tomado otro ETIQUETADOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     }
+                    linea = "14";
                     cargaPedidos();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                MessageBox.Show(ex.Message + " linea " + linea, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -73,27 +86,36 @@ namespace SWYRA_Movil
 
         private void cargaPedidos()
         {
+            var linea = "1b";
             try
             {
+                linea = "2b";
                 var query = "select top 1 CVE_DOC from PEDIDO where " +
                             "(ESTATUSPEDIDO = 'GUIA' and isnull(ETIQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
+                linea = "3b";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
+                linea = "4b";
                 string surtAsig = (ped == null) ? "" : Program.usActivo.Usuario;
+                linea = "5b";
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
                         "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where (p.ESTATUSPEDIDO = 'GUIA' and isnull(p.ETIQUETADOR_ASIGNADO,'') = '" + surtAsig + "') " +
                         "order by PRIORIDAD, CVE_DOC ";
+                linea = "6b";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
+                linea = "7b";
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");
+                linea = "8b";
                 if (listPedidos.Count != 0)
                 {
+                    linea = "9b";
                     dgPedidos.Select(dgPedidos.CurrentRowIndex);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                MessageBox.Show(ex.Message + " linea " + linea , "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
     }

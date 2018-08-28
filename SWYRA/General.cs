@@ -13,6 +13,8 @@ namespace SWYRA
 {
     public static class General
     {
+        public static string ipImpEti = ConfigurationManager.AppSettings["ipImpEti"].ToString();
+
         public static SqlConnection GetConnection(string database)
         {
             try

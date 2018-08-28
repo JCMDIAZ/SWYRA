@@ -36,9 +36,10 @@
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgPedidos = new System.Windows.Forms.DataGrid();
             this.dataGridTableStyle1 = new System.Windows.Forms.DataGridTableStyle();
-            this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn3 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dataGridTextBoxColumn4 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbAsignar = new System.Windows.Forms.PictureBox();
@@ -76,17 +77,11 @@
             // 
             // dataGridTableStyle1
             // 
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn1);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn2);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn3);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn1);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn4);
             this.dataGridTableStyle1.MappingName = "Pedidos";
-            // 
-            // dataGridTextBoxColumn1
-            // 
-            this.dataGridTextBoxColumn1.Format = "";
-            this.dataGridTextBoxColumn1.FormatInfo = null;
-            this.dataGridTextBoxColumn1.HeaderText = "Ubicación";
-            this.dataGridTextBoxColumn1.MappingName = "ubicacionempaque";
             // 
             // dataGridTextBoxColumn2
             // 
@@ -103,6 +98,20 @@
             this.dataGridTextBoxColumn3.HeaderText = "Cliente";
             this.dataGridTextBoxColumn3.MappingName = "cliente";
             this.dataGridTextBoxColumn3.Width = 150;
+            // 
+            // dataGridTextBoxColumn1
+            // 
+            this.dataGridTextBoxColumn1.Format = "";
+            this.dataGridTextBoxColumn1.FormatInfo = null;
+            this.dataGridTextBoxColumn1.HeaderText = "Ubicación";
+            this.dataGridTextBoxColumn1.MappingName = "ubicacionempaque";
+            // 
+            // dataGridTextBoxColumn4
+            // 
+            this.dataGridTextBoxColumn4.Format = "dd-MM-yyyy";
+            this.dataGridTextBoxColumn4.FormatInfo = null;
+            this.dataGridTextBoxColumn4.HeaderText = "Fecha Pedido";
+            this.dataGridTextBoxColumn4.MappingName = "fecha_doc";
             // 
             // label1
             // 
@@ -175,5 +184,6 @@
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn1;
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn2;
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn3;
+        private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn4;
     }
 }

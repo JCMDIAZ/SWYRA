@@ -180,6 +180,7 @@
             this.txtConsigna.Location = new System.Drawing.Point(78, 158);
             this.txtConsigna.Multiline = true;
             this.txtConsigna.Name = "txtConsigna";
+            this.txtConsigna.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtConsigna.Size = new System.Drawing.Size(149, 36);
             this.txtConsigna.TabIndex = 22;
             // 
@@ -198,6 +199,7 @@
             this.txtObservaciones.Location = new System.Drawing.Point(78, 196);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservaciones.Size = new System.Drawing.Size(149, 36);
             this.txtObservaciones.TabIndex = 25;
             // 

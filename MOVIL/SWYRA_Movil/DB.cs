@@ -183,6 +183,8 @@ namespace SWYRA_Movil
         public string consignacion { get; set; }
         public string observaciones { get; set; }
         public string enviar { get; set; }
+        public string nombre_vendedor { get; set; }
+        public string capturo_n { get; set; }
     }
 
     public class DetallePedidos

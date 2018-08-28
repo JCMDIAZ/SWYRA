@@ -50,7 +50,6 @@
             this.colcve_clpv = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltiposervicio = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colprioridad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colestatuspedido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colocurredomicilio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,12 +72,14 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.ppTipoServicio = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.BtnAceptarTS = new System.Windows.Forms.Button();
             this.cbTipoServicio = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -319,7 +320,6 @@
             this.colcve_clpv,
             this.colcliente,
             this.coltiposervicio,
-            this.colprioridad,
             this.colestatuspedido,
             this.colocurredomicilio,
             this.colfecha_doc,
@@ -389,22 +389,13 @@
             this.coltiposervicio.VisibleIndex = 3;
             this.coltiposervicio.Width = 90;
             // 
-            // colprioridad
-            // 
-            this.colprioridad.Caption = "Prioridad";
-            this.colprioridad.FieldName = "prioridad";
-            this.colprioridad.Name = "colprioridad";
-            this.colprioridad.Visible = true;
-            this.colprioridad.VisibleIndex = 4;
-            this.colprioridad.Width = 90;
-            // 
             // colestatuspedido
             // 
             this.colestatuspedido.Caption = "Estatus Pedido";
             this.colestatuspedido.FieldName = "estatuspedido";
             this.colestatuspedido.Name = "colestatuspedido";
             this.colestatuspedido.Visible = true;
-            this.colestatuspedido.VisibleIndex = 5;
+            this.colestatuspedido.VisibleIndex = 4;
             this.colestatuspedido.Width = 120;
             // 
             // colocurredomicilio
@@ -413,7 +404,7 @@
             this.colocurredomicilio.FieldName = "ocurredomicilio";
             this.colocurredomicilio.Name = "colocurredomicilio";
             this.colocurredomicilio.Visible = true;
-            this.colocurredomicilio.VisibleIndex = 6;
+            this.colocurredomicilio.VisibleIndex = 5;
             this.colocurredomicilio.Width = 90;
             // 
             // colfecha_doc
@@ -424,7 +415,7 @@
             this.colfecha_doc.FieldName = "fecha_doc";
             this.colfecha_doc.Name = "colfecha_doc";
             this.colfecha_doc.Visible = true;
-            this.colfecha_doc.VisibleIndex = 7;
+            this.colfecha_doc.VisibleIndex = 6;
             this.colfecha_doc.Width = 90;
             // 
             // colfecha_cancela
@@ -435,7 +426,7 @@
             this.colfecha_cancela.FieldName = "fecha_cancela";
             this.colfecha_cancela.Name = "colfecha_cancela";
             this.colfecha_cancela.Visible = true;
-            this.colfecha_cancela.VisibleIndex = 8;
+            this.colfecha_cancela.VisibleIndex = 7;
             this.colfecha_cancela.Width = 110;
             // 
             // colcondicion
@@ -444,7 +435,7 @@
             this.colcondicion.FieldName = "condicion";
             this.colcondicion.Name = "colcondicion";
             this.colcondicion.Visible = true;
-            this.colcondicion.VisibleIndex = 9;
+            this.colcondicion.VisibleIndex = 8;
             this.colcondicion.Width = 205;
             // 
             // colnombre_vendedor
@@ -453,7 +444,7 @@
             this.colnombre_vendedor.FieldName = "nombre_vendedor";
             this.colnombre_vendedor.Name = "colnombre_vendedor";
             this.colnombre_vendedor.Visible = true;
-            this.colnombre_vendedor.VisibleIndex = 10;
+            this.colnombre_vendedor.VisibleIndex = 9;
             this.colnombre_vendedor.Width = 150;
             // 
             // colcapturo_n
@@ -462,7 +453,7 @@
             this.colcapturo_n.FieldName = "capturo_n";
             this.colcapturo_n.Name = "colcapturo_n";
             this.colcapturo_n.Visible = true;
-            this.colcapturo_n.VisibleIndex = 11;
+            this.colcapturo_n.VisibleIndex = 10;
             this.colcapturo_n.Width = 150;
             // 
             // colcobrador_autorizo_n
@@ -472,7 +463,7 @@
             this.colcobrador_autorizo_n.FieldName = "cobrador_autorizo_n";
             this.colcobrador_autorizo_n.Name = "colcobrador_autorizo_n";
             this.colcobrador_autorizo_n.Visible = true;
-            this.colcobrador_autorizo_n.VisibleIndex = 12;
+            this.colcobrador_autorizo_n.VisibleIndex = 11;
             this.colcobrador_autorizo_n.Width = 150;
             // 
             // colsurtidor_asignado_n
@@ -481,7 +472,7 @@
             this.colsurtidor_asignado_n.FieldName = "surtidor_asignado_n";
             this.colsurtidor_asignado_n.Name = "colsurtidor_asignado_n";
             this.colsurtidor_asignado_n.Visible = true;
-            this.colsurtidor_asignado_n.VisibleIndex = 13;
+            this.colsurtidor_asignado_n.VisibleIndex = 12;
             this.colsurtidor_asignado_n.Width = 150;
             // 
             // colempaquetador_asignado_n
@@ -490,7 +481,7 @@
             this.colempaquetador_asignado_n.FieldName = "empaquetador_asignado_n";
             this.colempaquetador_asignado_n.Name = "colempaquetador_asignado_n";
             this.colempaquetador_asignado_n.Visible = true;
-            this.colempaquetador_asignado_n.VisibleIndex = 14;
+            this.colempaquetador_asignado_n.VisibleIndex = 13;
             this.colempaquetador_asignado_n.Width = 150;
             // 
             // coletiquetador_asignado_n
@@ -499,7 +490,7 @@
             this.coletiquetador_asignado_n.FieldName = "etiquetador_asignado_n";
             this.coletiquetador_asignado_n.Name = "coletiquetador_asignado_n";
             this.coletiquetador_asignado_n.Visible = true;
-            this.coletiquetador_asignado_n.VisibleIndex = 15;
+            this.coletiquetador_asignado_n.VisibleIndex = 14;
             this.coletiquetador_asignado_n.Width = 150;
             // 
             // colsurtidor_area_n
@@ -508,7 +499,7 @@
             this.colsurtidor_area_n.FieldName = "surtidor_area_n";
             this.colsurtidor_area_n.Name = "colsurtidor_area_n";
             this.colsurtidor_area_n.Visible = true;
-            this.colsurtidor_area_n.VisibleIndex = 16;
+            this.colsurtidor_area_n.VisibleIndex = 15;
             this.colsurtidor_area_n.Width = 150;
             // 
             // colporc_surtidoreal
@@ -518,7 +509,7 @@
             this.colporc_surtidoreal.FieldName = "porc_surtidoReal";
             this.colporc_surtidoreal.Name = "colporc_surtidoreal";
             this.colporc_surtidoreal.Visible = true;
-            this.colporc_surtidoreal.VisibleIndex = 17;
+            this.colporc_surtidoreal.VisibleIndex = 16;
             this.colporc_surtidoreal.Width = 150;
             // 
             // colporc_surtido
@@ -528,7 +519,7 @@
             this.colporc_surtido.FieldName = "porc_surtido";
             this.colporc_surtido.Name = "colporc_surtido";
             this.colporc_surtido.Visible = true;
-            this.colporc_surtido.VisibleIndex = 18;
+            this.colporc_surtido.VisibleIndex = 17;
             this.colporc_surtido.Width = 150;
             // 
             // colporc_empaque
@@ -538,7 +529,7 @@
             this.colporc_empaque.FieldName = "porc_empaque";
             this.colporc_empaque.Name = "colporc_empaque";
             this.colporc_empaque.Visible = true;
-            this.colporc_empaque.VisibleIndex = 19;
+            this.colporc_empaque.VisibleIndex = 18;
             this.colporc_empaque.Width = 150;
             // 
             // colindicaciones
@@ -547,7 +538,7 @@
             this.colindicaciones.FieldName = "indicaciones";
             this.colindicaciones.Name = "colindicaciones";
             this.colindicaciones.Visible = true;
-            this.colindicaciones.VisibleIndex = 20;
+            this.colindicaciones.VisibleIndex = 19;
             this.colindicaciones.Width = 150;
             // 
             // collote
@@ -556,7 +547,7 @@
             this.collote.FieldName = "lote";
             this.collote.Name = "collote";
             this.collote.Visible = true;
-            this.collote.VisibleIndex = 21;
+            this.collote.VisibleIndex = 20;
             this.collote.Width = 90;
             // 
             // popupMenu1
@@ -565,7 +556,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.ShowNavigationHeader = DevExpress.Utils.DefaultBoolean.False;
@@ -599,6 +591,13 @@
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Impresion Etiquetas";
+            this.barButtonItem6.Id = 7;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
             // barManager1
             // 
             this.barManager1.CloseButtonAffectAllTabs = false;
@@ -612,8 +611,10 @@
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.barButtonItem4});
-            this.barManager1.MaxItemId = 5;
+            this.barButtonItem4,
+            this.barButtonItem5,
+            this.barButtonItem6});
+            this.barManager1.MaxItemId = 8;
             this.barManager1.OptionsLayout.AllowAddNewItems = false;
             this.barManager1.PopupShowMode = DevExpress.XtraBars.PopupShowMode.Classic;
             // 
@@ -659,6 +660,11 @@
             this.barStaticItem1.Id = 0;
             this.barStaticItem1.Name = "barStaticItem1";
             this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Id = 6;
+            this.barButtonItem5.Name = "barButtonItem5";
             // 
             // ppTipoServicio
             // 
@@ -992,7 +998,6 @@
         internal System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Button BtnAceptarTS;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraGrid.Columns.GridColumn colprioridad;
         private DevExpress.XtraBars.PopupControlContainer ppPrioridad;
         internal System.Windows.Forms.Button BtnAceptarPR;
         private DevExpress.XtraEditors.ComboBoxEdit cbPrioridad;
@@ -1014,5 +1019,7 @@
         private System.Windows.Forms.ToolStripButton btnFactura;
         private DevExpress.XtraGrid.Columns.GridColumn colporc_surtidoreal;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
     }
 }

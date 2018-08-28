@@ -133,14 +133,16 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
-                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, UbicacionEmpaque " +
-                            "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, UbicacionEmpaque, NOMBRE_VENDEDOR, " +
+                            "CAPTURO, u.Nombre CAPTURO_N, OCURREDOMICILIO from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
+                            "left join USUARIOS u on u.Usuario = p.CAPTURO WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 txtPedido.Text = ped.cve_doc;
                 txtCliente.Text = "(" + ped.cve_clpv + ") " + ped.cliente;
                 txtServicio.Text = ped.tiposervicio;
-                txtPrioridad.Text = ped.prioridad;
-                txtVendedor.Text = ped.cve_vend;
+                txtOcurrDom.Text = ped.ocurredomicilio;
+                txtVendedor.Text = ped.nombre_vendedor;
+                txtCapturo.Text = ped.capturo_n;
                 CultureInfo culture = new CultureInfo("es-MX");
                 txtMonto.Text = ped.importe.ToString("C2", culture);
                 if (ped.estatuspedido == "DEVOLUCION") { lblInfo.Text = "POR CANCELAR"; }

@@ -35,7 +35,8 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select top 1 CVE_DOC from PEDIDO where " +
-                            "(ESTATUSPEDIDO = 'SURTIR' and isnull(SURTIDOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
+                            "(ESTATUSPEDIDO = 'SURTIR' " + 
+                            " and isnull(SURTIDOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "') AND ISNULL(SOLAREA,0) = 0";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 string surtAsig = (ped == null) ? "" : Program.usActivo.Usuario;
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, p.ESTATUSPEDIDO, p.TIPOSERVICIO, p.PRIORIDAD, " +

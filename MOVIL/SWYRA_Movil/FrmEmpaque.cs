@@ -116,10 +116,10 @@ namespace SWYRA_Movil
                     "ISNULL(ic.EXISTENCIA,0) MINEXIST, ISNULL(IC.APLICALOTE,0) APLICALOTE, " +
                     "i.CTRL_ALM, i.MASTERS_UBI, i.UNI_EMP MIN, i.MASTERS MAS, " +
                     "cast(cast(case when i.MASTERS > 0 then (CANT / i.MASTERS) else 0 end as int) * i.MASTERS as int) sel, " +
-                    (Devuelto ? "0" : "ISNULL(CANTPENDIENTE,0)") + " CANTPENDIENTE " +
+                    (Devuelto ? "0" : "ISNULL(CANTPENDIENTE,0)") + " CANTPENDIENTE, cast(0 as bit) SW " +
                     "FROM " + (Devuelto ? "DETALLEPEDIDODEV" : "DETALLEPEDIDO") + " dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "LEFT JOIN INVENTARIOCOND ic ON ic.CVE_ART = dp.CVE_ART AND ic.ACTIVO = 1 " +
-                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() + "') AND dp.NUM_PAR < 1000 ) as c) as a LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
+                    "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') AND dp.NUM_PAR < 1000 ) as c) as a LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
                     "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' ORDER BY o.ORDEN";
             return query;
         }
@@ -190,20 +190,21 @@ namespace SWYRA_Movil
             }
         }
 
-        private List<DetallePedidoMerc> cargaDetPaquetes(string cvedoc, int consec, bool ult )
+        private List<DetallePedidoMerc> cargaDetPaquetes(string cvedoc, int consec, bool ult, string tipopaq)
         {
             List<DetallePedidoMerc> ls = new List<DetallePedidoMerc>();
             try
             {
-                var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, NULL ULTIMO, CANCELADO, TOTART, CONSEC_EMPAQUE " +
-                    "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + cvedoc.Trim() + "') AND (CODIGO_BARRA <> '') AND (CONSEC_PADRE = " + consec + ") " + ((ult) ? "AND CANT > 0" : "") + " ORDER BY CONSEC";
+                var query = "SELECT CVE_DOC, MAX(CONSEC) CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, sum(CANT) CANT, TIPOPAQUETE, CONSEC_PADRE, NULL ULTIMO, CANCELADO, TOTART, CONSEC_EMPAQUE " +
+                    "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + cvedoc.Trim() + "') AND (CODIGO_BARRA <> '') AND (CONSEC_PADRE = " + consec + ") " + ((ult && tipopaq != "TARIMA") ? "AND CANT > 0" : "") +
+                    "GROUP BY CVE_DOC, NUM_PAR, CVE_ART, CODIGO_BARRA, TIPOPAQUETE, CONSEC_PADRE, CANCELADO, TOTART, CONSEC_EMPAQUE ORDER BY CONSEC";
                 ls = Program.GetDataTable(query, 4).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
-            return ls; 
+            return ls;
         }
 
         private void cargaTipoEmpaque()
@@ -272,6 +273,12 @@ namespace SWYRA_Movil
             }
             try
             {
+                var query2 = "UPDATE DETALLEPEDIDOMERC SET CANCELADO = 1 WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() +
+                             "' AND ISNULL(TIPOPAQUETE,'') <> '' AND ISNULL(TotArt,0) = 0 AND ISNULL(CANCELADO,0) = 0";
+                Program.GetExecute(query2, 51);
+
+                ActualizaPedido();
+
                 var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'REMISION' " +
                             "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
                 var r = Program.GetExecute(query, 10);
@@ -477,52 +484,70 @@ namespace SWYRA_Movil
                 return;
             }
 
-            var query2 = "UPDATE DETALLEPEDIDOMERC SET CANCELADO = 1 WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() +
-                         "' AND ISNULL(TIPOPAQUETE,'') <> '' AND ISNULL(TotArt,0) = 0 AND ISNULL(CANCELADO,0) = 0";
-            Program.GetExecute(query2, 51);
-
-            cargaPaquetes();
-            cargaDetalleMerc();
-
-            // Printer IP Address and communication port
-            string ipAddress = Program.ipImpEti();
-            int port = 9100;
-
-            // ZPL Command(s)
-            string ZPLString = GeneraEtiqueta();
-
-            try
+            DialogResult dr = DialogResult.OK;
+            if (validaExis(2))
             {
-                // Open connection
-                TcpClient client = new TcpClient();
-                client.Connect(ipAddress, port);
-
-                // Write ZPL String to connection
-                StreamWriter writer = new StreamWriter(client.GetStream());
-                writer.Write(ZPLString);
-                writer.Flush();
-
-                // Close Connection
-                writer.Close();
-                client.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Impresora no disponible, favor de validar", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                return;
+                FrmSurtir4 frmConf = new FrmSurtir4();
+                frmConf.lblCom.Text = "El Pedido ya tiene impreso las etiquetas.";
+                frmConf.label1.Text = "¿DESEAS IMPRIMIRLO DE NUEVO?";
+                dr = frmConf.ShowDialog();
+                frmConf.Close();
             }
 
-            try
+            if(dr == DialogResult.OK)
             {
-                var query = "UPDATE DETALLEPEDIDOMERC SET ULTIMO = 1 WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() + "') AND (CODIGO_BARRA <> '') " +
-                      "AND (ISNULL(CANCELADO, 0) = 0) AND (ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA')) AND (ISNULL(ULTIMO,0) = 0) ";
-                Program.GetExecute(query, 8);
-                MessageBox.Show("Impresion Exitosa", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                var query2 = "UPDATE DETALLEPEDIDOMERC SET CANCELADO = 1 WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() +
+                             "' AND ISNULL(TIPOPAQUETE,'') <> '' AND ISNULL(TotArt,0) = 0 AND ISNULL(CANCELADO,0) = 0";
+                Program.GetExecute(query2, 51);
+
+                ActualizaPedido();
+                cargaPaquetes();
+                cargaDetalleMerc();
+
+                // Printer IP Address and communication port
+                string ipAddress = Program.ipImpEti();
+                int port = 9100;
+
+                // ZPL Command(s)
+                string ZPLString = GeneraEtiqueta();
+
+                try
+                {
+                    // Open connection
+                    TcpClient client = new TcpClient();
+                    client.Connect(ipAddress, port);
+
+                    // Write ZPL String to connection
+                    StreamWriter writer = new StreamWriter(client.GetStream());
+                    writer.Write(ZPLString);
+                    writer.Flush();
+
+                    // Close Connection
+                    writer.Close();
+                    client.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Impresora no disponible, favor de validar", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    return;
+                }
+
+                try
+                {
+                    var query = "UPDATE DETALLEPEDIDOMERC SET ULTIMO = 1 WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() + "') AND (CODIGO_BARRA <> '') " +
+                          "AND (ISNULL(CANCELADO, 0) = 0) AND (ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA')) AND (ISNULL(ULTIMO,0) = 0) ";
+                    Program.GetExecute(query, 8);
+                    MessageBox.Show("Impresion Exitosa", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    pbConcluir.Visible = validaExis(2);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
+            }
+            else
+            {
                 pbConcluir.Visible = validaExis(2);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -539,7 +564,8 @@ namespace SWYRA_Movil
             {
                 var clt = "(" + ped.cve_clpv + ") " + ped.cliente;
                 var aju = (clt.Length < 40) ? 30 : ((clt.Length < 50) ? 27 : ((clt.Length < 60) ? 24 : 21));
-                DatosPedido = 
+                var tam = ped.consignacion.Length;
+                DatosPedido =
                     "^FO10,78^GB760,160,1,,2^FS" +
                     "^FO20,85^A0,30,25^FDNum.Pedido :^FS" +
                     "^FO160,85^A0,30,30^FD" + ped.cve_doc.Trim() + "^FS" +
@@ -551,12 +577,12 @@ namespace SWYRA_Movil
                     ((ped.enviar == "") ?
                     "^FO160,135^A0,30,20^FD" + ped.direccion1 + "^FS" +
                     "^FO160,160^A0,30,20^FD" + ped.direccion2 + "^FS" :
-                    "^FO160,135^A0,30,20^FD" + ped.consignacion.Substring(0,60) + "^FS" +
-                    "^FO160,160^A0,30,20^FD" + ped.consignacion.Substring(60) + "^FS" ) +
+                    "^FO160,135^A0,30,20^FD" + ped.consignacion.Substring(0, (tam < 61 ? tam : 60)) + "^FS" +
+                    (tam < 61 ? "" : "^FO160,160^A0,30,20^FD" + ped.consignacion.Substring(60) + "^FS")) +
                     "^FO20,185^A0,30,25^FDFlete :^FS" +
                     "^FO160,185^A0,30,30^FD" + ped.flete + "^FS" +
                     "^FO405,185^A0,30,25^FDFlete 2 :^FS" +
-                    "^FO555,185^A0,30,30^FD" + ped.flete2 +"^FS" +
+                    "^FO555,185^A0,30,30^FD" + ped.flete2 + "^FS" +
                     "^FO20,210^A0,30,25^FDOcrr / Dom :^FS" +
                     "^FO160,210^A0,30,30^FD" + ped.ocurredomicilio + "^FS" +
                     "^FO405,210^A0,30,25^FDOrden Comp. :^FS" +
@@ -582,36 +608,82 @@ namespace SWYRA_Movil
                         "^FO10,500^A0,25,35^FR^FDContenido :^FS" +
                         "^FO10,520^GB760,480,1,,0^FS";
 
-                    if (paq.tipopaquete == "ATADOS" || paq.tipopaquete == "TARIMA")
-                    {
-                        lstAT = cargaDetPaquetes(paq.cve_doc, paq.consec, false);
-                        foreach (var det in lstAT)
-                        {
-                            DatosPaquete += GeneraDetPaq(det);
-                        }
-                    }
-                    else
+                    if (paq.tipopaquete == "TARIMA")
                     {
                         DatosPaquete += GeneraDetPaq(paq);
-                    }
 
-                    ZPLString +=
-                        "^XA" +
-                        Encabezado +
-                        DatosPedido +
-                        DatosPaquete +
-                        "^XZ";
+                        ZPLString +=
+                            "^XA" +
+                            Encabezado +
+                            DatosPedido +
+                            DatosPaquete +
+                            "^XZ";
 
-                    if (paq.tipopaquete == "ATADOS" || paq.tipopaquete == "TARIMA")
-                    {
-                        for (var i = 1; i <= paq.totart; i++)
+                        int cantidadPaqueteT = 0;
+                        int contadorPaqueteT = 0;
+
+                        lstAT = cargaDetPaquetes(paq.cve_doc, paq.consec, false, paq.tipopaquete);
+                        cantidadPaqueteT = lstAT.Count;
+                        foreach (var det in lstAT)
                         {
+                            Rini = 530;
+                            contadorPaqueteT++;
+                            string DatosPaqueteT =
+                                "^FO10,245^GB560,60,2,,0^FS" +
+                                "^FO569,245^GB200,60,2,,0^FS" +
+                                "^FO10,304^GB760,130,2,,0^FS" +
+                                "^FO10,433^GB760,60,2,,0^FS" +
+                                "^FO10,265^A0,35,75^FB560,1,0,C,0^FR^FD" + det.tipopaquete + " (T)^FS" +
+                                "^FO575,250^A0,20,20^FR^FDPAQ.^FS" +
+                                "^FO570,265^A0,35,35^FB200,1,0,C,0^FR^FD" + contadorPaqueteT.ToString() + " de " + cantidadPaqueteT.ToString() + "^FS" +
+                                "^BY4,2,80^FO50,310^BC^FD" + det.codigo_barra + "^FS" +
+                                "^FO10,450^A0,50,100^FB760,1,0,C,0^FR^FD" + contado + "^FS" +
+                                "^FO10,500^A0,25,35^FR^FDContenido :^FS" +
+                                "^FO10,520^GB760,480,1,,0^FS";
+
+                            DatosPaqueteT += GeneraDetPaq(det);
+
                             ZPLString +=
                                 "^XA" +
                                 Encabezado +
                                 DatosPedido +
-                                DatosPaquete +
+                                DatosPaqueteT +
                                 "^XZ";
+                        }
+                    }
+                    else
+                    {
+                        if (paq.tipopaquete == "ATADOS")
+                        {
+                            lstAT = cargaDetPaquetes(paq.cve_doc, paq.consec, false, paq.tipopaquete);
+                            foreach (var det in lstAT)
+                            {
+                                DatosPaquete += GeneraDetPaq(det);
+                            }
+                        }
+                        else
+                        {
+                            DatosPaquete += GeneraDetPaq(paq);
+                        }
+
+                        ZPLString +=
+                            "^XA" +
+                            Encabezado +
+                            DatosPedido +
+                            DatosPaquete +
+                            "^XZ";
+
+                        if (paq.tipopaquete == "ATADOS")
+                        {
+                            for (var i = 1; i <= paq.totart; i++)
+                            {
+                                ZPLString +=
+                                    "^XA" +
+                                    Encabezado +
+                                    DatosPedido +
+                                    DatosPaquete +
+                                    "^XZ";
+                            }
                         }
                     }
                 }
@@ -642,62 +714,63 @@ namespace SWYRA_Movil
         private string GeneraDetPaq(DetallePedidoMerc det)
         {
             string str = "";
-            List<DetallePedidoMerc> ls = cargaDetPaquetes(det.cve_doc, det.consec, true);
+            List<DetallePedidoMerc> ls = cargaDetPaquetes(det.cve_doc, det.consec, true, det.tipopaquete);
             str += valSaltoPag();
-            str = "^FO20," + (Rini + 5) + "^A0,25,25^FR^FD" + det.tipopaquete + ' ' + det.codigo_barra + "^FS";
+            str += "^FO20," + (Rini + 5) + "^A0,25,25^FR^FD" + det.tipopaquete + ' ' + det.codigo_barra + "^FS";
             Rini += Rsal;
             int ind = 1;
+            string cb = "";
             foreach (var d in ls)
             {
+                cb = d.codigo_barra.Substring(d.codigo_barra.Length - 7);
                 str += valSaltoPag();
                 switch (ind)
                 {
                     case 1:
                         str +=
-                            "^FO20," + Rini + "^A0,30,30^FD" + d.cant + "^FS" +
-                            "^FO70," + Rini + "^A0,30,30^FD(" + d.cve_art + ")^FS" +
+                            "^FO20," + Rini + "^A0,30,30^FD" + ((det.tipopaquete == "TARIMA") ? "1" : d.cant.ToString()) + "^FS" +
+                            "^FO70," + Rini + "^A0,30,30^FD(" + ((det.tipopaquete == "TARIMA") ? cb : d.cve_art) + ")^FS" +
                             "^FO190," + Rini + "^GB1,30,1,,0^FS";
                         break;
                     case 2:
                         str +=
-                            "^FO200," + Rini + "^A0,30,30^FD" + d.cant + "^FS" +
-                            "^FO250," + Rini + "^A0,30,30^FD(" + d.cve_art + ")^FS" +
+                            "^FO200," + Rini + "^A0,30,30^FD" + ((det.tipopaquete == "TARIMA") ? "1" : d.cant.ToString()) + "^FS" +
+                            "^FO250," + Rini + "^A0,30,30^FD(" + ((det.tipopaquete == "TARIMA") ? cb : d.cve_art) + ")^FS" +
                             "^FO390," + Rini + "^GB1,30,1,,0^FS";
                         break;
                     case 3:
                         str +=
-                            "^FO400," + Rini + "^A0,30,30^FD" + d.cant + "^FS" +
-                            "^FO450," + Rini + "^A0,30,30^FD(" + d.cve_art + ")^FS" +
+                            "^FO400," + Rini + "^A0,30,30^FD" + ((det.tipopaquete == "TARIMA") ? "1" : d.cant.ToString()) + "^FS" +
+                            "^FO450," + Rini + "^A0,30,30^FD(" + ((det.tipopaquete == "TARIMA") ? cb : d.cve_art) + ")^FS" +
                             "^FO590," + Rini + "^GB1,30,1,,0^FS";
                         break;
                     case 4:
                         str +=
-                            "^FO600," + Rini + "^A0,30,30^FD" + d.cant + "^FS" +
-                            "^FO650," + Rini + "^A0,30,30^FD(" + d.cve_art + ")^FS";
+                            "^FO600," + Rini + "^A0,30,30^FD" + ((det.tipopaquete == "TARIMA") ? "1" : d.cant.ToString()) + "^FS" +
+                            "^FO650," + Rini + "^A0,30,30^FD(" + ((det.tipopaquete == "TARIMA") ? cb : d.cve_art) + ")^FS";
                         Rini += Rsal;
                         ind = 0;
                         break;
                 }
                 ind++;
             }
-            for (var i = ind; i <= 4; i++ )
+            for (var i = ind; i <= 4; i++)
             {
                 switch (i)
                 {
-                    case 1: i = 3; break;
+                    case 1: i = 4; break;
                     case 2:
-                        str +=
-                            "^FO390," + Rini + "^GB1,30,1,,0^FS";
+                        str += "^FO390," + Rini + "^GB1,30,1,,0^FS";
                         break;
                     case 3:
-                        str +=
-                            "^FO590," + Rini + "^GB1,30,1,,0^FS";
+                        str += "^FO590," + Rini + "^GB1,30,1,,0^FS";
                         break;
                     case 4:
                         Rini += Rsal;
                         break;
                 }
             }
+            Rini += Rsal;
             return str;
         }
 

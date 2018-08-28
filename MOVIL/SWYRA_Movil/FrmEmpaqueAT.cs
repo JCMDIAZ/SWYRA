@@ -59,7 +59,7 @@ namespace SWYRA_Movil
                 var query = "SELECT CVE_DOC, CONSEC, NUM_PAR, dt.CVE_ART, CODIGO_BARRA, CASE WHEN CANT = 0 THEN TOTART ELSE CANT END TOTART, " +
                             "TIPOPAQUETE, ISNULL(CONSEC_PADRE,0) CONSEC_PADRE, isnull(i.DESCR, TIPOPAQUETE) DESCR, CONSEC_EMPAQUE " +
                             "FROM DETALLEPEDIDOMERC dt LEFT JOIN INVENTARIO i ON dt.CVE_ART = i.CVE_ART " +
-                            "WHERE CVE_DOC = '" + ped.cve_doc + "' AND ISNULL(CANCELADO,0) = 0 " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() + "' AND ISNULL(CANCELADO,0) = 0 AND ISNULL(TOTART,0) <> 0 " +
                             "AND ISNULL(TIPOPAQUETE,'') NOT IN ('', 'ATADOS', 'TARIMA') ORDER BY CONSEC";
                 tmp = Program.GetDataTable(query, 1).ToList<DetallePedidoMerc>();
             }
@@ -75,10 +75,10 @@ namespace SWYRA_Movil
             try
             {
                 var query = "UPDATE DETALLEPEDIDOMERC SET CONSEC_PADRE = " + (paq.consec_padre == 0 ? "NULL" : paq.consec_padre.ToString()) +
-                            " WHERE CVE_DOC = '" + paq.cve_doc + "' AND CONSEC = " + paq.consec;
+                            " WHERE LTRIM(CVE_DOC) = '" + paq.cve_doc.Trim() + "' AND CONSEC = " + paq.consec;
                 Program.GetExecute(query, 2) ;
                 query = "UPDATE DETALLEPEDIDOMERC SET TOTART = " + mostraremp.Count.ToString() +
-                        " WHERE CVE_DOC = '" + ped.cve_doc + "' AND CONSEC = " + ped.consec;
+                        " WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc.Trim() + "' AND CONSEC = " + ped.consec;
                 Program.GetExecute(query, 3);
             }
             catch (Exception ex)
