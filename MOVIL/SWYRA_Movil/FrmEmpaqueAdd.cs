@@ -29,7 +29,7 @@ namespace SWYRA_Movil
 
         private void txtCant_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
+            /*if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
             {
                 if ((double)txtCant.Value > art.cant)
                 {
@@ -43,7 +43,7 @@ namespace SWYRA_Movil
                     txtCodigo.Focus();
                     e.Handled = true;
                 }
-            }
+            }*/
         }
 
         private void txtCant_LostFocus(object sender, EventArgs e)

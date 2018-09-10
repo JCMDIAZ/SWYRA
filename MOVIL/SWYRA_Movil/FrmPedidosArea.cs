@@ -27,8 +27,33 @@ namespace SWYRA_Movil
             dgPedidos.CurrentRowIndex = goindex;
         }
 
+        private bool validaDuplicidad()
+        {
+            bool m = false;
+            var query = "";
+            try
+            {
+                var cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString().Trim();
+                query = "select CVE_DOC, CVE_ART from DETALLEPEDIDO WHERE LTRIM(CVE_DOC) = '" + cvedoc + "' " +
+                            "GROUP BY CVE_DOC, CVE_ART HAVING COUNT(CVE_ART) > 1";
+                List<DetallePedidos> res = Program.GetDataTable(query, 52).ToList<DetallePedidos>();
+                if (res.Count > 0)
+                {
+                    var dt = res.First();
+                    MessageBox.Show(@"Existe duplicidad en el Pedido " + cvedoc + @" clave del artículo " + dt.cve_art, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    m = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return m;
+        }
+
         private void pbAsignar_Click(object sender, EventArgs e)
         {
+            if (validaDuplicidad()) { return; }
             try
             {
                 if (listPedidos.Count > 0)
@@ -102,11 +127,12 @@ namespace SWYRA_Movil
                         "end Numprioridad, UbicacionEmpaque, p.CVE_CLPV " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where ((isnull(p.SURTIDOR_AREA,'') = '" + Program.usActivo.Usuario + "' and p.ESTATUSPEDIDO in ('SURTIR','MODIFICACION', 'DETENIDO', 'DEVOLUCION')) " +
-                        "or (isnull(p.SURTIDOR_AREA,'') = '" +surtAsig + "' and p.ESTATUSPEDIDO in ('SURTIR'))) " +
+                        "or (isnull(p.SURTIDOR_AREA,'') = '" + surtAsig + "' and p.ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO'))) " +
                         "and isnull(p.SOLAREA,0) = 1 " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");
+                dgPedidos.Refresh();
                 if (listPedidos.Count != 0)
                 {
                     dgPedidos.Select(dgPedidos.CurrentRowIndex);

@@ -181,7 +181,8 @@ namespace SWYRA
         public string enviar { get; set; }
         public string direccion1 { get; set; }
         public string direccion2 { get; set; }
-    }
+        public string causadetenido { get; set; }
+}
 
     public class DetallePedidos
     {

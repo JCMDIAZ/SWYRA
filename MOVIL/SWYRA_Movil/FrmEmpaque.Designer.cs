@@ -40,6 +40,7 @@
             this.catalogosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbTipoEmpaque = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbTransfer = new System.Windows.Forms.PictureBox();
             this.pbInfo = new System.Windows.Forms.PictureBox();
             this.lblPendientes = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
@@ -124,6 +125,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.pbTransfer);
             this.panel2.Controls.Add(this.pbInfo);
             this.panel2.Controls.Add(this.lblPendientes);
             this.panel2.Controls.Add(this.pbConcluir);
@@ -132,6 +134,15 @@
             this.panel2.Location = new System.Drawing.Point(0, 235);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 40);
+            // 
+            // pbTransfer
+            // 
+            this.pbTransfer.Image = ((System.Drawing.Image)(resources.GetObject("pbTransfer.Image")));
+            this.pbTransfer.Location = new System.Drawing.Point(122, 3);
+            this.pbTransfer.Name = "pbTransfer";
+            this.pbTransfer.Size = new System.Drawing.Size(35, 35);
+            this.pbTransfer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbTransfer.Click += new System.EventHandler(this.pbTransfer_Click);
             // 
             // pbInfo
             // 
@@ -145,10 +156,10 @@
             // lblPendientes
             // 
             this.lblPendientes.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Italic);
-            this.lblPendientes.Location = new System.Drawing.Point(50, 11);
+            this.lblPendientes.Location = new System.Drawing.Point(44, 11);
             this.lblPendientes.Name = "lblPendientes";
-            this.lblPendientes.Size = new System.Drawing.Size(100, 18);
-            this.lblPendientes.Text = "Pendientes 0";
+            this.lblPendientes.Size = new System.Drawing.Size(69, 18);
+            this.lblPendientes.Text = "Pend. 0";
             // 
             // pbConcluir
             // 
@@ -343,5 +354,6 @@
         private System.Windows.Forms.PictureBox pbListado;
         private System.Windows.Forms.PictureBox pbInfo;
         private System.Windows.Forms.Label lblfletes;
+        private System.Windows.Forms.PictureBox pbTransfer;
     }
 }

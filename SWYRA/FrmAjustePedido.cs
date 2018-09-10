@@ -20,6 +20,7 @@ namespace SWYRA
         private List<DetallePedidos> lsDetallePedidos = new List<DetallePedidos>();
         private List<DetallePedidoMerc> lsDetPedMerc = new List<DetallePedidoMerc>();
         public Usuarios userActivo = new Usuarios();
+        public bool ajustar = false;
 
         public FrmAjustePedido()
         {
@@ -28,7 +29,7 @@ namespace SWYRA
 
         private void FrmAjustePedido_Load(object sender, EventArgs e)
         {
-            AjusteSaldos();
+            if (ajustar) { AjusteSaldos(); }
             CargaPedido();
             lblContado.Text = (ped.contado == "S") ? "AUTORIZADO CONTADO" : ((ped.estatuspedido != "AUTORIZACION") ? "AUTORIZADO" : "");
             Cargadatos();
@@ -69,7 +70,7 @@ namespace SWYRA
                     "SELECT dp.CVE_DOC, dp.NUM_PAR, dp.CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
                     "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, " +
                     "(isnull(replace(ic.COMENTARIO,'Lote:',''),'') + case when ic.APLICALOTE = 1 then ' Lote : ' + isnull(res.lote,'') else '' end) comen, " +
-                    "UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, ISNULL(CANTSURTIDO, CANT) CANTSURTIDO, SURTIDO, res.Empaque, " +
+                    "UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, CASE WHEN ISNULL(CANTSURTIDO, 0) = 0 THEN CANT ELSE ISNULL(CANTSURTIDO, 0) END CANTSURTIDO, SURTIDO, res.Empaque, " +
                     "TDESC, SUBTO, TCOMI, i.DESCR, (SUBTO + TOTIMP4) IMPORTE, (CANT * PESO) PESO, (CANT * VOLUMEN) VOLUMEN " + 
                     "FROM DETALLEPEDIDO dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "LEFT join INVENTARIOCOND ic on dp.CVE_ART = ic.CVE_ART " +
@@ -83,7 +84,8 @@ namespace SWYRA
                     "AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') IN('')) AND a.CVE_DOC = d.CVE_DOC and a.CVE_ART = d.CVE_ART " +
                     "group by e.Empaque, d.NUM_PAR order by d.NUM_PAR FOR XML PATH('')), 1, 1, '') as Empaque, isnull(a.lote,'') lote from DETALLEPEDIDOMERC as a " +
                     "where (a.CVE_DOC = '" + cve_doc + "') AND(NUM_PAR > 0) ) as res on dp.NUM_PAR = res.NUM_PAR " +
-                    "WHERE (dp.CVE_DOC = '" + cve_doc + "') AND (ISNULL(CANTSURTIDO," + (ped.estatuspedido.In(est) ? "0" : "CANT") + ") > 0)";
+                    "WHERE (dp.CVE_DOC = '" + cve_doc + "') AND ((ISNULL(CANTSURTIDO," + (ped.estatuspedido.In(est) ? "0" : "CANT") + ") > 0) " +
+                    "OR (ISNULL(CANTSURTIDO,0) = 0 AND ISNULL(CANTPENDIENTE,0) = 0))";
                 lsDetallePedidos = GetDataTable("DB", query, 6).ToList<DetallePedidos>();
                 query =
                     "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO, TotArt, " + 
@@ -115,7 +117,7 @@ namespace SWYRA
             txtNumCli.Text = ped.cve_clpv;
             txtNumVendedor.Text = @"(" + ped.cve_vend.Trim() + @") - " + ped.nombre_vendedor;
             txtCondiciones.Text = ped.condicion;
-            txtObservaciones.Text = ped.observaciones;
+            txtObservaciones.Text = ped.observaciones + @" / " + ped.indicaciones;
             txtFlete.Text = ped.flete;
             txtFlete2.Text = ped.flete2;
             txtCapturo.Text = ped.capturo_n;

@@ -68,7 +68,7 @@ namespace swyraServices
             List<Precios> listDbPrecios = CargaDbPrecios();
             var preciosAct = listFbPrecios.Where(o => listDbPrecios.Any(p => p.cve_art == o.cve_art && p.cve_precio == o.cve_precio)).ToList();
             var preciosNvo = listFbPrecios.Except(preciosAct).ToList();
-            var preciosDif = preciosAct.Where(o => listDbPrecios.Any(p => p.precio != o.precio)).ToList();
+            var preciosDif = preciosAct.Where(o => listDbPrecios.Any(p => p.cve_art == o.cve_art && p.cve_precio == o.cve_precio && Math.Abs(p.precio - o.precio) > 1)).ToList();
             foreach (var clt in preciosNvo)
             {
                 GuardaPrecios(clt);
@@ -82,7 +82,7 @@ namespace swyraServices
             List<Cliente> listDbClientes = cargaDbClientes();
             var clientesAct = listFbClientes.Where(o => listDbClientes.Any(p => p.clave == o.clave)).ToList();
             var clientesNvo = listFbClientes.Except(clientesAct).ToList();
-            var clientesDif = clientesAct.Where(o => listDbClientes.Any(p => p.fch_ultcom != o.fch_ultcom)).ToList();
+            var clientesDif = clientesAct.Where(o => listDbClientes.Any(p => p.clave == o.clave && p.fch_ultcom != o.fch_ultcom)).ToList();
             foreach (var clt in clientesNvo)
             {
                 GuardaCliente(clt);
@@ -96,7 +96,7 @@ namespace swyraServices
             List<Inventario> listDbInventarios = CargaDbInventarios();
             var inventarioAct = listFbInventarios.Where(o => listDbInventarios.Any(p => p.cve_art == o.cve_art)).ToList();
             var inventarioNvo = listFbInventarios.Except(inventarioAct).ToList();
-            var inventarioDif = inventarioAct.Except(inventarioAct.Where(o => listFbInventarios.Any(p => p.fch_ultvta == o.fch_ultvta || p.fch_ultcom == o.fch_ultcom || p.uni_emp == o.uni_emp || p.ctrl_alm == o.ctrl_alm || p.masters_ubi == o.masters_ubi)).ToList()).ToList();
+            var inventarioDif = inventarioAct.Where(o => listDbInventarios.Any(p => p.cve_art == o.cve_art && (p.fch_ultvta != o.fch_ultvta || p.fch_ultcom != o.fch_ultcom || (int)p.uni_emp != (int)o.uni_emp || p.ctrl_alm != o.ctrl_alm || p.masters_ubi != o.masters_ubi))).ToList();
             foreach (var inv in inventarioNvo)
             {
                 GuardaInventario(inv);
@@ -120,6 +120,14 @@ namespace swyraServices
 
                 var detalleAct = lsFbDetPed.Where(o => lsDbDetPed.Any(p => o.cve_art == p.cve_art)).ToList();
                 var detalleQuitar = lsFbDetPed.Except(detalleAct).ToList();
+
+                foreach (var detFB in detalleQuitar)
+                {
+                    ModificaFbDetallePedido(null, detFB);
+                }
+
+                detalleAct = lsFbDetPed.Where(o => lsDbDetPed.Any(p => o.num_par == p.num_par)).ToList();
+                detalleQuitar = lsFbDetPed.Except(detalleAct).ToList();
 
                 foreach (var detFB in detalleQuitar)
                 {
@@ -228,6 +236,7 @@ namespace swyraServices
                     "update INVENTARIOPRECIOS set PRECIO = " + clt.precio.ToString(CultureInfo.CurrentCulture) +
                     " where CVE_ART = '" + clt.cve_art + "' AND CVE_PRECIO = " + clt.cve_precio.ToString();
                 var res = GetExecute("DB", query, 28);
+                eventLog1.WriteEntry("q: " + query, EventLogEntryType.Warning);
             }
             catch (Exception ex)
             {
@@ -555,7 +564,6 @@ namespace swyraServices
                             "POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR " +
                             "from DETALLEPEDIDO where CVE_DOC = '" + ped.cve_doc + "' and NUM_PAR = " + ped.num_par + " " +
                             "DELETE DETALLEPEDIDO where CVE_DOC = '" + ped.cve_doc + "' and NUM_PAR = " + ped.num_par + " " +
-                            "if NOT EXISTS(select * from DETALLEPEDIDO where CVE_DOC = '" + ped.cve_doc + "' and CVE_ART = '" + ped.cve_art + "') " +
                             "insert DETALLEPEDIDO (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
                             "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, " +
                             "IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
@@ -624,7 +632,6 @@ namespace swyraServices
                 eventLog1.WriteEntry("13: " + ex.Message, EventLogEntryType.Error);
             }
         }
-
 
         private bool validaExis(bool Area, string cve_doc)
         {
@@ -787,7 +794,7 @@ namespace swyraServices
                         linea = "24";
                         listDbDetalle = CargaDbDetallePedido(pedFb.cve_doc);
                         linea = "25";
-                        var detalleAnt = listDbDetalle.Where(o => listFbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();
+                        var detalleAnt = listDbDetalle.Where(o => listFbDetalle.Any(p => o.cve_art == p.cve_art && o.num_par == p.num_par)).ToList();
                         linea = "26";
                         var detalleExcluidos = listDbDetalle.Except(detalleAnt).ToList();
                         linea = "27";
@@ -804,7 +811,7 @@ namespace swyraServices
                         linea = "31";
                         detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();
                         linea = "32";
-                        var detalleIden = detalleAct.Where(o => listDbDetalle.Any(p => p.cve_art == o.cve_art && p.cant == o.cant)).ToList();
+                        var detalleIden = detalleAct.Where(o => listDbDetalle.Any(p => p.cve_art == o.cve_art && p.num_par == o.num_par && p.cant == o.cant)).ToList();
                         linea = "33";
                         var detalleDiferentes = detalleAct.Except(detalleIden).ToList();
                         linea = "34";
@@ -879,6 +886,7 @@ namespace swyraServices
         {
             try
             {
+                double cantpendant = 0;
                 if (detDB.cantsurtido > 0)
                 {
                     if (detDB.cantsurtido > detFB.cant)
@@ -904,19 +912,44 @@ namespace swyraServices
                         detDB.cant = detFB.cant;
                         if (detDB.cantpendiente > 0)
                         {
+                            cantpendant = detDB.cantpendiente;
                             detDB.cantpendiente = detDB.cant - detDB.cantsurtido;
                         }
                         detDB.surtido = ((detDB.cantsurtido + detDB.cantpendiente) == detDB.cant);
                     }
                 }
-                var query3 = "update DETALLEPEDIDO SET CANT = " + detFB.cant.ToString(cultureInfo) + ", PXS = " + detFB.pxs.ToString(cultureInfo) + ", PREC = " + detFB.prec.ToString(cultureInfo) + ", COST = " + detFB.cost.ToString(cultureInfo) + ", " +
-                             "IMPU1 = " + detFB.impu1.ToString(cultureInfo) + ", IMPU2 = " + detFB.impu2.ToString(cultureInfo) + ", IMPU3 = " + detFB.impu3.ToString(cultureInfo) + ", IMPU4 = " + detFB.impu4.ToString(cultureInfo) + ", " +
-                             "IMP1APLA = " + detFB.imp1apla + ", IMP2APLA = " + detFB.imp2apla + ", IMP3APLA = " + detFB.imp3apla + ", IMP4APLA = " + detFB.imp4apla + ", " +
-                             "TOTIMP1 = " + detFB.totimp1.ToString(cultureInfo) + ", TOTIMP2 = " + detFB.totimp2.ToString(cultureInfo) + ", TOTIMP3 = " + detFB.totimp3 + ", TOTIMP4 = " + detFB.totimp4.ToString(cultureInfo) + ", " +
-                             "DESC1 = " + detFB.desc1.ToString(cultureInfo) + ", DESC2 = " + detFB.desc2.ToString(cultureInfo) + ", DESC3 = " + detFB.desc3.ToString(cultureInfo) + ", COMI = " + detFB.comi.ToString(cultureInfo) + ", APAR = " + detFB.apar.ToString(cultureInfo) + ", " +
-                             "NUM_ALM = " + detFB.num_alm + ", TIP_CAM = " + detFB.tip_cam + ", TOT_PARTIDA = " + detFB.tot_partida + ", " +
-                             "CANTSURTIDO = " + detDB.cantsurtido + ", SURTIDO = " + ((detDB.surtido) ? "1" : "0") + ", CANTPENDIENTE = " + detDB.cantpendiente + 
-                             " where CVE_ART = '" + detFB.cve_art + "' AND CVE_DOC = '" + detFB.cve_doc + "'";
+                var query3 = "update DETALLEPEDIDO SET CANT = " + detFB.cant.ToString(cultureInfo) + 
+                             ", PXS = " + detFB.pxs.ToString(cultureInfo) + 
+                             ", PREC = " + detFB.prec.ToString(cultureInfo) +
+                             ", COST = " + detFB.cost.ToString(cultureInfo) + 
+                             ", IMPU1 = " + detFB.impu1.ToString(cultureInfo) + 
+                             ", IMPU2 = " + detFB.impu2.ToString(cultureInfo) + 
+                             ", IMPU3 = " + detFB.impu3.ToString(cultureInfo) +
+                             ", IMPU4 = " + detFB.impu4.ToString(cultureInfo) +
+                             ", IMP1APLA = " + detFB.imp1apla + 
+                             ", IMP2APLA = " + detFB.imp2apla + 
+                             ", IMP3APLA = " + detFB.imp3apla + 
+                             ", IMP4APLA = " + detFB.imp4apla + 
+                             ", TOTIMP1 = " + detFB.totimp1.ToString(cultureInfo) + 
+                             ", TOTIMP2 = " + detFB.totimp2.ToString(cultureInfo) + 
+                             ", TOTIMP3 = " + detFB.totimp3 + 
+                             ", TOTIMP4 = " + detFB.totimp4.ToString(cultureInfo) + 
+                             ", DESC1 = " + detFB.desc1.ToString(cultureInfo) + 
+                             ", DESC2 = " + detFB.desc2.ToString(cultureInfo) + 
+                             ", DESC3 = " + detFB.desc3.ToString(cultureInfo) +
+                             ", COMI = " + detFB.comi.ToString(cultureInfo) + 
+                             ", APAR = " + detFB.apar.ToString(cultureInfo) +
+                             ", NUM_ALM = " + detFB.num_alm + 
+                             ", TIP_CAM = " + detFB.tip_cam + 
+                             ", TOT_PARTIDA = " + detFB.tot_partida +
+                             ", CANTSURTIDO = " + detDB.cantsurtido + 
+                             ", SURTIDO = " + ((detDB.surtido) ? "1" : "0") +
+                             ", CANTPENDIENTE = " + detDB.cantpendiente +
+                             " where CVE_ART = '" + detFB.cve_art + "' AND CVE_DOC = '" + detFB.cve_doc + "' " +
+                             ((cantpendant > 0)
+                                 ? "update DETALLEPEDIDOMERC set PEND = " + detDB.cantpendiente + 
+                                   " where CVE_DOC = '" + detFB.cve_doc + "' and  CVE_ART = '" + detFB.cve_art + "' and ISNULL(PEND,0) = " + cantpendant + " and ISNULL(CANCELADO,0) = 0"
+                                 : "");
                 GetExecute("DB", query3, 15);
             }
             catch (Exception ex)
@@ -939,8 +972,8 @@ namespace swyraServices
                         "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
                         "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
                         "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_DOC = '" + det.cve_doc + "' " +
-                        "and CVE_ART = '" + det.cve_art + "' and isnull(CANTSURTIDO,0) > 0 " +
-                        "delete DETALLEPEDIDO where CVE_DOC = '" + det.cve_doc + "' and CVE_ART = '" + det.cve_art + "'";
+                        "and CVE_ART = '" + det.cve_art + "' and isnull(CANTSURTIDO,0) > 0 and NUM_PAR = " + det.num_par + " " +
+                        "delete DETALLEPEDIDO where CVE_DOC = '" + det.cve_doc + "' and CVE_ART = '" + det.cve_art + "' and NUM_PAR = " + det.num_par;
                 var res = GetExecute("DB", query, 16);
             }
             catch (Exception ex)
@@ -1007,21 +1040,22 @@ namespace swyraServices
 
         private void ModificaInventario(Inventario inv)
         {
+            var query = "";
             try
             {
-                var query =
+                query =
                     "update INVENTARIO set DESCR = '" + inv.descr + "', LIN_PROD = '" + inv.lin_prod + "', CON_SERIE = '" +
                     inv.con_serie + "', UNI_MED = '" + inv.con_serie + "', UNI_EMP = " + inv.uni_emp.ToString(cultureInfo) + ", CTRL_ALM = '" +
                     inv.ctrl_alm + "', STOCK_MIN = " + inv.stock_min.ToString(cultureInfo) + ", STOCK_MAX = " + inv.stock_max.ToString(cultureInfo) + ", FCH_ULTVTA = " +
                     ((inv.fch_ultvta.Year == 1) ? "Null" : "'" + inv.fch_ultvta.ToString("yyyy-MM-dd") + "'") + ", EXIST = " +
                     inv.exist.ToString(cultureInfo) + ", STATUS = '" + inv.status + "', MASTERS = " + inv.masters.ToString(cultureInfo) + ", MASTERS_UBI = '" + 
-                    inv.masters_ubi + "', FCH_ULTCOM = '" + ((inv.fch_ultcom.Year == 1) ? "Null" : "'" + inv.fch_ultcom.ToString("yyyy-MM-dd") + "'") +
+                    inv.masters_ubi + "', FCH_ULTCOM = " + ((inv.fch_ultcom.Year == 1) ? "Null" : "'" + inv.fch_ultcom.ToString("yyyy-MM-dd") + "'") +
                     " where CVE_ART = '" + inv.cve_art + "'";
                 var res = GetExecute("DB", query, 20);
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("20: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("20: " + ex.Message + query, EventLogEntryType.Error);
             }
         }
 
@@ -1180,24 +1214,27 @@ namespace swyraServices
                 linea = "4";
                 fac = GetFbDataTable("FB", query, 40).ToData<Factura>();
 
-                linea = "5";
-                query = "select f.cve_doc, i.descr from par_factf01 f " +
-                        "join INVE01 i on f.cve_art = i.cve_art and i.uni_med = 'flete' " +
-                        "where cve_doc = '" + fac.cve_doc + "'";
-                linea = "6";
-                List<FacturaDet> detfac = new List<FacturaDet>();
-                linea = "7";
-                detfac = GetFbDataTable("FB", query, 40).ToList<FacturaDet>();
-                linea = "8";
-                var strpaq = "";
-                linea = "9";
-                foreach (var det in detfac)
+                if (fac != null)
                 {
-                    linea = "10";
-                    strpaq += det.descr + "; ";
+                    linea = "5";
+                    query = "select f.cve_doc, i.descr from par_factf01 f " +
+                            "join INVE01 i on f.cve_art = i.cve_art and i.uni_med = 'flete' " +
+                            "where cve_doc = '" + fac.cve_doc + "'";
+                    linea = "6";
+                    List<FacturaDet> detfac = new List<FacturaDet>();
+                    linea = "7";
+                    detfac = GetFbDataTable("FB", query, 40).ToList<FacturaDet>();
+                    linea = "8";
+                    var strpaq = "";
+                    linea = "9";
+                    foreach (var det in detfac)
+                    {
+                        linea = "10";
+                        strpaq += det.descr + "; ";
+                    }
+                    linea = "11";
+                    fac.str_paq = strpaq;
                 }
-                linea = "11";
-                fac.str_paq = strpaq;
             }
             catch (Exception ex)
             {

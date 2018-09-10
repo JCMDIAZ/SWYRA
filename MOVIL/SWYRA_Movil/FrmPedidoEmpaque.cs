@@ -85,7 +85,7 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select top 1 CVE_DOC from PEDIDO where " +
-                            "(ESTATUSPEDIDO = 'EMPAQUE' and isnull(EMPAQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
+                            "(ESTATUSPEDIDO IN ('EMPAQUE','DETENIDO EMP') and isnull(EMPAQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 string surtAsig = (ped == null) ? "" : Program.usActivo.Usuario;
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, p.ESTATUSPEDIDO, " +
@@ -108,7 +108,7 @@ namespace SWYRA_Movil
                         "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
                         "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
-                        "where (p.ESTATUSPEDIDO = 'EMPAQUE' and isnull(p.EMPAQUETADOR_ASIGNADO,'') = '" + surtAsig + "') " +
+                        "where (p.ESTATUSPEDIDO IN ('EMPAQUE','DETENIDO EMP') and isnull(p.EMPAQUETADOR_ASIGNADO,'') = '" + surtAsig + "') " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");

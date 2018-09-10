@@ -113,13 +113,53 @@ namespace SWYRA_Movil
             return query;
         }
 
+        private bool valExistencias()
+        {
+            var v1 = validaExis(false);
+            if (!v1)
+            {
+                if (ValidaCambios())
+                {
+                    MessageBox.Show(@"Existe Artículos por Agregar o Devolver favor de validar.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
+            }
+            pbConcluir.Visible = v1;
+            return v1;
+        }
+
+        private bool validaDuplicidad()
+        {
+            bool m = false;
+            try
+            {
+                var query = "select CVE_DOC, CVE_ART  from DETALLEPEDIDO WHERE LTRIM(CVE_DOC) = '" + cvedoc + "' " +
+                            "GROUP BY CVE_DOC, CVE_ART HAVING COUNT(CVE_ART) > 1";
+                List<DetallePedidos> res = Program.GetDataTable(query, 52).ToList<DetallePedidos>();
+                if (res.Count > 0)
+                {
+                    var dt = res.First();
+                    MessageBox.Show(@"Existe duplicidad en el Pedido " + cvedoc + @" clave del artículo " + dt.cve_art, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    m = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return m;
+        }
+
         private void pbImprimir_Click(object sender, EventArgs e)
         {
-            FrmSurtit frmSurtir = new FrmSurtit();
-            frmSurtir.ped = ped;
-            frmSurtir.det = det.Where(o => o.surtido == false).ToList();
-            frmSurtir.ShowDialog();
-            pbConcluir.Visible = validaExis(false);
+            if (det.Where(o => o.surtido == false).ToList().Count > 0)
+            {
+                if (validaDuplicidad()) { return; }
+                FrmSurtit frmSurtir = new FrmSurtit();
+                frmSurtir.ped = ped;
+                frmSurtir.det = det.Where(o => o.surtido == false).ToList();
+                frmSurtir.ShowDialog();
+                valExistencias();
+            }
         }
 
         private void pbIncompletos_Click(object sender, EventArgs e)
@@ -128,7 +168,7 @@ namespace SWYRA_Movil
             frmIncompleto.ped = ped;
             frmIncompleto.det = det.Where(o => o.cantpendiente > 0).ToList();
             frmIncompleto.ShowDialog();
-            pbConcluir.Visible = validaExis(false);
+            valExistencias();
         }
 
         private void pbDetenido_Click(object sender, EventArgs e)
@@ -159,6 +199,7 @@ namespace SWYRA_Movil
                 else
                 {
                     frmDetenerPed.Close();
+                    valExistencias();
                 }
             }
             catch (Exception ex)
@@ -186,6 +227,7 @@ namespace SWYRA_Movil
                 else
                 {
                     frmTransferir.Close();
+                    valExistencias();
                 }
             }
             catch (Exception ex)
@@ -196,9 +238,8 @@ namespace SWYRA_Movil
 
         private void pbConcluir_Click(object sender, EventArgs e)
         {
-            if (!validaExis(false))
+            if (!valExistencias())
             {
-                MessageBox.Show(@"Existe Artículos por Agregar o Devolver favor de validar.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 return;
             }
             try
@@ -266,16 +307,42 @@ namespace SWYRA_Movil
             FrmDevolucion frmDevolucion = new FrmDevolucion();
             frmDevolucion.ped = ped;
             frmDevolucion.ShowDialog();
-            pbConcluir.Visible = validaExis(false);
+            valExistencias();
         }
 
         private void pbDevolucion_Click_1(object sender, EventArgs e)
         {
-            FrmCancelacion frmCan = new FrmCancelacion();
-            frmCan.ped = ped;
-            frmCan.det = dev.Where(o => o.devuelto == false).ToList();
-            frmCan.ShowDialog();
-            pbConcluir.Visible = validaExis(false);
+            if (dev.Where(o => o.devuelto == false).ToList().Count > 0)
+            {
+                FrmCancelacion frmCan = new FrmCancelacion();
+                frmCan.ped = ped;
+                frmCan.det = dev.Where(o => o.devuelto == false).ToList();
+                frmCan.ShowDialog();
+                valExistencias();
+            }
+        }
+
+        private bool ValidaCambios()
+        {
+            bool b = false;
+            try
+            {
+                var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, OCURREDOMICILIO, NOMBRE_VENDEDOR, " +
+                            "CAPTURO, u.Nombre CAPTURO_N from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
+                            "left join USUARIOS u on u.Usuario = p.CAPTURO WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                var pedcam = Program.GetDataTable(query, 1).ToData<Pedidos>();
+                if (ped.importe != pedcam.importe)
+                {
+                    ped = pedcam;
+                    b = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            return b;
         }
     }
 }

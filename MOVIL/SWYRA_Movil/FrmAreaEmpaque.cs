@@ -74,7 +74,7 @@ namespace SWYRA_Movil
             {
                 var s = listBox1.SelectedValue.ToString();
                 var dat = lst.Find(o => o.cve_ubicacion == s);
-                dat.seleccionado = true;
+                if (dat != null) { dat.seleccionado = true; }
                 sw = true;
                 ActualizarListBox();
                 sw = false;
@@ -87,7 +87,7 @@ namespace SWYRA_Movil
             {
                 var s = listBox2.SelectedValue.ToString();
                 var dat = lst.Find(o => o.cve_ubicacion == s);
-                dat.seleccionado = false;
+                if (dat != null) { dat.seleccionado = false; }
                 sw = true;
                 ActualizarListBox();
                 sw = false;

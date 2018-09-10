@@ -62,6 +62,8 @@
             this.lblPendS = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pbDetener = new System.Windows.Forms.PictureBox();
+            this.pbTransferir = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.pnlPorSurtir.SuspendLayout();
             this.pnlRetornar.SuspendLayout();
             this.SuspendLayout();
@@ -274,7 +276,7 @@
             // pbIncompletos
             // 
             this.pbIncompletos.Image = ((System.Drawing.Image)(resources.GetObject("pbIncompletos.Image")));
-            this.pbIncompletos.Location = new System.Drawing.Point(127, 179);
+            this.pbIncompletos.Location = new System.Drawing.Point(126, 179);
             this.pbIncompletos.Name = "pbIncompletos";
             this.pbIncompletos.Size = new System.Drawing.Size(35, 35);
             this.pbIncompletos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -283,7 +285,7 @@
             // pbDevolucion
             // 
             this.pbDevolucion.Image = ((System.Drawing.Image)(resources.GetObject("pbDevolucion.Image")));
-            this.pbDevolucion.Location = new System.Drawing.Point(168, 179);
+            this.pbDevolucion.Location = new System.Drawing.Point(201, 179);
             this.pbDevolucion.Name = "pbDevolucion";
             this.pbDevolucion.Size = new System.Drawing.Size(35, 35);
             this.pbDevolucion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -307,7 +309,7 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(135, 166);
+            this.label4.Location = new System.Drawing.Point(134, 166);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.Text = "I";
@@ -315,7 +317,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(176, 166);
+            this.label5.Location = new System.Drawing.Point(209, 166);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 20);
             this.label5.Text = "M";
@@ -324,7 +326,7 @@
             // lblPendM
             // 
             this.lblPendM.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic);
-            this.lblPendM.Location = new System.Drawing.Point(168, 215);
+            this.lblPendM.Location = new System.Drawing.Point(199, 215);
             this.lblPendM.Name = "lblPendM";
             this.lblPendM.Size = new System.Drawing.Size(35, 17);
             this.lblPendM.Text = "0";
@@ -356,6 +358,23 @@
             this.pbDetener.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbDetener.Click += new System.EventHandler(this.pbDetener_Click);
             // 
+            // pbTransferir
+            // 
+            this.pbTransferir.Image = ((System.Drawing.Image)(resources.GetObject("pbTransferir.Image")));
+            this.pbTransferir.Location = new System.Drawing.Point(164, 179);
+            this.pbTransferir.Name = "pbTransferir";
+            this.pbTransferir.Size = new System.Drawing.Size(35, 35);
+            this.pbTransferir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbTransferir.Click += new System.EventHandler(this.pbTransferir_Click);
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(173, 164);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(18, 20);
+            this.label12.Text = "T";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // FrmMenuPedidosArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -363,6 +382,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.pbTransferir);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.pbDevolucion);
             this.Controls.Add(this.pbIncompletos);
             this.Controls.Add(this.pbDetener);
@@ -421,5 +442,7 @@
         private System.Windows.Forms.PictureBox pbDetener;
         private System.Windows.Forms.TextBox txtCapturo;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pbTransferir;
+        private System.Windows.Forms.Label label12;
     }
 }

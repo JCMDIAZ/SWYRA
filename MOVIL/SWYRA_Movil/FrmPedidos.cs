@@ -89,8 +89,32 @@ namespace SWYRA_Movil
             dgPedidos.CurrentRowIndex = goindex;
         }
 
+        private bool validaDuplicidad()
+        {
+            bool m = false;
+            try
+            {
+                var cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString().Trim();
+                var query = "select CVE_DOC, CVE_ART  from DETALLEPEDIDO WHERE LTRIM(CVE_DOC) = '" + cvedoc + "' " +
+                            "GROUP BY CVE_DOC, CVE_ART HAVING COUNT(CVE_ART) > 1";
+                List<DetallePedidos> res = Program.GetDataTable(query, 52).ToList<DetallePedidos>();
+                if (res.Count > 0)
+                {
+                    var dt = res.First();
+                    MessageBox.Show(@"Existe duplicidad en el Pedido " + cvedoc + @" clave del artículo " + dt.cve_art, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    m = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return m;
+        }
+
         private void pbAsignar_Click(object sender, EventArgs e)
         {
+            if (validaDuplicidad()) { return; }
             try 
             {
                 if (listPedidos.Count > 0)

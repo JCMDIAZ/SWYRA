@@ -61,7 +61,7 @@ namespace SWYRA_Movil
 
         private void txtCant_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
+            /*if ((e.KeyChar == (char)Keys.Enter) || (e.KeyChar == (char)Keys.Return))
             {
                 if (!txtCant.ReadOnly)
                 {
@@ -78,7 +78,7 @@ namespace SWYRA_Movil
                         e.Handled = true;
                     }
                 }
-            }
+            }*/
         }
 
         private void txtCant_LostFocus(object sender, EventArgs e)
@@ -99,11 +99,6 @@ namespace SWYRA_Movil
         {
             if (txtCodigo.Text == "")
             {
-                return;
-            }
-            if (ValidaCambios())
-            {
-                MessageBox.Show("Existen cambios en el PEDIDO, por lo que el último movimiento no se registro, se regresara al menú anterior", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 return;
             }
             lastCB = txtCodigo.Text;
@@ -172,54 +167,64 @@ namespace SWYRA_Movil
 
         private void actualizaDet()
         {
-            if (ValidaCambios())
+            var query = "";
+            try
             {
-                MessageBox.Show("Existen cambios en el PEDIDO, por lo que el último movimiento no se registro, se regresara al menú anterior", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                return;
-            }
-            if (txtCant.ReadOnly)
-            {
-                art.cantdevuelto += (double)txtCant.Value;
-                art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantdevuelto + art.cantpendiente) - 1) / art.sel) : 0;
-                art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantdevuelto + art.cantpendiente);
-                art.devuelto = (art.cant == (art.cantdevuelto + art.cantpendiente));
-                art.exist = (art.exist + (double)txtCant.Value);
-                var ubiant = art.ubicacion;
-                art.ubicacion = (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi));
-                //art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
-                var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
-                art.orden = orb.orden;
-                var query = "declare @consec int select @consec = min(CONSEC) from DETALLEPEDIDOMERC " +
-                            "WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' AND ISNULL(CANCELADO,0) = 0 " +
-                            "declare @consecpadre int select @consecpadre = CONSEC_PADRE from DETALLEPEDIDOMERC " +
-                            "where (LTRIM(CVE_DOC) = '" + art.cve_doc + "') and CONSEC = @consec " +
-                            "update DETALLEPEDIDOMERC set TotArt = TotArt - 1 where (LTRIM(CVE_DOC) = '" + art.cve_doc + "') and CONSEC = @consecpadre " +
-                            "update DETALLEPEDIDOMERC set CANCELADO = CASE WHEN TotArt = 0 THEN 1 ELSE 0 END where (LTRIM(CVE_DOC) = '" + art.cve_doc + "') and CONSEC = @consecpadre " +
-                            "declare @consecpadre2 int select @consecpadre2 = CONSEC_PADRE from DETALLEPEDIDOMERC " +
-                            "where (LTRIM(CVE_DOC) = '" + art.cve_doc + "') and CONSEC = @consecpadre " +
-                            "update DETALLEPEDIDOMERC set TotArt = TotArt - 1 where (LTRIM(CVE_DOC) = '" + art.cve_doc + "') and CONSEC = @consecpadre2 " +
-                            "update DETALLEPEDIDOMERC set CANCELADO = CASE WHEN TotArt = 0 THEN 1 ELSE 0 END where (LTRIM(CVE_DOC) = '" + art.cve_doc + "') and CONSEC = @consecpadre2 " +
-                            "UPDATE DETALLEPEDIDOMERC SET CANCELADO = CASE WHEN (CANT - " + txtCant.Value.ToString() + ") <= 0 THEN 1 ELSE 0 END, " +
-                            "CANT = CANT - " + txtCant.Value.ToString() + " WHERE CVE_DOC = '" + art.cve_doc + "' AND CONSEC = @consec " + 
-                            "UPDATE DETALLEPEDIDODEV SET CANTDEVUELTO = " + art.cantdevuelto + ", DEVUELTO = " + ((art.devuelto) ? "1" : "0") +
-                            " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() +
-                            " UPDATE INVENTARIO SET EXIST = EXIST + " + txtCant.Value.ToString() + " WHERE CVE_ART = '" + art.cve_art + "' " +
-                            "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
-                            "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
-                            "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
-                Program.GetExecute(query, 2);
-
-                if (art.cantdiferencia == 0 || ubiant != art.ubicacion)
+                if (ValidaCambios())
                 {
-                    mostrardet = det.Where(o => o.devuelto == false).ToList();
-                    mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
-                    art = mostrardet.FirstOrDefault();
-                    artFirst = art;
-                    artLast = mostrardet.LastOrDefault();
-                    lblPendientes.Text = mostrardet.Count.ToString();
+                    MessageBox.Show("Existen cambios en el PEDIDO, por lo que el último movimiento no se registro, se regresara al menú anterior", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    this.Close();
+                    return;
                 }
-                cargaDatos();
-                txtCodigo.Focus();
+                if (txtCant.ReadOnly)
+                {
+                    art.cantdevuelto += (double)txtCant.Value;
+                    art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantdevuelto + art.cantpendiente) - 1) / art.sel) : 0;
+                    art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantdevuelto + art.cantpendiente);
+                    art.devuelto = (art.cant == (art.cantdevuelto + art.cantpendiente));
+                    art.exist = (art.exist + (double)txtCant.Value);
+                    var ubiant = art.ubicacion;
+                    art.ubicacion = (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi));
+                    //art.ubicacion = (art.cantdiferencia > art.mas) ? ((art.masters_ubi != "") ? art.masters_ubi : art.ctrl_alm) : art.ctrl_alm;
+                    var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
+                    art.orden = orb.orden;
+                    var cvedoc = art.cve_doc.Trim();
+                    query = "declare @consec int select @consec = min(CONSEC) from DETALLEPEDIDOMERC " +
+                                "WHERE LTRIM(CVE_DOC) = '" + cvedoc + "' AND CODIGO_BARRA = '" + lastCB + "' AND ISNULL(CANCELADO,0) = 0 " +
+                                "declare @consecpadre int select @consecpadre = CONSEC_PADRE from DETALLEPEDIDOMERC " +
+                                "where (LTRIM(CVE_DOC) = '" + cvedoc + "') and CONSEC = @consec " +
+                                "update DETALLEPEDIDOMERC set TotArt = TotArt - 1 where (LTRIM(CVE_DOC) = '" + cvedoc + "') and CONSEC = @consecpadre " +
+                                "update DETALLEPEDIDOMERC set CANCELADO = CASE WHEN TotArt = 0 THEN 1 ELSE 0 END where (LTRIM(CVE_DOC) = '" + cvedoc + "') and CONSEC = @consecpadre " +
+                                "declare @consecpadre2 int select @consecpadre2 = CONSEC_PADRE from DETALLEPEDIDOMERC " +
+                                "where (LTRIM(CVE_DOC) = '" + cvedoc + "') and CONSEC = @consecpadre " +
+                                "update DETALLEPEDIDOMERC set TotArt = TotArt - 1 where (LTRIM(CVE_DOC) = '" + cvedoc + "') and CONSEC = @consecpadre2 " +
+                                "update DETALLEPEDIDOMERC set CANCELADO = CASE WHEN TotArt = 0 THEN 1 ELSE 0 END where (LTRIM(CVE_DOC) = '" + cvedoc + "') and CONSEC = @consecpadre2 " +
+                                "UPDATE DETALLEPEDIDOMERC SET CANT = CANT - " + txtCant.Value.ToString() + " WHERE LTRIM(CVE_DOC) = '" + cvedoc + "' AND CONSEC = @consec " +
+                                "UPDATE DETALLEPEDIDOMERC SET CANCELADO = CASE WHEN CANT <= 0 THEN 1 ELSE 0 END WHERE LTRIM(CVE_DOC) = '" + cvedoc + "' AND CONSEC = @consec " +
+                                "UPDATE DETALLEPEDIDODEV SET CANTDEVUELTO = " + art.cantdevuelto + ", DEVUELTO = " + ((art.devuelto) ? "1" : "0") +
+                                " WHERE LTRIM(CVE_DOC) = '" + cvedoc + "' AND NUM_PAR = " + art.num_par.ToString() +
+                                " UPDATE INVENTARIO SET EXIST = EXIST + " + txtCant.Value.ToString() + " WHERE CVE_ART = '" + art.cve_art + "' " +
+                                "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
+                                "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
+                                "where LTRIM(CVE_DOC) = '" + cvedoc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
+                    Program.GetExecute(query, 2);
+
+                    if (art.cantdiferencia == 0 || ubiant != art.ubicacion)
+                    {
+                        mostrardet = det.Where(o => o.devuelto == false).ToList();
+                        mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
+                        art = mostrardet.FirstOrDefault();
+                        artFirst = art;
+                        artLast = mostrardet.LastOrDefault();
+                        lblPendientes.Text = mostrardet.Count.ToString();
+                    }
+                    cargaDatos();
+                    txtCodigo.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + query, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -256,7 +261,8 @@ namespace SWYRA_Movil
             txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
             lblComentario.Text = (art != null) ? art.comentario : "";
             txtMasterUbi.Text = (art != null) ? art.masters_ubi : "";
-            var mercF = merc.Find(o => o.cve_art == art.cve_art);
+            var cveart = (art != null) ? art.cve_art : "";
+            var mercF = merc.Find(o => o.cve_art == cveart);
             lblEmp.Text = (mercF == null) ? "" : mercF.empaque;
         }
 

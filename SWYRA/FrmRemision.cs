@@ -151,13 +151,14 @@ namespace SWYRA
                 var fAjustePedido = new FrmAjustePedido();
                 fAjustePedido.cve_doc = cve_doc.ToString();
                 fAjustePedido.userActivo = userActivo;
+                fAjustePedido.ajustar = true;
                 fAjustePedido.ShowDialog();
-                fAjustePedido.Close();
                 if (fAjustePedido.cve_doc == "")
                 {
                     listPedidos = CargaPedidos();
                     gridControl1.DataSource = listPedidos;
                 }
+                fAjustePedido.Close();
             }
             /*else
             {
@@ -189,7 +190,7 @@ namespace SWYRA
                 {
                     if (estatus.ToString() == "FACTURACION")
                     {
-                        e.Appearance.BackColor = Color.Aqua;
+                        e.Appearance.BackColor = Color.BlueViolet;
                     }
                 }
             }
@@ -234,9 +235,9 @@ namespace SWYRA
             List<DetallePedidoMerc> ls = new List<DetallePedidoMerc>();
             try
             {
-                var query = "SELECT CVE_DOC, MAX(CONSEC) CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, sum(CANT) CANT, TIPOPAQUETE, CONSEC_PADRE, NULL ULTIMO, CANCELADO, TOTART, CONSEC_EMPAQUE " +
+                var query = "SELECT CVE_DOC, MAX(CONSEC) CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, sum(CANT) CANT, TIPOPAQUETE, CONSEC_PADRE, NULL ULTIMO, isnull(CANCELADO,0) CANCELADO, TOTART, CONSEC_EMPAQUE " +
                             "FROM DETALLEPEDIDOMERC WHERE (LTRIM(CVE_DOC) = '" + cvedoc.Trim() + "') AND (CODIGO_BARRA <> '') AND (CONSEC_PADRE = " + consec + ") " + ((ult && tipopaq != "TARIMA") ? "AND CANT > 0" : "") +
-                            "GROUP BY CVE_DOC, NUM_PAR, CVE_ART, CODIGO_BARRA, TIPOPAQUETE, CONSEC_PADRE, CANCELADO, TOTART, CONSEC_EMPAQUE ORDER BY CONSEC";
+                            "GROUP BY CVE_DOC, NUM_PAR, CVE_ART, CODIGO_BARRA, TIPOPAQUETE, CONSEC_PADRE, isnull(CANCELADO,0), TOTART, CONSEC_EMPAQUE ORDER BY CONSEC";
                 ls = GetDataTable("DB", query, 42).ToList<DetallePedidoMerc>();
             }
             catch (Exception ex)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using static SWYRA.General;
 using System.Drawing;
+using DevExpress.XtraPrinting.Native.Lines;
 
 namespace SWYRA
 {
@@ -97,11 +98,34 @@ namespace SWYRA
             }
         }
 
+        private bool validaDuplicidad()
+        {
+            bool m = false;
+            try
+            {
+                var query = "select CVE_DOC, CVE_ART  from DETALLEPEDIDO WHERE LTRIM(CVE_DOC) = '" + pedido.cve_doc.Trim() + "' " +
+                            "GROUP BY CVE_DOC, CVE_ART HAVING COUNT(CVE_ART) > 1";
+                List<DetallePedidos> res = GetDataTable("DB", query, 52).ToList<DetallePedidos>();
+                if (res.Count > 0)
+                {
+                    var dt = res.First();
+                    MessageBox.Show(@"Existe duplicidad en el Pedido " + pedido.cve_doc.Trim() + @" clave del artículo " + dt.cve_art);
+                    m = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return m;
+        }
+
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             popupMenu1.HidePopup();
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.FirstOrDefault(o => o.cve_doc == cve_doc);
+            if (validaDuplicidad()) { return; }
             DialogResult dialogResult = MessageBox.Show(@"¿Esta seguro de AUTORIZAR el pedido " + pedido.cve_doc.Trim() + @"?",
                 @"AUTORIZAR", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -121,6 +145,7 @@ namespace SWYRA
             popupMenu1.HidePopup();
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.FirstOrDefault(o => o.cve_doc == cve_doc);
+            if (validaDuplicidad()) { return; }
             DialogResult dialogResult = MessageBox.Show(@"¿Esta seguro de AUTORIZAR DE CONTADO el pedido " + pedido.cve_doc.Trim() + @"?",
                 @"AUTORIZAR CONTADO", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)

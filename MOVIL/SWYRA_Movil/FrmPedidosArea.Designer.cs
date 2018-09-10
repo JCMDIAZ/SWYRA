@@ -36,17 +36,16 @@
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgPedidos = new System.Windows.Forms.DataGrid();
             this.dataGridTableStyle1 = new System.Windows.Forms.DataGridTableStyle();
-            this.dgtEstatus = new System.Windows.Forms.DataGridTextBoxColumn();
-            this.dgtPrioridad = new System.Windows.Forms.DataGridTextBoxColumn();
-            this.dgtServicio = new System.Windows.Forms.DataGridTextBoxColumn();
-            this.dgtPedido = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dgtCve_clpv = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dgtCliente = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dgtPedido = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dgtFecha = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dgtEstatus = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.dgtServicio = new System.Windows.Forms.DataGridTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbAsignar = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
-            this.dgtCve_clpv = new System.Windows.Forms.DataGridTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -87,37 +86,14 @@
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtFecha);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtEstatus);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtServicio);
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dgtPrioridad);
             this.dataGridTableStyle1.MappingName = "Pedidos";
             // 
-            // dgtEstatus
+            // dgtCve_clpv
             // 
-            this.dgtEstatus.Format = "";
-            this.dgtEstatus.FormatInfo = null;
-            this.dgtEstatus.HeaderText = "Estatus";
-            this.dgtEstatus.MappingName = "estatuspedido";
-            // 
-            // dgtPrioridad
-            // 
-            this.dgtPrioridad.Format = "";
-            this.dgtPrioridad.FormatInfo = null;
-            this.dgtPrioridad.HeaderText = "Prioridad";
-            this.dgtPrioridad.MappingName = "prioridad";
-            // 
-            // dgtServicio
-            // 
-            this.dgtServicio.Format = "";
-            this.dgtServicio.FormatInfo = null;
-            this.dgtServicio.HeaderText = "Servicio";
-            this.dgtServicio.MappingName = "tiposervicio";
-            // 
-            // dgtPedido
-            // 
-            this.dgtPedido.Format = "";
-            this.dgtPedido.FormatInfo = null;
-            this.dgtPedido.HeaderText = "Pedido";
-            this.dgtPedido.MappingName = "cve_doc";
-            this.dgtPedido.Width = 60;
+            this.dgtCve_clpv.Format = "";
+            this.dgtCve_clpv.FormatInfo = null;
+            this.dgtCve_clpv.HeaderText = "# Clte.";
+            this.dgtCve_clpv.MappingName = "cve_clpv";
             // 
             // dgtCliente
             // 
@@ -127,12 +103,36 @@
             this.dgtCliente.MappingName = "cliente";
             this.dgtCliente.Width = 150;
             // 
+            // dgtPedido
+            // 
+            this.dgtPedido.Format = "";
+            this.dgtPedido.FormatInfo = null;
+            this.dgtPedido.HeaderText = "Pedido";
+            this.dgtPedido.MappingName = "cve_doc";
+            this.dgtPedido.Width = 60;
+            // 
             // dgtFecha
             // 
             this.dgtFecha.Format = "dd-MMM-yyyy";
             this.dgtFecha.FormatInfo = null;
+            this.dgtFecha.HeaderText = "Fecha";
             this.dgtFecha.MappingName = "fecha_doc";
             this.dgtFecha.Width = 60;
+            // 
+            // dgtEstatus
+            // 
+            this.dgtEstatus.Format = "";
+            this.dgtEstatus.FormatInfo = null;
+            this.dgtEstatus.HeaderText = "Estatus";
+            this.dgtEstatus.MappingName = "estatuspedido";
+            // 
+            // dgtServicio
+            // 
+            this.dgtServicio.Format = "";
+            this.dgtServicio.FormatInfo = null;
+            this.dgtServicio.HeaderText = "Servicio";
+            this.dgtServicio.MappingName = "tiposervicio";
+            this.dgtServicio.Width = 100;
             // 
             // label1
             // 
@@ -171,13 +171,6 @@
             this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
             // 
-            // dgtCve_clpv
-            // 
-            this.dgtCve_clpv.Format = "";
-            this.dgtCve_clpv.FormatInfo = null;
-            this.dgtCve_clpv.HeaderText = "# Clte.";
-            this.dgtCve_clpv.MappingName = "cve_clpv";
-            // 
             // FrmPedidosArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -210,7 +203,6 @@
         private System.Windows.Forms.PictureBox pbSalir;
         private System.Windows.Forms.BindingSource pedidosBindingSource;
         private System.Windows.Forms.DataGridTextBoxColumn dgtEstatus;
-        private System.Windows.Forms.DataGridTextBoxColumn dgtPrioridad;
         private System.Windows.Forms.DataGridTextBoxColumn dgtServicio;
         private System.Windows.Forms.DataGridTextBoxColumn dgtPedido;
         private System.Windows.Forms.DataGridTextBoxColumn dgtCliente;

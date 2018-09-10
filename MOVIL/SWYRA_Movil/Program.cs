@@ -263,15 +263,17 @@ namespace SWYRA_Movil
         public static DataTable GetDataTable(string query, int idError)
         {
             DataTable dt = new DataTable();
+            SqlConnection sqlCon = new SqlConnection();
             try
             {
-                var sqlCon = GetConnection();
+                sqlCon = GetConnection();
                 var sqlAdt = new SqlDataAdapter(query, sqlCon);
                 sqlAdt.Fill(dt);
                 CloseConnection(sqlCon);
             }
             catch (Exception e)
             {
+                CloseConnection(sqlCon);
                 throw new ApplicationException(string.Format("Error {0}: {1}", idError.ToString(), e.Message.ToString()));
             }
             return dt;
@@ -297,9 +299,10 @@ namespace SWYRA_Movil
         public static bool GetExecute(string query, int idError)
         {
             bool b = false;
+            SqlConnection sqlCon = new SqlConnection();
             try
             {
-                var sqlCon = GetConnection();
+                sqlCon = GetConnection();
                 var sqlCmd = new SqlCommand(query, sqlCon);
                 sqlCmd.ExecuteNonQuery();
                 b = true;
@@ -307,6 +310,7 @@ namespace SWYRA_Movil
             }
             catch (Exception e)
             {
+                CloseConnection(sqlCon);
                 throw new ApplicationException(string.Format("Error {0}: {1}", idError.ToString(), e.Message.ToString()));
             }
             return b;

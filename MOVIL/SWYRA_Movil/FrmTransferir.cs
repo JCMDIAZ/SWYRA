@@ -11,6 +11,8 @@ namespace SWYRA_Movil
 {
     public partial class FrmTransferir : Form
     {
+        public string perfil = "";
+
         public FrmTransferir()
         {
             InitializeComponent();
@@ -20,9 +22,25 @@ namespace SWYRA_Movil
         {
             try
             {
-                var query = "select Usuario, Nombre from USUARIOS " +
-                            "where Categoria in ('MASTER', 'SURTIDOR') AND Usuario <> '" + Program.usActivo.Usuario + "' " +
+                var query = "";
+                if (perfil == "")
+                {
+                    query = "select Usuario, Nombre from USUARIOS " +
+                            "where RTRIM(Categoria) in ('MASTER', 'SURTIDOR') AND Usuario <> '" + Program.usActivo.Usuario + "' " +
                             "ORDER BY Nombre";
+                }
+                else if (perfil == "EMPAQUE")
+                {
+                    query = "select Usuario, Nombre from USUARIOS " +
+                            "where RTRIM(Categoria) in ('EMPAQUETADOR') AND Usuario <> '" + Program.usActivo.Usuario + "' " +
+                            "ORDER BY Nombre";
+                }
+                else
+                {
+                    query = "select Usuario, Nombre from USUARIOS " +
+                            "where RTRIM(Categoria) in ('SURTIDOR', 'EMPAQUETADOR') AND Usuario <> '" + Program.usActivo.Usuario + "' AND ISNULL(AreaAsignada,'') <> '' " +
+                            "ORDER BY Nombre";
+                }
                 cbUsuarios.DataSource = Program.GetDataTable(query, 1).ToList<Usuarios>();
                 cbUsuarios.SelectedIndex = 0;
             }

@@ -67,6 +67,7 @@
             this.colporc_empaque = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colindicaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.collote = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcausa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -336,7 +337,8 @@
             this.colporc_surtido,
             this.colporc_empaque,
             this.colindicaciones,
-            this.collote});
+            this.collote,
+            this.colcausa});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView1.Name = "gridView1";
@@ -549,6 +551,14 @@
             this.collote.Visible = true;
             this.collote.VisibleIndex = 20;
             this.collote.Width = 90;
+            // 
+            // colcausa
+            // 
+            this.colcausa.Caption = "Causa Detenido";
+            this.colcausa.FieldName = "causadetenido";
+            this.colcausa.Name = "colcausa";
+            this.colcausa.Visible = true;
+            this.colcausa.VisibleIndex = 21;
             // 
             // popupMenu1
             // 
@@ -819,7 +829,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbEntrega.Properties.Items.AddRange(new object[] {
             "DOMICILIO",
-            "OCURRE"});
+            "OCURRE",
+            "PASAN"});
             this.cbEntrega.Size = new System.Drawing.Size(152, 22);
             this.cbEntrega.TabIndex = 18;
             // 
@@ -1021,5 +1032,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraGrid.Columns.GridColumn colcausa;
     }
 }

@@ -65,7 +65,7 @@ namespace SWYRA_Movil
                         MessageBox.Show(@"Artículo no registrado en la lista del surtido", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                         txtCodigo.Focus();
                     }
-                    else if(tot == 1)
+                    else if(tot >= 1)
                     {
                         txtCant.ReadOnly = true; // !(cod.cant_piezas == 1);
                         txtCant.Value = cod.cant_piezas;
@@ -97,8 +97,16 @@ namespace SWYRA_Movil
             if (txtCant.ReadOnly)
             {
                 var query = "UPDATE DETALLEPEDIDOMERC SET Cancelado = " + (art.cancelado ? "1" : "0") + ", " +
-                            "CANT = " + art.cant + " WHERE CVE_DOC  = '" + art.cve_doc + "' AND CONSEC = " + art.consec.ToString() +
-                            " UPDATE DETALLEPEDIDO SET CANTSURTIDO = CANTSURTIDO - " + txtCant.Value.ToString() +
+                            "CANT = " + art.cant + " WHERE CVE_DOC  = '" + art.cve_doc + "' AND CONSEC = " + art.consec.ToString() + " and ISNULL(CANCELADO,0) = 0" +
+                            " DECLARE @CONSEC_PADRE INT " +
+                            "SELECT @CONSEC_PADRE = ISNULL(CONSEC_PADRE,0) FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CONSEC = " + art.consec.ToString() +
+                            " UPDATE DETALLEPEDIDOMERC SET TOTART = TOTART - 1 WHERE CVE_DOC = '" + art.cve_doc + "' AND CONSEC = @CONSEC_PADRE " +
+                            "update DETALLEPEDIDOMERC set CANCELADO = CASE WHEN TotArt = 0 THEN 1 ELSE 0 END where (LTRIM(CVE_DOC) = '" + art.cve_doc + "') and CONSEC = @CONSEC_PADRE " +
+                            " DECLARE @CONSEC_PADRE2 INT " +
+                            "SELECT @CONSEC_PADRE2 = ISNULL(CONSEC_PADRE,0) FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CONSEC = @CONSEC_PADRE AND TOTART = 0 " +
+                            "UPDATE DETALLEPEDIDOMERC SET TOTART = TOTART - 1 WHERE CVE_DOC = '" + art.cve_doc + "' AND CONSEC = @CONSEC_PADRE2 " +
+                            "update DETALLEPEDIDOMERC set CANCELADO = CASE WHEN TotArt = 0 THEN 1 ELSE 0 END where (LTRIM(CVE_DOC) = '" + art.cve_doc + "') and CONSEC = @CONSEC_PADRE2 " +
+                            "UPDATE DETALLEPEDIDO SET CANTSURTIDO = CANTSURTIDO - " + txtCant.Value.ToString() +
                             ", SURTIDO = 0 WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() +
                             " UPDATE INVENTARIO SET EXIST = EXIST + " + txtCant.Value.ToString() + " WHERE CVE_ART = '" + art.cve_art + "' " +
                             "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
@@ -119,6 +127,7 @@ namespace SWYRA_Movil
         {
             det = CargaDetalleMerc();
             dgDetallePed.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
+            txtCant.ReadOnly = true;
         }
 
         private List<DetallePedidoMerc> CargaDetalleMerc()
@@ -136,7 +145,7 @@ namespace SWYRA_Movil
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Artículo NO ASIGNADO al pedido.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
             return tmp;
         }
@@ -164,7 +173,7 @@ namespace SWYRA_Movil
 
         private void txtCant_LostFocus(object sender, EventArgs e)
         {
-            actualizaDet();
+            //actualizaDet();
         }
     }
 }

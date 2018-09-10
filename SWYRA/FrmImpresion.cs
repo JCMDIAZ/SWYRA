@@ -84,6 +84,11 @@ namespace SWYRA
         private void imprimir(Impresion imp)
         {
             List<Pedidos> ped = CargaPedido(imp.cve_doc);
+            foreach (var pd in ped)
+            {
+                string[] rs = pd.condicion.Split(';');
+                pd.condicion = rs[rs.Length -1];
+            }
             List<DetallePedidoMerc> det = CargaDetalle(imp.cve_doc);
             XtraReport1 rpt1 = new XtraReport1();
             rpt1.DataSource = ped;

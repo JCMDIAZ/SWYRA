@@ -98,6 +98,7 @@
             this.xrLabel19 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel20 = new DevExpress.XtraReports.UI.XRLabel();
             this.direccion = new DevExpress.XtraReports.UI.CalculatedField();
+            this.obs = new DevExpress.XtraReports.UI.CalculatedField();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -1121,7 +1122,7 @@
             this.xrLabel16.BackColor = System.Drawing.Color.White;
             this.xrLabel16.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel16.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "observaciones")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "obs")});
             this.xrLabel16.Dpi = 100F;
             this.xrLabel16.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel16.ForeColor = System.Drawing.Color.Black;
@@ -1382,6 +1383,11 @@
             this.direccion.Expression = "Iif([enviar]== \'\' , [direccion1] + \' \' +[direccion2]  , [consignacion])";
             this.direccion.Name = "direccion";
             // 
+            // obs
+            // 
+            this.obs.Expression = "[observaciones] + \' / \' + [indicaciones]";
+            this.obs.Name = "obs";
+            // 
             // ResumenPedido
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1392,7 +1398,8 @@
             this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
             this.strContado,
             this.totRemitentes,
-            this.direccion});
+            this.direccion,
+            this.obs});
             this.DataSource = this.bindingSource1;
             this.Margins = new System.Drawing.Printing.Margins(50, 50, 101, 50);
             this.Version = "16.2";
@@ -1471,5 +1478,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel19;
         private DevExpress.XtraReports.UI.XRLabel xrLabel20;
         private DevExpress.XtraReports.UI.CalculatedField direccion;
+        private DevExpress.XtraReports.UI.CalculatedField obs;
     }
 }

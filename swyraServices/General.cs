@@ -105,15 +105,17 @@ namespace swyraServices
         public static DataTable GetDataTable(string db, string query, int idError)
         {
             DataTable dt = new DataTable();
+            SqlConnection sqlCon = new SqlConnection();
             try
             {
-                var sqlCon = GetConnection(db);
+                sqlCon = GetConnection(db);
                 var sqlAdt = new SqlDataAdapter(query, sqlCon);
                 sqlAdt.Fill(dt);
                 CloseConnection(sqlCon);
             }
             catch (Exception e)
             {
+                CloseConnection(sqlCon);
                 throw new ApplicationException(string.Format("Error {0}: {1}", idError.ToString(), e.Message.ToString()));
             }
             return dt;
@@ -139,9 +141,10 @@ namespace swyraServices
         public static bool GetExecute(string db, string query, int idError)
         {
             bool b = false;
+            SqlConnection sqlCon = new SqlConnection();
             try
             {
-                var sqlCon = GetConnection(db);
+                sqlCon = GetConnection(db);
                 var sqlCmd = new SqlCommand(query, sqlCon);
                 sqlCmd.ExecuteNonQuery();
                 b = true;
@@ -149,6 +152,7 @@ namespace swyraServices
             }
             catch (Exception e)
             {
+                CloseConnection(sqlCon);
                 throw new ApplicationException(string.Format("Error {0}: {1}", idError.ToString(), e.Message.ToString()));
             }
             return b;

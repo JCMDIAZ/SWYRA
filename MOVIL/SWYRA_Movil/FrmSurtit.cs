@@ -213,6 +213,7 @@ namespace SWYRA_Movil
             if (ValidaCambios())
             {
                 MessageBox.Show("Existen cambios en el PEDIDO, por lo que el último movimiento no se registro, se regresara al menú anterior", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
                 return;
             }
             try
@@ -256,7 +257,7 @@ namespace SWYRA_Movil
                     art.orden = (orb == null) ? 0 :orb.orden;
 
                     linea = "16";
-                    var confirmar = "IF EXISTS( SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' AND ISNULL(CANCELADO,0) = 0) " +
+                    var confirmar = "IF EXISTS( SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' AND ISNULL(CANCELADO,0) = 0 AND ISNULL(CONSEC_PADRE,0) = 0) " +
                                     "UPDATE DETALLEPEDIDOMERC SET CANT = CANT + " + txtCant.Value.ToString() + ", " +
                                     "lote = (isnull(lote,'') + case when isnull(lote,'') <> '' then ';' else '' end + '" + Lote + "') " +
                                     "WHERE CVE_DOC = '" + art.cve_doc + "' AND CODIGO_BARRA = '" + lastCB + "' ELSE ";
@@ -315,6 +316,12 @@ namespace SWYRA_Movil
 
         private void pbIncompleto_Click(object sender, EventArgs e)
         {
+            if (ValidaCambios())
+            {
+                MessageBox.Show("Existen cambios en el PEDIDO, por lo que el último movimiento no se registro, se regresara al menú anterior", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
+                return;
+            }
             if (art != null)
             {
                 FrmSurtir4 frmConf = new FrmSurtir4();
