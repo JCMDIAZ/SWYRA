@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Configuration;
+using System.Data.Entity.Migrations.Infrastructure;
 using System.Diagnostics.Eventing.Reader;
 using static swyraServices.General;
 using System.Globalization;
@@ -431,14 +432,14 @@ namespace swyraServices
             {
                 p.condicion = p.condicion ?? "";
                 string[] dats = p.condicion.Split(';');
-                if (dats.Length == 1)
+                if (dats.Length == 2)
                 {
                     string[] clvTipoServ = {"L", "F", "LU", "FU"};
                     string[] catTipoServ = {"LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE"};
                     index = Array.IndexOf(clvTipoServ, dats[0]);
                     p.tiposervicio = (index > 0) ? catTipoServ[index] : "LOCAL";
                 }
-                else if (dats.Length > 1)
+                else if (dats.Length > 2)
                 {
                     string[] clvTipoServ = { "L", "F", "LU", "FU" };
                     string[] catTipoServ = { "LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE" };
@@ -519,7 +520,7 @@ namespace swyraServices
             try
             {
                 var query =
-                    "select CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
+                    "select CVE_DOC, NUM_PAR, CVE_ART, CANTSURTIDO CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
                     "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, " +
                     "TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, CANTSURTIDO, SURTIDO, TDESC, SUBTO, TCOMI, SERVI " +
                     "from DETALLEPEDIDO where CVE_DOC = '" + cvedoc + "'";
@@ -747,7 +748,7 @@ namespace swyraServices
                         linea = "10";
                         List<DetallePedidos> listDbDetalleEx = CargaDbDetallePedidoDev(pedFb.cve_doc);
                         linea = "11";
-                        var detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art)).ToList();
+                        var detalleAct = listFbDetalle.Where(o => listDbDetalle.Any(p => o.cve_art == p.cve_art && o.num_par == p.num_par)).ToList();
                         linea = "12";
                         var detalleNuevos = listFbDetalle.Except(detalleAct).ToList();
                         linea = "13";
@@ -903,9 +904,9 @@ namespace swyraServices
                             "CVE_DOC = '" + detDB.cve_doc + "'";
                         GetExecute("DB", query2, 25);
                         detDB.cant = detFB.cant;
-                        detDB.cantsurtido = detFB.cant;
+                        //detDB.cantsurtido = detFB.cant;
                         detDB.cantpendiente = 0;
-                        detDB.surtido = true;
+                        //detDB.surtido = false;
                     }
                     else if (detDB.cantsurtido <= detFB.cant)
                     {
@@ -915,7 +916,7 @@ namespace swyraServices
                             cantpendant = detDB.cantpendiente;
                             detDB.cantpendiente = detDB.cant - detDB.cantsurtido;
                         }
-                        detDB.surtido = ((detDB.cantsurtido + detDB.cantpendiente) == detDB.cant);
+                        //detDB.surtido = ((detDB.cantsurtido + detDB.cantpendiente) == detDB.cant);
                     }
                 }
                 var query3 = "update DETALLEPEDIDO SET CANT = " + detFB.cant.ToString(cultureInfo) + 
@@ -1070,7 +1071,7 @@ namespace swyraServices
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
                     "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
-                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO " +
+                    "TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, OBSERVACIONES, INDICACIONES INDICACION " +
                     "from PEDIDO where ESTATUSPEDIDO = 'FACTURACION'";
                 listDbPedidos = GetDataTable("DB", query, 30).ToList<Pedidos>();
             }
@@ -1087,7 +1088,8 @@ namespace swyraServices
             try
             {
                 var query =
-                    "SELECT p.CVE_DOC, ('A ' + p.OCURREDOMICILIO + ' ' + o.Guias) observaciones, p.ESTATUSPEDIDO FROM PEDIDO p JOIN ( " +
+                    "SELECT p.CVE_DOC, ('A ' + p.OCURREDOMICILIO + ' ' + o.Guias) observaciones, p.ESTATUSPEDIDO, " +
+                    "CONDICION, TIPOSERVICIO, OCURREDOMICILIO FROM PEDIDO p JOIN ( " +
                     "SELECT d1.CVE_DOC, 'TOTAL DE GUIAS : ' + CAST(COUNT(d1.NUM_GUIA) AS VARCHAR(MAX)) + '; ' + STUFF((select '; ' + " +
                     "CASE WHEN TIPOPAQUETE IN('ATADOS', 'TARIMA') THEN TIPOPAQUETE + ' C/' + CAST(TOTART AS VARCHAR(2)) ELSE TIPOPAQUETE END + ' # ' + cast(d2.CONSEC_EMPAQUE as varchar(3)) + ' GUIA: ' + d2.NUM_GUIA " +
                     "from DETALLEPEDIDOMERC d2 where d2.NUM_GUIA IS NOT NULL and d2.CVE_DOC = d1.CVE_DOC FOR XML PATH('')), 1, 1, '') Guias " +
@@ -1108,7 +1110,7 @@ namespace swyraServices
             try
             {
                 var query =
-                    "SELECT CVE_DOC, ESTATUSPEDIDO FROM PEDIDO " +
+                    "SELECT CVE_DOC, ESTATUSPEDIDO, CVE_OBS, OBSERVACIONES, INDICACIONES INDICACION FROM PEDIDO " +
                     "WHERE ESTATUSPEDIDO = 'PORCANCELAR' ";
                 listDbPedidos = GetDataTable("DB", query, 30).ToList<Pedidos>();
             }
@@ -1130,8 +1132,8 @@ namespace swyraServices
                         "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
                         "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
                         "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, MAN_IEPS, APL_MAN_IMP, COUTA_IEPS, APL_MAN_IEPS, MTO_CUOTA, " +
-                        "CVE_ESQ) VALUES ('" + detDB.cve_doc + "', " + detDB.num_par.ToString() + ", '" + detDB.cve_art + 
-                        "', " + detDB.cantsurtido + ", " + detDB.pxs + ", " + detDB.prec + ", " + detDB.cost + ", " + detDB.impu1 + 
+                        "CVE_ESQ) VALUES ('" + detDB.cve_doc + "', " + detDB.num_par.ToString(cultureInfo) + ", '" + detDB.cve_art + 
+                        "', " + detDB.cantsurtido + ", " + detDB.cantsurtido + ", " + detDB.prec + ", " + detDB.cost + ", " + detDB.impu1 + 
                         ", " + detDB.impu2 + ", " + detDB.impu3 + ", " + detDB.impu4 + ", " + detDB.imp1apla + ", " + detDB.imp2apla +
                         ", " + detDB.imp3apla + ", " + detDB.imp4apla + ", " + detDB.totimp1 + ", " + detDB.totimp2 + ", " + detDB.totimp3 +
                         ", " + detDB.totimp4 + ", " + detDB.desc1 + ", " + detDB.desc2 + ", " + detDB.desc3 + ", " + detDB.comi +
@@ -1148,16 +1150,17 @@ namespace swyraServices
                 }
                 else
                 {
-                    if ((int)detDB.cantsurtido == 0)
+                    if (Math.Abs(detDB.cantsurtido) < 0.05)
                     {
                         var query3 = "delete from par_factp01 where (cve_doc = '" + detDB.cve_doc + "') and (num_par = " + detDB.num_par + ")";
                         GetFbExecute("FB", query3, 62);
                     }
                     else
                     {
-                        var query3 = "update PAR_FACTP01 SET CANT = " + detDB.cantsurtido.ToString(cultureInfo) +
+                        var query3 = "update par_factp01 SET CANT = " + detDB.cantsurtido.ToString(cultureInfo) +
+                                     ", PXS = " + detDB.cantsurtido.ToString(cultureInfo)+
                                      ", TOTIMP4 = " + detDB.totimp4.ToString(cultureInfo) +
-                                     ", TOT_PARTIDA = " + detDB.tot_partida.ToString() + " where NUM_PAR = " +
+                                     ", TOT_PARTIDA = " + detDB.tot_partida.ToString(cultureInfo) + " where NUM_PAR = " +
                                      detDB.num_par + " AND CVE_DOC = '" + detDB.cve_doc + "'";
                         GetFbExecute("FB", query3, 31);
                     }
@@ -1173,22 +1176,63 @@ namespace swyraServices
         {
             try
             {
+                var query = "";
+                if (pedFac.cve_obs == 0)
+                {
+                    query = "select (ULT_CVE + 1) CVE_OBS FROM TBLCONTROL01 WHERE ID_TABLA = 56";
+                    var f2 = GetFbDataTable("FB", query, 41).ToData<Guias>();
+                    query = "UPDATE TBLCONTROL01 SET ULT_CVE = " + f2.cve_obs.ToString(cultureInfo) + " WHERE ID_TABLA = 56";
+                    var res = GetFbExecute("FB", query, 48);
+                    query = "insert into OBS_DOCF01 (CVE_OBS) values (" + f2.cve_obs + ") ";
+                    res = GetFbExecute("FB", query, 45);
+                    query = "update FACTP01 set CVE_OBS = " + f2.cve_obs + " where CVE_DOC = '" + pedFac.cve_doc + "'";
+                    res = GetFbExecute("FB", query, 46);
+                }
+
+                var sf = pedFac.observaciones + "/" + pedFac.indicacion;
+                var mf = (sf.Length > 255) ? 255 : sf.Length;
+                query = "update OBS_DOCF01 set STR_OBS = '" + sf.Substring(0, mf) +
+                        "' where CVE_OBS = '" + pedFac.cve_obs + "' ";
+                var res2 = GetFbExecute("FB", query, 47);
+
                 var query3 = "";
                 if (pedFac.estatuspedido == "PORCANCELAR")
                 {
                     query3 = "update FACTP01 SET STATUS = 'C'" + 
                              ", FECHA_CANCELA = GETDATE()" +
-                             ", CONDICION = CONDICION + '" + pedFac.indicacion + "' " +
+                             ", CONDICION = CONDICION + '/" + pedFac.indicacion + "' " +
                              "where CVE_DOC = '" + pedFac.cve_doc + "'";
                 }
                 else
                 {
+                    string[] dats = pedFac.condicion.Split(';');
+                    string resp = "";
+                    if (dats.Length == 2)
+                    {
+                        string[] clvTipoServ = { "L", "F", "LU", "FU" };
+                        string[] catTipoServ = { "LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE" };
+                        int index = Array.IndexOf(catTipoServ, pedFac.tiposervicio);
+                        resp = ((index > 0) ? clvTipoServ[index] : "L") + ";" + dats[1];
+                    }
+                    else if (dats.Length > 2)
+                    {
+                        string[] clvTipoServ = { "L", "F", "LU", "FU" };
+                        string[] catTipoServ = { "LOCAL", "FORANEO", "LOCAL URGENTE", "FORANEO URGENTE" };
+                        int index = Array.IndexOf(catTipoServ, pedFac.tiposervicio);
+
+                        string[] clvTipoDom = { "OCU", "PAS", "DOM" };
+                        string[] catTipoDom = { "OCURRE", "PASAN", "DOMICILIO" };
+                        int index2 = Array.IndexOf(catTipoDom, pedFac.ocurredomicilio);
+                        resp = ((index > 0) ? clvTipoServ[index] : "L") + ";" + ((index2 > 0) ? clvTipoDom[index2] : "OCU") + dats[2];
+                    }
+
                     query3 = "update FACTP01 SET CAN_TOT = " + pedFac.can_tot +
                              ", IMP_TOT4 = " + pedFac.imp_tot4 +
                              ", DES_TOT = " + pedFac.des_tot +
                              ", COM_TOT = " + pedFac.com_tot +
                              ", IMPORTE = " + pedFac.importe +
                              ", CONTADO = '" + pedFac.contado + "' " +
+                             ", CONDICION = '" + resp + "' " +
                              "where CVE_DOC = '" + pedFac.cve_doc + "'";
                 }
                 GetFbExecute("FB", query3, 33);
@@ -1252,11 +1296,11 @@ namespace swyraServices
                 {
                     query = "select (ULT_CVE + 1) CVE_INFO FROM TBLCONTROL01 WHERE ID_TABLA = 70";
                     var f1 = GetFbDataTable("FB", query, 41).ToData<Guias>();
-                    query = "UPDATE TBLCONTROL01 SET ULT_CVE = " + f1.cve_info.ToString() + " WHERE ID_TABLA = 70";
+                    query = "UPDATE TBLCONTROL01 SET ULT_CVE = " + f1.cve_info.ToString(cultureInfo) + " WHERE ID_TABLA = 70";
                     var res = GetFbExecute("FB", query, 48);
-                    query = "insert into INFENVIO01 (CVE_INFO) values (" + f1.cve_info.ToString() + ") ";
+                    query = "insert into INFENVIO01 (CVE_INFO) values (" + f1.cve_info.ToString(cultureInfo) + ") ";
                     res = GetFbExecute("FB", query, 42);
-                    query = "update FACTF01 set DAT_ENVIO = " + f1.cve_info.ToString() + " where CVE_DOC = '" + fac.cve_doc + "'";
+                    query = "update FACTF01 set DAT_ENVIO = " + f1.cve_info.ToString(cultureInfo) + " where CVE_DOC = '" + fac.cve_doc + "'";
                     res = GetFbExecute("FB", query, 43);
                     fac = CargaFbFactura(fac.doc_ant);
                 }
@@ -1264,7 +1308,7 @@ namespace swyraServices
                 {
                     query = "select (ULT_CVE + 1) CVE_OBS FROM TBLCONTROL01 WHERE ID_TABLA = 56";
                     var f2 = GetFbDataTable("FB", query, 41).ToData<Guias>();
-                    query = "UPDATE TBLCONTROL01 SET ULT_CVE = " + f2.cve_obs.ToString() + " WHERE ID_TABLA = 56";
+                    query = "UPDATE TBLCONTROL01 SET ULT_CVE = " + f2.cve_obs.ToString(cultureInfo) + " WHERE ID_TABLA = 56";
                     var res = GetFbExecute("FB", query, 48);
                     query = "insert into OBS_DOCF01 (CVE_OBS) values (" + f2.cve_obs + ") ";
                     res = GetFbExecute("FB", query, 45);

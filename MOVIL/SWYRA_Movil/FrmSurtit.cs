@@ -274,7 +274,7 @@ namespace SWYRA_Movil
                                 " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() +
                                 " UPDATE INVENTARIO SET EXIST = EXIST - " + txtCant.Value.ToString() + " WHERE CVE_ART = '" + art.cve_art + "' " +
                                 "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
-                                "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
+                                "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(ISNULL(SURTIDO,0)) as float)) * 100.0 porc from DETALLEPEDIDO " +
                                 "where CVE_DOC = '" + art.cve_doc + "' group by CVE_DOC) as r ON p.CVE_DOC = r.CVE_DOC ";
                     linea = "18";
                     Program.GetExecute(query, 2);

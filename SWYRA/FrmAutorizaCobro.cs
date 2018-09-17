@@ -83,7 +83,7 @@ namespace SWYRA
                 var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = '" + pedido.estatuspedido + "', " +
                             "FECHA_CANCELA = " + ((pedido.estatuspedido == "PORCANCELAR") ? "GETDATE()" : "Null") + ", " +
                             "FECHAAUT = " + ((pedido.estatuspedido == "SURTIR") ? "GETDATE()" : "Null") + ", " +
-                            "INDICACIONES = " + (pedido.indicaciones == null ? "NULL" : "'" + pedido.indicaciones.Replace("'", "") + "'") + ", " +
+                            (pedido.indicaciones == null ? "" : "INDICACIONES = '" + pedido.indicaciones.Replace("'", "") + "', ") + 
                             "CONTADO = '" + pedido.contado + "', " +
                             "COBRADOR_AUTORIZO = '" + pedido.cobrador_autorizo + "' " +
                             "WHERE CVE_DOC = '" + pedido.cve_doc + "'";
@@ -120,12 +120,35 @@ namespace SWYRA
             return m;
         }
 
+        private bool validaMinMultiplo()
+        {
+            bool m = false;
+            try
+            {
+                var query = "select * from DETALLEPEDIDO dp left join INVENTARIO i on dp.CVE_ART = i.CVE_ART " +
+                            "where cast(dp.CANT as int) % cast(i.UNI_EMP as int) <> 0 and ltrim(CVE_DOC) = '" + pedido.cve_doc.Trim() + "' ";
+                List<DetallePedidos> res = GetDataTable("DB", query, 52).ToList<DetallePedidos>();
+                if (res.Count > 0)
+                {
+                    var dt = res.First();
+                    MessageBox.Show(dt.cve_art + @" no cumple con el multiplo de venta, favor de solicitar a asistente su modificación.");
+                    m = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return m;
+        }
+
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             popupMenu1.HidePopup();
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.FirstOrDefault(o => o.cve_doc == cve_doc);
             if (validaDuplicidad()) { return; }
+            if (validaMinMultiplo()) { return; }
             DialogResult dialogResult = MessageBox.Show(@"¿Esta seguro de AUTORIZAR el pedido " + pedido.cve_doc.Trim() + @"?",
                 @"AUTORIZAR", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -146,6 +169,7 @@ namespace SWYRA
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
             pedido = listPedidos.FirstOrDefault(o => o.cve_doc == cve_doc);
             if (validaDuplicidad()) { return; }
+            if (validaMinMultiplo()) { return; }
             DialogResult dialogResult = MessageBox.Show(@"¿Esta seguro de AUTORIZAR DE CONTADO el pedido " + pedido.cve_doc.Trim() + @"?",
                 @"AUTORIZAR CONTADO", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)

@@ -111,7 +111,7 @@ namespace SWYRA
                     "declare @fech datetime " +
                     "select TOP 1 @fech = FECHAMOV from PEDIDO_HIST " +
                     "where CVE_DOC = '" + cvedoc + "' and ESTATUSPEDIDO = 'SURTIENDO' order by FECHAMOV " +
-                    "SELECT  CVE_DOC, CVE_CLPV, @fech FECHA_DOC, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, p.CVE_VEND, OBSERVACIONES, " +
+                    "SELECT  CVE_DOC, CVE_CLPV, @fech FECHA_DOC, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, p.CVE_VEND, OBSERVACIONES, INDICACIONES, " +
                     "CONDICION, RFC, AUTORIZA, FOLIO, CONTADO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, TIPOSERVICIO, ESTATUSPEDIDO, COBRADOR_ASIGNADO, @porc porc_surtido, " +
                     "COBRADOR_AUTORIZO, uCobAsig.Nombre cobrador_asignado_n, uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, cliente.NOMBRE CLIENTE, FECHAAUT, " +
                     "TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, TotCostoGuias, OCURREDOMICILIO, p.NOMBRE_VENDEDOR, CONSIGNACION, " +

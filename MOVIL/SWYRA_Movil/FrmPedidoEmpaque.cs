@@ -13,6 +13,7 @@ namespace SWYRA_Movil
     {
         private List<Pedidos> listPedidos = new List<Pedidos>();
         private Pedidos ped = new Pedidos();
+        private string are = "";
 
         public FrmPedidoEmpaque()
         {
@@ -69,9 +70,13 @@ namespace SWYRA_Movil
 
         private void pnlSurtido_Click(object sender, EventArgs e)
         {
-            FrmPedidosArea frmPedA = new FrmPedidosArea();
-            frmPedA.Show();
-            this.Close();
+            CuentaPedidos();
+            if (are != "0")
+            {
+                FrmPedidosArea frmPedA = new FrmPedidosArea();
+                frmPedA.Show();
+                this.Close();
+            }
         }
 
         private void FrmPedidoEmpaque_Load(object sender, EventArgs e)
@@ -130,7 +135,7 @@ namespace SWYRA_Movil
                 var query = "select ESTATUSPEDIDO, ISNULL(SOLAREA,0) SOLAREA from PEDIDO where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE')";
                 listPedidos = Program.GetDataTable(query, 3).ToList<Pedidos>();
                 string[] opc = { "SURTIR", "MODIFICACION", "DETENIDO", "DEVOLUCION" };
-                var are = listPedidos.Where(o => o.estatuspedido.In(opc) && o.solarea == true).ToList().Count.ToString();
+                are = listPedidos.Where(o => o.estatuspedido.In(opc) && o.solarea == true).ToList().Count.ToString();
                 lblCantArea.Text = are;
             }
             catch (Exception ex)

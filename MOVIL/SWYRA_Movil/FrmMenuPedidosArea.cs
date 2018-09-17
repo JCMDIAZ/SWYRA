@@ -60,6 +60,7 @@ namespace SWYRA_Movil
             if(n == 2)
             {
                 this.Close();
+                return;
             }
             if(n == 1)
             {
@@ -157,9 +158,32 @@ namespace SWYRA_Movil
             return m;
         }
 
+        private bool validaMinMultiplo()
+        {
+            bool m = false;
+            try
+            {
+                var query = "select * from DETALLEPEDIDO dp left join INVENTARIO i on dp.CVE_ART = i.CVE_ART " +
+                            "where cast(dp.CANT as int) % cast(i.UNI_EMP as int) <> 0 and ltrim(CVE_DOC) = '" + cvedoc + "' ";
+                List<DetallePedidos> res = Program.GetDataTable(query, 52).ToList<DetallePedidos>();
+                if (res.Count > 0)
+                {
+                    var dt = res.First();
+                    MessageBox.Show(dt.cve_art + @" no cumple con el multiplo de venta, favor de solicitar a asistente su modificación.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    m = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            return m;
+        }
+
         private void pbImprimir_Click(object sender, EventArgs e)
         {
             if (validaDuplicidad()) { return; }
+            if (validaMinMultiplo()) { return; }
             if (detA.Where(o => o.surtido == false).ToList().Count > 0)
             {
                 FrmSurtit frmSurtir = new FrmSurtit();
@@ -182,11 +206,11 @@ namespace SWYRA_Movil
             {
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
                             "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, NOMBRE_VENDEDOR, " +
-                            "CAPTURO, u.Nombre CAPTURO_N, OCURREDOMICILIO, u2.Nombre SURTIDOR_ASIGNADO_N, r.UbicacionEmpaque  " + 
+                            "CAPTURO, u.Nombre CAPTURO_N, OCURREDOMICILIO, u2.Nombre SURTIDOR_ASIGNADO_N, ISNULL(STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
+                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, ''),'') UbicacionEmpaque " +
                             "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                             "left join USUARIOS u on u.Usuario = p.CAPTURO " +
                             "left join USUARIOS u2 on u2.Usuario = p.SURTIDOR_ASIGNADO " +
-                            "left join (select top 1 * from PEDIDO_Ubicacion where LTRIM(CVE_DOC) = '" + cvedoc.Trim() + "') as r on r.CVE_DOC = p.CVE_DOC " +
                             "WHERE LTRIM(p.CVE_DOC) = '" + cvedoc.Trim() + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 txtPedido.Text = ped.cve_doc;
@@ -198,6 +222,7 @@ namespace SWYRA_Movil
                 CultureInfo culture = new CultureInfo("es-MX");
                 txtMonto.Text = ped.importe.ToString("C2", culture);
                 if (ped.estatuspedido == "DEVOLUCION") { lblInfo.Text = "POR CANCELAR"; }
+                lblUbica.Text = ((ped.ubicacionempaque != "") ? "Ubi: " + ped.ubicacionempaque : "");
                 if (valExistencias() == 2)
                 {
                     this.Close();
@@ -267,6 +292,7 @@ namespace SWYRA_Movil
             if (devA.Where(o => o.devuelto == false).ToList().Count > 0)
             {
                 FrmCancelacion frmCan = new FrmCancelacion();
+                frmCan.Area = true;
                 frmCan.ped = ped;
                 frmCan.det = devA.Where(o => o.devuelto == false).ToList();
                 frmCan.ShowDialog();

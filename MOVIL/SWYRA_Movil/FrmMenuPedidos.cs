@@ -35,8 +35,9 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
-                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, OCURREDOMICILIO, NOMBRE_VENDEDOR, " + 
-                            "CAPTURO, u.Nombre CAPTURO_N from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
+                            "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, OCURREDOMICILIO, NOMBRE_VENDEDOR, " +
+                            "CAPTURO, u.Nombre CAPTURO_N, ISNULL(STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
+                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, ''),'') UbicacionEmpaque from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                             "left join USUARIOS u on u.Usuario = p.CAPTURO WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 txtPedido.Text = ped.cve_doc;
@@ -53,6 +54,7 @@ namespace SWYRA_Movil
                 pbConcluir.Visible = validaExis(false);
                 lblConcluir.Visible = pbConcluir.Visible;
                 if (ped.estatuspedido == "DEVOLUCION") { lblInfo.Text = "POR CANCELAR"; }
+                lblUbica.Text = ((ped.ubicacionempaque != "") ? "Ubi: " + ped.ubicacionempaque : "");
             }
             catch (Exception ex)
             {
@@ -144,7 +146,29 @@ namespace SWYRA_Movil
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            return m;
+        }
+
+        private bool validaMinMultiplo()
+        {
+            bool m = false;
+            try
+            {
+                var query = "select * from DETALLEPEDIDO dp left join INVENTARIO i on dp.CVE_ART = i.CVE_ART " +
+                            "where cast(dp.CANT as int) % cast(i.UNI_EMP as int) <> 0 and ltrim(CVE_DOC) = '" + cvedoc + "' ";
+                List<DetallePedidos> res = Program.GetDataTable(query, 52).ToList<DetallePedidos>();
+                if (res.Count > 0)
+                {
+                    var dt = res.First();
+                    MessageBox.Show(dt.cve_art + @" no cumple con el multiplo de venta, favor de solicitar a asistente su modificación.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    m = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
             return m;
         }
@@ -154,6 +178,7 @@ namespace SWYRA_Movil
             if (det.Where(o => o.surtido == false).ToList().Count > 0)
             {
                 if (validaDuplicidad()) { return; }
+                if (validaMinMultiplo()) { return; }
                 FrmSurtit frmSurtir = new FrmSurtit();
                 frmSurtir.ped = ped;
                 frmSurtir.det = det.Where(o => o.surtido == false).ToList();
@@ -280,8 +305,12 @@ namespace SWYRA_Movil
                     else
                     {
                         ped.solarea = true;
-                        var query = "UPDATE PEDIDO SET SOLAREA = 1 " +
-                                    "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                        var query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                                    "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                                    "UPDATE PEDIDO SET SOLAREA = 1, ESTATUSPEDIDO = 'SURTIR' " +
+                                    "WHERE CVE_DOC = @cvedoc " +
+                                    "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                                    "@cvedoc, 'SURTIR AREA', getdate(), '" + Program.usActivo.Usuario + "')"; ;
                         var r = Program.GetExecute(query, 9);
                         MessageBox.Show(@"Falta por surtir en el área de Brocas.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     }

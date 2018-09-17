@@ -64,6 +64,7 @@
             this.pbDetener = new System.Windows.Forms.PictureBox();
             this.pbTransferir = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.lblUbica = new System.Windows.Forms.Label();
             this.pnlPorSurtir.SuspendLayout();
             this.pnlRetornar.SuspendLayout();
             this.SuspendLayout();
@@ -375,6 +376,15 @@
             this.label12.Text = "T";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // lblUbica
+            // 
+            this.lblUbica.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Bold);
+            this.lblUbica.ForeColor = System.Drawing.Color.Maroon;
+            this.lblUbica.Location = new System.Drawing.Point(45, 215);
+            this.lblUbica.Name = "lblUbica";
+            this.lblUbica.Size = new System.Drawing.Size(155, 17);
+            this.lblUbica.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // FrmMenuPedidosArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -382,6 +392,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.lblUbica);
             this.Controls.Add(this.pbTransferir);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pbDevolucion);
@@ -444,5 +455,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pbTransferir;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblUbica;
     }
 }

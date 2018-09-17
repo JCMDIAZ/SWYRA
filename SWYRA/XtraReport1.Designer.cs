@@ -69,6 +69,7 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.FechaImpresion = new DevExpress.XtraReports.UI.CalculatedField();
+            this.obs = new DevExpress.XtraReports.UI.CalculatedField();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -207,7 +208,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel13.BorderWidth = 1F;
             this.xrLabel13.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "observaciones")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "obs")});
             this.xrLabel13.Dpi = 100F;
             this.xrLabel13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(110F, 59.1875F);
@@ -668,6 +669,11 @@
             this.FechaImpresion.FieldType = DevExpress.XtraReports.UI.FieldType.DateTime;
             this.FechaImpresion.Name = "FechaImpresion";
             // 
+            // obs
+            // 
+            this.obs.Expression = "[observaciones] + \'/\' + [indicaciones]";
+            this.obs.Name = "obs";
+            // 
             // XtraReport1
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -679,7 +685,8 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
-            this.FechaImpresion});
+            this.FechaImpresion,
+            this.obs});
             this.DataSource = this.bindingSource1;
             this.Landscape = true;
             this.Margins = new System.Drawing.Printing.Margins(17, 17, 90, 40);
@@ -733,5 +740,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel27;
         private DevExpress.XtraReports.UI.XRLabel xrLabel28;
         private DevExpress.XtraReports.UI.CalculatedField FechaImpresion;
+        private DevExpress.XtraReports.UI.CalculatedField obs;
     }
 }

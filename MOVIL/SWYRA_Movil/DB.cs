@@ -272,6 +272,7 @@ namespace SWYRA_Movil
         public string num_guia { get; set; }
         public double pend { get; set; }
         public string empaque { get; set; }
+        public double presentacion { get; set; }
     }
 
     public class OrdenUbicacion

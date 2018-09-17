@@ -37,6 +37,8 @@
             this.pbConcluir = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.pnlPorSurtir = new System.Windows.Forms.Panel();
+            this.txtCapturo = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtOcurrDom = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtMonto = new System.Windows.Forms.TextBox();
@@ -63,8 +65,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblPendS = new System.Windows.Forms.Label();
             this.lblPendM = new System.Windows.Forms.Label();
-            this.txtCapturo = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblUbica = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.pnlPorSurtir.SuspendLayout();
             this.SuspendLayout();
@@ -137,6 +138,24 @@
             this.pnlPorSurtir.Location = new System.Drawing.Point(0, 0);
             this.pnlPorSurtir.Name = "pnlPorSurtir";
             this.pnlPorSurtir.Size = new System.Drawing.Size(238, 161);
+            // 
+            // txtCapturo
+            // 
+            this.txtCapturo.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
+            this.txtCapturo.Location = new System.Drawing.Point(97, 137);
+            this.txtCapturo.Name = "txtCapturo";
+            this.txtCapturo.ReadOnly = true;
+            this.txtCapturo.Size = new System.Drawing.Size(134, 17);
+            this.txtCapturo.TabIndex = 45;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(4, 140);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 20);
+            this.label8.Text = "Capturo";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtOcurrDom
             // 
@@ -367,23 +386,14 @@
             this.lblPendM.Text = "0";
             this.lblPendM.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtCapturo
+            // lblUbica
             // 
-            this.txtCapturo.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular);
-            this.txtCapturo.Location = new System.Drawing.Point(97, 137);
-            this.txtCapturo.Name = "txtCapturo";
-            this.txtCapturo.ReadOnly = true;
-            this.txtCapturo.Size = new System.Drawing.Size(134, 17);
-            this.txtCapturo.TabIndex = 45;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(4, 140);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 20);
-            this.label8.Text = "Capturo";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblUbica.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Bold);
+            this.lblUbica.ForeColor = System.Drawing.Color.Maroon;
+            this.lblUbica.Location = new System.Drawing.Point(43, 215);
+            this.lblUbica.Name = "lblUbica";
+            this.lblUbica.Size = new System.Drawing.Size(155, 17);
+            this.lblUbica.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FrmMenuPedidos
             // 
@@ -392,6 +402,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.lblUbica);
             this.Controls.Add(this.lblPendM);
             this.Controls.Add(this.lblPendS);
             this.Controls.Add(this.pbSurtir);
@@ -455,5 +466,6 @@
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.TextBox txtCapturo;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblUbica;
     }
 }
