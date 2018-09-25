@@ -52,9 +52,11 @@
             this.coltottarimas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltotcostoguias = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEstatusPedido = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFlete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbPaqueteria = new DevExpress.XtraBars.BarButtonItem();
             this.bbFacturacion = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -62,7 +64,10 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bbLevGuia = new DevExpress.XtraBars.BarButtonItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.ppFlete = new DevExpress.XtraBars.PopupControlContainer(this.components);
+            this.txtFlete = new DevExpress.XtraEditors.TextEdit();
+            this.BtnAceptarTS = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             coltotcajacarton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
@@ -70,6 +75,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppFlete)).BeginInit();
+            this.ppFlete.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFlete.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // coltotcajacarton
@@ -158,7 +166,8 @@
             this.coltotatados,
             this.coltottarimas,
             this.coltotcostoguias,
-            this.colEstatusPedido});
+            this.colEstatusPedido,
+            this.colFlete});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView1.Name = "gridView1";
@@ -302,6 +311,14 @@
             this.colEstatusPedido.Visible = true;
             this.colEstatusPedido.VisibleIndex = 14;
             // 
+            // colFlete
+            // 
+            this.colFlete.Caption = "FLETE";
+            this.colFlete.FieldName = "flete";
+            this.colFlete.Name = "colFlete";
+            this.colFlete.Visible = true;
+            this.colFlete.VisibleIndex = 15;
+            // 
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -323,7 +340,16 @@
             this.bbFacturacion.Caption = "Enviar a Facturación";
             this.bbFacturacion.Id = 2;
             this.bbFacturacion.Name = "bbFacturacion";
+            this.bbFacturacion.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bbFacturacion.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbFacturacion_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Imprimir Etiquetas";
+            this.barButtonItem1.Id = 3;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barManager1
             // 
@@ -382,12 +408,55 @@
             this.timer1.Interval = 30000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // barButtonItem1
+            // ppFlete
             // 
-            this.barButtonItem1.Caption = "Imprimir Etiquetas";
-            this.barButtonItem1.Id = 3;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.ppFlete.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.ppFlete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ppFlete.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.ppFlete.Controls.Add(this.txtFlete);
+            this.ppFlete.Controls.Add(this.BtnAceptarTS);
+            this.ppFlete.Controls.Add(this.label4);
+            this.ppFlete.Location = new System.Drawing.Point(265, 146);
+            this.ppFlete.Manager = this.barManager1;
+            this.ppFlete.Margin = new System.Windows.Forms.Padding(2);
+            this.ppFlete.Name = "ppFlete";
+            this.ppFlete.Size = new System.Drawing.Size(268, 90);
+            this.ppFlete.TabIndex = 48;
+            this.ppFlete.Visible = false;
+            // 
+            // txtFlete
+            // 
+            this.txtFlete.Location = new System.Drawing.Point(53, 18);
+            this.txtFlete.MenuManager = this.barManager1;
+            this.txtFlete.Name = "txtFlete";
+            this.txtFlete.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txtFlete.Properties.MaxLength = 50;
+            this.txtFlete.Size = new System.Drawing.Size(202, 18);
+            this.txtFlete.TabIndex = 14;
+            // 
+            // BtnAceptarTS
+            // 
+            this.BtnAceptarTS.BackColor = System.Drawing.Color.Firebrick;
+            this.BtnAceptarTS.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAceptarTS.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAceptarTS.ForeColor = System.Drawing.Color.White;
+            this.BtnAceptarTS.Location = new System.Drawing.Point(157, 41);
+            this.BtnAceptarTS.Name = "BtnAceptarTS";
+            this.BtnAceptarTS.Size = new System.Drawing.Size(98, 37);
+            this.BtnAceptarTS.TabIndex = 13;
+            this.BtnAceptarTS.Text = "ACEPTAR";
+            this.BtnAceptarTS.UseVisualStyleBackColor = false;
+            this.BtnAceptarTS.Click += new System.EventHandler(this.BtnAceptarTS_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 15);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "FLETE";
             // 
             // FrmRemision
             // 
@@ -396,6 +465,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(798, 383);
+            this.Controls.Add(this.ppFlete);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.barDockControlLeft);
@@ -416,6 +486,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppFlete)).EndInit();
+            this.ppFlete.ResumeLayout(false);
+            this.ppFlete.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFlete.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,5 +529,10 @@
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraGrid.Columns.GridColumn colEstatusPedido;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn colFlete;
+        private DevExpress.XtraBars.PopupControlContainer ppFlete;
+        private DevExpress.XtraEditors.TextEdit txtFlete;
+        internal System.Windows.Forms.Button BtnAceptarTS;
+        internal System.Windows.Forms.Label label4;
     }
 }

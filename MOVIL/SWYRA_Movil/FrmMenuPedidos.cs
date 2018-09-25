@@ -310,7 +310,7 @@ namespace SWYRA_Movil
                                     "UPDATE PEDIDO SET SOLAREA = 1, ESTATUSPEDIDO = 'SURTIR' " +
                                     "WHERE CVE_DOC = @cvedoc " +
                                     "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
-                                    "@cvedoc, 'SURTIR AREA', getdate(), '" + Program.usActivo.Usuario + "')"; ;
+                                    "@cvedoc, 'SURTIR BROCAS', getdate(), '" + Program.usActivo.Usuario + "')"; ;
                         var r = Program.GetExecute(query, 9);
                         MessageBox.Show(@"Falta por surtir en el área de Brocas.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     }
@@ -322,6 +322,7 @@ namespace SWYRA_Movil
                         var r = Program.GetExecute(query, 9);
                     }
                     MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    if (area) { MessageBox.Show(@"IMPRESIÓN DE LA HOJA DE SURTIDO EXITOSA. FAVOR DE TOMARLA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1); }
                     Close();
                 }
             }
@@ -343,6 +344,8 @@ namespace SWYRA_Movil
         {
             if (dev.Where(o => o.devuelto == false).ToList().Count > 0)
             {
+                if (validaDuplicidad()) { return; }
+                if (validaMinMultiplo()) { return; }
                 FrmCancelacion frmCan = new FrmCancelacion();
                 frmCan.ped = ped;
                 frmCan.det = dev.Where(o => o.devuelto == false).ToList();

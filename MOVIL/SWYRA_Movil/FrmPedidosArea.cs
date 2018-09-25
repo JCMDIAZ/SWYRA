@@ -68,7 +68,7 @@ namespace SWYRA_Movil
                         query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
                                 "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString() + "' " +
                                 "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
-                                "@cvedoc, 'SURTIENDO AREA', getdate(), '" + Program.usActivo.Usuario + "')";
+                                "@cvedoc, 'SURTIENDO BROCAS', getdate(), '" + Program.usActivo.Usuario + "')";
                         res = Program.GetExecute(query, 4);
                         FrmMenuPedidosArea frmMenuPed = new FrmMenuPedidosArea();
                         frmMenuPed.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString();

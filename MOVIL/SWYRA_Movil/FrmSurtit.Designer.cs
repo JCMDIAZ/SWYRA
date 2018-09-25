@@ -50,8 +50,7 @@
             this.txtMinimo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtMasterUbi = new System.Windows.Forms.TextBox();
+            this.lblMasterUbi = new System.Windows.Forms.Label();
             this.lblPendientes = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pbAnt = new System.Windows.Forms.PictureBox();
@@ -68,6 +67,7 @@
             this.txtClave = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUbica = new System.Windows.Forms.TextBox();
+            this.lblMinUbi = new System.Windows.Forms.Label();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlRetornar.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -211,16 +211,16 @@
             // 
             this.lblComentario.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
             this.lblComentario.ForeColor = System.Drawing.Color.Red;
-            this.lblComentario.Location = new System.Drawing.Point(11, 112);
+            this.lblComentario.Location = new System.Drawing.Point(22, 125);
             this.lblComentario.Name = "lblComentario";
-            this.lblComentario.Size = new System.Drawing.Size(218, 27);
+            this.lblComentario.Size = new System.Drawing.Size(194, 23);
             this.lblComentario.Text = "Comentario";
             this.lblComentario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // txtDescr
             // 
             this.txtDescr.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.txtDescr.Location = new System.Drawing.Point(65, 24);
+            this.txtDescr.Location = new System.Drawing.Point(65, 25);
             this.txtDescr.Multiline = true;
             this.txtDescr.Name = "txtDescr";
             this.txtDescr.ReadOnly = true;
@@ -230,7 +230,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label4.Location = new System.Drawing.Point(11, 27);
+            this.label4.Location = new System.Drawing.Point(11, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 19);
             this.label4.Text = "Desc.";
@@ -239,7 +239,7 @@
             // txtMinimo
             // 
             this.txtMinimo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtMinimo.Location = new System.Drawing.Point(65, 48);
+            this.txtMinimo.Location = new System.Drawing.Point(65, 49);
             this.txtMinimo.Name = "txtMinimo";
             this.txtMinimo.ReadOnly = true;
             this.txtMinimo.Size = new System.Drawing.Size(54, 19);
@@ -248,7 +248,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label3.Location = new System.Drawing.Point(22, 51);
+            this.label3.Location = new System.Drawing.Point(22, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 19);
             this.label3.Text = "Mínimo";
@@ -257,19 +257,19 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.txtMasterUbi);
+            this.panel2.Controls.Add(this.txtSurtido);
+            this.panel2.Controls.Add(this.txtPorSurtir);
+            this.panel2.Controls.Add(this.lblMinUbi);
+            this.panel2.Controls.Add(this.pbAnt);
+            this.panel2.Controls.Add(this.pbSig);
+            this.panel2.Controls.Add(this.lblMasterUbi);
             this.panel2.Controls.Add(this.lblPendientes);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.lblComentario);
-            this.panel2.Controls.Add(this.pbAnt);
-            this.panel2.Controls.Add(this.pbSig);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.txtExistencia);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.txtSurtido);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.txtPorSurtir);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.txtMaster);
             this.panel2.Controls.Add(this.label7);
@@ -284,23 +284,13 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 167);
             // 
-            // label13
+            // lblMasterUbi
             // 
-            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label13.Location = new System.Drawing.Point(119, 93);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(50, 19);
-            this.label13.Text = "Mast. Ubi.";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txtMasterUbi
-            // 
-            this.txtMasterUbi.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtMasterUbi.Location = new System.Drawing.Point(175, 90);
-            this.txtMasterUbi.Name = "txtMasterUbi";
-            this.txtMasterUbi.ReadOnly = true;
-            this.txtMasterUbi.Size = new System.Drawing.Size(54, 19);
-            this.txtMasterUbi.TabIndex = 39;
+            this.lblMasterUbi.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lblMasterUbi.Location = new System.Drawing.Point(125, 70);
+            this.lblMasterUbi.Name = "lblMasterUbi";
+            this.lblMasterUbi.Size = new System.Drawing.Size(104, 14);
+            this.lblMasterUbi.Text = "Mast. Ubi.";
             // 
             // lblPendientes
             // 
@@ -312,7 +302,7 @@
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(52, 147);
+            this.label12.Location = new System.Drawing.Point(52, 148);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(66, 15);
             this.label12.Text = "Pendientes";
@@ -341,7 +331,7 @@
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label11.Location = new System.Drawing.Point(11, 93);
+            this.label11.Location = new System.Drawing.Point(11, 106);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(48, 19);
             this.label11.Text = "Existencia";
@@ -350,7 +340,7 @@
             // txtExistencia
             // 
             this.txtExistencia.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtExistencia.Location = new System.Drawing.Point(65, 90);
+            this.txtExistencia.Location = new System.Drawing.Point(65, 103);
             this.txtExistencia.Name = "txtExistencia";
             this.txtExistencia.ReadOnly = true;
             this.txtExistencia.Size = new System.Drawing.Size(54, 19);
@@ -359,7 +349,7 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label10.Location = new System.Drawing.Point(134, 72);
+            this.label10.Location = new System.Drawing.Point(134, 85);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 19);
             this.label10.Text = "Surtido";
@@ -368,7 +358,7 @@
             // txtSurtido
             // 
             this.txtSurtido.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtSurtido.Location = new System.Drawing.Point(175, 69);
+            this.txtSurtido.Location = new System.Drawing.Point(175, 82);
             this.txtSurtido.Name = "txtSurtido";
             this.txtSurtido.ReadOnly = true;
             this.txtSurtido.Size = new System.Drawing.Size(54, 19);
@@ -377,7 +367,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label9.Location = new System.Drawing.Point(11, 72);
+            this.label9.Location = new System.Drawing.Point(11, 85);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 19);
             this.label9.Text = "Por Surtir";
@@ -386,7 +376,7 @@
             // txtPorSurtir
             // 
             this.txtPorSurtir.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtPorSurtir.Location = new System.Drawing.Point(65, 69);
+            this.txtPorSurtir.Location = new System.Drawing.Point(65, 82);
             this.txtPorSurtir.Name = "txtPorSurtir";
             this.txtPorSurtir.ReadOnly = true;
             this.txtPorSurtir.Size = new System.Drawing.Size(54, 19);
@@ -395,7 +385,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label8.Location = new System.Drawing.Point(134, 51);
+            this.label8.Location = new System.Drawing.Point(134, 52);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 19);
             this.label8.Text = "Master";
@@ -404,7 +394,7 @@
             // txtMaster
             // 
             this.txtMaster.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtMaster.Location = new System.Drawing.Point(175, 48);
+            this.txtMaster.Location = new System.Drawing.Point(175, 49);
             this.txtMaster.Name = "txtMaster";
             this.txtMaster.ReadOnly = true;
             this.txtMaster.Size = new System.Drawing.Size(54, 19);
@@ -445,6 +435,14 @@
             this.txtUbica.ReadOnly = true;
             this.txtUbica.Size = new System.Drawing.Size(54, 19);
             this.txtUbica.TabIndex = 15;
+            // 
+            // lblMinUbi
+            // 
+            this.lblMinUbi.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lblMinUbi.Location = new System.Drawing.Point(22, 70);
+            this.lblMinUbi.Name = "lblMinUbi";
+            this.lblMinUbi.Size = new System.Drawing.Size(96, 14);
+            this.lblMinUbi.Text = "Min. Ubi.";
             // 
             // detallePedidosBindingSource
             // 
@@ -509,8 +507,8 @@
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.PictureBox pbIncompletoB;
         public System.Windows.Forms.PictureBox pbIncompleto;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtMasterUbi;
+        private System.Windows.Forms.Label lblMasterUbi;
         public System.Windows.Forms.PictureBox pbFinal;
+        private System.Windows.Forms.Label lblMinUbi;
     }
 }

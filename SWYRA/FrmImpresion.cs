@@ -27,8 +27,8 @@ namespace SWYRA
             if (!tsTodos.IsOn)
             {
                 timer1.Start();
-            }
-            FiltrarCarga();
+            }FiltrarCarga();
+            gridView1.OptionsFind.AlwaysVisible = true;
         }
 
         private void FiltrarCarga()
@@ -46,7 +46,8 @@ namespace SWYRA
             {
                 var query =
                     "SELECT ID, FECHA, CVE_DOC, CVE_IMP, IMPRESION, REALIZADO " +
-                    "FROM IMPRESION WHERE ISNULL(REALIZADO,0) = " + (cond ? "1" : "0");
+                    "FROM IMPRESION WHERE ISNULL(REALIZADO,0) = " + (cond ? "1" : "0") +
+                    " AND FECHA between GETDATE() - 30 and GETDATE()";
                 list = GetDataTable("DB", query, 1).ToList<Impresion>();
             }
             catch (Exception ex)
@@ -115,10 +116,11 @@ namespace SWYRA
                     "CONDICION, RFC, AUTORIZA, FOLIO, CONTADO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, TIPOSERVICIO, ESTATUSPEDIDO, COBRADOR_ASIGNADO, @porc porc_surtido, " +
                     "COBRADOR_AUTORIZO, uCobAsig.Nombre cobrador_asignado_n, uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, cliente.NOMBRE CLIENTE, FECHAAUT, " +
                     "TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, TotCostoGuias, OCURREDOMICILIO, p.NOMBRE_VENDEDOR, CONSIGNACION, " +
-                    "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, p.ENVIAR " +
+                    "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, p.ENVIAR, uSurArea.Nombre surtidor_area_n " +
                     "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
                     "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
                     "left join USUARIOS uSurAsig on uSurAsig.Usuario = p.SURTIDOR_ASIGNADO " +
+                    "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
                     "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
                     "WHERE CVE_DOC = '" + cvedoc + "'";
                 peds = GetDataTable("DB", query, 2).ToList<Pedidos>();

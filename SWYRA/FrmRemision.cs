@@ -69,7 +69,7 @@ namespace SWYRA
                     "CONDICION, RFC, AUTORIZA, FOLIO, CONTADO, DES_FIN_PORC, DES_TOT_PORC, IMPORTE, TIPOSERVICIO, ESTATUSPEDIDO, COBRADOR_ASIGNADO, " +
                     "COBRADOR_AUTORIZO, uCobAsig.Nombre cobrador_asignado_n, uCobAut.Nombre cobrador_autorizo_n, cliente.NOMBRE CLIENTE, FECHAAUT, " +
                     "TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, TotCostoGuias, OCURREDOMICILIO, " +
-                    "FECHA_ENT, CONSIGNACION, FLETE, FLETE2, ENVIAR, CVE_PEDI, " +
+                    "FECHA_ENT, CONSIGNACION, ISNULL(FLT,FLETE) FLETE, FLETE2, ENVIAR, CVE_PEDI, " +
                     "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2 " +
                     "FROM PEDIDO p left join USUARIOS uCobAsig on uCobAsig.Usuario = p.COBRADOR_ASIGNADO " +
                     "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
@@ -87,17 +87,23 @@ namespace SWYRA
         {
             if (e.Button == MouseButtons.Right && gridView1.RowCount > 0)
             {
-                //popupMenu1.ShowPopup(MousePosition); --Deshabilitado temporalmente por el usuario
+                popupMenu1.ShowPopup(MousePosition);
             }
         }
 
         private void bbPaqueteria_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
-            var fPaq = new FrmGeneraGuias();
+            /*var fPaq = new FrmGeneraGuias();
             fPaq.cve_doc = cve_doc.ToString();
             fPaq.ShowDialog();
-            fPaq.Close();
+            fPaq.Close();*/
+            pedido = listPedidos.Where(o => o.cve_doc == cve_doc).FirstOrDefault();
+            Rectangle rect = Screen.GetWorkingArea(this);
+            Point point = new Point(rect.Width / 2 - ppFlete.Width / 2,
+                rect.Height / 2 - ppFlete.Height / 2);
+            ppFlete.ShowPopup(point);
+            popupMenu1.HidePopup();
         }
 
         private void CargaDetallePedidoMercs(string cve_doc)
@@ -503,6 +509,30 @@ namespace SWYRA
             {
                 MessageBox.Show(@"Impresora no disponible, favor de validar");
                 return;
+            }
+        }
+
+        private void BtnAceptarTS_Click(object sender, EventArgs e)
+        {
+            pedido.flete = txtFlete.Text;
+            gridControl1.RefreshDataSource();
+            ppFlete.HidePopup();
+            ActualizaPedido();
+        }
+
+
+        private void ActualizaPedido()
+        {
+            try
+            {
+                var query = "UPDATE PEDIDO SET FLT = '" + pedido.flete + "' " +
+                            "WHERE CVE_DOC = '" + pedido.cve_doc + "'";
+                var res = GetExecute("DB", query, 52);
+                MessageBox.Show(@"Guardado satisfactoriamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

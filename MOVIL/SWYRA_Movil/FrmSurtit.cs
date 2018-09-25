@@ -58,7 +58,8 @@ namespace SWYRA_Movil
             txtSurtido.Text = (art != null) ? art.cantsurtido.ToString() : "";
             txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
             lblComentario.Text = (art != null) ? art.comentario : "";
-            txtMasterUbi.Text = (art != null) ? art.masters_ubi : "";
+            lblMasterUbi.Text = "Mast. Ubi. : " + ((art != null) ? art.masters_ubi : "");
+            lblMinUbi.Text = "Min. Ubi. : " + ((art != null) ? art.ctrl_alm : "");
         }
 
         private void CargaUbicaciones()
@@ -416,7 +417,8 @@ namespace SWYRA_Movil
             artFirst = art;
             artLast = mostrardet.LastOrDefault();
             lblPendientes.Text = mostrardet.Count.ToString();
-            pbSig_Click(sender, e);
+            cargaDatos();
+            //pbSig_Click(sender, e);
         }
 
         private bool ValidaCambios()

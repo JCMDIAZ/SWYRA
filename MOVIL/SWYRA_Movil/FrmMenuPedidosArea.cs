@@ -101,6 +101,7 @@ namespace SWYRA_Movil
                                  "VALUES ( @num, GETDATE(), @cvedoc, 1, 'HOJA DE SURTIDO')";
                     var r2 = Program.GetExecute(query2, 13);
                     MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show(@"IMPRESIÓN DE LA HOJA DE SURTIDO EXITOSA. FAVOR DE TOMARLA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     Close();
                 }
             }
@@ -291,6 +292,8 @@ namespace SWYRA_Movil
         {
             if (devA.Where(o => o.devuelto == false).ToList().Count > 0)
             {
+                if (validaDuplicidad()) { return; }
+                if (validaMinMultiplo()) { return; }
                 FrmCancelacion frmCan = new FrmCancelacion();
                 frmCan.Area = true;
                 frmCan.ped = ped;

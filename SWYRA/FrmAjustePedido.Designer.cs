@@ -103,6 +103,8 @@
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
+            this.txtBrocas = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPaquetes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
@@ -323,6 +325,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtBrocas);
+            this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.txtFlete2);
             this.groupBox1.Controls.Add(this.txtObservaciones);
             this.groupBox1.Controls.Add(this.label23);
@@ -408,17 +412,17 @@
             // txtCapturo
             // 
             this.txtCapturo.BackColor = System.Drawing.Color.White;
-            this.txtCapturo.Location = new System.Drawing.Point(154, 220);
+            this.txtCapturo.Location = new System.Drawing.Point(129, 220);
             this.txtCapturo.Name = "txtCapturo";
             this.txtCapturo.ReadOnly = true;
-            this.txtCapturo.Size = new System.Drawing.Size(122, 20);
+            this.txtCapturo.Size = new System.Drawing.Size(101, 20);
             this.txtCapturo.TabIndex = 47;
             this.txtCapturo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(184, 204);
+            this.label22.Location = new System.Drawing.Point(150, 204);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(59, 13);
             this.label22.TabIndex = 46;
@@ -481,17 +485,17 @@
             // txtEmpaco
             // 
             this.txtEmpaco.BackColor = System.Drawing.Color.White;
-            this.txtEmpaco.Location = new System.Drawing.Point(538, 220);
+            this.txtEmpaco.Location = new System.Drawing.Point(559, 220);
             this.txtEmpaco.Name = "txtEmpaco";
             this.txtEmpaco.ReadOnly = true;
-            this.txtEmpaco.Size = new System.Drawing.Size(122, 20);
+            this.txtEmpaco.Size = new System.Drawing.Size(101, 20);
             this.txtEmpaco.TabIndex = 39;
             this.txtEmpaco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(573, 204);
+            this.label15.Location = new System.Drawing.Point(583, 204);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(52, 13);
             this.label15.TabIndex = 38;
@@ -500,17 +504,17 @@
             // txtSurtio
             // 
             this.txtSurtio.BackColor = System.Drawing.Color.White;
-            this.txtSurtio.Location = new System.Drawing.Point(410, 220);
+            this.txtSurtio.Location = new System.Drawing.Point(343, 220);
             this.txtSurtio.Name = "txtSurtio";
             this.txtSurtio.ReadOnly = true;
-            this.txtSurtio.Size = new System.Drawing.Size(122, 20);
+            this.txtSurtio.Size = new System.Drawing.Size(101, 20);
             this.txtSurtio.TabIndex = 37;
             this.txtSurtio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(447, 204);
+            this.label16.Location = new System.Drawing.Point(369, 204);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(48, 13);
             this.label16.TabIndex = 36;
@@ -519,17 +523,17 @@
             // txtAutorizo
             // 
             this.txtAutorizo.BackColor = System.Drawing.Color.White;
-            this.txtAutorizo.Location = new System.Drawing.Point(282, 220);
+            this.txtAutorizo.Location = new System.Drawing.Point(236, 220);
             this.txtAutorizo.Name = "txtAutorizo";
             this.txtAutorizo.ReadOnly = true;
-            this.txtAutorizo.Size = new System.Drawing.Size(122, 20);
+            this.txtAutorizo.Size = new System.Drawing.Size(101, 20);
             this.txtAutorizo.TabIndex = 35;
             this.txtAutorizo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(312, 204);
+            this.label17.Location = new System.Drawing.Point(255, 204);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(63, 13);
             this.label17.TabIndex = 34;
@@ -541,14 +545,14 @@
             this.txtNumVendedor.Location = new System.Drawing.Point(22, 220);
             this.txtNumVendedor.Name = "txtNumVendedor";
             this.txtNumVendedor.ReadOnly = true;
-            this.txtNumVendedor.Size = new System.Drawing.Size(126, 20);
+            this.txtNumVendedor.Size = new System.Drawing.Size(101, 20);
             this.txtNumVendedor.TabIndex = 33;
             this.txtNumVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(54, 204);
+            this.label18.Location = new System.Drawing.Point(38, 204);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(68, 13);
             this.label18.TabIndex = 32;
@@ -872,6 +876,25 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // txtBrocas
+            // 
+            this.txtBrocas.BackColor = System.Drawing.Color.White;
+            this.txtBrocas.Location = new System.Drawing.Point(451, 220);
+            this.txtBrocas.Name = "txtBrocas";
+            this.txtBrocas.ReadOnly = true;
+            this.txtBrocas.Size = new System.Drawing.Size(101, 20);
+            this.txtBrocas.TabIndex = 52;
+            this.txtBrocas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(477, 204);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(51, 13);
+            this.label24.TabIndex = 51;
+            this.label24.Text = "BROCAS";
+            // 
             // FrmAjustePedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,5 +999,7 @@
         private System.Windows.Forms.TextBox txtFlete2;
         private System.Windows.Forms.ToolStripButton btnImprimir;
         public System.Windows.Forms.ToolStripButton btnGuardar;
+        private System.Windows.Forms.TextBox txtBrocas;
+        private System.Windows.Forms.Label label24;
     }
 }

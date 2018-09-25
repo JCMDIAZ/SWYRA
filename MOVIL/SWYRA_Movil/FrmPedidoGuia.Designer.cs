@@ -103,8 +103,8 @@
             // 
             this.dataGridTextBoxColumn1.Format = "";
             this.dataGridTextBoxColumn1.FormatInfo = null;
-            this.dataGridTextBoxColumn1.HeaderText = "Ubicación";
-            this.dataGridTextBoxColumn1.MappingName = "ubicacionempaque";
+            this.dataGridTextBoxColumn1.HeaderText = "Flete";
+            this.dataGridTextBoxColumn1.MappingName = "flete";
             // 
             // dataGridTextBoxColumn4
             // 

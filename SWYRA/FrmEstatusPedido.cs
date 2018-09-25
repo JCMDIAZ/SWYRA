@@ -131,7 +131,7 @@ namespace SWYRA
                     "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, det.porc_surtidoReal, " +
                     "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
                     "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, NOMBRE_VENDEDOR, " +
-                    "uCapturo.Nombre capturo_n, CONSIGNACION, FLETE, FLETE2, ENVIAR, CAUSADETENIDO, " +
+                    "uCapturo.Nombre capturo_n, CONSIGNACION, ISNULL(FLT,FLETE) FLETE, FLETE2, ENVIAR, CAUSADETENIDO, " +
                     "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2 " +
                     "FROM PEDIDO p left join (select cve_doc, ((SUM(isnull(CANTSURTIDO, 0)) / sum(CANT)) * 100.0) porc_surtidoReal from DETALLEPEDIDO " +
                     "where CVE_DOC in (select CVE_DOC from @pedidos) group by cve_doc) as det on p.cve_doc = det.cve_doc " +

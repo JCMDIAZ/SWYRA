@@ -63,6 +63,9 @@ namespace swyraServices
             eventLog1.WriteEntry("In onStop.");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void consultar()
         {
             List<Precios> listFbPrecios = CargaFbPrecios();
@@ -175,7 +178,7 @@ namespace swyraServices
             }
             foreach (var pedFb in pedidosDiferentes)
             {
-                var pedDb = listDbPedidos.FirstOrDefault(o => o.cve_doc == pedFb.cve_doc);
+                var pedDb = listDbPedidos.Find(o => o.cve_doc == pedFb.cve_doc);
                 ModificaDbPedidos(pedFb, pedDb);
             }
         }
@@ -890,10 +893,10 @@ namespace swyraServices
                 double cantpendant = 0;
                 if (detDB.cantsurtido > 0)
                 {
-                    if (detDB.cantsurtido > detFB.cant)
+                    if (detDB.cantsurtido >= detFB.cant)
                     {
                         var dif = detDB.cantsurtido - detFB.cant;
-                        var query2 =
+                        var query2 ="IF NOT EXISTS (SELECT * FROM DETALLEPEDIDODEV WHERE CVE_DOC = '" + detDB.cve_doc + "' AND NUM_PAR = " + detDB.num_par + ") " +
                             "insert DETALLEPEDIDODEV (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
                             "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
                             "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
@@ -901,14 +904,15 @@ namespace swyraServices
                             "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3 , TOTIMP4, " +
                             "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
                             "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_ART = '" + detDB.cve_art + "' AND " +
-                            "CVE_DOC = '" + detDB.cve_doc + "'";
+                            "CVE_DOC = '" + detDB.cve_doc + "' ELSE UPDATE DETALLEPEDIDODEV SET CANT = (CASE WHEN ISNULL(DEVUELTO,0) = 0 THEN CANT + " + dif + " ELSE " + dif +  " END), " +
+                            "CANTDEVUELTO = (CASE WHEN ISNULL(DEVUELTO,0) = 0 THEN CANTDEVUELTO ELSE 0 END), DEVUELTO = 0 WHERE CVE_DOC = '" + detDB.cve_doc + "' AND NUM_PAR = " + detDB.num_par +
+                            " UPDATE DETALLEPEDIDODEV SET DEVUELTO = 1 WHERE CVE_DOC = '" + detDB.cve_doc + "' AND NUM_PAR = " + detDB.num_par + " AND CANT = 0";
                         GetExecute("DB", query2, 25);
-                        detDB.cant = detFB.cant;
-                        //detDB.cantsurtido = detFB.cant;
+                        detDB.cant = detFB.cant;//detDB.cantsurtido = detFB.cant;
                         detDB.cantpendiente = 0;
                         //detDB.surtido = false;
                     }
-                    else if (detDB.cantsurtido <= detFB.cant)
+                    else if (detDB.cantsurtido < detFB.cant)
                     {
                         detDB.cant = detFB.cant;
                         if (detDB.cantpendiente > 0)
@@ -946,7 +950,7 @@ namespace swyraServices
                              ", CANTSURTIDO = " + detDB.cantsurtido + 
                              ", SURTIDO = " + ((detDB.surtido) ? "1" : "0") +
                              ", CANTPENDIENTE = " + detDB.cantpendiente +
-                             " where CVE_ART = '" + detFB.cve_art + "' AND CVE_DOC = '" + detFB.cve_doc + "' " +
+                             " where NUM_PAR = " + detFB.num_par + " AND CVE_DOC = '" + detFB.cve_doc + "' " +
                              ((cantpendant > 0)
                                  ? "update DETALLEPEDIDOMERC set PEND = " + detDB.cantpendiente + 
                                    " where CVE_DOC = '" + detFB.cve_doc + "' and  CVE_ART = '" + detFB.cve_art + "' and ISNULL(PEND,0) = " + cantpendant + " and ISNULL(CANCELADO,0) = 0"

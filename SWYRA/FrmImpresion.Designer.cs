@@ -102,7 +102,6 @@
             this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // colid
