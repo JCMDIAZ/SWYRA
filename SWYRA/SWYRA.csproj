@@ -110,6 +110,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backorder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Backorder.Designer.cs">
+      <DependentUpon>Backorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Form1.cs">
@@ -202,6 +208,12 @@
     <Compile Include="FrmPresentProd.Designer.cs">
       <DependentUpon>FrmPresentProd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPXS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPXS.Designer.cs">
+      <DependentUpon>FrmPXS.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRemision.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +265,9 @@
     <Compile Include="XtraReport1_Detalle.Designer.cs">
       <DependentUpon>XtraReport1_Detalle.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Backorder.resx">
+      <DependentUpon>Backorder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPresentProd.resx">
       <DependentUpon>FrmPresentProd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPXS.resx">
+      <DependentUpon>FrmPXS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRemision.resx">
       <DependentUpon>FrmRemision.cs</DependentUpon>

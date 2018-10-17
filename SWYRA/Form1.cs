@@ -38,6 +38,8 @@ namespace SWYRA
             connStrings.SectionInformation.ForceSave = true;
             appConfig.Save(ConfigurationSaveMode.Full);
 
+            ConfigurationManager.RefreshSection(appConfig.AppSettings.SectionInformation.Name);
+
             try
             {
                 InitializeComponent();
@@ -86,7 +88,7 @@ namespace SWYRA
             moduloDeImpresiónToolStripMenuItem.Visible = (cat == "MASTER");
             activarSwyraMovilToolStripMenuItem.Visible = (cat == "MASTER");
             catalogosToolStripMenuItem.Visible = (cat == "MASTER");
-            estatusPedidoToolStripMenuItem.Visible = (cat.In(new[] {"MASTER", "ANALISTA DE VENTAS"}));
+            estatusPedidoToolStripMenuItem.Visible = (cat.In(new[] {"MASTER", "ANALISTA DE VENTAS", "FACTURACION" }));
             autorizaciónPedidoToolStripMenuItem.Visible = (cat.In(new[] { "MASTER", "COBRADOR" }));
             remisiónDePedidoToolStripMenuItem.Visible = (cat.In(new[] { "MASTER", "FACTURACION" }));
         }
@@ -224,6 +226,12 @@ namespace SWYRA
             var fImpresion = new FrmImpresion();
             fImpresion.userActivo = userActivo;
             fImpresion.Show();
+        }
+
+        private void pendientesPorSurtirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fPXS = new FrmPXS();
+            fPXS.Show();
         }
     }
 }

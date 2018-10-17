@@ -26,9 +26,9 @@ namespace SWYRA_Movil
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            string[] surt = { "MASTER", "SURTIDOR" };
-            string[] empq = { "MASTER", "EMPAQUETADOR" };
-            string[] guia = { "MASTER", "ETIQUETADOR GUIAS" };
+            string[] surt = { "MOVIL", "MASTER", "SURTIDOR" };
+            string[] empq = { "MOVIL", "MASTER", "EMPAQUETADOR" };
+            string[] guia = { "MOVIL", "MASTER", "ETIQUETADOR GUIAS" };
             pnlImpCod.Visible = (Program.usActivo.Categoria.Trim().In(surt));
             pnlPedidos.Visible = (Program.usActivo.Categoria.Trim().In(surt));
             pnlSurtido.Visible = (Program.usActivo.AreaAsignada == "0001" || Program.usActivo.Categoria == "MASTER");

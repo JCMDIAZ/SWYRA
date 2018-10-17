@@ -43,6 +43,7 @@ namespace SWYRA_Movil
                         "case " +
                         "    when p.ESTATUSPEDIDO = 'MODIFICACION' then " +
                         "        case " +
+                        "            when p.TIPOSERVICIO = 'LOCAL INMEDIATO' THEN 0 " +
                         "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 1 " +
                         "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 2 " +
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 3 " +
@@ -50,6 +51,7 @@ namespace SWYRA_Movil
                         "        END " +
                         "    when p.ESTATUSPEDIDO = 'SURTIR' then " +
                         "        case " +
+                        "            when p.TIPOSERVICIO = 'LOCAL INMEDIATO' THEN 0 " +
                         "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 5 " +
                         "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 6 " +
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 7 " +
@@ -57,6 +59,7 @@ namespace SWYRA_Movil
                         "        END " +
                         "    when p.ESTATUSPEDIDO = 'DETENIDO' then " +
                         "        case  " +
+                        "            when p.TIPOSERVICIO = 'LOCAL INMEDIATO' THEN 0 " +
                         "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 9 " +
                         "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 10 " +
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 11 " +

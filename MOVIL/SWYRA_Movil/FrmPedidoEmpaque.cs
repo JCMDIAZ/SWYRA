@@ -26,25 +26,25 @@ namespace SWYRA_Movil
             {
                 if (listPedidos.Count > 0)
                 {
-                    var query = "SELECT CVE_DOC, EMPAQUETADOR_ASIGNADO FROM PEDIDO WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString().Trim() + "'";
+                    var query = "SELECT CVE_DOC, EMPAQUETADOR_ASIGNADO FROM PEDIDO WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString().Trim() + "'";
                     var ls = Program.GetDataTable(query, 51).ToData<Pedidos>();
                     if (ls.empaquetador_asignado == "" || ls.empaquetador_asignado == Program.usActivo.Usuario || ls.empaquetador_asignado == null)
                     {
                         query = "UPDATE PEDIDO SET EMPAQUETADOR_ASIGNADO = '" + Program.usActivo.Usuario + "' " +
-                                    "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString() + "'";
+                                    "WHERE LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "'";
                         var res = Program.GetExecute(query, 4);
                         query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
-                                "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString() + "' " +
+                                "where LTRIM(CVE_DOC) = '" + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString() + "' " +
                                 "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
                                 "@cvedoc, 'EMPACANDO', getdate(), '" + Program.usActivo.Usuario + "')";
                         res = Program.GetExecute(query, 5);
                         FrmEmpaque frmEmpaque = new FrmEmpaque();
-                        frmEmpaque.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 1].ToString();
+                        frmEmpaque.cvedoc = dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString();
                         frmEmpaque.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("El pedido " + dgPedidos[dgPedidos.CurrentRowIndex, 2].ToString().Trim() + " lo ha tomado otro EMPAQUETADOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                        MessageBox.Show("El pedido " + dgPedidos[dgPedidos.CurrentRowIndex, 3].ToString().Trim() + " lo ha tomado otro EMPAQUETADOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     }
                     cargaPedidos();
                 }
@@ -63,7 +63,7 @@ namespace SWYRA_Movil
         private void dgPedidos_CurrentCellChanged(object sender, EventArgs e)
         {
             var index = dgPedidos.CurrentRowIndex;
-            var goindex = (dgPedidos[index, 3].ToString() == "EMPAQUE") ? 0 : index;
+            var goindex = (dgPedidos[index, 2].ToString() == "EMPAQUE") ? 0 : index;
             dgPedidos.Select(goindex);
             dgPedidos.CurrentRowIndex = goindex;
         }
@@ -90,13 +90,14 @@ namespace SWYRA_Movil
             try
             {
                 var query = "select top 1 CVE_DOC from PEDIDO where " +
-                            "(ESTATUSPEDIDO IN ('EMPAQUE','DETENIDO EMP') and isnull(EMPAQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
+                            "(ESTATUSPEDIDO IN ('EMPAQUE') and isnull(EMPAQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 string surtAsig = (ped == null) ? "" : Program.usActivo.Usuario;
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, p.ESTATUSPEDIDO, " +
                         "case " +
                         "    when p.ESTATUSPEDIDO = 'EMPAQUE' then " +
                         "        case " +
+                        "            when p.TIPOSERVICIO = 'LOCAL INMEDIATO' THEN 0 " +
                         "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 5 " +
                         "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 6 " +
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 7 " +
@@ -104,6 +105,7 @@ namespace SWYRA_Movil
                         "        END " +
                         "    when p.ESTATUSPEDIDO = 'DETENIDO EMP' then " +
                         "        case  " +
+                        "            when p.TIPOSERVICIO = 'LOCAL INMEDIATO' THEN 0 " +
                         "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 9 " +
                         "            when p.TIPOSERVICIO = 'LOCAL URGENTE' THEN 10 " +
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 11 " +
@@ -113,7 +115,8 @@ namespace SWYRA_Movil
                         "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
                         "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
-                        "where (p.ESTATUSPEDIDO IN ('EMPAQUE','DETENIDO EMP') and isnull(p.EMPAQUETADOR_ASIGNADO,'') = '" + surtAsig + "') " +
+                        "where (p.ESTATUSPEDIDO = 'EMPAQUE' and isnull(p.EMPAQUETADOR_ASIGNADO,'') = '" + surtAsig + "') " +
+                        "or (p.ESTATUSPEDIDO = 'DETENIDO EMP' and isnull(p.EMPAQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "') " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
                 dgPedidos.DataSource = Program.ToDataTable<Pedidos>(listPedidos, "Pedidos");

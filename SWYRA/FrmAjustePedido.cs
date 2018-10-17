@@ -82,7 +82,9 @@ namespace SWYRA
                     "WHERE (h.CVE_DOC = '" + cve_doc + "') AND(ISNULL(h.CANCELADO, 0) = 0) AND(ISNULL(h.TIPOPAQUETE, '') " +
                     "NOT IN('', 'GUIA'))) as e on d.CVE_DOC = e.CVE_DOC and d.CONSEC_PADRE = e.CONSEC WHERE(d.CVE_DOC = '" + cve_doc + "') " +
                     "AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') IN('')) AND a.CVE_DOC = d.CVE_DOC and a.CVE_ART = d.CVE_ART " +
-                    "group by e.Empaque, d.NUM_PAR order by d.NUM_PAR FOR XML PATH('')), 1, 1, '') as Empaque, isnull(a.lote,'') lote from DETALLEPEDIDOMERC as a " +
+                    "group by e.Empaque, d.NUM_PAR order by d.NUM_PAR FOR XML PATH('')), 1, 1, '') as Empaque, " +
+                    "STUFF((SELECT ', '  + lote FROM DETALLEPEDIDOMERC as l WHERE a.CVE_DOC = l.CVE_DOC and a.NUM_PAR = l.NUM_PAR FOR XML PATH('')), 1, 2, '') As lote " +
+                    "from DETALLEPEDIDOMERC as a " +
                     "where (a.CVE_DOC = '" + cve_doc + "') AND(NUM_PAR > 0) ) as res on dp.NUM_PAR = res.NUM_PAR " +
                     "WHERE (dp.CVE_DOC = '" + cve_doc + "') AND ((ISNULL(CANTSURTIDO," + (ped.estatuspedido.In(est) ? "0" : "CANT") + ") > 0) " +
                     "OR (ISNULL(CANTSURTIDO,0) = 0 AND ISNULL(CANTPENDIENTE,0) = 0))";

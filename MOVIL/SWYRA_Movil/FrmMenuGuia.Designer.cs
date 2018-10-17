@@ -53,6 +53,7 @@
             this.dataGridTextBoxColumn3 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.lbl1 = new System.Windows.Forms.Label();
             this.lbl2 = new System.Windows.Forms.Label();
+            this.pbDetener = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.pbDetener);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.lblContado);
             this.panel2.Controls.Add(this.pbConcluir);
@@ -80,11 +82,11 @@
             // 
             // lblContado
             // 
-            this.lblContado.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.lblContado.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
             this.lblContado.ForeColor = System.Drawing.Color.DarkRed;
             this.lblContado.Location = new System.Drawing.Point(46, 3);
             this.lblContado.Name = "lblContado";
-            this.lblContado.Size = new System.Drawing.Size(110, 35);
+            this.lblContado.Size = new System.Drawing.Size(77, 35);
             this.lblContado.Text = "PONER ETIQUETA DE CONTADO";
             this.lblContado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblContado.Visible = false;
@@ -244,6 +246,15 @@
             this.lbl2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl2.Visible = false;
             // 
+            // pbDetener
+            // 
+            this.pbDetener.Image = ((System.Drawing.Image)(resources.GetObject("pbDetener.Image")));
+            this.pbDetener.Location = new System.Drawing.Point(129, 2);
+            this.pbDetener.Name = "pbDetener";
+            this.pbDetener.Size = new System.Drawing.Size(35, 35);
+            this.pbDetener.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbDetener.Click += new System.EventHandler(this.pbDetener_Click);
+            // 
             // FrmMenuGuia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -297,5 +308,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.PictureBox pbDetener;
     }
 }

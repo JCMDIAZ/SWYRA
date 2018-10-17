@@ -606,7 +606,7 @@ namespace swyraServices
                     GetExecute("DB", query, 12);
                     var query3 = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
                                     pedDb.cve_doc + "', '" + pedDb.estatuspedido + "', getdate(), null)";
-                    var res2 = GetExecute("DB", query, 12);
+                    var res2 = GetExecute("DB", query3, 12);
                     if (pedDb.estatuspedido == "DEVOLUCION")
                     {
                         var query2 = "if EXISTS(select * from DETALLEPEDIDODEV where CVE_DOC = '" + pedDb.cve_doc + "' ) " +
@@ -825,6 +825,8 @@ namespace swyraServices
                             DetallePedidos detDB = listDbDetalle.FirstOrDefault(o => o.cve_art == detFB.cve_art);
                             linea = "36-" + detFB.cve_doc;
                             ModificaDbDetallePedido(detDB, detFB);
+                            query = "update DETALLEPEDIDO set SURTIDO = 1 where CVE_DOC = '" + pedDb.cve_doc + "' and CANTSURTIDO = CANT and SURTIDO = 0"; //Valido que este surtido
+                            GetExecute("DB", query, 14);
                         }
                         if (!validaExis(false, pedFb.cve_doc))
                         {
@@ -839,7 +841,7 @@ namespace swyraServices
                 else if(pedDb.estatuspedido == "FACTURACION")
                 {
                     linea = "37";
-                    var est = (pedDb.tiposervicio == "LOCAL" || pedDb.tiposervicio == "LOCAL URGENTE") ? "TERMINADO" : "GUIA";
+                    var est = (pedDb.tiposervicio == "LOCAL" || pedDb.tiposervicio == "LOCAL URGENTE" || pedDb.tiposervicio == "LOCAL INMEDIATO") ? "TERMINADO" : "GUIA";
                     linea = "38";
                     var query = "update PEDIDO set " +
                                 "ESTATUSPEDIDO = '" + est + "' " +
@@ -848,7 +850,7 @@ namespace swyraServices
                     var res = GetExecute("DB", query, 35);
                     linea = "40";
                     query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
-                            pedDb.cve_doc + "', 'LEVANTAMIENTO', getdate(), null)";
+                            pedDb.cve_doc + "', '" + est + "', getdate(), null)";
                     linea = "41";
                     res = GetExecute("DB", query, 36);
                 }
@@ -874,7 +876,7 @@ namespace swyraServices
                     var res = GetExecute("DB", query, 35);
                     linea = "48";
                     query = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
-                            pedFb.cve_doc + "', 'CANCELACION', getdate(), null)";
+                            pedDb.cve_doc + "', 'CANCELACION', getdate(), null)";
                     linea = "49";
                     res = GetExecute("DB", query, 36);
                 }
@@ -896,19 +898,26 @@ namespace swyraServices
                     if (detDB.cantsurtido >= detFB.cant)
                     {
                         var dif = detDB.cantsurtido - detFB.cant;
-                        var query2 ="IF NOT EXISTS (SELECT * FROM DETALLEPEDIDODEV WHERE CVE_DOC = '" + detDB.cve_doc + "' AND NUM_PAR = " + detDB.num_par + ") " +
-                            "insert DETALLEPEDIDODEV (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
-                            "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
-                            "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
-                            "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR) select CVE_DOC, NUM_PAR, CVE_ART, " + dif + ", PXS, PREC, COST, " +
-                            "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3 , TOTIMP4, " +
-                            "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
-                            "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_ART = '" + detDB.cve_art + "' AND " +
-                            "CVE_DOC = '" + detDB.cve_doc + "' ELSE UPDATE DETALLEPEDIDODEV SET CANT = (CASE WHEN ISNULL(DEVUELTO,0) = 0 THEN CANT + " + dif + " ELSE " + dif +  " END), " +
-                            "CANTDEVUELTO = (CASE WHEN ISNULL(DEVUELTO,0) = 0 THEN CANTDEVUELTO ELSE 0 END), DEVUELTO = 0 WHERE CVE_DOC = '" + detDB.cve_doc + "' AND NUM_PAR = " + detDB.num_par +
-                            " UPDATE DETALLEPEDIDODEV SET DEVUELTO = 1 WHERE CVE_DOC = '" + detDB.cve_doc + "' AND NUM_PAR = " + detDB.num_par + " AND CANT = 0";
+                        var query2 = "IF NOT EXISTS (SELECT * FROM DETALLEPEDIDODEV WHERE CVE_DOC = '" + detDB.cve_doc +
+                                     "' AND NUM_PAR = " + detDB.num_par + ") " +
+                                     "insert DETALLEPEDIDODEV (CVE_DOC, NUM_PAR, CVE_ART, CANT, PXS, PREC, COST, " +
+                                     "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, " +
+                                     "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
+                                     "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR) select CVE_DOC, NUM_PAR, CVE_ART, " +
+                                     dif + ", PXS, PREC, COST, " +
+                                     "IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3 , TOTIMP4, " +
+                                     "DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, " +
+                                     "E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR from DETALLEPEDIDO where CVE_ART = '" +
+                                     detDB.cve_art + "' AND " +
+                                     "CVE_DOC = '" + detDB.cve_doc +
+                                     "' ELSE UPDATE DETALLEPEDIDODEV SET CANT = (CASE WHEN ISNULL(DEVUELTO,0) = 0 THEN CANT + " +
+                                     dif + " ELSE " + dif + " END), " +
+                                     "CANTDEVUELTO = (CASE WHEN ISNULL(DEVUELTO,0) = 0 THEN CANTDEVUELTO ELSE 0 END), DEVUELTO = 0 WHERE CVE_DOC = '" +
+                                     detDB.cve_doc + "' AND NUM_PAR = " + detDB.num_par +
+                                     " UPDATE DETALLEPEDIDODEV SET DEVUELTO = 1 WHERE CVE_DOC = '" + detDB.cve_doc +
+                                     "' AND NUM_PAR = " + detDB.num_par + " AND CANT = 0";
                         GetExecute("DB", query2, 25);
-                        detDB.cant = detFB.cant;//detDB.cantsurtido = detFB.cant;
+                        detDB.cant = detFB.cant; //detDB.cantsurtido = detFB.cant;
                         detDB.cantpendiente = 0;
                         //detDB.surtido = false;
                     }
@@ -922,6 +931,18 @@ namespace swyraServices
                         }
                         //detDB.surtido = ((detDB.cantsurtido + detDB.cantpendiente) == detDB.cant);
                     }
+                }
+                else
+                {
+                    if (detDB.cantpendiente > 0)
+                    {
+                        cantpendant = detDB.cantpendiente;
+                        detDB.cantpendiente = 0;
+                    }
+                }
+                if (detDB.cant > 0)
+                {
+                    detDB.surtido = ((int)(detDB.cantsurtido + detDB.cantpendiente) == (int)detDB.cant);
                 }
                 var query3 = "update DETALLEPEDIDO SET CANT = " + detFB.cant.ToString(cultureInfo) + 
                              ", PXS = " + detFB.pxs.ToString(cultureInfo) + 

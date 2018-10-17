@@ -50,25 +50,26 @@
             this.txtMinimo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtSurtido = new System.Windows.Forms.TextBox();
+            this.txtPorSurtir = new System.Windows.Forms.TextBox();
+            this.lblMinUbi = new System.Windows.Forms.Label();
+            this.pbAnt = new System.Windows.Forms.PictureBox();
+            this.pbSig = new System.Windows.Forms.PictureBox();
             this.lblMasterUbi = new System.Windows.Forms.Label();
             this.lblPendientes = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.pbAnt = new System.Windows.Forms.PictureBox();
-            this.pbSig = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtExistencia = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtSurtido = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtPorSurtir = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtMaster = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUbica = new System.Windows.Forms.TextBox();
-            this.lblMinUbi = new System.Windows.Forms.Label();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblCliente = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -127,6 +128,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblCliente);
             this.panel1.Controls.Add(this.lblPedido);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtCant);
@@ -141,19 +143,19 @@
             // lblPedido
             // 
             this.lblPedido.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.lblPedido.Location = new System.Drawing.Point(146, 5);
+            this.lblPedido.Location = new System.Drawing.Point(52, 5);
             this.lblPedido.Name = "lblPedido";
-            this.lblPedido.Size = new System.Drawing.Size(81, 11);
+            this.lblPedido.Size = new System.Drawing.Size(175, 11);
             this.lblPedido.Text = "Pedido:";
+            this.lblPedido.Visible = false;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(83, 5);
+            this.label5.Location = new System.Drawing.Point(9, 5);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 11);
-            this.label5.Text = "Pedido:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label5.Size = new System.Drawing.Size(46, 11);
+            this.label5.Text = "Cliente:";
             // 
             // txtCant
             // 
@@ -178,6 +180,7 @@
             0,
             0,
             0});
+            this.txtCant.Visible = false;
             this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCant_KeyPress);
             this.txtCant.LostFocus += new System.EventHandler(this.txtCant_LostFocus);
             // 
@@ -188,6 +191,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 19);
             this.label2.Text = "Cant.";
+            this.label2.Visible = false;
             // 
             // txtCodigo
             // 
@@ -284,6 +288,52 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 167);
             // 
+            // txtSurtido
+            // 
+            this.txtSurtido.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtSurtido.Location = new System.Drawing.Point(175, 82);
+            this.txtSurtido.Name = "txtSurtido";
+            this.txtSurtido.ReadOnly = true;
+            this.txtSurtido.Size = new System.Drawing.Size(54, 19);
+            this.txtSurtido.TabIndex = 27;
+            // 
+            // txtPorSurtir
+            // 
+            this.txtPorSurtir.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtPorSurtir.Location = new System.Drawing.Point(65, 82);
+            this.txtPorSurtir.Name = "txtPorSurtir";
+            this.txtPorSurtir.ReadOnly = true;
+            this.txtPorSurtir.Size = new System.Drawing.Size(54, 19);
+            this.txtPorSurtir.TabIndex = 24;
+            // 
+            // lblMinUbi
+            // 
+            this.lblMinUbi.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lblMinUbi.Location = new System.Drawing.Point(22, 70);
+            this.lblMinUbi.Name = "lblMinUbi";
+            this.lblMinUbi.Size = new System.Drawing.Size(96, 14);
+            this.lblMinUbi.Text = "Min. Ubi.";
+            // 
+            // pbAnt
+            // 
+            this.pbAnt.BackColor = System.Drawing.Color.Transparent;
+            this.pbAnt.Image = ((System.Drawing.Image)(resources.GetObject("pbAnt.Image")));
+            this.pbAnt.Location = new System.Drawing.Point(4, 142);
+            this.pbAnt.Name = "pbAnt";
+            this.pbAnt.Size = new System.Drawing.Size(20, 20);
+            this.pbAnt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbAnt.Click += new System.EventHandler(this.pbAnt_Click);
+            // 
+            // pbSig
+            // 
+            this.pbSig.BackColor = System.Drawing.Color.Transparent;
+            this.pbSig.Image = ((System.Drawing.Image)(resources.GetObject("pbSig.Image")));
+            this.pbSig.Location = new System.Drawing.Point(213, 142);
+            this.pbSig.Name = "pbSig";
+            this.pbSig.Size = new System.Drawing.Size(20, 20);
+            this.pbSig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbSig.Click += new System.EventHandler(this.pbSig_Click);
+            // 
             // lblMasterUbi
             // 
             this.lblMasterUbi.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
@@ -307,26 +357,6 @@
             this.label12.Size = new System.Drawing.Size(66, 15);
             this.label12.Text = "Pendientes";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // pbAnt
-            // 
-            this.pbAnt.BackColor = System.Drawing.Color.Transparent;
-            this.pbAnt.Image = ((System.Drawing.Image)(resources.GetObject("pbAnt.Image")));
-            this.pbAnt.Location = new System.Drawing.Point(4, 142);
-            this.pbAnt.Name = "pbAnt";
-            this.pbAnt.Size = new System.Drawing.Size(20, 20);
-            this.pbAnt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbAnt.Click += new System.EventHandler(this.pbAnt_Click);
-            // 
-            // pbSig
-            // 
-            this.pbSig.BackColor = System.Drawing.Color.Transparent;
-            this.pbSig.Image = ((System.Drawing.Image)(resources.GetObject("pbSig.Image")));
-            this.pbSig.Location = new System.Drawing.Point(213, 142);
-            this.pbSig.Name = "pbSig";
-            this.pbSig.Size = new System.Drawing.Size(20, 20);
-            this.pbSig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbSig.Click += new System.EventHandler(this.pbSig_Click);
             // 
             // label11
             // 
@@ -355,15 +385,6 @@
             this.label10.Text = "Surtido";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // txtSurtido
-            // 
-            this.txtSurtido.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtSurtido.Location = new System.Drawing.Point(175, 82);
-            this.txtSurtido.Name = "txtSurtido";
-            this.txtSurtido.ReadOnly = true;
-            this.txtSurtido.Size = new System.Drawing.Size(54, 19);
-            this.txtSurtido.TabIndex = 27;
-            // 
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
@@ -372,15 +393,6 @@
             this.label9.Size = new System.Drawing.Size(48, 19);
             this.label9.Text = "Por Surtir";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txtPorSurtir
-            // 
-            this.txtPorSurtir.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtPorSurtir.Location = new System.Drawing.Point(65, 82);
-            this.txtPorSurtir.Name = "txtPorSurtir";
-            this.txtPorSurtir.ReadOnly = true;
-            this.txtPorSurtir.Size = new System.Drawing.Size(54, 19);
-            this.txtPorSurtir.TabIndex = 24;
             // 
             // label8
             // 
@@ -436,17 +448,17 @@
             this.txtUbica.Size = new System.Drawing.Size(54, 19);
             this.txtUbica.TabIndex = 15;
             // 
-            // lblMinUbi
-            // 
-            this.lblMinUbi.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.lblMinUbi.Location = new System.Drawing.Point(22, 70);
-            this.lblMinUbi.Name = "lblMinUbi";
-            this.lblMinUbi.Size = new System.Drawing.Size(96, 14);
-            this.lblMinUbi.Text = "Min. Ubi.";
-            // 
             // detallePedidosBindingSource
             // 
             this.detallePedidosBindingSource.DataSource = typeof(SWYRA_Movil.DetallePedidos);
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lblCliente.Location = new System.Drawing.Point(52, 4);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(175, 11);
+            this.lblCliente.Text = "Pedido:";
             // 
             // FrmSurtit
             // 
@@ -510,5 +522,6 @@
         private System.Windows.Forms.Label lblMasterUbi;
         public System.Windows.Forms.PictureBox pbFinal;
         private System.Windows.Forms.Label lblMinUbi;
+        private System.Windows.Forms.Label lblCliente;
     }
 }

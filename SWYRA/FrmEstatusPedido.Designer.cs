@@ -74,6 +74,7 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -98,6 +99,8 @@
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.colUbicacionEmpaque = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFlete = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
@@ -282,13 +285,20 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbEstatusPed.Properties.Items.AddRange(new object[] {
             "AUTORIZACION",
-            "SURTIR",
-            "DETENIDO",
-            "EMPAQUE",
-            "REMISION",
-            "GUIAS",
-            "MODIFICACION",
             "CANCELACION",
+            "DETENIDO",
+            "DETENIDO EMP",
+            "DETENIDO GUIA",
+            "EMPACANDO",
+            "EMPAQUE",
+            "GUIA",
+            "INGRESARGUIA",
+            "MODIFICACION",
+            "REMISION",
+            "SURTIENDO",
+            "SURTIENDO BROCAS",
+            "SURTIR",
+            "SURTIR BROCAS",
             "TERMINADO",
             "TODOS"});
             this.cbEstatusPed.Size = new System.Drawing.Size(128, 22);
@@ -338,7 +348,9 @@
             this.colporc_empaque,
             this.colindicaciones,
             this.collote,
-            this.colcausa});
+            this.colcausa,
+            this.colUbicacionEmpaque,
+            this.colFlete});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView1.Name = "gridView1";
@@ -567,7 +579,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.ShowNavigationHeader = DevExpress.Utils.DefaultBoolean.False;
@@ -608,6 +621,13 @@
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Terminación de Pedido";
+            this.barButtonItem7.Id = 8;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            // 
             // barManager1
             // 
             this.barManager1.CloseButtonAffectAllTabs = false;
@@ -623,8 +643,9 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem5,
-            this.barButtonItem6});
-            this.barManager1.MaxItemId = 8;
+            this.barButtonItem6,
+            this.barButtonItem7});
+            this.barManager1.MaxItemId = 9;
             this.barManager1.OptionsLayout.AllowAddNewItems = false;
             this.barManager1.PopupShowMode = DevExpress.XtraBars.PopupShowMode.Classic;
             // 
@@ -718,6 +739,7 @@
             this.cbTipoServicio.Properties.Items.AddRange(new object[] {
             "LOCAL",
             "LOCAL URGENTE",
+            "LOCAL INMEDIATO",
             "FORANEO",
             "FORANEO URGENTE"});
             this.cbTipoServicio.Size = new System.Drawing.Size(152, 22);
@@ -901,6 +923,22 @@
             this.panel1.Size = new System.Drawing.Size(798, 383);
             this.panel1.TabIndex = 67;
             // 
+            // colUbicacionEmpaque
+            // 
+            this.colUbicacionEmpaque.Caption = "Ubicación Empaque";
+            this.colUbicacionEmpaque.FieldName = "ubicacionempaque";
+            this.colUbicacionEmpaque.Name = "colUbicacionEmpaque";
+            this.colUbicacionEmpaque.Visible = true;
+            this.colUbicacionEmpaque.VisibleIndex = 22;
+            // 
+            // colFlete
+            // 
+            this.colFlete.Caption = "Flete";
+            this.colFlete.FieldName = "flete";
+            this.colFlete.Name = "colFlete";
+            this.colFlete.Visible = true;
+            this.colFlete.VisibleIndex = 23;
+            // 
             // FrmEstatusPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1033,5 +1071,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraGrid.Columns.GridColumn colcausa;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraGrid.Columns.GridColumn colUbicacionEmpaque;
+        private DevExpress.XtraGrid.Columns.GridColumn colFlete;
     }
 }

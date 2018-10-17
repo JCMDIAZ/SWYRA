@@ -70,6 +70,8 @@ namespace SWYRA_Movil
             {
                 FrmAreaEmpaque frmAreaEmp = new FrmAreaEmpaque();
                 frmAreaEmp.lblPedido.Text = ped.cve_doc;
+                frmAreaEmp.lblCliente.Text = ped.cliente.Trim();
+                frmAreaEmp.lblCond.Text = ped.condicion.Trim();
                 frmAreaEmp.listBox1.Visible = false;
                 frmAreaEmp.pbSig.Visible = false;
                 frmAreaEmp.pbAnt.Visible = false;
@@ -208,7 +210,7 @@ namespace SWYRA_Movil
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
                             "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, NOMBRE_VENDEDOR, " +
                             "CAPTURO, u.Nombre CAPTURO_N, OCURREDOMICILIO, u2.Nombre SURTIDOR_ASIGNADO_N, ISNULL(STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
-                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, ''),'') UbicacionEmpaque " +
+                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, ''),'') UbicacionEmpaque, CONDICION " +
                             "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                             "left join USUARIOS u on u.Usuario = p.CAPTURO " +
                             "left join USUARIOS u2 on u2.Usuario = p.SURTIDOR_ASIGNADO " +

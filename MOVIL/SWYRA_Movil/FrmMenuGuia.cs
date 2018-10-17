@@ -172,5 +172,41 @@ namespace SWYRA_Movil
                 MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
+
+        private void pbDetener_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmDetenerPed frmDetenerPed = new FrmDetenerPed();
+                frmDetenerPed.lblPedido.Text = ped.cve_doc.Trim();
+                var rs = frmDetenerPed.ShowDialog();
+                if (rs == DialogResult.OK)
+                {
+                    FrmDetenerPedCausa frmCausa = new FrmDetenerPedCausa();
+                    frmCausa.lblPedido.Text = ped.cve_doc.Trim();
+                    frmCausa.ShowDialog();
+                    var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'DETENIDO GUIA', " +
+                                "CAUSADETENIDO = '" + frmCausa.txtCausa.Text + "' " +
+                                "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
+                    var r = Program.GetExecute(query, 6);
+                    query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                            "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                            "@cvedoc, 'DETENIDO GUIA', getdate(), '" + Program.usActivo.Usuario + "')";
+                    r = Program.GetExecute(query, 7);
+                    MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    frmDetenerPed.Close();
+                    Close();
+                }
+                else
+                {
+                    frmDetenerPed.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
     }
 }

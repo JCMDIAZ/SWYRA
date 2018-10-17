@@ -120,7 +120,7 @@ namespace SWYRA
             {
                 var query =
                     "declare @pedidos table (cve_doc varchar(20)) insert @pedidos (cve_doc) select CVE_DOC from PEDIDO " +
-                    "WHERE FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
+                    "WHERE FECHA_DOC between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
                     "SELECT  TIP_DOC, p.CVE_DOC, CVE_CLPV, p.STATUS, DAT_MOSTR, p.CVE_VEND, CVE_PEDI, FECHA_DOC, FECHA_ENT, " +
                     "FECHA_VEN, FECHA_CANCELA, CAN_TOT, IMP_TOT1, IMP_TOT2, IMP_TOT3, IMP_TOT4, DES_TOT, DES_FIN, COM_TOT, " +
                     "CONDICION, p.CVE_OBS, NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, " +
@@ -132,7 +132,8 @@ namespace SWYRA
                     "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
                     "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, NOMBRE_VENDEDOR, " +
                     "uCapturo.Nombre capturo_n, CONSIGNACION, ISNULL(FLT,FLETE) FLETE, FLETE2, ENVIAR, CAUSADETENIDO, " +
-                    "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2 " +
+                    "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2, " +
+                    "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, FLETE " +
                     "FROM PEDIDO p left join (select cve_doc, ((SUM(isnull(CANTSURTIDO, 0)) / sum(CANT)) * 100.0) porc_surtidoReal from DETALLEPEDIDO " +
                     "where CVE_DOC in (select CVE_DOC from @pedidos) group by cve_doc) as det on p.cve_doc = det.cve_doc " +
                     "left join vw_estatuspedido ep on ep.CVE_DOC = p.CVE_DOC " +
@@ -144,7 +145,7 @@ namespace SWYRA
                     "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
                     "left join USUARIOS uCapturo on uCapturo.Usuario = p.CAPTURO " +
                     "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
-                    "WHERE FECHA_ENT between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
+                    "WHERE FECHA_DOC between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
                     "ORDER BY p.CVE_DOC DESC";
                 list = GetDataTable("DB", query, 51).ToList<Pedidos>();
             }
@@ -608,7 +609,7 @@ namespace SWYRA
             var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc").ToString();
             pedido = listPedidos.Where(o => o.cve_doc == cve_doc).FirstOrDefault();
 
-            if (pedido.estatuspedido == "REMISION" || pedido.estatuspedido == "LEVANTAMIENTO" ||
+            if (pedido.estatuspedido == "REMISION" || pedido.estatuspedido == "LEVANTAMIENTO" || pedido.estatuspedido == "GUIA" || pedido.estatuspedido == "DETENIDO GUIA" ||
                 pedido.estatuspedido == "INGRESEAR GUIA" || pedido.estatuspedido == "TERMINADO")
             {
                 cargaPaquetes(cve_doc.Trim());
@@ -646,6 +647,24 @@ namespace SWYRA
             else
             {
                 MessageBox.Show(@"Solo puede imprimirse en estos estatus REMISION, LEVANTAMIENTO, INGRESAR GUIA");
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc").ToString();
+            try
+            {
+                var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'TERMINADO' " +
+                            "WHERE CVE_DOC = '" + cve_doc + "' " +
+                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                            cve_doc + "', 'TERMINADO', getdate(), '" + userActivo.Usuario.ToString()  + "')";
+                var res = GetExecute("DB", query, 52);
+                MessageBox.Show(@"Cambiado satisfactoriamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

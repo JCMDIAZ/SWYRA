@@ -131,6 +131,7 @@ namespace SWYRA
             }
             return peds;
         }
+
         private List<DetallePedidoMerc> CargaDetalle(string cvedoc)
         {
             List<DetallePedidoMerc> dets = new List<DetallePedidoMerc>();

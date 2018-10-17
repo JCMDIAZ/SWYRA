@@ -37,7 +37,8 @@ namespace SWYRA_Movil
                 var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
                             "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, OCURREDOMICILIO, NOMBRE_VENDEDOR, " +
                             "CAPTURO, u.Nombre CAPTURO_N, ISNULL(STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
-                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, ''),'') UbicacionEmpaque from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
+                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, ''),'') UbicacionEmpaque, CONDICION " + 
+                            "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                             "left join USUARIOS u on u.Usuario = p.CAPTURO WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 txtPedido.Text = ped.cve_doc;
@@ -271,6 +272,8 @@ namespace SWYRA_Movil
             {
                 FrmAreaEmpaque frmAreaEmp = new FrmAreaEmpaque();
                 frmAreaEmp.lblPedido.Text = ped.cve_doc;
+                frmAreaEmp.lblCliente.Text = ped.cliente.Trim();
+                frmAreaEmp.lblCond.Text = ped.condicion.Trim();
                 DialogResult dr = new DialogResult();
                 if (ped.estatuspedido != "DEVOLUCION")
                 {

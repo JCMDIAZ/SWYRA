@@ -37,6 +37,7 @@ namespace SWYRA_Movil
             CargaUbicaciones();
             mostrardet = det.Where(o => o.surtido == false).ToList();
             lblPedido.Text = ped.cve_doc.Trim();
+            lblCliente.Text = ped.cliente.Trim();
             lblComentario.Text = "";
             art = mostrardet.FirstOrDefault();
             artFirst = art;
@@ -404,21 +405,24 @@ namespace SWYRA_Movil
 
         private void pbFinal_Click(object sender, EventArgs e)
         {
-            art.sw = true;
-            art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
-            art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
-            var ubiant = art.ubicacion;
-            art.ubicacion = ((art.sw) ? ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi) : (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi)));
-            var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
-            art.orden = orb.orden;
-            mostrardet = det.Where(o => o.surtido == false).ToList();
-            mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
-            art = mostrardet.FirstOrDefault();
-            artFirst = art;
-            artLast = mostrardet.LastOrDefault();
-            lblPendientes.Text = mostrardet.Count.ToString();
-            cargaDatos();
-            //pbSig_Click(sender, e);
+            if (art.mas > 0)
+            {
+                art.sw = true;
+                art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
+                art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
+                var ubiant = art.ubicacion;
+                art.ubicacion = ((art.sw) ? ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi) : (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi)));
+                var orb = orbi.First(o => o.cve_ubi == art.ubicacion);
+                art.orden = orb.orden;
+                mostrardet = det.Where(o => o.surtido == false).ToList();
+                mostrardet = mostrardet.OrderBy(o => o.orden).ToList();
+                art = mostrardet.FirstOrDefault();
+                artFirst = art;
+                artLast = mostrardet.LastOrDefault();
+                lblPendientes.Text = mostrardet.Count.ToString();
+                cargaDatos();
+                //pbSig_Click(sender, e);
+            }
         }
 
         private bool ValidaCambios()

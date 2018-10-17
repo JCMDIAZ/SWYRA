@@ -44,6 +44,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pbSig = new System.Windows.Forms.PictureBox();
             this.pbAnt = new System.Windows.Forms.PictureBox();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.lblCond = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ubicacionEntregaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +90,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(16, 82);
+            this.label1.Location = new System.Drawing.Point(16, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 23);
             this.label1.Text = "Área de EMPAQUE :";
@@ -96,20 +98,21 @@
             // 
             // lblPedido
             // 
-            this.lblPedido.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.lblPedido.Location = new System.Drawing.Point(15, 50);
+            this.lblPedido.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPedido.Location = new System.Drawing.Point(15, 45);
             this.lblPedido.Name = "lblPedido";
             this.lblPedido.Size = new System.Drawing.Size(207, 40);
             this.lblPedido.Text = "999999";
             this.lblPedido.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblPedido.Visible = false;
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Regular);
-            this.label2.Location = new System.Drawing.Point(15, 10);
+            this.label2.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
+            this.label2.Location = new System.Drawing.Point(15, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(207, 40);
-            this.label2.Text = "Pedido Número";
+            this.label2.Size = new System.Drawing.Size(207, 24);
+            this.label2.Text = "Pedido de:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // listBox1
@@ -161,6 +164,24 @@
             this.pbAnt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbAnt.Click += new System.EventHandler(this.pbAnt_Click);
             // 
+            // lblCliente
+            // 
+            this.lblCliente.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
+            this.lblCliente.Location = new System.Drawing.Point(15, 31);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(207, 40);
+            this.lblCliente.Text = "999999";
+            this.lblCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblCond
+            // 
+            this.lblCond.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.lblCond.Location = new System.Drawing.Point(15, 65);
+            this.lblCond.Name = "lblCond";
+            this.lblCond.Size = new System.Drawing.Size(207, 20);
+            this.lblCond.Text = "Cond:";
+            this.lblCond.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // FrmAreaEmpaque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -168,6 +189,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(238, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.lblCond);
+            this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.pbAnt);
             this.Controls.Add(this.pbSig);
             this.Controls.Add(this.listBox2);
@@ -202,5 +225,7 @@
         public System.Windows.Forms.ListBox listBox2;
         public System.Windows.Forms.PictureBox pbSig;
         public System.Windows.Forms.PictureBox pbAnt;
+        public System.Windows.Forms.Label lblCliente;
+        public System.Windows.Forms.Label lblCond;
     }
 }

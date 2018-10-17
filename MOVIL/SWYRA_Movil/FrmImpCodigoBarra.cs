@@ -121,12 +121,11 @@ namespace SWYRA_Movil
                         string str = "SIZE 50 mm,28 mm\n" +
                                      "GAP 0,0\n" +
                                      "DIRECTION 0\n" +
-                                     "TEXT 125,20,\"D.FNT\",0,1,1,\"Herramientas Importadas\"\n" +
-                                     "TEXT 125,40,\"D.FNT\",0,1,1,\"Monterrey SA CV\"\n" +
+                                     "TEXT 340,20,\"3\",0,1,1,3,\"(" + clv + ")\"\n" +
+                                     "TEXT 340,45,\"0\",0,8,8,3,\"" + frm2.nmTotalPiezas.Value.ToString() + " Piezas\"\n" +
+                                     //"TEXT 125,40,\"3\",0,1,1,\"Monterrey SA CV\"\n" +
                                      "PUTPCX 10,5,\"dogotuls2.pcx\"\n" +
-                                     "TEXT 10,65,\"1\",0,1,1,\"" + txtDesc.Text.Replace("\\", "").Replace("\"", "") + "\"\n" +
-                                     "TEXT 10,80,\"1\",0,1,1,\"(" + clv + ")\"\n" +
-                                     "TEXT 290,80,\"1\",0,1,1,\"" + frm2.nmTotalPiezas.Value.ToString() + " Piezas\"\n" +
+                                     "TEXT 10,70,\"0\",0,6,8,\"" + txtDesc.Text.Replace("\\", "").Replace("\"", "") + "\"\n" +
                                      "BARCODE 30,95,\"128\",70,1,0,2,2,\"" + strcdb + "\"\n";
 
                         var directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);

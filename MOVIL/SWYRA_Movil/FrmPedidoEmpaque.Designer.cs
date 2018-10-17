@@ -44,8 +44,8 @@
             this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn2 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.dataGridTextBoxColumn3 = new System.Windows.Forms.DataGridTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridTextBoxColumn4 = new System.Windows.Forms.DataGridTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
@@ -131,9 +131,9 @@
             // dataGridTableStyle1
             // 
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn1);
-            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn2);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn3);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn4);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn2);
             this.dataGridTableStyle1.MappingName = "Pedidos";
             // 
             // dataGridTextBoxColumn1
@@ -159,6 +159,14 @@
             this.dataGridTextBoxColumn3.MappingName = "cliente";
             this.dataGridTextBoxColumn3.Width = 150;
             // 
+            // dataGridTextBoxColumn4
+            // 
+            this.dataGridTextBoxColumn4.Format = "";
+            this.dataGridTextBoxColumn4.FormatInfo = null;
+            this.dataGridTextBoxColumn4.HeaderText = "Estatus";
+            this.dataGridTextBoxColumn4.MappingName = "estatuspedido";
+            this.dataGridTextBoxColumn4.Width = 75;
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
@@ -167,14 +175,6 @@
             this.label1.Size = new System.Drawing.Size(228, 20);
             this.label1.Text = "Selecciona Pedido";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // dataGridTextBoxColumn4
-            // 
-            this.dataGridTextBoxColumn4.Format = "";
-            this.dataGridTextBoxColumn4.FormatInfo = null;
-            this.dataGridTextBoxColumn4.HeaderText = "Estatus";
-            this.dataGridTextBoxColumn4.MappingName = "estatuspedido";
-            this.dataGridTextBoxColumn4.Width = 75;
             // 
             // FrmPedidoEmpaque
             // 

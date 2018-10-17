@@ -91,7 +91,7 @@ namespace SWYRA_Movil
             {
                 linea = "2b";
                 var query = "select top 1 CVE_DOC from PEDIDO where " +
-                            "(ESTATUSPEDIDO = 'GUIA' and isnull(ETIQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
+                            "(ESTATUSPEDIDO IN ('GUIA') and isnull(ETIQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "')";
                 linea = "3b";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 linea = "4b";
@@ -101,6 +101,7 @@ namespace SWYRA_Movil
                         "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, ISNULL(flt,FLETE) FLETE " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where (p.ESTATUSPEDIDO = 'GUIA' and isnull(p.ETIQUETADOR_ASIGNADO,'') = '" + surtAsig + "') " +
+                        "or (p.ESTATUSPEDIDO = 'DETENIDO GUIA' and isnull(p.ETIQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "') " +
                         "order by FLETE, PRIORIDAD, CVE_DOC ";
                 linea = "6b";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();

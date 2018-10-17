@@ -32,13 +32,13 @@ namespace SWYRA_Movil
                 else if (perfil == "EMPAQUE")
                 {
                     query = "select Usuario, Nombre from USUARIOS " +
-                            "where RTRIM(Categoria) in ('EMPAQUETADOR') AND Usuario <> '" + Program.usActivo.Usuario + "' " +
+                            "where RTRIM(Categoria) in ('MASTER', 'EMPAQUETADOR') AND Usuario <> '" + Program.usActivo.Usuario + "' " +
                             "ORDER BY Nombre";
                 }
                 else
                 {
                     query = "select Usuario, Nombre from USUARIOS " +
-                            "where RTRIM(Categoria) in ('SURTIDOR', 'EMPAQUETADOR') AND Usuario <> '" + Program.usActivo.Usuario + "' AND ISNULL(AreaAsignada,'') <> '' " +
+                            "where RTRIM(Categoria) in ('MASTER', 'SURTIDOR', 'EMPAQUETADOR') AND Usuario <> '" + Program.usActivo.Usuario + "' AND ISNULL(AreaAsignada,'') <> '' " +
                             "ORDER BY Nombre";
                 }
                 cbUsuarios.DataSource = Program.GetDataTable(query, 1).ToList<Usuarios>();

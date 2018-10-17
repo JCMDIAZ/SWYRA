@@ -379,4 +379,19 @@ namespace SWYRA
         public string impresion { get; set; }
         public bool realizado { get; set; }
     }
+
+    public class PXS
+    {
+        public string cve_doc { get; set; }
+        public string cve_clpv { get; set; }
+        public string cliente { get; set; }
+        public string cve_vend { get; set; }
+        public string nombre_vendedor { get; set; }
+        public string cve_pedi { get; set; }
+        public DateTime fecha_doc { get; set; }
+        public string cve_art { get; set; }
+        public string descr { get; set; }
+        public double cant { get; set; }
+        public double cantpend { get; set; }
+    }
 }
