@@ -596,7 +596,7 @@ namespace swyraServices
             try
             {
                 pedDb.status = "C";
-                string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE", "MODIFICACION" };
+                string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE", "MODIFICACION", "DETENIDO EMP" };
                 if (pedDb.estatuspedido.In(dats))
                 {
                     pedDb.estatuspedido = (pedDb.estatuspedido == "AUTORIZACION") ? "CANCELACION" : "DEVOLUCION";
@@ -708,12 +708,12 @@ namespace swyraServices
             try
             {
                 linea = "1";
-                string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE", "MODIFICACION" };
+                string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE", "MODIFICACION", "DETENIDO EMP" };
                 linea = "2";
                 if (pedDb.estatuspedido.In(dats))
                 {
                     linea = "3";
-                    pedFb.estatuspedido = (pedDb.estatuspedido != "EMPAQUE") ? pedDb.estatuspedido : "MODIFICACION";
+                    pedFb.estatuspedido = (pedDb.estatuspedido != "EMPAQUE" && pedDb.estatuspedido != "DETENIDO EMP") ? pedDb.estatuspedido : "MODIFICACION";
 
                     linea = "4";
                     var query = "update PEDIDO set " +

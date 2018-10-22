@@ -137,7 +137,7 @@
             this.label4.Location = new System.Drawing.Point(3, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
-            this.label4.Text = "Estatus :";
+            this.label4.Text = "Capturo :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtOcuDom

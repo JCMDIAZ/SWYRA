@@ -229,6 +229,12 @@
     <Compile Include="General.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteHistorial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReporteHistorial.Designer.cs">
+      <DependentUpon>ReporteHistorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResumenPedido.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -336,6 +342,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReporteHistorial.resx">
+      <DependentUpon>ReporteHistorial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResumenPedido.resx">
       <DependentUpon>ResumenPedido.cs</DependentUpon>
     </EmbeddedResource>
@@ -393,6 +402,7 @@
     <None Include="Properties\DataSources\InventarioCondicion.datasource" />
     <None Include="Properties\DataSources\InventarioPresentacion.datasource" />
     <None Include="Properties\DataSources\OrdenUbicacion.datasource" />
+    <None Include="Properties\DataSources\PedidoHist.datasource" />
     <None Include="Properties\DataSources\Pedidos.datasource" />
     <None Include="Properties\DataSources\Perfil.datasource" />
     <None Include="Properties\DataSources\UsuarioAlmacen.datasource" />

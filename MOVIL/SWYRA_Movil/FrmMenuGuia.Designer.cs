@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuGuia));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbDetener = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblContado = new System.Windows.Forms.Label();
             this.pbConcluir = new System.Windows.Forms.PictureBox();
@@ -53,7 +54,6 @@
             this.dataGridTextBoxColumn3 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.lbl1 = new System.Windows.Forms.Label();
             this.lbl2 = new System.Windows.Forms.Label();
-            this.pbDetener = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +71,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 40);
             // 
+            // pbDetener
+            // 
+            this.pbDetener.Image = ((System.Drawing.Image)(resources.GetObject("pbDetener.Image")));
+            this.pbDetener.Location = new System.Drawing.Point(129, 2);
+            this.pbDetener.Name = "pbDetener";
+            this.pbDetener.Size = new System.Drawing.Size(35, 35);
+            this.pbDetener.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbDetener.Click += new System.EventHandler(this.pbDetener_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -82,12 +91,12 @@
             // 
             // lblContado
             // 
-            this.lblContado.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.lblContado.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.lblContado.ForeColor = System.Drawing.Color.DarkRed;
             this.lblContado.Location = new System.Drawing.Point(46, 3);
             this.lblContado.Name = "lblContado";
-            this.lblContado.Size = new System.Drawing.Size(77, 35);
-            this.lblContado.Text = "PONER ETIQUETA DE CONTADO";
+            this.lblContado.Size = new System.Drawing.Size(77, 20);
+            this.lblContado.Text = "CONTADO";
             this.lblContado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblContado.Visible = false;
             // 
@@ -245,15 +254,6 @@
             this.lbl2.Text = "INGRESA EL REMITENTE";
             this.lbl2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl2.Visible = false;
-            // 
-            // pbDetener
-            // 
-            this.pbDetener.Image = ((System.Drawing.Image)(resources.GetObject("pbDetener.Image")));
-            this.pbDetener.Location = new System.Drawing.Point(129, 2);
-            this.pbDetener.Name = "pbDetener";
-            this.pbDetener.Size = new System.Drawing.Size(35, 35);
-            this.pbDetener.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbDetener.Click += new System.EventHandler(this.pbDetener_Click);
             // 
             // FrmMenuGuia
             // 

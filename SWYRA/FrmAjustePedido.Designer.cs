@@ -51,6 +51,8 @@
             this.colvolumen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colpeso = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBrocas = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.txtFlete2 = new System.Windows.Forms.TextBox();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -103,8 +105,7 @@
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
-            this.txtBrocas = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPaquetes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallePedidoMercBindingSource)).BeginInit();
@@ -381,6 +382,25 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Pedido";
+            // 
+            // txtBrocas
+            // 
+            this.txtBrocas.BackColor = System.Drawing.Color.White;
+            this.txtBrocas.Location = new System.Drawing.Point(451, 220);
+            this.txtBrocas.Name = "txtBrocas";
+            this.txtBrocas.ReadOnly = true;
+            this.txtBrocas.Size = new System.Drawing.Size(101, 20);
+            this.txtBrocas.TabIndex = 52;
+            this.txtBrocas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(477, 204);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(51, 13);
+            this.label24.TabIndex = 51;
+            this.label24.Text = "BROCAS";
             // 
             // txtFlete2
             // 
@@ -839,7 +859,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnGuardar,
             this.btnImprimir,
-            this.btnSalir});
+            this.btnSalir,
+            this.btnExportar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(930, 27);
@@ -876,24 +897,14 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // txtBrocas
+            // btnExportar
             // 
-            this.txtBrocas.BackColor = System.Drawing.Color.White;
-            this.txtBrocas.Location = new System.Drawing.Point(451, 220);
-            this.txtBrocas.Name = "txtBrocas";
-            this.txtBrocas.ReadOnly = true;
-            this.txtBrocas.Size = new System.Drawing.Size(101, 20);
-            this.txtBrocas.TabIndex = 52;
-            this.txtBrocas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(477, 204);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(51, 13);
-            this.label24.TabIndex = 51;
-            this.label24.Text = "BROCAS";
+            this.btnExportar.Image = global::SWYRA.Properties.Resources._1366839417_Arzo_Icons_Icon_96_2;
+            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(113, 24);
+            this.btnExportar.Text = "Exportar Detalle";
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // FrmAjustePedido
             // 
@@ -1001,5 +1012,6 @@
         public System.Windows.Forms.ToolStripButton btnGuardar;
         private System.Windows.Forms.TextBox txtBrocas;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ToolStripButton btnExportar;
     }
 }

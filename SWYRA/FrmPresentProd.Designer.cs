@@ -140,7 +140,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pcProgresBar);
-            this.panel1.Controls.Add(this.pcReporte);
             this.panel1.Controls.Add(this.gcPresentaciones);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.toolStrip1);
@@ -189,7 +188,7 @@
             this.pcReporte.Controls.Add(this.simpleButton1);
             this.pcReporte.Controls.Add(this.memoRep);
             this.pcReporte.Controls.Add(this.label14);
-            this.pcReporte.Location = new System.Drawing.Point(2, 295);
+            this.pcReporte.Location = new System.Drawing.Point(34, 38);
             this.pcReporte.Margin = new System.Windows.Forms.Padding(2);
             this.pcReporte.Name = "pcReporte";
             this.pcReporte.Size = new System.Drawing.Size(298, 270);
@@ -474,6 +473,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.pcReporte);
             this.groupBox1.Controls.Add(this.txtCodigoBarra9);
             this.groupBox1.Controls.Add(this.txtNumPiezas9);
             this.groupBox1.Controls.Add(this.label11);

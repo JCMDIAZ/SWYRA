@@ -120,7 +120,7 @@ namespace SWYRA_Movil
             lblPedido.Text = ped.cve_doc;
             lblCliente.Text = ped.cliente;
             lblGuia.Text = "";
-            lblContado.Visible = (ped.contado == "S");
+            lblContado.Visible = (ped.contado == "S" || ped.contado == "C");
             det = CargaDetalleMerc();
             dgDetPedidos.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
             pbConcluir.Visible = (det.Where(o => o.num_guia == "").ToList().Count == 0);

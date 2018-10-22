@@ -56,6 +56,7 @@ namespace SWYRA_Movil
             txtMinimo.Text = (art != null) ? art.min.ToString() : "";
             txtMaster.Text = (art != null) ? art.mas.ToString() : "";
             txtPorSurtir.Text = (art != null) ? art.cantdiferencia.ToString() : "";
+            txtCantT.Text = (art != null) ? art.cant.ToString() : "";
             txtSurtido.Text = (art != null) ? art.cantsurtido.ToString() : "";
             txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
             lblComentario.Text = (art != null) ? art.comentario : "";
@@ -343,6 +344,8 @@ namespace SWYRA_Movil
                                 "VALUES ('" + art.cve_doc + "', @consec, " + art.num_par + ", '" + art.cve_art + "', '', 0, " + art.cantdiferencia + ") END";
                     Program.GetExecute(query, 100);
 
+                    var df = art.cantdiferencia;
+
                     if (art.cantsurtido < art.cant) { art.cantdiferencia = art.cant - art.cantsurtido; } else { art.cantdiferencia = 0; }
                     art.cantpendiente = art.cantpendiente + art.cantdiferencia;
                     art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
@@ -352,8 +355,8 @@ namespace SWYRA_Movil
                     var orb = orbi.Find(o => o.cve_ubi == art.ubicacion);
                     art.orden = (orb == null) ? 0 : orb.orden;
 
-                    query = 
-                                "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") + ", CANTPENDIENTE = " + art.cantpendiente +
+                    query =
+                                "UPDATE DETALLEPEDIDO SET SURTIDO = " + ((art.surtido) ? "1" : "0") + ", CANTPENDIENTE = ISNULL(CANTPENDIENTE,0) + " + df +
                                 " WHERE CVE_DOC = '" + art.cve_doc + "' AND NUM_PAR = " + art.num_par.ToString() + " " +
                                 "update PEDIDO set PORC_SURTIDO = r.porc from PEDIDO p join ( " +
                                 "select CVE_DOC, (sum(CAST(ISNULL(SURTIDO,0) AS float)) / CAST(count(SURTIDO) as float)) * 100.0 porc from DETALLEPEDIDO " +
@@ -409,7 +412,7 @@ namespace SWYRA_Movil
             {
                 art.sw = true;
                 art.con = (art.sel > 0) ? (int)((art.cant - (int)(art.cantsurtido + art.cantpendiente) - 1) / art.sel) : 0;
-                art.cantdiferencia = art.cant - (art.sel * art.con) - (art.cantsurtido + art.cantpendiente);
+                art.cantdiferencia = art.cant - (art.sel * art.con * (art.sw ? 0 : 1)) - (art.cantsurtido + art.cantpendiente);
                 var ubiant = art.ubicacion;
                 art.ubicacion = ((art.sw) ? ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi) : (art.sel == 0 && art.con == 0) ? art.ctrl_alm : ((art.con > 0) ? art.ctrl_alm : ((art.masters_ubi == "") ? art.ctrl_alm : art.masters_ubi)));
                 var orb = orbi.First(o => o.cve_ubi == art.ubicacion);

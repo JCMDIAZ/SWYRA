@@ -38,6 +38,7 @@
             this.pbIncompleto = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCliente = new System.Windows.Forms.Label();
             this.lblPedido = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCant = new System.Windows.Forms.NumericUpDown();
@@ -69,7 +70,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtUbica = new System.Windows.Forms.TextBox();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lblCliente = new System.Windows.Forms.Label();
+            this.txtCantT = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -139,6 +141,14 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(238, 64);
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lblCliente.Location = new System.Drawing.Point(52, 4);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(175, 11);
+            this.lblCliente.Text = "Pedido:";
             // 
             // lblPedido
             // 
@@ -261,6 +271,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel2.Controls.Add(this.txtCantT);
+            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.txtSurtido);
             this.panel2.Controls.Add(this.txtPorSurtir);
             this.panel2.Controls.Add(this.lblMinUbi);
@@ -379,7 +391,7 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label10.Location = new System.Drawing.Point(134, 85);
+            this.label10.Location = new System.Drawing.Point(134, 88);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 19);
             this.label10.Text = "Surtido";
@@ -388,7 +400,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label9.Location = new System.Drawing.Point(11, 85);
+            this.label9.Location = new System.Drawing.Point(11, 87);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 19);
             this.label9.Text = "Por Surtir";
@@ -452,13 +464,23 @@
             // 
             this.detallePedidosBindingSource.DataSource = typeof(SWYRA_Movil.DetallePedidos);
             // 
-            // lblCliente
+            // txtCantT
             // 
-            this.lblCliente.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.lblCliente.Location = new System.Drawing.Point(52, 4);
-            this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(175, 11);
-            this.lblCliente.Text = "Pedido:";
+            this.txtCantT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtCantT.Location = new System.Drawing.Point(175, 103);
+            this.txtCantT.Name = "txtCantT";
+            this.txtCantT.ReadOnly = true;
+            this.txtCantT.Size = new System.Drawing.Size(54, 19);
+            this.txtCantT.TabIndex = 44;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.label13.Location = new System.Drawing.Point(121, 108);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 18);
+            this.label13.Text = "TOT Surtir";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // FrmSurtit
             // 
@@ -523,5 +545,7 @@
         public System.Windows.Forms.PictureBox pbFinal;
         private System.Windows.Forms.Label lblMinUbi;
         private System.Windows.Forms.Label lblCliente;
+        private System.Windows.Forms.TextBox txtCantT;
+        private System.Windows.Forms.Label label13;
     }
 }

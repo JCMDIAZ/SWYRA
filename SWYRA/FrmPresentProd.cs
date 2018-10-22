@@ -32,7 +32,13 @@ namespace SWYRA
             listInventarioPresentacion = CargaInventarioPresentacion();
             gcPresentaciones.DataSource = listInventarioPresentacion;
             gridView1.OptionsFind.AlwaysVisible = true;
-            GetGridPresentacion();
+            gridView1.Layout += (s, em) =>
+            {
+                sw = false;
+                GetGridPresentacion();
+                sw = true;
+            };
+            //GetGridPresentacion();
         }
    
         private List<Inventario> CargaInventario()
@@ -57,8 +63,7 @@ namespace SWYRA
             {
                 var query = "SELECT CVE_ART, DESCR, CANT_PIEZAS_1, CODIGO_BARRA_1, CANT_PIEZAS_2, CODIGO_BARRA_2, " +
                             "CANT_PIEZAS_3, CODIGO_BARRA_3, CANT_PIEZAS_4, CODIGO_BARRA_4, " +
-                            "CANT_PIEZAS_5, CODIGO_BARRA_5, CANT_PIEZAS_6, CODIGO_BARRA_6, " +
-                            "CANT_PIEZAS_7, CODIGO_BARRA_7, CANT_PIEZAS_8, CODIGO_BARRA_8, " +
+                            "CANT_PIEZAS_5, CODIGO_BARRA_5, CANT_PIEZAS_6, CODIGO_BARRA_6, " +"CANT_PIEZAS_7, CODIGO_BARRA_7, CANT_PIEZAS_8, CODIGO_BARRA_8, " +
                             "CANT_PIEZAS_9, CODIGO_BARRA_9, ACTIVO " +
                             "FROM INVENTARIOPRESENT WHERE CVE_ART IN(SELECT CVE_ART FROM INVENTARIO " +
                             "WHERE STATUS = 'A' AND EXIST > 0) ORDER BY CVE_ART";

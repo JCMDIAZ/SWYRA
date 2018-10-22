@@ -182,6 +182,7 @@ namespace SWYRA
         public string direccion1 { get; set; }
         public string direccion2 { get; set; }
         public string causadetenido { get; set; }
+        public double remitentes { get; set; }
 }
 
     public class DetallePedidos
@@ -393,5 +394,14 @@ namespace SWYRA
         public string descr { get; set; }
         public double cant { get; set; }
         public double cantpend { get; set; }
+    }
+
+    public class PedidoHist
+    {
+        public string cve_doc { get; set; }
+        public string estatuspedido { get; set; }
+        public DateTime fechamov { get; set; }
+        public string usuario { get; set; }
+        public string nombre { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using DevExpress.XtraBars;
 using static SWYRA.General;
 using System.Net.Sockets;
 using System.IO;
+using DevExpress.XtraReports.UI;
 
 namespace SWYRA
 {
@@ -133,7 +134,9 @@ namespace SWYRA
                     "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, NOMBRE_VENDEDOR, " +
                     "uCapturo.Nombre capturo_n, CONSIGNACION, ISNULL(FLT,FLETE) FLETE, FLETE2, ENVIAR, CAUSADETENIDO, " +
                     "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2, " +
-                    "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, FLETE " +
+                    "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, " +
+                    "FLETE, TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, " +
+                    "(TotCajaCarton + TotCajaMadera + TotBultos + TotRollos + TotCubetas + TotAtados + TotTarimas) Remitentes " +
                     "FROM PEDIDO p left join (select cve_doc, ((SUM(isnull(CANTSURTIDO, 0)) / sum(CANT)) * 100.0) porc_surtidoReal from DETALLEPEDIDO " +
                     "where CVE_DOC in (select CVE_DOC from @pedidos) group by cve_doc) as det on p.cve_doc = det.cve_doc " +
                     "left join vw_estatuspedido ep on ep.CVE_DOC = p.CVE_DOC " +
@@ -320,13 +323,15 @@ namespace SWYRA
         private void btnFactura_Click(object sender, EventArgs e)
         {
             var cveDoc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc");
-            var fAjustePedido = new FrmAjustePedido();
-            fAjustePedido.btnGuardar.Visible = false;
-            fAjustePedido.cve_doc = cveDoc.ToString();
-            fAjustePedido.userActivo = userActivo;
-            fAjustePedido.ShowDialog();
-            fAjustePedido.Close();
-        }
+            if (cveDoc != null)
+            {
+                var fAjustePedido = new FrmAjustePedido();
+                fAjustePedido.btnGuardar.Visible = false;
+                fAjustePedido.cve_doc = cveDoc.ToString();
+                fAjustePedido.userActivo = userActivo;
+                fAjustePedido.ShowDialog();
+                fAjustePedido.Close();
+            }}
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -666,6 +671,35 @@ namespace SWYRA
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc").ToString();
+            var ped = listPedidos.Where(o => o.cve_doc == cve_doc).ToList();
+            List<PedidoHist> hist = cargaPedidoHist(cve_doc.Trim());
+            ReporteHistorial rh = new ReporteHistorial();
+            rh.bindingSource1.DataSource = hist;
+            rh.bindingSource2.DataSource = ped;
+            rh.ShowPreview();
+        }
+
+        private List<PedidoHist> cargaPedidoHist(string cvedoc)
+        {
+            List<PedidoHist> ls = new List<PedidoHist>();
+            try
+            {
+                var query = "select p.*, u.Nombre from PEDIDO_HIST p " +
+                            "left join USUARIOS u on p.USUARIO = u.Usuario " +
+                             "where LTRIM(CVE_DOC) = '" + cvedoc + "' " +
+                             "order by FECHAMOV desc";
+                ls = GetDataTable("DB", query, 52).ToList<PedidoHist>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return ls;
         }
     }
 }

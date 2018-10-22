@@ -213,5 +213,18 @@ namespace SWYRA
             resumenPedido.xrSubreport2.ReportSource = resumenPedidoDt;
             resumenPedido.ShowPreview();
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = @"xlsx Excel (*.xlsx)|*.xlsx";
+            sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                gcDetPedido.ExportToXlsx(sfd.FileName);
+            }
+        }
     }
 }

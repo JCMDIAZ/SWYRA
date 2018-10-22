@@ -157,6 +157,7 @@ namespace SWYRA
             {
                 sqlCon = GetConnection(db);
                 var sqlAdt = new SqlDataAdapter(query, sqlCon);
+                sqlAdt.SelectCommand.CommandTimeout = 5 * 60;
                 sqlAdt.Fill(dt);
                 CloseConnection(sqlCon);
             }
@@ -211,6 +212,7 @@ namespace SWYRA
             {
                 sqlCon = GetConnection(db);
                 var sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.CommandTimeout = 5 * 60;
                 sqlCmd.ExecuteNonQuery();
                 b = true;
                 CloseConnection(sqlCon);

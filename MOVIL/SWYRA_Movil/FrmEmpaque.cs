@@ -142,10 +142,11 @@ namespace SWYRA_Movil
                             "CVE_PEDI, OCURREDOMICILIO, FECHA_ENT, STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
                             "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, OBSERVACIONES, CONSIGNACION, " + 
                             "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2, " +
-                            "FLETE, FLETE2, ENVIAR, FECHA_DOC, u.Nombre SURTIDOR_AREA_N, u2.Nombre SURTIDOR_ASIGNADO_N " +
+                            "FLETE, FLETE2, ENVIAR, FECHA_DOC, u.Nombre SURTIDOR_AREA_N, u2.Nombre SURTIDOR_ASIGNADO_N, u3.Nombre capturo_n " +
                             "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                             "left join USUARIOS u on u.Usuario = p.SURTIDOR_AREA " +
                             "left join USUARIOS u2 on u2.Usuario = p.SURTIDOR_ASIGNADO " +
+                            "left join USUARIOS u3 on u3.Usuario = p.CAPTURO " +
                             "WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
                 lblPedido.Text = ped.cve_doc;

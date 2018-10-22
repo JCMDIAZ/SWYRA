@@ -28,7 +28,7 @@ namespace SWYRA_Movil
             lblPedido.Text = ped.cve_doc.Trim();
             lblCliente.Text = ped.cliente;
             txtTipoServicio.Text = ped.tiposervicio;
-            txtEstatus.Text = ((ped.status == "C") ? "CANCELADO" : ((ped.contado == "S") ? "CONTADO" : "AUTORIZADO"));
+            txtEstatus.Text = ped.capturo_n;
             txtOcuDom.Text = ped.ocurredomicilio;
             txtUbicacion.Text = ped.ubicacionempaque;
             txtConsigna.Text = ((ped.enviar == "")? ped.direccion1 + " " + ped.direccion2 : ped.consignacion);

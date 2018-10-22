@@ -118,8 +118,8 @@ namespace SWYRA_Movil
                         TSCBluetooth bt = new TSCBluetooth();
                         bt.openport(Program.ptoImp());
                         string strcdb = dgCodigos[index, 2].ToString() + ((frm2.nmTotalPiezas.Value > 1 && frm2.nmTotalPiezas.Enabled) ? "-" + frm2.nmTotalPiezas.Value : "");
-                        string str = "SIZE 50 mm,28 mm\n" +
-                                     "GAP 0,0\n" +
+                        string str = "SIZE 2,1\n" +
+                                     "GAP 0.12,0\n" +
                                      "DIRECTION 0\n" +
                                      "TEXT 340,20,\"3\",0,1,1,3,\"(" + clv + ")\"\n" +
                                      "TEXT 340,45,\"0\",0,8,8,3,\"" + frm2.nmTotalPiezas.Value.ToString() + " Piezas\"\n" +
