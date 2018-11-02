@@ -44,6 +44,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbAsignar = new System.Windows.Forms.PictureBox();
             this.pbSalir = new System.Windows.Forms.PictureBox();
+            this.dataGridTextBoxColumn5 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -81,6 +82,7 @@
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn3);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn1);
             this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn4);
+            this.dataGridTableStyle1.GridColumnStyles.Add(this.dataGridTextBoxColumn5);
             this.dataGridTableStyle1.MappingName = "Pedidos";
             // 
             // dataGridTextBoxColumn2
@@ -150,6 +152,13 @@
             this.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbSalir.Click += new System.EventHandler(this.pbSalir_Click);
             // 
+            // dataGridTextBoxColumn5
+            // 
+            this.dataGridTextBoxColumn5.Format = "";
+            this.dataGridTextBoxColumn5.FormatInfo = null;
+            this.dataGridTextBoxColumn5.HeaderText = "Contado";
+            this.dataGridTextBoxColumn5.MappingName = "contado_n";
+            // 
             // FrmPedidoGuia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -185,5 +194,6 @@
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn2;
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn3;
         private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn4;
+        private System.Windows.Forms.DataGridTextBoxColumn dataGridTextBoxColumn5;
     }
 }

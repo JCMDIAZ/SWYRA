@@ -88,7 +88,10 @@ namespace SWYRA
             foreach (var pd in ped)
             {
                 string[] rs = pd.condicion.Split(';');
-                pd.condicion = rs[rs.Length -1];
+                if (rs.Length > 2)
+                {
+                    pd.condicion = rs[2];
+                }
             }
             List<DetallePedidoMerc> det = CargaDetalle(imp.cve_doc);
             XtraReport1 rpt1 = new XtraReport1();

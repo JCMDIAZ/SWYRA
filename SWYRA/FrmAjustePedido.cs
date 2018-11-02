@@ -65,7 +65,7 @@ namespace SWYRA
                 ped = lsPedidos.FirstOrDefault();
                 var num = ped.condicion.Split(';').Length;
                 ped.condicion = (num > 2) ? ped.condicion.Split(';')[2] : "";
-                string[] est = {"REMISION", "GUIA", "TERMINADO"};
+                string[] est = {"REMISION", "GUIA", "TERMINADO", "LEVANTAMIENTO"};
                 query =
                     "SELECT dp.CVE_DOC, dp.NUM_PAR, dp.CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
                     "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, " +
@@ -75,8 +75,7 @@ namespace SWYRA
                     "FROM DETALLEPEDIDO dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "LEFT join INVENTARIOCOND ic on dp.CVE_ART = ic.CVE_ART " +
                     "LEFT JOIN ( select distinct CVE_DOC, NUM_PAR, STUFF((select ', ' + ('(' + CAST(SUM(d.CANT) AS VARCHAR(5)) + ') ' + e.Empaque) " + 
-                    "from DETALLEPEDIDOMERC d join(select h.CVE_DOC, h.CONSEC, h.TIPOPAQUETE + ' # ' + CAST(h.CONSEC_EMPAQUE AS VARCHAR(2)) + " +
-                    "case when p.TIPOPAQUETE = 'ATADOS' then ' (A' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' " +
+                    "from DETALLEPEDIDOMERC d join(select h.CVE_DOC, h.CONSEC, h.TIPOPAQUETE + ' # ' + CAST(h.CONSEC_EMPAQUE AS VARCHAR(2)) + " +"case when p.TIPOPAQUETE = 'ATADOS' then ' (A' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' " +
                     "when p.TIPOPAQUETE = 'TARIMA' then ' (T' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' ELSE '' END Empaque " +
                     "FROM DETALLEPEDIDOMERC h LEFT JOIN DETALLEPEDIDOMERC p ON p.CONSEC = h.CONSEC_PADRE and p.CVE_DOC = h.CVE_DOC " +
                     "WHERE (h.CVE_DOC = '" + cve_doc + "') AND(ISNULL(h.CANCELADO, 0) = 0) AND(ISNULL(h.TIPOPAQUETE, '') " +
@@ -87,7 +86,7 @@ namespace SWYRA
                     "from DETALLEPEDIDOMERC as a " +
                     "where (a.CVE_DOC = '" + cve_doc + "') AND(NUM_PAR > 0) ) as res on dp.NUM_PAR = res.NUM_PAR " +
                     "WHERE (dp.CVE_DOC = '" + cve_doc + "') AND ((ISNULL(CANTSURTIDO," + (ped.estatuspedido.In(est) ? "0" : "CANT") + ") > 0) " +
-                    "OR (ISNULL(CANTSURTIDO,0) = 0 AND ISNULL(CANTPENDIENTE,0) = 0))";
+                    "OR (ISNULL(CANTSURTIDO,0) = 0 AND ISNULL(CANTPENDIENTE,0) = 0) AND ISNULL(SURTIDO,0) = 0)";
                 lsDetallePedidos = GetDataTable("DB", query, 6).ToList<DetallePedidos>();
                 query =
                     "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO, TotArt, " + 
@@ -102,8 +101,7 @@ namespace SWYRA
             }
         }
 
-        private void Cargadatos()
-        {
+        private void Cargadatos(){
             txtPedido.Text = ped.cve_doc;
             deFecha.EditValue = ped.fechaelab;
             txtCliente.Text = ped.cliente;
@@ -112,7 +110,8 @@ namespace SWYRA
             txtEnviar.Text = ped.enviar;
             txtCajaCarton.Text = ped.totcajacarton.ToString();
             txtCajaMadera.Text = ped.totcajamadera.ToString();
-            txtBulto.Text = ped.totbultos.ToString();txtRollo.Text = ped.totrollos.ToString();
+            txtBulto.Text = ped.totbultos.ToString();
+            txtRollo.Text = ped.totrollos.ToString();
             txtCubeta.Text = ped.totcubetas.ToString();
             txtAtados.Text = ped.totatados.ToString();
             txtTarimas.Text = ped.tottarimas.ToString();
@@ -190,7 +189,7 @@ namespace SWYRA
                 var res = GetExecute("DB", query, 7);
                 var query3 = "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
                              cve_doc + "', 'FACTURACION', getdate(), '" + userActivo.Usuario + "')";
-                var res2 = GetExecute("DB", query, 12);
+                var res2 = GetExecute("DB", query3, 12);
                 cve_doc = "";
                 Close();
             }

@@ -222,9 +222,11 @@ namespace SWYRA
         private bool ValidaDatos()
         {
             bool b = true;
-            double tot = (double) txtNumPiezas1.EditValue + (double) txtNumPiezas2.EditValue + (double) txtNumPiezas3.EditValue +
-                      (double) txtNumPiezas4.EditValue + (double) txtNumPiezas5.EditValue + (double) txtNumPiezas6.EditValue +
-                      (double) txtNumPiezas5.EditValue + (double) txtNumPiezas6.EditValue + (double) txtNumPiezas7.EditValue;
+            double tot = double.Parse(txtNumPiezas1.EditValue.ToString()) + double.Parse(txtNumPiezas2.EditValue.ToString()) + 
+                         double.Parse(txtNumPiezas3.EditValue.ToString()) + double.Parse(txtNumPiezas4.EditValue.ToString()) + 
+                         double.Parse(txtNumPiezas5.EditValue.ToString()) + double.Parse(txtNumPiezas6.EditValue.ToString()) +
+                         double.Parse(txtNumPiezas7.EditValue.ToString()) + double.Parse(txtNumPiezas8.EditValue.ToString()) + 
+                         double.Parse(txtNumPiezas9.EditValue.ToString());
             string cod = txtCodigoBarra1.Text + txtCodigoBarra2.Text + txtCodigoBarra3.Text +
                          txtCodigoBarra4.Text + txtCodigoBarra5.Text + txtCodigoBarra6.Text +
                          txtCodigoBarra7.Text + txtCodigoBarra8.Text + txtCodigoBarra9.Text;
@@ -263,13 +265,13 @@ namespace SWYRA
                     b = false;
                 }
             }
-            if ((double) pz.EditValue == 0 && cd.Text != "")
+            if (double.Parse(pz.EditValue.ToString()) == 0 && cd.Text != "")
             {
                 MessageBox.Show(@"La presentacion " + pr.ToString() + @" debe ser mayor a cero el numero de piezas.");
                 pz.Focus();
                 b = false;
             }
-            if ((double) pz.EditValue > 0 && cd.Text == "")
+            if (double.Parse(pz.EditValue.ToString()) > 0 && cd.Text == "")
             {
                 MessageBox.Show(@"La presentacion " + pr.ToString() + @" debe contener un codigo o la cantidad de piezas en 0.");
                 pz.Focus();
@@ -520,15 +522,15 @@ namespace SWYRA
         {
             bool b = true;
             if (double.Parse(pz.EditValue.ToString()) == 0) { return; }
-            b = !(txtNumPiezas1.Name != pz.Name && (double) txtNumPiezas1.EditValue == (double) pz.EditValue) &&
-                !(txtNumPiezas2.Name != pz.Name && (double) txtNumPiezas2.EditValue == (double) pz.EditValue) &&
-                !(txtNumPiezas3.Name != pz.Name && (double) txtNumPiezas3.EditValue == (double) pz.EditValue) &&
-                !(txtNumPiezas4.Name != pz.Name && (double) txtNumPiezas4.EditValue == (double) pz.EditValue) &&
-                !(txtNumPiezas5.Name != pz.Name && (double) txtNumPiezas5.EditValue == (double) pz.EditValue) &&
-                !(txtNumPiezas6.Name != pz.Name && (double) txtNumPiezas6.EditValue == (double) pz.EditValue) &&
-                !(txtNumPiezas7.Name != pz.Name && (double) txtNumPiezas7.EditValue == (double) pz.EditValue) &&
-                !(txtNumPiezas8.Name != pz.Name && (double) txtNumPiezas8.EditValue == (double) pz.EditValue) &&
-                !(txtNumPiezas9.Name != pz.Name && (double) txtNumPiezas9.EditValue == (double) pz.EditValue);
+            b = !(txtNumPiezas1.Name != pz.Name && (double.Parse(txtNumPiezas1.EditValue.ToString()) == double.Parse(pz.EditValue.ToString()))) &&
+                !(txtNumPiezas2.Name != pz.Name && (double.Parse(txtNumPiezas2.EditValue.ToString()) == double.Parse(pz.EditValue.ToString()))) &&
+                !(txtNumPiezas3.Name != pz.Name && (double.Parse(txtNumPiezas3.EditValue.ToString()) == double.Parse(pz.EditValue.ToString()))) &&
+                !(txtNumPiezas4.Name != pz.Name && (double.Parse(txtNumPiezas4.EditValue.ToString()) == double.Parse(pz.EditValue.ToString()))) &&
+                !(txtNumPiezas5.Name != pz.Name && (double.Parse(txtNumPiezas5.EditValue.ToString()) == double.Parse(pz.EditValue.ToString()))) &&
+                !(txtNumPiezas6.Name != pz.Name && (double.Parse(txtNumPiezas6.EditValue.ToString()) == double.Parse(pz.EditValue.ToString()))) &&
+                !(txtNumPiezas7.Name != pz.Name && (double.Parse(txtNumPiezas7.EditValue.ToString()) == double.Parse(pz.EditValue.ToString()))) &&
+                !(txtNumPiezas8.Name != pz.Name && (double.Parse(txtNumPiezas8.EditValue.ToString()) == double.Parse(pz.EditValue.ToString()))) &&
+                !(txtNumPiezas9.Name != pz.Name && (double.Parse(txtNumPiezas9.EditValue.ToString()) == double.Parse(pz.EditValue.ToString())));
             if (!b)
             {
                 MessageBox.Show(@"La cantidad de piezas ya existe en otra presentacion.");

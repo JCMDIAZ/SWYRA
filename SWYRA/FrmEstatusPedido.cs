@@ -132,11 +132,11 @@ namespace SWYRA
                     "PORC_SURTIDO, PORC_EMPAQUE, INDICACIONES, LOTE, uCobAsig.Nombre cobrador_asignado_n, det.porc_surtidoReal, " +
                     "uCobAut.Nombre cobrador_autorizo_n, uSurAsig.Nombre surtidor_asignado_n, uEmpAsig.Nombre empaquetador_asignado_n, " +
                     "uEtiAsig.Nombre etiquetador_asignado_n, uSurArea.Nombre surtidor_area_n, cliente.NOMBRE CLIENTE, PRIORIDAD, NOMBRE_VENDEDOR, " +
-                    "uCapturo.Nombre capturo_n, CONSIGNACION, ISNULL(FLT,FLETE) FLETE, FLETE2, ENVIAR, CAUSADETENIDO, " +
+                    "uCapturo.Nombre capturo_n, p.CONSIGNACION, ISNULL(FLT,FLETE) FLETE, FLETE2, ENVIAR, CAUSADETENIDO, " +
                     "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2, " +
                     "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, " +
                     "FLETE, TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, " +
-                    "(TotCajaCarton + TotCajaMadera + TotBultos + TotRollos + TotCubetas + TotAtados + TotTarimas) Remitentes " +
+                    "(TotCajaCarton + TotCajaMadera + TotBultos + TotRollos + TotCubetas + TotAtados + TotTarimas) Remitentes, p.OBSERVACIONES, p.INDICACIONES " +
                     "FROM PEDIDO p left join (select cve_doc, ((SUM(isnull(CANTSURTIDO, 0)) / sum(CANT)) * 100.0) porc_surtidoReal from DETALLEPEDIDO " +
                     "where CVE_DOC in (select CVE_DOC from @pedidos) group by cve_doc) as det on p.cve_doc = det.cve_doc " +
                     "left join vw_estatuspedido ep on ep.CVE_DOC = p.CVE_DOC " +
@@ -700,6 +700,21 @@ namespace SWYRA
                 MessageBox.Show(ex.Message);
             }
             return ls;
+        }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc").ToString();
+                var query = "update PEDIDO set IMPORTE = 0, SURTIDOR_ASIGNADO = '0001' " +
+                            "WHERE LTRIM(CVE_DOC) = '" + cve_doc + "' AND ESTATUSPEDIDO in ('AUTORIZACION','SURTIR')";
+                GetExecute("DB", query, 62);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

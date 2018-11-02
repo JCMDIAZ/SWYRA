@@ -404,4 +404,55 @@ namespace SWYRA
         public string usuario { get; set; }
         public string nombre { get; set; }
     }
+
+    public class EstadisticasGenerales
+    {
+        public DateTime fechinicial { get; set; }
+        public DateTime fechfinal { get; set; }
+        public int pedidos { get; set; }
+        public int cancelados { get; set; }
+        public int articulos { get; set; }
+        public int articulos_surtidos { get; set; }
+        public double porc_articulos { get; set; }
+        public int piezas { get; set; }
+        public int piezas_surtidas { get; set; }
+        public double porc_piezas { get; set; }
+    }
+
+    public class EstadisticasEstatus
+    {
+        public string estatuspedido { get; set; }
+        public int cantidad { get; set; }
+        public int promedio { get; set; }
+    }
+
+    public class EstadisticasEmpleado
+    {
+        public string nombre { get; set; }
+        public string surtidor_asignado { get; set; }
+        public string surtidor_area { get; set; }
+        public string empaquetador_asignado { get; set; }
+        public string etiquetador_asignado { get; set; }
+        public int pedidos { get; set; }
+        public int prom_pedidosdiario { get; set; }
+        public int articulos { get; set; }
+        public int prom_articulosdiario { get; set; }
+        public int tiempo { get; set; }
+        public int prom_tiempodiario { get; set; }
+        public int prom_tiempoxarticulo { get; set; }
+        public int prom_tiempoxpedido { get; set; }
+    }
+
+    public class EstadisticasPedidos
+    {
+        public string cve_clpv { get; set; }
+        public string cve_doc { get; set; }
+        public string estatuspedido { get; set; }
+        public string cliente { get; set; }
+        public int articulos_surtidos { get; set; }
+        public int articulos_pendientes { get; set; }
+        public int piezas_surtidas { get; set; }
+        public int piezas_pendientes { get; set; }
+        public int tiempo { get; set; }
+    }
 }

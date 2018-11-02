@@ -130,6 +130,7 @@ namespace SWYRA_Movil
         public string autoanio { get; set; }
         public int dat_envio { get; set; }
         public string contado { get; set; }
+        public string contado_n { get; set; }
         public int cve_bita { get; set; }
         public string bloq { get; set; }
         public string formaenvio { get; set; }

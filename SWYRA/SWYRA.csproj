@@ -178,6 +178,12 @@
     <Compile Include="FrmEmpleados.Designer.cs">
       <DependentUpon>FrmEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstadisticas.Designer.cs">
+      <DependentUpon>FrmEstadisticas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEstatusPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,54 @@
     </Compile>
     <Compile Include="ReporteHistorial.Designer.cs">
       <DependentUpon>ReporteHistorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEstadisticaEtiquetador.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportEstadisticaEtiquetador.Designer.cs">
+      <DependentUpon>ReportEstadisticaEtiquetador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEstadisticas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportEstadisticas.Designer.cs">
+      <DependentUpon>ReportEstadisticas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEstadisticasBrocas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportEstadisticasBrocas.Designer.cs">
+      <DependentUpon>ReportEstadisticasBrocas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEstadisticasEmpacador.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportEstadisticasEmpacador.Designer.cs">
+      <DependentUpon>ReportEstadisticasEmpacador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEstadisticasEstatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportEstadisticasEstatus.Designer.cs">
+      <DependentUpon>ReportEstadisticasEstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEstadisticasSurtidor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportEstadisticasSurtidor.Designer.cs">
+      <DependentUpon>ReportEstadisticasSurtidor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEstadisticoTenHigh.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportEstadisticoTenHigh.Designer.cs">
+      <DependentUpon>ReportEstadisticoTenHigh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEstadisticoTenLow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportEstadisticoTenLow.Designer.cs">
+      <DependentUpon>ReportEstadisticoTenLow.cs</DependentUpon>
     </Compile>
     <Compile Include="ResumenPedido.cs">
       <SubType>Component</SubType>
@@ -307,6 +361,9 @@
     <EmbeddedResource Include="FrmEmpleados.resx">
       <DependentUpon>FrmEmpleados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstadisticas.resx">
+      <DependentUpon>FrmEstadisticas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEstatusPedido.resx">
       <DependentUpon>FrmEstatusPedido.cs</DependentUpon>
     </EmbeddedResource>
@@ -344,6 +401,30 @@
     </Compile>
     <EmbeddedResource Include="ReporteHistorial.resx">
       <DependentUpon>ReporteHistorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportEstadisticaEtiquetador.resx">
+      <DependentUpon>ReportEstadisticaEtiquetador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportEstadisticas.resx">
+      <DependentUpon>ReportEstadisticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportEstadisticasBrocas.resx">
+      <DependentUpon>ReportEstadisticasBrocas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportEstadisticasEmpacador.resx">
+      <DependentUpon>ReportEstadisticasEmpacador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportEstadisticasEstatus.resx">
+      <DependentUpon>ReportEstadisticasEstatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportEstadisticasSurtidor.resx">
+      <DependentUpon>ReportEstadisticasSurtidor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportEstadisticoTenHigh.resx">
+      <DependentUpon>ReportEstadisticoTenHigh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportEstadisticoTenLow.resx">
+      <DependentUpon>ReportEstadisticoTenLow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResumenPedido.resx">
       <DependentUpon>ResumenPedido.cs</DependentUpon>
@@ -397,6 +478,10 @@
     <None Include="Properties\DataSources\Areas.datasource" />
     <None Include="Properties\DataSources\DetallePedidoMerc.datasource" />
     <None Include="Properties\DataSources\DetallePedidos.datasource" />
+    <None Include="Properties\DataSources\EstadisticasEmpleado.datasource" />
+    <None Include="Properties\DataSources\EstadisticasEstatus.datasource" />
+    <None Include="Properties\DataSources\EstadisticasGenerales.datasource" />
+    <None Include="Properties\DataSources\EstadisticasPedidos.datasource" />
     <None Include="Properties\DataSources\Impresion.datasource" />
     <None Include="Properties\DataSources\Inventario.datasource" />
     <None Include="Properties\DataSources\InventarioCondicion.datasource" />

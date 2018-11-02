@@ -65,6 +65,7 @@
             this.colporc_surtidoreal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colporc_surtido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colporc_empaque = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colObservaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colindicaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.collote = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcausa = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -78,7 +79,6 @@
             this.coltotAtados = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coltotTarimas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemitentes = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colObservaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colImporte = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -87,6 +87,7 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -111,7 +112,7 @@
             this.txtIndicaciones = new DevExpress.XtraEditors.MemoEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
@@ -357,6 +358,7 @@
             this.colporc_surtidoreal,
             this.colporc_surtido,
             this.colporc_empaque,
+            this.colObservaciones,
             this.colindicaciones,
             this.collote,
             this.colcausa,
@@ -370,7 +372,6 @@
             this.coltotAtados,
             this.coltotTarimas,
             this.colRemitentes,
-            this.colObservaciones,
             this.colImporte});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
@@ -567,13 +568,21 @@
             this.colporc_empaque.VisibleIndex = 18;
             this.colporc_empaque.Width = 150;
             // 
+            // colObservaciones
+            // 
+            this.colObservaciones.Caption = "Observaciones";
+            this.colObservaciones.FieldName = "observaciones";
+            this.colObservaciones.Name = "colObservaciones";
+            this.colObservaciones.Visible = true;
+            this.colObservaciones.VisibleIndex = 19;
+            // 
             // colindicaciones
             // 
             this.colindicaciones.Caption = "Indicaciones";
             this.colindicaciones.FieldName = "indicaciones";
             this.colindicaciones.Name = "colindicaciones";
             this.colindicaciones.Visible = true;
-            this.colindicaciones.VisibleIndex = 19;
+            this.colindicaciones.VisibleIndex = 20;
             this.colindicaciones.Width = 150;
             // 
             // collote
@@ -582,7 +591,7 @@
             this.collote.FieldName = "lote";
             this.collote.Name = "collote";
             this.collote.Visible = true;
-            this.collote.VisibleIndex = 20;
+            this.collote.VisibleIndex = 21;
             this.collote.Width = 90;
             // 
             // colcausa
@@ -591,7 +600,7 @@
             this.colcausa.FieldName = "causadetenido";
             this.colcausa.Name = "colcausa";
             this.colcausa.Visible = true;
-            this.colcausa.VisibleIndex = 21;
+            this.colcausa.VisibleIndex = 22;
             // 
             // colUbicacionEmpaque
             // 
@@ -599,7 +608,7 @@
             this.colUbicacionEmpaque.FieldName = "ubicacionempaque";
             this.colUbicacionEmpaque.Name = "colUbicacionEmpaque";
             this.colUbicacionEmpaque.Visible = true;
-            this.colUbicacionEmpaque.VisibleIndex = 22;
+            this.colUbicacionEmpaque.VisibleIndex = 23;
             // 
             // colFlete
             // 
@@ -607,7 +616,7 @@
             this.colFlete.FieldName = "flete";
             this.colFlete.Name = "colFlete";
             this.colFlete.Visible = true;
-            this.colFlete.VisibleIndex = 23;
+            this.colFlete.VisibleIndex = 24;
             // 
             // coltotcajacarton
             // 
@@ -615,7 +624,7 @@
             this.coltotcajacarton.FieldName = "totcajacarton";
             this.coltotcajacarton.Name = "coltotcajacarton";
             this.coltotcajacarton.Visible = true;
-            this.coltotcajacarton.VisibleIndex = 24;
+            this.coltotcajacarton.VisibleIndex = 25;
             // 
             // coltotcajamadera
             // 
@@ -623,7 +632,7 @@
             this.coltotcajamadera.FieldName = "totcajamadera";
             this.coltotcajamadera.Name = "coltotcajamadera";
             this.coltotcajamadera.Visible = true;
-            this.coltotcajamadera.VisibleIndex = 25;
+            this.coltotcajamadera.VisibleIndex = 26;
             // 
             // coltotBultos
             // 
@@ -631,7 +640,7 @@
             this.coltotBultos.FieldName = "totbultos";
             this.coltotBultos.Name = "coltotBultos";
             this.coltotBultos.Visible = true;
-            this.coltotBultos.VisibleIndex = 26;
+            this.coltotBultos.VisibleIndex = 27;
             // 
             // coltotRollos
             // 
@@ -639,7 +648,7 @@
             this.coltotRollos.FieldName = "totrollos";
             this.coltotRollos.Name = "coltotRollos";
             this.coltotRollos.Visible = true;
-            this.coltotRollos.VisibleIndex = 27;
+            this.coltotRollos.VisibleIndex = 28;
             // 
             // coltotCubetas
             // 
@@ -647,7 +656,7 @@
             this.coltotCubetas.FieldName = "totcubetas";
             this.coltotCubetas.Name = "coltotCubetas";
             this.coltotCubetas.Visible = true;
-            this.coltotCubetas.VisibleIndex = 28;
+            this.coltotCubetas.VisibleIndex = 29;
             // 
             // coltotAtados
             // 
@@ -655,7 +664,7 @@
             this.coltotAtados.FieldName = "totatados";
             this.coltotAtados.Name = "coltotAtados";
             this.coltotAtados.Visible = true;
-            this.coltotAtados.VisibleIndex = 29;
+            this.coltotAtados.VisibleIndex = 30;
             // 
             // coltotTarimas
             // 
@@ -663,7 +672,7 @@
             this.coltotTarimas.FieldName = "tottarimas";
             this.coltotTarimas.Name = "coltotTarimas";
             this.coltotTarimas.Visible = true;
-            this.coltotTarimas.VisibleIndex = 30;
+            this.coltotTarimas.VisibleIndex = 31;
             // 
             // colRemitentes
             // 
@@ -671,15 +680,7 @@
             this.colRemitentes.FieldName = "remitentes";
             this.colRemitentes.Name = "colRemitentes";
             this.colRemitentes.Visible = true;
-            this.colRemitentes.VisibleIndex = 31;
-            // 
-            // colObservaciones
-            // 
-            this.colObservaciones.Caption = "Observaciones";
-            this.colObservaciones.FieldName = "observaciones";
-            this.colObservaciones.Name = "colObservaciones";
-            this.colObservaciones.Visible = true;
-            this.colObservaciones.VisibleIndex = 32;
+            this.colRemitentes.VisibleIndex = 32;
             // 
             // colImporte
             // 
@@ -700,7 +701,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.ShowNavigationHeader = DevExpress.Utils.DefaultBoolean.False;
@@ -748,6 +750,13 @@
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Historial del Pedido";
+            this.barButtonItem8.Id = 9;
+            this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            // 
             // barManager1
             // 
             this.barManager1.CloseButtonAffectAllTabs = false;
@@ -765,8 +774,9 @@
             this.barButtonItem5,
             this.barButtonItem6,
             this.barButtonItem7,
-            this.barButtonItem8});
-            this.barManager1.MaxItemId = 10;
+            this.barButtonItem8,
+            this.barButtonItem9});
+            this.barManager1.MaxItemId = 11;
             this.barManager1.OptionsLayout.AllowAddNewItems = false;
             this.barManager1.PopupShowMode = DevExpress.XtraBars.PopupShowMode.Classic;
             // 
@@ -1044,12 +1054,12 @@
             this.panel1.Size = new System.Drawing.Size(798, 383);
             this.panel1.TabIndex = 67;
             // 
-            // barButtonItem8
+            // barButtonItem9
             // 
-            this.barButtonItem8.Caption = "Historial del Pedido";
-            this.barButtonItem8.Id = 9;
-            this.barButtonItem8.Name = "barButtonItem8";
-            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            this.barButtonItem9.Caption = "Detener Pedido";
+            this.barButtonItem9.Id = 10;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
             // FrmEstatusPedido
             // 
@@ -1197,5 +1207,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colImporte;
         private DevExpress.XtraGrid.Columns.GridColumn colRemitentes;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
     }
 }

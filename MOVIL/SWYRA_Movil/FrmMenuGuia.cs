@@ -114,7 +114,7 @@ namespace SWYRA_Movil
         private void FrmMenuGuia_Load(object sender, EventArgs e)
         {
             var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
-                        "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, CONTADO " +
+                        "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, CONTADO, CASE WHEN CONTADO = 'S' THEN 'SI' ELSE 'NO' END CONTADO_N " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
             ped = Program.GetDataTable(query, 2).ToData<Pedidos>();
             lblPedido.Text = ped.cve_doc;

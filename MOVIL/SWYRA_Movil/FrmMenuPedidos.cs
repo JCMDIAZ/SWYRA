@@ -27,6 +27,20 @@ namespace SWYRA_Movil
 
         private void pbSalir_Click(object sender, EventArgs e)
         {
+            try{
+                if (ped.estatuspedido.Trim() == "DETENIDO")
+                {
+                    var query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
+                            "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
+                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
+                            "@cvedoc, 'DETENIDO', getdate(), '" + Program.usActivo.Usuario + "')";
+                    Program.GetExecute(query, 7);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
             Close();
         }
 

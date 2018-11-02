@@ -85,12 +85,13 @@ namespace SWYRA
         private void MenuPrin()
         {
             var cat = userActivo.Categoria.TrimEnd();
-            moduloDeImpresiónToolStripMenuItem.Visible = (cat == "MASTER");
+            reportesToolStripMenuItem1.Visible = (cat.In(new[] { "MASTER", "ANALISTA DE VENTAS" }));
             activarSwyraMovilToolStripMenuItem.Visible = (cat == "MASTER");
             catalogosToolStripMenuItem.Visible = (cat == "MASTER");
             estatusPedidoToolStripMenuItem.Visible = (cat.In(new[] {"MASTER", "ANALISTA DE VENTAS", "FACTURACION" }));
             autorizaciónPedidoToolStripMenuItem.Visible = (cat.In(new[] { "MASTER", "COBRADOR" }));
             remisiónDePedidoToolStripMenuItem.Visible = (cat.In(new[] { "MASTER", "FACTURACION" }));
+            reporteEstadisticoToolStripMenuItem.Visible = (cat.In(new[] { "MASTER" }));
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -232,6 +233,12 @@ namespace SWYRA
         {
             var fPXS = new FrmPXS();
             fPXS.Show();
+        }
+
+        private void reporteEstadísticoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fRepEst = new FrmEstadisticas();
+            fRepEst.Show();
         }
     }
 }

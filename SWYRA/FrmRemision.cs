@@ -75,7 +75,8 @@ namespace SWYRA
                     "left join USUARIOS uCobAut on uCobAut.Usuario = p.COBRADOR_AUTORIZO " +
                     "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
                     "WHERE ESTATUSPEDIDO IN ('REMISION','FACTURACION') Order by CVE_DOC";
-                list = GetDataTable("DB", query, 51).ToList<Pedidos>();}
+                list = GetDataTable("DB", query, 51).ToList<Pedidos>();
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

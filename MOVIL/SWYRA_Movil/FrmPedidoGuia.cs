@@ -98,7 +98,7 @@ namespace SWYRA_Movil
                 string surtAsig = (ped == null) ? "" : Program.usActivo.Usuario;
                 linea = "5b";
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
-                        "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, ISNULL(flt,FLETE) FLETE " +
+                        "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, ISNULL(flt,FLETE) FLETE, case when contado = 'S' then 'SI' else 'NO' end contado_n " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where (p.ESTATUSPEDIDO = 'GUIA' and isnull(p.ETIQUETADOR_ASIGNADO,'') = '" + surtAsig + "') " +
                         "or (p.ESTATUSPEDIDO = 'DETENIDO GUIA' and isnull(p.ETIQUETADOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "') " +
