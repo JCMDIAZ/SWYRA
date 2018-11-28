@@ -65,7 +65,7 @@ namespace SWYRA_Movil
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 11 " +
                         "            when p.TIPOSERVICIO = 'LOCAL' THEN 12 " +
                         "        end " +
-                        "end Numprioridad, p.CVE_CLPV " +
+                        "end Numprioridad, p.CVE_CLPV  " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                         "where ((p.ESTATUSPEDIDO = 'SURTIR' and isnull(p.SURTIDOR_ASIGNADO,'') = '" + surtAsig + "') " +
                         "or (isnull(p.SURTIDOR_ASIGNADO,'') = '" + Program.usActivo.Usuario + "' and p.ESTATUSPEDIDO in ('MODIFICACION', 'DETENIDO', 'DEVOLUCION'))) " +

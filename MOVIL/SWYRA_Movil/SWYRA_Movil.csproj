@@ -228,6 +228,12 @@
     <Compile Include="FrmSurtir4.Designer.cs">
       <DependentUpon>FrmSurtir4.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSurtirInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSurtirInfo.Designer.cs">
+      <DependentUpon>FrmSurtirInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSurtit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSurtir4.resx">
       <DependentUpon>FrmSurtir4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSurtirInfo.resx">
+      <DependentUpon>FrmSurtirInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSurtit.resx">
       <DependentUpon>FrmSurtit.cs</DependentUpon>

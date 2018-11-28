@@ -181,6 +181,25 @@ namespace swyraServices
                 var pedDb = listDbPedidos.Find(o => o.cve_doc == pedFb.cve_doc);
                 ModificaDbPedidos(pedFb, pedDb);
             }
+
+            AjustesDB();
+        }
+
+        private void AjustesDB()
+        {
+            try
+            {
+                var query =
+                    "UPDATE PEDIDO SET TIPOSERVICIO = TIPOSERVICIO  + (case when TIPOSERVICIO = 'LOCAL' then ' INMEDIATO' else ' URGENTE' end) where ESTATUSPEDIDO in ('AUTORIZACION', 'SURTIR', 'EMPAQUE') " +
+                    "and TIPOSERVICIO in ('LOCAL', 'FORANEO') and FECHA_DOC < cast(convert(varchar(10), getdate(), 121) as datetime) " +
+                    "UPDATE PEDIDO SET TIPOSERVICIO = 'LOCAL INMEDIATO' where ESTATUSPEDIDO in ('AUTORIZACION', 'SURTIR', 'EMPAQUE') " +
+                    "and TIPOSERVICIO in ('LOCAL URGENTE') and FECHA_DOC < cast(convert(varchar(10), getdate(), 121) as datetime)";
+                var res = GetExecute("DB", query, 108);
+            }
+            catch (Exception ex)
+            {
+                eventLog1.WriteEntry("108: " + ex.Message, EventLogEntryType.Error);
+            }
         }
 
         private List<Precios> CargaFbPrecios()
@@ -1114,7 +1133,7 @@ namespace swyraServices
             {
                 var query =
                     "SELECT p.CVE_DOC, ('A ' + p.OCURREDOMICILIO + ' ' + o.Guias) observaciones, p.ESTATUSPEDIDO, " +
-                    "CONDICION, TIPOSERVICIO, OCURREDOMICILIO FROM PEDIDO p JOIN ( " +
+                    "CONDICION, TIPOSERVICIO, OCURREDOMICILIO, flt Flete FROM PEDIDO p JOIN ( " +
                     "SELECT d1.CVE_DOC, 'TOTAL DE GUIAS : ' + CAST(COUNT(d1.NUM_GUIA) AS VARCHAR(MAX)) + '; ' + STUFF((select '; ' + " +
                     "CASE WHEN TIPOPAQUETE IN('ATADOS', 'TARIMA') THEN TIPOPAQUETE + ' C/' + CAST(TOTART AS VARCHAR(2)) ELSE TIPOPAQUETE END + ' # ' + cast(d2.CONSEC_EMPAQUE as varchar(3)) + ' GUIA: ' + d2.NUM_GUIA " +
                     "from DETALLEPEDIDOMERC d2 where d2.NUM_GUIA IS NOT NULL and d2.CVE_DOC = d1.CVE_DOC FOR XML PATH('')), 1, 1, '') Guias " +
@@ -1341,7 +1360,7 @@ namespace swyraServices
                     res = GetFbExecute("FB", query, 46);
                     fac = CargaFbFactura(fac.doc_ant);
                 }
-                var sf = "Paquetería : " + fac.str_paq + " " + ped.observaciones;
+                var sf = "Paquetería : " + ((ped.flete == "") ? fac.str_paq : ped.flete) + " " + ped.observaciones;
                 var mf = (sf.Length > 255) ? 255 : sf.Length;
                 query = "update OBS_DOCF01 set STR_OBS = '" + sf.Substring(0,mf) +
                         "' where CVE_OBS = '" + fac.cve_obs + "' ";

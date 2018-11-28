@@ -65,6 +65,7 @@
             this.pbTransferir = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lblUbica = new System.Windows.Forms.Label();
+            this.pbInfo = new System.Windows.Forms.PictureBox();
             this.pnlPorSurtir.SuspendLayout();
             this.pnlRetornar.SuspendLayout();
             this.SuspendLayout();
@@ -221,6 +222,7 @@
             // pnlRetornar
             // 
             this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.pbInfo);
             this.pnlRetornar.Controls.Add(this.lblInfo);
             this.pnlRetornar.Controls.Add(this.pbConcluir);
             this.pnlRetornar.Controls.Add(this.pbSalir);
@@ -235,7 +237,7 @@
             this.lblInfo.ForeColor = System.Drawing.Color.Maroon;
             this.lblInfo.Location = new System.Drawing.Point(45, 10);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(141, 20);
+            this.lblInfo.Size = new System.Drawing.Size(107, 20);
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pbConcluir
@@ -385,6 +387,15 @@
             this.lblUbica.Size = new System.Drawing.Size(155, 17);
             this.lblUbica.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // pbInfo
+            // 
+            this.pbInfo.Image = ((System.Drawing.Image)(resources.GetObject("pbInfo.Image")));
+            this.pbInfo.Location = new System.Drawing.Point(158, 3);
+            this.pbInfo.Name = "pbInfo";
+            this.pbInfo.Size = new System.Drawing.Size(35, 35);
+            this.pbInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbInfo.Click += new System.EventHandler(this.pbInfo_Click);
+            // 
             // FrmMenuPedidosArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -456,5 +467,6 @@
         private System.Windows.Forms.PictureBox pbTransferir;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblUbica;
+        private System.Windows.Forms.PictureBox pbInfo;
     }
 }

@@ -98,9 +98,9 @@ namespace SWYRA_Movil
             {
                 var query = "select top 1 CVE_DOC, ESTATUSPEDIDO from PEDIDO where " +
                             "isnull(SURTIDOR_AREA,'') = '" + Program.usActivo.Usuario + "' AND isnull(SOLAREA,0) = 1 " +
-                            "and ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION') ";
+                            "and ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO BROCAS', 'DEVOLUCION') ";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
-                string surtAsig = (ped == null) ? "" : ((ped.estatuspedido == "DETENIDO" ) ? "" : Program.usActivo.Usuario);
+                string surtAsig = (ped == null) ? "" : ((ped.estatuspedido == "DETENIDO BROCAS") ? "" : Program.usActivo.Usuario);
                 query = "select LTRIM(p.CVE_DOC) CVE_DOC, c.NOMBRE CLIENTE, p.FECHA_DOC, p.ESTATUSPEDIDO, p.TIPOSERVICIO, p.PRIORIDAD, " +
                         "case " +
                         "    when p.ESTATUSPEDIDO = 'MODIFICACION' then " +
@@ -119,7 +119,7 @@ namespace SWYRA_Movil
                         "            when p.TIPOSERVICIO = 'FORANEO' THEN 7 " +
                         "            when p.TIPOSERVICIO = 'LOCAL' THEN 8 " +
                         "        END " +
-                        "    when p.ESTATUSPEDIDO = 'DETENIDO' then " +
+                        "    when p.ESTATUSPEDIDO = 'DETENIDO BROCAS' then " +
                         "        case  " +
                         "            when p.TIPOSERVICIO = 'LOCAL INMEDIATO' THEN 0 " +
                         "            when p.TIPOSERVICIO = 'FORANEO URGENTE' THEN 9 " +
@@ -129,8 +129,8 @@ namespace SWYRA_Movil
                         "        end " +
                         "end Numprioridad, UbicacionEmpaque, p.CVE_CLPV " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
-                        "where ((isnull(p.SURTIDOR_AREA,'') = '" + Program.usActivo.Usuario + "' and p.ESTATUSPEDIDO in ('SURTIR','MODIFICACION', 'DETENIDO', 'DEVOLUCION')) " +
-                        "or (isnull(p.SURTIDOR_AREA,'') = '" + surtAsig + "' and p.ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO'))) " +
+                        "where ((isnull(p.SURTIDOR_AREA,'') = '" + Program.usActivo.Usuario + "' and p.ESTATUSPEDIDO in ('SURTIR','MODIFICACION', 'DETENIDO BROCAS', 'DEVOLUCION')) " +
+                        "or (isnull(p.SURTIDOR_AREA,'') = '" + surtAsig + "' and p.ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO BROCAS'))) " +
                         "and isnull(p.SOLAREA,0) = 1 " +
                         "order by Numprioridad, PRIORIDAD, CVE_DOC ";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();

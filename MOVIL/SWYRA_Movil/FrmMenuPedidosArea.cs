@@ -54,8 +54,26 @@ namespace SWYRA_Movil
             this.Close();
         }
 
+        private void Ajuste()
+        {
+            try
+            {
+                var query = "update DETALLEPEDIDO set CANTSURTIDO = dm.cant_st, CANTPENDIENTE = dm.cant_pd, SURTIDO = case when dp.CANT = (dm.cant_st + dm.cant_pd) then 1 else 0 end " +
+                            "from (SELECT CVE_DOC, CVE_ART, SUM(CANT) cant_st, SUM(ISNULL(PEND,0)) cant_pd FROM DETALLEPEDIDOMERC " +
+                            "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "' AND ISNULL(CVE_ART,'') <> '' AND ISNULL(CANCELADO,0) = 0 GROUP BY CVE_DOC, CVE_ART) dm " +
+                            "join DETALLEPEDIDO dp ON dp.CVE_DOC = dm.CVE_DOC and dp.CVE_ART = dm.CVE_ART " +
+                            "and ((cant_st + cant_pd) <> (isnull(dp.CANTSURTIDO,0) + isnull(dp.CANTPENDIENTE,0)))";
+                Program.GetExecute(query, 7);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
         private void pbConcluir_Click(object sender, EventArgs e)
         {
+            Ajuste();
             var n = valExistencias();
             if(n == 2)
             {
@@ -207,27 +225,37 @@ namespace SWYRA_Movil
             var query = "";
             try
             {
-                query = "select LTRIM(p.CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
+                query = "select LTRIM(p.CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, SURTIDOR_AREA, " +
                             "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, NOMBRE_VENDEDOR, " +
                             "CAPTURO, u.Nombre CAPTURO_N, OCURREDOMICILIO, u2.Nombre SURTIDOR_ASIGNADO_N, ISNULL(STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
-                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, ''),'') UbicacionEmpaque, CONDICION " +
+                            "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, ''),'') UbicacionEmpaque, CONDICION, OBSERVACIONES, INDICACIONES " +
                             "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE " +
                             "left join USUARIOS u on u.Usuario = p.CAPTURO " +
                             "left join USUARIOS u2 on u2.Usuario = p.SURTIDOR_ASIGNADO " +
                             "WHERE LTRIM(p.CVE_DOC) = '" + cvedoc.Trim() + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
-                txtPedido.Text = ped.cve_doc;
-                txtCliente.Text = "(" + ped.cve_clpv + ") " + ped.cliente;
-                txtServicio.Text = ped.tiposervicio;
-                txtOcurrDom.Text = ped.ocurredomicilio;
-                txtVendedor.Text = ped.nombre_vendedor;
-                txtCapturo.Text = ped.capturo_n;
-                CultureInfo culture = new CultureInfo("es-MX");
-                txtMonto.Text = ped.importe.ToString("C2", culture);
-                if (ped.estatuspedido == "DEVOLUCION") { lblInfo.Text = "POR CANCELAR"; }
-                lblUbica.Text = ((ped.ubicacionempaque != "") ? "Ubi: " + ped.ubicacionempaque : "");
-                if (valExistencias() == 2)
+                if (ped.surtidor_area == Program.usActivo.Usuario)
                 {
+                    Ajuste();
+                    txtPedido.Text = ped.cve_doc;
+                    txtCliente.Text = "(" + ped.cve_clpv + ") " + ped.cliente;
+                    txtServicio.Text = ped.tiposervicio;
+                    txtOcurrDom.Text = ped.ocurredomicilio;
+                    txtVendedor.Text = ped.nombre_vendedor;
+                    txtCapturo.Text = ped.capturo_n;
+                    CultureInfo culture = new CultureInfo("es-MX");
+                    info();
+                    txtMonto.Text = ped.importe.ToString("C2", culture);
+                    if (ped.estatuspedido == "DEVOLUCION") { lblInfo.Text = "POR CANCELAR"; }
+                    lblUbica.Text = ((ped.ubicacionempaque != "") ? "Ubi: " + ped.ubicacionempaque : "");
+                    if (valExistencias() == 2)
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El pedido " + cvedoc + " ha sido asignado otro SURTIDOR DE BROCAS.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     this.Close();
                 }
             }
@@ -320,14 +348,14 @@ namespace SWYRA_Movil
                     FrmDetenerPedCausa frmCausa = new FrmDetenerPedCausa();
                     frmCausa.lblPedido.Text = ped.cve_doc.Trim();
                     frmCausa.ShowDialog();
-                    var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'DETENIDO', " +
+                    var query = "UPDATE PEDIDO SET ESTATUSPEDIDO = 'DETENIDO BROCAS', " +
                                 "CAUSADETENIDO = '" + frmCausa.txtCausa.Text + "' " +
                                 "WHERE LTRIM(CVE_DOC) = '" + ped.cve_doc + "'";
                     var r = Program.GetExecute(query, 6);
                     query = "declare @cvedoc varchar(20) select @cvedoc = cve_doc from PEDIDO " +
                             "where LTRIM(CVE_DOC) = '" + ped.cve_doc + "' " +
                             "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values (" +
-                            "@cvedoc, 'DETENIDO', getdate(), '" + Program.usActivo.Usuario + "')";
+                            "@cvedoc, 'DETENIDO BROCAS', getdate(), '" + Program.usActivo.Usuario + "')";
                     r = Program.GetExecute(query, 7);
                     MessageBox.Show(@"Guardado satisfactoriamente.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
                     frmDetenerPed.Close();
@@ -403,6 +431,19 @@ namespace SWYRA_Movil
             {
                 MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
+        }
+
+        private void pbInfo_Click(object sender, EventArgs e)
+        {
+            info();
+        }
+
+        private void info()
+        {
+            FrmSurtirInfo inf = new FrmSurtirInfo();
+            inf.ped = ped;
+            inf.ShowDialog();
+            inf.Close();
         }
     }
 }

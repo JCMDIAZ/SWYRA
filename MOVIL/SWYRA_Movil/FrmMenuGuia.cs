@@ -113,19 +113,27 @@ namespace SWYRA_Movil
 
         private void FrmMenuGuia_Load(object sender, EventArgs e)
         {
-            var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
+            var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, ETIQUETADOR_ASIGNADO, " +
                         "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, CONTADO, CASE WHEN CONTADO = 'S' THEN 'SI' ELSE 'NO' END CONTADO_N " +
                         "from PEDIDO p join CLIENTE c on p.CVE_CLPV = c.CLAVE WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
             ped = Program.GetDataTable(query, 2).ToData<Pedidos>();
-            lblPedido.Text = ped.cve_doc;
-            lblCliente.Text = ped.cliente;
-            lblGuia.Text = "";
-            lblContado.Visible = (ped.contado == "S" || ped.contado == "C");
-            det = CargaDetalleMerc();
-            dgDetPedidos.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
-            pbConcluir.Visible = (det.Where(o => o.num_guia == "").ToList().Count == 0);
-            cambiaLeyenda();
-            txtCodigo.Focus();
+            if (ped.etiquetador_asignado == Program.usActivo.Usuario)
+            {
+                lblPedido.Text = ped.cve_doc;
+                lblCliente.Text = ped.cliente;
+                lblGuia.Text = "";
+                lblContado.Visible = (ped.contado == "S" || ped.contado == "C");
+                det = CargaDetalleMerc();
+                dgDetPedidos.DataSource = Program.ToDataTable<DetallePedidoMerc>(det, "detallePedidoMerc");
+                pbConcluir.Visible = (det.Where(o => o.num_guia == "").ToList().Count == 0);
+                cambiaLeyenda();
+                txtCodigo.Focus();
+            }
+            else
+            {
+                MessageBox.Show("El pedido " + cvedoc + " ha sido asignado otro ETIQUETADOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                this.Close();
+            }
         }
 
         private void cambiaLeyenda()

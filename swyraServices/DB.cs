@@ -116,6 +116,7 @@ namespace swyraServices
         public string consignacion { get; set; }
         public string indicacion { get; set; }
         public string enviar { get; set; }
+        public string flete { get; set; }
     }
 
     public class DetallePedidos : IDisposable

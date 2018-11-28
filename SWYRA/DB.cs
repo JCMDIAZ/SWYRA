@@ -449,8 +449,10 @@ namespace SWYRA
         public string cve_doc { get; set; }
         public string estatuspedido { get; set; }
         public string cliente { get; set; }
+        public int articulos { get; set; }
         public int articulos_surtidos { get; set; }
         public int articulos_pendientes { get; set; }
+        public int piezas { get; set; }
         public int piezas_surtidas { get; set; }
         public int piezas_pendientes { get; set; }
         public int tiempo { get; set; }

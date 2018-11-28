@@ -137,7 +137,7 @@ namespace SWYRA_Movil
             try
             {
                 cargaTipoEmpaque();
-                var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, " +
+                var query = "select LTRIM(CVE_DOC) CVE_DOC, LTRIM(CVE_CLPV) CVE_CLPV, c.NOMBRE Cliente, LTRIM(p.CVE_VEND) CVE_VEND, EMPAQUETADOR_ASIGNADO, " +
                             "TIPOSERVICIO, PRIORIDAD, ISNULL(SOLAREA,0) SOLAREA, ESTATUSPEDIDO, IMPORTE, CONTADO, p.STATUS, INDICACIONES, " +
                             "CVE_PEDI, OCURREDOMICILIO, FECHA_ENT, STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u " +
                             "where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, OBSERVACIONES, CONSIGNACION, " + 
@@ -149,16 +149,24 @@ namespace SWYRA_Movil
                             "left join USUARIOS u3 on u3.Usuario = p.CAPTURO " +
                             "WHERE LTRIM(CVE_DOC) = '" + cvedoc + "'";
                 ped = Program.GetDataTable(query, 1).ToData<Pedidos>();
-                lblPedido.Text = ped.cve_doc;
-                lblCliente.Text = ped.cliente;
-                lblfletes.Text = ped.flete + "; " + ped.flete2;
+                if (ped.empaquetador_asignado == Program.usActivo.Usuario)
+                {
+                    lblPedido.Text = ped.cve_doc;
+                    lblCliente.Text = ped.cliente;
+                    lblfletes.Text = ped.flete + "; " + ped.flete2;
 
-                cargaPaquetes("CONSEC");
-                pbImprimir.Visible = validaExisMerc(1);
-                pbConcluir.Visible = validaExisMerc(1);
-                cargaDetalleMerc();
-                info();
-                if (valExistencias() > 0) { Close(); }
+                    cargaPaquetes("CONSEC");
+                    pbImprimir.Visible = validaExisMerc(1);
+                    pbConcluir.Visible = validaExisMerc(1);
+                    cargaDetalleMerc();
+                    info();
+                    if (valExistencias() > 0) { Close(); }
+                }
+                else
+                {
+                    MessageBox.Show("El pedido " + cvedoc + " ha sido asignado otro EMPAQUETADOR.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {

@@ -706,9 +706,27 @@ namespace SWYRA
         {
             try
             {
-                var cve_doc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc").ToString();
+                var cvedoc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc").ToString();
                 var query = "update PEDIDO set IMPORTE = 0, SURTIDOR_ASIGNADO = '0001' " +
-                            "WHERE LTRIM(CVE_DOC) = '" + cve_doc + "' AND ESTATUSPEDIDO in ('AUTORIZACION','SURTIR')";
+                            "WHERE CVE_DOC = '" + cvedoc + "' AND ESTATUSPEDIDO in ('AUTORIZACION','SURTIR') ";
+                MessageBox.Show(@"Asignado al Administrador satisfactoriamente.");
+                GetExecute("DB", query, 62);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                var cvedoc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc").ToString();
+                var query = "update PEDIDO set FECHA_DOC = CAST(GETDATE() AS DATE) " +
+                            "WHERE CVE_DOC = '" + cvedoc + "' AND ESTATUSPEDIDO not in ('REMISION', 'GUIA', 'TERMINADO') " +
+                            "AND FECHA_DOC < DATEADD(d,-2,CAST(GETDATE() AS DATE)) ";
+                MessageBox.Show(@"Fecha Actualizada satisfactoriamente.");
                 GetExecute("DB", query, 62);
             }
             catch (Exception ex)

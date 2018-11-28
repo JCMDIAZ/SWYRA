@@ -130,11 +130,14 @@ namespace SWYRA_Movil
                                 }
                                 if (drm == DialogResult.OK)
                                 {
-                                    if (art.cantdiferencia >= art.mas && cod.cant_piezas < art.mas)
+                                    if (art.exist > art.mas && art.cantdiferencia >= art.mas && cod.cant_piezas < art.mas)
                                     {
                                         MessageBox.Show(@"Presentación del artículo debe ser mayor o igual al MASTER.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                                    }
-                                    else
+                                    } /*else if (art.exist > art.min && cod.cant_piezas < art.min)
+                                    {
+                                        MessageBox.Show(@"Presentación del artículo debe ser mayor o igual al MINIMO REQUERIDO DE VENTA.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                                    }*/ //20181128 Solicitado por HERMINSA Zanabria y diana
+                                    else 
                                     {
                                         DialogResult dr = DialogResult.Cancel;
                                         if (art.lin_prod.Contains("EXHIB"))

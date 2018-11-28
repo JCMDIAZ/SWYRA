@@ -141,7 +141,7 @@
             // xrTableCell5
             // 
             this.xrTableCell5.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "articulos_surtidos")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "articulos")});
             this.xrTableCell5.Dpi = 100F;
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.Weight = 0.096390740762127558D;
@@ -149,7 +149,7 @@
             // xrTableCell6
             // 
             this.xrTableCell6.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "articulos_pendientes")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "articulos_surtidos")});
             this.xrTableCell6.Dpi = 100F;
             this.xrTableCell6.Name = "xrTableCell6";
             this.xrTableCell6.Weight = 0.0863641956082018D;
@@ -157,7 +157,7 @@
             // xrTableCell7
             // 
             this.xrTableCell7.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "piezas_surtidas")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "piezas")});
             this.xrTableCell7.Dpi = 100F;
             this.xrTableCell7.Name = "xrTableCell7";
             this.xrTableCell7.Weight = 0.10808889084386149D;
@@ -165,7 +165,7 @@
             // xrTableCell8
             // 
             this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "piezas_pendientes")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "piezas_surtidas")});
             this.xrTableCell8.Dpi = 100F;
             this.xrTableCell8.Name = "xrTableCell8";
             this.xrTableCell8.Weight = 0.11644441857720253D;

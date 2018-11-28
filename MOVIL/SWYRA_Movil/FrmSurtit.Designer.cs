@@ -51,6 +51,8 @@
             this.txtMinimo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtCantT = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtSurtido = new System.Windows.Forms.TextBox();
             this.txtPorSurtir = new System.Windows.Forms.TextBox();
             this.lblMinUbi = new System.Windows.Forms.Label();
@@ -70,8 +72,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtUbica = new System.Windows.Forms.TextBox();
             this.detallePedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtCantT = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.pnlRetornar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -300,6 +300,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 167);
             // 
+            // txtCantT
+            // 
+            this.txtCantT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.txtCantT.Location = new System.Drawing.Point(175, 103);
+            this.txtCantT.Name = "txtCantT";
+            this.txtCantT.ReadOnly = true;
+            this.txtCantT.Size = new System.Drawing.Size(54, 19);
+            this.txtCantT.TabIndex = 44;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.label13.Location = new System.Drawing.Point(121, 108);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 18);
+            this.label13.Text = "TOT Surtir";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // txtSurtido
             // 
             this.txtSurtido.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
@@ -463,24 +481,6 @@
             // detallePedidosBindingSource
             // 
             this.detallePedidosBindingSource.DataSource = typeof(SWYRA_Movil.DetallePedidos);
-            // 
-            // txtCantT
-            // 
-            this.txtCantT.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtCantT.Location = new System.Drawing.Point(175, 103);
-            this.txtCantT.Name = "txtCantT";
-            this.txtCantT.ReadOnly = true;
-            this.txtCantT.Size = new System.Drawing.Size(54, 19);
-            this.txtCantT.TabIndex = 44;
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.label13.Location = new System.Drawing.Point(121, 108);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(48, 18);
-            this.label13.Text = "TOT Surtir";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // FrmSurtit
             // 

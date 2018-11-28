@@ -34,10 +34,6 @@
             this.pcProgresBar = new DevExpress.XtraEditors.PanelControl();
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.label13 = new System.Windows.Forms.Label();
-            this.pcReporte = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.memoRep = new DevExpress.XtraEditors.MemoEdit();
-            this.label14 = new System.Windows.Forms.Label();
             this.gcPresentaciones = new DevExpress.XtraGrid.GridControl();
             this.inventarioPresentacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -64,6 +60,10 @@
             this.colactivo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.pcReporte = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.memoRep = new DevExpress.XtraEditors.MemoEdit();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtCodigoBarra9 = new DevExpress.XtraEditors.TextEdit();
             this.txtNumPiezas9 = new DevExpress.XtraEditors.TextEdit();
             this.label11 = new System.Windows.Forms.Label();
@@ -106,13 +106,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcProgresBar)).BeginInit();
             this.pcProgresBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcReporte)).BeginInit();
-            this.pcReporte.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoRep.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPresentaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioPresentacionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcReporte)).BeginInit();
+            this.pcReporte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoRep.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigoBarra9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumPiezas9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigoBarra8.Properties)).BeginInit();
@@ -180,52 +180,6 @@
             this.label13.Size = new System.Drawing.Size(110, 15);
             this.label13.TabIndex = 17;
             this.label13.Text = "Progreso de Carga";
-            // 
-            // pcReporte
-            // 
-            this.pcReporte.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pcReporte.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.pcReporte.Controls.Add(this.simpleButton1);
-            this.pcReporte.Controls.Add(this.memoRep);
-            this.pcReporte.Controls.Add(this.label14);
-            this.pcReporte.Location = new System.Drawing.Point(34, 38);
-            this.pcReporte.Margin = new System.Windows.Forms.Padding(2);
-            this.pcReporte.Name = "pcReporte";
-            this.pcReporte.Size = new System.Drawing.Size(298, 270);
-            this.pcReporte.TabIndex = 81;
-            this.pcReporte.Visible = false;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.AutoSize = true;
-            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(269, 7);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButton1.Size = new System.Drawing.Size(20, 20);
-            this.simpleButton1.TabIndex = 19;
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
-            // memoRep
-            // 
-            this.memoRep.Location = new System.Drawing.Point(19, 43);
-            this.memoRep.Margin = new System.Windows.Forms.Padding(2);
-            this.memoRep.Name = "memoRep";
-            this.memoRep.Size = new System.Drawing.Size(270, 206);
-            this.memoRep.TabIndex = 18;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(6, 11);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(104, 15);
-            this.label14.TabIndex = 17;
-            this.label14.Text = "Reporte de Carga";
             // 
             // gcPresentaciones
             // 
@@ -472,8 +426,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.pcReporte);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtCodigoBarra9);
             this.groupBox1.Controls.Add(this.txtNumPiezas9);
             this.groupBox1.Controls.Add(this.label11);
@@ -523,6 +477,52 @@
             this.label12.Size = new System.Drawing.Size(89, 15);
             this.label12.TabIndex = 78;
             this.label12.Text = "Presentación 9";
+            // 
+            // pcReporte
+            // 
+            this.pcReporte.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pcReporte.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.pcReporte.Controls.Add(this.simpleButton1);
+            this.pcReporte.Controls.Add(this.memoRep);
+            this.pcReporte.Controls.Add(this.label14);
+            this.pcReporte.Location = new System.Drawing.Point(34, 38);
+            this.pcReporte.Margin = new System.Windows.Forms.Padding(2);
+            this.pcReporte.Name = "pcReporte";
+            this.pcReporte.Size = new System.Drawing.Size(298, 270);
+            this.pcReporte.TabIndex = 81;
+            this.pcReporte.Visible = false;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.AutoSize = true;
+            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(269, 7);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
+            this.simpleButton1.Size = new System.Drawing.Size(20, 20);
+            this.simpleButton1.TabIndex = 19;
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // memoRep
+            // 
+            this.memoRep.Location = new System.Drawing.Point(19, 43);
+            this.memoRep.Margin = new System.Windows.Forms.Padding(2);
+            this.memoRep.Name = "memoRep";
+            this.memoRep.Size = new System.Drawing.Size(270, 206);
+            this.memoRep.TabIndex = 18;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(6, 11);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(104, 15);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "Reporte de Carga";
             // 
             // txtCodigoBarra9
             // 
@@ -1053,15 +1053,15 @@
             this.pcProgresBar.ResumeLayout(false);
             this.pcProgresBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcReporte)).EndInit();
-            this.pcReporte.ResumeLayout(false);
-            this.pcReporte.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoRep.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPresentaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioPresentacionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcReporte)).EndInit();
+            this.pcReporte.ResumeLayout(false);
+            this.pcReporte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoRep.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigoBarra9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumPiezas9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigoBarra8.Properties)).EndInit();

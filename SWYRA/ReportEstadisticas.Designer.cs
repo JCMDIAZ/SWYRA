@@ -133,7 +133,8 @@
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel7.SizeF = new System.Drawing.SizeF(739F, 12.99998F);
             this.xrLabel7.StylePriority.UseFont = false;
-            this.xrLabel7.Text = "PTP : Promedio de Tiempo Diario;    PTP : Promedio de Tiempo por Pedido";
+            this.xrLabel7.Text = "PTD : Promedio de Tiempo Diario;    PTP : Promedio de Tiempo por Pedido; Tiempo e" +
+    "n minutos";
             // 
             // xrSubreport4
             // 
@@ -152,8 +153,8 @@
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel6.SizeF = new System.Drawing.SizeF(739F, 12.99998F);
             this.xrLabel6.StylePriority.UseFont = false;
-            this.xrLabel6.Text = "PTP : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
-    " : Promedio de Tiempo por Pedido";
+            this.xrLabel6.Text = "PTD : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
+    " : Promedio de Tiempo por Pedido; Tiempo en minutos";
             // 
             // xrSubreport3
             // 
@@ -172,8 +173,8 @@
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel5.SizeF = new System.Drawing.SizeF(739F, 12.99998F);
             this.xrLabel5.StylePriority.UseFont = false;
-            this.xrLabel5.Text = "PTP : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
-    " : Promedio de Tiempo por Pedido";
+            this.xrLabel5.Text = "PTD : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
+    " : Promedio de Tiempo por Pedido; Tiempo en minutos";
             // 
             // xrLabel4
             // 
@@ -184,8 +185,8 @@
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(739F, 12.99998F);
             this.xrLabel4.StylePriority.UseFont = false;
-            this.xrLabel4.Text = "PTP : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
-    " : Promedio de Tiempo por Pedido";
+            this.xrLabel4.Text = "PTD : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
+    " : Promedio de Tiempo por Pedido; Tiempo en minutos";
             // 
             // xrSubreport2
             // 

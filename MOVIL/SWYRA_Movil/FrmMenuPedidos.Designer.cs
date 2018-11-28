@@ -66,6 +66,7 @@
             this.lblPendS = new System.Windows.Forms.Label();
             this.lblPendM = new System.Windows.Forms.Label();
             this.lblUbica = new System.Windows.Forms.Label();
+            this.pbInfo = new System.Windows.Forms.PictureBox();
             this.pnlRetornar.SuspendLayout();
             this.pnlPorSurtir.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +74,7 @@
             // pnlRetornar
             // 
             this.pnlRetornar.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlRetornar.Controls.Add(this.pbInfo);
             this.pnlRetornar.Controls.Add(this.lblInfo);
             this.pnlRetornar.Controls.Add(this.lblConcluir);
             this.pnlRetornar.Controls.Add(this.pbConcluir);
@@ -88,7 +90,7 @@
             this.lblInfo.ForeColor = System.Drawing.Color.Maroon;
             this.lblInfo.Location = new System.Drawing.Point(45, 10);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(141, 20);
+            this.lblInfo.Size = new System.Drawing.Size(102, 20);
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblConcluir
@@ -395,6 +397,15 @@
             this.lblUbica.Size = new System.Drawing.Size(155, 17);
             this.lblUbica.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // pbInfo
+            // 
+            this.pbInfo.Image = ((System.Drawing.Image)(resources.GetObject("pbInfo.Image")));
+            this.pbInfo.Location = new System.Drawing.Point(151, 3);
+            this.pbInfo.Name = "pbInfo";
+            this.pbInfo.Size = new System.Drawing.Size(35, 35);
+            this.pbInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbInfo.Click += new System.EventHandler(this.pbInfo_Click);
+            // 
             // FrmMenuPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -467,5 +478,6 @@
         private System.Windows.Forms.TextBox txtCapturo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblUbica;
+        private System.Windows.Forms.PictureBox pbInfo;
     }
 }
