@@ -67,26 +67,28 @@ namespace SWYRA
                 ped.condicion = (num > 2) ? ped.condicion.Split(';')[2] : "";
                 string[] est = {"REMISION", "GUIA", "TERMINADO", "LEVANTAMIENTO"};
                 query =
+                    "select h.CVE_DOC, h.CONSEC, h.TIPOPAQUETE + ' # ' + CAST(h.CONSEC_EMPAQUE AS VARCHAR(2)) + " +
+                    "case when p.TIPOPAQUETE = 'ATADOS' then ' (A' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' " +
+                    "when p.TIPOPAQUETE = 'TARIMA' then ' (T' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' ELSE '' END Empaque INTO #TEMP1 " +
+                    "FROM DETALLEPEDIDOMERC h LEFT JOIN DETALLEPEDIDOMERC p ON p.CONSEC = h.CONSEC_PADRE and p.CVE_DOC = h.CVE_DOC WHERE(h.CVE_DOC = '" + cve_doc +
+                    "') AND(ISNULL(h.CANCELADO, 0) = 0) AND(ISNULL(h.TIPOPAQUETE, '') NOT IN('', 'GUIA')) " +
+                    "select distinct CVE_DOC, NUM_PAR, STUFF((select ', ' + ('(' + CAST(SUM(d.CANT) AS VARCHAR(5)) + ') ' + e.Empaque) " +
+                    "from DETALLEPEDIDOMERC d join #TEMP1 as e on d.CVE_DOC = e.CVE_DOC and d.CONSEC_PADRE = e.CONSEC WHERE(d.CVE_DOC = '" + cve_doc + 
+                    "') AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') IN('')) AND a.CVE_DOC = d.CVE_DOC and a.CVE_ART = d.CVE_ART " +
+                    "group by e.Empaque, d.NUM_PAR order by d.NUM_PAR FOR XML PATH('')), 1, 1, '') as Empaque, " +
+                    "STUFF((SELECT ', ' + lote FROM DETALLEPEDIDOMERC as l WHERE l.CVE_DOC = '" + cve_doc + 
+                    "' AND a.CVE_DOC = l.CVE_DOC and a.NUM_PAR = l.NUM_PAR FOR XML PATH('')), 1, 2, '') As lote INTO #TEMP2 " +
+                    "from DETALLEPEDIDOMERC as a where(a.CVE_DOC = '" + cve_doc + "') AND(NUM_PAR > 0) DROP TABLE #TEMP1 " +
                     "SELECT dp.CVE_DOC, dp.NUM_PAR, dp.CVE_ART, CANT, PXS, PREC, COST, IMPU1, IMPU2, IMPU3, IMPU4, IMP1APLA, IMP2APLA, IMP3APLA, " +
                     "IMP4APLA, TOTIMP1, TOTIMP2, TOTIMP3, TOTIMP4, DESC1, DESC2, DESC3, COMI, APAR, ACT_INV, NUM_ALM, POLIT_APLI, TIP_CAM, " +
-                    "(isnull(replace(ic.COMENTARIO,'Lote:',''),'') + case when ic.APLICALOTE = 1 then ' Lote : ' + isnull(res.lote,'') else '' end) comen, " +
-                    "UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, CASE WHEN ISNULL(CANTSURTIDO, 0) = 0 THEN CANT ELSE ISNULL(CANTSURTIDO, 0) END CANTSURTIDO, SURTIDO, res.Empaque, " +
-                    "TDESC, SUBTO, TCOMI, i.DESCR, (SUBTO + TOTIMP4) IMPORTE, (CANT * PESO) PESO, (CANT * VOLUMEN) VOLUMEN " + 
+                    "(isnull(replace(ic.COMENTARIO, 'Lote:', ''), '') + case when ic.APLICALOTE = 1 then ' Lote : ' + isnull(res.lote, '') else '' end) comen, " +
+                    "UNI_VENTA, TIPO_PROD, CVE_OBS, REG_SERIE, E_LTPD, TIPO_ELEM, NUM_MOV, TOT_PARTIDA, IMPRIMIR, " +
+                    "CASE WHEN ISNULL(CANTSURTIDO, 0) = 0 THEN CANT ELSE ISNULL(CANTSURTIDO, 0) END CANTSURTIDO, SURTIDO, res.Empaque, " +
+                    "TDESC, SUBTO, TCOMI, i.DESCR, (SUBTO + TOTIMP4) IMPORTE, (CANT * PESO) PESO, (CANT * VOLUMEN) VOLUMEN " +
                     "FROM DETALLEPEDIDO dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
-                    "LEFT join INVENTARIOCOND ic on dp.CVE_ART = ic.CVE_ART " +
-                    "LEFT JOIN ( select distinct CVE_DOC, NUM_PAR, STUFF((select ', ' + ('(' + CAST(SUM(d.CANT) AS VARCHAR(5)) + ') ' + e.Empaque) " + 
-                    "from DETALLEPEDIDOMERC d join(select h.CVE_DOC, h.CONSEC, h.TIPOPAQUETE + ' # ' + CAST(h.CONSEC_EMPAQUE AS VARCHAR(2)) + " +"case when p.TIPOPAQUETE = 'ATADOS' then ' (A' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' " +
-                    "when p.TIPOPAQUETE = 'TARIMA' then ' (T' + cast(p.CONSEC_EMPAQUE as varchar(2)) + ')' ELSE '' END Empaque " +
-                    "FROM DETALLEPEDIDOMERC h LEFT JOIN DETALLEPEDIDOMERC p ON p.CONSEC = h.CONSEC_PADRE and p.CVE_DOC = h.CVE_DOC " +
-                    "WHERE (h.CVE_DOC = '" + cve_doc + "') AND(ISNULL(h.CANCELADO, 0) = 0) AND(ISNULL(h.TIPOPAQUETE, '') " +
-                    "NOT IN('', 'GUIA'))) as e on d.CVE_DOC = e.CVE_DOC and d.CONSEC_PADRE = e.CONSEC WHERE(d.CVE_DOC = '" + cve_doc + "') " +
-                    "AND(ISNULL(CANCELADO, 0) = 0) AND(ISNULL(TIPOPAQUETE, '') IN('')) AND a.CVE_DOC = d.CVE_DOC and a.CVE_ART = d.CVE_ART " +
-                    "group by e.Empaque, d.NUM_PAR order by d.NUM_PAR FOR XML PATH('')), 1, 1, '') as Empaque, " +
-                    "STUFF((SELECT ', '  + lote FROM DETALLEPEDIDOMERC as l WHERE a.CVE_DOC = l.CVE_DOC and a.NUM_PAR = l.NUM_PAR FOR XML PATH('')), 1, 2, '') As lote " +
-                    "from DETALLEPEDIDOMERC as a " +
-                    "where (a.CVE_DOC = '" + cve_doc + "') AND(NUM_PAR > 0) ) as res on dp.NUM_PAR = res.NUM_PAR " +
+                    "LEFT join INVENTARIOCOND ic on dp.CVE_ART = ic.CVE_ART LEFT JOIN #TEMP2 as res on dp.NUM_PAR = res.NUM_PAR " +
                     "WHERE (dp.CVE_DOC = '" + cve_doc + "') AND ((ISNULL(CANTSURTIDO," + (ped.estatuspedido.In(est) ? "0" : "CANT") + ") > 0) " +
-                    "OR (ISNULL(CANTSURTIDO,0) = 0 AND ISNULL(CANTPENDIENTE,0) = 0) AND ISNULL(SURTIDO,0) = 0)";
+                    "OR (ISNULL(CANTSURTIDO,0) = 0 AND ISNULL(CANTPENDIENTE,0) = 0) AND ISNULL(SURTIDO,0) = 0) DROP TABLE #TEMP2";
                 lsDetallePedidos = GetDataTable("DB", query, 6).ToList<DetallePedidos>();
                 query =
                     "SELECT CVE_DOC, CONSEC, NUM_PAR, CVE_ART, CODIGO_BARRA, CANT, TIPOPAQUETE, CONSEC_PADRE, ULTIMO, CANCELADO, TotArt, " + 

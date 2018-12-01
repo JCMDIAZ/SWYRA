@@ -336,9 +336,9 @@ namespace SWYRA_Movil
                 frmConf.Close();
                 if (dr == DialogResult.OK)
                 {
-                    var query = "IF EXISTS(SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CVE_ART = '" + art.cve_art + "') " +
+                    var query = "IF EXISTS(SELECT * FROM DETALLEPEDIDOMERC WHERE CVE_DOC = '" + art.cve_doc + "' AND CVE_ART = '" + art.cve_art + "' AND ISNULL(CANCELADO,0) = 0 ) " +
                                 "BEGIN DECLARE @MAXCONSEC INT SELECT @MAXCONSEC = CONSEC FROM DETALLEPEDIDOMERC " +
-                                "WHERE CVE_DOC = '" + art.cve_doc + "' AND CVE_ART = '" + art.cve_art + "' " +
+                                "WHERE CVE_DOC = '" + art.cve_doc + "' AND CVE_ART = '" + art.cve_art + "' AND ISNULL(CANCELADO,0) = 0 " +
                                 "UPDATE DETALLEPEDIDOMERC SET PEND = " + art.cantdiferencia +
                                 " WHERE CVE_DOC = '" + art.cve_doc + "' AND CVE_ART = '" + art.cve_art + "' AND CONSEC = @MAXCONSEC " +
                                 "END ELSE BEGIN DECLARE @consec INT SELECT @consec = (ISNULL(MAX(CONSEC),-1) + 1) FROM DETALLEPEDIDOMERC " +
