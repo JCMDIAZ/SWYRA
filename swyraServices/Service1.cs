@@ -13,6 +13,7 @@ using System.Data.Entity.Migrations.Infrastructure;
 using System.Diagnostics.Eventing.Reader;
 using static swyraServices.General;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace swyraServices
@@ -396,7 +397,7 @@ namespace swyraServices
                     "NUM_ALMA, ACT_CXC, ACT_COI, ENLAZADO, TIP_DOC_E, NUM_MONED, TIPCAMB, NUM_PAGOS, FECHAELAB, PRIMERPAGO, RFC, " +
                     "CTLPOL, ESCFD, AUTORIZA, SERIE, FOLIO, AUTOANIO, DAT_ENVIO, CONTADO, CVE_BITA, BLOQ, FORMAENVIO, DES_FIN_PORC, " +
                     "DES_TOT_PORC, IMPORTE, COM_TOT_PORC, METODODEPAGO, NUMCTAPAGO, TIP_DOC_ANT, DOC_ANT, TIP_DOC_SIG, DOC_SIG, " +
-                    "ENVIAR, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO " +
+                    "ENVIAR, TIPOSERVICIO, ESTATUSPEDIDO, OCURREDOMICILIO, SURTIDOR_ASIGNADO " +
                     "from PEDIDO where FECHA_DOC between '" + fini.ToString("yyyy-MM-dd") + "' and '" +
                     ffin.ToString("yyyy-MM-dd") + "'";
                 listDbPedidos = GetDataTable("DB", query, 7).ToList<Pedidos>();
@@ -618,7 +619,7 @@ namespace swyraServices
                 string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE", "MODIFICACION", "DETENIDO EMP" };
                 if (pedDb.estatuspedido.In(dats))
                 {
-                    pedDb.estatuspedido = (pedDb.estatuspedido == "AUTORIZACION") ? "CANCELACION" : "DEVOLUCION";
+                    pedDb.estatuspedido = (pedDb.estatuspedido == "AUTORIZACION") ? "CANCELACION" : ((pedDb.estatuspedido == "SURTIR" && pedDb.surtidor_asignado == "") ? "CANCELACION" : "DEVOLUCION");
                     var query = "update PEDIDO set STATUS = '" + pedDb.status + "', " +
                                 "ESTATUSPEDIDO = '" + pedDb.estatuspedido + "' " +
                                 "where CVE_DOC = '" + pedDb.cve_doc + "'";
@@ -1333,42 +1334,91 @@ namespace swyraServices
 
         private void ModificaFbFactura(Factura fac, Pedidos ped)
         {
+            string linea = "";
             try
             {
+                linea = "1";
                 var query = "";
+                linea = "2";
                 if (fac.dat_envio == 0)
                 {
+                    linea = "3";
                     query = "select (ULT_CVE + 1) CVE_INFO FROM TBLCONTROL01 WHERE ID_TABLA = 70";
+                    linea = "4";
                     var f1 = GetFbDataTable("FB", query, 41).ToData<Guias>();
+                    linea = "5";
                     query = "UPDATE TBLCONTROL01 SET ULT_CVE = " + f1.cve_info.ToString(cultureInfo) + " WHERE ID_TABLA = 70";
+                    linea = "6";
                     var res = GetFbExecute("FB", query, 48);
+                    linea = "7";
                     query = "insert into INFENVIO01 (CVE_INFO) values (" + f1.cve_info.ToString(cultureInfo) + ") ";
+                    linea = "8";
                     res = GetFbExecute("FB", query, 42);
+                    linea = "9";
                     query = "update FACTF01 set DAT_ENVIO = " + f1.cve_info.ToString(cultureInfo) + " where CVE_DOC = '" + fac.cve_doc + "'";
+                    linea = "10";
                     res = GetFbExecute("FB", query, 43);
+                    linea = "11";
                     fac = CargaFbFactura(fac.doc_ant);
                 }
+                linea = "12";
                 if (fac.cve_obs == 0)
                 {
+                    linea = "13";
                     query = "select (ULT_CVE + 1) CVE_OBS FROM TBLCONTROL01 WHERE ID_TABLA = 56";
+                    linea = "14";
                     var f2 = GetFbDataTable("FB", query, 41).ToData<Guias>();
+                    linea = "15";
                     query = "UPDATE TBLCONTROL01 SET ULT_CVE = " + f2.cve_obs.ToString(cultureInfo) + " WHERE ID_TABLA = 56";
+                    linea = "16";
                     var res = GetFbExecute("FB", query, 48);
+                    linea = "17";
                     query = "insert into OBS_DOCF01 (CVE_OBS) values (" + f2.cve_obs + ") ";
+                    linea = "18";
                     res = GetFbExecute("FB", query, 45);
+                    linea = "19";
                     query = "update INFENVIO01 set CVE_OBS = " + f2.cve_obs + " where CVE_INFO = '" + fac.dat_envio + "'";
+                    linea = "20";
                     res = GetFbExecute("FB", query, 46);
+                    linea = "21";
                     fac = CargaFbFactura(fac.doc_ant);
                 }
+                linea = "22";
                 var sf = "Paquetería : " + ((ped.flete == "") ? fac.str_paq : ped.flete) + " " + ped.observaciones;
+                linea = "23";
                 var mf = (sf.Length > 255) ? 255 : sf.Length;
+                linea = "24";
                 query = "update OBS_DOCF01 set STR_OBS = '" + sf.Substring(0,mf) +
                         "' where CVE_OBS = '" + fac.cve_obs + "' ";
+                linea = "25";
                 var res2 = GetFbExecute("FB", query, 47);
+                linea = "26";
+                if (sf.Length > 255)
+                {
+                    linea = "27";
+                    sf = sf.Remove(0, 255);
+                    linea = "28";
+                    mf = (sf.Length > 255) ? 255 : sf.Length;
+                    linea = "29";
+                    query = "update INFENVIO01 set REFERDIR = '" + sf.Substring(0, mf) +
+                            "', STRMODOENV = '" + ((ped.flete == "") ? fac.str_paq : ped.flete) + "' where CVE_INFO = '" + fac.dat_envio + "' ";
+                    linea = "30";
+                    //eventLog1.WriteEntry(query, EventLogEntryType.Warning);
+                    linea = "31";
+                    var res3 = GetFbExecute("FB", query, 57);
+                }
+                else
+                {
+                    linea = "32";
+                    query = "update INFENVIO01 set STRMODOENV = '" + ((ped.flete == "") ? fac.str_paq : ped.flete) + "' where CVE_INFO = '" + fac.dat_envio + "' ";
+                    linea = "33";
+                    var res3 = GetFbExecute("FB", query, 58);
+                }
+
             }
             catch (Exception ex)
             {
-                eventLog1.WriteEntry("41: " + ex.Message, EventLogEntryType.Error);
+                eventLog1.WriteEntry("41: " + ex.Message + " Linea : " + linea, EventLogEntryType.Error);
             }
         }
 

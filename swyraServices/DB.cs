@@ -117,6 +117,7 @@ namespace swyraServices
         public string indicacion { get; set; }
         public string enviar { get; set; }
         public string flete { get; set; }
+        public string surtidor_asignado { get; set; }
     }
 
     public class DetallePedidos : IDisposable

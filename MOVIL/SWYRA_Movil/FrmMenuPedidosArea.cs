@@ -276,7 +276,7 @@ namespace SWYRA_Movil
                     devA = Program.GetDataTable(createQR(Area, true), 3).ToList<DetallePedidos>();
                     var cdetA = detA.Where(o => o.surtido == false).ToList().Count;
                     var cdevA = devA.Where(o => o.devuelto == false).ToList().Count;
-                    res = (cdetA == 0 && cdevA == 0);
+                    res = (cdetA == 0 && cdevA == 0) || (cdevA == 0 && ped.estatuspedido == "DEVOLUCION");
                     lblPendS.Text = cdetA.ToString();
                     lblPendM.Text = cdevA.ToString();
                 }

@@ -65,9 +65,9 @@ namespace SWYRA_Movil
         {
             try
             {
-                var query = "select ESTATUSPEDIDO, ISNULL(SOLAREA,0) SOLAREA from PEDIDO where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE', 'GUIA')";
+                var query = "select ESTATUSPEDIDO, ISNULL(SOLAREA,0) SOLAREA from PEDIDO where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE', 'GUIA', 'DETENIDO BROCAS')";
                 listPedidos = Program.GetDataTable(query, 2).ToList<Pedidos>();
-                string[] opc = {"SURTIR", "MODIFICACION", "DETENIDO", "DEVOLUCION"};
+                string[] opc = {"SURTIR", "MODIFICACION", "DETENIDO", "DEVOLUCION", "DETENIDO BROCAS"};
                 var ped = listPedidos.Where(o => o.estatuspedido.In(opc) && o.solarea == false).ToList().Count.ToString();
                 var are = listPedidos.Where(o => o.estatuspedido.In(opc) && o.solarea == true).ToList().Count.ToString();
                 var emp = listPedidos.Where(o => o.estatuspedido == "EMPAQUE").ToList().Count.ToString();
