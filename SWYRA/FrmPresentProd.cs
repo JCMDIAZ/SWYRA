@@ -47,7 +47,7 @@ namespace SWYRA
             try
             {
                 var query = "SELECT CVE_ART, DESCR, LIN_PROD, EXIST, STATUS FROM INVENTARIO " +
-                            "WHERE STATUS = 'A' AND EXIST >= 0 AND CVE_ART > '9808' ORDER BY CVE_ART";
+                            "WHERE STATUS = 'A' AND EXIST >= 0 AND (CVE_ART > '9808' OR CVE_ART IN ('9600')) ORDER BY CVE_ART";
                 listInventarios = GetDataTable("DB", query, 1).ToList<Inventario>();
             }
             catch (Exception ex)

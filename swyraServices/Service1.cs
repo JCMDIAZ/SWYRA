@@ -1388,7 +1388,19 @@ namespace swyraServices
                 linea = "23";
                 var mf = (sf.Length > 255) ? 255 : sf.Length;
                 linea = "24";
-                query = "update OBS_DOCF01 set STR_OBS = '" + sf.Substring(0,mf) +
+                string[] rm = sf.Substring(0, mf).Split(' ');
+                linea = "24b";
+                var ma = rm.Count() - 1;
+                linea = "24c";
+                var sf2 = sf.Substring(0, mf);
+                linea = "24d";
+                if (mf == 255 && sf.Length > 255)
+                {
+                    linea = "24e";
+                    sf2 = sf2.Substring(0, sf2.Length - rm[ma].Length);
+                }
+                linea = "24f";
+                query = "update OBS_DOCF01 set STR_OBS = '" + sf2 +
                         "' where CVE_OBS = '" + fac.cve_obs + "' ";
                 linea = "25";
                 var res2 = GetFbExecute("FB", query, 47);
@@ -1396,7 +1408,7 @@ namespace swyraServices
                 if (sf.Length > 255)
                 {
                     linea = "27";
-                    sf = sf.Remove(0, 255);
+                    sf = sf.Remove(0, (255 - rm[ma].Length));
                     linea = "28";
                     mf = (sf.Length > 255) ? 255 : sf.Length;
                     linea = "29";
