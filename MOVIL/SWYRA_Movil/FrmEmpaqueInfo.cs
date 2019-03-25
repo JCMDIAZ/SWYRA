@@ -31,7 +31,7 @@ namespace SWYRA_Movil
             txtEstatus.Text = ped.capturo_n;
             txtOcuDom.Text = ped.ocurredomicilio;
             txtUbicacion.Text = ped.ubicacionempaque;
-            txtConsigna.Text = ((ped.enviar == "")? ped.direccion1 + " " + ped.direccion2 : ped.consignacion);
+            txtConsigna.Text = ((ped.consignacion == "")? ped.direccion1 + " " + ped.direccion2 : ped.consignacion);
             txtObservaciones.Text = ped.observaciones + " / " + ped.indicaciones;
             txtFecha.Text = ped.fecha_doc.ToString("yyyy-MM-dd");
         }

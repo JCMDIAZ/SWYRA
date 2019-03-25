@@ -59,11 +59,11 @@
             this.colcodigo_barra_9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colactivo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.pcReporte = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.memoRep = new DevExpress.XtraEditors.MemoEdit();
             this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtCodigoBarra9 = new DevExpress.XtraEditors.TextEdit();
             this.txtNumPiezas9 = new DevExpress.XtraEditors.TextEdit();
             this.label11 = new System.Windows.Forms.Label();
@@ -468,16 +468,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Producto Presentación";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label12.Location = new System.Drawing.Point(32, 263);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 15);
-            this.label12.TabIndex = 78;
-            this.label12.Text = "Presentación 9";
-            // 
             // pcReporte
             // 
             this.pcReporte.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -523,6 +513,16 @@
             this.label14.Size = new System.Drawing.Size(104, 15);
             this.label14.TabIndex = 17;
             this.label14.Text = "Reporte de Carga";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label12.Location = new System.Drawing.Point(32, 263);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 15);
+            this.label12.TabIndex = 78;
+            this.label12.Text = "Presentación 9";
             // 
             // txtCodigoBarra9
             // 

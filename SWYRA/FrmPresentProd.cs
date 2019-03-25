@@ -394,7 +394,7 @@ namespace SWYRA
                 pcProgresBar.Hide();
                 pcReporte.Location = new Point(
                     this.ClientSize.Width / 2 - pcReporte.Size.Width / 2,
-                    this.ClientSize.Height / 2 - pcReporte.Size.Height / 2);
+                    (this.ClientSize.Height - gcPresentaciones.Size.Height) / 2 - pcReporte.Size.Height / 2);
                 pcReporte.Anchor = AnchorStyles.None;
                 pcReporte.Show();
             }

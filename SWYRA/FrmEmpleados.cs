@@ -144,7 +144,7 @@ namespace SWYRA
             ActualizaAlmacen();
 
             cbArea.EditValue = empleado.AreaAsignada;
-            cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR");
+            cbArea.Enabled = (cbCategoria.Text == @"SURTIDOR" || cbCategoria.Text == @"EMPAQUETADOR" || cbCategoria.Text == @"MOVIL");
 
             ViewModulo();
         }

@@ -101,11 +101,11 @@
             // txtObservacion
             // 
             this.txtObservacion.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtObservacion.Location = new System.Drawing.Point(94, 101);
+            this.txtObservacion.Location = new System.Drawing.Point(94, 92);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtObservacion.Size = new System.Drawing.Size(141, 36);
+            this.txtObservacion.Size = new System.Drawing.Size(141, 95);
             this.txtObservacion.TabIndex = 29;
             // 
             // label8
@@ -120,7 +120,7 @@
             // txtIndicacion
             // 
             this.txtIndicacion.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtIndicacion.Location = new System.Drawing.Point(94, 59);
+            this.txtIndicacion.Location = new System.Drawing.Point(94, 50);
             this.txtIndicacion.Multiline = true;
             this.txtIndicacion.Name = "txtIndicacion";
             this.txtIndicacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -130,7 +130,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(18, 63);
+            this.label7.Location = new System.Drawing.Point(19, 50);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 17);
             this.label7.Text = "Indicación :";
@@ -139,7 +139,7 @@
             // txtComentario
             // 
             this.txtComentario.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.txtComentario.Location = new System.Drawing.Point(94, 143);
+            this.txtComentario.Location = new System.Drawing.Point(94, 193);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -149,7 +149,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(6, 147);
+            this.label3.Location = new System.Drawing.Point(6, 193);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 32);
             this.label3.Text = "Comentario :";

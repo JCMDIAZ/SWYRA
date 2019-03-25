@@ -728,7 +728,7 @@ namespace swyraServices
             try
             {
                 linea = "1";
-                string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "EMPAQUE", "MODIFICACION", "DETENIDO EMP" };
+                string[] dats = { "AUTORIZACION", "SURTIR", "DETENIDO", "DETENIDO BROCAS", "EMPAQUE", "MODIFICACION", "DETENIDO EMP" };
                 linea = "2";
                 if (pedDb.estatuspedido.In(dats))
                 {

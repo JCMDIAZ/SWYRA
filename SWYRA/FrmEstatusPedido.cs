@@ -409,7 +409,7 @@ namespace SWYRA
                     "^FO20,110^A0,30,25^FDCliente :^FS" +
                     "^FO160,110^A0,30," + aju + "^FD" + clt + "^FS" +
                     "^FO20,135^A0,30,25^FDDireccion :^FS" +
-                    ((pedido.enviar == "") ?
+                    ((pedido.consignacion == "") ?
                     "^FO160,135^A0,30,20^FD" + pedido.direccion1 + "^FS" +
                     "^FO160,160^A0,30,20^FD" + pedido.direccion2 + "^FS" :
                     "^FO160,135^A0,30,20^FD" + pedido.consignacion.Substring(0, (tam < 61 ? tam : 60)) + "^FS" +
@@ -707,9 +707,20 @@ namespace SWYRA
             try
             {
                 var cvedoc = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "cve_doc").ToString();
-                var query = "update PEDIDO set IMPORTE = 0, SURTIDOR_ASIGNADO = '0001' " +
+                var estatus = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "estatuspedido").ToString();
+                var query = "";
+                if (estatus == "AUTORIZACION" || estatus == "SURTIR" || estatus == "SURTIR BROCAS")
+                {
+                    query = "update PEDIDO set IMPORTE = 0, SURTIDOR_ASIGNADO = '0001' " +
                             "WHERE CVE_DOC = '" + cvedoc + "' AND ESTATUSPEDIDO in ('AUTORIZACION','SURTIR') ";
-                MessageBox.Show(@"Asignado al Administrador satisfactoriamente.");
+                } else if (estatus == "EMPAQUE")
+                {
+                    query = "update PEDIDO set EMPAQUETADOR_ASIGNADO = '0001', ESTATUSPEDIDO = 'DETENIDO EMP' " +
+                            "WHERE CVE_DOC = '" + cvedoc + "' AND ESTATUSPEDIDO in ('EMPAQUE') " +
+                            "insert into PEDIDO_HIST (CVE_DOC, ESTATUSPEDIDO, FECHAMOV, USUARIO) values ('" +
+                            cvedoc + "', 'DETENIDO EMP', getdate(), '" + userActivo.Usuario.ToString() + "')";
+                }
+                    MessageBox.Show(@"Asignado al Administrador satisfactoriamente.");
                 GetExecute("DB", query, 62);
             }
             catch (Exception ex)
@@ -728,6 +739,21 @@ namespace SWYRA
                             "AND FECHA_DOC < DATEADD(d,-2,CAST(GETDATE() AS DATE)) ";
                 MessageBox.Show(@"Fecha Actualizada satisfactoriamente.");
                 GetExecute("DB", query, 62);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                var colcve_clpv = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "colcve_clpv").ToString();
+                var query = "DELETE CLIENTE WHERE LTRIM(CLAVE) = LTRIM('" + colcve_clpv + "')";
+                MessageBox.Show(@"Datos del Cliente solicitado satisfactoriamente. Favor de esperar un minuto para actualización se complete.");
+                GetExecute("DB", query, 63);
             }
             catch (Exception ex)
             {

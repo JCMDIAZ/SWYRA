@@ -31,7 +31,7 @@ namespace SWYRA_Movil
             string[] guia = { "MOVIL", "MASTER", "ETIQUETADOR GUIAS" };
             pnlImpCod.Visible = (Program.usActivo.Categoria.Trim().In(surt));
             pnlPedidos.Visible = (Program.usActivo.Categoria.Trim().In(surt));
-            pnlSurtido.Visible = (Program.usActivo.AreaAsignada == "0001" || Program.usActivo.Categoria == "MASTER");
+            pnlSurtido.Visible = (Program.usActivo.AreaAsignada == "0001" || Program.usActivo.Categoria.Trim() == "MASTER");
             pnlEmpaque.Visible = (Program.usActivo.Categoria.Trim().In(empq));
             pnlGuías.Visible = (Program.usActivo.Categoria.Trim().In(guia));
             CuentaPedidos();

@@ -118,7 +118,7 @@
             // 
             this.nmTotalPiezas.Location = new System.Drawing.Point(156, 38);
             this.nmTotalPiezas.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});

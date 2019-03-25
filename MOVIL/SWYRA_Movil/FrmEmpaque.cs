@@ -561,7 +561,7 @@ namespace SWYRA_Movil
                     "^FO20,110^A0,30,25^FDCliente :^FS" +
                     "^FO160,110^A0,30," + aju + "^FD" + clt + "^FS" +
                     "^FO20,135^A0,30,25^FDDireccion :^FS" +
-                    ((ped.enviar == "") ?
+                    ((ped.consignacion == "") ?
                     "^FO160,135^A0,30,20^FD" + ped.direccion1 + "^FS" +
                     "^FO160,160^A0,30,20^FD" + ped.direccion2 + "^FS" :
                     "^FO160,135^A0,30,20^FD" + ped.consignacion.Substring(0, (tam < 61 ? tam : 60)) + "^FS" +

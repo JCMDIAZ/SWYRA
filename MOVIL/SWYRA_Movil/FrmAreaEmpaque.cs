@@ -58,7 +58,7 @@ namespace SWYRA_Movil
                                 "cve_ubicacion in ( select distinct UbicacionEmpaque from ( " +
                                 "select isnull(p.UbicacionEmpaque, u.UbicacionEmpaque) UbicacionEmpaque from PEDIDO p " +
                                 "left join PEDIDO_Ubicacion u on p.CVE_DOC = u.cve_doc " +
-                                "where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE') " +
+                                "where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE', 'DETENIDO BROCAS') " +
                                 "and LTRIM(p.CVE_DOC) = '" + lblPedido.Text + "') as a " +
                                 "where UbicacionEmpaque is not null ) ";
                     lst2 = Program.GetDataTable(query, 1).ToList<UbicacionEntrega>();
