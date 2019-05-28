@@ -38,16 +38,23 @@ namespace SWYRA
                          "select @ffin = '" + txtFechFin.DateTime.ToString("yyyyMMdd") + "' " +
                          "select @fini = '" + txtFechIni.DateTime.ToString("yyyyMMdd") + "' " +
                          "declare @dias int set @dias = [dbo].[fBusinessDays](@fini, @ffin) + 1 " +
-                         "declare @ped table(cve_doc varchar(20)) insert @ped " +
-                         "select CVE_DOC from PEDIDO where FECHA_DOC between @fini and @ffin and ESTATUSPEDIDO NOT IN ('CANCELACION') " +
-                         "declare @pedcan int select @pedcan = count(CVE_DOC) from PEDIDO where FECHA_DOC between @fini and @ffin and ESTATUSPEDIDO IN('CANCELACION') " +
-                         "declare @part table (cve_doc varchar(20), PARTIDAS_SURIDAS int) insert @part " +
-                         "SELECT pd.CVE_DOC, ISNULL(COUNT(*), 0) PARTIDAS_SURTIDAS from @ped pd JOIN DETALLEPEDIDOMERC dm ON pd.cve_doc = dm.CVE_DOC " +
-                         "where dm.CVE_ART <> '' and ISNULL(CANCELADO,0) = 0 group by pd.CVE_DOC " +
+                         "declare @ped table(cve_doc varchar(20), estatuspedido varchar(20)) insert @ped " +
+                         "select h.CVE_DOC, h.ESTATUSPEDIDO from dbo.PEDIDO_HIST h join (" +
+                         "SELECT CVE_DOC, MAX(FECHAMOV)AS FECHAMOV FROM dbo.PEDIDO_HIST " +
+                         "WHERE FECHAMOV between CAST(@fini AS datetime) and CAST(@ffin + 1 AS datetime) " +
+                         "GROUP BY CVE_DOC) as r on h.CVE_DOC = r.CVE_DOC and h.FECHAMOV = r.FECHAMOV " +
+                         "declare @pedtot int select @pedtot = count(*) from @ped WHERE ESTATUSPEDIDO NOT IN ('CANCELACION') " +
+                         "declare @pedcan int select @pedcan = count(*) from @ped WHERE ESTATUSPEDIDO IN ('CANCELACION') " +
                          "declare @detped table (cve_doc varchar(20), ARTICULOS int, ARTICULOS_SURTIDOS int, PIEZAS int, PIEZAS_SURTIDAS int, PIEZAS_PENDIENTES int) " +
                          "insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
-                         "SUM(ISNULL(CANT, 0)) AS PIEZAS, SUM(ISNULL(CANTSURTIDO, 0)) AS PIEZAS_SURTIDAS, SUM(ISNULL(CANTPENDIENTE, 0)) AS PIEZAS_PENDIENTES " +
-                         "FROM dbo.DETALLEPEDIDO dp join @ped pd on pd.cve_doc = dp.CVE_DOC GROUP BY dp.CVE_DOC ";
+                         "SUM(CASE WHEN (ISNULL(CANTSURTIDO, 0) + ISNULL(CANTPENDIENTE, 0)) > 0 THEN ISNULL(CANT, 0) ELSE 0 END) AS PIEZAS, " +
+                         "SUM(ISNULL(CANTSURTIDO, 0)) AS PIEZAS_SURTIDAS, SUM(ISNULL(CANTPENDIENTE, 0)) AS PIEZAS_PENDIENTES " +
+                         "FROM dbo.DETALLEPEDIDO dp join @ped pd on pd.cve_doc = dp.CVE_DOC GROUP BY dp.CVE_DOC " +
+                         "declare @pzinc int declare @pzart int select @pzinc = sum(d.CANTPENDIENTE), @pzart = COUNT(d.CANTPENDIENTE) from PEDIDO p left " +
+                         "join DETALLEPEDIDO d on p.CVE_DOC = d.CVE_DOC left join CLIENTE c on c.CLAVE = p.CVE_CLPV left " +
+                         "join INVENTARIO i on i.CVE_ART = d.CVE_ART " +
+                         "where p.FECHA_DOC between CAST(@fini AS datetime) and CAST(@ffin + 1 AS datetime) " +
+                         "and d.CANTPENDIENTE > 0 and p.ESTATUSPEDIDO IN ('TERMINADO', 'GUIA', 'REMISION')";
 
             List<EstadisticasGenerales> estGen = CargaEstGen();
             List<EstadisticasEstatus> estEst = CargaEstEst();
@@ -92,9 +99,9 @@ namespace SWYRA
             try
             {
                 var query = queryConst +
-                            "select @fini FECHINICIAL, @ffin FECHFINAL,  count(*) PEDIDOS, @pedcan CANCELADOS, SUM(ARTICULOS) ARTICULOS, " +
-                            "SUM(ARTICULOS_SURTIDOS) ARTICULOS_SURTIDOS, (CAST(SUM(ARTICULOS_SURTIDOS) AS FLOAT) / CAST(SUM(ARTICULOS) AS FLOAT)) PORC_ARTICULOS, " +
-                            "SUM(PIEZAS) PIEZAS, SUM(PIEZAS_SURTIDAS) PIEZAS_SURTIDAS, (CAST(SUM(PIEZAS_SURTIDAS) AS FLOAT) / CAST(SUM(PIEZAS)AS FLOAT)) PORC_PIEZAS " +
+                            "select @fini FECHINICIAL, @ffin FECHFINAL,  @pedtot PEDIDOS, @pedcan CANCELADOS, SUM(ARTICULOS) ARTICULOS, " +
+                            "(SUM(ARTICULOS) - @pzart) ARTICULOS_SURTIDOS, (CAST((SUM(ARTICULOS) - @pzart) AS FLOAT) / CAST(SUM(ARTICULOS) AS FLOAT)) PORC_ARTICULOS, " +
+                            "SUM(PIEZAS) PIEZAS, (SUM(PIEZAS) - @pzinc) PIEZAS_SURTIDAS, (CAST((SUM(PIEZAS) - @pzinc) AS FLOAT) / CAST(SUM(PIEZAS)AS FLOAT)) PORC_PIEZAS " +
                             "from @detped";
                 dets = GetDataTable("DB", query, 1).ToList<EstadisticasGenerales>();
             }
@@ -111,8 +118,7 @@ namespace SWYRA
             try
             {
                 var query = queryConst +
-                            "select e.ESTATUSPEDIDO, count(e.CVE_DOC) Cantidad, (count(e.CVE_DOC) / @dias) promedio  from PEDIDO p " +
-                            "JOIN vw_estatuspedido e ON e.CVE_DOC = p.CVE_DOC JOIN @ped pd on pd.cve_doc = e.CVE_DOC group by e.ESTATUSPEDIDO";
+                            "select e.ESTATUSPEDIDO, count(e.CVE_DOC) Cantidad, (count(e.CVE_DOC) / @dias) promedio from @ped e group by e.ESTATUSPEDIDO";
                 dets = GetDataTable("DB", query, 2).ToList<EstadisticasEstatus>();
             }
             catch (Exception ex)
@@ -127,10 +133,15 @@ namespace SWYRA
             List<EstadisticasEmpleado> dets = new List<EstadisticasEmpleado>();
             try
             {
-                var query = queryConst +
-                            "delete @ped insert @ped select distinct cve_doc from PEDIDO_HIST ph " +
-                            "WHERE ESTATUSPEDIDO IN('SURTIENDO', 'SURTIENDO BROCAS', 'EMPAQUE', 'DETENIDO') and FECHAMOV between @fini and @ffin + 1 " +
-                            "delete @detped insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
+                var query = "declare @fini datetime declare @ffin datetime " +
+                            "select @ffin = '" + txtFechFin.DateTime.ToString("yyyyMMdd") + "' " +
+                            "select @fini = '" + txtFechIni.DateTime.ToString("yyyyMMdd") + "' " +
+                            "declare @dias int set @dias = [dbo].[fBusinessDays](@fini, @ffin) + 1 " +
+                            "declare @ped table(cve_doc varchar(20)) " +
+                            "declare @detped table (cve_doc varchar(20), ARTICULOS int, ARTICULOS_SURTIDOS int, PIEZAS int, PIEZAS_SURTIDAS int, PIEZAS_PENDIENTES int) " +
+                            "insert @ped select distinct cve_doc from PEDIDO_HIST ph " +
+                            "WHERE ESTATUSPEDIDO IN('SURTIENDO', 'SURTIR BROCAS', 'EMPAQUE', 'DETENIDO') and FECHAMOV between @fini and @ffin + 1 " +
+                            "insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
                             "SUM(ISNULL(CANT, 0)) AS PIEZAS, SUM(ISNULL(CANTSURTIDO, 0)) AS PIEZAS_SURTIDAS, SUM(ISNULL(CANTPENDIENTE, 0)) AS PIEZAS_PENDIENTES " +
                             "FROM dbo.DETALLEPEDIDO dp join @ped pd on pd.cve_doc = dp.CVE_DOC GROUP BY dp.CVE_DOC " +
                             "select p.SURTIDOR_ASIGNADO, u.Nombre, count(e.CVE_DOC) Pedidos, (count(e.CVE_DOC) / @dias) prom_PedidosDiario, " +
@@ -142,12 +153,12 @@ namespace SWYRA
                             "JOIN( SELECT *, ISNULL(DATEDIFF(MINUTE, FECHASURTIR, ISNULL(FECHASURTIRBROCAS, FECHAEMPAQUE)), 0) - " +
                             "ISNULL(DATEDIFF(MINUTE, FECHADETENIDO, FECHARESURTIR), 0) TIEMPO FROM( " +
                             "select ph.CVE_DOC, MIN(case when ESTATUSPEDIDO = 'SURTIENDO' then FECHAMOV end) FECHASURTIR, " +
-                            "MIN(case when ESTATUSPEDIDO = 'SURTIENDO BROCAS' then FECHAMOV end) FECHASURTIRBROCAS, " +
+                            "MIN(case when ESTATUSPEDIDO = 'SURTIR BROCAS' then FECHAMOV end) FECHASURTIRBROCAS, " +
                             "MIN(case when ESTATUSPEDIDO = 'EMPAQUE' then FECHAMOV end) FECHAEMPAQUE, " +
                             "MIN(case when ESTATUSPEDIDO = 'DETENIDO' then FECHAMOV end) FECHADETENIDO, " +
                             "MAX(case when ESTATUSPEDIDO = 'SURTIENDO' then FECHAMOV end) FECHARESURTIR " +
                             "from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
-                            "WHERE ESTATUSPEDIDO IN('SURTIENDO', 'SURTIENDO BROCAS', 'EMPAQUE', 'DETENIDO') " +
+                            "WHERE ESTATUSPEDIDO IN('SURTIENDO', 'SURTIR BROCAS', 'EMPAQUE', 'DETENIDO') " +
                             "and FECHAMOV between @fini and @ffin + 1 GROUP BY ph.CVE_DOC) AS A " +
                             ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.SURTIDOR_ASIGNADO, u.Nombre";
                 dets = GetDataTable("DB", query, 3).ToList<EstadisticasEmpleado>();
@@ -164,10 +175,15 @@ namespace SWYRA
             List<EstadisticasEmpleado> dets = new List<EstadisticasEmpleado>();
             try
             {
-                var query = queryConst +
-                            "delete @ped insert @ped select distinct cve_doc from PEDIDO_HIST ph " +
+                var query = "declare @fini datetime declare @ffin datetime " +
+                            "select @ffin = '" + txtFechFin.DateTime.ToString("yyyyMMdd") + "' " +
+                            "select @fini = '" + txtFechIni.DateTime.ToString("yyyyMMdd") + "' " +
+                            "declare @dias int set @dias = [dbo].[fBusinessDays](@fini, @ffin) + 1 " +
+                            "declare @ped table(cve_doc varchar(20)) " +
+                            "declare @detped table (cve_doc varchar(20), ARTICULOS int, ARTICULOS_SURTIDOS int, PIEZAS int, PIEZAS_SURTIDAS int, PIEZAS_PENDIENTES int) " +
+                            "insert @ped select distinct cve_doc from PEDIDO_HIST ph " +
                             "WHERE ESTATUSPEDIDO IN('SURTIENDO', 'SURTIENDO BROCAS', 'EMPAQUE', 'DETENIDO BROCAS') and FECHAMOV between @fini and @ffin + 1 " +
-                            "delete @detped insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
+                            "insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
                             "SUM(ISNULL(CANT, 0)) AS PIEZAS, SUM(ISNULL(CANTSURTIDO, 0)) AS PIEZAS_SURTIDAS, SUM(ISNULL(CANTPENDIENTE, 0)) AS PIEZAS_PENDIENTES " +
                             "FROM dbo.DETALLEPEDIDO dp join @ped pd on pd.cve_doc = dp.CVE_DOC GROUP BY dp.CVE_DOC " +
                             "select p.SURTIDOR_AREA, u.Nombre, count(e.CVE_DOC) Pedidos, (count(e.CVE_DOC) / @dias) prom_PedidosDiario, " +
@@ -201,10 +217,15 @@ namespace SWYRA
             List<EstadisticasEmpleado> dets = new List<EstadisticasEmpleado>();
             try
             {
-                var query = queryConst +
-                            "delete @ped insert @ped select distinct cve_doc from PEDIDO_HIST ph " +
+                var query = "declare @fini datetime declare @ffin datetime " +
+                            "select @ffin = '" + txtFechFin.DateTime.ToString("yyyyMMdd") + "' " +
+                            "select @fini = '" + txtFechIni.DateTime.ToString("yyyyMMdd") + "' " +
+                            "declare @dias int set @dias = [dbo].[fBusinessDays](@fini, @ffin) + 1 " +
+                            "declare @ped table(cve_doc varchar(20)) " +
+                            "declare @detped table (cve_doc varchar(20), ARTICULOS int, ARTICULOS_SURTIDOS int, PIEZAS int, PIEZAS_SURTIDAS int, PIEZAS_PENDIENTES int) " +
+                            "insert @ped select distinct cve_doc from PEDIDO_HIST ph " +
                             "WHERE ESTATUSPEDIDO IN('EMPACANDO', 'REMISION', 'DETENIDO EMP') and FECHAMOV between @fini and @ffin + 1 " +
-                            "delete @detped insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
+                            "insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
                             "SUM(ISNULL(CANT, 0)) AS PIEZAS, SUM(ISNULL(CANTSURTIDO, 0)) AS PIEZAS_SURTIDAS, SUM(ISNULL(CANTPENDIENTE, 0)) AS PIEZAS_PENDIENTES " +
                             "FROM dbo.DETALLEPEDIDO dp join @ped pd on pd.cve_doc = dp.CVE_DOC GROUP BY dp.CVE_DOC " +
                             "select p.EMPAQUETADOR_ASIGNADO, u.Nombre, count(e.CVE_DOC) Pedidos, (count(e.CVE_DOC) / @dias) prom_PedidosDiario, " +
@@ -237,10 +258,15 @@ namespace SWYRA
             List<EstadisticasEmpleado> dets = new List<EstadisticasEmpleado>();
             try
             {
-                var query = queryConst +
-                            "delete @ped insert @ped select distinct cve_doc from PEDIDO_HIST ph " +
+                var query = "declare @fini datetime declare @ffin datetime " +
+                            "select @ffin = '" + txtFechFin.DateTime.ToString("yyyyMMdd") + "' " +
+                            "select @fini = '" + txtFechIni.DateTime.ToString("yyyyMMdd") + "' " +
+                            "declare @dias int set @dias = [dbo].[fBusinessDays](@fini, @ffin) + 1 " +
+                            "declare @ped table(cve_doc varchar(20)) " +
+                            "declare @detped table (cve_doc varchar(20), ARTICULOS int, ARTICULOS_SURTIDOS int, PIEZAS int, PIEZAS_SURTIDAS int, PIEZAS_PENDIENTES int) " +
+                            "insert @ped select distinct cve_doc from PEDIDO_HIST ph " +
                             "WHERE ESTATUSPEDIDO IN('GUIA', 'TERMINADO', 'DETENIDO GUIA') and FECHAMOV between @fini and @ffin + 1 " +
-                            "delete @detped insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
+                            "insert @detped SELECT dp.CVE_DOC, COUNT(CVE_ART) AS ARTICULOS, SUM(CASE WHEN ISNULL(CANTPENDIENTE,0) <> ISNULL(CANT,0) THEN 1 ELSE 0 END) AS ARTICULOS_SURTIDOS, " +
                             "SUM(ISNULL(CANT, 0)) AS PIEZAS, SUM(ISNULL(CANTSURTIDO, 0)) AS PIEZAS_SURTIDAS, SUM(ISNULL(CANTPENDIENTE, 0)) AS PIEZAS_PENDIENTES " +
                             "FROM dbo.DETALLEPEDIDO dp join @ped pd on pd.cve_doc = dp.CVE_DOC GROUP BY dp.CVE_DOC " +
                             "select p.ETIQUETADOR_ASIGNADO, u.Nombre,  count(e.CVE_DOC) Pedidos, (count(e.CVE_DOC) / @dias) prom_PedidosDiario, " +
@@ -277,9 +303,9 @@ namespace SWYRA
                             "from PEDIDO p JOIN @ped pd ON pd.cve_doc = p.CVE_DOC JOIN vw_estatuspedido e ON e.CVE_DOC = p.CVE_DOC " +
                             "JOIN @detped s ON s.cve_doc = p.CVE_DOC JOIN CLIENTE c on c.CLAVE = p.CVE_CLPV JOIN( " +
                             "SELECT *, ISNULL(DATEDIFF(MINUTE, FECHAUTORIZACION, FECHATERMINADO), 0) TIEMPO FROM( " +
-                            "select ph.CVE_DOC, MIN(case when ESTATUSPEDIDO = 'SURTIR' then FECHAMOV end) FECHAUTORIZACION, " +
-                            "MIN(case when ESTATUSPEDIDO = 'FACTURACION' then FECHAMOV end) FECHATERMINADO from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
-                            "WHERE ESTATUSPEDIDO IN('SURTIR', 'FACTURACION') GROUP BY ph.CVE_DOC) AS A ) AS T ON T.CVE_DOC = P.CVE_DOC order by t.TIEMPO desc, LTRIM(p.CVE_DOC)";
+                            "select ph.CVE_DOC, MIN(case when ph.ESTATUSPEDIDO = 'SURTIR' then FECHAMOV end) FECHAUTORIZACION, " +
+                            "MIN(case when ph.ESTATUSPEDIDO = 'FACTURACION' then FECHAMOV end) FECHATERMINADO from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
+                            "WHERE ph.ESTATUSPEDIDO IN('SURTIR', 'FACTURACION') GROUP BY ph.CVE_DOC) AS A ) AS T ON T.CVE_DOC = P.CVE_DOC order by t.TIEMPO desc, LTRIM(p.CVE_DOC)";
                 dets = GetDataTable("DB", query, 7).ToList<EstadisticasPedidos>();
             }
             catch (Exception ex)
@@ -300,9 +326,9 @@ namespace SWYRA
                             "from PEDIDO p JOIN @ped pd ON pd.cve_doc = p.CVE_DOC JOIN vw_estatuspedido e ON e.CVE_DOC = p.CVE_DOC " +
                             "JOIN @detped s ON s.cve_doc = p.CVE_DOC JOIN CLIENTE c on c.CLAVE = p.CVE_CLPV JOIN( " +
                             "SELECT *, ISNULL(DATEDIFF(MINUTE, FECHAUTORIZACION, FECHATERMINADO), 0) TIEMPO FROM( " +
-                            "select ph.CVE_DOC, MIN(case when ESTATUSPEDIDO = 'SURTIR' then FECHAMOV end) FECHAUTORIZACION, " +
-                            "MIN(case when ESTATUSPEDIDO = 'FACTURACION' then FECHAMOV end) FECHATERMINADO from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
-                            "WHERE ESTATUSPEDIDO IN('SURTIR', 'FACTURACION') GROUP BY ph.CVE_DOC) AS A ) AS T ON T.CVE_DOC = P.CVE_DOC order by t.TIEMPO, LTRIM(p.CVE_DOC)";
+                            "select ph.CVE_DOC, MIN(case when ph.ESTATUSPEDIDO = 'SURTIR' then FECHAMOV end) FECHAUTORIZACION, " +
+                            "MIN(case when ph.ESTATUSPEDIDO = 'FACTURACION' then FECHAMOV end) FECHATERMINADO from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
+                            "WHERE ph.ESTATUSPEDIDO IN('SURTIR', 'FACTURACION') GROUP BY ph.CVE_DOC) AS A ) AS T ON T.CVE_DOC = P.CVE_DOC order by t.TIEMPO, LTRIM(p.CVE_DOC)";
                 dets = GetDataTable("DB", query, 7).ToList<EstadisticasPedidos>();
             }
             catch (Exception ex)
