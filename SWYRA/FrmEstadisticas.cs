@@ -53,7 +53,7 @@ namespace SWYRA
                          "declare @pzinc int declare @pzart int select @pzinc = sum(d.CANTPENDIENTE), @pzart = COUNT(d.CANTPENDIENTE) from PEDIDO p left " +
                          "join DETALLEPEDIDO d on p.CVE_DOC = d.CVE_DOC left join CLIENTE c on c.CLAVE = p.CVE_CLPV left " +
                          "join INVENTARIO i on i.CVE_ART = d.CVE_ART " +
-                         "where p.FECHA_DOC between CAST(@fini AS datetime) and CAST(@ffin + 1 AS datetime) " +
+                         "where p.FECHA_DOC between CAST(@fini AS datetime) and CAST(@ffin AS datetime) " +
                          "and d.CANTPENDIENTE > 0 and p.ESTATUSPEDIDO IN ('TERMINADO', 'GUIA', 'REMISION')";
 
             List<EstadisticasGenerales> estGen = CargaEstGen();
