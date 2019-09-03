@@ -297,42 +297,42 @@
             // 
             this.xrTableCell15.Dpi = 100F;
             this.xrTableCell15.Name = "xrTableCell15";
-            this.xrTableCell15.Text = "ARTS.";
+            this.xrTableCell15.Text = "CLAVES";
             this.xrTableCell15.Weight = 0.11296294487847219D;
             // 
             // xrTableCell16
             // 
             this.xrTableCell16.Dpi = 100F;
             this.xrTableCell16.Name = "xrTableCell16";
-            this.xrTableCell16.Text = "PRM. ART.";
+            this.xrTableCell16.Text = "PRM. CVE.";
             this.xrTableCell16.Weight = 0.11296299913194442D;
             // 
             // xrTableCell17
             // 
             this.xrTableCell17.Dpi = 100F;
             this.xrTableCell17.Name = "xrTableCell17";
-            this.xrTableCell17.Text = "TIEMPO";
+            this.xrTableCell17.Text = "MINUTOS";
             this.xrTableCell17.Weight = 0.098148166232638875D;
             // 
             // xrTableCell18
             // 
             this.xrTableCell18.Dpi = 100F;
             this.xrTableCell18.Name = "xrTableCell18";
-            this.xrTableCell18.Text = "PTD";
+            this.xrTableCell18.Text = "PMD";
             this.xrTableCell18.Weight = 0.112962890625D;
             // 
             // xrTableCell19
             // 
             this.xrTableCell19.Dpi = 100F;
             this.xrTableCell19.Name = "xrTableCell19";
-            this.xrTableCell19.Text = "PTA";
+            this.xrTableCell19.Text = "PMA";
             this.xrTableCell19.Weight = 0.12037044270833334D;
             // 
             // xrTableCell20
             // 
             this.xrTableCell20.Dpi = 100F;
             this.xrTableCell20.Name = "xrTableCell20";
-            this.xrTableCell20.Text = "PTP";
+            this.xrTableCell20.Text = "PMP";
             this.xrTableCell20.Weight = 0.10925922309027777D;
             // 
             // xrLabel3

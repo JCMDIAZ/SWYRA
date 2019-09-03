@@ -263,26 +263,34 @@ namespace SWYRA_Movil
 
         private void cargaDatos()
         {
-            var muestra = 0.0;
-            if (art != null)
+            string ln = "";
+            try
             {
-                maxvalue = detmerc.Where(o => o.cve_art == art.cve_art).Max(o => o.presentacion);
-                muestra = ((art.cantdiferencia > maxvalue) ? art.cantdiferencia : maxvalue);
+                ln = "1";  var muestra = 0.0;
+                ln = "2";  if (art != null)
+                {
+                    ln = "3"; maxvalue = detmerc.Where(o => o.cve_art == art.cve_art).Max(o => o.presentacion);
+                    ln = "4"; muestra = ((art.cantdiferencia > maxvalue) ? art.cantdiferencia : maxvalue);
+                }
+                ln = "5"; txtCant.Value = 1;
+                ln = "6"; txtUbica.Text = (art != null) ? art.ubicacion : "";
+                ln = "7"; txtClave.Text = (art != null) ? art.cve_art : "";
+                ln = "8"; txtDescr.Text = (art != null) ? art.descr : "";
+                ln = "9"; txtMinimo.Text = (art != null) ? art.min.ToString() : "";
+                ln = "10"; txtMaster.Text = (art != null) ? art.mas.ToString() : "";
+                ln = "11"; txtPorSurtir.Text = (art != null) ? muestra.ToString() : "";
+                ln = "12"; txtSurtido.Text = (art != null) ? art.cantdevuelto.ToString() : "";
+                ln = "13"; txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
+                ln = "14"; lblComentario.Text = (art != null) ? art.comentario : "";
+                ln = "15"; txtMasterUbi.Text = (art != null) ? art.masters_ubi : "";
+                ln = "16"; var cveart = (art != null) ? art.cve_art : "";
+                ln = "17"; var mercF = merc.Find(o => o.cve_art == cveart);
+                ln = "18"; lblEmp.Text = (mercF == null) ? "" : mercF.empaque;
             }
-            txtCant.Value = 1;
-            txtUbica.Text = (art != null) ? art.ubicacion : "";
-            txtClave.Text = (art != null) ? art.cve_art : "";
-            txtDescr.Text = (art != null) ? art.descr : "";
-            txtMinimo.Text = (art != null) ? art.min.ToString() : "";
-            txtMaster.Text = (art != null) ? art.mas.ToString() : "";
-            txtPorSurtir.Text = (art != null) ? muestra.ToString() : "";
-            txtSurtido.Text = (art != null) ? art.cantdevuelto.ToString() : "";
-            txtExistencia.Text = (art != null) ? art.exist.ToString() : "";
-            lblComentario.Text = (art != null) ? art.comentario : "";
-            txtMasterUbi.Text = (art != null) ? art.masters_ubi : "";
-            var cveart = (art != null) ? art.cve_art : "";
-            var mercF = merc.Find(o => o.cve_art == cveart);
-            lblEmp.Text = (mercF == null) ? "" : mercF.empaque;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ln + ": " + ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void CargaUbicaciones()

@@ -74,11 +74,43 @@ namespace SWYRA_Movil
             {
                 var s = listBox1.SelectedValue.ToString();
                 var dat = lst.Find(o => o.cve_ubicacion == s);
+
+                if (validaAsignacion(dat))
+                {
+                    MessageBox.Show(@"La ubicación " + dat.cve_ubicacion + " acaba de ser asignado a otro pedido, intente con otra ubicación.", "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
+
                 if (dat != null) { dat.seleccionado = true; }
                 sw = true;
                 ActualizarListBox();
                 sw = false;
             }
+        }
+
+        private bool validaAsignacion(UbicacionEntrega dat)
+        {
+            bool b = false;
+            try
+            {
+                List<UbicacionEntrega> lstV = new List<UbicacionEntrega>();
+                var query = "select *, cast(0 as bit) selecionado from UBICACION_ENTREGA where cve_zona = 'EMPAQUE' and " +
+                            "cve_ubicacion not in ( select distinct UbicacionEmpaque from ( " +
+                            "select isnull(p.UbicacionEmpaque, u.UbicacionEmpaque) UbicacionEmpaque from PEDIDO p " +
+                            "left join PEDIDO_Ubicacion u on p.CVE_DOC = u.cve_doc " +
+                            "where ESTATUSPEDIDO in ('SURTIR', 'MODIFICACION', 'DETENIDO', 'DEVOLUCION', 'EMPAQUE', 'DETENIDO BROCAS')) as a " +
+                            "where UbicacionEmpaque is not null ) and cve_ubicacion = '" + dat.cve_ubicacion + "'";
+                lstV = Program.GetDataTable(query, 1).ToList<UbicacionEntrega>();
+
+                if (lstV.Count == 0)
+                {
+                    b = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SWYRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+            return b;
         }
 
         private void pbAnt_Click(object sender, EventArgs e)

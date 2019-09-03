@@ -183,7 +183,8 @@ namespace SWYRA
         public string direccion2 { get; set; }
         public string causadetenido { get; set; }
         public double remitentes { get; set; }
-}
+        public DateTime fechamov { get; set; }
+    }
 
     public class DetallePedidos
     {

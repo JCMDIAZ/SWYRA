@@ -133,8 +133,7 @@
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel7.SizeF = new System.Drawing.SizeF(739F, 12.99998F);
             this.xrLabel7.StylePriority.UseFont = false;
-            this.xrLabel7.Text = "PTD : Promedio de Tiempo Diario;    PTP : Promedio de Tiempo por Pedido; Tiempo e" +
-    "n minutos";
+            this.xrLabel7.Text = "PMD : Promedio de Minutos Diario;    PMP : Promedio de Minutos por Pedido; ";
             // 
             // xrSubreport4
             // 
@@ -153,8 +152,8 @@
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel6.SizeF = new System.Drawing.SizeF(739F, 12.99998F);
             this.xrLabel6.StylePriority.UseFont = false;
-            this.xrLabel6.Text = "PTD : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
-    " : Promedio de Tiempo por Pedido; Tiempo en minutos";
+            this.xrLabel6.Text = "PMD : Promedio de Minutos Diario;    PMA : Promedio de Minutos por Artículo;    P" +
+    "MP : Promedio de Minutos por Pedido;";
             // 
             // xrSubreport3
             // 
@@ -173,8 +172,8 @@
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel5.SizeF = new System.Drawing.SizeF(739F, 12.99998F);
             this.xrLabel5.StylePriority.UseFont = false;
-            this.xrLabel5.Text = "PTD : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
-    " : Promedio de Tiempo por Pedido; Tiempo en minutos";
+            this.xrLabel5.Text = "PMD : Promedio de Minutos Diario;    PMA : Promedio de Minutos por Artículo;    P" +
+    "MP : Promedio de Minutos por Pedido;";
             // 
             // xrLabel4
             // 
@@ -185,8 +184,8 @@
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(739F, 12.99998F);
             this.xrLabel4.StylePriority.UseFont = false;
-            this.xrLabel4.Text = "PTD : Promedio de Tiempo Diario;    PTA : Promedio de Tiempo por Artículo;    PTP" +
-    " : Promedio de Tiempo por Pedido; Tiempo en minutos";
+            this.xrLabel4.Text = "PMD : Promedio de Minutos Diario;    PMA : Promedio de Minutos por Artículo;    P" +
+    "MP : Promedio de Minutos por Pedido;";
             // 
             // xrSubreport2
             // 
@@ -260,14 +259,14 @@
             // 
             this.xrTableCell12.Dpi = 100F;
             this.xrTableCell12.Name = "xrTableCell12";
-            this.xrTableCell12.Text = "ARTICULOS";
+            this.xrTableCell12.Text = "CLAVES";
             this.xrTableCell12.Weight = 0.13351134846461948D;
             // 
             // xrTableCell13
             // 
             this.xrTableCell13.Dpi = 100F;
             this.xrTableCell13.Name = "xrTableCell13";
-            this.xrTableCell13.Text = "ART. SURT.";
+            this.xrTableCell13.Text = "CVE. SURT.";
             this.xrTableCell13.Weight = 0.13351134846461948D;
             // 
             // xrTableCell14

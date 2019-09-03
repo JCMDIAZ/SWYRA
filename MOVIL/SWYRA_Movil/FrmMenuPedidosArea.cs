@@ -209,7 +209,7 @@ namespace SWYRA_Movil
             {
                 FrmSurtit frmSurtir = new FrmSurtit();
                 frmSurtir.ped = ped;
-                frmSurtir.det = detA.Where(o => o.surtido == false).ToList();
+                frmSurtir.det = detA.Where(o => o.surtido == false).OrderBy(o => o.orden).ThenBy(o => o.cve_art).ToList();
                 frmSurtir.pbIncompleto.Visible = false;
                 frmSurtir.pbIncompletoB.Visible = true;
                 frmSurtir.ShowDialog();
@@ -314,7 +314,7 @@ namespace SWYRA_Movil
                     "FROM " + (Devuelto ? "DETALLEPEDIDODEV" : "DETALLEPEDIDO") + " dp JOIN INVENTARIO i ON dp.CVE_ART = i.CVE_ART " +
                     "LEFT JOIN INVENTARIOCOND ic ON ic.CVE_ART = dp.CVE_ART AND ic.ACTIVO = 1 " +
                     "WHERE (LTRIM(CVE_DOC) = '" + ped.cve_doc + "') AND dp.NUM_PAR < 1000 ) as c) as a LEFT JOIN ORDEN_RUTA o ON RTRIM(LTRIM(a.ubicacion)) = o.CVE_UBI " +
-                    "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' ORDER BY o.ORDEN";
+                    "JOIN AREAS r ON ISNULL(o.AREA,'') " + (Area ? "" : "NOT") + " like '%' + r.NOMBRE + '%' ORDER BY o.ORDEN, a.CVE_ART ";
             return query;
         }
 

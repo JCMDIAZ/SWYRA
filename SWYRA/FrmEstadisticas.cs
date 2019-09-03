@@ -160,7 +160,7 @@ namespace SWYRA
                             "from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
                             "WHERE ESTATUSPEDIDO IN('SURTIENDO', 'SURTIR BROCAS', 'EMPAQUE', 'DETENIDO') " +
                             "and FECHAMOV between @fini and @ffin + 1 GROUP BY ph.CVE_DOC) AS A " +
-                            ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.SURTIDOR_ASIGNADO, u.Nombre";
+                            ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.SURTIDOR_ASIGNADO, u.Nombre Order by tiempo";
                 dets = GetDataTable("DB", query, 3).ToList<EstadisticasEmpleado>();
             }
             catch (Exception ex)
@@ -202,7 +202,7 @@ namespace SWYRA
                             "from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
                             "WHERE ESTATUSPEDIDO IN('SURTIENDO', 'SURTIENDO BROCAS', 'EMPAQUE', 'DETENIDO BROCAS') " +
                             "and FECHAMOV between @fini and @ffin + 1 GROUP BY ph.CVE_DOC) AS A " +
-                            ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.SURTIDOR_AREA, u.Nombre";
+                            ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.SURTIDOR_AREA, u.Nombre Order by tiempo";
                 dets = GetDataTable("DB", query, 4).ToList<EstadisticasEmpleado>();
             }
             catch (Exception ex)
@@ -243,7 +243,7 @@ namespace SWYRA
                             "from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
                             "WHERE ESTATUSPEDIDO IN('EMPACANDO', 'REMISION', 'DETENIDO EMP') " +
                             "and FECHAMOV between @fini and @ffin + 1 GROUP BY ph.CVE_DOC) AS A " +
-                            ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.EMPAQUETADOR_ASIGNADO, u.Nombre";
+                            ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.EMPAQUETADOR_ASIGNADO, u.Nombre Order by tiempo";
                 dets = GetDataTable("DB", query, 5).ToList<EstadisticasEmpleado>();
             }
             catch (Exception ex)
@@ -282,7 +282,7 @@ namespace SWYRA
                             "from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
                             "WHERE ESTATUSPEDIDO IN('GUIA', 'TERMINADO', 'DETENIDO GUIA') " +
                             "and FECHAMOV between @fini and @ffin + 1 GROUP BY ph.CVE_DOC) AS A " +
-                            ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.ETIQUETADOR_ASIGNADO, u.Nombre";
+                            ") AS T ON T.CVE_DOC = P.CVE_DOC group by p.ETIQUETADOR_ASIGNADO, u.Nombre Order by tiempo";
                 dets = GetDataTable("DB", query, 6).ToList<EstadisticasEmpleado>();
             }
             catch (Exception ex)
@@ -302,10 +302,21 @@ namespace SWYRA
                             "(s.ARTICULOS - s.ARTICULOS_SURTIDOS) ARTICULOS_PENDIENTES, s.PIEZAS, s.PIEZAS_SURTIDAS, s.PIEZAS_PENDIENTES, t.TIEMPO " +
                             "from PEDIDO p JOIN @ped pd ON pd.cve_doc = p.CVE_DOC JOIN vw_estatuspedido e ON e.CVE_DOC = p.CVE_DOC " +
                             "JOIN @detped s ON s.cve_doc = p.CVE_DOC JOIN CLIENTE c on c.CLAVE = p.CVE_CLPV JOIN( " +
-                            "SELECT *, ISNULL(DATEDIFF(MINUTE, FECHAUTORIZACION, FECHATERMINADO), 0) TIEMPO FROM( " +
+                            "SELECT *, ISNULL(DATEDIFF(MINUTE, FECHAUTORIZACION, FECHATERMINADO), 0) - (" +
+                            "ISNULL(DATEDIFF(MINUTE, FECHADETENIDO, FECHARESURTIR), 0) + " +
+                            "ISNULL(DATEDIFF(MINUTE, FECHADETENIDOBR, FECHARESURTIRBR), 0) + " +
+                            "ISNULL(DATEDIFF(MINUTE, FECHADETENIDOEM, FECHARESURTIREM), 0)) TIEMPO FROM( " +
                             "select ph.CVE_DOC, MIN(case when ph.ESTATUSPEDIDO = 'SURTIR' then FECHAMOV end) FECHAUTORIZACION, " +
-                            "MIN(case when ph.ESTATUSPEDIDO = 'FACTURACION' then FECHAMOV end) FECHATERMINADO from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
-                            "WHERE ph.ESTATUSPEDIDO IN('SURTIR', 'FACTURACION') GROUP BY ph.CVE_DOC) AS A ) AS T ON T.CVE_DOC = P.CVE_DOC order by t.TIEMPO desc, LTRIM(p.CVE_DOC)";
+                            "MIN(case when ph.ESTATUSPEDIDO = 'FACTURACION' then FECHAMOV end) FECHATERMINADO, " +
+                            "MIN(case when ph.ESTATUSPEDIDO = 'DETENIDO' then FECHAMOV end) FECHADETENIDO, " +
+                            "MAX(case when ph.ESTATUSPEDIDO = 'SURTIENDO' then FECHAMOV end) FECHARESURTIR, " +
+                            "MIN(case when ph.ESTATUSPEDIDO = 'DETENIDO BROCAS' then FECHAMOV end) FECHADETENIDOBR, " +
+                            "MAX(case when ph.ESTATUSPEDIDO = 'SURTIENDO BROCAS' then FECHAMOV end) FECHARESURTIRBR, " +
+                            "MIN(case when ph.ESTATUSPEDIDO = 'DETENIDO EMP' then FECHAMOV end) FECHADETENIDOEM, " +
+                            "MAX(case when ph.ESTATUSPEDIDO = 'EMPACANDO' then FECHAMOV end) FECHARESURTIREM " +
+                            "from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
+                            "WHERE ph.ESTATUSPEDIDO IN('SURTIR', 'FACTURACION', 'DETENIDO', 'SURTIENDO', 'DETENIDO BROCAS', 'SURTIENDO BROCAS', 'DETENIDO EMP', 'EMPACANDO') " + 
+                            "GROUP BY ph.CVE_DOC) AS A ) AS T ON T.CVE_DOC = P.CVE_DOC order by t.TIEMPO desc, LTRIM(p.CVE_DOC)";
                 dets = GetDataTable("DB", query, 7).ToList<EstadisticasPedidos>();
             }
             catch (Exception ex)
@@ -325,10 +336,21 @@ namespace SWYRA
                             "(s.ARTICULOS - s.ARTICULOS_SURTIDOS) ARTICULOS_PENDIENTES, s.PIEZAS, s.PIEZAS_SURTIDAS, s.PIEZAS_PENDIENTES, t.TIEMPO " +
                             "from PEDIDO p JOIN @ped pd ON pd.cve_doc = p.CVE_DOC JOIN vw_estatuspedido e ON e.CVE_DOC = p.CVE_DOC " +
                             "JOIN @detped s ON s.cve_doc = p.CVE_DOC JOIN CLIENTE c on c.CLAVE = p.CVE_CLPV JOIN( " +
-                            "SELECT *, ISNULL(DATEDIFF(MINUTE, FECHAUTORIZACION, FECHATERMINADO), 0) TIEMPO FROM( " +
+                            "SELECT *, ISNULL(DATEDIFF(MINUTE, FECHAUTORIZACION, FECHATERMINADO), 0) - (" +
+                            "ISNULL(DATEDIFF(MINUTE, FECHADETENIDO, FECHARESURTIR), 0) + " +
+                            "ISNULL(DATEDIFF(MINUTE, FECHADETENIDOBR, FECHARESURTIRBR), 0) + " +
+                            "ISNULL(DATEDIFF(MINUTE, FECHADETENIDOEM, FECHARESURTIREM), 0)) TIEMPO FROM( " +
                             "select ph.CVE_DOC, MIN(case when ph.ESTATUSPEDIDO = 'SURTIR' then FECHAMOV end) FECHAUTORIZACION, " +
-                            "MIN(case when ph.ESTATUSPEDIDO = 'FACTURACION' then FECHAMOV end) FECHATERMINADO from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
-                            "WHERE ph.ESTATUSPEDIDO IN('SURTIR', 'FACTURACION') GROUP BY ph.CVE_DOC) AS A ) AS T ON T.CVE_DOC = P.CVE_DOC order by t.TIEMPO, LTRIM(p.CVE_DOC)";
+                            "MIN(case when ph.ESTATUSPEDIDO = 'FACTURACION' then FECHAMOV end) FECHATERMINADO, " +
+                            "MIN(case when ph.ESTATUSPEDIDO = 'DETENIDO' then FECHAMOV end) FECHADETENIDO, " +
+                            "MAX(case when ph.ESTATUSPEDIDO = 'SURTIENDO' then FECHAMOV end) FECHARESURTIR, " +
+                            "MIN(case when ph.ESTATUSPEDIDO = 'DETENIDO BROCAS' then FECHAMOV end) FECHADETENIDOBR, " +
+                            "MAX(case when ph.ESTATUSPEDIDO = 'SURTIENDO BROCAS' then FECHAMOV end) FECHARESURTIRBR, " +
+                            "MIN(case when ph.ESTATUSPEDIDO = 'DETENIDO EMP' then FECHAMOV end) FECHADETENIDOEM, " +
+                            "MAX(case when ph.ESTATUSPEDIDO = 'EMPACANDO' then FECHAMOV end) FECHARESURTIREM " +
+                            "from PEDIDO_HIST ph join @ped pd on pd.cve_doc = ph.CVE_DOC " +
+                            "WHERE ph.ESTATUSPEDIDO IN ('SURTIR', 'FACTURACION', 'DETENIDO', 'SURTIENDO', 'DETENIDO BROCAS', 'SURTIENDO BROCAS', 'DETENIDO EMP', 'EMPACANDO') " +
+                            "GROUP BY ph.CVE_DOC) AS A ) AS T ON T.CVE_DOC = P.CVE_DOC order by t.TIEMPO, LTRIM(p.CVE_DOC)";
                 dets = GetDataTable("DB", query, 7).ToList<EstadisticasPedidos>();
             }
             catch (Exception ex)

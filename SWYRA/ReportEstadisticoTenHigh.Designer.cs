@@ -271,14 +271,14 @@
             // 
             this.xrTableCell14.Dpi = 100F;
             this.xrTableCell14.Name = "xrTableCell14";
-            this.xrTableCell14.Text = "ARTS.";
+            this.xrTableCell14.Text = "CLAVES";
             this.xrTableCell14.Weight = 0.096390740762127558D;
             // 
             // xrTableCell15
             // 
             this.xrTableCell15.Dpi = 100F;
             this.xrTableCell15.Name = "xrTableCell15";
-            this.xrTableCell15.Text = "ART. SRT.";
+            this.xrTableCell15.Text = "CVE. SRT.";
             this.xrTableCell15.Weight = 0.0863641956082018D;
             // 
             // xrTableCell16
@@ -299,7 +299,7 @@
             // 
             this.xrTableCell18.Dpi = 100F;
             this.xrTableCell18.Name = "xrTableCell18";
-            this.xrTableCell18.Text = "TIEMPO";
+            this.xrTableCell18.Text = "MINUTOS";
             this.xrTableCell18.Weight = 0.0963908631594658D;
             // 
             // xrLabel3

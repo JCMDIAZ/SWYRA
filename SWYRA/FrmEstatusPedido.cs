@@ -49,6 +49,8 @@ namespace SWYRA
             if (sw)
             {
                 sw = !sw;
+                txtFechMovIni.Text = "";
+                txtFechMovfin.Text = "";
                 if (txtFechFin.Text == "")
                 {
                     txtFechFin.DateTime = txtFechIni.DateTime.AddDays(1);
@@ -68,6 +70,8 @@ namespace SWYRA
             if (sw)
             {
                 sw = !sw;
+                txtFechMovIni.Text = "";
+                txtFechMovfin.Text = "";
                 if (txtFechIni.Text == "")
                 {
                     txtFechIni.DateTime = txtFechFin.DateTime.AddDays(-1);
@@ -111,10 +115,20 @@ namespace SWYRA
                             .ToList();
                     }
                 }
+                if (cbEstatusPed.Text != "" && txtFechMovIni.Text != "" && txtFechMovfin.Text != "")
+                {
+                    listPedidos = CargaPedidos(txtFechMovIni.DateTime, txtFechMovfin.DateTime, 1);
+                    if (cbEstatusPed.Text != @"TODOS")
+                    {
+                        listPedidos = listPedidos
+                            .Where(o => o.estatuspedido == cbEstatusPed.Text)
+                            .ToList();
+                    }
+                }
             }
         }
 
-        private List<Pedidos> CargaPedidos(DateTime fini, DateTime ffin)
+        private List<Pedidos> CargaPedidos(DateTime fini, DateTime ffin, int filtro = 0)
         {
             List<Pedidos> list = new List<Pedidos>();
             try
@@ -135,7 +149,7 @@ namespace SWYRA
                     "uCapturo.Nombre capturo_n, p.CONSIGNACION, ISNULL(FLT,FLETE) FLETE, FLETE2, ENVIAR, CAUSADETENIDO, " +
                     "(CALLE + ' # ' + NUMEXT + ' COL. ' + COLONIA) direccion1, ('C.P. ' + CODIGO + '; ' + MUNICIPIO + ', ' + ESTADO) direccion2, " +
                     "STUFF((select ',' + UbicacionEmpaque from PEDIDO_Ubicacion u where u.CVE_DOC = p.CVE_DOC FOR XML PATH('')), 1, 1, '') UbicacionEmpaque, " +
-                    "FLETE, TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, " +
+                    "FLETE, TotCajaCarton, TotCajaMadera, TotBultos, TotRollos, TotCubetas, TotAtados, TotTarimas, ep.FECHAMOV, " +
                     "(TotCajaCarton + TotCajaMadera + TotBultos + TotRollos + TotCubetas + TotAtados + TotTarimas) Remitentes, p.OBSERVACIONES, p.INDICACIONES " +
                     "FROM PEDIDO p left join (select cve_doc, ((SUM(isnull(CANTSURTIDO, 0)) / sum(CANT)) * 100.0) porc_surtidoReal from DETALLEPEDIDO " +
                     "where CVE_DOC in (select CVE_DOC from @pedidos) group by cve_doc) as det on p.cve_doc = det.cve_doc " +
@@ -148,7 +162,7 @@ namespace SWYRA
                     "left join USUARIOS uSurArea on uSurArea.Usuario = p.SURTIDOR_AREA " +
                     "left join USUARIOS uCapturo on uCapturo.Usuario = p.CAPTURO " +
                     "left join CLIENTE cliente on cliente.CLAVE = p.CVE_CLPV " +
-                    "WHERE FECHA_DOC between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
+                    "WHERE " + ((filtro == 0) ? "FECHA_DOC" : "ep.FECHAMOV") + " between '" + fini.ToString("yyyyMMdd") + "' and '" + ffin.ToString("yyyyMMdd") + "' " +
                     "ORDER BY p.CVE_DOC DESC";
                 list = GetDataTable("DB", query, 51).ToList<Pedidos>();
             }
@@ -184,6 +198,8 @@ namespace SWYRA
             sw = !sw;
             txtFechIni.Text = "";
             txtFechFin.Text = "";
+            txtFechMovIni.Text = "";
+            txtFechMovfin.Text = "";
             sw = !sw;
         }
 
@@ -192,6 +208,8 @@ namespace SWYRA
             cbEstatusPed.Enabled = !chkActual.Checked;
             txtFechIni.Enabled = !chkActual.Checked;
             txtFechFin.Enabled = !chkActual.Checked;
+            txtFechMovIni.Enabled = !chkActual.Checked;
+            txtFechMovfin.Enabled = !chkActual.Checked;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -758,6 +776,48 @@ namespace SWYRA
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void txtFechMovIni_TextChanged(object sender, EventArgs e)
+        {
+            if (sw)
+            {
+                sw = !sw;
+                txtFechIni.Text = "";
+                txtFechFin.Text = "";
+                if (txtFechMovfin.Text == "")
+                {
+                    txtFechMovfin.DateTime = txtFechMovIni.DateTime.AddDays(1);
+                }
+                else if (txtFechMovfin.DateTime < txtFechMovIni.DateTime)
+                {
+                    txtFechMovfin.DateTime = txtFechMovIni.DateTime.AddDays(1);
+                }
+                FiltrarCarga();
+                gridControl1.DataSource = listPedidos;
+                sw = !sw;
+            }
+        }
+
+        private void txtFechMovfin_TextChanged(object sender, EventArgs e)
+        {
+            if (sw)
+            {
+                sw = !sw;
+                txtFechIni.Text = "";
+                txtFechFin.Text = "";
+                if (txtFechMovIni.Text == "")
+                {
+                    txtFechMovIni.DateTime = txtFechMovfin.DateTime.AddDays(-1);
+                }
+                else if (txtFechMovfin.DateTime < txtFechMovIni.DateTime)
+                {
+                    txtFechMovIni.DateTime = txtFechMovfin.DateTime.AddDays(-1);
+                }
+                FiltrarCarga();
+                gridControl1.DataSource = listPedidos;
+                sw = !sw;
             }
         }
     }

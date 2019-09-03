@@ -51,12 +51,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.lblMonto = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.lblMonto);
+            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.pbSalir);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 235);
@@ -229,6 +233,23 @@
             this.label9.Text = "Fecha :";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // lblMonto
+            // 
+            this.lblMonto.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.lblMonto.Location = new System.Drawing.Point(123, 12);
+            this.lblMonto.Name = "lblMonto";
+            this.lblMonto.Size = new System.Drawing.Size(69, 17);
+            this.lblMonto.Text = "9999";
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(47, 12);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 17);
+            this.label11.Text = "MONTO :";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // FrmEmpaqueInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -287,5 +308,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblMonto;
+        private System.Windows.Forms.Label label11;
     }
 }

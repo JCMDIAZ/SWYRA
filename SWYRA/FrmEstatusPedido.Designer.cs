@@ -36,6 +36,10 @@
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.gpoFiltro = new System.Windows.Forms.GroupBox();
+            this.txtFechMovfin = new DevExpress.XtraEditors.DateEdit();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtFechMovIni = new DevExpress.XtraEditors.DateEdit();
             this.chkActual = new DevExpress.XtraEditors.CheckEdit();
             this.txtFechFin = new DevExpress.XtraEditors.DateEdit();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,6 +57,7 @@
             this.colestatuspedido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colocurredomicilio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colfecha_doc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colfechamov = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colfecha_cancela = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcondicion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colnombre_vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -117,6 +122,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.gpoFiltro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechMovfin.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechMovfin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechMovIni.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechMovIni.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechFin.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechFin.Properties)).BeginInit();
@@ -195,6 +204,10 @@
             // 
             // gpoFiltro
             // 
+            this.gpoFiltro.Controls.Add(this.txtFechMovfin);
+            this.gpoFiltro.Controls.Add(this.label8);
+            this.gpoFiltro.Controls.Add(this.label9);
+            this.gpoFiltro.Controls.Add(this.txtFechMovIni);
             this.gpoFiltro.Controls.Add(this.chkActual);
             this.gpoFiltro.Controls.Add(this.txtFechFin);
             this.gpoFiltro.Controls.Add(this.label3);
@@ -207,10 +220,62 @@
             this.gpoFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.gpoFiltro.Name = "gpoFiltro";
             this.gpoFiltro.Padding = new System.Windows.Forms.Padding(2);
-            this.gpoFiltro.Size = new System.Drawing.Size(798, 53);
+            this.gpoFiltro.Size = new System.Drawing.Size(798, 77);
             this.gpoFiltro.TabIndex = 41;
             this.gpoFiltro.TabStop = false;
             this.gpoFiltro.Text = " Filtrar Pedidos ";
+            // 
+            // txtFechMovfin
+            // 
+            this.txtFechMovfin.EditValue = null;
+            this.txtFechMovfin.Location = new System.Drawing.Point(514, 47);
+            this.txtFechMovfin.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFechMovfin.Name = "txtFechMovfin";
+            this.txtFechMovfin.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechMovfin.Properties.Appearance.Options.UseFont = true;
+            this.txtFechMovfin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechMovfin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechMovfin.Size = new System.Drawing.Size(110, 22);
+            this.txtFechMovfin.TabIndex = 47;
+            this.txtFechMovfin.TextChanged += new System.EventHandler(this.txtFechMovfin_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(495, 50);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(17, 15);
+            this.label8.TabIndex = 46;
+            this.label8.Text = "al";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(215, 52);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(147, 15);
+            this.label9.TabIndex = 45;
+            this.label9.Text = "Fecha Ultimo Movimiento";
+            // 
+            // txtFechMovIni
+            // 
+            this.txtFechMovIni.EditValue = null;
+            this.txtFechMovIni.Location = new System.Drawing.Point(380, 47);
+            this.txtFechMovIni.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFechMovIni.Name = "txtFechMovIni";
+            this.txtFechMovIni.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechMovIni.Properties.Appearance.Options.UseFont = true;
+            this.txtFechMovIni.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechMovIni.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechMovIni.Size = new System.Drawing.Size(110, 22);
+            this.txtFechMovIni.TabIndex = 44;
+            this.txtFechMovIni.TextChanged += new System.EventHandler(this.txtFechMovIni_TextChanged);
             // 
             // chkActual
             // 
@@ -324,11 +389,11 @@
             this.gridControl1.DataSource = this.pedidosBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
-            this.gridControl1.Location = new System.Drawing.Point(0, 80);
+            this.gridControl1.Location = new System.Drawing.Point(0, 104);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(798, 303);
+            this.gridControl1.Size = new System.Drawing.Size(798, 339);
             this.gridControl1.TabIndex = 42;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -348,6 +413,7 @@
             this.colestatuspedido,
             this.colocurredomicilio,
             this.colfecha_doc,
+            this.colfechamov,
             this.colfecha_cancela,
             this.colcondicion,
             this.colnombre_vendedor,
@@ -456,6 +522,17 @@
             this.colfecha_doc.VisibleIndex = 6;
             this.colfecha_doc.Width = 90;
             // 
+            // colfechamov
+            // 
+            this.colfechamov.Caption = "Ult. Mov.";
+            this.colfechamov.DisplayFormat.FormatString = "yyyy-MM-dd hh:mm";
+            this.colfechamov.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.colfechamov.FieldName = "fechamov";
+            this.colfechamov.Name = "colfechamov";
+            this.colfechamov.Visible = true;
+            this.colfechamov.VisibleIndex = 7;
+            this.colfechamov.Width = 120;
+            // 
             // colfecha_cancela
             // 
             this.colfecha_cancela.Caption = "Fecha Cancelado";
@@ -464,7 +541,7 @@
             this.colfecha_cancela.FieldName = "fecha_cancela";
             this.colfecha_cancela.Name = "colfecha_cancela";
             this.colfecha_cancela.Visible = true;
-            this.colfecha_cancela.VisibleIndex = 7;
+            this.colfecha_cancela.VisibleIndex = 8;
             this.colfecha_cancela.Width = 110;
             // 
             // colcondicion
@@ -473,7 +550,7 @@
             this.colcondicion.FieldName = "condicion";
             this.colcondicion.Name = "colcondicion";
             this.colcondicion.Visible = true;
-            this.colcondicion.VisibleIndex = 8;
+            this.colcondicion.VisibleIndex = 9;
             this.colcondicion.Width = 205;
             // 
             // colnombre_vendedor
@@ -482,7 +559,7 @@
             this.colnombre_vendedor.FieldName = "nombre_vendedor";
             this.colnombre_vendedor.Name = "colnombre_vendedor";
             this.colnombre_vendedor.Visible = true;
-            this.colnombre_vendedor.VisibleIndex = 9;
+            this.colnombre_vendedor.VisibleIndex = 10;
             this.colnombre_vendedor.Width = 150;
             // 
             // colcapturo_n
@@ -491,7 +568,7 @@
             this.colcapturo_n.FieldName = "capturo_n";
             this.colcapturo_n.Name = "colcapturo_n";
             this.colcapturo_n.Visible = true;
-            this.colcapturo_n.VisibleIndex = 10;
+            this.colcapturo_n.VisibleIndex = 11;
             this.colcapturo_n.Width = 150;
             // 
             // colcobrador_autorizo_n
@@ -501,7 +578,7 @@
             this.colcobrador_autorizo_n.FieldName = "cobrador_autorizo_n";
             this.colcobrador_autorizo_n.Name = "colcobrador_autorizo_n";
             this.colcobrador_autorizo_n.Visible = true;
-            this.colcobrador_autorizo_n.VisibleIndex = 11;
+            this.colcobrador_autorizo_n.VisibleIndex = 12;
             this.colcobrador_autorizo_n.Width = 150;
             // 
             // colsurtidor_asignado_n
@@ -510,7 +587,7 @@
             this.colsurtidor_asignado_n.FieldName = "surtidor_asignado_n";
             this.colsurtidor_asignado_n.Name = "colsurtidor_asignado_n";
             this.colsurtidor_asignado_n.Visible = true;
-            this.colsurtidor_asignado_n.VisibleIndex = 12;
+            this.colsurtidor_asignado_n.VisibleIndex = 13;
             this.colsurtidor_asignado_n.Width = 150;
             // 
             // colempaquetador_asignado_n
@@ -519,7 +596,7 @@
             this.colempaquetador_asignado_n.FieldName = "empaquetador_asignado_n";
             this.colempaquetador_asignado_n.Name = "colempaquetador_asignado_n";
             this.colempaquetador_asignado_n.Visible = true;
-            this.colempaquetador_asignado_n.VisibleIndex = 13;
+            this.colempaquetador_asignado_n.VisibleIndex = 14;
             this.colempaquetador_asignado_n.Width = 150;
             // 
             // coletiquetador_asignado_n
@@ -528,7 +605,7 @@
             this.coletiquetador_asignado_n.FieldName = "etiquetador_asignado_n";
             this.coletiquetador_asignado_n.Name = "coletiquetador_asignado_n";
             this.coletiquetador_asignado_n.Visible = true;
-            this.coletiquetador_asignado_n.VisibleIndex = 14;
+            this.coletiquetador_asignado_n.VisibleIndex = 15;
             this.coletiquetador_asignado_n.Width = 150;
             // 
             // colsurtidor_area_n
@@ -537,7 +614,7 @@
             this.colsurtidor_area_n.FieldName = "surtidor_area_n";
             this.colsurtidor_area_n.Name = "colsurtidor_area_n";
             this.colsurtidor_area_n.Visible = true;
-            this.colsurtidor_area_n.VisibleIndex = 15;
+            this.colsurtidor_area_n.VisibleIndex = 16;
             this.colsurtidor_area_n.Width = 150;
             // 
             // colporc_surtidoreal
@@ -547,7 +624,7 @@
             this.colporc_surtidoreal.FieldName = "porc_surtidoReal";
             this.colporc_surtidoreal.Name = "colporc_surtidoreal";
             this.colporc_surtidoreal.Visible = true;
-            this.colporc_surtidoreal.VisibleIndex = 16;
+            this.colporc_surtidoreal.VisibleIndex = 17;
             this.colporc_surtidoreal.Width = 150;
             // 
             // colporc_surtido
@@ -557,7 +634,7 @@
             this.colporc_surtido.FieldName = "porc_surtido";
             this.colporc_surtido.Name = "colporc_surtido";
             this.colporc_surtido.Visible = true;
-            this.colporc_surtido.VisibleIndex = 17;
+            this.colporc_surtido.VisibleIndex = 18;
             this.colporc_surtido.Width = 150;
             // 
             // colporc_empaque
@@ -567,7 +644,7 @@
             this.colporc_empaque.FieldName = "porc_empaque";
             this.colporc_empaque.Name = "colporc_empaque";
             this.colporc_empaque.Visible = true;
-            this.colporc_empaque.VisibleIndex = 18;
+            this.colporc_empaque.VisibleIndex = 19;
             this.colporc_empaque.Width = 150;
             // 
             // colObservaciones
@@ -576,7 +653,7 @@
             this.colObservaciones.FieldName = "observaciones";
             this.colObservaciones.Name = "colObservaciones";
             this.colObservaciones.Visible = true;
-            this.colObservaciones.VisibleIndex = 19;
+            this.colObservaciones.VisibleIndex = 20;
             // 
             // colindicaciones
             // 
@@ -584,7 +661,7 @@
             this.colindicaciones.FieldName = "indicaciones";
             this.colindicaciones.Name = "colindicaciones";
             this.colindicaciones.Visible = true;
-            this.colindicaciones.VisibleIndex = 20;
+            this.colindicaciones.VisibleIndex = 21;
             this.colindicaciones.Width = 150;
             // 
             // collote
@@ -593,7 +670,7 @@
             this.collote.FieldName = "lote";
             this.collote.Name = "collote";
             this.collote.Visible = true;
-            this.collote.VisibleIndex = 21;
+            this.collote.VisibleIndex = 22;
             this.collote.Width = 90;
             // 
             // colcausa
@@ -602,7 +679,7 @@
             this.colcausa.FieldName = "causadetenido";
             this.colcausa.Name = "colcausa";
             this.colcausa.Visible = true;
-            this.colcausa.VisibleIndex = 22;
+            this.colcausa.VisibleIndex = 23;
             // 
             // colUbicacionEmpaque
             // 
@@ -610,7 +687,7 @@
             this.colUbicacionEmpaque.FieldName = "ubicacionempaque";
             this.colUbicacionEmpaque.Name = "colUbicacionEmpaque";
             this.colUbicacionEmpaque.Visible = true;
-            this.colUbicacionEmpaque.VisibleIndex = 23;
+            this.colUbicacionEmpaque.VisibleIndex = 24;
             // 
             // colFlete
             // 
@@ -618,7 +695,7 @@
             this.colFlete.FieldName = "flete";
             this.colFlete.Name = "colFlete";
             this.colFlete.Visible = true;
-            this.colFlete.VisibleIndex = 24;
+            this.colFlete.VisibleIndex = 25;
             // 
             // coltotcajacarton
             // 
@@ -626,7 +703,7 @@
             this.coltotcajacarton.FieldName = "totcajacarton";
             this.coltotcajacarton.Name = "coltotcajacarton";
             this.coltotcajacarton.Visible = true;
-            this.coltotcajacarton.VisibleIndex = 25;
+            this.coltotcajacarton.VisibleIndex = 26;
             // 
             // coltotcajamadera
             // 
@@ -634,7 +711,7 @@
             this.coltotcajamadera.FieldName = "totcajamadera";
             this.coltotcajamadera.Name = "coltotcajamadera";
             this.coltotcajamadera.Visible = true;
-            this.coltotcajamadera.VisibleIndex = 26;
+            this.coltotcajamadera.VisibleIndex = 27;
             // 
             // coltotBultos
             // 
@@ -642,7 +719,7 @@
             this.coltotBultos.FieldName = "totbultos";
             this.coltotBultos.Name = "coltotBultos";
             this.coltotBultos.Visible = true;
-            this.coltotBultos.VisibleIndex = 27;
+            this.coltotBultos.VisibleIndex = 28;
             // 
             // coltotRollos
             // 
@@ -650,7 +727,7 @@
             this.coltotRollos.FieldName = "totrollos";
             this.coltotRollos.Name = "coltotRollos";
             this.coltotRollos.Visible = true;
-            this.coltotRollos.VisibleIndex = 28;
+            this.coltotRollos.VisibleIndex = 29;
             // 
             // coltotCubetas
             // 
@@ -658,7 +735,7 @@
             this.coltotCubetas.FieldName = "totcubetas";
             this.coltotCubetas.Name = "coltotCubetas";
             this.coltotCubetas.Visible = true;
-            this.coltotCubetas.VisibleIndex = 29;
+            this.coltotCubetas.VisibleIndex = 30;
             // 
             // coltotAtados
             // 
@@ -666,7 +743,7 @@
             this.coltotAtados.FieldName = "totatados";
             this.coltotAtados.Name = "coltotAtados";
             this.coltotAtados.Visible = true;
-            this.coltotAtados.VisibleIndex = 30;
+            this.coltotAtados.VisibleIndex = 31;
             // 
             // coltotTarimas
             // 
@@ -674,7 +751,7 @@
             this.coltotTarimas.FieldName = "tottarimas";
             this.coltotTarimas.Name = "coltotTarimas";
             this.coltotTarimas.Visible = true;
-            this.coltotTarimas.VisibleIndex = 31;
+            this.coltotTarimas.VisibleIndex = 32;
             // 
             // colRemitentes
             // 
@@ -682,7 +759,7 @@
             this.colRemitentes.FieldName = "remitentes";
             this.colRemitentes.Name = "colRemitentes";
             this.colRemitentes.Visible = true;
-            this.colRemitentes.VisibleIndex = 32;
+            this.colRemitentes.VisibleIndex = 33;
             // 
             // colImporte
             // 
@@ -692,7 +769,7 @@
             this.colImporte.FieldName = "importe";
             this.colImporte.Name = "colImporte";
             this.colImporte.Visible = true;
-            this.colImporte.VisibleIndex = 33;
+            this.colImporte.VisibleIndex = 34;
             // 
             // popupMenu1
             // 
@@ -820,7 +897,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 383);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 443);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlBottom.Size = new System.Drawing.Size(798, 0);
@@ -832,7 +909,7 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 383);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 443);
             // 
             // barDockControlRight
             // 
@@ -841,7 +918,7 @@
             this.barDockControlRight.Location = new System.Drawing.Point(798, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 383);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 443);
             // 
             // barStaticItem1
             // 
@@ -921,7 +998,7 @@
             this.ppPrioridad.Controls.Add(this.BtnAceptarPR);
             this.ppPrioridad.Controls.Add(this.cbPrioridad);
             this.ppPrioridad.Controls.Add(this.label5);
-            this.ppPrioridad.Location = new System.Drawing.Point(506, 99);
+            this.ppPrioridad.Location = new System.Drawing.Point(498, 387);
             this.ppPrioridad.Manager = this.barManager1;
             this.ppPrioridad.Margin = new System.Windows.Forms.Padding(2);
             this.ppPrioridad.Name = "ppPrioridad";
@@ -1087,10 +1164,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(798, 383);
+            this.ClientSize = new System.Drawing.Size(798, 443);
+            this.Controls.Add(this.ppPrioridad);
             this.Controls.Add(this.ppIndicaciones);
             this.Controls.Add(this.ppEntrega);
-            this.Controls.Add(this.ppPrioridad);
             this.Controls.Add(this.ppTipoServicio);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.gpoFiltro);
@@ -1111,6 +1188,10 @@
             this.toolStrip1.PerformLayout();
             this.gpoFiltro.ResumeLayout(false);
             this.gpoFiltro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechMovfin.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechMovfin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechMovIni.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechMovIni.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActual.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechFin.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechFin.Properties)).EndInit();
@@ -1230,5 +1311,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraGrid.Columns.GridColumn colfechamov;
+        private DevExpress.XtraEditors.DateEdit txtFechMovfin;
+        internal System.Windows.Forms.Label label8;
+        internal System.Windows.Forms.Label label9;
+        private DevExpress.XtraEditors.DateEdit txtFechMovIni;
     }
 }

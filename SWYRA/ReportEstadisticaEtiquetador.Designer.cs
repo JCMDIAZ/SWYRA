@@ -278,21 +278,21 @@
             // 
             this.xrTableCell17.Dpi = 100F;
             this.xrTableCell17.Name = "xrTableCell17";
-            this.xrTableCell17.Text = "TIEMPO";
+            this.xrTableCell17.Text = "MINUTOS";
             this.xrTableCell17.Weight = 0.098148166232638875D;
             // 
             // xrTableCell18
             // 
             this.xrTableCell18.Dpi = 100F;
             this.xrTableCell18.Name = "xrTableCell18";
-            this.xrTableCell18.Text = "PTD";
+            this.xrTableCell18.Text = "PMD";
             this.xrTableCell18.Weight = 0.112962890625D;
             // 
             // xrTableCell20
             // 
             this.xrTableCell20.Dpi = 100F;
             this.xrTableCell20.Name = "xrTableCell20";
-            this.xrTableCell20.Text = "PTP";
+            this.xrTableCell20.Text = "PMP";
             this.xrTableCell20.Weight = 0.10925922309027777D;
             // 
             // estadisticasSurt
